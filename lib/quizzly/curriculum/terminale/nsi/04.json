@@ -44,12 +44,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quel module standard de Python permet de lire et écrire nativement des fichiers au format CSV ?",
-              "options": [
-                "csv",
-                "json",
-                "math",
-                "random"
-              ],
+              "options": ["csv", "json", "math", "random"],
               "correctAnswers": [0],
               "explanation": "Le module standard 'csv' propose des lecteurs comme csv.reader et csv.DictReader."
             },
@@ -193,12 +188,7 @@
               "id": "q4",
               "type": "single_choice",
               "question": "En SQL, quel mot-clé permet d'éliminer les doublons après une projection d'attributs ?",
-              "options": [
-                "DISTINCT",
-                "UNIQUE_ONLY",
-                "NO_DUPLICATE",
-                "CLEAN"
-              ],
+              "options": ["DISTINCT", "UNIQUE_ONLY", "NO_DUPLICATE", "CLEAN"],
               "correctAnswers": [0],
               "explanation": "SELECT DISTINCT supprime les lignes dupliquées dans le résultat de la requête."
             },
@@ -206,12 +196,7 @@
               "id": "q5",
               "type": "single_choice",
               "question": "Quel mot-clé SQL permet de renommer une colonne projetée dans le résultat d'une requête ?",
-              "options": [
-                "AS",
-                "INTO",
-                "NEW",
-                "SET"
-              ],
+              "options": ["AS", "INTO", "NEW", "SET"],
               "correctAnswers": [0],
               "explanation": "La clause 'SELECT age AS age_eleve' crée un alias pour l'attribut dans la table résultat."
             },
@@ -232,12 +217,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Quelle est la complexité temporelle de la projection de k colonnes sur une table de n lignes en Python ?",
-              "options": [
-                "O(n * k)",
-                "O(1)",
-                "O(n²)",
-                "O(k!)"
-              ],
+              "options": ["O(n * k)", "O(1)", "O(n²)", "O(k!)"],
               "correctAnswers": [0],
               "explanation": "Pour chacune des n lignes, l'extraction de k attributs prend un temps proportionnel à k, soit O(n * k)."
             },
@@ -316,12 +296,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quel opérateur SQL teste l'inégalité de deux valeurs ?",
-              "options": [
-                "<> (ou !=)",
-                "===",
-                "IS NOT SAME",
-                "~="
-              ],
+              "options": ["<> (ou !=)", "===", "IS NOT SAME", "~="],
               "correctAnswers": [0],
               "explanation": "En SQL standard, l'inégalité est notée '<>' (l'opérateur '!=' est également très couramment supporté)."
             },
@@ -355,12 +330,7 @@
               "id": "q6",
               "type": "single_choice",
               "question": "Quelle est la complexité temporelle d'un filtrage simple sur une table non indexée de n lignes ?",
-              "options": [
-                "O(n)",
-                "O(1)",
-                "O(log n)",
-                "O(n²)"
-              ],
+              "options": ["O(n)", "O(1)", "O(log n)", "O(n²)"],
               "correctAnswers": [0],
               "explanation": "Sans index, il est nécessaire de parcourir chaque ligne pour tester la condition, d'où un coût O(n)."
             },
@@ -368,12 +338,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Soit t = [{'v': 10}, {'v': 25}, {'v': 5}]. Combien d'éléments renvoie [x for x in t if x['v'] < 20] ?",
-              "options": [
-                "2",
-                "1",
-                "3",
-                "0"
-              ],
+              "options": ["2", "1", "3", "0"],
               "correctAnswers": [0],
               "explanation": "Seuls les dictionnaires avec v = 10 et v = 5 vérifient la condition strictement inférieure à 20."
             },
@@ -426,12 +391,7 @@
               "id": "q1",
               "type": "multiple_choice",
               "question": "Quels sont les opérateurs logiques valides en SQL standard pour combiner des prédicats ?",
-              "options": [
-                "AND",
-                "OR",
-                "&&",
-                "||"
-              ],
+              "options": ["AND", "OR", "&&", "||"],
               "correctAnswers": [0, 1],
               "explanation": "SQL utilise les mots-clés en toutes lettres AND, OR et NOT pour exprimer la logique booléenne."
             },
@@ -543,12 +503,7 @@
               "id": "q10",
               "type": "single_choice",
               "question": "Si condition1 vaut False et condition2 vaut True, que vaut l'expression (condition1 and condition2) or True ?",
-              "options": [
-                "True",
-                "False",
-                "None",
-                "Une erreur d'exécution"
-              ],
+              "options": ["True", "False", "None", "Une erreur d'exécution"],
               "correctAnswers": [0],
               "explanation": "(False and True) vaut False, puis False or True donne True."
             }
@@ -575,12 +530,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Quel motif SQL LIKE sélectionne toutes les chaînes commençant par la lettre 'A' ?",
-              "options": [
-                "'A%'",
-                "'%A'",
-                "'_A'",
-                "'A_'"
-              ],
+              "options": ["'A%'", "'%A'", "'_A'", "'A_'"],
               "correctAnswers": [0],
               "explanation": "'A%' impose que le premier caractère soit 'A', suivi de n'importe quelle séquence de caractères."
             },
@@ -588,12 +538,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quel motif SQL LIKE sélectionne les chaînes composées d'exactement 3 caractères ?",
-              "options": [
-                "'___'",
-                "'%3%'",
-                "'...'",
-                "'###'"
-              ],
+              "options": ["'___'", "'%3%'", "'...'", "'###'"],
               "correctAnswers": [0],
               "explanation": "Chaque caractère souligné '_' représente exactement un caractère, donc trois soulignés représentent 3 caractères."
             },
@@ -614,12 +559,7 @@
               "id": "q5",
               "type": "single_choice",
               "question": "Quel opérateur SQL est souvent proposé pour effectuer une recherche insensible à la casse (notamment sous PostgreSQL) ?",
-              "options": [
-                "ILIKE",
-                "SAME",
-                "NOCASE",
-                "APPROX"
-              ],
+              "options": ["ILIKE", "SAME", "NOCASE", "APPROX"],
               "correctAnswers": [0],
               "explanation": "ILIKE effectue une comparaison de motifs insensible aux majuscules et minuscules."
             },
@@ -666,12 +606,7 @@
               "id": "q9",
               "type": "single_choice",
               "question": "Quelle méthode Python permet de découper une chaîne selon un délimiteur en une liste de morceaux ?",
-              "options": [
-                "split()",
-                "join()",
-                "strip()",
-                "slice()"
-              ],
+              "options": ["split()", "join()", "strip()", "slice()"],
               "correctAnswers": [0],
               "explanation": "split() sépare une chaîne selon un séparateur (espace par défaut ou délimiteur passé en argument)."
             },
@@ -737,12 +672,7 @@
               "id": "q4",
               "type": "single_choice",
               "question": "Quel objet Python correspond le plus fidèlement au concept de valeur NULL d'une base de données ?",
-              "options": [
-                "None",
-                "False",
-                "0",
-                "NaN (issu uniquement de sys)"
-              ],
+              "options": ["None", "False", "0", "NaN (issu uniquement de sys)"],
               "correctAnswers": [0],
               "explanation": "L'objet singleton 'None' est la valeur canonique en Python pour représenter l'absence de données."
             },
@@ -750,12 +680,7 @@
               "id": "q5",
               "type": "single_choice",
               "question": "Comment tester de manière idiomatique si une variable 'x' vaut None en Python ?",
-              "options": [
-                "x is None",
-                "x == None",
-                "x is null",
-                "x.is_none()"
-              ],
+              "options": ["x is None", "x == None", "x is null", "x.is_none()"],
               "correctAnswers": [0],
               "explanation": "Puisque None est un singleton en mémoire, l'opérateur d'identité 'is' est la façon recommandée de le tester."
             },
@@ -983,12 +908,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "En Python, quelle fonction retourne une nouvelle liste triée sans modifier la liste originale ?",
-              "options": [
-                "sorted()",
-                "list.sort()",
-                "order()",
-                "arrange()"
-              ],
+              "options": ["sorted()", "list.sort()", "order()", "arrange()"],
               "correctAnswers": [0],
               "explanation": "sorted(l) crée une nouvelle liste triée, tandis que l.sort() trie la liste en place (mutation)."
             },
@@ -1048,12 +968,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Quelle est la complexité temporelle optimale pour trier n éléments par comparaisons ?",
-              "options": [
-                "O(n log n)",
-                "O(n)",
-                "O(1)",
-                "O(log n)"
-              ],
+              "options": ["O(n log n)", "O(n)", "O(1)", "O(log n)"],
               "correctAnswers": [0],
               "explanation": "La borne théorique minimale pour le tri par comparaison dans le pire des cas est en Omega(n log n)."
             },
@@ -1087,12 +1002,7 @@
               "id": "q10",
               "type": "single_choice",
               "question": "Quel module standard Python fournit 'itemgetter' pour accélérer l'extraction de clés de tri ?",
-              "options": [
-                "operator",
-                "functools",
-                "itertools",
-                "collections"
-              ],
+              "options": ["operator", "functools", "itertools", "collections"],
               "correctAnswers": [0],
               "explanation": "operator.itemgetter('cle') crée une fonction d'extraction très rapide en langage C pour sorted()."
             }
@@ -1132,12 +1042,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "En Python, quelle syntaxe de découpage (slicing) extrait les 5 premiers éléments d'une liste 'l' ?",
-              "options": [
-                "l[:5]",
-                "l[0:4]",
-                "l[1:5]",
-                "l[5:]"
-              ],
+              "options": ["l[:5]", "l[0:4]", "l[1:5]", "l[5:]"],
               "correctAnswers": [0],
               "explanation": "l[:5] prend les indices 0, 1, 2, 3 et 4, soit exactement les 5 premiers éléments."
             },
@@ -1171,12 +1076,7 @@
               "id": "q6",
               "type": "single_choice",
               "question": "En Python, comment extraire les éléments d'une liste 'l' correspondant à la page 2 (éléments de l'indice 10 à 19 inclus) ?",
-              "options": [
-                "l[10:20]",
-                "l[10:19]",
-                "l[2:10]",
-                "l[9:20]"
-              ],
+              "options": ["l[10:20]", "l[10:19]", "l[2:10]", "l[9:20]"],
               "correctAnswers": [0],
               "explanation": "La tranche [10:20] s'arrête juste avant l'indice 20, couvrant ainsi les indices de 10 à 19."
             },
@@ -1398,12 +1298,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Quelle fonction Python intégrée permet de déterminer le nombre d'éléments d'une liste ?",
-              "options": [
-                "len()",
-                "count()",
-                "size()",
-                "length()"
-              ],
+              "options": ["len()", "count()", "size()", "length()"],
               "correctAnswers": [0],
               "explanation": "La fonction native len() renvoie la longueur (nombre d'éléments) d'une collection ou d'un conteneur en Python."
             },
@@ -1424,12 +1319,7 @@
               "id": "q4",
               "type": "single_choice",
               "question": "Si une table contient 10 lignes dont 3 ont un 'telephone' NULL, que renvoie 'SELECT COUNT(telephone) FROM table' ?",
-              "options": [
-                "7",
-                "10",
-                "3",
-                "NULL"
-              ],
+              "options": ["7", "10", "3", "NULL"],
               "correctAnswers": [0],
               "explanation": "COUNT(colonne) n'incrémente son compteur que pour les valeurs non nulles : 10 - 3 = 7."
             },
@@ -1450,12 +1340,7 @@
               "id": "q6",
               "type": "single_choice",
               "question": "Quelle est la complexité temporelle pour compter les éléments vérifiant un prédicat dans une liste Python de taille n ?",
-              "options": [
-                "O(n)",
-                "O(1)",
-                "O(log n)",
-                "O(n²)"
-              ],
+              "options": ["O(n)", "O(1)", "O(log n)", "O(n²)"],
               "correctAnswers": [0],
               "explanation": "Il faut tester le prédicat sur chacun des n éléments de la liste, ce qui demande un temps linéaire O(n)."
             },
@@ -1463,12 +1348,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Que renvoie la requête 'SELECT COUNT(*) FROM table WHERE 1 = 0' sur une table vide ou non vide ?",
-              "options": [
-                "0",
-                "NULL",
-                "Une erreur de division",
-                "-1"
-              ],
+              "options": ["0", "NULL", "Une erreur de division", "-1"],
               "correctAnswers": [0],
               "explanation": "La fonction COUNT renvoie toujours 0 lorsqu'aucune ligne ne satisfait la condition WHERE."
             },
@@ -1534,12 +1414,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Que renvoie la fonction SUM en SQL si toutes les lignes sélectionnées ont la valeur NULL ?",
-              "options": [
-                "NULL",
-                "0",
-                "Une erreur d'exécution",
-                "NaN"
-              ],
+              "options": ["NULL", "0", "Une erreur d'exécution", "NaN"],
               "correctAnswers": [0],
               "explanation": "Contrairement à COUNT qui renvoie 0, SUM renvoie NULL lorsqu'il n'y a aucune valeur non nulle à additionner."
             },
@@ -1638,12 +1513,7 @@
               "id": "q10",
               "type": "single_choice",
               "question": "Quelle est la complexité en temps d'un algorithme calculant la somme d'une colonne de n nombres ?",
-              "options": [
-                "O(n)",
-                "O(1)",
-                "O(log n)",
-                "O(n²)"
-              ],
+              "options": ["O(n)", "O(1)", "O(log n)", "O(n²)"],
               "correctAnswers": [0],
               "explanation": "Il faut visiter les n nombres une fois chacun pour accumuler la somme, d'où une complexité linéaire O(n)."
             }
@@ -1761,12 +1631,7 @@
               "id": "q9",
               "type": "single_choice",
               "question": "Que renvoie la requête 'SELECT MIN(nom) FROM eleves' si les noms sont 'Durand', 'Albert' et 'Zidane' ?",
-              "options": [
-                "'Albert'",
-                "'Zidane'",
-                "'Durand'",
-                "NULL"
-              ],
+              "options": ["'Albert'", "'Zidane'", "'Durand'", "NULL"],
               "correctAnswers": [0],
               "explanation": "Dans l'ordre alphabétique lexicographique standard, 'Albert' précède 'Durand' et 'Zidane'."
             },
@@ -1845,12 +1710,7 @@
               "id": "q5",
               "type": "single_choice",
               "question": "Quelle classe du module 'collections' en Python simplifie grandement la création de dictionnaires de regroupement ?",
-              "options": [
-                "defaultdict",
-                "OrderedDict",
-                "namedtuple",
-                "deque"
-              ],
+              "options": ["defaultdict", "OrderedDict", "namedtuple", "deque"],
               "correctAnswers": [0],
               "explanation": "defaultdict(list) crée automatiquement une liste vide pour toute nouvelle clé rencontrée lors du parcours."
             },
@@ -2182,12 +2042,7 @@
               "id": "q10",
               "type": "single_choice",
               "question": "Quelle est la complexité temporelle globale du tri de g groupes résultant d'une agrégation ?",
-              "options": [
-                "O(g log g)",
-                "O(n²)",
-                "O(1)",
-                "O(g!)"
-              ],
+              "options": ["O(g log g)", "O(n²)", "O(1)", "O(g!)"],
               "correctAnswers": [0],
               "explanation": "Le tri des g groupes finaux s'effectue en temps quasi-linéaire O(g log g) via un algorithme de tri efficace."
             }
@@ -2214,12 +2069,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Soit la colonne 'salaire' avec les valeurs [2000, 2000, 3000]. Que renvoie SELECT SUM(DISTINCT salaire) ?",
-              "options": [
-                "5000",
-                "7000",
-                "2000",
-                "3000"
-              ],
+              "options": ["5000", "7000", "2000", "3000"],
               "correctAnswers": [0],
               "explanation": "Les valeurs distinctes sont 2000 et 3000, leur somme vaut donc 2000 + 3000 = 5000."
             },
@@ -2279,12 +2129,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Soit la liste Python L = [1, 2, 2, 3, 3, 3]. Que vaut sum(set(L)) ?",
-              "options": [
-                "6",
-                "14",
-                "3",
-                "1"
-              ],
+              "options": ["6", "14", "3", "1"],
               "correctAnswers": [0],
               "explanation": "set(L) vaut {1, 2, 3}, et la somme 1 + 2 + 3 est égale à 6."
             },
@@ -2454,12 +2299,7 @@
               "id": "q10",
               "type": "single_choice",
               "question": "Quelle est la complexité spatiale d'un calcul de somme cumulative avec accumulateur en mémoire vive ?",
-              "options": [
-                "O(1)",
-                "O(n)",
-                "O(n²)",
-                "O(log n)"
-              ],
+              "options": ["O(1)", "O(n)", "O(n²)", "O(log n)"],
               "correctAnswers": [0],
               "explanation": "Une seule variable suffit pour conserver la somme courante, d'où un encombrement mémoire constant O(1)."
             }
@@ -2590,12 +2430,7 @@
               "id": "q10",
               "type": "single_choice",
               "question": "Quelle est la complexité optimale d'une jointure équi-join entre deux tables de tailles n et m en utilisant une table de hachage ?",
-              "options": [
-                "O(n + m)",
-                "O(n * m)",
-                "O(n²)",
-                "O(log(n + m))"
-              ],
+              "options": ["O(n + m)", "O(n * m)", "O(n²)", "O(log(n + m))"],
               "correctAnswers": [0],
               "explanation": "La jointure par hachage (hash join) construit la table de hachage en O(n) et sonde en O(m), d'où O(n + m)."
             }

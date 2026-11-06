@@ -1,5 +1,6 @@
 "use client";
 
+import { AlertTriangleIcon } from "@mdevs/icons";
 import { type FormEvent, useState } from "react";
 import {
   Dialog,
@@ -10,7 +11,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { AlertTriangleIcon } from "@mdevs/icons";
 
 export const MENTION_IA =
   "L'intelligence artificielle a été utilisée pour concevoir les exercices. N'hésitez pas à signaler un contenu incorrect.";
@@ -75,7 +75,7 @@ export function FormulaireSignalement({
       {envoye ? (
         <p className="text-xs text-success">Signalement envoyé. Merci.</p>
       ) : (
-        <Dialog open={ouvert} onOpenChange={setOuvert}>
+        <Dialog onOpenChange={setOuvert} open={ouvert}>
           <DialogTrigger asChild>
             <button className="chip w-fit" type="button">
               Signaler

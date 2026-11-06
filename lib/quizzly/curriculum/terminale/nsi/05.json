@@ -167,12 +167,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Quel événement est déclenché lorsqu'un utilisateur clique sur un élément HTML ?",
-              "options": [
-                "click",
-                "press",
-                "tap",
-                "select"
-              ],
+              "options": ["click", "press", "tap", "select"],
               "correctAnswers": [0],
               "explanation": "L'événement 'click' est émis lorsqu'un bouton de pointage est pressé puis relâché sur un même élément."
             },
@@ -180,12 +175,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quel événement survient lorsqu'un champ de formulaire perd le focus après modification de sa valeur ?",
-              "options": [
-                "change",
-                "blur",
-                "focusout",
-                "input"
-              ],
+              "options": ["change", "blur", "focusout", "input"],
               "correctAnswers": [0],
               "explanation": "L'événement 'change' est émis lorsque la valeur d'un élément de formulaire a été modifiée et validée (notamment lors de la perte de focus)."
             },
@@ -193,12 +183,7 @@
               "id": "q4",
               "type": "multiple_choice",
               "question": "Parmi les événements suivants, lesquels sont associés au pointeur ou à la souris dans le DOM ?",
-              "options": [
-                "mouseover",
-                "contextmenu",
-                "keydown",
-                "wheel"
-              ],
+              "options": ["mouseover", "contextmenu", "keydown", "wheel"],
               "correctAnswers": [0, 1, 3],
               "explanation": "mouseover, contextmenu (clic droit) et wheel (molette) sont des événements souris. keydown concerne le clavier."
             },
@@ -219,12 +204,7 @@
               "id": "q6",
               "type": "single_choice",
               "question": "Quel événement signale que le document HTML initial est totalement chargé et analysé sans attendre les images ?",
-              "options": [
-                "DOMContentLoaded",
-                "load",
-                "init",
-                "complete"
-              ],
+              "options": ["DOMContentLoaded", "load", "init", "complete"],
               "correctAnswers": [0],
               "explanation": "DOMContentLoaded indique que l'arbre DOM est construit et prêt à être manipulé, sans attendre les ressources externes (images, feuilles de style)."
             },
@@ -245,12 +225,7 @@
               "id": "q8",
               "type": "single_choice",
               "question": "Quel événement survient dès qu'une touche du clavier est enfoncée ?",
-              "options": [
-                "keydown",
-                "keypress",
-                "keyup",
-                "keyhit"
-              ],
+              "options": ["keydown", "keypress", "keyup", "keyhit"],
               "correctAnswers": [0],
               "explanation": "keydown est émis immédiatement au moment où la touche s'enfonce, avant même la répétition ou l'émission du caractère."
             },
@@ -258,12 +233,7 @@
               "id": "q9",
               "type": "single_choice",
               "question": "Quel événement est déclenché lors de la soumission d'un formulaire HTML ?",
-              "options": [
-                "submit",
-                "send",
-                "post",
-                "commit"
-              ],
+              "options": ["submit", "send", "post", "commit"],
               "correctAnswers": [0],
               "explanation": "L'événement 'submit' est levé sur l'élément <form> lorsqu'un bouton de type submit est cliqué ou que la touche Entrée est pressée."
             },
@@ -426,12 +396,7 @@
               "id": "q1",
               "type": "single_choice",
               "question": "Quelle propriété d'un MouseEvent indique la position horizontale par rapport à la zone visible (viewport) ?",
-              "options": [
-                "clientX",
-                "pageX",
-                "screenX",
-                "offsetX"
-              ],
+              "options": ["clientX", "pageX", "screenX", "offsetX"],
               "correctAnswers": [0],
               "explanation": "clientX renvoie la coordonnée X par rapport à la zone d'affichage du navigateur, sans tenir compte du défilement (scroll)."
             },
@@ -478,12 +443,7 @@
               "id": "q5",
               "type": "single_choice",
               "question": "Quel événement de souris se déclenche lorsque le bouton enfoncé est relâché ?",
-              "options": [
-                "mouseup",
-                "mousedown",
-                "click",
-                "mouseexit"
-              ],
+              "options": ["mouseup", "mousedown", "click", "mouseexit"],
               "correctAnswers": [0],
               "explanation": "mousedown se produit à l'enfoncement, mouseup au relâchement, et la séquence complète déclenche ensuite 'click'."
             },
@@ -491,12 +451,7 @@
               "id": "q6",
               "type": "single_choice",
               "question": "Quelle valeur numérique de event.button correspond traditionnellement au clic gauche principal ?",
-              "options": [
-                "0",
-                "1",
-                "2",
-                "3"
-              ],
+              "options": ["0", "1", "2", "3"],
               "correctAnswers": [0],
               "explanation": "La norme W3C attribue 0 au bouton principal (gauche), 1 au bouton central (molette), et 2 au bouton secondaire (droit)."
             },
@@ -504,12 +459,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Quel événement permet d'intercepter l'ouverture du menu contextuel (généralement via clic droit) ?",
-              "options": [
-                "contextmenu",
-                "rightclick",
-                "menushow",
-                "popup"
-              ],
+              "options": ["contextmenu", "rightclick", "menushow", "popup"],
               "correctAnswers": [0],
               "explanation": "L'événement 'contextmenu' se déclenche avant l'affichage du menu contextuel, permettant de le personnaliser via preventDefault()."
             },
@@ -575,12 +525,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Quelle API JavaScript moderne basée sur les Promesses permet d'effectuer des requêtes HTTP asynchrones ?",
-              "options": [
-                "fetch()",
-                "XMLHttpRequest",
-                "socket()",
-                "httpGet()"
-              ],
+              "options": ["fetch()", "XMLHttpRequest", "socket()", "httpGet()"],
               "correctAnswers": [0],
               "explanation": "fetch() est l'interface moderne standard pour réaliser des requêtes réseau en JavaScript, renvoyant une Promesse."
             },
@@ -614,12 +559,7 @@
               "id": "q5",
               "type": "single_choice",
               "question": "Quelle méthode d'une Promesse permet d'attacher un gestionnaire pour intercepter une erreur d'exécution ?",
-              "options": [
-                ".catch()",
-                ".finally()",
-                ".error()",
-                ".fault()"
-              ],
+              "options": [".catch()", ".finally()", ".error()", ".fault()"],
               "correctAnswers": [0],
               "explanation": ".catch(errorHandler) est appelée si la Promesse est rejetée ou si une exception est levée dans la chaîne."
             },
@@ -640,12 +580,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Quel protocole permet une communication bidirectionnelle en temps réel persistante et pilotée par événements ?",
-              "options": [
-                "WebSocket",
-                "FTP",
-                "DNS",
-                "SMTP"
-              ],
+              "options": ["WebSocket", "FTP", "DNS", "SMTP"],
               "correctAnswers": [0],
               "explanation": "WebSocket maintient une connexion TCP ouverte où client et serveur peuvent s'échanger des messages sous forme d'événements à tout instant."
             },
@@ -724,12 +659,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quel événement survient dès qu'un champ de formulaire reçoit le focus de saisie ?",
-              "options": [
-                "focus",
-                "blur",
-                "hover",
-                "activate"
-              ],
+              "options": ["focus", "blur", "hover", "activate"],
               "correctAnswers": [0],
               "explanation": "L'événement 'focus' indique qu'un composant (champ texte, bouton) est devenu l'élément actif recevant les entrées clavier."
             },
@@ -763,12 +693,7 @@
               "id": "q6",
               "type": "single_choice",
               "question": "Quel attribut HTML5 permet de contraindre la saisie d'un champ texte à l'aide d'une expression régulière ?",
-              "options": [
-                "pattern",
-                "regex",
-                "match",
-                "mask"
-              ],
+              "options": ["pattern", "regex", "match", "mask"],
               "correctAnswers": [0],
               "explanation": "L'attribut pattern='[0-9]{5}' valide que la saisie correspond rigoureusement à l'expression régulière spécifiée."
             },
@@ -776,12 +701,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Quel événement se déclenche lorsqu'une case à cocher (checkbox) change d'état sélectionné / non-sélectionné ?",
-              "options": [
-                "change",
-                "check",
-                "toggle",
-                "flip"
-              ],
+              "options": ["change", "check", "toggle", "flip"],
               "correctAnswers": [0],
               "explanation": "L'événement 'change' est émis sur une case à cocher dès que sa propriété 'checked' bascule de valeur."
             },
@@ -802,12 +722,7 @@
               "id": "q9",
               "type": "single_choice",
               "question": "Quelle pseudo-classe CSS permet de styliser un champ dont la saisie ne respecte pas les critères de validation ?",
-              "options": [
-                ":invalid",
-                ":error",
-                ":wrong",
-                ":unaccepted"
-              ],
+              "options": [":invalid", ":error", ":wrong", ":unaccepted"],
               "correctAnswers": [0],
               "explanation": "La pseudo-classe CSS :invalid sélectionne les éléments de formulaire en échec de validation selon leurs contraintes HTML5."
             },
@@ -815,12 +730,7 @@
               "id": "q10",
               "type": "single_choice",
               "question": "Quel événement est émis lorsqu'un formulaire est remis à ses valeurs initiales via un bouton de type reset ?",
-              "options": [
-                "reset",
-                "clear",
-                "restore",
-                "wipe"
-              ],
+              "options": ["reset", "clear", "restore", "wipe"],
               "correctAnswers": [0],
               "explanation": "L'événement 'reset' se déclenche sur le formulaire lors d'une réinitialisation, pouvant également être intercepté."
             }
@@ -834,12 +744,7 @@
               "id": "q1",
               "type": "single_choice",
               "question": "Quel module standard de la bibliothèque Python permet de concevoir des interfaces graphiques ?",
-              "options": [
-                "tkinter",
-                "pygame",
-                "turtle",
-                "graphics"
-              ],
+              "options": ["tkinter", "pygame", "turtle", "graphics"],
               "correctAnswers": [0],
               "explanation": "tkinter est le binding standard fourni avec Python pour la boîte à outils graphique Tk (Tcl/Tk)."
             },
@@ -847,12 +752,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Quelle méthode doit obligatoirement être appelée pour lancer la boucle d'événements dans une application Tkinter ?",
-              "options": [
-                "mainloop()",
-                "run()",
-                "start()",
-                "listen()"
-              ],
+              "options": ["mainloop()", "run()", "start()", "listen()"],
               "correctAnswers": [0],
               "explanation": "fenetre.mainloop() démarre la boucle infinie qui intercepte et distribue les événements clavier, souris et affichage."
             },
@@ -860,12 +760,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quelle méthode permet d'associer un événement précis d'un widget Tkinter à une fonction callback ?",
-              "options": [
-                "bind()",
-                "connect()",
-                "attach()",
-                "listen()"
-              ],
+              "options": ["bind()", "connect()", "attach()", "listen()"],
               "correctAnswers": [0],
               "explanation": "widget.bind('<Event>', handler) configure une écoute fine d'événements particuliers sur ce composant."
             },
@@ -899,12 +794,7 @@
               "id": "q6",
               "type": "single_choice",
               "question": "Quel paramètre du widget Button dans Tkinter permet de définir l'action à exécuter lors d'un clic simple ?",
-              "options": [
-                "command",
-                "action",
-                "callback",
-                "trigger"
-              ],
+              "options": ["command", "action", "callback", "trigger"],
               "correctAnswers": [0],
               "explanation": "Le paramètre command=ma_fonction accepte une référence de fonction sans paramètre appelée lors du clic."
             },
@@ -925,12 +815,7 @@
               "id": "q8",
               "type": "single_choice",
               "question": "Quelle méthode d'un widget Tkinter permet d'exécuter une fonction après un délai sans bloquer la boucle d'événements ?",
-              "options": [
-                "after()",
-                "sleep()",
-                "wait()",
-                "delay()"
-              ],
+              "options": ["after()", "sleep()", "wait()", "delay()"],
               "correctAnswers": [0],
               "explanation": "widget.after(ms, callback) planifie un rappel asynchrone intégré dans l'Event Loop de Tkinter sans geler l'interface."
             },
@@ -1061,12 +946,7 @@
               "id": "q8",
               "type": "single_choice",
               "question": "Quel élément HTML5 offre une surface de dessin matricielle programmable par script ?",
-              "options": [
-                "<canvas>",
-                "<svg>",
-                "<paint>",
-                "<board>"
-              ],
+              "options": ["<canvas>", "<svg>", "<paint>", "<board>"],
               "correctAnswers": [0],
               "explanation": "L'élément <canvas> fournit un contexte de rendu 2D ou WebGL permettant de manipuler des pixels et des formes."
             },
@@ -1106,12 +986,7 @@
               "id": "q1",
               "type": "single_choice",
               "question": "Quel événement tactile signale qu'un doigt vient d'entrer en contact avec l'écran tactile ?",
-              "options": [
-                "touchstart",
-                "touchbegin",
-                "touchdown",
-                "tap"
-              ],
+              "options": ["touchstart", "touchbegin", "touchdown", "tap"],
               "correctAnswers": [0],
               "explanation": "touchstart est déclenché dès qu'un point de contact est détecté sur la surface tactile."
             },
@@ -1119,12 +994,7 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Quel événement est émis en continu pendant le déplacement d'un doigt sur un écran tactile ?",
-              "options": [
-                "touchmove",
-                "touchdrag",
-                "touchslide",
-                "touchshift"
-              ],
+              "options": ["touchmove", "touchdrag", "touchslide", "touchshift"],
               "correctAnswers": [0],
               "explanation": "touchmove se déclenche à chaque déplacement des points de contact sur l'écran."
             },
@@ -1132,12 +1002,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quel événement tactile se produit lorsqu'un doigt quitte la surface de l'écran ?",
-              "options": [
-                "touchend",
-                "touchup",
-                "touchrelease",
-                "touchleave"
-              ],
+              "options": ["touchend", "touchup", "touchrelease", "touchleave"],
               "correctAnswers": [0],
               "explanation": "touchend survient lorsqu'un doigt est levé de la surface de l'écran tactile."
             },
@@ -1547,12 +1412,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quel rapport de contraste minimal de luminance est requis par les WCAG (niveau AA) pour du texte standard ?",
-              "options": [
-                "4.5:1",
-                "2:1",
-                "7:1",
-                "10:1"
-              ],
+              "options": ["4.5:1", "2:1", "7:1", "10:1"],
               "correctAnswers": [0],
               "explanation": "Le niveau AA exige un ratio de 4.5:1 pour le texte normal et 3:1 pour les textes de grande taille (>= 18pt ou 14pt gras)."
             },
@@ -1625,12 +1485,7 @@
               "id": "q9",
               "type": "single_choice",
               "question": "Quel attribut HTML permet de contrôler l'ordre de tabulation séquentiel d'un élément au clavier ?",
-              "options": [
-                "tabindex",
-                "keyorder",
-                "navindex",
-                "focusstep"
-              ],
+              "options": ["tabindex", "keyorder", "navindex", "focusstep"],
               "correctAnswers": [0],
               "explanation": "tabindex='0' insère un élément dans l'ordre naturel du flux, tandis que tabindex='-1' le rend focalisable par script sans tabulation."
             },
@@ -1819,12 +1674,7 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Quelle règle CSS permet d'appliquer conditionnellement des styles selon la largeur de la fenêtre ?",
-              "options": [
-                "@media",
-                "@screen",
-                "@viewport",
-                "@query"
-              ],
+              "options": ["@media", "@screen", "@viewport", "@query"],
               "correctAnswers": [0],
               "explanation": "Les media queries (@media screen and (min-width: 768px)) définissent les adaptations stylistiques par palier de dimension."
             },
@@ -1871,12 +1721,7 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Quelle unité CSS relative est proportionnelle à la taille de police de la racine (<html>) ?",
-              "options": [
-                "rem",
-                "em",
-                "px",
-                "vh"
-              ],
+              "options": ["rem", "em", "px", "vh"],
               "correctAnswers": [0],
               "explanation": "1 rem (root em) équivaut à la font-size de l'élément racine <html>, facilitant l'accessibilité si l'utilisateur modifie la taille par défaut."
             },
@@ -2292,12 +2137,7 @@
               "id": "q8",
               "type": "single_choice",
               "question": "Quel widget Tkinter sert de boîte conteneur intermédiaire pour structurer et isoler des groupes de widgets ?",
-              "options": [
-                "Frame",
-                "Box",
-                "Container",
-                "Zone"
-              ],
+              "options": ["Frame", "Box", "Container", "Zone"],
               "correctAnswers": [0],
               "explanation": "tkinter.Frame regroupe des composants sous un même parent, permettant d'utiliser pack dans un cadre et grid dans un autre."
             },
@@ -2428,12 +2268,7 @@
               "id": "q8",
               "type": "single_choice",
               "question": "Quel protocole réseau léger basé sur publication/abonnement est massivement utilisé pour interconnecter des IHM et des objets IoT ?",
-              "options": [
-                "MQTT",
-                "SMTP",
-                "POP3",
-                "NFS"
-              ],
+              "options": ["MQTT", "SMTP", "POP3", "NFS"],
               "correctAnswers": [0],
               "explanation": "MQTT est un protocole de messagerie léger à faible empreinte, idéal pour remonter des données de capteurs vers des tableaux de bord."
             },

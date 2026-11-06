@@ -84,7 +84,12 @@
               "id": "q6",
               "type": "single_choice",
               "question": "Sur l'échelle de Pauling, quel élément est le plus électronégatif ?",
-              "options": ["Le fluor (F)", "L'oxygène (O)", "Le chlore (Cl)", "L'hydrogène (H)"],
+              "options": [
+                "Le fluor (F)",
+                "L'oxygène (O)",
+                "Le chlore (Cl)",
+                "L'hydrogène (H)"
+              ],
               "correctAnswers": [0],
               "explanation": "Le fluor possède l'électronégativité la plus élevée du tableau périodique (environ 4,0 sur l'échelle de Pauling)."
             },
@@ -203,7 +208,12 @@
               "id": "q5",
               "type": "single_choice",
               "question": "Dans la structure cubique à faces centrées du chlorure de sodium NaCl, chaque ion Na⁺ est entouré de :",
-              "options": ["6 ions Cl⁻", "4 ions Cl⁻", "8 ions Cl⁻", "12 ions Cl⁻"],
+              "options": [
+                "6 ions Cl⁻",
+                "4 ions Cl⁻",
+                "8 ions Cl⁻",
+                "12 ions Cl⁻"
+              ],
               "correctAnswers": [0],
               "explanation": "La coordinence de chaque ion dans le réseau de type NaCl est égale à 6 (environnement octaédrique régulier)."
             },
@@ -641,7 +651,12 @@
               "id": "q9",
               "type": "single_choice",
               "question": "Dans une solution obtenue en dissolvant 0,050 mol de MgCl₂ dans 500 mL d'eau, quelle est la concentration effective en ions chlorure [Cl⁻] ?",
-              "options": ["0,20 mol·L⁻¹", "0,10 mol·L⁻¹", "0,050 mol·L⁻¹", "0,40 mol·L⁻¹"],
+              "options": [
+                "0,20 mol·L⁻¹",
+                "0,10 mol·L⁻¹",
+                "0,050 mol·L⁻¹",
+                "0,40 mol·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "[MgCl₂] apporté = 0,050 / 0,500 = 0,10 mol·L⁻¹. Comme [Cl⁻] = 2 × C, on obtient [Cl⁻] = 0,20 mol·L⁻¹."
             },
@@ -763,7 +778,12 @@
               "id": "q9",
               "type": "single_choice",
               "question": "La relation entre la solubilité molaire s (en mol·L⁻¹) et la solubilité massique sm (en g·L⁻¹) fait intervenir la masse molaire M par :",
-              "options": ["sm = s × M", "s = sm × M", "sm = s / M²", "sm = s + M"],
+              "options": [
+                "sm = s × M",
+                "s = sm × M",
+                "sm = s / M²",
+                "sm = s + M"
+              ],
               "correctAnswers": [0],
               "explanation": "Comme m = n × M, on a sm = (n/V) × M = s × M."
             },
@@ -1280,7 +1300,12 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Une réaction ou transformation dont l'enthalpie standard est nulle (ΔH° = 0) est dite :",
-              "options": ["Athermique", "Exothermique", "Endothermique", "Isotherme forcée"],
+              "options": [
+                "Athermique",
+                "Exothermique",
+                "Endothermique",
+                "Isotherme forcée"
+              ],
               "correctAnswers": [0],
               "explanation": "Une transformation athermique ne dégage ni n'absorbe aucune énergie sous forme de chaleur."
             },
@@ -1301,7 +1326,12 @@
               "id": "q9",
               "type": "single_choice",
               "question": "La quantité de chaleur Q échangée dans un calorimètre de capacité thermique totale Ccal lors d'une variation de température ΔT vaut :",
-              "options": ["Q = Ccal · ΔT", "Q = Ccal / ΔT", "Q = ½ Ccal · (ΔT)²", "Q = Ccal + ΔT"],
+              "options": [
+                "Q = Ccal · ΔT",
+                "Q = Ccal / ΔT",
+                "Q = ½ Ccal · (ΔT)²",
+                "Q = Ccal + ΔT"
+              ],
               "correctAnswers": [0],
               "explanation": "La relation fondamentale de la calorimétrie à pression constante est Q = C · ΔT (en joules)."
             },
@@ -1357,7 +1387,12 @@
               "id": "q3",
               "type": "single_choice",
               "question": "Une fiole de 100 mL contient une solution aqueuse salée de masse totale m = 108 g. La masse volumique ρ de la solution vaut :",
-              "options": ["1,08 g·mL⁻¹ (soit 1080 g·L⁻¹)", "10,8 g·L⁻¹", "0,925 g·mL⁻¹", "108 g·L⁻¹"],
+              "options": [
+                "1,08 g·mL⁻¹ (soit 1080 g·L⁻¹)",
+                "10,8 g·L⁻¹",
+                "0,925 g·mL⁻¹",
+                "108 g·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "ρ = m_solution / V = 108 g / 100 mL = 1,08 g·mL⁻¹ = 1080 g·L⁻¹."
             },
@@ -1412,7 +1447,12 @@
               "id": "q8",
               "type": "single_choice",
               "question": "L'instrument couramment utilisé pour déterminer rapidement la masse volumique d'un liquide par flottaison graduée est :",
-              "options": ["L'aréomètre (ou densimètre)", "Le pH-mètre", "La burette graduée", "Le calorimètre"],
+              "options": [
+                "L'aréomètre (ou densimètre)",
+                "Le pH-mètre",
+                "La burette graduée",
+                "Le calorimètre"
+              ],
               "correctAnswers": [0],
               "explanation": "L'aréomètre s'enfonce plus ou moins profondément selon la poussée d'Archimède exercée par le liquide, permettant une lecture directe de la densité."
             },
@@ -1420,7 +1460,12 @@
               "id": "q9",
               "type": "single_choice",
               "question": "Une eau minérale contient 120 mg·L⁻¹ d'ions magnésium. Cela équivaut en concentration massique à :",
-              "options": ["0,120 g·L⁻¹", "12 g·L⁻¹", "1,20 g·L⁻¹", "0,0012 g·L⁻¹"],
+              "options": [
+                "0,120 g·L⁻¹",
+                "12 g·L⁻¹",
+                "1,20 g·L⁻¹",
+                "0,0012 g·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "120 mg = 120 × 10⁻³ g = 0,120 g, soit 0,120 g·L⁻¹."
             },
@@ -1464,7 +1509,12 @@
               "id": "q3",
               "type": "single_choice",
               "question": "On dissout 0,020 mol d'un soluté dans de l'eau pour obtenir 500 mL de solution. La concentration molaire C vaut :",
-              "options": ["0,040 mol·L⁻¹", "0,010 mol·L⁻¹", "0,10 mol·L⁻¹", "0,0040 mol·L⁻¹"],
+              "options": [
+                "0,040 mol·L⁻¹",
+                "0,010 mol·L⁻¹",
+                "0,10 mol·L⁻¹",
+                "0,0040 mol·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "C = n / V = 0,020 mol / 0,500 L = 0,040 mol·L⁻¹."
             },
@@ -1480,7 +1530,12 @@
               "id": "q5",
               "type": "single_choice",
               "question": "Une solution aqueuse de chlorure de sodium NaCl (M = 58,5 g·mol⁻¹) a une concentration molaire C = 0,20 mol·L⁻¹. Sa concentration en masse Cm vaut :",
-              "options": ["11,7 g·L⁻¹", "292 g·L⁻¹", "5,85 g·L⁻¹", "0,0034 g·L⁻¹"],
+              "options": [
+                "11,7 g·L⁻¹",
+                "292 g·L⁻¹",
+                "5,85 g·L⁻¹",
+                "0,0034 g·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "Cm = C × M = 0,20 mol·L⁻¹ × 58,5 g·mol⁻¹ = 11,7 g·L⁻¹."
             },
@@ -1488,7 +1543,12 @@
               "id": "q6",
               "type": "single_choice",
               "question": "Quelle quantité de matière n d'hydroxyde de sodium est présente dans 25 mL d'une solution titrée à 0,10 mol·L⁻¹ ?",
-              "options": ["2,5 × 10⁻³ mol", "2,5 × 10⁻¹ mol", "4,0 × 10⁻³ mol", "25 mol"],
+              "options": [
+                "2,5 × 10⁻³ mol",
+                "2,5 × 10⁻¹ mol",
+                "4,0 × 10⁻³ mol",
+                "25 mol"
+              ],
               "correctAnswers": [0],
               "explanation": "n = C × V = 0,10 mol·L⁻¹ × 0,025 L = 2,5 × 10⁻³ mol."
             },
@@ -1496,7 +1556,12 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Si l'on évapore la moitié de l'eau d'une solution sans perdre de soluté, la concentration molaire de la solution résultante est :",
-              "options": ["Doublée", "Divisée par deux", "Inchangée", "Quadruplée"],
+              "options": [
+                "Doublée",
+                "Divisée par deux",
+                "Inchangée",
+                "Quadruplée"
+              ],
               "correctAnswers": [0],
               "explanation": "Le volume étant divisé par 2 (V' = V/2) avec n constant, C' = n / (V/2) = 2 C."
             },
@@ -1504,7 +1569,12 @@
               "id": "q8",
               "type": "single_choice",
               "question": "On mélange 100 mL d'une solution de saccharose à 0,10 mol·L⁻¹ avec 100 mL d'une solution de saccharose à 0,30 mol·L⁻¹. La concentration finale vaut :",
-              "options": ["0,20 mol·L⁻¹", "0,40 mol·L⁻¹", "0,15 mol·L⁻¹", "0,30 mol·L⁻¹"],
+              "options": [
+                "0,20 mol·L⁻¹",
+                "0,40 mol·L⁻¹",
+                "0,15 mol·L⁻¹",
+                "0,30 mol·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "ntot = (0,10×0,1) + (0,30×0,1) = 0,01 + 0,03 = 0,04 mol. Vtot = 0,200 L. C = 0,04 / 0,200 = 0,20 mol·L⁻¹."
             },
@@ -1525,7 +1595,12 @@
               "id": "q10",
               "type": "single_choice",
               "question": "La concentration standard C° utilisée par convention en thermodynamique chimique vaut :",
-              "options": ["1 mol·L⁻¹", "1 mol·m⁻³", "0,1 mol·L⁻¹", "22,4 mol·L⁻¹"],
+              "options": [
+                "1 mol·L⁻¹",
+                "1 mol·m⁻³",
+                "0,1 mol·L⁻¹",
+                "22,4 mol·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "L'état standard de référence pour un soluté en solution diluée est une concentration de C° = 1 mol·L⁻¹ (à p° = 1 bar)."
             }
@@ -1561,7 +1636,12 @@
               "id": "q3",
               "type": "single_choice",
               "question": "On dissout du chlorure de calcium CaCl₂ dans l'eau à une concentration C = 0,25 mol·L⁻¹. Que vaut la concentration effective en ions chlorure [Cl⁻] ?",
-              "options": ["0,50 mol·L⁻¹", "0,25 mol·L⁻¹", "0,125 mol·L⁻¹", "1,0 mol·L⁻¹"],
+              "options": [
+                "0,50 mol·L⁻¹",
+                "0,25 mol·L⁻¹",
+                "0,125 mol·L⁻¹",
+                "1,0 mol·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "CaCl₂(s) → Ca²⁺(aq) + 2 Cl⁻(aq). Ainsi [Cl⁻] = 2 × C = 2 × 0,25 = 0,50 mol·L⁻¹."
             },
@@ -1569,7 +1649,12 @@
               "id": "q4",
               "type": "single_choice",
               "question": "Dans une solution de phosphate de potassium K₃PO₄ à C = 0,10 mol·L⁻¹, quelle relation relie [K⁺] et [PO₄³⁻] ?",
-              "options": ["[K⁺] = 3 [PO₄³⁻]", "[PO₄³⁻] = 3 [K⁺]", "[K⁺] = [PO₄³⁻]", "[K⁺] = (1/3) [PO₄³⁻]"],
+              "options": [
+                "[K⁺] = 3 [PO₄³⁻]",
+                "[PO₄³⁻] = 3 [K⁺]",
+                "[K⁺] = [PO₄³⁻]",
+                "[K⁺] = (1/3) [PO₄³⁻]"
+              ],
               "correctAnswers": [0],
               "explanation": "Chaque mole de K₃PO₄ libère 3 moles de K⁺ et 1 mole de PO₄³⁻, d'où [K⁺] = 3 C et [PO₄³⁻] = C, soit [K⁺] = 3 [PO₄³⁻]."
             },
@@ -1577,7 +1662,12 @@
               "id": "q5",
               "type": "single_choice",
               "question": "On mélange 50 mL de solution de NaCl à 0,20 mol·L⁻¹ et 50 mL de solution de CaCl₂ à 0,10 mol·L⁻¹. Quelle est la concentration effective finale en ions chlorure [Cl⁻] ?",
-              "options": ["0,20 mol·L⁻¹", "0,15 mol·L⁻¹", "0,30 mol·L⁻¹", "0,10 mol·L⁻¹"],
+              "options": [
+                "0,20 mol·L⁻¹",
+                "0,15 mol·L⁻¹",
+                "0,30 mol·L⁻¹",
+                "0,10 mol·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "n(Cl⁻) = (0,050×0,20) + (0,050×2×0,10) = 0,010 + 0,010 = 0,020 mol. Vtotal = 100 mL = 0,100 L. [Cl⁻] = 0,020 / 0,100 = 0,20 mol·L⁻¹."
             },
@@ -1611,7 +1701,12 @@
               "id": "q8",
               "type": "single_choice",
               "question": "Pour une solution de sulfate de sodium Na₂SO₄ à 0,010 mol·L⁻¹, la force ionique I vaut :",
-              "options": ["0,030 mol·L⁻¹", "0,010 mol·L⁻¹", "0,020 mol·L⁻¹", "0,060 mol·L⁻¹"],
+              "options": [
+                "0,030 mol·L⁻¹",
+                "0,010 mol·L⁻¹",
+                "0,020 mol·L⁻¹",
+                "0,060 mol·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "I = ½ ( [Na⁺]·1² + [SO₄²⁻]·2² ) = ½ ( (0,020×1) + (0,010×4) ) = ½ (0,020 + 0,040) = 0,030 mol·L⁻¹."
             },
@@ -1619,7 +1714,12 @@
               "id": "q9",
               "type": "single_choice",
               "question": "Pour des solutions très concentrées, l'activité chimique ai d'un ion s'écarte de sa concentration molaire ci par le coefficient d'activité γi selon :",
-              "options": ["ai = γi × (ci / C°)", "ai = γi + (ci / C°)", "ai = ci / (γi × C°)", "ai = (ci / C°)^γi"],
+              "options": [
+                "ai = γi × (ci / C°)",
+                "ai = γi + (ci / C°)",
+                "ai = ci / (γi × C°)",
+                "ai = (ci / C°)^γi"
+              ],
               "correctAnswers": [0],
               "explanation": "L'activité chimique est égale au produit du coefficient d'activité par la concentration adimensionnelle ci/C°."
             },
@@ -1655,7 +1755,12 @@
               "id": "q2",
               "type": "single_choice",
               "question": "Quelle est la formule correcte permettant de calculer la masse m de soluté solide à prélever pour fabriquer un volume V de solution de concentration C ?",
-              "options": ["m = C × V × M", "m = C × V / M", "m = C × M / V", "m = M / (C × V)"],
+              "options": [
+                "m = C × V × M",
+                "m = C × V / M",
+                "m = C × M / V",
+                "m = M / (C × V)"
+              ],
               "correctAnswers": [0],
               "explanation": "Comme n = C × V et m = n × M, on obtient m = C × V × M."
             },
@@ -1930,7 +2035,12 @@
               "id": "q4",
               "type": "single_choice",
               "question": "Dans un montage de titrage classique, la solution titrante de concentration précisément connue est placée dans :",
-              "options": ["La burette graduée", "Le bécher sous barreau aimanté", "La fiole jaugée", "La propipette"],
+              "options": [
+                "La burette graduée",
+                "Le bécher sous barreau aimanté",
+                "La fiole jaugée",
+                "La propipette"
+              ],
               "correctAnswers": [0],
               "explanation": "La burette graduée permet de verser et mesurer avec précision le volume de solution titrante jusqu'au virage d'équivalence."
             },
@@ -1990,7 +2100,12 @@
               "id": "q9",
               "type": "single_choice",
               "question": "On titre un volume VA = 20,0 mL d'acide chlorhydrique par de la soude à CB = 0,10 mol·L⁻¹. Le volume équivalent est VE = 15,0 mL. Quelle est la concentration CA de l'acide ?",
-              "options": ["0,075 mol·L⁻¹", "0,133 mol·L⁻¹", "0,150 mol·L⁻¹", "0,050 mol·L⁻¹"],
+              "options": [
+                "0,075 mol·L⁻¹",
+                "0,133 mol·L⁻¹",
+                "0,150 mol·L⁻¹",
+                "0,050 mol·L⁻¹"
+              ],
               "correctAnswers": [0],
               "explanation": "CA × VA = CB × VE d'où CA = (0,10 × 15,0) / 20,0 = 0,075 mol·L⁻¹."
             },
@@ -2109,7 +2224,12 @@
               "id": "q8",
               "type": "single_choice",
               "question": "L'unité de la conductance G dans le Système International est :",
-              "options": ["Le siemens (S)", "L'ohm (Ω)", "Le volt (V)", "Le tesla (T)"],
+              "options": [
+                "Le siemens (S)",
+                "L'ohm (Ω)",
+                "Le volt (V)",
+                "Le tesla (T)"
+              ],
               "correctAnswers": [0],
               "explanation": "La conductance G est l'inverse de la résistance électrique (G = 1/R) et s'exprime en siemens (S = Ω⁻¹)."
             },
@@ -2228,7 +2348,12 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Si l'on double la largeur l de la cuve spectrophotométrique à concentration identique, l'absorbance mesurée est :",
-              "options": ["Doublée", "Divisée par deux", "Inchangée", "Multipliée par quatre"],
+              "options": [
+                "Doublée",
+                "Divisée par deux",
+                "Inchangée",
+                "Multipliée par quatre"
+              ],
               "correctAnswers": [0],
               "explanation": "D'après la loi de Beer-Lambert, l'absorbance A est strictement proportionnelle à la longueur de chemin optique l."
             },
@@ -2316,7 +2441,12 @@
               "id": "q4",
               "type": "single_choice",
               "question": "L'incertitude élargie U associée à un niveau de confiance d'environ 95% est calculée à partir de l'incertitude-type composée u par la formule :",
-              "options": ["U = 2 × u (facteur d'élargissement k = 2)", "U = u / 2", "U = u²", "U = 10 × u"],
+              "options": [
+                "U = 2 × u (facteur d'élargissement k = 2)",
+                "U = u / 2",
+                "U = u²",
+                "U = 10 × u"
+              ],
               "correctAnswers": [0],
               "explanation": "Pour une loi normale, un facteur d'élargissement k = 2 correspond à un intervalle de confiance bilatéral de 95,4%."
             },
@@ -2350,7 +2480,12 @@
               "id": "q7",
               "type": "single_choice",
               "question": "Une mesure expérimentale est considérée comme compatible avec la valeur attendue au seuil de 95% si son écart normalisé En satisfait :",
-              "options": ["En ≤ 2", "En > 10", "En = 0 rigoureusement", "En ≥ 5"],
+              "options": [
+                "En ≤ 2",
+                "En > 10",
+                "En = 0 rigoureusement",
+                "En ≥ 5"
+              ],
               "correctAnswers": [0],
               "explanation": "Un écart normalisé inférieur ou égal à 2 confirme la cohérence statistique entre la valeur mesurée et la valeur de référence."
             },
@@ -2384,7 +2519,12 @@
               "id": "q10",
               "type": "single_choice",
               "question": "Pour une série de N mesures répétées de moyenne m et d'écart-type expérimental s, l'incertitude-type sur la moyenne u(m) vaut :",
-              "options": ["u(m) = s / √N", "u(m) = s × √N", "u(m) = s / N²", "u(m) = s² / N"],
+              "options": [
+                "u(m) = s / √N",
+                "u(m) = s × √N",
+                "u(m) = s / N²",
+                "u(m) = s² / N"
+              ],
               "correctAnswers": [0],
               "explanation": "L'écart-type de la moyenne décroît en 1/√N : plus on répète les mesures indépendantes, plus la moyenne est précise."
             }
