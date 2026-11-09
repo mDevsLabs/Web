@@ -8,6 +8,7 @@ import type {
   OpenAIChatCompletionResponse,
   OpenAIErrorResponse,
 } from "@/lib/site/openai-types";
+import { resolveAuthorizationHeader } from "@/lib/site/session-bearer";
 
 export async function POST(req: NextRequest) {
   const startTime = performance.now();
@@ -83,10 +84,7 @@ export async function POST(req: NextRequest) {
       (body.model.startsWith("mDevsLabs/") ||
         body.model.startsWith("mai-") ||
         body.model.includes("mAI"));
-    const authHeader =
-      req.headers.get("authorization") ||
-      req.headers.get("Authorization") ||
-      "";
+    const authHeader = await resolveAuthorizationHeader(req);
 
     // Si c'est un modèle cloud (ou si l'utilisateur demande directement un modèle cloud), on délègue au proxy Val Town
     if (!isLocalModel) {

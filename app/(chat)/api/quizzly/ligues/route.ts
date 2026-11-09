@@ -34,6 +34,7 @@ export async function GET() {
             displayName: portrait?.displayName ?? "Élève",
             me: ligne.userId === session.userId,
             rank: ligne.rank,
+            userId: ligne.userId,
             username: portrait?.username ?? "",
             weeklyXp: ligne.weeklyXp,
           };

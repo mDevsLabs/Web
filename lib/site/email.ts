@@ -1,4 +1,24 @@
 import nodemailer from "nodemailer";
+import { logError, logInfo, logWarn } from "@/lib/api/error-response";
+
+/**
+ * Masque une adresse e-mail pour la journalisation.
+ *
+ * La regex historique `/(.{2}).*(@.*)/` laissait passer les parties locales
+ * d'un seul caractère : l'adresse partait en clair dans les journaux. Une
+ * partie locale d'un ou deux caractères n'est JAMAIS révélée ici (elle devient
+ * `***`) ; au-delà, les deux premiers caractères sont conservés, comme avant.
+ * Le domaine reste lisible : il n'identifie pas la personne.
+ */
+export function maskEmail(email: string): string {
+  const value = String(email ?? "").trim();
+  const at = value.lastIndexOf("@");
+  if (at <= 0) return "***";
+  const local = value.slice(0, at);
+  const domain = value.slice(at);
+  if (local.length <= 2) return `***${domain}`;
+  return `${local.slice(0, 2)}***${domain}`;
+}
 
 function escapeHtml(str: string): string {
   return String(str)
@@ -21,11 +41,11 @@ export async function sendVerificationEmail(
   action: string,
   extraInfo?: any
 ) {
-  const maskedEmail = email.replace(/(.{2}).*(@.*)/, "$1***$2");
+  const maskedEmail = maskEmail(email);
   // Ne jamais journaliser le code : un OTP de réinitialisation de PIN doit
   // rester absent des logs, même en développement.
-  console.log(
-    `[EMAIL] action=${action} to=${maskedEmail} hasCode=${Boolean(code)}`
+  logInfo(
+    `Envoi e-mail action=${action} to=${maskedEmail} hasCode=${Boolean(code)}`
   );
 
   let subject = "Notification - mAI";
@@ -186,27 +206,23 @@ export async function sendHtmlEmail(
       if (res.ok) {
         const data = await res.json().catch(() => ({}));
         if (data.success) {
-          const maskedTo = to.replace(/(.{2}).*(@.*)/, "$1***$2");
-          console.log(`[EMAIL] Google Apps Script OK to=${maskedTo}`);
+          const maskedTo = maskEmail(to);
+          logInfo(`Envoi e-mail Google Apps Script OK to=${maskedTo}`);
           return true;
         }
-        console.error("Erreur de retour Google Apps Script :", data.error);
+        logError("Erreur de retour Google Apps Script", data.error);
       } else {
-        console.error(
-          "Erreur HTTP Google Apps Script :",
-          res.status,
-          res.statusText
+        logError(
+          "Erreur HTTP Google Apps Script",
+          `${res.status} ${res.statusText}`
         );
       }
     } catch (err: any) {
-      console.error(
-        "Erreur envoi via Google Apps Script :",
-        err?.message || err
-      );
+      logError("Erreur envoi via Google Apps Script", err?.message || err);
     }
   }
 
-  const gmailUser = getEnv("GMAIL_USER") || "tusseaumathias85@gmail.com";
+  const gmailUser = getEnv("GMAIL_USER");
   const gmailAppPass = getEnv("GMAIL_APP_PASSWORD");
 
   if (gmailUser && gmailAppPass) {
@@ -226,16 +242,14 @@ export async function sendHtmlEmail(
         to,
       });
 
-      const maskedTo = to.replace(/(.{2}).*(@.*)/, "$1***$2");
-      console.log(`[EMAIL] Gmail SMTP OK to=${maskedTo}`);
+      const maskedTo = maskEmail(to);
+      logInfo(`Envoi e-mail Gmail SMTP OK to=${maskedTo}`);
       return true;
     } catch (err: any) {
-      console.error("Erreur envoi Gmail SMTP :", err?.message || err);
+      logError("Erreur envoi Gmail SMTP", err?.message || err);
     }
   } else {
-    console.warn(
-      "[EMAIL] Ni Google Apps Script ni Gmail SMTP configurés pour l'envoi."
-    );
+    logWarn("Ni Google Apps Script ni Gmail SMTP configurés pour l'envoi.");
   }
 
   return false;
@@ -295,7 +309,15 @@ export async function sendSupportTicketCreatedEmail({
   ticket: SupportTicketEmailPayload;
   appUrl?: string;
 }) {
-  const adminEmail = "mathias.tss2012@gmail.com";
+  const adminEmail = getEnv("SUPPORT_ADMIN_EMAIL");
+  if (!adminEmail) {
+    // Fail-safe : sans adresse d'administration configurée, la copie est
+    // sautée. Aucune adresse personnelle n'est jamais devinée en dur.
+    logWarn(
+      "Notification de ticket sans adresse d'administration configurée : copie sautée."
+    );
+    return false;
+  }
   const ticketRef = ticket.ticket_number
     ? `#TICK-${ticket.ticket_number}`
     : `#${ticket.id.slice(0, 8)}`;

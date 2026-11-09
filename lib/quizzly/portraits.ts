@@ -6,11 +6,7 @@
 
 import "server-only";
 
-import { inArray } from "drizzle-orm";
 import { dbReady, getDb, getRawClient } from "@/lib/db/queries";
-import { quizzlyProfile } from "@/lib/db/schema";
-import { resolveUserIdByEmail } from "@/lib/db/users";
-import { cleCompteAmi, normaliserPseudo } from "@/lib/quizzly/friends";
 import { vibeSql } from "@/lib/vibe/server/db";
 import { tableExists } from "@/lib/vibe/server/schema";
 
@@ -19,11 +15,6 @@ export type Portrait = {
   displayName: string;
   username: string;
   vibeUserId: string | null;
-};
-
-export type CompteTrouve = {
-  cle: string;
-  portrait: Portrait;
 };
 
 type LigneVibe = {
@@ -36,90 +27,6 @@ type LigneVibe = {
 
 function texte(valeur: unknown): string {
   return typeof valeur === "string" ? valeur.trim() : "";
-}
-
-async function lireVibeParPseudo(pseudo: string): Promise<LigneVibe | null> {
-  const sql = vibeSql();
-  if (!sql) {
-    return null;
-  }
-  const avecProfil = await tableExists("profiles");
-  const lignes = avecProfil
-    ? await sql`
-        SELECT u.id::text AS id, u.email, u.username,
-               u.avatar_url AS avatar, p.display_name AS display_name,
-               p.avatar_url AS profile_avatar
-        FROM users u
-        LEFT JOIN profiles p ON p.user_id::text = u.id::text
-        WHERE LOWER(u.username) = LOWER(${pseudo})
-        LIMIT 1
-      `
-    : await sql`
-        SELECT u.id::text AS id, u.email, u.username,
-               u.avatar_url AS avatar, NULL::text AS display_name,
-               NULL::text AS profile_avatar
-        FROM users u
-        WHERE LOWER(u.username) = LOWER(${pseudo})
-        LIMIT 1
-      `;
-  const ligne = lignes[0] as Record<string, unknown> | undefined;
-  if (!ligne) {
-    return null;
-  }
-  const avatar = texte(ligne.avatar) || texte(ligne.profile_avatar);
-  return {
-    avatar: avatar || null,
-    displayName: texte(ligne.display_name) || null,
-    email: texte(ligne.email) || null,
-    id: texte(ligne.id),
-    username: texte(ligne.username) || null,
-  };
-}
-
-export async function trouverCompteParPseudo(
-  appelant: string,
-  brut: string
-): Promise<CompteTrouve | null> {
-  const pseudo = normaliserPseudo(brut);
-  if (!pseudo) {
-    return null;
-  }
-  let vibe: LigneVibe | null = null;
-  try {
-    vibe = await lireVibeParPseudo(pseudo);
-  } catch (erreur) {
-    console.warn("Quizzly : recherche de pseudo impossible", erreur);
-    return null;
-  }
-  if (!vibe?.id) {
-    return null;
-  }
-  const cleHote =
-    (await resolveUserIdByEmail(vibe.email)) ??
-    (await resolveUserIdByEmail(vibe.id));
-  await dbReady();
-  const candidats = [vibe.id, cleHote].filter((valeur): valeur is string =>
-    Boolean(valeur)
-  );
-  const profils = await getDb()
-    .select({ userId: quizzlyProfile.userId })
-    .from(quizzlyProfile)
-    .where(inArray(quizzlyProfile.userId, candidats));
-  const cle = cleCompteAmi({
-    cleAppelant: appelant,
-    cleHote,
-    cleVibe: vibe.id,
-    profilsExistants: profils.map((profil) => profil.userId),
-  });
-  return {
-    cle,
-    portrait: {
-      avatarUrl: vibe.avatar,
-      displayName: vibe.displayName || vibe.username || "Élève",
-      username: vibe.username || pseudo,
-      vibeUserId: vibe.id,
-    },
-  };
 }
 
 type LigneHote = {

@@ -18,8 +18,8 @@ import {
 } from "drizzle-orm";
 import { ChatbotError } from "@/lib/errors";
 import {
-  type NOTIFICATION_TYPES,
   type NotificationOrigin,
+  type NotificationType,
   originForNotificationType,
 } from "@/lib/notifications/types";
 import {
@@ -157,32 +157,7 @@ export async function upsertUserNotificationPrefs(
 
 export async function createNotification(data: {
   userId: string;
-  type:
-    | "ai_response"
-    | "project_created"
-    | "mcp_created"
-    | "mcp_access_request"
-    | "news"
-    | "planning_task_completed"
-    | "project_member_joined"
-    | "quota_warning"
-    // Notifications Agent (types autorisés par la contrainte 0017).
-    | "agent_approval_required"
-    | "agent_run_failed"
-    | "agent_run_finished"
-    | "agent_user_input_required"
-    // Notifications Vibe et Wakies (migration 0063) : répliquées depuis leur
-    // source, elles portent l'origine qui les a produites.
-    | "vibe_like"
-    | "vibe_repost"
-    | "vibe_reply"
-    | "vibe_mention"
-    | "vibe_quote"
-    | "vibe_follow"
-    | "vibe_dm"
-    | "vibe_ai_digest"
-    | "vibe_system"
-    | "wakies_reply";
+  type: NotificationType;
   title: string;
   body?: string | null;
   dedupeKey?: string | null;

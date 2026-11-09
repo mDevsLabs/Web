@@ -44,6 +44,7 @@
  * `.blackline-root` — voir `apps/blackline/src/root.ts`.
  */
 
+import { SearchIcon } from "@mdevs/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { BlacklineAgeGate } from "@/components/blackline/age-gate";
@@ -228,6 +229,23 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
           que le jeu y met.
         */}
       </div>
+
+      {age === "accepted" && (
+        <button
+          className="absolute top-3 right-3 z-20 flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 text-xs font-medium text-white/90 backdrop-blur-md transition-all hover:bg-black/80 hover:text-white cursor-pointer"
+          onClick={() =>
+            window.dispatchEvent(new CustomEvent("open-suite-command-bar"))
+          }
+          title="Ouvrir la barre de commande (⌘K)"
+          type="button"
+        >
+          <SearchIcon className="size-3 text-white/70" />
+          <span className="hidden sm:inline">Suite mAI</span>
+          <kbd className="rounded bg-white/20 px-1 py-0.5 text-[10px] text-white/80">
+            ⌘K
+          </kbd>
+        </button>
+      )}
 
       {chargement === "chargement" && (
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 text-[#c6dd94]">

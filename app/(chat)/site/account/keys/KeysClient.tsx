@@ -26,7 +26,7 @@ import { confirmInApp } from "@/lib/ui/app-dialog";
 import { KeyModals } from "./KeyModals";
 
 export default function KeysClient() {
-  const { token, isAuthenticated, loading: authLoading } = useAuth();
+  const { isAuthenticated, loading: authLoading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -64,14 +64,12 @@ export default function KeysClient() {
   const [revoking, setRevoking] = useState(false);
 
   const fetchKeys = useCallback(async () => {
-    if (!token) return;
+    if (!isAuthenticated) return;
     setLoading(true);
     try {
       const res = await fetch(SITE_API_ROUTES.devKeys, {
         cache: "no-store",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        credentials: "same-origin",
       });
       const data = await res.json();
       if (data.success && data.keys) {
@@ -83,11 +81,11 @@ export default function KeysClient() {
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     void fetchKeys();
-  }, [token, fetchKeys]);
+  }, [isAuthenticated, fetchKeys]);
 
   // Deep-link onboarding : auto-ouvrir la création après tuto (sans useSearchParams pour éviter Suspense)
   useEffect(() => {
@@ -113,7 +111,6 @@ export default function KeysClient() {
           name: newKeyName.trim(),
         }),
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -150,7 +147,6 @@ export default function KeysClient() {
           maxLimit: editLimit,
         }),
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         method: "PUT",
@@ -191,9 +187,7 @@ export default function KeysClient() {
     setRevoking(true);
     try {
       const res = await fetch(SITE_API_ROUTES.devKey(targetId), {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        credentials: "same-origin",
         method: "DELETE",
       });
 

@@ -2,11 +2,6 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  cleCompteAmi,
-  deciderDemande,
-  normaliserPseudo,
-} from "@/lib/quizzly/friends";
-import {
   comparerMembres,
   decouperCohortes,
   type MembreCohorte,
@@ -310,7 +305,7 @@ describe("calendrier de Paris", () => {
 
 describe("carte scolaire", () => {
   it("prévoit dix chapitres par matière", () => {
-    expect(cheminsChapitresAttendus()).toHaveLength(1030);
+    expect(cheminsChapitresAttendus()).toHaveLength(1100);
   });
 
   it("traite une sélection vide comme toutes les matières", () => {
@@ -502,56 +497,6 @@ describe("booster, cadeau et record", () => {
   it("garde le record de série au-dessus de la série en cours", () => {
     expect(recordSerie(4, 9)).toBe(9);
     expect(recordSerie(12, 9)).toBe(12);
-  });
-});
-
-describe("amis", () => {
-  it("normalise le pseudo et accepte une demande déjà reçue", () => {
-    expect(normaliserPseudo(" @Ada_01 ")).toBe("Ada_01");
-    expect(normaliserPseudo("a")).toBeNull();
-    expect(
-      deciderDemande(
-        {
-          addresseeId: "moi",
-          id: "f1",
-          requesterId: "lui",
-          status: "pending",
-        },
-        "moi",
-        "lui"
-      )
-    ).toEqual({ action: "accepter", id: "f1" });
-    expect(
-      deciderDemande(
-        {
-          addresseeId: "lui",
-          id: "f2",
-          requesterId: "moi",
-          status: "accepted",
-        },
-        "moi",
-        "lui"
-      )
-    ).toEqual({ action: "deja" });
-  });
-
-  it("préfère le profil déjà ouvert, sinon la forme de l'appelant", () => {
-    expect(
-      cleCompteAmi({
-        cleAppelant: "11111111-1111-1111-1111-111111111111",
-        cleHote: "22222222-2222-2222-2222-222222222222",
-        cleVibe: "42",
-        profilsExistants: ["42"],
-      })
-    ).toBe("42");
-    expect(
-      cleCompteAmi({
-        cleAppelant: "11111111-1111-1111-1111-111111111111",
-        cleHote: "22222222-2222-2222-2222-222222222222",
-        cleVibe: "42",
-        profilsExistants: [],
-      })
-    ).toBe("22222222-2222-2222-2222-222222222222");
   });
 });
 

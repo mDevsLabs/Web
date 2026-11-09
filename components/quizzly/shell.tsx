@@ -6,13 +6,14 @@ import {
   GemIcon,
   GraduationCapIcon,
   HeartIcon,
+  HomeIcon,
   MapIcon,
   MenuIcon,
+  SearchIcon,
   SparklesIcon,
   StoreIcon,
   TrophyIcon,
   UserIcon,
-  UsersIcon,
   XIcon,
 } from "@mdevs/icons";
 import { motion } from "framer-motion";
@@ -93,10 +94,10 @@ const LIENS: {
   icone: ComponentType<{ className?: string }>;
   label: string;
 }[] = [
-  { href: "/quizzly", icone: MapIcon, label: "Parcours" },
+  { href: "/quizzly", icone: HomeIcon, label: "Accueil" },
+  { href: "/quizzly/apprentissage", icone: MapIcon, label: "Apprentissage" },
   { href: "/quizzly/synthese", icone: GraduationCapIcon, label: "Synthèse" },
   { href: "/quizzly/ligues", icone: TrophyIcon, label: "Ligues" },
-  { href: "/quizzly/amis", icone: UsersIcon, label: "Amis" },
   { href: "/quizzly/coach", icone: SparklesIcon, label: "Coach" },
   { href: "/quizzly/quetes", icone: FlagIcon, label: "Quêtes" },
   { href: "/quizzly/boutique", icone: StoreIcon, label: "Boutique" },
@@ -105,7 +106,14 @@ const LIENS: {
 
 function lienActif(href: string, pathname: string): boolean {
   if (href === "/quizzly") {
-    return pathname === "/quizzly" || pathname.startsWith("/quizzly/quiz");
+    return pathname === "/quizzly";
+  }
+  if (href === "/quizzly/apprentissage") {
+    return (
+      pathname === "/quizzly/apprentissage" ||
+      pathname.startsWith("/quizzly/parcours") ||
+      pathname.startsWith("/quizzly/quiz")
+    );
   }
   if (href.startsWith("/settings")) {
     return false;
@@ -114,11 +122,9 @@ function lienActif(href: string, pathname: string): boolean {
 }
 
 function MenuSections({
-  demandes,
   etiquettes,
   onNaviguer,
 }: {
-  demandes: number;
   etiquettes: boolean;
   onNaviguer?: () => void;
 }) {
@@ -128,7 +134,6 @@ function MenuSections({
       {LIENS.map((lien) => {
         const actif = lienActif(lien.href, pathname);
         const Icone = lien.icone;
-        const badge = lien.href === "/quizzly/amis" && demandes > 0;
         return (
           <Link
             aria-current={actif ? "page" : undefined}
@@ -145,18 +150,10 @@ function MenuSections({
           >
             <span className="relative">
               <Icone className="size-5 shrink-0" />
-              {badge && !etiquettes ? (
-                <span className="absolute -top-1 -right-1 size-2 rounded-full bg-q-heart" />
-              ) : null}
             </span>
             {etiquettes ? (
               <span className="flex flex-1 items-center justify-between gap-2">
                 {lien.label}
-                {badge ? (
-                  <span className="rounded-full bg-q-heart px-1.5 text-[10px] text-q-on">
-                    {demandes}
-                  </span>
-                ) : null}
               </span>
             ) : (
               <span className="sr-only">{lien.label}</span>
@@ -247,7 +244,7 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
         >
           <MenuIcon className="size-5" />
         </button>
-        <MenuSections demandes={data?.pendingFriends ?? 0} etiquettes={false} />
+        <MenuSections etiquettes={false} />
       </aside>
       <aside className="hidden w-60 shrink-0 flex-col gap-4 border-r border-q-level/20 bg-q-level/8 px-3 py-4 md:flex">
         <AppSwitcherMenu currentAppOverride="quizzly">
@@ -259,7 +256,7 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
             Quizzly
           </button>
         </AppSwitcherMenu>
-        <MenuSections demandes={data?.pendingFriends ?? 0} etiquettes />
+        <MenuSections etiquettes />
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex flex-wrap items-center gap-3 border-b border-q-level/20 px-3 py-3 sm:px-4">
@@ -285,6 +282,20 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
             </motion.p>
           ) : null}
           <div className="ml-auto flex items-center gap-3 text-xs font-semibold">
+            <button
+              className="flex items-center gap-1.5 rounded-full border border-q-level/30 bg-q-level/10 px-2.5 py-1 text-xs font-medium text-foreground transition-all hover:bg-q-level/20 cursor-pointer"
+              onClick={() =>
+                window.dispatchEvent(new CustomEvent("open-suite-command-bar"))
+              }
+              title="Barre de commande & Recherche (⌘K)"
+              type="button"
+            >
+              <SearchIcon className="size-3.5 text-q-level" />
+              <span className="hidden sm:inline">Rechercher</span>
+              <kbd className="rounded bg-q-level/20 px-1 py-0.5 text-[10px] text-muted-foreground">
+                ⌘K
+              </kbd>
+            </button>
             <span className="inline-flex items-center gap-1">
               <FlameIcon
                 className={cn(
@@ -343,11 +354,7 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
                 <XIcon className="size-4" />
               </button>
             </div>
-            <MenuSections
-              demandes={data?.pendingFriends ?? 0}
-              etiquettes
-              onNaviguer={() => setMenuOuvert(false)}
-            />
+            <MenuSections etiquettes onNaviguer={() => setMenuOuvert(false)} />
           </aside>
         </div>
       ) : null}

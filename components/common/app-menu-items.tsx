@@ -166,6 +166,11 @@ export function AppMenuItems({
                   >
                     {entry.label}
                   </span>
+                  {entry.key === "quizzly" && (
+                    <span className="rounded bg-primary/10 px-1 py-0.2 text-[9px] font-semibold text-primary">
+                      Bêta
+                    </span>
+                  )}
                   {isCodeDisabled && (
                     <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
                       Bureau

@@ -100,7 +100,7 @@ function linkifyTextNodes(root: HTMLElement) {
         const a = document.createElement("a");
         a.setAttribute(
           "href",
-          toVibeHref(`/explore?q=${encodeURIComponent(part)}&tab=hashtags`)
+          toVibeHref(`/explore?q=${encodeURIComponent(part)}&tab=posts`)
         );
         a.setAttribute("data-hashtag", part);
         a.className = "rich-link";

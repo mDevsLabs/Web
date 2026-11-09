@@ -69,6 +69,15 @@ const toolApprovalMessageSchema = z.object({
   role: z.enum(["user", "assistant"]),
 });
 
+// Message d'une session Fantôme : les parts sont libres (texte, fichier, outil)
+// car ce fil n'est jamais relu en base — il ne sert qu'à reconstruire le
+// contexte du tour courant, sans rien persister.
+const sessionMessageSchema = z.object({
+  id: z.string().min(1).max(128),
+  parts: z.array(z.unknown()),
+  role: z.enum(["user", "assistant", "system"]),
+});
+
 // `customInstructions` est un override par requête, borné par le forfait de
 // l'utilisateur : le schéma est donc une fabrique (voir POST dans route.ts),
 // et non une constante exportée. Un tier absent ou inconnu est normalisé en
@@ -79,6 +88,9 @@ export const buildPostRequestBodySchema = (tier?: string | null) =>
     agentId: z.string().uuid().nullable().optional(),
     customInstructions: buildCustomInstructionsSchema(tier),
     enabledTools: z.array(z.string()).optional().default([]),
+    // Historique complet de la session en mode Fantôme : envoyé par le client à
+    // chaque tour, jamais persisté (voir lib/chat/context.ts).
+    ghostHistory: z.array(sessionMessageSchema).max(200).optional(),
     // Tolérance alignée sur l'Agent : les ids de conversation non-UUID
     // (ex. nanoid) ne doivent plus faire rejeter tout le body.
     id: z.string().min(8).max(64),
@@ -107,6 +119,10 @@ export const buildPostRequestBodySchema = (tier?: string | null) =>
       .optional(),
     tags: z.array(z.string().min(1).max(30)).max(10).optional(),
     temperatureOverride: z.number().min(0).max(2).nullable().optional(),
+    // Régénération (mode truncate) : message repère dont la nouvelle réponse
+    // remplace tout ce qui suit. La suppression en base est différée tant que
+    // la nouvelle réponse n'est pas persistée (issue #46).
+    truncateAfterMessageId: z.string().min(8).max(64).optional(),
   });
 
 // Le type est inchangé quelle que soit la limite : seule la contrainte

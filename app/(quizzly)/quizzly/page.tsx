@@ -1,7 +1,7 @@
-import { ParcoursQuizzly } from "@/components/quizzly/parcours";
+import { AccueilQuizzly } from "@/components/quizzly/accueil";
 
 export const instant = false;
 
 export default function QuizzlyPage() {
-  return <ParcoursQuizzly />;
+  return <AccueilQuizzly />;
 }

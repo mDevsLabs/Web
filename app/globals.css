@@ -264,6 +264,7 @@
   --q-subject-arts: oklch(0.62 0.16 330);
   --q-subject-chinois: oklch(0.6 0.12 240);
   --q-subject-coreen: oklch(0.54 0.14 270);
+  --q-subject-emc: oklch(0.62 0.14 80);
   --q-subject-enseignement-scientifique: oklch(0.6 0.12 175);
   --q-subject-espagnol: oklch(0.64 0.15 35);
   --q-subject-francais: oklch(0.58 0.16 25);
@@ -281,23 +282,32 @@
   --q-subject-physique-chimie: oklch(0.58 0.14 190);
   --q-subject-portugais: oklch(0.6 0.14 130);
   --q-subject-russe: oklch(0.56 0.12 210);
+  --q-subject-sciences-de-lingenieur: oklch(0.56 0.13 195);
   --q-subject-sciences-et-technologie: oklch(0.62 0.11 165);
   --q-subject-ses: oklch(0.6 0.11 85);
   --q-subject-snt: oklch(0.57 0.13 200);
   --q-subject-svt: oklch(0.56 0.15 155);
   --q-subject-technologie: oklch(0.54 0.12 185);
   --q-subject-turc: oklch(0.61 0.14 45);
-  background-color: var(--background);
+  --q-blue-50: #eff6ff;
+  --q-blue-100: #dbeafe;
+  --q-blue-200: #bfdbfe;
+  --q-blue-500: #3b82f6;
+  --q-blue-600: #2563eb;
+  --q-blue-700: #1d4ed8;
+  --q-blue-800: #1e40af;
+  --q-blue-900: #1e3a8a;
+  background-color: #f7faff;
   background-image:
     radial-gradient(
-      920px 420px at -8% -18%,
-      color-mix(in oklab, var(--q-level) 24%, transparent),
+      1100px 520px at 15% -10%,
+      rgba(37, 99, 235, 0.08),
       transparent 70%
     ),
     radial-gradient(
-      720px 380px at 108% -8%,
-      color-mix(in oklab, var(--q-shop) 20%, transparent),
-      transparent 68%
+      800px 450px at 95% 5%,
+      rgba(14, 165, 233, 0.07),
+      transparent 65%
     );
 }
 
@@ -311,6 +321,24 @@
   --q-shop: oklch(0.8 0.13 330);
   --q-path: oklch(0.74 0.12 150);
   --q-on: oklch(0.18 0.03 255);
+  --q-blue-50: #172554;
+  --q-blue-100: #1e3a8a;
+  --q-blue-200: #1e40af;
+  --q-blue-500: #60a5fa;
+  --q-blue-600: #3b82f6;
+  --q-blue-700: #2563eb;
+  background-color: #0b1120;
+  background-image:
+    radial-gradient(
+      1100px 520px at 15% -10%,
+      rgba(59, 130, 246, 0.14),
+      transparent 70%
+    ),
+    radial-gradient(
+      800px 450px at 95% 5%,
+      rgba(56, 189, 248, 0.09),
+      transparent 65%
+    );
 }
 
 @keyframes q-float {
@@ -323,12 +351,81 @@
   }
 }
 
+@keyframes q-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes q-pop {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+  60% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes q-pulse-blue {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+  }
+}
+
 @utility q-float {
   animation: q-float 2.4s ease-in-out infinite;
 }
 
+@utility q-shake {
+  animation: q-shake 0.35s ease-in-out;
+}
+
+@utility q-pop {
+  animation: q-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility q-pulse-blue {
+  animation: q-pulse-blue 2s infinite;
+}
+
+@utility surface-quizzly-card {
+  border-radius: 1.5rem;
+  border-width: 1px;
+  border-color: color-mix(in oklab, #2563eb 15%, #e2e8f0);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.dark .quizzly-root .surface-quizzly-card {
+  border-color: color-mix(in oklab, #3b82f6 25%, #1e293b);
+  background-color: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .quizzly-root .q-float {
+  .quizzly-root .q-float,
+  .quizzly-root .q-shake,
+  .quizzly-root .q-pop,
+  .quizzly-root .q-pulse-blue {
     animation: none;
   }
 }

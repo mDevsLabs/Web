@@ -20,6 +20,8 @@ export type PagePromptInput = {
   /** Bloc déjà composé par buildMemoryContext, ou null. */
   memoryBlock?: string | null;
   selection: string | null;
+  /** Ancrage de la sélection (offsets dans le contenu), ou null. */
+  selectionAnchor?: { end: number; start: number } | null;
 };
 
 const BASE = [
@@ -38,6 +40,7 @@ const BASE = [
   "- renommer_page : change uniquement le titre.",
   "Appelle lire_page avant modifier_page ou proposer_modification : l'empreinte (baseHash) doit être celle que lire_page vient de renvoyer.",
   "Préfère des opérations ciblées (remplacer un passage, insérer, supprimer des lignes) à une réécriture entière.",
+  "Un replace_text dont le texte recherché apparaît plusieurs fois sans anchor ni occurrence est REFUSÉ : ancre la sélection (anchor) ou précise l'occurrence.",
   "Si un outil répond que la page a changé, relis-la et recommence. N'insiste pas avec une empreinte périmée.",
 ].join("\n");
 
@@ -61,16 +64,28 @@ function fontSection(font: PageFont): string {
   ].join("\n");
 }
 
-function selectionSection(selection: string | null): string | null {
+function selectionSection(
+  selection: string | null,
+  selectionAnchor: { end: number; start: number } | null | undefined
+): string | null {
   const text = selection?.trim();
   if (!text) {
     return null;
   }
   const clipped = text.slice(0, 8000);
+  const anchorLines = selectionAnchor
+    ? [
+        `La sélection occupe exactement les offsets [${selectionAnchor.start}, ${selectionAnchor.end}) du contenu renvoyé par lire_page.`,
+        "Pour remplacer CETTE occurrence dans un replace_text, utilise anchor: { start, end } : c'est l'ancrage, pas la première occurrence, qui doit être remplacée.",
+      ]
+    : [
+        "La sélection n'a pas d'ancrage résoluble : si ce texte apparaît plusieurs fois, un replace_text sans occurrence sera refusé. Élargis le texte recherché ou précise l'occurrence.",
+      ];
   return [
     "SÉLECTION COURANTE",
     "L'utilisateur a sélectionné ce passage. Les remplacements doivent cibler ce texte exact :",
     clipped,
+    ...anchorLines,
   ].join("\n");
 }
 
@@ -97,7 +112,7 @@ export function buildPageSystemPrompt(input: PagePromptInput): string {
     base: `${BASE}\n\n${modeSection(input.intent)}`,
     capabilitySections: [
       fontSection(normalizePageFont(input.defaultFont)),
-      selectionSection(input.selection),
+      selectionSection(input.selection, input.selectionAnchor),
     ],
     personal,
   });

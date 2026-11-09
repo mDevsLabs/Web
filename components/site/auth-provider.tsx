@@ -9,24 +9,27 @@ import {
   useMemo,
   useState,
 } from "react";
-import {
-  clearSession,
-  getSession,
-  type MaiSession,
-  setSession,
-} from "@/lib/site/auth-storage";
+import { purgeLegacyAuthStorage } from "@/lib/site/auth-storage";
 import {
   login as apiLogin,
+  logout as apiLogout,
   register as apiRegister,
   updateProfile as apiUpdateProfile,
   uploadAvatar as apiUploadAvatar,
   verifyCode as apiVerifyCode,
+  verifyLogin as apiVerifyLogin,
+  verifyRegister as apiVerifyRegister,
   getCloudStorage,
   getUsage,
   MaiApiError,
+  type MaiAuthResponse,
   type MaiCloudStorageUsage,
   type MaiUsage,
 } from "@/lib/site/mai-api";
+
+// Issue #10 : le jeton de session ne quitte jamais le serveur. Il n'est ni
+// dans `localStorage`, ni dans un cookie lisible, ni dans les props ou l'état
+// React — les appels passent par le relais BFF, qui lit le cookie httpOnly.
 
 export type AuthUser = {
   id?: string | number;
@@ -39,14 +42,17 @@ export type AuthUser = {
 
 type AuthContextValue = {
   user: AuthUser | null;
-  token: string | null;
   usage: MaiUsage | null;
   cloudStorage: MaiCloudStorageUsage | null;
   loading: boolean;
   isAuthenticated: boolean;
-  login: (emailOrId: string, password: string) => Promise<any>;
+  login: (emailOrId: string, password: string) => Promise<MaiAuthResponse>;
   verifyLogin: (email: string, code: string) => Promise<void>;
-  register: (email: string, username: string, password: string) => Promise<any>;
+  register: (
+    email: string,
+    username: string,
+    password: string
+  ) => Promise<MaiAuthResponse>;
   verifyRegister: (
     email: string,
     username: string,
@@ -71,37 +77,22 @@ type AuthContextValue = {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-function sessionToUser(
-  session: MaiSession,
-  usage?: MaiUsage | null
-): AuthUser | null {
-  const email = usage?.email || session.email;
-  const username = usage?.username || session.username;
-  const phone = usage?.phone;
-  const tier = usage?.tier || session.tier || "Free";
-  const avatarUrl = usage?.avatarUrl;
-  if (!email || !username) return null;
-  return { avatarUrl, email, phone, tier, username };
-}
-
 export function AuthProvider({
   children,
-  initialToken = null,
   initialUser = null,
 }: {
   children: ReactNode;
-  initialToken?: string | null;
   initialUser?: AuthUser | null;
 }) {
-  const [token, setToken] = useState<string | null>(initialToken);
   const [user, setUser] = useState<AuthUser | null>(initialUser);
   const [usage, setUsage] = useState<MaiUsage | null>(null);
   const [cloudStorage, setCloudStorage] = useState<MaiCloudStorageUsage | null>(
     null
   );
-  const [loading, setLoading] = useState(!initialToken);
+  const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(Boolean(initialUser));
 
-  const applyUsage = useCallback((tok: string, data: MaiUsage) => {
+  const applyUsage = useCallback((data: MaiUsage) => {
     setUsage(data);
     setUser({
       avatarUrl: data.avatarUrl,
@@ -110,91 +101,72 @@ export function AuthProvider({
       tier: data.tier,
       username: data.username,
     });
-    setSession({
-      email: data.email,
-      tier: data.tier,
-      token: tok,
-      username: data.username,
-    });
+    setAuthenticated(true);
+  }, []);
+
+  const dropSession = useCallback(() => {
+    setAuthenticated(false);
+    setUser(null);
+    setUsage(null);
+    setCloudStorage(null);
   }, []);
 
   const refreshCloudStorage =
     useCallback(async (): Promise<MaiCloudStorageUsage | null> => {
-      const session = getSession();
-      const tok = token || session?.token;
-      if (!tok) {
-        setCloudStorage(null);
-        return null;
-      }
       try {
-        const storageData = await getCloudStorage(tok);
+        const storageData = await getCloudStorage();
         setCloudStorage(storageData);
         return storageData;
       } catch {
         return null;
       }
-    }, [token]);
+    }, []);
 
   const refreshUsage = useCallback(async (): Promise<MaiUsage | null> => {
-    const session = getSession();
-    const tok = token || session?.token;
-    if (!tok) {
-      setUsage(null);
-      setCloudStorage(null);
-      return null;
-    }
     try {
       const [data, storageData] = await Promise.all([
-        getUsage(tok),
-        getCloudStorage(tok).catch(() => null),
+        getUsage(),
+        getCloudStorage().catch(() => null),
       ]);
-      applyUsage(tok, data);
+      applyUsage(data);
       if (storageData) setCloudStorage(storageData);
       return data;
     } catch (error) {
-      // Une coupure réseau conserve la session ; seul un refus d’authentification la retire.
+      // Une coupure réseau conserve la session ; seul un refus
+      // d'authentification la retire (et efface le cookie côté serveur).
       if (error instanceof MaiApiError && [401, 403].includes(error.status)) {
-        clearSession();
-        setToken(null);
-        setUser(null);
-        setUsage(null);
-        setCloudStorage(null);
+        dropSession();
+        void apiLogout().catch(() => undefined);
       }
       return null;
     }
-  }, [applyUsage, token]);
+  }, [applyUsage, dropSession]);
 
   useEffect(() => {
+    // À chaque visite : les anciennes clés lisibles (localStorage + cookies)
+    // sont effacées (issue #10).
+    purgeLegacyAuthStorage();
+
     let cancelled = false;
 
     async function hydrate() {
-      const session = getSession();
-      const effectiveToken = initialToken || session?.token;
-      if (!effectiveToken) {
+      if (!initialUser) {
         if (!cancelled) setLoading(false);
         return;
       }
-
-      setToken(effectiveToken);
-      const partial = initialUser || (session ? sessionToUser(session) : null);
-      if (partial) setUser(partial);
-
       try {
         const [data, storageData] = await Promise.all([
-          getUsage(effectiveToken),
-          getCloudStorage(effectiveToken).catch(() => null),
+          getUsage(),
+          getCloudStorage().catch(() => null),
         ]);
         if (cancelled) return;
-        applyUsage(effectiveToken, data);
+        applyUsage(data);
         if (storageData) setCloudStorage(storageData);
       } catch (error) {
         if (cancelled) return;
         if (error instanceof MaiApiError && [401, 403].includes(error.status)) {
-          clearSession();
-          setToken(null);
-          setUser(null);
-          setUsage(null);
-          setCloudStorage(null);
+          dropSession();
+          void apiLogout().catch(() => undefined);
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -205,7 +177,7 @@ export function AuthProvider({
     return () => {
       cancelled = true;
     };
-  }, [applyUsage, initialUser, initialToken]);
+  }, [applyUsage, dropSession, initialUser]);
 
   const login = useCallback(
     async (emailOrId: string, password: string) =>
@@ -215,20 +187,15 @@ export function AuthProvider({
 
   const verifyLogin = useCallback(
     async (email: string, code: string) => {
-      const res = await import("@/lib/site/mai-api").then((m) =>
-        m.verifyLogin({ code, email })
-      );
-      if (!res.token) throw new Error("Token manquant dans la réponse.");
-      setToken(res.token);
-      setSession({ tier: res.tier, token: res.token });
-      const [data, storageData] = await Promise.all([
-        getUsage(res.token),
-        getCloudStorage(res.token).catch(() => null),
-      ]);
-      applyUsage(res.token, data);
-      if (storageData) setCloudStorage(storageData);
+      // Le relais pose le cookie httpOnly : aucun jeton à stocker ici.
+      const res = await apiVerifyLogin({ code, email });
+      if (!res.success) {
+        throw new Error("Connexion impossible : code invalide ou expiré.");
+      }
+      setAuthenticated(true);
+      await refreshUsage();
     },
-    [applyUsage]
+    [refreshUsage]
   );
 
   const register = useCallback(
@@ -239,23 +206,17 @@ export function AuthProvider({
 
   const verifyRegister = useCallback(
     async (email: string, username: string, password: string, code: string) => {
-      const res = await import("@/lib/site/mai-api").then((m) =>
-        m.verifyRegister({ code, email, password, username })
-      );
-      if (!res.token) throw new Error("Token manquant dans la réponse.");
-      setToken(res.token);
-      setSession({
+      const res = await apiVerifyRegister({
+        code,
         email,
-        tier: res.tier,
-        token: res.token,
+        password,
         username,
       });
-      const [data, storageData] = await Promise.all([
-        getUsage(res.token),
-        getCloudStorage(res.token).catch(() => null),
-      ]);
-      applyUsage(res.token, data);
-      if (storageData) setCloudStorage(storageData);
+      if (!res.success) {
+        throw new Error("Inscription impossible : code invalide ou expiré.");
+      }
+      setAuthenticated(true);
+      await refreshUsage();
       // ── Onboarding principal : forcer tuto après 1ère inscription (localStorage only) ──
       try {
         const { initMainIfMissing } = await import(
@@ -271,32 +232,26 @@ export function AuthProvider({
         }
       } catch {}
     },
-    [applyUsage]
+    [refreshUsage]
   );
 
   const logout = useCallback(() => {
-    clearSession();
-    setToken(null);
-    setUser(null);
-    setUsage(null);
-    setCloudStorage(null);
-  }, []);
+    // Le relais efface le cookie httpOnly ; l'état local est purgé quoi qu'il
+    // arrive (une panne réseau ne doit pas laisser une session fantôme).
+    void apiLogout().catch(() => undefined);
+    dropSession();
+  }, [dropSession]);
 
   const verifyUpgradeCode = useCallback(
     async (code: string) => {
-      if (!token) throw new Error("Non authentifié.");
-      const res = await apiVerifyCode(token, code);
-      if (!res.token) throw new Error("Token manquant dans la réponse.");
-      setToken(res.token);
-      const [data, storageData] = await Promise.all([
-        getUsage(res.token),
-        getCloudStorage(res.token).catch(() => null),
-      ]);
-      applyUsage(res.token, data);
-      if (storageData) setCloudStorage(storageData);
+      const res = await apiVerifyCode(code);
+      if (!res.success) {
+        throw new Error("Code d'upgrade invalide.");
+      }
+      await refreshUsage();
       return res.tier || "Free";
     },
-    [applyUsage, token]
+    [refreshUsage]
   );
 
   const updateProfile = useCallback(
@@ -309,37 +264,32 @@ export function AuthProvider({
       newsletter?: boolean;
       notify_limits?: boolean;
     }) => {
-      if (!token) throw new Error("Non authentifié.");
-      const res = await apiUpdateProfile(token, params);
+      const res = await apiUpdateProfile(params);
       if (res.error) throw new Error(res.error);
-      const data = await getUsage(token);
-      applyUsage(token, data);
+      await refreshUsage();
     },
-    [applyUsage, token]
+    [refreshUsage]
   );
 
   const uploadAvatar = useCallback(
     async (file: File) => {
-      if (!token) throw new Error("Non authentifié.");
-      const res = await apiUploadAvatar(token, file);
+      const res = await apiUploadAvatar(file);
       if (res.error) throw new Error(res.error);
-      const data = await getUsage(token);
-      applyUsage(token, data);
+      await refreshUsage();
     },
-    [applyUsage, token]
+    [refreshUsage]
   );
 
   const value = useMemo<AuthContextValue>(
     () => ({
       cloudStorage,
-      isAuthenticated: !!token && !!user,
+      isAuthenticated: authenticated && !!user,
       loading,
       login,
       logout,
       refreshCloudStorage,
       refreshUsage,
       register,
-      token,
       updateProfile,
       uploadAvatar,
       usage,
@@ -350,10 +300,10 @@ export function AuthProvider({
     }),
     [
       user,
-      token,
       usage,
       cloudStorage,
       loading,
+      authenticated,
       login,
       verifyLogin,
       register,

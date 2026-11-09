@@ -1,0 +1,2723 @@
+{
+  "id": "1ere-sciences-de-lingenieur-05",
+  "year": "1ere",
+  "subject": "sciences-de-lingenieur",
+  "title": "Éco-conception et cycle de vie",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Matériaux et durabilité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Familles de matériaux et propriétés mécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle famille de matériaux est caractérisée par une excellente conductivité électrique et une bonne ductilité ?",
+              "options": [
+                "Les métaux et alliages",
+                "Les céramiques techniques",
+                "Les polymères thermodurcissables",
+                "Les matériaux composites à fibres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métaux et leurs alliages possèdent des électrons libres assurant une très bonne conductivité thermique et électrique, ainsi qu'une aptitude à la déformation plastique (ductilité)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle propriété mécanique mesure la capacité d'un matériau à absorber de l'énergie lors d'un choc sans se rompre ?",
+              "options": [
+                "La résilience",
+                "La dureté superficielle",
+                "La rigidité élastique",
+                "La conductivité thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résilience (souvent mesurée par l'essai de flexion par choc Charpy) caractérise la ténacité et la résistance d'un matériau aux ruptures brutales sous sollicitation dynamique."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés caractérisent typiquement la famille des céramiques techniques ?",
+              "options": [
+                "Une très grande dureté et une haute résistance à l'usure",
+                "Une excellente tenue aux températures très élevées",
+                "Une ductilité élevée facilitant le pliage à froid",
+                "Une faible résistance à la compression"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les céramiques sont très dures, réfractaires et chimiquement inertes, mais elles ont un comportement fragile qui exclut la déformation plastique à froid."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le module d'Young (E) d'un matériau quantifie directement sa :",
+              "options": [
+                "Rigidité en phase de déformation élastique",
+                "Résistance chimique face aux acides",
+                "Température de fusion sous vide",
+                "Masse volumique à l'état solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le module d'élasticité longitudinale ou module d'Young représente la pente de la zone élastique linéaire de la courbe contrainte-déformation (loi de Hooke)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une déformation qui disparaît intégralement lorsque la sollicitation mécanique est supprimée ?",
+              "options": [
+                "Une déformation élastique",
+                "Une déformation plastique permanente",
+                "Une rupture ductile",
+                "Un fluage à chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La déformation élastique est réversible : les atomes s'écartent légèrement de leur position d'équilibre sans rupture de liaisons permanentes, puis reprennent leur place initiale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parmi ces matériaux techniques, lequel possède la masse volumique la plus faible ?",
+              "options": [
+                "Le polypropylène (polymère)",
+                "L'acier inoxydable 316L",
+                "L'alliage de titane Ti-6Al-4V",
+                "Le cuivre pur recuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le polypropylène présente une masse volumique d'environ 0,9 g/cm³, ce qui le rend plus léger que l'eau et nettement moins dense que les métaux (acier ~7,8 g/cm³, titane ~4,5 g/cm³)."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quels sont des exemples d'alliages métalliques couramment utilisés dans les structures mécaniques allégées ?",
+              "options": [
+                "Les alliages d'aluminium (duralumin)",
+                "Les alliages de magnésium",
+                "La porcelaine feldspathique",
+                "Le polychlorure de vinyle rigide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'aluminium et le magnésium sont des métaux légers dont les alliages offrent un excellent ratio résistance mécanique sur masse volumique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle caractéristique permet à un métal d'être étiré en fils minces sans casser ?",
+              "options": [
+                "La ductilité",
+                "La friabilité",
+                "L'anisotropie optique",
+                "L'incompressibilité hydrostatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ductilité est la capacité d'un matériau à subir d'importantes déformations plastiques en traction avant rupture, ce qui permet l'étirage ou le tréfilage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique exprime la capacité d'un solide à transférer la chaleur par conduction ?",
+              "options": [
+                "La conductivité thermique",
+                "La capacité thermique massique",
+                "Le coefficient de Poisson",
+                "L'émissivité radiative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conductivité thermique lambda (en W/(m·K)) quantifie le flux thermique traversant un matériau soumis à un gradient de température."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel phénomène d'endommagement survient sous l'effet de sollicitations cycliques répétées d'intensité inférieure à la limite d'élasticité ?",
+              "options": [
+                "La fatigue mécanique",
+                "La trempe superficielle",
+                "L'adoucissement thermique",
+                "La fusion spontanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fatigue mécanique se traduit par l'amorçage et la propagation progressive de microfissures sous des cycles répétitifs d'efforts, conduisant à une rupture brutale imprévue."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Choix des matériaux et critères de sélection",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel outil graphique méthodique développé par Michael Ashby permet de cartographier et comparer les propriétés des matériaux ?",
+              "options": [
+                "Les diagrammes d'Ashby",
+                "Les abaques de Smith",
+                "Les diagrammes de Bode",
+                "Les diagrammes de Pareto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les diagrammes d'Ashby croisent deux propriétés physiques, mécaniques ou thermiques sur des échelles logarithmiques pour repérer rapidement les familles de matériaux optimales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la démarche de sélection d'Ashby, qu'appelle-t-on l'indice de performance d'un composant ?",
+              "options": [
+                "Une combinaison mathématique de propriétés de matériau à maximiser ou minimiser",
+                "Le prix de vente public conseillé du produit fini",
+                "Le pourcentage de marge commerciale de l'usine",
+                "La vitesse maximale de rotation de la broche d'usinage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice de performance est dérivé du cahier des charges : il regroupe les paramètres matière à optimiser pour satisfaire une fonction sous contrainte géométrique."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles exigences correspondent à des contraintes limites (critères éliminatoires) lors du choix d'un matériau ?",
+              "options": [
+                "Supporter une température de fonctionnement continue de 150 °C sans dégradation",
+                "Être isolant électrique avec une résistivité supérieure à un seuil donné",
+                "Avoir le logo de la marque gravé en relief sur la pièce",
+                "Disposer d'un emballage de transport de couleur verte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les contraintes éliminatoires fixent des seuils infranchissables (température, isolation, tenue mécanique minimale) qui écartent d'emblée les matériaux inaptes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour minimiser la masse d'un tirant sollicité en traction pure sous une charge donnée, quel indice de matériau cherche-t-on à maximiser ?",
+              "options": [
+                "Le ratio Re / rho (résistance élastique sur masse volumique)",
+                "Le produit Re multiplié par la masse volumique",
+                "La masse volumique pure",
+                "Le coefficient de frottement dynamique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En traction simple, la section nécessaire est inversement proportionnelle à Re. Pour minimiser la masse (V*rho), il faut maximiser la résistance spécifique Re/rho."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel facteur industriel influence fortement le choix d'un matériau pour une production en grande série automobile ?",
+              "options": [
+                "L'aptitude à la mise en forme rapide et le coût au kilogramme",
+                "Le nom d'inventeur de la molécule chimique",
+                "La présence de reflets irisés sous la lumière ultraviolette",
+                "La conductivité supraconductrice à -270 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En grande série, la cadence de transformation (moulage, emboutissage), l'usinabilité et le coût matière brut sont des critères déterminants de rentabilité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi remplace-t-on fréquemment l'acier de carrosserie par de l'aluminium dans le secteur des transports ferroviaires et routiers ?",
+              "options": [
+                "Pour alléger la structure afin de réduire la consommation d'énergie en mouvement",
+                "Pour supprimer complètement les phases de peinture de finition",
+                "Pour augmenter le point de fusion de la caisse à plus de 2 000 °C",
+                "Pour permettre l'aimantation spontanée des portes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aluminium a une masse volumique environ trois fois plus faible que l'acier. Cet allègement diminue l'énergie cinétique à fournir lors des accélérations et la consommation globale."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quels critères écologiques doivent être intégrés dès la sélection initiale des matériaux d'un mécanisme ?",
+              "options": [
+                "L'énergie grise requise pour la production du matériau",
+                "La disponibilité de filières de recyclage adaptées en fin de vie",
+                "La date de publication du manuel d'utilisation",
+                "Le numéro de téléphone du transporteur local"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bilan environnemental dépend des ressources et de l'énergie nécessaires à l'élaboration du matériau ainsi que de sa recyclabilité effective en fin de vie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la méthode de sélection des matériaux, quelle étape intervient immédiatement après la traduction du cahier des charges en fonctions et contraintes ?",
+              "options": [
+                "Le filtrage des matériaux ne respectant pas les critères impératifs",
+                "La commande immédiate de 10 000 tonnes de matière",
+                "La destruction du banc d'essai mécanique",
+                "La vente commerciale du produit avant conception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtrage élimine tous les matériaux qui ne satisfont pas aux exigences indispensables (température, tenue chimique, normes réglementaires)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les paramètres géométriques qu'un concepteur peut librement modifier pour satisfaire les critères de résistance ?",
+              "options": [
+                "Les variables libres de conception",
+                "Les contraintes absolues de service",
+                "Les tolérances d'ajustement ISO",
+                "Les constantes physiques universelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les variables libres (ex. dimensions transversales, épaisseurs de paroi) peuvent être ajustées librement par le bureau d'études pour respecter les exigences du cahier des charges."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel compromis fondamental recherche l'ingénieur lors du choix des matériaux d'une pale d'éolienne ?",
+              "options": [
+                "Une haute rigidité spécifique combinée à une excellente résistance à la fatigue",
+                "Une très faible résistance à la traction et un poids maximal",
+                "Une transparence optique totale et une conductivité électrique nulle",
+                "Une solubilité progressive dans les eaux pluviales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pales doivent résister à des millions de cycles de vent sans fléchir excessivement ni rompre, d'où le recours à des composites verre/carbone très rigides et légers."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Métaux et alliages : durabilité et recyclabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel atout environnemental majeur caractérise la plupart des métaux d'ingénierie comme l'acier et le cuivre ?",
+              "options": [
+                "Leur capacité à être recyclés indéfiniment sans dégradation notable de leurs propriétés intrinsèques",
+                "Leur biodégradation complète en quelques mois dans un compost ménager",
+                "Leur extraction minière exempte de tout rejet de dioxyde de carbone",
+                "Leur transformation spontanée en gaz inoffensif au contact de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métaux possèdent une structure atomique qui permet de les refondre et de les réutiliser à l'infini en conservant leurs performances mécaniques et physiques d'origine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle économie moyenne d'énergie procure le recyclage de l'aluminium par rapport à sa production primaire depuis la bauxite ?",
+              "options": [
+                "Environ 95 % d'économie d'énergie",
+                "Environ 15 % d'économie d'énergie",
+                "Environ 35 % d'économie d'énergie",
+                "Moins de 5 % d'économie d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électrolyse de l'alumine est extrêmement énergivore. La refusion de l'aluminium récupéré ne requiert qu'environ 5 % de l'énergie nécessaire à la production primaire."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels éléments d'addition principaux sont incorporés au fer pour conférer à l'acier inoxydable sa résistance à la corrosion ?",
+              "options": [
+                "Le chrome (à plus de 10,5 % en masse)",
+                "Le nickel",
+                "Le bitume routier",
+                "Le sulfate de sodium"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le chrome forme une couche superficielle passive et protectrice d'oxyde de chrome. Le nickel stabilise la phase austénitique et renforce la ductilité et la tenue chimique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel minerai naturel constitue la source géologique principale pour la fabrication de l'aluminium primaire ?",
+              "options": [
+                "La bauxite",
+                "L'hématite",
+                "La magnétite",
+                "La chalcopyrite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bauxite est une roche sédimentaire riche en oxydes d'aluminium hydratés, raffinée par le procédé Bayer avant l'électrolyse de Hall-Héroult."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la filière métallurgique produisant des aciers neufs à partir de ferrailles récupérées fondues au four électrique ?",
+              "options": [
+                "La métallurgie secondaire (filière électrique)",
+                "La métallurgie primaire en haut fourneau",
+                "La carbochimie d'extraction lourde",
+                "L'extraction hydrothermale directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sidérurgie secondaire refond les chutes industrielles et ferrailles collectées dans des fours à arc électrique, ce qui réduit considérablement les émissions de CO2 par rapport au haut fourneau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel élément résiduel indésirable provenant des faisceaux de câbles automobiles perturbe fréquemment le recyclage des aciers ?",
+              "options": ["Le cuivre", "L'hélium", "Le silicium", "Le calcium"],
+              "correctAnswers": [0],
+              "explanation": "Le cuivre est difficilement oxydable en sidérurgie et s'accumule dans l'acier recyclé, ce qui peut provoquer des fissures à chaud lors du laminage (fragilité au rouge)."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles dispositions de conception mécanique améliorent la longévité d'un assemblage métallique extérieur ?",
+              "options": [
+                "Éviter les pièges à eau et assurer un drainage naturel des zones humides",
+                "Prévoir une protection de surface ou une isolation galvanique entre métaux différents",
+                "Créer des zones d'eau stagnante pour humidifier en continu l'acier",
+                "Utiliser des vis non protégées au contact d'un environnement salin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une bonne conception géométrique élimine les zones d'humidité stagnante et prévient la corrosion galvanique entre métaux de potentiels électrochimiques distincts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel métal ductile est le plus massivement utilisé pour les bobinages de moteurs électriques et les réseaux de transport électrique ?",
+              "options": [
+                "Le cuivre",
+                "Le plomb",
+                "Le zinc",
+                "La fonte blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cuivre présente la meilleure conductivité électrique parmi les métaux industriels courants (derrière l'argent), tout en étant facilement recyclable et usinable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel dispositif de tri mécanique sépare instantanément les pièces en fer ou en acier des flux hétérogènes de déconstruction ?",
+              "options": [
+                "Un overband magnétique (électro-aimant suspendu)",
+                "Un bain de flottaison à l'eau pure",
+                "Un laser de spectroscopie optique",
+                "Une colonne de distillation sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tri ferromagnétique exploite les propriétés d'aimantation des métaux ferreux pour les attirer et les extraire automatiquement des convoyeurs de déchets broyés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel système utilise l'induction électromagnétique pour éjecter les métaux non ferreux (comme l'aluminium) des déchets broyés ?",
+              "options": [
+                "Le séparateur à courants de Foucault",
+                "Le crible rotatif trommel",
+                "La table densimétrique à air",
+                "Le cyclone à dépoussiérage passif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tambour magnétique tournant à grande vitesse induit des courants de Foucault dans les métaux conducteurs non magnétiques, générant une force de Laplace répulsive qui les éjecte."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Polymères et plastiques : biodégradabilité et recyclage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle famille de polymères peut être fondue et remise en forme de multiples fois par chauffage réversible ?",
+              "options": [
+                "Les thermoplastiques",
+                "Les thermodurcissables",
+                "Les élastomères vulcanisés",
+                "Les géopolymères minéraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les thermoplastiques sont constitués de chaînes macromoléculaires linéaires ou ramifiées reliées par des liaisons faibles, ce qui permet leur fusion et leur mise en forme répétée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi les résines thermodurcissables réticulées (comme les époxydes) ne fondent-elles pas lors d'un réchauffement ?",
+              "options": [
+                "Leurs chaînes sont reliées par un réseau tridimensionnel de liaisons covalentes irréversibles",
+                "Leurs molécules sont composées uniquement de gaz légers volatils",
+                "Elles sont dissoutes spontanément par l'humidité atmosphérique",
+                "Leur température d'ébullition se situe en dessous de zéro degré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La polymérisation des thermodurcissables crée un réseau tridimensionnel permanent. Si l'on chauffe, le polymère se dégrade thermiquement (pyrolyse) sans fondre."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels thermoplastiques courants font l'objet de filières de collecte et de recyclage mécanique à grande échelle ?",
+              "options": [
+                "Le polyéthylène téréphtalate (PET)",
+                "Le polyéthylène haute densité (PEHD)",
+                "La résine phénolique bakélite cuite",
+                "Le caoutchouc vulcanisé de pneumatique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le PET (bouteilles d'eau, fibres textiles) et le PEHD (flacons ménagers, tuyaux) disposent de filières industrielles matures de broyage, lavage et régénération."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie rigoureusement l'appellation 'plastique biosourcé' en ingénierie des matériaux ?",
+              "options": [
+                "Un plastique dont les monomères proviennent de la biomasse végétale ou animale renouvelable",
+                "Un plastique qui disparaît impérativement dans la mer en quelques jours",
+                "Un plastique contenant obligatoirement 50 % de métaux nobles",
+                "Un plastique synthétisé exclusivement à partir de pétrole brut non raffiné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terme biosourcé renvoie à l'origine de la ressource carbonée (plantes, amidon, canne à sucre) et non à son comportement ou à sa dégradation en fin de vie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un polymère d'origine végétale (biosourcé) est-il nécessairement biodégradable ?",
+              "options": [
+                "Non, l'origine de la ressource et la biodégradabilité sont deux propriétés totalement indépendantes",
+                "Oui, toute matière issue du monde végétal se décompose obligatoirement en quelques heures",
+                "Oui, car la structure atomique végétale interdit les liaisons stables",
+                "Non, car aucun polymère végétal ne peut être transformé industriellement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bio-PE issu de la canne à sucre est biosourcé mais strictement identique au PE fossile : il n'est pas biodégradable et possède la même persistance dans l'environnement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel polymère biosourcé issu de la fermentation de l'amidon est couramment employé en fabrication additive (impression 3D FDM) ?",
+              "options": [
+                "L'acide polylactique (PLA)",
+                "Le polytétrafluoroéthylène (PTFE)",
+                "Le polychlorure de vinyle plastifié (PVC)",
+                "Le polystyrène cristal transparent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PLA est produit à partir d'amidon de maïs ou de canne à sucre. Il est biodégradable en conditions de compostage industriel contrôlé et très facile à imprimer."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles difficultés techniques limitent le recyclage mécanique successif des polymères thermoplastiques ?",
+              "options": [
+                "Le raccourcissement des chaînes macromoléculaires sous l'effet de l'oxydation et du cisaillement thermique",
+                "L'incompatibilité thermodynamique entre différentes résines lors du mélange à l'état fondu",
+                "L'impossibilité physique de broyer des pièces plastiques rigides",
+                "L'apparition de radioactivité spontanée dans les granulés de plastique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque cycle thermique dégrade la masse molaire moyenne des chaînes. De plus, la plupart des polymères ne sont pas miscibles entre eux et forment des phases fragiles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la technologie qui décompose les chaînes polymères en monomères de base par voie chimique ou thermique ?",
+              "options": [
+                "Le recyclage chimique (dépolymérisation)",
+                "Le thermoformage sous vide",
+                "La granulation mécanique à froid",
+                "L'ensilage anaérobie agricole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recyclage chimique (solvolyse, pyrolyse) casse les liaisons chimiques pour purifier les monomères, permettant de recréer des polymères vierges sans impuretés résiduelles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel composant ajouté aux polymères pour améliorer leur flexibilité pose des problèmes environnementaux et sanitaires majeurs ?",
+              "options": [
+                "Les phtalates (plastifiants)",
+                "L'eau purifiée",
+                "La craie naturelle",
+                "La silice amorphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les phtalates, fréquemment incorporés au PVC pour l'assouplir, ne sont pas liés de manière covalente au polymère et peuvent migrer dans l'environnement comme perturbateurs endocriniens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle norme européenne fixe les exigences d'aptitude des emballages au compostage industriel et à la biodégradation ?",
+              "options": [
+                "La norme NF EN 13432",
+                "La norme ISO 9001",
+                "La norme Eurocode 3",
+                "La directive RoHS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La norme NF EN 13432 impose des critères stricts de désintégration (90 % en moins de 12 semaines), de biodégradation et d'écotoxicité sur les sols en composteur industriel."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Matériaux composites et biosourcés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Par définition, de quoi est constitué un matériau composite d'ingénierie ?",
+              "options": [
+                "De l'association non miscible d'un renfort assurant la tenue mécanique et d'une matrice qui lie l'ensemble",
+                "D'une solution solide métallique parfaitement homogène à l'échelle atomique",
+                "D'un corps pur extrait directement des roches magmatiques sans traitement",
+                "D'un mélange liquide de solvants volatils enfermé dans un réservoir étanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un composite associe deux ou plusieurs phases non miscibles (renfort fibreux et matrice polymère, métallique ou céramique) aux propriétés complémentaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une pièce composite, quel est le rôle premier de la matrice ?",
+              "options": [
+                "Transmettre les contraintes mécaniques vers les fibres et protéger le renfort contre les agressions extérieures",
+                "Supporter l'intégralité des efforts de traction axiale",
+                "Garantir une transparence optique aux rayons gamma",
+                "Faire baisser la masse totale de la pièce à zéro gramme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matrice enrobe les fibres, assure la cohésion géométrique de la pièce, répartit les charges entre les fibres et les protège des agressions chimiques et de l'humidité."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles fibres d'origine végétale sont couramment utilisées en éco-conception pour remplacer les fibres de verre synthétiques ?",
+              "options": [
+                "Les fibres de lin",
+                "Les fibres de chanvre",
+                "Les fibres d'amiante blanc",
+                "Les fibres de bore pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le lin et le chanvre sont des cultures locales nécessitant peu d'intrants. Leurs fibres présentent de très bonnes propriétés spécifiques et un bon amortissement vibratoire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel avantage écologique manifeste présente la culture du lin par rapport à la synthèse industrielle des fibres de verre ?",
+              "options": [
+                "Une ressource renouvelable locale consommant peu d'énergie grise pour son élaboration",
+                "Une tenue aux flammes nues jusqu'à plus de 3 000 °C sans combustion",
+                "Une masse volumique cinq fois supérieure à celle de l'or massif",
+                "Une absence totale d'absorption d'eau sous n'importe quel climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibres végétales poussent grâce à l'énergie solaire (stockage de carbone) et ne requièrent pas de fours à haute température (1 500 °C) comme les fibres de verre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le recyclage des coques de bateaux ou pales d'éoliennes en composite verre/polyester thermodurcissable est-il très complexe ?",
+              "options": [
+                "La matrice est infusible et intimement liée aux fibres minérales, empêchant une refonte simple",
+                "Les fibres de verre s'évaporent spontanément dès qu'elles sont découpées",
+                "Le composite est soluble uniquement dans l'eau salée de mer",
+                "La résine polymère se transforme en mercure liquide lors du broyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résine thermodurcissable réticulée ne peut pas être fondue. Séparer mécaniquement ou thermiquement les fibres de la résine demande des procédés lourds et coûteux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel procédé thermique permet de récupérer des fibres de carbone recyclées en calcinant la résine polymère sous atmosphère inerte ?",
+              "options": [
+                "La pyrolyse thermique",
+                "L'électrolyse aqueuse",
+                "La chromatographie d'exclusion",
+                "L'hydratation sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pyrolyse chauffe le composite en l'absence de dioxygène : la résine organique est décomposée en gaz et huiles, laissant les fibres de carbone intactes pour réutilisation."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quels bénéfices environnementaux majeurs apporte l'utilisation du bois d'œuvre dans la construction d'infrastructures techniques ?",
+              "options": [
+                "Le stockage durable de carbone biogénique absorbé lors de la croissance de l'arbre",
+                "Une ressource renouvelable si le bois provient de forêts gérées durablement",
+                "Une résistance mécanique totalement isotrope identique en tous points",
+                "Une imperméabilité absolue aux champignons sans aucune protection"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bois piège le CO2 atmosphérique tout au long de sa vie d'arbre et nécessite très peu d'énergie de transformation comparé au béton ou à l'acier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que garantissent les labels internationaux reconnus FSC et PEFC sur les produits en bois et dérivés ?",
+              "options": [
+                "Une gestion écologiquement appropriée, socialement bénéfique et économiquement viable des forêts",
+                "L'obligation d'utiliser des vis en titane pour tous les assemblages en menuiserie",
+                "Une vitesse d'usinage deux fois supérieure sur commande numérique",
+                "L'absence totale de fibres végétales dans le produit manufacturé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces certifications vérifient la traçabilité des grumes et le respect de critères stricts de renouvellement forestier et de préservation de la biodiversité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un matériau composite associant une résine d'origine végétale et des fibres naturelles de renfort ?",
+              "options": [
+                "Un composite 100 % biosourcé (ou biocomposite)",
+                "Un polymère fluoré technique",
+                "Un alliage à mémoire de forme",
+                "Un béton armé précontraint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un biocomposite entièrement biosourcé associe un renfort naturel (lin, chanvre, bois) à une matrice polymère issue de la biomasse (PLA, résine furannique, résine époxy bio-sourcée)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique (rapport entre la résistance mécanique et la masse volumique) justifie l'emploi des composites en aéronautique ?",
+              "options": [
+                "La résistance spécifique",
+                "Le coefficient de frottement sec",
+                "L'indice de réfraction molaire",
+                "La susceptibilité diélectrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les matériaux à haute résistance spécifique (ou module spécifique) permettent de concevoir des pièces supportant des contraintes intenses tout en étant très légères."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Dégradation, corrosion et vieillissement des matériaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mécanisme électrochimique d'oxydation dégrade spontanément le fer et ses alliages en présence d'eau et de dioxygène ?",
+              "options": [
+                "La corrosion aqueuse",
+                "La polymérisation radicalaire",
+                "L'électropolissage anodique",
+                "La calcination sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La corrosion aqueuse est une réaction redox spontanée où le fer s'oxyde en ions ferreux tandis que le dioxygène dissous se réduit, formant de la rouille hydratée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel type de corrosion apparaît lorsque deux métaux de potentiels d'oxydoréduction distincts sont en contact électrique dans un milieu conducteur ?",
+              "options": [
+                "La corrosion galvanique (ou bimétallique)",
+                "La fatigue thermique différentielle",
+                "La corrosion sous tension bactérienne",
+                "Le fretting mécanique pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le métal le moins noble (le plus électronégatif) devient anode et s'oxyde à une vitesse très accélérée, protégeant temporairement le métal le plus noble."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels facteurs climatiques naturels sont responsables du photo-vieillissement prématuré des pièces en plastique exposées à l'extérieur ?",
+              "options": [
+                "Le rayonnement ultraviolet (UV) de la lumière solaire",
+                "L'action combinée de l'oxygène de l'air et de la chaleur",
+                "L'absence d'éclairage nocturne",
+                "L'exposition aux ondes radioélectriques de radiophonie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les photons UV possèdent une énergie suffisante pour casser les liaisons covalentes des polymères, amorçant une photo-oxydation qui rend la matière cassante et décolorée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'enlèvement progressif et destructeur de matière causé par le frottement mécanique entre deux solides en contact ?",
+              "options": [
+                "L'usure tribologique",
+                "La passivation électrochimique",
+                "La polymérisation spontanée",
+                "La cavitation acoustique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'usure (par abrasion, adhésion ou érosion) dégrade les cotes fonctionnelles des pièces mobiles et génère des microparticules polluantes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle pellicule d'oxyde protectrice et étanche se forme spontanément à la surface de l'aluminium à l'air libre ?",
+              "options": [
+                "Une couche d'alumine (Al2O3) passivante",
+                "Une couche d'oxyde ferrique poreux",
+                "Un film de chlorure d'argent liquide",
+                "Un dépôt de sulfure de cuivre instable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alumine naturelle est très fine, compacte et imperméable : elle bloque la diffusion de l'oxygène vers le métal sous-jacent, stoppant la corrosion spontanément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la rouille développée sur un acier au carbone non protégé conduit-elle à la destruction complète de la pièce métallique ?",
+              "options": [
+                "Parce qu'elle est poreuse, expansive et non adhérente, laissant les réactifs atteindre le cœur du métal",
+                "Parce qu'elle dissout l'acier en le vaporisant sous forme d'hélium gazeux",
+                "Parce qu'elle empêche le passage des courants de Foucault protecteurs",
+                "Parce qu'elle diminue instantanément la température de la pièce à -100 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à l'alumine, la rouille se décolle et s'écaille au fur et à mesure de sa formation, exposant continuellement du métal neuf à l'oxydation."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles mesures de conception permettent d'éviter la corrosion galvanique dans un assemblage mécanique mixte ?",
+              "options": [
+                "Insérer des rondelles et bagues isolantes en polymère entre les deux métaux différents",
+                "Choisir des métaux dont les potentiels électrochimiques sont très proches dans la table galvanique",
+                "Connecter directement du zinc et du cuivre dans de l'eau de mer sans isolation",
+                "Remplacer les joints étanches par du feutre conducteur d'eau salée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'isolation électrique coupe le circuit galvanique. Associer des métaux compatibles réduit la différence de potentiel motrice de la corrosion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel effet produit l'hydrolyse sur les chaînes de polymères condensés (polyesters, polyamides) ?",
+              "options": [
+                "La scission chimique des liaisons de la chaîne par réaction avec l'eau, diminuant la résistance mécanique",
+                "L'augmentation immédiate de la température de transition vitreuse de 200 °C",
+                "La synthèse spontanée de fibres de carbone au cœur de la matière",
+                "Une réduction totale de la masse volumique de la pièce plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau pénètre dans le polymère et coupe les liaisons ester ou amide, réduisant la longueur moyenne des chaînes macromoléculaires et provoquant une fragilisation mécanique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel essai normalisé de laboratoire simule et accélère la corrosion des revêtements sous une atmosphère saline chaude et brumeuse ?",
+              "options": [
+                "L'essai au brouillard salin (norme ISO 9227)",
+                "L'essai de traction uniaxiale",
+                "L'essai de dureté Rockwell C",
+                "L'essai de résilience Charpy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enceinte de brouillard salin pulvérise une solution de NaCl à 35 °C de manière continue, permettant de comparer la durabilité d'échantillons protégés en quelques centaines d'heures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel phénomène mécanique correspond à la déformation continue et irréversible d'une pièce soumise à une contrainte constante à haute température ?",
+              "options": [
+                "Le fluage",
+                "Le cloquage",
+                "La striction élastique",
+                "La cavitation ultra-sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fluage survient lorsque la température de service dépasse une fraction notable de la température absolue de fusion (T > 0,4 Tf), entraînant une déformation lente jusqu'à rupture."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Traitements de surface et protection contre l'usure",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste la galvanisation à chaud pour la protection anticorrosion des structures en acier ?",
+              "options": [
+                "À immerger les pièces d'acier décapées dans un bain de zinc en fusion à environ 450 °C",
+                "À pulvériser une résine thermoplastique liquide sans aucun métal",
+                "À frotter manuellement l'acier avec de la limaille de plomb",
+                "À bombarder la tôle avec des neutrons dans un réacteur expérimental"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'immersion dans le zinc liquide crée par diffusion des couches d'alliages fer-zinc très adhérentes, surmontées d'une couche de zinc pur offrant une protection durable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment le revêtement de zinc protège-t-il l'acier sous-jacent même en cas de rayure locale de la surface ?",
+              "options": [
+                "Par protection cathodique : le zinc plus électronégatif se sacrifie et s'oxyde à la place du fer",
+                "En absorbant le fer pour reformer instantanément un nouvel alliage d'or",
+                "En dégageant des gaz toxiques qui éloignent les molécules d'oxygène",
+                "En augmentant la température de la rayure au-dessus de 1 000 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zinc agit comme anode sacrificielle : son potentiel de dissolution est plus bas que celui du fer, assurant une protection galvanique active au niveau de la brèche."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels traitements thermochimiques enrichissent la surface d'un acier pour démultiplier sa dureté et sa résistance à l'usure ?",
+              "options": [
+                "La cémentation (diffusion contrôlée de carbone en surface)",
+                "La nitruration (diffusion d'azote formant des nitrures très durs)",
+                "Le lavage ménager à l'eau distillée",
+                "L'immersion prolongée dans du pétrole brut à froid"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La cémentation et la nitruration diffusent des atomes interstitiels qui durcissent superficiellement la couche d'usure tout en conservant un cœur de pièce tenace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel traitement de surface électrochimique épaissit artificiellement la couche d'oxyde protectrice des alliages d'aluminium ?",
+              "options": [
+                "L'anodisation",
+                "Le sablage pneumatique",
+                "L'étirage à froid",
+                "L'ébavurage thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anodisation place la pièce en aluminium à l'anode d'un bain électrolytique acide pour faire croître une couche d'alumine poreuse, dure et imputrescible, ensuite colmatée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel atout environnemental majeur présente la peinture industrielle par thermolaquage par rapport aux peintures liquides traditionnelles ?",
+              "options": [
+                "L'absence totale de solvants pétroliers et de composés organiques volatils (COV)",
+                "Une consommation d'eau potable multipliée par dix",
+                "L'utilisation exclusive de sels de mercure lourd",
+                "L'obligation de renouveler l'application tous les mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thermolaquage pulvérise une poudre polymère électrostatique cuite au four. Sans solvant, il supprime les émissions de COV nocives pour la santé et l'atmosphère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel revêtement céramique mince déposé sous vide (dépôt PVD) confère une couleur dorée et une très haute dureté aux forets d'usinage ?",
+              "options": [
+                "Le nitrure de titane (TiN)",
+                "Le graphite expansé doux",
+                "L'oxyde de zinc hydraté",
+                "Le carbonate de sodium pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nitrure de titane présente une dureté d'environ 2 300 HV et un faible coefficient de frottement, ce qui multiplie la durée de vie des outils de coupe."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles substances dangereuses ont été sévèrement restreintes dans les bains de traitement de surface par les réglementations européennes ?",
+              "options": [
+                "Le chrome hexavalent (Cr VI)",
+                "Le cadmium et ses composés",
+                "L'eau osmosée pure",
+                "Le dioxyde de carbone gazeux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le chrome hexavalent et le cadmium sont cancérogènes, mutagènes et reprotoxiques (CMR). Ils sont interdits par les directives REACH et RoHS au profit de solutions moins toxiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En quoi consiste l'opération de grenaillage de précontrainte (shot peening) appliquée sur des engrenages ou ressorts mécaniques ?",
+              "options": [
+                "À projeter des microbilles d'acier pour créer des contraintes résiduelles de compression en surface",
+                "À chauffer la pièce jusqu'à son début de fusion superficielle",
+                "À recouvrir la pièce d'une couche d'argile expansée humide",
+                "À découper des micro-rainures profondes le long des arêtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes de compression induites en surface s'opposent aux contraintes de traction appliquées en service, ce qui retarde l'amorçage des fissures de fatigue mécanique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le procédé électrolytique de dépôt d'une mince couche de nickel sur une pièce pour la protéger de la corrosion ?",
+              "options": [
+                "Le nickelage électrolytique",
+                "L'alésage de finition",
+                "La lévitation magnétique",
+                "La phosphatation sèche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nickelage dépose une couche continue de nickel métallique par électrolyse, apportant une bonne résistance à l'oxydation et un aspect esthétique soigné."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la préparation de surface (dégraissage et décapage) est-elle une étape critique avant tout dépôt d'un traitement protecteur ?",
+              "options": [
+                "Pour éliminer impuretés et oxydes parasites afin de garantir une adhérence physico-chimique parfaite du revêtement",
+                "Pour modifier la masse volumique du métal jusqu'au cœur de la pièce",
+                "Pour rendre la pièce immédiatement transparente à la lumière",
+                "Pour réduire de moitié le module d'Young du matériau sous-jacent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un manque de propreté superficielle empêche les liaisons atomiques entre le substrat et le revêtement, conduisant au cloquage et à l'écaillage prématuré de la couche de protection."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Disponibilité des ressources et criticité des métaux rares",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Selon la Commission Européenne, quels deux critères principaux définissent la criticité d'une matière première minérale ?",
+              "options": [
+                "Son importance économique majeure et son risque élevé de rupture d'approvisionnement",
+                "Sa couleur visible dans l'obscurité et son odeur caractéristique",
+                "Son point de fusion supérieur à 5 000 °C et sa friabilité",
+                "Son abondance illimitée dans tous les sols de la planète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une matière est dite critique lorsque sa chaîne d'approvisionnement est vulnérable (monopole géographique, instabilité géopolitique) et que son rôle industriel est indispensable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel métal de la famille des terres rares est fondamental pour la fabrication des aimants permanents haute performance (éoliennes, moteurs électriques) ?",
+              "options": [
+                "Le néodyme (Nd)",
+                "L'aluminium (Al)",
+                "Le silicium (Si)",
+                "Le fer pur (Fe)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les aimants néodyme-fer-bore (NdFeB) fournissent le champ magnétique rémanent le plus puissant par unité de masse, indispensable aux génératrices et moteurs compacts."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels métaux sont considérés comme hautement stratégiques pour la fabrication des cellules de batteries rechargeables lithium-ion actuelles ?",
+              "options": [
+                "Le lithium",
+                "Le cobalt",
+                "Le sel de mer sodique",
+                "Le sable de silice brut"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le lithium (matériau d'insertion) et le cobalt (stabilité de la cathode NMC) sont sous forte tension en raison de la croissance exponentielle de la mobilité électrique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel métal du groupe du platine est largement utilisé comme catalyseur dans les piles à combustible à hydrogène (PEMFC) ?",
+              "options": [
+                "Le platine (Pt)",
+                "Le plomb (Pb)",
+                "Le zinc (Zn)",
+                "Le mercure (Hg)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le platine catalyse efficacement la réaction de réduction de l'oxygène et d'oxydation de l'hydrogène, mais son coût élevé et sa rareté imposent de réduire drastiquement les charges."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que représente le ratio Réserves sur Production (R/P) pour une ressource minérale exploitée sur Terre ?",
+              "options": [
+                "Le nombre théorique d'années d'exploitation restantes au rythme de production annuel actuel",
+                "Le pourcentage de métal envoyé en décharge chaque semaine",
+                "La densité du minerai divisée par sa température de fusion",
+                "Le rapport entre la masse du noyau terrestre et sa surface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le ratio R/P donne un ordre de grandeur indicatif de la durée de vie des réserves économiquement et techniquement exploitables au rythme de consommation présent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la forte concentration géographique de l'extraction minière de terres rares (Chine > 60 %) constitue-t-elle une vulnérabilité pour l'industrie européenne ?",
+              "options": [
+                "Elle crée une dépendance géopolitique et des risques de restrictions ou de hausses brutales de prix",
+                "Elle modifie les lois de la thermodynamique lors de l'assemblage mécanique",
+                "Elle empêche les électrons de circuler dans les câbles métalliques",
+                "Elle accélère le vieillissement des pièces plastiques en France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un quasi-monopole de production ou de raffinage expose les industries aval à des tensions diplomatiques, des quotas d'exportation ou des ruptures de chaîne logistique."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles stratégies d'éco-conception permettent de réduire la vulnérabilité d'un système face aux métaux critiques ?",
+              "options": [
+                "Substituer les métaux critiques par des alternatives plus abondantes et moins sensibles",
+                "Optimiser la conception pour faciliter le désassemblage et le recyclage des métaux rares en fin de vie",
+                "Multiplier par trois la masse de cobalt utilisée sans justification fonctionnelle",
+                "Mélanger délibérément les métaux rares dans des bétons de calage jetables"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La substitution par des technologies sans terres rares (moteurs synchrones à rotor bobiné) et la recyclabilité en boucle fermée réduisent la dépendance minière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel impact écologique majeur découle de la baisse continue de la teneur moyenne en métal des gisements miniers mondiaux ?",
+              "options": [
+                "Une hausse exponentielle de l'énergie, de l'eau requise et du volume de stériles rocheux par tonne de métal purifié",
+                "Une baisse spectaculaire des émissions mondiales de dioxyde de carbone",
+                "Une disparition naturelle de toute forme de poussière dans les carrières",
+                "Une régénération spontanée et immédiate des forêts avoisinantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exploiter un minerai dix fois plus pauvre oblige à broyer et traiter dix fois plus de roche, ce qui multiplie la consommation de réactifs chimiques, d'eau et de carburant d'excavation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on les métaux rares (comme l'indium ou le gallium) qui ne sont pas extraits de mines dédiées mais récupérés lors du raffinage de métaux majeurs ?",
+              "options": [
+                "Les métaux sous-produits (ou métaux associés)",
+                "Les métaux autonomes primaires",
+                "Les minéraux fossiles volatils",
+                "Les silicates sédimentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces métaux sont intimement liés à la production du métal porteur (ex. le zinc pour l'indium, la bauxite pour le gallium). Leur offre est dépendante du marché du métal principal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel concept désigne la valorisation et la récupération systématique des métaux précieux et stratégiques contenus dans les déchets de la société (DEEE, véhicules) ?",
+              "options": [
+                "La mine urbaine (urban mining)",
+                "La prospection géologique lunaire",
+                "L'orpaillage traditionnel alluvial",
+                "La sédimentation fluviale spontanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exploitation des gisements de déchets urbains offre souvent des concentrations en métaux précieux (or, argent, tantale) bien supérieures à celles des meilleurs minerais naturels."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Réparabilité, démontabilité et maintenance durable",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel dispositif réglementaire obligatoire en France attribue une note sur 10 pour guider l'achat de produits électriques vers des modèles réparables ?",
+              "options": [
+                "L'indice de réparabilité",
+                "Le score carbone direct",
+                "Le label de sécurité incendie",
+                "Le coefficient de frottement mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice de réparabilité informe le consommateur sur la facilité de réparation d'un produit neuf (smartphones, téléviseurs, lave-linge, tondeuses) selon une grille standardisée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel type de liaison mécanique est à privilégier en éco-conception pour faciliter le démontage lors d'une opération de maintenance ?",
+              "options": [
+                "Une liaison complète démontable par éléments filetés standardisés (vis/écrous)",
+                "Un collage structural irréversible par résine époxy bicomposant",
+                "Un soudage par friction malaxage continu",
+                "Un rivetage aveugle sans accès par l'arrière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les assemblages vissés permettent d'ouvrir l'appareil avec des outils courants et de remplacer le sous-ensemble défaillant sans détériorer les pièces adjacentes."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels critères font partie de la formule de calcul de l'indice de réparabilité en France ?",
+              "options": [
+                "La disponibilité de la documentation technique et des manuels de réparation",
+                "La facilité de démontage et la disponibilité des pièces détachées dans le temps",
+                "Le montant total des dépenses publicitaires de la marque",
+                "Le nombre de palettes chargées par camion de livraison"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'indice évalue 5 critères : documentation, démontabilité/outils, disponibilité des pièces, prix des pièces rapporté au prix du produit neuf, et critères spécifiques au produit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle démarche d'architecture produit découpe le système en sous-ensembles fonctionnels indépendants et interchangeables ?",
+              "options": [
+                "La conception modulaire (modularité)",
+                "L'intégration monolithique indissociable",
+                "La miniaturisation aveugle scellée",
+                "L'assemblage aléatoire continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La modularité permet de faire évoluer un composant particulier, de réparer rapidement un module en panne et de simplifier le tri des matériaux en fin de vie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi l'utilisation d'empreintes de vis standardisées (ex. Torx, six pans creux, cruciforme) favorise-t-elle la réparabilité d'un objet ?",
+              "options": [
+                "Elle permet aux réparateurs et utilisateurs d'intervenir avec des outils d'usage courant sans outillage propriétaire",
+                "Elle rend les vis totalement invisibles à la lumière naturelle",
+                "Elle empêche tout technicien qualifié d'ouvrir le capot",
+                "Elle garantit une étanchéité absolue sans aucun joint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vis propriétaires (ex. pentalobe spécifique) sont des barrières artificielles à la réparation. Utiliser des têtes standard encourage le démontage et l'entretien."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la stratégie de maintenance industrielle basée sur la surveillance en temps réel de paramètres (vibrations, température, lubrifiant) ?",
+              "options": [
+                "La maintenance prédictive (ou prévisionnelle)",
+                "La maintenance palliative curative d'urgence",
+                "La politique du laisser-faire jusqu'à la casse totale",
+                "Le remplacement arbitraire quotidien de toutes les pièces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La maintenance prédictive utilise des capteurs pour détecter les prémices d'anomalies et planifier l'intervention avant la panne critique, évitant les surconsommations de pièces."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quels choix de conception constituent des obstacles majeurs à la réparation durable d'un produit électronique grand public ?",
+              "options": [
+                "L'encollage complet de la batterie avec un adhésif permanent rendant son extraction dangereuse",
+                "Le verrouillage logiciel de composants neufs non reconnus sans outil propriétaire",
+                "La présence de détrompeurs mécaniques facilitant le remontage",
+                "La mise à disposition gratuite des schémas électroniques en ligne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les batteries collées sans languette et la sérialisation logicielle (appairage des composants à la carte mère) sont des pratiques qui bloquent la réparation indépendante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En quoi consiste le reconditionnement d'un produit technique usagé avant sa remise sur le marché ?",
+              "options": [
+                "À nettoyer, diagnostiquer, remplacer les pièces d'usure et tester l'appareil pour garantir son bon fonctionnement",
+                "À broyer l'ensemble en granulés pour les envoyer en fonderie de métaux",
+                "À repeindre uniquement le carton d'emballage sans ouvrir l'appareil",
+                "À stocker l'objet en décharge pendant une durée légale de dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le reconditionnement prolonge la durée d'usage du produit complet en restaurant ses fonctionnalités d'origine, générant une économie majeure de ressources et d'émissions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la démarche d'ingénierie visant à concevoir un équipement dès l'origine pour faciliter son démontage ultérieur ?",
+              "options": [
+                "Le Design for Disassembly (DfD)",
+                "L'obsolescence programmée logicielle",
+                "L'emboutissage profond en passe unique",
+                "La coulée continue sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Design for Disassembly (conception pour le désassemblage) intègre des fixations réversibles, un nombre réduit de pièces et un accès aisé aux composants d'usure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel marquage normalisé gravé sur les pièces thermoplastiques est indispensable pour orienter correctement le tri lors du désassemblage ?",
+              "options": [
+                "Le symbole d'identification de la matière plastique (ex. >PP<, >ABS<, >PA66-GF30<)",
+                "Le numéro de carte bancaire du responsable d'atelier",
+                "Le code-barres du supermarché de vente final",
+                "La signature manuscrite du designer industriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce marquage normé (norme ISO 11469) identifie la résine et la présence de charges ou renforts, permettant aux filières de tri de diriger la pièce vers le bon flux de recyclage."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Fin de vie, réemploi et filières de valorisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Selon la hiérarchie européenne de traitement des déchets (directive 2008/98/CE), quel niveau d'action est prioritaire sur tous les autres ?",
+              "options": [
+                "La prévention et la réduction des déchets à la source",
+                "La valorisation énergétique par incinération",
+                "La mise en décharge contrôlée",
+                "Le recyclage chimique des résines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hiérarchie place en premier la prévention (éco-conception, sobriété), suivie de la préparation au réemploi, du recyclage, de la valorisation énergétique et en dernier de l'élimination."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle distinction technique sépare le 'réemploi' du 'recyclage' d'un équipement usagé ?",
+              "options": [
+                "Le réemploi utilise à nouveau l'objet pour son usage initial sans détruire sa structure, le recyclage retraite la matière première",
+                "Le réemploi fait obligatoirement fondre la matière à plus de 1 000 °C",
+                "Le recyclage est gratuit alors que le réemploi est strictement interdit par la loi",
+                "Le réemploi s'applique exclusivement aux déchets radioactifs dangereux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réemploi préserve l'énergie grise incorporée dans l'objet en le remettant en circulation, tandis que le recyclage détruit l'objet pour en récupérer les matériaux bruts."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles formes de valorisation sont appliquées aux déchets issus de produits industriels en fin de vie ?",
+              "options": [
+                "La valorisation matière (recyclage des métaux, plastiques, verres)",
+                "La valorisation énergétique (récupération de chaleur et d'électricité par incinération contrôlée)",
+                "L'abandon sauvage dans les zones humides protégées",
+                "L'immersion illégale en mer territoriale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La valorisation se décompose principalement en valorisation matière (boucle de recyclage) et valorisation énergétique (combustion valorisée produisant de la vapeur ou de l'électricité)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un recyclage qui produit une matière de qualité inférieure à celle du matériau d'origine ?",
+              "options": [
+                "Le décyclage (ou downcycling)",
+                "Le surcyclage (upcycling)",
+                "La synthèse parfaite",
+                "La fusion hydrostatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décyclage (ou sous-cyclage) dégrade les propriétés mécaniques ou la pureté du matériau, cantonnant la matière recyclée à des usages moins exigeants (ex. bancs en plastique mêlé)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le surcyclage (upcycling) dans une démarche d'éco-conception créative ?",
+              "options": [
+                "La transformation d'un déchet ou objet usagé en un produit de valeur d'usage ou esthétique supérieure",
+                "La calcination brute d'un objet neuf sans aucune filtration des fumées",
+                "L'enfouissement irréversible dans une fosse géologique profonde",
+                "L'achat d'un appareil neuf pour jeter immédiatement le précédent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'upcycling réutilise des composants ou matériaux sans dégradation destructive, pour concevoir des objets ayant une valeur ajoutée supérieure à l'objet source."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel organisme à but non lucratif agréé par les pouvoirs publics organise la collecte et le traitement d'une filière de produits (ex. Ecosystem) ?",
+              "options": [
+                "Un éco-organisme",
+                "Une holding d'investissement boursier",
+                "Une banque commerciale de détail",
+                "Une agence de notation financière privée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éco-organismes sont créés par les producteurs pour mutualiser leurs obligations légales de collecte, de réemploi et de recyclage des déchets issus de leurs produits."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quels principes caractérisent le régime de la Responsabilité Élargie du Producteur (REP) en Europe ?",
+              "options": [
+                "L'obligation pour les fabricants de prendre en charge la gestion et le financement de la fin de vie de leurs produits",
+                "L'application du principe 'pollueur-payeur' tout au long du cycle de vie",
+                "L'interdiction de concevoir des objets métalliques démontables",
+                "L'obligation pour l'acheteur de ramener à pied l'objet à l'usine d'origine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La filière REP rend le metteur sur le marché responsable financièrement ou opérationnellement du traitement des déchets générés par ses produits mis en vente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À quoi sert l'éco-participation financièrement visible sur la facture lors de l'achat d'un appareil électrique neuf ?",
+              "options": [
+                "À financer la collecte, la dépollution et le recyclage des anciens appareils en fin de vie",
+                "À augmenter la marge commerciale nette du distributeur",
+                "À financer les campagnes de publicité télévisée de la marque",
+                "À payer les péages autoroutiers de l'acheteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éco-participation est intégralement reversée à un éco-organisme agréé pour financer la logistique de reprise, le tri, la dépollution et le recyclage des DEEE."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la présence d'aimants permanents collés au sein d'un rotor de moteur électrique complique-t-elle le recyclage de l'acier ?",
+              "options": [
+                "Parce qu'ils contaminent la ferraille en terres rares et cuivre, réduisant la pureté de l'acier de refusion",
+                "Parce qu'ils rendent l'acier liquide à température ambiante de l'atelier",
+                "Parce qu'ils annulent spontanément le champ gravitationnel terrestre",
+                "Parce qu'ils font exploser les broyeurs mécaniques dès qu'ils touchent l'acier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparer des aimants collés fortement magnétiques est difficile. S'ils restent mélangés à l'acier, les terres rares dégradent la composition chimique de l'acier recyclé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'objectif d'une boucle fermée de recyclage (closed-loop recycling) pour un fabricant de bouteilles ou de canettes ?",
+              "options": [
+                "Refabriquer le même produit avec la matière recyclée sans dégradation de performance d'un cycle à l'autre",
+                "Envoyer les déchets dans un pays étranger sans traçabilité",
+                "Brûler la totalité de la matière pour produire uniquement de la fumée",
+                "Mélanger sans tri les métaux et les cartons d'emballage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle fermée maintient la matière au même niveau qualitatif (ex. canette d'aluminium redonnant une canette d'aluminium), évitant le recours aux ressources vierges."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Impacts environnementaux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les étapes de l'Analyse du Cycle de Vie (ACV)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle vision holistique globale fonde la démarche de l'Analyse du Cycle de Vie (ACV) d'un produit industriel ?",
+              "options": [
+                "L'approche multicritère 'du berceau à la tombe' (cradle to grave)",
+                "L'analyse exclusive du coût d'achat en magasin",
+                "L'observation des seules émissions de l'usine d'assemblage",
+                "Le contrôle de l'apparence visuelle du packaging de vente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ACV quantifie les impacts environnementaux potentiels d'un système depuis l'extraction des matières premières jusqu'à son traitement final en fin de vie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de phases fondamentales et interdépendantes structurent une ACV selon les normes internationales ?",
+              "options": ["4 phases", "2 phases", "7 phases", "10 phases"],
+              "correctAnswers": [0],
+              "explanation": "Une ACV comporte 4 phases : définition des objectifs et du champ de l'étude, inventaire du cycle de vie (ICV), évaluation des impacts (EICV) et interprétation des résultats."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles phases font formellement partie du cadre méthodologique normé d'une Analyse du Cycle de Vie ?",
+              "options": [
+                "La définition des objectifs et du champ de l'étude",
+                "L'inventaire du cycle de vie (ICV)",
+                "La négociation des marges financières des grossistes",
+                "La fixation de la campagne de communication médiatique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les normes ISO 14040/14044 définissent les quatre étapes scientifiques, excluant les aspects financiers ou publicitaires étrangers à l'analyse environnementale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste rigoureusement l'Inventaire du Cycle de Vie (ICV) dans une démarche d'ACV ?",
+              "options": [
+                "À quantifier l'ensemble des flux entrants de matières et d'énergie et des flux sortants d'émissions et de déchets",
+                "À compter le nombre d'employés travaillant dans les bureaux de l'entreprise",
+                "À lister les marques des concurrents commerciaux du secteur",
+                "À recenser le nombre de brevets techniques déposés chaque mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ICV est le bilan comptable complet de tous les échanges physiques entre le système étudié et la nature (ressources consommées, rejets dans l'air, l'eau et le sol)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'unité fonctionnelle (UF) dans une étude d'Analyse du Cycle de Vie ?",
+              "options": [
+                "La grandeur quantifiée représentant le service rendu par le produit et servant de base commune de comparaison",
+                "La surface au sol occupée par le bâtiment du siège social",
+                "Le poids total de la notice d'utilisation en papier",
+                "La puissance électrique maximale mesurée à vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité fonctionnelle normalise la comparaison : on ne compare pas deux objets en tant que matière, mais le service mesuré qu'ils rendent (ex. éclairer 500 lm pendant 1 000 h)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phase de l'ACV traduit les flux de matière et d'énergie de l'inventaire en indicateurs d'impacts environnementaux concrets ?",
+              "options": [
+                "L'évaluation de l'impact du cycle de vie (EICV)",
+                "L'audit comptable de fin d'exercice fiscal",
+                "La déclaration de douane pour l'exportation",
+                "L'étalonnage métrologique annuel des capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'EICV utilise des modèles scientifiques de caractérisation pour transformer les flux physiques d'inventaire en indicateurs d'impact (effet de serre, acidification, etc.)."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quels périmètres de frontières du système sont couramment retenus lors de la réalisation d'une ACV ?",
+              "options": [
+                "Du berceau à la tombe (cradle to grave, cycle de vie complet)",
+                "Du berceau à la porte de l'usine (cradle to gate, avant distribution)",
+                "De la vitrine du magasin au trottoir de livraison",
+                "Du contrat de vente à la facture définitive"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le périmètre cradle-to-grave couvre tout le cycle de vie, tandis que cradle-to-gate s'arrête à la sortie de l'usine de fabrication pour les composants intermédiaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet d'identifier l'étape d'interprétation des résultats d'une ACV pour guider le travail du concepteur ?",
+              "options": [
+                "Les étapes ou composants 'points chauds' qui génèrent la majorité des impacts environnementaux",
+                "Le cours en temps réel de l'action de l'entreprise en bourse",
+                "Le nom du distributeur le plus rentable pour la vente",
+                "L'horaire idéal pour programmer les réunions de service"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interprétation met en lumière les postes critiques sur lesquels focaliser les efforts d'éco-conception pour obtenir les gains environnementaux les plus efficaces."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel écueil environnemental majeur l'approche globale de l'ACV permet-elle d'éviter lors de la reconception d'un système ?",
+              "options": [
+                "Le transfert d'impact (déplacer une pollution vers une autre étape du cycle ou vers un autre indicateur)",
+                "La diminution accidentelle du temps de pause des ouvriers",
+                "La surchauffe des composants électroniques de calcul",
+                "Le ralentissement de la vitesse de connexion internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ACV empêche les fausses bonnes idées qui réduisent un impact visible (ex. en phase d'usage) tout en augmentant dramatiquement la pollution en phase de fabrication ou de fin de vie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle formulation exprime une unité fonctionnelle rigoureuse pour comparer deux solutions d'isolation thermique d'un bâtiment ?",
+              "options": [
+                "Isoler 1 m² de paroi avec une résistance thermique R = 5 m²·K/W sur une durée de vie de 50 ans",
+                "Acheter un rouleau de laine minérale de 10 kg en grande surface de bricolage",
+                "Dépenser moins de 100 euros de matériau sans garantie thermique",
+                "Poser une couche d'isolant de 20 cm d'épaisseur sans préciser ses propriétés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une bonne unité fonctionnelle quantifie la performance technique délivrée (la résistance thermique R), la surface traitée et la durée de service garantie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Normes ISO 14040 et cadre méthodologique de l'ACV",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle norme internationale de référence définit les principes généraux et le cadre de travail d'une Analyse du Cycle de Vie ?",
+              "options": [
+                "La norme ISO 14040",
+                "La norme ISO 9001",
+                "La norme ISO 27001",
+                "La norme ISO 45001"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La norme ISO 14040 établit les principes directeurs, la structure en 4 phases et les exigences méthodologiques générales de l'ACV."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle norme ISO complémentaire détaille précisément les exigences et les lignes directrices pour conduire une ACV ?",
+              "options": [
+                "La norme ISO 14044",
+                "La norme ISO 31000",
+                "La norme ISO 50001",
+                "La norme ISO 17025"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ISO 14044 complète l'ISO 14040 en spécifiant les exigences méthodologiques détaillées de collecte des données, de calcul et de rédaction du rapport d'ACV."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels principes méthodologiques sont obligatoires selon la série des normes ISO 14040 pour assurer la rigueur d'une ACV ?",
+              "options": [
+                "La transparence complète des hypothèses retenues et la traçabilité des données",
+                "La prise en compte intégrale d'une perspective cycle de vie multicritère",
+                "La suppression délibérée des données montrant un impact trop négatif",
+                "La modification des résultats pour satisfaire les attentes marketing"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les normes ISO imposent une neutralité scientifique, la justification documentée de chaque hypothèse et une traçabilité rigoureuse des sources de données."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le procédé qui répartit les flux environnementaux d'un procédé partagé entre ses différents coproduits ?",
+              "options": [
+                "L'allocation environnementale",
+                "La condensation liquide",
+                "La sublimation réactive",
+                "La dispersion isotopique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque plusieurs produits sortent d'une même installation (ex. sciure et planches dans une scierie), l'allocation répartit les impacts (souvent au prorata de la masse ou du prix)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle priorité méthodologique préconise la norme ISO 14044 pour éviter le recours aux allocations d'impacts arbitraires ?",
+              "options": [
+                "La subdivision du procédé ou l'extension des frontières du système",
+                "Le tirage au sort des coefficients sans explication",
+                "L'attribution de 100 % des impacts au déchet secondaire",
+                "La suppression pure et simple de l'étape de raffinage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ISO 14044 recommande en priorité d'éviter l'allocation en découpant le procédé en sous-procédés ou en élargissant le système pour inclure les fonctions des coproduits."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une 'revue critique' selon la norme ISO 14044 lorsqu'une ACV comparative est destinée à une communication publique ?",
+              "options": [
+                "Une vérification formelle par un panel d'experts indépendants pour valider la conformité méthodologique",
+                "Un article critique paru dans la rubrique financière d'un quotidien",
+                "Un test destructif de l'ensemble des prototypes en laboratoire",
+                "Une plainte déposée par une entreprise concurrente au tribunal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour éviter les allégations trompeuses, toute comparaison publique de produits doit être validée par un comité d'experts indépendants attestant de la conformité ISO."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles bases de données d'inventaire de cycle de vie (ICV) font référence dans les logiciels professionnels d'ACV ?",
+              "options": [
+                "La base internationale Ecoinvent",
+                "La Base Empreinte administrée par l'ADEME en France",
+                "Le réseau social Instagram",
+                "L'annuaire téléphonique national"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ecoinvent et la Base Empreinte fournissent des milliers de jeux de données audités et standardisés sur l'énergie, les matériaux et les procédés industriels."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que représente l'étape optionnelle de 'normalisation' dans l'évaluation des impacts d'une ACV ?",
+              "options": [
+                "Diviser les impacts calculés par des valeurs de référence globales (ex. impact moyen annuel d'un habitant) pour situer leur importance relative",
+                "Traduire automatiquement le rapport dans toutes les langues officielles",
+                "Remplacer toutes les unités métriques par des unités impériales",
+                "Supprimer les décimales des résultats pour simplifier la lecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La normalisation exprime les impacts dans une dimension commune (ex. fraction de l'impact annuel d'un Européen) pour identifier les catégories où le produit pèse le plus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En quoi consiste l'étape optionnelle de 'pondération' dans une Analyse du Cycle de Vie ?",
+              "options": [
+                "À multiplier chaque score d'impact par un coefficient de valeur sociétale ou politique pour tenter d'obtenir un score unique",
+                "À peser le produit sur une balance électronique étalonnée",
+                "À mesurer la masse totale des gaz d'échappement produits",
+                "À calculer le barycentre mécanique des pièces mobiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pondération agrège différents indicateurs (changement climatique, eau, toxicité) en attribuant des poids relatifs subjectifs pour obtenir un indicateur global agrégé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la norme ISO 14044 interdit-elle formellement l'usage de la pondération pour les études comparatives destinées à être divulguées au public ?",
+              "options": [
+                "Parce qu'elle repose sur des jugements de valeur subjectifs non scientifiques susceptibles de biaiser la comparaison",
+                "Parce que les ordinateurs ne savent pas exécuter d'additions pondérées",
+                "Parce que les unités de mesure ne sont pas compatibles avec le système légal",
+                "Parce que le Parlement européen a supprimé l'ensemble des coefficients de calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribuer plus de poids au climat qu'à l'eau ou à la santé humaine relève d'un choix éthique ou politique, et ne peut pas faire l'objet d'une vérité scientifique universelle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Indicateurs d'impact : Réchauffement climatique et GES",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle molécule chimique sert d'étalon universel de référence pour quantifier le potentiel de réchauffement climatique des gaz à effet de serre ?",
+              "options": [
+                "Le dioxyde de carbone (CO2)",
+                "L'argon pur (Ar)",
+                "Le diazote neutre (N2)",
+                "Le dihydrogène gazeux (H2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO2 sert de référence absolue : son Potentiel de Réchauffement Global (PRG) est fixé conventionnellement à 1 par le GIEC."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quelle unité normalisée est exprimé l'indicateur d'impact sur le changement climatique dans un rapport d'ACV ?",
+              "options": [
+                "En kilogrammes équivalent CO2 (kg eq. CO2)",
+                "En mégawatts par seconde d'utilisation",
+                "En mètres cubes d'eau de pluie",
+                "En becquerels par litre de fluide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les émissions de différents gaz sont converties en une masse équivalente de CO2 produisant le même forçage radiatif cumulé sur une durée donnée."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels composés gazeux font partie des principaux gaz à effet de serre (GES) directs suivis par le protocole de Kyoto ?",
+              "options": [
+                "Le méthane (CH4)",
+                "Le protoxyde d'azote (N2O)",
+                "Le xénon noble",
+                "Le dioxygène pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le méthane (agriculture, gaz naturel) et le protoxyde d'azote (fertilisants azotés, chimie) sont des gaz à puissant effet de serre réglementés au niveau mondial."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du Potentiel de Réchauffement Global à 100 ans (PRG100) du méthane (CH4) par rapport au CO2 selon le GIEC ?",
+              "options": [
+                "Environ 28 à 30 fois supérieur à celui du CO2",
+                "Rigoureusement identique à 1",
+                "Deux fois plus faible que celui du CO2",
+                "Plus de 50 000 fois supérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À horizon 100 ans, un kilogramme de méthane relargué dans l'atmosphère réchauffe autant le climat qu'environ 28 à 30 kg de CO2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle famille de fluides techniques possède des PRG considérables (plusieurs milliers de fois supérieurs au CO2) ?",
+              "options": [
+                "Les gaz fluorés (HFC, PFC, SF6) utilisés en climatisation et appareillage électrique haute tension",
+                "Les huiles végétales de colza utilisées en cuisine",
+                "Les vapeurs d'eau pure des centrales thermiques",
+                "Les mélanges d'azote et d'argon de laboratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hydrofluorocarbures (HFC) et le SF6 ont une durée de vie atmosphérique très longue et absorbent fortement le rayonnement infrarouge, d'où leur réglementation drastique (règlement F-Gas)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel horizon temporel conventionnel standard est retenu par défaut pour calculer les PRG dans la majorité des déclarations environnementales ?",
+              "options": ["100 ans (PRG100)", "1 an", "10 ans", "1 000 ans"],
+              "correctAnswers": [0],
+              "explanation": "Le GIEC et les normes environnementales utilisent principalement l'horizon de 100 ans pour équilibrer la prise en compte des gaz à courte et longue durée de vie atmosphérique."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles activités industrielles sont à l'origine d'émissions massives de dioxyde de carbone direct ?",
+              "options": [
+                "La combustion d'énergies fossiles (charbon, fioul, gaz naturel) pour la production thermique ou le transport",
+                "La décarbonatation du calcaire lors de la fabrication du clinker pour le ciment",
+                "La croissance naturelle des forêts boréales",
+                "Le captage passif d'énergie par les éoliennes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La combustion fossile et la réaction de décarbonatation chimique du calcaire (CaCO3 -> CaO + CO2) dans les cimenteries sont deux sources massives de CO2 industriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mécanisme physique sous-tend l'effet de serre causé par l'accumulation des gaz anthropiques dans l'atmosphère ?",
+              "options": [
+                "L'absorption et la réémission vers la Terre du rayonnement infrarouge thermique émis par la surface terrestre",
+                "L'arrêt mécanique de la rotation du globe terrestre",
+                "L'augmentation brutale de la constante de gravitation",
+                "Le grossissement de la taille des atomes d'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre réémet l'énergie solaire sous forme d'infrarouges thermiques. Les molécules de GES absorbent ces longueurs d'onde et réémettent de l'énergie vers le sol, piégeant la chaleur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le bilan des émissions de gaz à effet de serre d'une entreprise (GHG Protocol), à quoi correspond le 'Scope 1' ?",
+              "options": [
+                "Aux émissions directes provenant des sources fixes ou mobiles contrôlées par l'organisation",
+                "Aux émissions indirectes associées à la consommation d'électricité du réseau",
+                "Aux émissions lointaines générées par les clients chez eux",
+                "Aux projets de mécénat environnemental financés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Scope 1 rassemble les émissions directes (combustion de chaudières sur site, carburant de la flotte de véhicules possédée, fuites de fluides frigorigènes)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel périmètre d'émissions couvre le 'Scope 3' dans la comptabilité carbone d'une organisation industrielle ?",
+              "options": [
+                "L'ensemble des émissions indirectes de la chaîne de valeur amont (achats, fret) et aval (usage et fin de vie des produits vendus)",
+                "Uniquement la consommation électrique des ampoules de l'accueil",
+                "Les factures d'eau potable payées à la municipalité",
+                "Les impôts locaux versés aux collectivités territoriales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Scope 3 représente généralement plus de 75 % de l'empreinte carbone globale d'un fabricant : il intègre l'extraction des matériaux amont et la consommation d'énergie des produits chez les clients."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Énergie grise et empreinte carbone de fabrication",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'énergie grise (embodied energy) incorporée dans un équipement manufacturé ?",
+              "options": [
+                "La somme de toutes les énergies primaires consommées pour l'extraction, la fabrication, le transport et le traitement de l'objet",
+                "L'énergie thermique dissipée par l'appareil durant sa dernière heure d'utilisation",
+                "L'énergie produite par les cellules photovoltaïques du toit de l'usine",
+                "Le nom d'un tarif commercial proposé par les fournisseurs d'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie grise représente toute l'énergie 'invisible' dissimulée derrière l'objet, consommée tout au long de sa chaîne de production antérieure à son acquisition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parmi ces matériaux courants, lequel exige la plus forte quantité d'énergie grise par kilogramme pour son élaboration primaire ?",
+              "options": [
+                "Le titane ou l'aluminium primaire",
+                "Le bois brut de sciage séché à l'air libre",
+                "Le sable de concassage de carrière",
+                "Le plâtre naturel de gypse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extraction et l'électrolyse des métaux légers réactifs (aluminium ~150-200 MJ/kg, titane >500 MJ/kg) réclament une intensité énergétique sans commune mesure avec les matériaux de construction minéraux."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles étapes industrielles représentent une part substantielle de l'énergie grise d'une pièce métallique forgée ?",
+              "options": [
+                "La fusion et l'élaboration de l'acier en aciérie",
+                "Le maintien en température dans les fours et la déformation plastique à chaud",
+                "La signature administrative du bon de livraison",
+                "Le stationnement du camion de transport au péage autoroutier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chauffer des lingots métalliques à plus de 1 100 °C et alimenter des presses de forge hydrauliques de plusieurs milliers de tonnes absorbe des puissances considérables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour un smartphone moderne, quelle étape de son cycle de vie concentre environ 70 à 80 % de son empreinte carbone totale ?",
+              "options": [
+                "La fabrication (extraction des métaux rares et fabrication des puces électroniques)",
+                "La consommation d'électricité lors des recharges quotidiennes de la batterie",
+                "L'acheminement final par le facteur jusqu'au domicile",
+                "Le recyclage du carton d'emballage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à une voiture thermique, l'impact d'un smartphone est dominé par sa fabrication : la recharge quotidienne ne pèse que quelques pourcents de son bilan carbone sur 3 ans."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la fabrication d'un circuit intégré (puce en silicium) est-elle extrêmement énergivore par unité de masse ?",
+              "options": [
+                "Elle requiert des salles blanches ultra-pures en ventilation continue et des centaines d'étapes sous vide poussé",
+                "Elle brûle du carburant lourd pour fondre des blocs de granit",
+                "Elle nécessite de maintenir les pièces sous l'eau bouillante pendant un an",
+                "Elle emploie des moteurs diesel pour polir chaque transistor manuellement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le silicium de qualité électronique nécessite un raffinage extrême (pureté 99,9999999 %), des salles blanches climatisées sans poussière et des gravures laser nanométriques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quelle unité physique exprime-t-on couramment la consommation d'énergie grise primaire cumulée (CED) d'un produit ?",
+              "options": [
+                "En mégajoules (MJ) ou en kilowattheures équivalents primaires (kWh)",
+                "En newtons par mètre carré",
+                "En ampères par volt",
+                "En hertz de fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie grise cumulée comptabilise l'ensemble des énergies primaires (fossile, nucléaire, renouvelable) en mégajoules (MJ) ou kWh équivalent."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quels leviers d'éco-conception permettent de réduire efficacement l'énergie grise incorporée dans un châssis mécanique ?",
+              "options": [
+                "Optimiser la topologie des pièces pour retirer la matière inutile tout en maintenant la rigidité",
+                "Remplacer les alliages primaires par des matières recyclées (secondaires)",
+                "Augmenter l'épaisseur de toutes les tôles de façon forfaitaire",
+                "Faire usiner les pièces dans un pays éloigné sans contrôle d'efficacité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Diminuer la masse de matière première nécessaire et employer des matières recyclées (très peu énergivores à la refonte) réduit directement l'énergie grise du produit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la définition rigoureuse de l'énergie primaire par rapport à l'énergie finale reçue par un appareil ?",
+              "options": [
+                "L'énergie primaire est l'énergie brute prélevée dans la nature avant transformation, l'énergie finale est celle fournie au compteur de l'utilisateur",
+                "L'énergie primaire est celle consommée exclusivement le premier jour d'utilisation",
+                "L'énergie finale est toujours plus importante que l'énergie primaire prélevée",
+                "L'énergie primaire désigne exclusivement l'énergie musculaire humaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes lors de la conversion et du transport (ex. centrales électriques, réseau électrique) font qu'il faut consommer davantage d'énergie primaire pour livrer un kWh final."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En France, quel coefficient de passage de l'énergie finale à l'énergie primaire est fixé pour l'électricité dans la réglementation thermique RE2020 ?",
+              "options": ["2,3", "1,0", "5,5", "0,1"],
+              "correctAnswers": [0],
+              "explanation": "La RE2020 applique un facteur de 2,3 : il faut mobiliser 2,3 kWh d'énergie primaire dans le mix électrique français pour délivrer 1 kWh d'électricité finale au compteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel procédé de fabrication génère un taux de chute de matière très élevé, alourdissant le bilan en énergie grise de la pièce finie ?",
+              "options": [
+                "L'usinage 5 axes par enlèvement de copeaux dans un bloc massif",
+                "Le moulage par injection thermoplastique sans carotte",
+                "Le forgeage de précision à chaud sans bavure",
+                "L'extrusion continue de profilés creux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usiner une pièce aéronautique dans un lopin massif peut transformer 80 à 90 % du métal en copeaux (buy-to-fly ratio élevé), gaspillant l'énergie grise de production du bloc initial."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Épuisement des ressources abiotiques et consommation d'eau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que mesure précisément l'indicateur ADP (Abiotic Depletion Potential) dans une étude d'ACV ?",
+              "options": [
+                "L'épuisement des ressources naturelles non vivantes (minerais métalliques, minéraux et combustibles fossiles)",
+                "La baisse des populations de poissons migrateurs dans les rivières",
+                "La concentration en pollens d'arbres dans l'atmosphère urbaine",
+                "Le nombre moyen d'heures d'ensoleillement par an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ADP évalue la raréfaction des ressources géologiques inorganiques sous l'effet de leur extraction par rapport au stock de réserves mondiales disponibles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quelle unité équivalente normalisée est exprimé l'indicateur d'épuisement des éléments abiotiques (ADP elements) selon la méthode CML ?",
+              "options": [
+                "En kilogrammes équivalent antimoine (kg eq. Sb)",
+                "En mètres cubes de pétrole brut lourd",
+                "En tonnes équivalent uranium 235",
+                "En litres d'acide sulfurique concentré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'antimoine (Sb) a été choisi comme étalon de référence car ses réserves étaient historiquement très limitées face à sa vitesse de consommation annuelle."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles ressources naturelles sont classées comme abiotiques non renouvelables à l'échelle temporelle humaine ?",
+              "options": [
+                "Les minerais de cuivre, de zinc et de fer",
+                "Les hydrocarbures fossiles (gaz naturel, charbon, pétrole)",
+                "Le bois d'œuvre issu de forêts écocertifiées",
+                "Le rayonnement solaire direct"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les minerais et les énergies fossiles se sont formés sur des millions d'années : leur extraction est un prélèvement définitif sur un stock fini à l'échelle humaine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que prend en compte la méthode AWARE (Available WAter REmaining) pour évaluer l'impact de la consommation d'eau d'un procédé ?",
+              "options": [
+                "Elle pondère le volume d'eau consommé par le niveau de stress hydrique local dans le bassin versant considéré",
+                "Elle mesure la température de l'eau en sortie de robinet",
+                "Elle compte le nombre de bouteilles en plastique d'eau minérale achetées",
+                "Elle interdit toute utilisation d'eau dans les usines d'ingénierie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consommer 1 m³ d'eau dans une zone aride soumise à un fort stress hydrique a un impact environnemental bien plus lourd que dans une région tempérée abondamment pourvue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle distinction existe entre un 'prélèvement d'eau' et une 'consommation d'eau' nette dans un bilan d'ingénierie ?",
+              "options": [
+                "La consommation nette est l'eau prélevée qui n'est pas restituée au même bassin versant (évaporation, incorporation au produit)",
+                "Le prélèvement d'eau détruit définitivement la molécule d'eau",
+                "La consommation d'eau ne s'applique qu'à l'eau bue par les opérateurs",
+                "Ce sont deux termes interchangeables parfaitement identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si une centrale prélève de l'eau pour son refroidissement et la restitue à la même rivière après usage, le prélèvement est élevé mais la consommation nette est faible (seule la part évaporée compte)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle étape de fabrication industrielle d'une carte électronique consomme d'importantes quantités d'eau ultra-pure ?",
+              "options": [
+                "Les rinçages successifs entre les opérations chimiques de gravure et de dépôt des couches semi-conductrices",
+                "Le vissage mécanique du boîtier en plastique extérieur",
+                "L'impression jet d'encre de la boîte en carton d'emballage",
+                "Le transport aérien de la palette de cartes assemblées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La microélectronique exige une eau déminéralisée d'une pureté absolue pour rincer les tranches de silicium sans déposer la moindre impureté ionique sur les circuits."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles décisions d'éco-conception permettent de réduire la pression sur l'indicateur d'épuisement des ressources abiotiques ?",
+              "options": [
+                "Intégrer des matières premières secondaires issues de filières de recyclage certifiées",
+                "Réduire l'épaisseur et la masse des pièces tout en conservant les caractéristiques de tenue mécanique",
+                "Substituer systématiquement l'aluminium par de l'argent pur non allié",
+                "Augmenter arbitrairement le poids de métal de toutes les structures"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Utiliser moins de matière vierge et incorporer des matériaux recyclés préserve les gisements miniers mondiaux et réduit directement l'indicateur ADP."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la criticité de l'antimoine (Sb) est-elle historiquement élevée en ingénierie ?",
+              "options": [
+                "C'est un élément peu abondant dans l'écorce terrestre, très utilisé comme retardateur de flamme et dans les batteries au plomb",
+                "Il est impossible de le peser sur une balance conventionnelle",
+                "Il est présent dans 90 % de l'air que nous respirons",
+                "Il a été découvert il y a moins de deux ans dans l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'antimoine possède une production annuelle élevée rapportée à des réserves géologiques mondiales limitées, en faisant une référence idéale pour la métrique ADP."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel aménagement industriel permet à un site de production de réduire drastiquement ses prélèvements d'eau douce ?",
+              "options": [
+                "L'installation d'une station d'épuration interne permettant le recyclage de l'eau industrielle en boucle fermée",
+                "L'augmentation de la pression de rejet à l'égout public sans traitement",
+                "L'utilisation d'eau minérale embouteillée pour le refroidissement des machines",
+                "L'évaporation forcée de toutes les eaux sans récupération de vapeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traiter et recycler les eaux techniques sur place (recirculation après décantation et filtration membranaire) diminue les volumes prélevés sur les cours d'eau de plus de 90 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle conséquence grave résulte de la surexploitation d'une nappe phréatique côtière par des installations industrielles ?",
+              "options": [
+                "L'intrusion d'eau de mer salée rendant l'aquifère impropre à la consommation",
+                "La formation de volcans sous-marins au large de la côte",
+                "La transformation des roches calcaires en diamants industriels",
+                "L'élévation spontanée de la marée haute de 15 mètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque le niveau d'eau douce baisse trop par pompage excessif, le biseau salin avance et l'eau de mer s'infiltre dans la nappe, provoquant une salinisation irréversible."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Eutrophisation, acidification et écotoxicité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel phénomène écologique correspond à l'eutrophisation d'un lac ou d'une baie aquatique ?",
+              "options": [
+                "L'enrichissement excessif en nutriments minéraux (azote et phosphore) provoquant la prolifération incontrôlée de biomasse végétale",
+                "La baisse brutale de la salinité de l'eau sous l'effet des marées",
+                "L'évaporation soudaine de l'intégralité du volume liquide en été",
+                "La congélation spontanée de l'eau à une température de 25 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'excès de phosphore et d'azote (effluents industriels, lessives, engrais) stimule la prolifération algale qui asphyxie progressivement le plan d'eau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la prolifération d'algues liée à l'eutrophisation conduit-elle à une mortalité massive de la faune aquatique ?",
+              "options": [
+                "La décomposition bactérienne de la biomasse morte consomme tout le dioxygène dissous (anoxie du milieu)",
+                "Les algues transforment l'eau douce en hydrocarbures toxiques",
+                "Les algues filtrent la pesanteur terrestre sous l'eau",
+                "La température de l'eau dépasse spontanément 80 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque les algues meurent et s'accumulent au fond, les bactéries aérobies les décomposent en consommant le dioxygène disponible, provoquant l'asphyxie des poissons."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels gaz polluants rejetés par les combustions industrielles sont les précurseurs directs des pluies acides (acidification atmosphérique) ?",
+              "options": [
+                "Le dioxyde de soufre (SO2)",
+                "Les oxydes d'azote (NOx)",
+                "Le néon inerte",
+                "Le diazote atmosphérique pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le SO2 et les NOx réagissent avec la vapeur d'eau et les oxydants de l'air pour former de l'acide sulfurique (H2SO4) et de l'acide nitrique (HNO3)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quelle unité est conventionnellement exprimé l'indicateur d'impact d'acidification (AP) en ACV ?",
+              "options": [
+                "En kilogrammes équivalent dioxyde de soufre (kg eq. SO2)",
+                "En décibels acoustiques pondérés A",
+                "En ampères par mètre carré de surface",
+                "En becquerels par unité de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le potentiel d'acidification quantifie la capacité des gaz émis à libérer des ions H+ dans l'environnement, exprimée en masse équivalente de SO2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que quantifient les indicateurs d'écotoxicité aquatique et terrestre dans une analyse environnementale ?",
+              "options": [
+                "Les effets néfastes et toxiques potentiels des substances chimiques émises sur les organismes vivants et les écosystèmes",
+                "Le volume de déchets solides inertes mis en décharge",
+                "La dureté mécanique de l'eau en degrés français",
+                "La vitesse de sédimentation des graviers dans une rivière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modèles d'écotoxicité évaluent le devenir, l'exposition et les effets toxiques des molécules chimiques rejetées (métaux lourds, solvants, biocides) sur la faune et la flore."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la bioaccumulation d'un micropolluant industriel toxique dans l'environnement ?",
+              "options": [
+                "Sa concentration progressive dans les tissus vivants d'un organisme au fil du temps et le long de la chaîne trophique",
+                "Sa dégradation instantanée en eau pure et en dioxyde de carbone",
+                "Son évaporation complète vers la haute stratosphère",
+                "Sa transformation en sels minéraux fertilisants inoffensifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains polluants hydrophobes persistants (métaux lourds, PCB) ne sont pas éliminés par l'organisme : ils s'accumulent dans les graisses et se concentrent chez les prédateurs."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles substances chimiques font l'objet d'une élimination prioritaire en ingénierie en raison de leur persistance et écotoxicité extrêmes ?",
+              "options": [
+                "Les polluants organiques persistants (POP, ex. PCB, dioxines)",
+                "Les substances per- et polyfluoroalkylées (PFAS, appelées polluants éternels)",
+                "Le sel de table pur (NaCl non iodé)",
+                "L'eau distillée stérile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les POP et les PFAS résistent à toute dégradation naturelle et s'accumulent durablement dans les sols, les eaux et les organismes vivants."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel modèle scientifique de consensus international est recommandé par la Commission Européenne pour le calcul de l'écotoxicité en ACV ?",
+              "options": [
+                "Le modèle USEtox",
+                "Le modèle de Black-Scholes",
+                "Le critère de Tresca",
+                "Le diagramme de Nyquist"
+              ],
+              "correctAnswers": [0],
+              "explanation": "USEtox est un modèle scientifique d'évaluation de la toxicité humaine et de l'écotoxicité aquatique développé sous l'égide du PNUE et de la SETAC."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel impact destructeur direct les pluies acides exercent-elles sur les écosystèmes forestiers et les massifs rocheux ?",
+              "options": [
+                "La dissolution des nutriments minéraux du sol, le lessivage de métaux toxiques et la dégradation des cuticules foliaires",
+                "L'apparition spontanée de nouvelles forêts tropicales",
+                "La solidification du sol sous forme de verre incassable",
+                "Une division par dix de la vitesse du vent dans les vallées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acidité des pluies solubilise l'aluminium toxique dans le sol, appauvrit la terre en calcium/magnésium et détruit les feuilles, affaiblissant les arbres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle conséquence critique l'acidification des océans (induite par l'absorption massive de CO2 atmosphérique) entraîne-t-elle sur les organismes marins ?",
+              "options": [
+                "La difficulté accrue pour les coraux et mollusques de synthétiser leur coquille ou squelette en carbonate de calcium (CaCO3)",
+                "La transformation des algues vertes en coraux durs métalliques",
+                "Une baisse instantanée de la température moyenne des eaux de 10 °C",
+                "La disparition complète des marées lunaires sur les côtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La baisse du pH diminue la concentration en ions carbonates disponibles, ce qui fragilise les structures calcaires des coquillages, crustacés et récifs coralliens."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Phase d'usage : efficacité énergétique et sobriété",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle distinction conceptuelle fondamentale oppose l'efficacité énergétique à la sobriété énergétique ?",
+              "options": [
+                "L'efficacité optimise le rendement technique pour un service identique, la sobriété interroge et modère le besoin d'usage",
+                "L'efficacité concerne uniquement les vélos et la sobriété concerne les avions de ligne",
+                "L'efficacité est gratuite alors que la sobriété exige des investissements colossaux",
+                "Ce sont deux termes interchangeables parfaitement équivalents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'efficacité technique diminue l'énergie par unité de service rendu (ex. moteur à meilleur rendement), tandis que la sobriété adapte les comportements et évite les gaspillages d'usage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel étiquetage obligatoire en Union Européenne classe les appareils électroménagers de A à G selon leur performance énergétique ?",
+              "options": [
+                "L'étiquette-énergie européenne",
+                "Le label rouge agricole",
+                "L'estampille de conformité douanière",
+                "Le score carbone de transport routier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étiquette-énergie informe les consommateurs sur la classe d'efficacité énergétique et la consommation annuelle en kWh, stimulant l'innovation des constructeurs."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles solutions techniques permettent d'accroître le rendement énergétique d'un groupe motopompe industriel en fonctionnement continu ?",
+              "options": [
+                "Installer un moteur électrique à très haut rendement (classe IE4 ou IE5)",
+                "Adjoindre un variateur électronique de vitesse adaptant le régime moteur au débit réel requis",
+                "Laisser tourner la pompe à pleine puissance en étranglant le débit par une vanne manuelle fermée aux trois quarts",
+                "Couper la lubrification des paliers pour augmenter les frictions internes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La variation électronique de vitesse évite de dissiper inutilement de l'énergie dans une vanne de laminage, et les moteurs IE4 réduisent considérablement les pertes Joule et fer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'effet rebond (ou paradoxe de Jevons) fréquemment constaté après un gain d'efficacité énergétique ?",
+              "options": [
+                "Une hausse des usages induite par la baisse du coût d'utilisation qui compense ou annule les économies d'énergie initialement prévues",
+                "Le rebond élastique d'une bille en acier chutant sur un marbre",
+                "Le retour en arrière automatique d'un moteur électrique coupé",
+                "La décharge brutale d'une batterie lors d'un freinage régénératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si un moteur consomme deux fois moins, le coût d'usage baisse et les utilisateurs ont tendance à l'utiliser plus souvent ou à concevoir des véhicules plus lourds et plus rapides."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour quel type d'équipement technique la phase d'usage représente-t-elle souvent plus de 80 % des impacts environnementaux sur tout son cycle de vie ?",
+              "options": [
+                "Un moteur électrique industriel ou une chaudière fonctionnant des milliers d'heures par an",
+                "Un marteau de menuisier en acier forgé et manche en frêne",
+                "Une chaise de bureau manuelle sans composants motorisés",
+                "Une clé plate en acier chrome-vanadium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les convertisseurs d'énergie à longue durée de vie en service continu, l'énergie absorbée durant l'usage écrase largement l'énergie grise de fabrication."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel système présent sur les rames de train et véhicules électrifiés convertit l'énergie cinétique de ralentissement en électricité réinjectée ?",
+              "options": [
+                "Le freinage régénératif (ou récupération d'énergie au freinage)",
+                "Le frein mécanique à sabot de fonte frottant",
+                "L'aérofrein passif de toiture",
+                "L'embrayage multidisque centrifuge à sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moteur électrique fonctionne en génératrice lors de la décélération : il freine le véhicule tout en produisant de l'électricité réinjectée dans la batterie ou le réseau."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles consommations d'énergie parasites peuvent être éliminées par une conception sobre des appareils électroniques ?",
+              "options": [
+                "La consommation en veille prolongée sans usage réel",
+                "Le maintien continu d'alimentations à découpage sous tension hors fonctionnement",
+                "La consommation utile du processeur en plein calcul demandé",
+                "L'émission lumineuse de l'écran pendant le travail de l'utilisateur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les modes de veille non optimisés et les blocs d'alimentation laissés branchés à vide soutirent de la puissance en permanence sans fournir de service actif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le rendement énergétique (eta) d'un convertisseur d'énergie en ingénierie ?",
+              "options": [
+                "Le rapport entre la puissance utile délivrée et la puissance totale absorbée (Pu / Pa)",
+                "La somme des puissances thermiques perdues multipliée par le temps",
+                "La différence entre la tension d'entrée et la résistance ohmique",
+                "Le produit de la vitesse de rotation par la masse du rotor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement eta = Puissance utile / Puissance absorbée est toujours inférieur à 1 en raison des inévitables pertes irréversibles (thermiques, frottements, effet Joule)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle technologie d'éclairage a divisé par 5 à 8 la consommation électrique par rapport aux ampoules à incandescence pour un même flux lumineux ?",
+              "options": [
+                "Les diodes électroluminescentes (LED)",
+                "Les lampes à arc au xénon haute pression",
+                "Les becs de gaz naturel de ville",
+                "Les filaments de carbone sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les LED convertissent directement l'électricité en lumière par électroluminescence avec un rendement lumineux supérieur à 100-150 lm/W, contre 12 lm/W pour l'incandescence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que mesure le coefficient de transmission thermique surfacique U (en W/(m²·K)) d'une paroi de bâtiment éco-conçu ?",
+              "options": [
+                "Le flux de chaleur qui traverse un mètre carré de paroi pour un écart de température de 1 kelvin entre l'intérieur et l'extérieur",
+                "La vitesse de propagation des ondes sonores à travers le mur",
+                "La masse totale de vapeur d'eau absorbée par le crépi",
+                "La résistance mécanique à l'arrachement sous vent violent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus le coefficient U est faible, plus la paroi est isolante et moins il y a de déperditions thermiques à compenser par du chauffage en hiver."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Transport, logistique et circuits d'approvisionnement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Parmi ces modes de transport de marchandises, lequel présente les émissions de CO2 par tonne-kilomètre les plus faibles en Europe ?",
+              "options": [
+                "Le fret ferroviaire électrifié",
+                "L'avion cargo long-courrier",
+                "La camionnette de livraison diesel",
+                "Le poids lourd semi-remorque diesel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le train de fret électrique bénéficie du très faible coefficient de frottement acier-acier et d'un mix électrique largement décarboné en France, émettant jusqu'à 9 fois moins de CO2 que la route."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi le transport maritime par porte-conteneurs géant affiche-t-il une très faible empreinte carbone par tonne-kilomètre transportée ?",
+              "options": [
+                "Grâce aux gigantesques effets d'échelle et au transport simultané de plus de 20 000 conteneurs par voyage",
+                "Parce que les navires marchands fonctionnent tous à l'énergie solaire sans carburant",
+                "Parce que l'eau de mer détruit instantanément 100 % des fumées de combustion",
+                "Parce que les moteurs marins ne consomment que de l'hydrogène vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien que le moteur consomme des tonnes de fioul, la masse colossale transportée divise les émissions par tonne-kilomètre, en faisant l'un des modes les plus sobres par unité de masse."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels polluants locaux majeurs sont émis en grande quantité par les navires utilisant du fioul lourd non raffiné ?",
+              "options": [
+                "Les oxydes de soufre (SOx) et les suies de particules fines",
+                "Les oxydes d'azote (NOx)",
+                "L'hélium pur",
+                "Le dioxygène liquide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le fioul lourd est riche en soufre et en résidus aromatiques : sa combustion génère de fortes concentrations de SOx et de particules fines nocives pour la santé des populations côtières."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la logistique de distribution urbaine, quelle étape concentre une part disproportionnée des coûts et des pollutions par colis ?",
+              "options": [
+                "La logistique du dernier kilomètre",
+                "Le transport ferroviaire de transit inter-régions",
+                "La traversée océanique en haute mer",
+                "Le stockage longue durée dans un hub automatisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La livraison finale en ville implique des véhicules à faible charge, des arrêts fréquents, des embouteillages et des kilomètres à vide, concentrant jusqu'à un tiers des émissions de la chaîne logistique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le 'slow steaming' pratiqué par les grandes compagnies maritimes pour réduire leur impact écologique ?",
+              "options": [
+                "La réduction volontaire de la vitesse de navigation des navires pour diminuer très fortement la consommation de carburant",
+                "La navigation à voile sans faire tourner les hélices",
+                "L'arrêt complet de tous les moteurs au milieu de l'océan",
+                "Le chauffage de la coque par des résistances électriques pour glisser plus vite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance hydrodynamique de la coque varie approximativement avec le carré ou le cube de la vitesse : réduire la vitesse de navigation de 10 à 20 % permet d'économiser 30 à 50 % de carburant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le transport de marchandises combinant successivement plusieurs modes (ex. rail et route) au sein d'une même unité de chargement sans rupture de charge ?",
+              "options": [
+                "Le transport multimodal (ou combiné)",
+                "La livraison opportuniste aléatoire",
+                "Le cabotage côtier exclusif",
+                "Le transport pneumatique sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transport combiné rail-route utilise des conteneurs ou semi-remorques transférés du train au camion, alliant la sobriété du rail sur longue distance à la flexibilité de la route pour la desserte locale."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles mesures logistiques permettent d'optimiser l'impact environnemental du transport routier de marchandises ?",
+              "options": [
+                "Maximiser le taux de remplissage des remorques et éliminer les trajets de retour à vide",
+                "Convertir les flottes vers des motorisations au biogaz (GNV) ou électriques à batterie",
+                "Faire circuler les camions totalement à vide pour limiter l'usure de l'asphalte",
+                "Supprimer tous les logiciels d'optimisation de tournée de livraison"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un camion plein et des trajets optimisés évitent les kilomètres inutiles, et l'usage de carburants alternatifs (bioGNV, électricité) réduit fortement les émissions de GES."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi le fret aérien est-il de très loin le mode de transport le plus émetteur de GES par tonne-kilomètre ?",
+              "options": [
+                "Parce qu'il exige une puissance motrice immense pour sustenter la masse dans l'air à haute vitesse et haute altitude",
+                "Parce que les avions utilisent du charbon gras pulvérisé comme carburant",
+                "Parce que les carlingues d'avions sont coulées en plomb massif",
+                "Parce que les moteurs d'avions ne disposent d'aucun compresseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voler à 900 km/h à 10 000 m d'altitude nécessite une poussée permanente pour vaincre la traînée et maintenir la portance, ce qui consomme 40 à 100 fois plus d'énergie par tonne que le bateau ou le train."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel impact environnemental direct pose le suremballage et le transport de vide dans les colis du commerce en ligne ?",
+              "options": [
+                "Un gaspillage de cartons et matières plastiques de calage, couplé à une perte de place saturant prématurément les camions",
+                "Une réduction accidentelle de la puissance des moteurs des véhicules de livraison",
+                "Une augmentation de la gravité terrestre au passage du camion",
+                "Une usure immédiate des amortisseurs des véhicules légers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transporter des cartons à moitié vides oblige à multiplier le nombre de camions sur les routes pour livrer le même nombre d'articles, augmentant le trafic et les rejets polluants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle démarche industrielle consiste à relocaliser la fabrication et l'approvisionnement des composants au plus près des lieux de consommation ?",
+              "options": [
+                "L'approvisionnement en circuit court (ou relocalisation industrielle)",
+                "L'externalisation offshore de masse",
+                "Le nomadisme industriel spéculatif",
+                "La délocalisation opportuniste aux antipodes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapprocher la production des marchés finaux réduit les distances de transport, sécurise les approvisionnements face aux aléas internationaux et renforce la résilience territoriale."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Stratégies d'éco-conception et économie circulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la définition officielle de l'éco-conception selon la norme internationale ISO 14062 ?",
+              "options": [
+                "L'intégration systématique des aspects environnementaux dès la conception et le développement de produits",
+                "La plantation compensatoire d'un arbre pour chaque produit vendu en grande surface",
+                "Le simple choix d'une couleur verte pour peindre le carter extérieur d'une machine",
+                "L'interdiction légale d'utiliser des machines-outils raccordées au réseau électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éco-conception est une démarche préventive qui vise à réduire les impacts environnementaux d'un produit tout au long de son cycle de vie, tout en préservant ses performances d'usage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Selon les études de l'ADEME, quelle part des impacts environnementaux futurs d'un produit est scellée dès sa phase de conception en bureau d'études ?",
+              "options": [
+                "Environ 80 % des impacts globaux",
+                "Moins de 5 % des impacts",
+                "Tout au plus 15 % des impacts",
+                "Environ 30 % des impacts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le choix des matériaux, de l'architecture, des procédés de fabrication et de la réparabilité détermine dès la planche à dessin la quasi-totalité des impacts du cycle de vie."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels principes fondamentaux composent la règle universelle des '3R' en gestion des ressources et déchets ?",
+              "options": [
+                "Réduire la consommation de matière et d'énergie",
+                "Réutiliser les objets et composants existants",
+                "Recycler les matériaux en fin de vie",
+                "Remplacer systématiquement les pièces durables par du plastique jetable"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La hiérarchie des 3R donne la priorité absolue à la Réduction à la source, puis au Réemploi/Réutilisation des produits, et enfin au Recyclage des matières."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel modèle économique régénératif vise à rompre avec le schéma linéaire traditionnel 'extraire, fabriquer, consommer, jeter' ?",
+              "options": [
+                "L'économie circulaire",
+                "L'économie d'extraction accélérée",
+                "L'obsolescence programmée de marché",
+                "L'économie de gaspillage planifié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'économie circulaire referme les boucles de matière et d'énergie en conservant la valeur des ressources le plus longtemps possible au sein du système économique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'économie de la fonctionnalité dans les nouveaux modèles d'affaires industriels durables ?",
+              "options": [
+                "Vendre l'usage ou la performance d'un service rendu par le produit plutôt que la propriété de l'objet physique lui-même",
+                "Concevoir des objets ne réalisant qu'une seule fonction élémentaire",
+                "Supprimer toutes les sécurités mécaniques sur les machines pour baisser les coûts",
+                "Vendre des produits sans notice d'utilisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fabricant reste propriétaire du matériel (ex. Michelin vendant des kilomètres parcourus plutôt que des pneus). Il a donc tout intérêt à concevoir un matériel ultra-robuste et réparable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle démarche d'ingénierie s'inspire des structures, formes et principes fonctionnels du monde vivant pour innover durablement ?",
+              "options": [
+                "Le biomimétisme (ou bio-inspiration)",
+                "L'archéologie industrielle rétroactive",
+                "Le taylorisme mécanique rigide",
+                "La déconstruction aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La nature optimise les formes et matériaux avec une très grande économie d'énergie et sans déchets toxiques (ex. profil aérodynamique inspiré du martin-pêcheur pour le Shinkansen)."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quels principes clés caractérisent la démarche de conception 'Cradle to Cradle' (C2C, du berceau au berceau) ?",
+              "options": [
+                "Considérer tout déchet comme un nutriment pour un autre cycle biologique ou technique",
+                "Éliminer totalement les substances toxiques dès la conception pour permettre un recyclage infini",
+                "Favoriser la mise en décharge définitive de tous les composites plastiques",
+                "Accepter une pollution croissante des cours d'eau pour abaisser les coûts industriels"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le concept C2C élimine la notion de déchet : les matières circulent dans des cycles fermés perpétuels (nutriments biologiques biodégradables ou nutriments techniques réutilisés sans perte)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle approche d'ingénierie privilégie des technologies simples, robustes, réparables localement et peu dépendantes des énergies fossiles ?",
+              "options": [
+                "La démarche low-tech",
+                "L'hyper-technologisation connectée",
+                "La miniaturisation nano-électronique poussée",
+                "La robotisation intégrale sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les technologies sobres ou low-tech répondent à des besoins essentiels en garantissant accessibilité, résilience, réparabilité locale et faible impact écologique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'écologie industrielle et territoriale (symbiose industrielle) mise en œuvre sur une zone d'activités ?",
+              "options": [
+                "Une organisation où les rejets d'énergie fatale, d'eau ou de matières d'une entreprise deviennent les ressources d'une usine voisine",
+                "L'obligation de planter des fleurs le long des lignes d'assemblage",
+                "La fermeture totale de toutes les usines du territoire",
+                "L'interdiction de tout échange de matières entre deux communes limitrophes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inspirée des écosystèmes naturels (comme à Kalundborg au Danemark), la symbiose industrielle mutualise les flux : la vapeur d'une centrale chauffe une usine voisine ou une ferme aquacole."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la pratique trompeuse consistant pour une marque à utiliser des arguments écologiques fallacieux pour masquer une réalité polluante ?",
+              "options": [
+                "Le greenwashing (ou éco-blanchiment)",
+                "L'analyse de cycle de vie certifiée",
+                "La déclaration environnementale de produit audité",
+                "L'éco-conception rigoureuse sous norme ISO"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le greenwashing est une communication marketing trompeuse qui induit le consommateur en erreur en affichant des prétentions écologiques non vérifiées ou disproportionnées."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Réglementations, directives (RoHS, DEEE) et éco-labels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'objectif premier de la directive européenne RoHS (Restriction of Hazardous Substances) pour l'industrie électronique ?",
+              "options": [
+                "Interdire ou limiter drastiquement l'usage de substances dangereuses (plomb, mercure, cadmium...) dans les équipements électriques et électroniques",
+                "Imposer une couleur unique pour tous les câbles d'alimentation",
+                "Fixer le prix de vente maximal des ordinateurs portables",
+                "Obliger chaque citoyen à fabriquer sa propre batterie de smartphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La directive RoHS limite les métaux lourds et certains retardateurs de flamme bromés pour faciliter le recyclage des appareils et protéger les travailleurs et l'environnement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle directive européenne réglemente la gestion, la collecte sélective et les taux minimaux de recyclage des déchets d'appareils électriques ?",
+              "options": [
+                "La directive DEEE (Déchets d'Équipements Électriques et Électroniques)",
+                "La directive Machines 2006/42/CE",
+                "La directive Seveso III sur les accidents industriels majeurs",
+                "La directive Nitrates agricole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La directive DEEE (WEEE en anglais) responsabilise les fabricants et fixe des objectifs contraignants de collecte et de valorisation pour lutter contre les décharges sauvages."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles substances toxiques ont été bannies des alliages de brasure électronique standard par la réglementation RoHS ?",
+              "options": [
+                "Le plomb (Pb)",
+                "Le cadmium (Cd)",
+                "L'étain pur (Sn)",
+                "L'argent métallique (Ag)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'interdiction du plomb a contraint l'industrie électronique à adopter des soudures 'lead-free' (alliages étain-argent-cuivre SAC) non toxiques pour la santé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le logo représentant une poubelle sur roues barrée d'une croix apposé sur un produit technique ?",
+              "options": [
+                "L'appareil ne doit pas être jeté avec les ordures ménagères et doit faire l'objet d'une collecte sélective DEEE",
+                "Le produit est défectueux dès sa sortie d'usine",
+                "La poubelle publique est réservée exclusivement aux employés municipaux",
+                "L'appareil doit être immergé dans de l'eau bouillante avant destruction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce symbole universel rappelle aux utilisateurs l'obligation légale de déposer l'appareil usagé en déchèterie ou en point de collecte dédié pour dépollution et recyclage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel règlement européen (n° 1907/2006) encadre l'enregistrement, l'évaluation, l'autorisation et les restrictions des substances chimiques ?",
+              "options": [
+                "Le règlement REACH",
+                "Le traité de Maastricht",
+                "Le protocole de Montréal",
+                "La convention de Bâle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "REACH oblige les fabricants et importateurs à prouver l'innocuité des substances chimiques utilisées dans l'UE et à substituer les substances extrêmement préoccupantes (SVHC)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une Déclaration Environnementale de Produit (DEP ou EPD) pour un matériau ou composant industriel ?",
+              "options": [
+                "Un document normé (ISO 14025) vérifié par tierce partie présentant de manière transparente le profil environnemental issu d'une ACV",
+                "Une affiche publicitaire promotionnelle destinée aux abribus urbains",
+                "Un certificat d'immatriculation de véhicule utilitaire",
+                "Une facture d'achat de pièces détachées d'occasion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les EPD fournissent des données environnementales quantifiées et comparables, basées sur l'ACV, essentielles pour calculer l'impact global des bâtiments (ex. fiches FDES en France)."
+            },
+            {
+              "id": "q7",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent un éco-label officiel certifié (Type I selon la norme ISO 14024, ex. Écolabel Européen) ?",
+              "options": [
+                "Il repose sur un référentiel multicritère public prenant en compte l'ensemble du cycle de vie",
+                "L'attribution est vérifiée et certifiée par un organisme tiers indépendant accrédité",
+                "Il s'agit d'une simple auto-déclaration sans contrôle rédigée par le service marketing",
+                "Il garantit que le produit est entièrement gratuit pour les consommateurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les labels de Type I (Ecolabel Européen, Ange Bleu, Nordic Swan) offrent les garanties de rigueur les plus élevées grâce à une tierce partie indépendante et un cahier des charges exigeant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle directive européenne impose des critères obligatoires de performance énergétique et de démontabilité pour autoriser la vente d'équipements sur le marché européen ?",
+              "options": [
+                "La directive Éco-conception (Ecodesign Directive)",
+                "La directive Habitats naturels faune et flore",
+                "La directive sur les temps de travail hebdomadaires",
+                "La directive sur les droits d'auteur dans le marché numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La directive Ecodesign fixe des seuils d'efficacité énergétique éliminatoires pour avoir le droit d'apposer le marquage CE (ex. interdiction des ampoules incandescentes, seuils pour moteurs et téléviseurs)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En France, quelle réglementation environnementale impose pour les bâtiments neufs une analyse en cycle de vie complète de leur empreinte carbone ?",
+              "options": [
+                "La réglementation RE2020",
+                "La réglementation RT2005",
+                "Le code de la voirie routière",
+                "Le règlement général sur la protection des données (RGPD)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La RE2020 est pionnière en Europe : elle calcule l'impact carbone des matériaux de construction sur 50 ans d'ACV et pénalise les solutions trop émettrices au profit du bois et des biosourcés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel marquage réglementaire obligatoire atteste qu'un produit industriel respecte l'ensemble des exigences européennes de sécurité, de santé et d'environnement ?",
+              "options": [
+                "Le marquage CE",
+                "Le logo Agriculture Biologique (AB)",
+                "Le ruban de Moebius sans chiffre",
+                "Le point vert de consigne des emballages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marquage CE est le passeport obligatoire pour la libre circulation d'un produit dans l'Espace Économique Européen, attestant de sa conformité à toutes les directives applicables."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

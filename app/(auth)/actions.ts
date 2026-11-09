@@ -1,5 +1,8 @@
 "use server";
 
+// Schéma de mot de passe PARTAGÉ avec le backend Hono (auth.ts) : les deux
+// parcours appliquent les mêmes bornes et ne peuvent pas diverger.
+import { checkPasswordPolicy } from "@/auth-password-policy";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { ApiErrorCode } from "@/lib/api/error-codes";
 import { DEFAULT_MESSAGES_FR } from "@/lib/api/error-messages";
@@ -206,10 +209,11 @@ export async function registerAction(
     };
   }
 
-  if (password.length < 6) {
+  const passwordError = checkPasswordPolicy(password);
+  if (passwordError) {
     return {
       code: "invalid_request",
-      error: "Le mot de passe doit faire au moins 6 caractères.",
+      error: passwordError,
       success: false,
     };
   }
@@ -264,6 +268,17 @@ export async function verifyRegisterAction(
     return {
       code: "invalid_request",
       error: "Champs manquants.",
+      success: false,
+    };
+  }
+
+  // Second contrôle, comme côté Hono : ce payload est indépendant de celui
+  // envoyé à /register.
+  const passwordError = checkPasswordPolicy(password);
+  if (passwordError) {
+    return {
+      code: "invalid_request",
+      error: passwordError,
       success: false,
     };
   }

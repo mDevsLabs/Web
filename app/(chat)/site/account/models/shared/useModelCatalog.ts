@@ -20,7 +20,7 @@ export function useModelCatalog<T>({
   errorMessage,
   getModelId,
 }: ModelCatalogOptions<T>) {
-  const { isAuthenticated, token, loading: authLoading } = useAuth();
+  const { isAuthenticated, loading: authLoading } = useAuth();
   const [models, setModels] = useState<T[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeKeyRef, setActiveKeyRef] = useState<string | null>(null);
@@ -47,12 +47,14 @@ export function useModelCatalog<T>({
         setActiveKeyRef(selectedKeyRef);
 
         const headers: Record<string, string> = {};
-        if (selectedKeyRef && token) {
-          headers.Authorization = `Bearer ${token}`;
+        if (selectedKeyRef) {
+          // Pas de Bearer côté client : la session est résolue par le relais
+          // via le cookie httpOnly (issue #10).
           headers["x-mai-key-ref"] = selectedKeyRef;
         }
         const res = await fetch(endpoint, {
           cache: selectedKeyRef ? "no-store" : "default",
+          credentials: "same-origin",
           headers,
         });
         const data = await res.json();
@@ -72,12 +74,12 @@ export function useModelCatalog<T>({
         setLoading(false);
       }
     },
-    [emptyError, endpoint, errorMessage, getModelId, token]
+    [emptyError, endpoint, errorMessage, getModelId, isAuthenticated]
   );
 
   useEffect(() => {
-    if (isAuthenticated && token) void loadModels();
-  }, [isAuthenticated, loadModels, token]);
+    if (isAuthenticated) void loadModels();
+  }, [isAuthenticated, loadModels]);
 
   /**
    * Rafraîchissement automatique du catalogue.
@@ -93,7 +95,7 @@ export function useModelCatalog<T>({
    */
   const armedRef = useRef(true);
   useEffect(() => {
-    if (!isAuthenticated || !token) return;
+    if (!isAuthenticated) return;
     if (!armedRef.current) return;
     armedRef.current = false;
 
@@ -105,7 +107,7 @@ export function useModelCatalog<T>({
     return () => {
       clearInterval(timer);
     };
-  }, [isAuthenticated, loadModels, token]);
+  }, [isAuthenticated, loadModels]);
 
   return {
     activeKeyRef,

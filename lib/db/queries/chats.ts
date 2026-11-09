@@ -770,6 +770,69 @@ export async function deleteMessagesByChatIdAfterTimestamp({
   }
 }
 
+/**
+ * Volet « suppression » du remplacement différé d'une régénération (truncate).
+ *
+ * Supprime les messages du chat POSTÉRIEURS au message repère — jamais le
+ * repère lui-même — sauf ceux de la liste blanche (`keepIds` : la nouvelle
+ * réponse et les messages du tour en cours), ainsi que leurs votes.
+ *
+ * Cette fonction n'est appelée qu'APRÈS la persistance de la nouvelle réponse
+ * (issue #46) : supprimer avant, c'était détruire le tour valide dès qu'une
+ * génération échouait. Un repère introuvable ou hors du chat ne supprime rien
+ * (fail-safe : la perte n'est jamais dans le sens de l'effacement).
+ */
+export async function deleteMessagesAfterMessageId({
+  chatId,
+  keepIds,
+  messageId,
+}: {
+  chatId: string;
+  keepIds: string[];
+  messageId: string;
+}): Promise<string[]> {
+  try {
+    const db = await dbReady();
+    return await db.transaction(async (tx) => {
+      const [anchor] = await tx
+        .select({ createdAt: message.createdAt, id: message.id })
+        .from(message)
+        .where(and(eq(message.chatId, chatId), eq(message.id, messageId)))
+        .limit(1);
+      if (!anchor) {
+        return [];
+      }
+      const trailing = await tx
+        .select({ id: message.id })
+        .from(message)
+        .where(
+          and(
+            eq(message.chatId, chatId),
+            gt(message.createdAt, anchor.createdAt),
+            keepIds.length > 0 ? notInArray(message.id, keepIds) : undefined
+          )
+        );
+      const trailingIds = trailing.map((row) => row.id);
+      if (trailingIds.length === 0) {
+        return [];
+      }
+      await tx
+        .delete(vote)
+        .where(
+          and(eq(vote.chatId, chatId), inArray(vote.messageId, trailingIds))
+        );
+      await tx
+        .delete(message)
+        .where(
+          and(eq(message.chatId, chatId), inArray(message.id, trailingIds))
+        );
+      return trailingIds;
+    });
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
 export async function updateChatVisibilityById({
   chatId,
   visibility,

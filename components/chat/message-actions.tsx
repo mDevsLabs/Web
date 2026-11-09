@@ -50,7 +50,7 @@ export function PureMessageActions({
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const [_, copyToClipboard] = useCopyToClipboard();
-  const { messages, setMessages, regenerate } = useActiveChat() as any;
+  const { messages, regenerateTruncated, setMessages } = useActiveChat();
 
   const textFromParts = message.parts
     ?.filter((part) => part.type === "text")
@@ -268,20 +268,19 @@ export function PureMessageActions({
         return;
       }
 
-      // truncate mode: delete trailing and regenerate immediately
-      if (targetIndex >= 0) {
+      // truncate mode : le remplacement de la queue est DIFFÉRÉ — le serveur ne
+      // supprime les anciens messages qu'après le succès de la nouvelle
+      // réponse, et l'écran est restauré si la génération échoue (issue #46).
+      // Supprimer en base avant de générer détruisait le tour valide à chaque
+      // échec de /api/chat.
+      if (targetIndex >= 0 && targetUserId) {
+        const removedMessages = messages.slice(targetIndex + 1);
         setMessages((prev: ChatMessage[]) => prev.slice(0, targetIndex + 1));
-        regenerate();
+        regenerateTruncated({
+          removedMessages,
+          targetMessageId: targetUserId,
+        });
         toast.success("Régénération lancée");
-
-        // Nettoyage asynchrone non-bloquant en base de données
-        if (targetUserId) {
-          import("@/app/(chat)/actions")
-            .then(({ deleteTrailingMessages }) =>
-              deleteTrailingMessages({ id: targetUserId })
-            )
-            .catch(() => {});
-        }
       }
     } catch (e: any) {
       toast.error(e.message || "Erreur régénération");
@@ -291,7 +290,7 @@ export function PureMessageActions({
     message,
     messages,
     regenerateMode,
-    regenerate,
+    regenerateTruncated,
     router,
     setMessages,
   ]);

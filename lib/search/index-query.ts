@@ -1424,6 +1424,260 @@ const vibeSource: SourceResolver = {
   },
 };
 
+/**
+ * Entrées statiques du catalogue Quizzly (sections, matières, outils).
+ */
+const QUIZZLY_STATIC_ENTRIES = [
+  {
+    description:
+      "Révisez le collège et le lycée, un quiz à la fois. Parcours personnalisé par niveau.",
+    href: "/quizzly",
+    id: "quizzly-parcours",
+    meta: "Parcours Quizzly",
+    title: "Quizzly — Parcours et Révisions",
+  },
+  {
+    description:
+      "Fiches de synthèse, résumés de leçons et repères essentiels par matière.",
+    href: "/quizzly/synthese",
+    id: "quizzly-synthese",
+    meta: "Fiches & Synthèse",
+    title: "Quizzly — Fiches de Révision et Synthèses",
+  },
+  {
+    description:
+      "Votre tuteur personnel d'intelligence artificielle : posez vos questions et analysez vos erreurs.",
+    href: "/quizzly/coach",
+    id: "quizzly-coach",
+    meta: "Coach Personnel IA",
+    title: "Quizzly — Coach IA",
+  },
+  {
+    description:
+      "Ligues hebdomadaires (Bronze à Champion) et classement compétitif des élèves.",
+    href: "/quizzly/ligues",
+    id: "quizzly-ligues",
+    meta: "Ligues & Classement",
+    title: "Quizzly — Ligues",
+  },
+  {
+    description:
+      "Quêtes quotidiennes et hebdomadaires pour accumuler des points d'XP et des gemmes.",
+    href: "/quizzly/quetes",
+    id: "quizzly-quetes",
+    meta: "Défis & Quêtes",
+    title: "Quizzly — Quêtes",
+  },
+  {
+    description:
+      "Boutique d'XP, gel de streak, boosters x2 d'apprentissage et cadres de personnalisation.",
+    href: "/quizzly/boutique",
+    id: "quizzly-boutique",
+    meta: "Boutique d'XP",
+    title: "Quizzly — Boutique",
+  },
+  {
+    description:
+      "Statistiques d'apprentissage, suivi de série de révision (streak) et profil public.",
+    href: "/quizzly/profil",
+    id: "quizzly-profil",
+    meta: "Profil & Statistiques",
+    title: "Quizzly — Profil",
+  },
+  {
+    description:
+      "Suivez vos camarades, comparez vos séries et partagez vos réussites scolaires.",
+    href: "/quizzly/amis",
+    id: "quizzly-amis",
+    meta: "Amis & Social",
+    title: "Quizzly — Amis",
+  },
+  {
+    description:
+      "Quiz, cours et exercices de mathématiques : calcul, algèbre, géométrie, probabilités et fonctions.",
+    href: "/quizzly",
+    id: "quizzly-maths",
+    meta: "Matière · Mathématiques",
+    title: "Mathématiques — Quizzly",
+  },
+  {
+    description:
+      "Grammaire, conjugaison, vocabulaire, analyse de texte et littérature française.",
+    href: "/quizzly",
+    id: "quizzly-francais",
+    meta: "Matière · Français",
+    title: "Français — Quizzly",
+  },
+  {
+    description:
+      "Grandes périodes historiques, géographie des territoires et enseignement moral et civique (EMC).",
+    href: "/quizzly",
+    id: "quizzly-histoire",
+    meta: "Matière · Histoire-Géo",
+    title: "Histoire-Géographie & EMC — Quizzly",
+  },
+  {
+    description:
+      "Matière, mouvements, énergie, électricité, réactions chimiques et lois de la physique.",
+    href: "/quizzly",
+    id: "quizzly-physique",
+    meta: "Matière · Physique-Chimie",
+    title: "Physique-Chimie — Quizzly",
+  },
+  {
+    description:
+      "Le vivant, la Terre, le système solaire, la génétique et le corps humain.",
+    href: "/quizzly",
+    id: "quizzly-svt",
+    meta: "Matière · SVT",
+    title: "Sciences de la Vie et de la Terre (SVT) — Quizzly",
+  },
+  {
+    description:
+      "Vocabulaire anglais, verbes irréguliers, compréhension écrite et structures grammaticales.",
+    href: "/quizzly",
+    id: "quizzly-anglais",
+    meta: "Matière · Anglais",
+    title: "Anglais — Quizzly",
+  },
+  {
+    description:
+      "Conjugaison, vocabulaire espagnol, culture et expression hispanophone.",
+    href: "/quizzly",
+    id: "quizzly-espagnol",
+    meta: "Matière · Espagnol",
+    title: "Espagnol — Quizzly",
+  },
+  {
+    description:
+      "Notions du baccalauréat : la liberté, la justice, la raison, l'art, le devoir et la vérité.",
+    href: "/quizzly",
+    id: "quizzly-philosophie",
+    meta: "Matière · Philosophie",
+    title: "Philosophie — Quizzly",
+  },
+  {
+    description:
+      "Économie, sociologie, organisation des marchés, politiques économiques et stratification sociale.",
+    href: "/quizzly",
+    id: "quizzly-ses",
+    meta: "Matière · SES",
+    title: "Sciences Économiques et Sociales (SES) — Quizzly",
+  },
+];
+
+const quizzlySource: SourceResolver = {
+  key: "quizzly",
+  search: async (ctx, terms) => {
+    const lower = terms.map((t) => t.raw.toLowerCase());
+    const matches = QUIZZLY_STATIC_ENTRIES.filter((entry) => {
+      const haystack =
+        `${entry.title} ${entry.description} ${entry.meta}`.toLowerCase();
+      return lower.every((token) => haystack.includes(token));
+    });
+
+    const page = matches.slice(ctx.offset, ctx.offset + ctx.limit);
+    const hits: SearchHit[] = page.map((entry) => ({
+      external: false,
+      href: entry.href,
+      id: entry.id,
+      meta: entry.meta,
+      snippet: entry.description,
+      source: "quizzly" as const,
+      title: entry.title,
+    }));
+
+    return {
+      capped: matches.length > ctx.offset + ctx.limit,
+      hits,
+      total: matches.length,
+    };
+  },
+};
+
+/**
+ * Entrées statiques de Blackline (jeu 3D, arènes, options).
+ */
+const BLACKLINE_STATIC_ENTRIES = [
+  {
+    description:
+      "FPS tactique 3D solo contre des bots dans l'hôte mAI. 4 arènes, 8 armes, progression locale.",
+    href: "/blackline",
+    id: "blackline-game",
+    meta: "Jeu 3D Tactique",
+    title: "Blackline — Jeu FPS 3D",
+  },
+  {
+    description:
+      "Arène industrielle de conteneurs avec lignes de tir moyennes et longues distances.",
+    href: "/blackline",
+    id: "blackline-arena-cargo",
+    meta: "Arène Blackline",
+    title: "Arène Cargo Yard — Blackline",
+  },
+  {
+    description:
+      "Hangar aéronautique pour affrontements rapprochés et escarmouches verticales.",
+    href: "/blackline",
+    id: "blackline-arena-hangar",
+    meta: "Arène Blackline",
+    title: "Arène Hangar Bravo — Blackline",
+  },
+  {
+    description:
+      "Complexe de recherche futuriste néon et couloirs tactiques étroits.",
+    href: "/blackline",
+    id: "blackline-arena-cyber",
+    meta: "Arène Blackline",
+    title: "Arène Station Cyber — Blackline",
+  },
+  {
+    description:
+      "Fortification souterraine sombre favorisant les réflexes et les tirs réflexes.",
+    href: "/blackline",
+    id: "blackline-arena-bunker",
+    meta: "Arène Blackline",
+    title: "Arène Néo-Bunker — Blackline",
+  },
+  {
+    description:
+      "Sensibilité de la souris, réticule, audio, qualité graphique WebGL et champ de vision.",
+    href: "/blackline",
+    id: "blackline-settings",
+    meta: "Réglages & Options",
+    title: "Options & Commandes — Blackline",
+  },
+];
+
+const blacklineSource: SourceResolver = {
+  key: "blackline",
+  search: async (ctx, terms) => {
+    const lower = terms.map((t) => t.raw.toLowerCase());
+    const matches = BLACKLINE_STATIC_ENTRIES.filter((entry) => {
+      const haystack =
+        `${entry.title} ${entry.description} ${entry.meta}`.toLowerCase();
+      return lower.every((token) => haystack.includes(token));
+    });
+
+    const page = matches.slice(ctx.offset, ctx.offset + ctx.limit);
+    const hits: SearchHit[] = page.map((entry) => ({
+      external: false,
+      href: entry.href,
+      id: entry.id,
+      meta: entry.meta,
+      snippet: entry.description,
+      source: "blackline" as const,
+      title: entry.title,
+    }));
+
+    return {
+      capped: matches.length > ctx.offset + ctx.limit,
+      hits,
+      total: matches.length,
+    };
+  },
+};
+
 /** Sources interrogées en base : une requête chacune, total compris. */
 const SQL_SOURCES: SourceResolver[] = [
   chatSource,
@@ -1456,6 +1710,8 @@ const UPSTREAM_SOURCES: SourceResolver[] = [
   coderSource,
   cliSource,
   vibeSource,
+  quizzlySource,
+  blacklineSource,
 ];
 
 const ALL_SOURCES = [...SQL_SOURCES, ...UPSTREAM_SOURCES];
@@ -1469,6 +1725,8 @@ const ALL_SOURCES = [...SQL_SOURCES, ...UPSTREAM_SOURCES];
 export const SOURCE_ORDER: SearchSourceKey[] = [
   "chat",
   "message",
+  "quizzly",
+  "blackline",
   "wakies",
   "project",
   "page",
@@ -1593,10 +1851,13 @@ export async function searchIndex(
     userIds,
   };
 
-  const requested = new Set(input.sources);
+  // Si aucune source n'est précisée (sources = [] ou non spécifié, scope "all"),
+  // interroger l'ensemble des sources autorisées pour le forfait.
+  const hasSpecificSources = Array.isArray(input.sources) && input.sources.length > 0;
+  const requested = hasSpecificSources ? new Set(input.sources) : null;
   const resolvers = ALL_SOURCES.filter(
     (resolver) =>
-      requested.has(resolver.key) &&
+      (requested === null || requested.has(resolver.key)) &&
       (!PAID_ONLY_SOURCES.includes(resolver.key) || isPaid)
   );
 

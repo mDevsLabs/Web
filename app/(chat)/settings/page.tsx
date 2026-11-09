@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   BellIcon,
@@ -6,6 +6,7 @@ import {
   BrainIcon,
   ClipboardListIcon,
   DatabaseIcon,
+  GraduationCapIcon,
   LayersIcon,
   SettingsIcon,
   SparklesIcon,
@@ -32,6 +33,7 @@ import { MemoryCard } from "@/components/settings/memory-card";
 import { NotificationsTab } from "@/components/settings/notifications-tab";
 import { PreferencesTab } from "@/components/settings/preferences-tab";
 import { ProfileTab } from "@/components/settings/profile-tab";
+import { QuizzlyTab } from "@/components/settings/quizzly-tab";
 import {
   type AnchorItem,
   SettingsAnchorNav,
@@ -50,6 +52,7 @@ type SettingsTab =
   | "notifications"
   | "preferences"
   | "profile"
+  | "quizzly"
   | "usage";
 
 const SETTINGS_TABS: {
@@ -60,6 +63,7 @@ const SETTINGS_TABS: {
   { icon: UserIcon, id: "profile", label: "Mon Profil" },
   { icon: SparklesIcon, id: "preferences", label: "Préférences IA" },
   { icon: LayersIcon, id: "applications", label: "Applications" },
+  { icon: GraduationCapIcon, id: "quizzly", label: "Quizzly" },
   { icon: BotIcon, id: "agent", label: "Agent" },
   { icon: BrainIcon, id: "memory", label: "Mémoire" },
   { icon: ZapIcon, id: "usage", label: "Consommation & Forfait" },
@@ -215,7 +219,15 @@ function SettingsPageInner() {
           { id: "blackline-graphics", label: "↳ Image & Énergie" },
           { id: "blackline-gameplay", label: "↳ Caméra, Visée & Jeu" },
           { id: "pages", label: "Pages — Documents" },
-          { id: "quizzly", label: "Quizzly — Classe et Coach" },
+          { id: "quizzly-link", label: "Quizzly (Onglet dédié)" },
+        ];
+      case "quizzly":
+        return [
+          { id: "quizzly-classe", label: "Classe & Niveau" },
+          { id: "quizzly-matieres", label: "Matières suivies" },
+          { id: "quizzly-coach", label: "Coach mAI" },
+          { id: "quizzly-audio", label: "Sons & Rythme" },
+          { id: "quizzly-quetes", label: "Série & Rappels" },
         ];
       case "memory":
         return [
@@ -335,6 +347,8 @@ function SettingsPageInner() {
             <PreferencesTab />
           ) : activeTab === "applications" ? (
             <ApplicationsTab />
+          ) : activeTab === "quizzly" ? (
+            <QuizzlyTab />
           ) : activeTab === "agent" ? (
             <div className="py-6 max-w-4xl">
               <AgentTab />

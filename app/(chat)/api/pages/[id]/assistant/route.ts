@@ -47,6 +47,14 @@ const bodySchema = z.object({
   messages: z.array(messageSchema).min(1).max(PAGE_MESSAGE_KEEP),
   modelId: z.string().max(120).optional(),
   selection: z.string().max(8000).optional(),
+  // Ancrage de la sélection (offsets dans le contenu de la page) : permet de
+  // cibler l'occurrence exacte choisie par l'utilisateur (issue #52).
+  selectionAnchor: z
+    .object({
+      end: z.number().int().min(1).max(5_000_000),
+      start: z.number().int().min(0).max(5_000_000),
+    })
+    .optional(),
 });
 
 async function resolveModel(params: {
@@ -142,6 +150,7 @@ export async function POST(request: Request, { params }: Params) {
       pagePrompt: access.page.customPrompt,
       projectInstructions: access.projectInstructions,
       selection: body.selection ?? null,
+      selectionAnchor: body.selectionAnchor ?? null,
     });
     const storedUserId = access.page.userId;
     const pageId = access.page.id;
@@ -210,6 +219,9 @@ export async function POST(request: Request, { params }: Params) {
           system,
           tools: createPageTools({
             pageId,
+            selection: body.selection
+              ? { anchor: body.selectionAnchor ?? null, text: body.selection }
+              : null,
             userId: storedUserId,
             writer,
           }),

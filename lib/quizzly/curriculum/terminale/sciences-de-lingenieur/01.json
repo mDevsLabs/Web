@@ -1,0 +1,2583 @@
+{
+  "id": "terminale-sciences-de-lingenieur-01",
+  "year": "terminale",
+  "subject": "sciences-de-lingenieur",
+  "title": "Dynamique et commande des systèmes",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Principe fondamental de la dynamique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Centre d'inertie et moment d'inertie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du moment d'inertie dans le Système International ?",
+              "options": ["kg·m²", "kg/m²", "N·m", "kg·m/s"],
+              "correctAnswers": [0],
+              "explanation": "Le moment d'inertie I = ∫ r² dm s'exprime en kilogramme mètre carré (kg·m²)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs caractérisent l'inertie d'un solide indéformable ?",
+              "options": [
+                "Sa masse totale m",
+                "Sa matrice d'inertie en un point",
+                "Sa vitesse angulaire",
+                "Son énergie potentielle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La masse (translation) et la matrice d'inertie (rotation) caractérisent la répartition de matière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que stipule le théorème de Huygens pour le moment d'inertie par rapport à un axe Delta parallèle à Delta_G ?",
+              "options": [
+                "I_Delta = I_G + m·d²",
+                "I_Delta = I_G - m·d²",
+                "I_Delta = I_G / d²",
+                "I_Delta = m·d² - I_G"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le théorème de Huygens s'écrit I_Delta = I_G + m·d² où d est la distance entre les axes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour un cylindre plein homogène de masse m et de rayon R, le moment d'inertie selon son axe de révolution vaut :",
+              "options": ["(1/2)·m·R²", "m·R²", "(2/5)·m·R²", "(1/12)·m·R²"],
+              "correctAnswers": [0],
+              "explanation": "Le moment d'inertie axial d'un cylindre plein homogène est J = (1/2)·m·R²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où se situe le centre d'inertie G d'un solide présentant un plan de symétrie matérielle ?",
+              "options": [
+                "Nécessairement dans ce plan",
+                "À l'extérieur du solide",
+                "À l'intersection des forces",
+                "À l'origine du repère fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par symétrie matérielle, le centre d'inertie appartient obligatoirement au plan de symétrie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une matrice d'inertie, que représentent les termes diagonaux ?",
+              "options": [
+                "Les moments d'inertie par rapport aux axes",
+                "Les produits d'inertie",
+                "Les coordonnées du centre de gravité",
+                "Les composantes de la vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les termes diagonaux A, B, C sont les moments d'inertie par rapport aux axes du repère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que valent les produits d'inertie si les axes choisis sont axes principaux d'inertie ?",
+              "options": [
+                "Ils sont nuls",
+                "Ils sont égaux à la masse",
+                "Ils sont maximaux",
+                "Ils valent 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un repère principal d'inertie, la matrice d'inertie est diagonale, les produits d'inertie sont nuls."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour une sphère pleine homogène de rayon R et de masse m, le moment d'inertie par rapport à un diamètre vaut :",
+              "options": ["(2/5)·m·R²", "(1/2)·m·R²", "(2/3)·m·R²", "m·R²"],
+              "correctAnswers": [0],
+              "explanation": "Pour une sphère pleine homogène, J = (2/5)·m·R²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment varie le moment d'inertie d'un patineur lorsqu'il écarte les bras ?",
+              "options": [
+                "Il augmente",
+                "Il diminue",
+                "Il reste constant",
+                "Il s'annule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En éloignant la masse de l'axe de rotation, la distance r augmente, donc J augmente."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le torseur cinétique d'un solide en son centre d'inertie G s'exprime avec :",
+              "options": [
+                "La quantité de mouvement m·V(G) et le moment cinétique sigma_G",
+                "La force résultante et le moment dynamique",
+                "L'accélération et la vitesse angulaire uniquement",
+                "La masse et le poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le torseur cinétique regroupe la résultante cinétique p = m·V(G) et le moment cinétique sigma."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "PFD en translation rectiligne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans un repère galiléen, quelle est l'équation fondamentale de la dynamique en translation rectiligne ?",
+              "options": [
+                "Σ F_ext = m · a_G",
+                "Σ F_ext = m · v_G",
+                "Σ F_ext = 0",
+                "Σ M = J · alpha"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PFD en translation stipule que la somme vectorielle des forces extérieures est égale à m·a_G."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles conditions sont requises pour appliquer directement Σ F_ext = m · a_G ?",
+              "options": [
+                "Le repère d'étude doit être galiléen",
+                "Le solide doit être en translation ou étudié en son centre G",
+                "La vitesse doit être obligatoirement constante",
+                "Le solide doit être immobile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le PFD s'applique dans un référentiel galiléen et relie les forces à l'accélération du centre de masse G."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un véhicule de 1000 kg accélère à 2 m/s². Quelle force motrice nette est exercée ?",
+              "options": ["2000 N", "500 N", "1000 N", "9810 N"],
+              "correctAnswers": [0],
+              "explanation": "F = m · a = 1000 kg × 2 m/s² = 2000 N."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si la somme des forces extérieures appliquées à un solide en translation est nulle, que peut-on dire de son mouvement ?",
+              "options": [
+                "Il est rectiligne uniforme ou au repos",
+                "Il accélère uniformément",
+                "Il tourne à vitesse constante",
+                "Il change de direction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la 1re loi de Newton, si a_G = 0, la vitesse est constante (MRU) ou nulle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle force s'oppose au mouvement de translation d'un mobile dans l'air à haute vitesse ?",
+              "options": [
+                "La traînée aérodynamique",
+                "La portance",
+                "La poussée d'Archimède",
+                "Le couple moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traînée est la résistance aérodynamique opposée au déplacement dans un fluide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un ascenseur de masse 500 kg monte avec une accélération de 1 m/s² (g = 9,81 m/s²). La tension du câble vaut :",
+              "options": ["5405 N", "4405 N", "4905 N", "500 N"],
+              "correctAnswers": [0],
+              "explanation": "T - m·g = m·a => T = m·(g + a) = 500 × (9,81 + 1) = 5405 N."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lors d'un freinage à décélération constante a = -4 m/s², quelle distance parcourt un solide partant de v0 = 20 m/s ?",
+              "options": ["50 m", "100 m", "25 m", "80 m"],
+              "correctAnswers": [0],
+              "explanation": "v² - v0² = 2·a·d => 0 - 400 = 2·(-4)·d => d = 400 / 8 = 50 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de l'accélération linéaire a_G dans le Système International ?",
+              "options": ["m/s²", "m/s", "N/kg", "m·s"],
+              "correctAnswers": [0],
+              "explanation": "L'accélération s'exprime en mètres par seconde carrée (m/s² ou m·s⁻²)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur un plan incliné d'un angle alpha sans frottement, l'accélération de descente vaut :",
+              "options": [
+                "g · sin(alpha)",
+                "g · cos(alpha)",
+                "g / sin(alpha)",
+                "g · tan(alpha)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La projection du poids sur l'axe parallèle au plan donne m·g·sin(alpha) = m·a, d'où a = g·sin(alpha)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La masse inerte intervenant dans le PFD représente :",
+              "options": [
+                "La résistance du corps à la modification de sa vitesse",
+                "L'attraction gravitationnelle uniquement",
+                "Le volume de matière occupée",
+                "Le coefficient de frottement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse inerte mesure la résistance d'un corps à toute variation de son vecteur vitesse."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "PFD en rotation autour d'un axe fixe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'équation du PFD pour un solide en rotation d'axe fixe Delta (J_Delta constant) ?",
+              "options": [
+                "Σ M_Delta = J_Delta · theta''",
+                "Σ M_Delta = J_Delta · theta'",
+                "Σ F = J_Delta · theta''",
+                "Σ M_Delta = m · a"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le théorème du moment dynamique donne Σ M_Delta = J_Delta · theta'' (où theta'' est l'accélération angulaire)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs physiques interviennent dans l'équation Σ M_Delta = J_Delta · theta'' ?",
+              "options": [
+                "Le couple résultant extérieur selon l'axe",
+                "Le moment d'inertie par rapport à l'axe",
+                "L'accélération angulaire d²theta/dt²",
+                "La pression atmosphérique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'équation relie la somme des moments extérieurs, l'inertie du solide et son accélération angulaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un couple moteur de 20 N·m entraîne un rotor d'inertie J = 2 kg·m². L'accélération angulaire vaut :",
+              "options": ["10 rad/s²", "40 rad/s²", "0,1 rad/s²", "5 rad/s²"],
+              "correctAnswers": [0],
+              "explanation": "theta'' = C / J = 20 / 2 = 10 rad/s²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale de l'accélération angulaire theta'' ?",
+              "options": ["rad/s²", "tr/min", "rad/s", "deg/s"],
+              "correctAnswers": [0],
+              "explanation": "L'accélération angulaire s'exprime en radians par seconde carrée (rad/s²)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si la somme des moments appliqués autour d'un axe fixe est nulle, la vitesse angulaire omega est :",
+              "options": [
+                "Constante",
+                "Uniformément accélérée",
+                "Nulle obligatoirement",
+                "Sinusoïdale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si Σ M_Delta = 0, alors J · d(omega)/dt = 0, donc omega est constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la puissance instantanée transmise par un couple C à une vitesse omega ?",
+              "options": [
+                "P = C · omega",
+                "P = C / omega",
+                "P = (1/2) · C · omega²",
+                "P = C · theta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance d'un couple en rotation vaut P = C · omega (en watts si C en N·m et omega en rad/s)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle relation relie la vitesse angulaire N en tr/min et omega en rad/s ?",
+              "options": [
+                "omega = (2·pi·N) / 60",
+                "omega = (60·N) / (2·pi)",
+                "omega = pi · N / 60",
+                "omega = 2·pi·N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 tour = 2pi radians et 1 minute = 60 secondes, d'où omega = 2·pi·N / 60."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un volant d'inertie ralentit de 100 rad/s à l'arrêt en 10 s sous l'action d'un couple résistant constant. theta'' vaut :",
+              "options": [
+                "-10 rad/s²",
+                "-5 rad/s²",
+                "-100 rad/s²",
+                "-1 rad/s²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "theta'' = Delta(omega) / Delta(t) = (0 - 100) / 10 = -10 rad/s²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le bras de levier d'une force F par rapport à un point O est :",
+              "options": [
+                "La distance perpendiculaire entre O et la ligne d'action de F",
+                "La longueur du solide",
+                "Le module du vecteur force",
+                "La distance entre l'origine et le point d'impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bras de levier d est la plus courte distance (perpendiculaire) entre l'axe et la droite d'action de la force."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le cas d'un axe fixe ne passant pas par G, que génère la rotation sur les paliers de guidage ?",
+              "options": [
+                "Des efforts dynamiques radiaux (force centrifuge)",
+                "Un couple résistant purement nul",
+                "Une diminution de l'inertie axiale",
+                "Aucun effort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décentrement de G crée une accélération centripète, donc des efforts alternés sur les roulements."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Torseur dynamique et cinétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se nomment les deux éléments de réduction du torseur dynamique d'un solide S ?",
+              "options": [
+                "Résultante dynamique et moment dynamique",
+                "Quantité de mouvement et moment cinétique",
+                "Force extérieure et moment résultant",
+                "Puissance et travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le torseur dynamique [D(S/R)] est composé de la résultante dynamique D(S/R) et du moment dynamique delta(A, S/R)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes concernant la résultante dynamique D(S/R) ?",
+              "options": [
+                "Elle vaut m · a(G, S/R)",
+                "Elle ne dépend pas du point de réduction choisi",
+                "Elle s'exprime en newtons (N)",
+                "Elle est toujours nulle"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "D(S/R) = m·a(G, S/R) est invariante par changement de point et possède la dimension d'une force (N)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle relation lie le torseur dynamique aux actions mécaniques extérieures selon le PFD ?",
+              "options": [
+                "[D(S/R)] = [T(ext -> S)]",
+                "[D(S/R)] = [C(S/R)]",
+                "[D(S/R)] = 0",
+                "[T(ext -> S)] = [V(S/R)]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PFD sous forme torsorielle s'écrit : le torseur dynamique est égal au torseur des actions extérieures."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En un point fixe A du référentiel R, quelle relation lie le moment dynamique delta_A et le moment cinétique sigma_A ?",
+              "options": [
+                "delta_A = d(sigma_A)/dt",
+                "delta_A = sigma_A · omega",
+                "delta_A = integral(sigma_A dt)",
+                "delta_A = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si A est un point fixe dans R (ou si A = G), delta_A = d(sigma_A)/dt."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le moment cinétique d'un solide en son centre d'inertie G vaut sigma_G = :",
+              "options": [
+                "I_G · Omega(S/R)",
+                "m · V(G)",
+                "m · a(G)",
+                "(1/2) · I_G · Omega²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moment cinétique au centre de gravité s'écrit sigma_G = I_G(S) · Omega(S/R) où I_G est l'opérateur d'inertie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la dimension d'un moment dynamique ?",
+              "options": ["N·m", "N", "kg·m²/s", "J/s"],
+              "correctAnswers": [0],
+              "explanation": "Puisqu'il s'équilibre avec le moment d'une force, son unité est le newton-mètre (N·m)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La formule de transport du moment dynamique entre deux points A et B est :",
+              "options": [
+                "delta_B = delta_A + BA ^ D",
+                "delta_B = delta_A + AB ^ D",
+                "delta_B = delta_A · BA",
+                "delta_B = delta_A + m·a"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme tout torseur, le moment respecte la relation de Varignon : delta_B = delta_A + BA ^ D."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un solide au repos ou en translation rectiligne uniforme, le torseur dynamique est :",
+              "options": [
+                "Nul",
+                "Égal au torseur cinétique",
+                "Purement axial",
+                "Infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si a(G) = 0 et omega = 0 (ou constante sans rotation accélérée), le torseur dynamique est nul."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la résultante cinétique p = m·V(G) ?",
+              "options": ["kg·m/s", "N·m", "kg·m²/s", "m/s²"],
+              "correctAnswers": [0],
+              "explanation": "La quantité de mouvement s'exprime en kg·m/s (ou N·s)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le cas général où le point A est quelconque et mobile, delta_A = d(sigma_A)/dt + :",
+              "options": [
+                "V(A/R) ^ m·V(G/R)",
+                "0",
+                "a(A/R) ^ V(G/R)",
+                "m·a(A)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule générale de dérivation du moment cinétique inclut le terme V(A/R) ^ m·V(G/R)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Théorème de l'énergie cinétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de l'énergie cinétique d'un solide en translation de vitesse v ?",
+              "options": [
+                "Ec = (1/2) · m · v²",
+                "Ec = m · v",
+                "Ec = (1/2) · J · omega²",
+                "Ec = m · g · h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En translation, l'énergie cinétique vaut Ec = (1/2)·m·v²."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Pour un solide en mouvement quelconque, quelles composantes constituent son énergie cinétique ?",
+              "options": [
+                "L'énergie de translation (1/2)·m·v_G²",
+                "L'énergie de rotation (1/2)·Omega · sigma_G",
+                "L'énergie potentielle gravitationnelle",
+                "La chaleur dissipée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "D'après le théorème de König, Ec = (1/2)·m·v_G² + (1/2)·Omega·sigma_G."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que stipule le théorème de l'énergie cinétique sous forme différentielle (puissance) ?",
+              "options": [
+                "d(Ec)/dt = P_ext + P_int",
+                "d(Ec)/dt = P_ext - P_int",
+                "d(Ec)/dt = 0",
+                "Ec = P_ext · t"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérivée temporelle de l'énergie cinétique est égale à la somme des puissances des efforts extérieurs et intérieurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que vaut la puissance des efforts intérieurs pour un solide indéformable ?",
+              "options": [
+                "Nulle",
+                "Égale à la puissance motrice",
+                "Négative",
+                "Infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un solide parfait indéformable, la puissance des actions mutuelles intérieures est strictement nulle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un volant d'inertie de J = 0,5 kg·m² tourne à 20 rad/s. Son énergie cinétique vaut :",
+              "options": ["100 J", "200 J", "50 J", "10 J"],
+              "correctAnswers": [0],
+              "explanation": "Ec = (1/2) · J · omega² = 0,5 × 0,5 × 400 = 100 J."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du travail et de l'énergie cinétique dans le SI ?",
+              "options": ["Joule (J)", "Watt (W)", "Newton (N)", "Pascal (Pa)"],
+              "correctAnswers": [0],
+              "explanation": "L'énergie et le travail s'expriment en joules (1 J = 1 N·m = 1 W·s)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une masse de 10 kg chute d'une hauteur h = 5 m sans frottement (g = 10 m/s²). Sa vitesse finale vaut :",
+              "options": ["10 m/s", "5 m/s", "14,1 m/s", "20 m/s"],
+              "correctAnswers": [0],
+              "explanation": "m·g·h = (1/2)·m·v² => v = sqrt(2·g·h) = sqrt(2 × 10 × 5) = sqrt(100) = 10 m/s."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une liaison parfaite (sans jeu ni frottement), la puissance dissipée dans la liaison est :",
+              "options": [
+                "Nulle",
+                "Toujours positive",
+                "Égale au couple transmis",
+                "Dépendante de la vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, une liaison mécanique parfaite ne dissipe aucune énergie : P = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le travail d'une force constante F sur un déplacement rectiligne d colinéaire et de même sens s'écrit :",
+              "options": [
+                "W = F · d",
+                "W = F / d",
+                "W = (1/2) · F · d²",
+                "W = F · d · t"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le travail d'une force constante colinéaire au déplacement est W = F · d."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le rendement énergétique eta d'un système mécanique se calcule par :",
+              "options": [
+                "P_utile / P_fournie",
+                "P_fournie / P_utile",
+                "P_perdue / P_utile",
+                "P_utile · P_fournie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement est le rapport de la puissance utile restituée sur la puissance fournie (eta <= 1)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Frottements et résistance au mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Selon les lois de Coulomb, que vaut le rapport T/N lors d'un glissement relatif ?",
+              "options": [
+                "égal au coefficient de frottement f",
+                "strictement supérieur à f",
+                "strictement nul",
+                "égal à l'angle d'adhérence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En situation de glissement effectif, l'effort tangentiel T vérifie T = f · N."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant l'adhérence (sans glissement) ?",
+              "options": [
+                "T <= f_0 · N",
+                "La vitesse relative de glissement est nulle",
+                "T = f · N en toute circonstance",
+                "Le vecteur vitesse est colinéaire à l'effort tangentiel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "À l'adhérence, la vitesse relative est nulle et l'effort tangentiel est borné par le cône de frottement (T <= f0·N)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la relation entre l'angle de frottement phi et le coefficient de frottement f ?",
+              "options": [
+                "tan(phi) = f",
+                "sin(phi) = f",
+                "cos(phi) = f",
+                "phi = f · pi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le demi-angle du cône de frottement vérifie tan(phi) = f."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le signe de la puissance dissipée par frottement de glissement ?",
+              "options": [
+                "Toujours négative",
+                "Toujours positive",
+                "Nulle en régime permanent",
+                "Variable selon la vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le frottement résiste au mouvement relatif, donc P_frottement = T · V_gliss < 0 (perte d'énergie en chaleur)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La résistance au roulement d'une roue est caractérisée par :",
+              "options": [
+                "Un coefficient d'écrasement ou bras de levier delta",
+                "Le coefficient de portance",
+                "La viscosité dynamique de l'air",
+                "L'adhérence transversale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance au roulement provient de la dissymétrie de la réaction normale d'appui, modélisée par un décalage delta."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En frottement visqueux fluide à basse vitesse, la force de résistance est proportionnelle à :",
+              "options": [
+                "La vitesse v",
+                "Le carré de la vitesse v²",
+                "L'accélération a",
+                "La position x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En régime laminaire (visqueux), la force résistante s'écrit F_v = -lambda · v."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un solide de 200 N repose sur un plan horizontal avec f = 0,3. La force tangentielle maximale d'adhérence est :",
+              "options": ["60 N", "200 N", "20 N", "600 N"],
+              "correctAnswers": [0],
+              "explanation": "T_max = f · N = 0,3 × 200 N = 60 N."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi lubrifie-t-on les organes de transmission mécanique ?",
+              "options": [
+                "Pour réduire le frottement et l'usure",
+                "Pour augmenter le moment d'inertie",
+                "Pour bloquer les degrés de liberté",
+                "Pour annuler la masse des pièces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lubrification crée un film fluide séparateur réduisant considérablement le frottement et l'échauffement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le cas d'un frottement sec avec frottement statique f_s et dynamique f_d, on observe généralement :",
+              "options": [
+                "f_s > f_d",
+                "f_s < f_d",
+                "f_s = f_d toujours",
+                "f_d = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adhérence statique est en pratique légèrement supérieure au coefficient de frottement cinétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le phénomène de broutement ('stick-slip') dans un guidage est causé par :",
+              "options": [
+                "La différence entre adhérence statique et frottement dynamique",
+                "Une vitesse excessive de translation",
+                "Un manque total de jeu mécanique",
+                "Une masse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stick-slip résulte de l'alternance entre phases d'adhérence (f_s élevé) et glissement (f_d plus faible)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Inertie équivalente ramenée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle méthode énergétique permet de calculer simplement l'inertie équivalente d'une chaîne cinématique ?",
+              "options": [
+                "L'égalité des énergies cinétiques",
+                "Le calcul des moments statiques",
+                "La loi des nœuds de Kirchhoff",
+                "Le principe de d'Alembert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On pose Ec_totale = (1/2) · J_eq · omega_m² pour identifier l'inertie équivalente ramenée à l'arbre moteur."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels paramètres influencent l'inertie équivalente ramenée à l'arbre d'un moteur ?",
+              "options": [
+                "Le rapport de réduction de la transmission r",
+                "Les moments d'inertie de chaque constituant",
+                "La masse des éléments en translation",
+                "La température de consigne"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Tous les composants mobiles (masses et inerties) divisés ou multipliés par les rapports de transmission interviennent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une masse M en translation à vitesse v est reliée à un axe tournant à omega avec v = r_p · omega. L'inertie ramenée vaut :",
+              "options": ["M · r_p²", "M / r_p²", "M · r_p", "(1/2) · M · r_p"],
+              "correctAnswers": [0],
+              "explanation": "Ec = (1/2)·M·v² = (1/2)·M·(r_p·omega)² = (1/2)·(M·r_p²)·omega², d'où J_eq = M·r_p²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un réducteur de rapport r = omega_charge / omega_moteur = 0,1 entraîne une charge d'inertie J_charge = 1 kg·m². L'inertie ramenée au moteur est :",
+              "options": ["0,01 kg·m²", "0,1 kg·m²", "10 kg·m²", "100 kg·m²"],
+              "correctAnswers": [0],
+              "explanation": "J_ramenée = J_charge · r² = 1 × (0,1)² = 0,01 kg·m²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt principal d'un réducteur vis-à-vis de l'inertie vue par le moteur ?",
+              "options": [
+                "Diviser l'inertie de la charge par le carré du rapport de réduction",
+                "Multiplier l'accélération de la charge",
+                "Annuler les couples résistants",
+                "Supprimer le besoin d'asservissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inertie de la charge est divisée par k² (où k est le facteur de démultiplication), facilitant le contrôle moteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans le cas d'un système vis-écrou de pas p, la vitesse de translation vaut v = :",
+              "options": [
+                "(p / (2·pi)) · omega",
+                "p · omega",
+                "2·pi · p · omega",
+                "p / omega"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À chaque tour (2pi rad), l'écrou avance du pas p, donc v = (p / 2pi) · omega."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'équation dynamique globale ramenée à l'arbre moteur s'écrit généralement :",
+              "options": [
+                "C_moteur - C_resistant_ramene = J_eq · d(omega_m)/dt",
+                "C_moteur = J_eq · omega_m",
+                "C_moteur + C_resistant = 0",
+                "P_moteur = J_eq · a"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PFD ramené à l'arbre moteur traduit l'équilibre entre couple moteur, couple résistant et inertie totale équivalente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le rendement eta de la transmission intervient-il sur le couple résistant ramené au moteur en phase motrice ?",
+              "options": [
+                "C_res_ramene = C_charge / (k · eta)",
+                "C_res_ramene = C_charge · eta / k",
+                "C_res_ramene = C_charge · k",
+                "C_res_ramene = C_charge · eta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes augmentent le couple à fournir par le moteur : C_ramene = C_charge / (k · eta)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on cherche à minimiser le temps d'accélération d'une charge, le rapport de transmission optimal vérifie :",
+              "options": [
+                "J_moteur = J_charge_ramenee",
+                "J_moteur = 10 · J_charge",
+                "J_charge_ramenee = 0",
+                "k = 1 obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adaptation d'inertie optimale pour une accélération maximale impose J_moteur = J_charge · r²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'unité d'une masse équivalente M_eq ramenée à un axe de translation ?",
+              "options": ["kg", "kg·m²", "N·m", "kg/m"],
+              "correctAnswers": [0],
+              "explanation": "Une inertie ramenée en translation s'exprime comme une masse équivalente en kilogrammes (kg)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Mouvement plan et liaisons mécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien d'équations scalaires indépendantes fournit le PFD pour un solide en mouvement plan (Oxy) ?",
+              "options": [
+                "3 équations (2 forces, 1 moment)",
+                "6 équations",
+                "1 équation",
+                "4 équations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le plan (Oxy), le PFD se réduit à 2 projections de résultante (Fx, Fy) et 1 projection de moment (Mz)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Dans une liaison pivot d'axe (A, z) parfaite, quelles composantes d'action mécanique sont transmissibles ?",
+              "options": [
+                "Les forces X_A et Y_A",
+                "Le couple Z_A autour de l'axe z",
+                "Les couples L_A et M_A autour de x et y",
+                "Une force axiale Z_A"
+              ],
+              "correctAnswers": [0, 2, 3],
+              "explanation": "Une liaison pivot autorise la rotation selon z (donc Z_A = 0 sans frottement) et bloque les 5 autres degrés de liberté."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la condition de roulement sans glissement (RSG) d'un cylindre de rayon R sur un sol fixe en I ?",
+              "options": [
+                "V(I, cylindre/sol) = 0",
+                "V(G, cylindre/sol) = 0",
+                "omega = 0",
+                "a(I) = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condition cinématique de roulement sans glissement impose une vitesse de glissement relative nulle au point de contact I."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En RSG sur sol plan horizontal, quelle relation lie la vitesse du centre G et la vitesse angulaire omega ?",
+              "options": [
+                "v_G = R · omega",
+                "v_G = R / omega",
+                "v_G = 2·pi·R · omega",
+                "v_G = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V(G) = V(I) + GI ^ Omega = 0 + (R y) ^ (-omega z) = -R·omega x => en norme v_G = R · omega."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une liaison glissière parfaite d'axe x, quelle composante d'effort mécanique est nulle ?",
+              "options": [
+                "La force axiale X",
+                "La force normale Y",
+                "Le moment L selon x",
+                "Le moment N selon z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le degré de liberté en translation selon x interdit tout effort transmissible X dans cette direction en l'absence de frottement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où se situe le centre instantané de rotation (CIR) d'une roue roulant sans glisser sur un rail ?",
+              "options": [
+                "Au point de contact roue/rail",
+                "Au centre de la roue",
+                "À l'infini",
+                "Sur le sommet de la roue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point de contact ayant une vitesse nulle à l'instant considéré, il constitue le CIR du solide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour isoler un solide en dynamique, que doit-on obligatoirement recenser dans le bilan des actions mécaniques ?",
+              "options": [
+                "Uniquement les actions extérieures agissant sur le système isolé",
+                "Les actions intérieures uniquement",
+                "Les accélérations des pièces voisines",
+                "Les vitesses des points de contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le BAME ne comptabilise que les actions mécaniques strictement extérieures au système délimité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle équation relie la résultante dynamique à la trajectoire d'un point dans le repère de Frenet ?",
+              "options": [
+                "a = dv/dt · t + (v²/rho) · n",
+                "a = dv/dt · n",
+                "a = (v²/rho) · t",
+                "a = v · t"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la base de Frenet, l'accélération se décompose en accélération tangentielle dv/dt et normale v²/rho."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une bielle dans un système bielle-manivelle est généralement modélisée par :",
+              "options": [
+                "Un solide soumis à deux liaisons pivot à ses extrémités",
+                "Un solide encastré",
+                "Une liaison hélicoïdale",
+                "Un appui ponctuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bielle relie le maneton de vilebrequin au piston par deux articulations rotoïdes parallèles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La force d'inertie centrifuge observée dans un repère en rotation tournant à omega vaut en norme :",
+              "options": [
+                "m · r · omega²",
+                "m · r · omega",
+                "m · omega² / r",
+                "(1/2) · m · r² · omega"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La force d'inertie d'entraînement centrifuge centrifuge s'exprime par F_ie = m · r · omega²."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Équilibrage des rotors",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle condition caractérise l'équilibrage statique d'un rotor tournant autour de son axe ?",
+              "options": [
+                "Le centre d'inertie G est situé sur l'axe de rotation",
+                "Tous les produits d'inertie sont non nuls",
+                "La masse est nulle",
+                "La vitesse de rotation est constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibrage statique impose que le centre de masse G appartienne strictement à l'axe de guidage."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles sont les conséquences d'un mauvais équilibrage dynamique d'un rotor à grande vitesse ?",
+              "options": [
+                "Vibrations importantes de la machine",
+                "Usure prématurée des roulements de guidage",
+                "Émissions sonores accrues",
+                "Augmentation du champ magnétique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le balourd engendre des efforts tournants périodiques provoquant bruit, fatigue mécanique et usure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle condition supplémentaire est requise pour l'équilibrage dynamique complet d'un rotor ?",
+              "options": [
+                "L'axe de rotation doit être axe principal d'inertie",
+                "La masse doit être infiniment petite",
+                "Le rotor doit être parfaitement sphérique",
+                "Le rotor doit tourner à basse vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibrage dynamique exige que G soit sur l'axe et que l'axe soit axe principal d'inertie (moments dynamiques nuls)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de plans de correction sont au minimum nécessaires pour réaliser un équilibrage dynamique complet ?",
+              "options": [
+                "2 plans de correction",
+                "1 seul plan",
+                "4 plans",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibrage dynamique nécessite d'ajouter ou retirer des masses dans au moins deux plans transversaux distincts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on 'balourd' dans un système tournant ?",
+              "options": [
+                "Le produit de la masse décentrée par son excentricité (m · e)",
+                "La longueur totale du rotor",
+                "Le coefficient de viscosité de l'huile",
+                "L'angle de calage du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le balourd U = m · e représente l'écart de répartition massique et s'exprime en g·mm ou kg·m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'unité normalisée usuelle du balourd résiduel ?",
+              "options": ["g·mm", "N·m", "kg·m²", "rad/s"],
+              "correctAnswers": [0],
+              "explanation": "Le balourd s'exprime couramment en gramme-millimètre (g·mm)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment évolue l'effort d'excitation produit par un balourd lorsque la vitesse de rotation est doublée ?",
+              "options": [
+                "Il est multiplié par 4",
+                "Il est multiplié par 2",
+                "Il reste constant",
+                "Il est divisé par 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La force centrifuge vaut F = m · e · omega² : proportionnelle à omega², elle quadruple si la vitesse double."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un rotor mince (disque plat de meuleuse) peut généralement être équilibré dans :",
+              "options": [
+                "1 seul plan (équilibrage statique)",
+                "3 plans obligatoires",
+                "Aucun plan",
+                "5 plans successifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un disque très mince, l'épaisseur est négligeable, l'équilibrage statique dans un seul plan suffit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle opération pratique réalise-t-on couramment sur les roues de voiture pour les équilibrer ?",
+              "options": [
+                "L'ajout de masselottes de plomb sur la jante",
+                "L'usinage du pneumatique au tour",
+                "Le dégonflage partiel",
+                "La modification du carrossage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On fixe des masselottes d'équilibrage de masses calibrées sur les bords intérieurs et extérieurs de la jante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La vitesse critique de rotation d'un arbre tournant correspond à :",
+              "options": [
+                "La pulsation propre de flexion de l'arbre (résonance)",
+                "La vitesse maximale du moteur électrique",
+                "La vitesse de destruction par échauffement",
+                "Une accélération nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse critique coïncide avec la fréquence propre d'oscillation en flexion, provoquant de fortes résonances."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Résolution de problèmes de dynamique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la première étape indispensable lors de la résolution d'un problème avec le PFD ?",
+              "options": [
+                "Définir clairement le système isolé et le référentiel galiléen",
+                "Intégrer les équations différentielles",
+                "Calculer le produit vectoriel des vitesses",
+                "Dessiner le schéma bloc asservi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rigueur exige de définir le système matériel isolé et de préciser le repère d'observation galiléen."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles étapes font partie de la méthode générale de résolution d'un problème de dynamique ?",
+              "options": [
+                "Bilan des actions mécaniques extérieures (BAME)",
+                "Paramétrage géométrique et calcul des accélérations",
+                "Application du PFD et projection sur les axes utiles",
+                "Suppression des termes d'inertie"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La démarche associe le BAME, la cinématique (calcul de a_G ou theta'') et la projection du PFD."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi privilégie-t-on le théorème de l'énergie cinétique par rapport au PFD complet dans certains systèmes ?",
+              "options": [
+                "Il élimine les actions de contact parfaites qui ne travaillent pas",
+                "Il permet de connaître les réactions d'appui",
+                "Il donne des équations vectorielles",
+                "Il évite de dériver par rapport au temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le TEC ne fait intervenir que les puissances des efforts qui travaillent, simplifiant l'obtention de la loi de mouvement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans le cas d'un oscillateur masse-ressort amorti horizontal (m, k, c), l'équation différentielle s'écrit :",
+              "options": [
+                "m · x'' + c · x' + k · x = 0",
+                "m · x'' - k · x = 0",
+                "m · x' + k · x = 0",
+                "m · x'' + k · x² = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PFD projeté sur l'axe donne : -k·x - c·x' = m·x'' soit m·x'' + c·x' + k·x = 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour déterminer l'effort inconnu dans une liaison pivot, quelle méthode est la plus directe ?",
+              "options": [
+                "Appliquer le théorème de la résultante dynamique du PFD",
+                "Appliquer le théorème de l'énergie cinétique",
+                "Mesurer la puissance utile",
+                "Utiliser la transformée de Laplace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résultante dynamique du PFD fait apparaître explicitement les composantes d'action mécanique de liaison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lorsqu'un problème présente un seul degré de liberté, combien d'équations scalaires de mouvement indépendantes obtient-on ?",
+              "options": [
+                "1 équation différentielle du mouvement",
+                "6 équations",
+                "3 équations",
+                "0 équation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre d'équations différentielles régissant le mouvement correspond au nombre de degrés de liberté (ici 1)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un treuil monte une charge de masse M à accélération a. Si le tambour a une inertie J et un rayon R, le couple moteur vaut :",
+              "options": [
+                "C_m = M·(g + a)·R + (J/R)·a",
+                "C_m = M·g·R",
+                "C_m = (J + M) · a",
+                "C_m = M·a·R"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En combinant rotation du tambour et translation de la charge : C_m = (J + M·R²)·(a/R) + M·g·R."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique reste constante pour un système mécanique isolé non soumis à des forces extérieures ?",
+              "options": [
+                "Sa quantité de mouvement totale",
+                "Son accélération",
+                "Son énergie potentielle de pesanteur",
+                "Sa température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de forces extérieures, la résultante dynamique est nulle, la quantité de mouvement totale se conserve."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que représente le principe de d'Alembert dans l'écriture du PFD ?",
+              "options": [
+                "L'assimilation des termes d'inertie à des forces fictives opposées : Σ F - m·a = 0",
+                "La conservation de l'énergie thermique",
+                "La loi des aires de Kepler",
+                "L'annulation du moment cinétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le principe de d'Alembert réécrit la dynamique comme une statique fictive en introduisant la force d'inertie -m·a."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle condition sur les liaisons d'un mécanisme permet de garantir qu'il est isostatique ?",
+              "options": [
+                "Le degré d'hyperstaticité h est nul (h = 0)",
+                "h > 0",
+                "Le mécanisme possède 6 degrés de liberté utiles",
+                "Les liaisons ont du jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système est isostatique lorsque le nombre d'inconnues de liaison égale le nombre d'équations indépendantes (h = 0)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Asservissement et stabilité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Boucle ouverte et boucle fermée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique fondamentale d'un système asservi (en boucle fermée) ?",
+              "options": [
+                "La mesure de la grandeur de sortie réinjectée à l'entrée",
+                "L'absence totale de capteur",
+                "Une vitesse infinie de traitement",
+                "Une consommation électrique constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'asservissement compare en permanence la grandeur de sortie mesurée à la consigne demandée via la boucle de retour."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels constituants font obligatoirement partie de la chaîne directe d'un système asservi ?",
+              "options": [
+                "L'actionneur qui délivre la puissance mécanique",
+                "Le correcteur ou régulateur",
+                "Le capteur de rétroaction",
+                "La source d'énergie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La chaîne directe comprend le correcteur, l'actionneur et le processus ; le capteur se situe dans la chaîne de retour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel signal est calculé au niveau du comparateur à l'entrée d'une boucle fermée ?",
+              "options": [
+                "L'écart epsilon = consigne - mesure",
+                "Le produit de la consigne par la sortie",
+                "La dérivée de la vitesse",
+                "L'accélération du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soustracteur calcule l'écart ou erreur epsilon(t) = consigne(t) - mesure(t)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal de la boucle fermée face aux perturbations extérieures ?",
+              "options": [
+                "Compenser les perturbations pour maintenir la sortie proche de la consigne",
+                "Amplifier les perturbations",
+                "Ignorer complètement la consigne",
+                "Annuler l'alimentation électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce au retour, l'asservissement adapte la commande pour rejeter l'effet néfaste des perturbations."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle différence fondamentale distingue la régulation de la poursuite (asservissement) ?",
+              "options": [
+                "En régulation la consigne est fixe face aux perturbations, en poursuite la consigne évolue dans le temps",
+                "La régulation n'a pas de capteur",
+                "La poursuite fonctionne en boucle ouverte",
+                "Il n'y a aucune différence technique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La régulation maintient une consigne constante (ex: température), la poursuite suit une trajectoire variable (ex: robot)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi préfère-t-on parfois une commande en boucle ouverte pour des moteurs pas-à-pas ?",
+              "options": [
+                "Pour sa simplicité et son coût réduit en l'absence de risque de perte de pas",
+                "Pour sa précision infinie",
+                "Pour sa capacité d'adaptation aux chocs",
+                "Pour éliminer tout bruit sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le couple moteur est surdimensionné, le moteur pas-à-pas suit fidèlement les impulsions sans capteur de position."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un capteur placé sur la boucle de retour doit impérativement être :",
+              "options": [
+                "Précis, fidèle et suffisamment rapide",
+                "Le plus lourd possible",
+                "Alimenté en triphasé",
+                "Uniquement mécanique sans électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La précision globale de l'asservissement ne peut jamais dépasser la précision intrinsèque du capteur de mesure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un schéma bloc, que représente un nœud de dérivation (ou point de prélèvement) ?",
+              "options": [
+                "La transmission d'une même grandeur vers plusieurs blocs sans modification",
+                "La somme arithmétique de signaux",
+                "Une division par deux du signal",
+                "Une porte logique ET"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un point de prélèvement distribue la même valeur physique vers plusieurs sous-systèmes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la fonction de transfert en boucle fermée H_BF(p) pour un retour unitaire avec chaîne directe T(p) ?",
+              "options": [
+                "T(p) / (1 + T(p))",
+                "T(p) / (1 - T(p))",
+                "1 + T(p)",
+                "T(p) · (1 + T(p))"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule de Black pour un retour unitaire négatif donne H_BF(p) = T(p) / (1 + T(p))."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel risque majeur introduit la fermeture d'une boucle d'asservissement ?",
+              "options": [
+                "L'instabilité (oscillations divergentes)",
+                "La surchauffe immédiate de tous les câbles",
+                "La diminution du courant d'induit",
+                "La perte de tension d'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En réinjectant un signal déphasé avec un gain trop élevé, le système asservi peut entrer en oscillation instable."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Transformée de Laplace et transmittance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt fondamental de la transformée de Laplace pour l'étude des systèmes linéaires ?",
+              "options": [
+                "Transformer des équations différentielles en équations algébriques",
+                "Calculer des intégrales indéfinies",
+                "Tracer des plans mécaniques en 3D",
+                "Éviter les calculs matriciels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérivation temporelle devenant une multiplication par la variable p, la résolution devient purement algébrique."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Dans les conditions d'Heaviside (conditions initiales nulles), que valent les transformées de Laplace suivantes ?",
+              "options": [
+                "L{df/dt} = p · F(p)",
+                "L{d²f/dt²} = p² · F(p)",
+                "L{integral f dt} = F(p) / p",
+                "L{df/dt} = F(p) / p²"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Sous conditions initiales nulles, dériver revient à multiplier par p, et intégrer revient à diviser par p."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la transformée de Laplace de l'échelon unitaire u(t) ?",
+              "options": ["1 / p", "1", "1 / p²", "p"],
+              "correctAnswers": [0],
+              "explanation": "Pour un échelon d'amplitude 1 démarrant à t=0, sa transformée de Laplace est 1/p."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la transformée de Laplace de l'impulsion de Dirac delta(t) ?",
+              "options": ["1", "1 / p", "0", "p"],
+              "correctAnswers": [0],
+              "explanation": "L'impulsion de Dirac unitaire a pour transformée de Laplace L{delta(t)} = 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La fonction de transfert (transmittance) H(p) d'un système linéaire continu et invariant s'exprime par :",
+              "options": [
+                "S(p) / E(p) avec conditions initiales nulles",
+                "E(p) / S(p)",
+                "S(p) · E(p)",
+                "d(S)/dt / d(E)/dt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, H(p) = S(p) / E(p) lorsque toutes les conditions initiales sont nulles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que stipule le théorème de la valeur finale pour un signal temporel convergent f(t) ?",
+              "options": [
+                "lim (t->+infini) f(t) = lim (p->0) p · F(p)",
+                "lim (t->+infini) f(t) = lim (p->+infini) F(p)",
+                "lim (t->+infini) f(t) = F(0)",
+                "lim (t->+infini) f(t) = lim (p->0) F(p) / p"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le théorème de la valeur finale énonce que la limite en t->+infini de f(t) est égale à lim (p->0) p·F(p)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que stipule le théorème de la valeur initiale ?",
+              "options": [
+                "lim (t->0⁺) f(t) = lim (p->+infini) p · F(p)",
+                "lim (t->0⁺) f(t) = lim (p->0) F(p)",
+                "lim (t->0⁺) f(t) = 0",
+                "lim (t->0⁺) f(t) = F(1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le théorème de la valeur initiale relie l'instant t=0⁺ au comportement asymptotique p->+infini de p·F(p)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si deux blocs de transmittances H1(p) et H2(p) sont montés en cascade (en série), la transmittance équivalente est :",
+              "options": [
+                "H1(p) · H2(p)",
+                "H1(p) + H2(p)",
+                "H1(p) / H2(p)",
+                "H1(p) - H2(p)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour des blocs en série sans effet de charge, les fonctions de transfert se multiplient."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si deux blocs H1(p) et H2(p) sont montés en parallèle (sommation de leurs sorties), la transmittance équivalente est :",
+              "options": [
+                "H1(p) + H2(p)",
+                "H1(p) · H2(p)",
+                "H1(p) / (1 + H2(p))",
+                "H1(p) - H2(p)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sorties s'additionnant pour une même entrée, la transmittance globale est la somme H1(p) + H2(p)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La transformée d'une rampe unitaire r(t) = t · u(t) est :",
+              "options": ["1 / p²", "1 / p", "2 / p³", "p²"],
+              "correctAnswers": [0],
+              "explanation": "L'intégration temporelle de l'échelon 1/p donne pour la rampe L{t} = 1/p²."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Systèmes du premier ordre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la forme canonique de la fonction de transfert d'un système du 1er ordre ?",
+              "options": [
+                "K / (1 + tau · p)",
+                "K / p",
+                "K / (1 + 2·z·p/omega_0 + p²/omega_0²)",
+                "K · (1 + tau · p)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transmittance canonique du 1er ordre s'écrit H(p) = K / (1 + tau · p), où K est le gain et tau la constante de temps."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels paramètres caractérisent totalement le comportement d'un système du 1er ordre linéaire ?",
+              "options": [
+                "Le gain statique K",
+                "La constante de temps tau",
+                "Le facteur d'amortissement z",
+                "La pulsation de résonance"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un 1er ordre est entièrement défini par deux grandeurs : son gain statique K et sa constante de temps tau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour une réponse indicielle (entrée échelon E0), quelle valeur atteint la sortie à t = tau ?",
+              "options": [
+                "63 % de la valeur finale",
+                "50 % de la valeur finale",
+                "95 % de la valeur finale",
+                "100 % de la valeur finale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "s(tau) = K·E0·(1 - exp(-1)) approx 0,632 · s_finale, soit environ 63% de la valeur finale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À t = 3·tau, quel pourcentage de la valeur finale la réponse indicielle a-t-elle atteint ?",
+              "options": ["95 %", "80 %", "99 %", "63 %"],
+              "correctAnswers": [0],
+              "explanation": "1 - exp(-3) approx 1 - 0,05 = 0,95, c'est-à-dire 95% de la valeur asymptotique (temps de réponse à 5%)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la pente de la tangente à l'origine (t = 0) de la réponse indicielle d'un premier ordre ?",
+              "options": [
+                "(K · E0) / tau",
+                "K · E0",
+                "tau / (K · E0)",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En dérivant s(t) en t=0, la pente initiale vaut (K · E0) / tau. La tangente coupe l'asymptote en t = tau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un système du premier ordre présente-t-il un dépassement lors d'une réponse indicielle ?",
+              "options": [
+                "Jamais, la réponse est purement apériodique monotone",
+                "Oui, toujours de 5%",
+                "Uniquement si K > 10",
+                "Oui si tau est très grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction s(t) = K·E0·(1 - exp(-t/tau)) est strictement croissante sans aucune oscillation ni dépassement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la constante de temps tau dans le Système International ?",
+              "options": ["Seconde (s)", "Hertz (Hz)", "Sans unité", "rad/s"],
+              "correctAnswers": [0],
+              "explanation": "tau possède la dimension d'un temps et s'exprime en secondes (s)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un circuit RC passif série (sortie aux bornes du condensateur), que vaut la constante de temps tau ?",
+              "options": [
+                "tau = R · C",
+                "tau = R / C",
+                "tau = C / R",
+                "tau = sqrt(R · C)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation différentielle s'écrit R·C · ds/dt + s = e, donc tau = R · C."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La pulsation de coupure à -3 dB d'un système du 1er ordre vaut :",
+              "options": [
+                "omega_c = 1 / tau",
+                "omega_c = tau",
+                "omega_c = 2·pi / tau",
+                "omega_c = sqrt(tau)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À omega = 1/tau, |H(j·omega)| = K / sqrt(1 + 1) = K / sqrt(2), ce qui correspond à une atténuation de -3 dB."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut le déphasage phi(omega) d'un premier ordre à très haute fréquence (omega -> +infini) ?",
+              "options": ["-90° (-pi/2 rad)", "0°", "-180° (-pi rad)", "+90°"],
+              "correctAnswers": [0],
+              "explanation": "phi(omega) = -arctan(tau·omega). Quand omega tend vers l'infini, arctan tend vers pi/2, d'où phi -> -90°."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Systèmes du second ordre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la forme canonique de la fonction de transfert d'un système du 2nd ordre ?",
+              "options": [
+                "K / (1 + (2·z/omega_0)·p + p²/omega_0²)",
+                "K / (1 + tau · p)",
+                "K · p / (1 + p)",
+                "K / (p² + omega_0²)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transmittance canonique fait intervenir le gain K, le coefficient d'amortissement z (ou xi) et la pulsation propre omega_0."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Pour quelle plage de valeurs du coefficient d'amortissement z le système présente-t-il une réponse oscillatoire amortie ?",
+              "options": [
+                "0 < z < 1",
+                "z = 0 (oscillations non amorties)",
+                "z >= 1 (régime apériodique)",
+                "z < 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour 0 < z < 1, les pôles sont complexes conjugués, la réponse indicielle présente des pseudo-oscillations avec dépassement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quoi correspond le cas particulier z = 1 pour un système du second ordre ?",
+              "options": [
+                "Au régime apériodique critique",
+                "Au régime oscillatoire libre",
+                "À un système instable",
+                "À un intégrateur pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour z = 1, le discriminant est nul, le système possède un pôle double réel : c'est le régime critique (le plus rapide sans dépassement)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que vaut la pente de la tangente à l'origine (t = 0) de la réponse indicielle d'un second ordre strict ?",
+              "options": [
+                "Strictement nulle",
+                "Égale à K · omega_0",
+                "Infinie",
+                "Égale à K / z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après le théorème de la valeur initiale appliqué à la dérivée, la vitesse initiale s'(0) est nulle (tangente horizontale)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour quelle condition sur z observe-t-on un phénomène de résonance en réponse harmonique ?",
+              "options": [
+                "z < sqrt(2)/2 approx 0,707",
+                "z > 1",
+                "z = 1",
+                "z > 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pic de résonance du gain n'apparaît que si le facteur d'amortissement est inférieur à 1/sqrt(2) approx 0,707."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la pulsation des pseudo-oscillations omega_p pour un système sous-amorti (z < 1) ?",
+              "options": [
+                "omega_0 · sqrt(1 - z²)",
+                "omega_0 / sqrt(1 - z²)",
+                "omega_0 · z",
+                "omega_0 · (1 - z)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pseudo-pulsation amortie s'écrit omega_p = omega_0 · sqrt(1 - z²)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'expression du premier dépassement relatif D1 pour un second ordre sous-amorti ?",
+              "options": [
+                "exp(-pi·z / sqrt(1 - z²))",
+                "exp(-z)",
+                "1 - z²",
+                "z · pi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier dépassement en pourcentage vaut D1% = 100 · exp(-pi·z / sqrt(1 - z²))."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que vaut le déphasage asymptotique phi d'un second ordre à très haute fréquence (omega -> +infini) ?",
+              "options": ["-180° (-pi rad)", "-90°", "0°", "-360°"],
+              "correctAnswers": [0],
+              "explanation": "Chaque pôle apportant -90°, un système du 2nd ordre strict présente un déphasage final de -180°."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour un système du second ordre avec z > 1, la transmittance peut se décomposer en :",
+              "options": [
+                "Un produit de deux systèmes du 1er ordre réels",
+                "Une somme de deux oscillateurs",
+                "Un intégrateur et un dérivateur",
+                "Un retard pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque z > 1, le dénominateur a deux racines réelles distinctes, se factorisant en (1 + tau1·p)(1 + tau2·p)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle valeur d'amortissement z optimise souvent le compromis rapidité/dépassement (tr5% minimal) ?",
+              "options": ["z approx 0,7", "z = 0,1", "z = 5", "z = 0"],
+              "correctAnswers": [0],
+              "explanation": "Pour z approx 0,7 (précisément 0,69), le temps de réponse à 5% est minimal avec un léger dépassement d'environ 5%."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Performances : Précision des asservissements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'erreur statique (ou erreur de position) d'un système asservi ?",
+              "options": [
+                "L'écart résiduel entre la consigne et la sortie en régime permanent pour une entrée échelon",
+                "L'erreur pendant la phase transitoire",
+                "La vitesse maximale du moteur",
+                "L'erreur de calcul du microcontrôleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'erreur statique epsilon_s = lim (t->infini) [consigne(t) - sortie(t)] lors de l'application d'un échelon."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels facteurs permettent d'annuler rigoureusement l'erreur statique d'un système asservi à retour unitaire ?",
+              "options": [
+                "La présence d'une intégration (terme 1/p) dans la chaîne directe",
+                "Une classe alpha >= 1 pour la boucle ouverte",
+                "L'annulation du gain statique",
+                "La coupure de la boucle de retour"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un intégrateur pur en chaîne directe (classe >= 1) confère un gain statique infini en boucle ouverte, annulant l'erreur indicielle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on 'classe' d'une fonction de transfert en boucle ouverte FTBO(p) ?",
+              "options": [
+                "Le nombre d'intégrateurs purs (puissance de p au dénominateur : 1/p^alpha)",
+                "Le degré total du numérateur",
+                "La valeur de son gain statique",
+                "Le nombre de capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La classe alpha est le nombre de pôles nuls (intégrations) de la boucle ouverte FTBO(p) = K / (p^alpha · D(p))."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour une boucle ouverte de classe 0 et de gain K_BO, quelle est l'erreur statique en réponse à un échelon d'amplitude E0 ?",
+              "options": [
+                "epsilon_s = E0 / (1 + K_BO)",
+                "epsilon_s = 0",
+                "epsilon_s = E0 · K_BO",
+                "epsilon_s = infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par application du théorème de la valeur finale, epsilon_s = lim (p->0) p · [E0/p / (1 + FTBO(p))] = E0 / (1 + K_BO)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'erreur de traînage (ou erreur de vitesse) d'un asservissement ?",
+              "options": [
+                "L'écart permanent de suivi lorsque la consigne est une rampe de vitesse constante",
+                "L'erreur lors d'un freinage d'urgence",
+                "Le retard du capteur optique",
+                "Le temps nécessaire pour démarrer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'erreur de traînage mesure la précision permanente lors du suivi d'une rampe e(t) = v0 · t."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour avoir une erreur de traînage constante et finie pour une entrée rampe, la boucle ouverte doit être de classe :",
+              "options": [
+                "Classe 1",
+                "Classe 0",
+                "Classe 3",
+                "Classe 0 avec gain nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En classe 1, l'erreur de vitesse est finie et vaut epsilon_v = v0 / K_BO (en classe 0 elle diverge vers l'infini)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour annuler totalement l'erreur de traînage face à une rampe, quelle classe de FTBO est nécessaire ?",
+              "options": [
+                "Classe 2 (au moins deux intégrateurs)",
+                "Classe 1",
+                "Classe 0",
+                "Classe -1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une classe 2 (deux intégrations dans la boucle) permet d'avoir une erreur permanente nulle pour une entrée rampe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le rejet d'une perturbation constante appliquée sur le processus peut-il être rendu parfait ?",
+              "options": [
+                "En plaçant un intégrateur en amont de la perturbation dans la chaîne directe",
+                "En diminuant le gain du correcteur",
+                "En supprimant le retour unitaire",
+                "En augmentant la bande passante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un intégrateur situé avant le point d'injection de la perturbation garantit un rejet statique total de celle-ci."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on augmente le gain statique de boucle ouverte K_BO d'un système de classe 0, l'erreur statique :",
+              "options": [
+                "Diminue",
+                "Augmente",
+                "Reste strictement identique",
+                "S'annule totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque epsilon_s = E0 / (1 + K_BO), augmenter K_BO réduit l'erreur de position sans jamais l'annuler totalement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de l'erreur statique d'un asservissement de position angulaire ?",
+              "options": [
+                "Radian (ou degré)",
+                "Seconde",
+                "Newton-mètre",
+                "Volt/seconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'erreur a toujours la même unité physique que la grandeur asservie (ici l'angle, donc en rad ou degrés)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Performances : Rapidité et dépassement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment est défini le temps de réponse à 5 % (tr5%) d'un système ?",
+              "options": [
+                "L'instant à partir duquel la sortie reste confinée dans une bande de ±5 % autour de sa valeur finale",
+                "Le temps pour atteindre 5% de la consigne",
+                "Le temps de calcul du microprocesseur",
+                "La durée de la première oscillation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tr5% marque l'entrée définitive du signal dans le couloir à ±5% de sa valeur asymptotique finale."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels critères permettent de quantifier la rapidité d'un système asservi ?",
+              "options": [
+                "Le temps de réponse à 5 % (tr5%)",
+                "Le temps de montée (rise time)",
+                "Le temps du premier pic (temps de dépassement)",
+                "Le gain statique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le temps de montée, le temps de réponse et le temps de crête mesurent la vitesse d'évolution temporelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un système du 1er ordre de constante de temps tau, le temps de réponse à 5 % vaut :",
+              "options": ["3 · tau", "tau", "5 · tau", "0,63 · tau"],
+              "correctAnswers": [0],
+              "explanation": "À t = 3·tau, 1 - exp(-3) = 0,9502, le système atteint 95% de sa valeur finale, donc tr5% = 3·tau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on 'dépassement' (overshoot) lors d'un échelon ?",
+              "options": [
+                "La valeur maximale atteinte au-dessus de la valeur finale en régime permanent",
+                "Le retard initial du système",
+                "La dérive thermique du capteur",
+                "L'erreur résiduelle finale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dépassement mesure l'amplitude d'oscillation franchissant la valeur d'équilibre asymptotique finale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour un second ordre de pulsation omega_0 et z = 0,7, le temps de réponse à 5 % est approximativement :",
+              "options": [
+                "3 / omega_0",
+                "1 / omega_0",
+                "10 / omega_0",
+                "0,5 · omega_0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un amortissement optimal z approx 0,7, on a la relation pratique bien connue : tr5% approx 3 / omega_0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel lien existe-t-il généralement entre la bande passante d'un système et sa rapidité ?",
+              "options": [
+                "Plus la bande passante est large, plus le système est rapide",
+                "Plus la bande passante est large, plus le système est lent",
+                "Il n'y a aucun lien entre bande passante et rapidité",
+                "Une bande passante large annule le gain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une bande passante étendue permet de laisser passer les hautes fréquences, garantissant des fronts raides et des temps courts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le temps de montée tm est classiquement défini comme le temps mis pour passer de :",
+              "options": [
+                "10 % à 90 % de la valeur finale",
+                "0 % à 50 % de la consigne",
+                "95 % à 100 %",
+                "0 % à 5 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La convention standard définit le temps de montée entre 10% et 90% de la valeur asymptotique pour un système apériodique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi un dépassement excessif est-il souvent proscrit dans un mécanisme de précision (ex: machine-outil) ?",
+              "options": [
+                "Risque de collision ou d'endommagement de la pièce usinée",
+                "Diminution de la consommation d'énergie",
+                "Augmentation excessive du rendement",
+                "Baisse de la température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un dépassement en usinage ou en robotique peut faire plonger l'outil trop profondément et détruire la pièce."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le cas d'un retard pur T_retard modélisé par exp(-T_retard · p), le temps de réponse global est :",
+              "options": [
+                "Augmenté de la valeur exacte de T_retard",
+                "Diminué de T_retard",
+                "Multiplié par deux",
+                "Strictement invariant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un retard pur translate l'ensemble de la réponse temporelle vers la droite d'une durée T_retard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on cherche à rendre un asservissement plus rapide en augmentant fortement le gain, que risque-t-il d'arriver ?",
+              "options": [
+                "L'augmentation du dépassement et la dégradation de la stabilité",
+                "Une erreur statique infinie",
+                "Une diminution des accélérations",
+                "Une suppression de la bande passante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gain trop fort accélère la montée mais provoque de fortes oscillations et peut conduire à l'instabilité."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Stabilité et critères algébriques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la condition nécessaire et suffisante de stabilité d'un système linéaire en boucle fermée ?",
+              "options": [
+                "Tous les pôles de sa fonction de transfert en boucle fermée ont une partie réelle strictement négative",
+                "Tous les zéros sont positifs",
+                "Le gain statique est supérieur à 1",
+                "Le degré du numérateur est supérieur au dénominateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pôles à partie réelle strictement négative correspondent à des exponentielles temporelles décroissantes vers 0."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles sont les conditions nécessaires (de Routh) sur les coefficients du dénominateur a_n·p^n + ... + a_0 = 0 ?",
+              "options": [
+                "Tous les coefficients a_i doivent être strictement de même signe",
+                "Aucun coefficient a_i ne doit être nul",
+                "Le terme a_0 doit être égal à 1",
+                "Les coefficients doivent être tous pairs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour qu'un polynôme n'ait que des racines à partie réelle négative, tous ses coefficients doivent être présents et de même signe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que stipule le critère algébrique de Routh-Hurwitz ?",
+              "options": [
+                "Le nombre de pôles à partie réelle positive est égal au nombre de changements de signe dans la première colonne de la table de Routh",
+                "Le système est stable si la table ne contient aucun zéro",
+                "La stabilité dépend uniquement du numérateur",
+                "Tous les termes de la table doivent être négatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la stabilité stricte, tous les éléments de la première colonne du tableau de Routh doivent être strictement positifs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'advient-il si un pôle en boucle fermée possède une partie réelle strictement positive ?",
+              "options": [
+                "La réponse temporelle diverge de façon exponentielle (système instable)",
+                "Le système s'arrête instantanément",
+                "La sortie oscille avec une amplitude constante",
+                "Le gain devient nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terme temporel exp(+alpha·t) croît sans limite : le système est instable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la présence d'une paire de pôles purement imaginaires conjugués (+- j·omega) ?",
+              "options": [
+                "Le système est à la limite de stabilité (oscillations entretenues permanentes)",
+                "Le système est asymptotiquement stable",
+                "Le système diverge immédiatement",
+                "Le système est du 1er ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des pôles imaginaires purs génèrent des termes purement sinusoïdaux sin(omega·t) non amortis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le point critique dans le plan complexe de Nyquist pour un retour unitaire négatif ?",
+              "options": [
+                "Le point critique (-1, 0j)",
+                "Le point d'origine (0, 0j)",
+                "Le point (+1, 0j)",
+                "Le point (0, -1j)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dénominateur de la BF s'annule quand 1 + FTBO(p) = 0, c'est-à-dire quand FTBO(j·omega) = -1 (module 1 et phase -180°)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se définit la marge de phase (Delta phi ou M_phi) ?",
+              "options": [
+                "180° + phi(omega_0dB) où |FTBO(j·omega_0dB)| = 1 (0 dB)",
+                "180° - phi(omega_0dB)",
+                "phi(omega_0dB) - 90°",
+                "|FTBO(j·omega)| à -180°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La marge de phase mesure l'écart angulaire restant avant d'atteindre -180° à la pulsation de coupure à 0 dB."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle valeur minimale de marge de phase est couramment recommandée dans l'industrie pour assurer un bon amortissement ?",
+              "options": [
+                "Entre 45° et 60°",
+                "Entre 0° et 5°",
+                "Exactement 180°",
+                "Plus de 270°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une marge de phase d'au moins 45° garantit une bonne robustesse et évite les dépassements oscillatoires trop prononcés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment se définit la marge de gain (M_G) en décibels ?",
+              "options": [
+                "-20·log10(|FTBO(j·omega_180)|)",
+                "20·log10(|FTBO(j·omega_180)|)",
+                "|FTBO(0)|",
+                "180° + phi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La marge de gain en dB est l'atténuation du module à la pulsation où la phase atteint -180° : M_G = -G_dB(omega_180)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle valeur minimale de marge de gain est usuellement préconisée en asservissement ?",
+              "options": ["Au moins 6 à 10 dB", "0 dB", "-6 dB", "100 dB"],
+              "correctAnswers": [0],
+              "explanation": "Une marge de gain de 6 à 10 dB assure que le gain de boucle peut varier d'un facteur 2 sans risquer l'instabilité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Diagrammes de Bode et réponse harmonique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quels deux tracés est composé le lieu de Bode d'une fonction de transfert ?",
+              "options": [
+                "Le tracé du gain en dB et le tracé de la phase en degrés en fonction de log(omega)",
+                "Le tracé de la vitesse et de la position",
+                "Le tracé de la partie réelle et de la partie imaginaire",
+                "Le tracé du couple et du temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bode représente le gain G_dB = 20·log10|H(j·omega)| et la phase phi(omega) = arg(H(j·omega)) en échelle logarithmique."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles sont les propriétés des échelles logarithmiques utilisées dans les diagrammes de Bode ?",
+              "options": [
+                "Une multiplication de pulsations correspond à une translation graphique",
+                "Une décade correspond à une multiplication par 10 de la pulsation",
+                "La pulsation zéro est représentée à l'origine de l'axe",
+                "Une octave correspond à une multiplication par 2"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "En échelle log, les rapports se transforment en distances (décades ×10, octaves ×2), et omega = 0 se situe à -infini."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la pente de l'asymptote haute fréquence du gain de Bode pour un système du 1er ordre K/(1+tau·p) ?",
+              "options": [
+                "-20 dB par décade",
+                "-40 dB par décade",
+                "0 dB par décade",
+                "+20 dB par décade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un pôle simple entraîne une pente asymptotique de -20 dB/décade (ou -6 dB/octave) au-delà de sa pulsation de coupure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la pente asymptotique du gain de Bode pour un intégrateur pur 1/p sur toute la plage de pulsation ?",
+              "options": [
+                "-20 dB par décade",
+                "-40 dB par décade",
+                "0 dB par décade",
+                "+20 dB par décade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction 1/(j·omega) possède un gain de -20·log10(omega), soit une droite de pente constante de -20 dB/décade."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que vaut la phase apportée par un intégrateur pur 1/p pour toute pulsation omega ?",
+              "options": ["Constante et égale à -90°", "0°", "-180°", "+90°"],
+              "correctAnswers": [0],
+              "explanation": "arg(1 / j·omega) = -arg(j·omega) = -90° (retard de phase pur d'un quart de tour)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la pente asymptotique haute fréquence du gain d'un système du second ordre strict ?",
+              "options": [
+                "-40 dB par décade",
+                "-20 dB par décade",
+                "-60 dB par décade",
+                "0 dB par décade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux pôles provoquent une chute du gain à -40 dB/décade (terme en 1/omega²)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À la pulsation de coupure omega = 1/tau d'un 1er ordre, quel est l'écart entre la courbe réelle de gain et l'asymptote ?",
+              "options": ["-3 dB", "0 dB", "-6 dB", "-1 dB"],
+              "correctAnswers": [0],
+              "explanation": "G_dB = 20·log(K) - 20·log(sqrt(2)) = G_asymptote - 3,01 dB."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la phase apportée par un dérivateur pur p ?",
+              "options": ["Constante et égale à +90°", "-90°", "0°", "+180°"],
+              "correctAnswers": [0],
+              "explanation": "arg(j·omega) = +90° (avance de phase constante d'un quart de tour)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur un diagramme de Black-Nichols, quelles grandeurs sont reportées sur les axes ?",
+              "options": [
+                "Le gain en dB en ordonnée et la phase en degrés en abscisse",
+                "Le temps en abscisse et le gain en ordonnée",
+                "La partie réelle et la partie imaginaire",
+                "La pulsation en abscisse et la fréquence en ordonnée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plan de Black reporte G_dB = f(phi_deg), permettant une lecture aisée des marges et des abaques de Nichols."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment le diagramme de Nyquist représente-t-il la fonction de transfert harmonique H(j·omega) ?",
+              "options": [
+                "Dans le plan complexe : Partie Imaginaire en fonction de Partie Réelle",
+                "En échelle log/log de la vitesse",
+                "Par deux courbes temporelles superposées",
+                "Par une droite passant par l'origine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lieu de Nyquist est la courbe paramétrée par omega traçant Re(H) en abscisse et Im(H) en ordonnée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Correction des asservissements (P, PI, PID)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la fonction de transfert d'un régulateur proportionnel pur de gain K_p ?",
+              "options": [
+                "C(p) = K_p",
+                "C(p) = K_p / p",
+                "C(p) = K_p · p",
+                "C(p) = 1 + K_p · p"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un correcteur proportionnel applique un simple coefficient d'amplification constant C(p) = K_p."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels sont les effets principaux de l'ajout d'une action intégrale (correcteur PI) ?",
+              "options": [
+                "L'annulation de l'erreur statique en régime permanent",
+                "L'augmentation de la classe de la boucle ouverte",
+                "La dégradation de la marge de phase (effet déstabilisant)",
+                "L'accélération brutale du temps de montée"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'intégrateur annule l'erreur statique mais introduit un déphasage de -90° à basse fréquence, réduisant la stabilité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme standard d'un correcteur Proportionnel Intégral (PI) en fonction de K_p et T_i ?",
+              "options": [
+                "C(p) = K_p · (1 + 1 / (T_i · p))",
+                "C(p) = K_p + T_i · p",
+                "C(p) = K_p / (1 + T_i · p)",
+                "C(p) = K_p · T_i · p"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure standard du PI est C(p) = K_p · (1 + 1 / (T_i · p)) où T_i est la constante de temps d'intégration."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'effet bénéfique majeur de l'action dérivée (action D) dans un régulateur PID ?",
+              "options": [
+                "Apporter une avance de phase qui stabilise le système et permet d'accélérer la réponse",
+                "Annuler l'erreur statique",
+                "Filtrer totalement les bruits haute fréquence",
+                "Diminuer la tension du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action dérivée anticipe les variations de l'erreur, apportant une avance de phase stabilizing."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi associe-t-on obligatoirement un filtre passe-bas à l'action dérivée en pratique (dérivée filtrée) ?",
+              "options": [
+                "Pour éviter d'amplifier démesurément les bruits de mesure haute fréquence",
+                "Pour annuler la masse du capteur",
+                "Pour réduire le coût du logiciel",
+                "Pour supprimer l'effet proportionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un dérivateur pur amplifie les bruits parasites haute fréquence ; on utilise C_D(p) = (T_d·p) / (1 + T_d·p/N)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on 'correcteur à avance de phase' ?",
+              "options": [
+                "Un correcteur de la forme (1 + a·T·p)/(1 + T·p) avec a > 1",
+                "Un intégrateur pur",
+                "Un filtre passe-bas de gain 0 dB",
+                "Un régulateur purement proportionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour a > 1, le zéro précède le pôle, fournissant une bosse d'avance de phase positive utile pour améliorer la marge de phase."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle méthode empirique industrielle classique permet de régler les paramètres d'un PID ?",
+              "options": [
+                "La méthode de Ziegler-Nichols",
+                "Le théorème de Huygens",
+                "La règle de la main droite",
+                "La méthode des éléments finis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ziegler-Nichols propose deux méthodes réputées (en boucle ouverte sur réponse indicielle ou à la limite d'oscillation)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel phénomène néfaste survient lorsque l'actionneur sature alors que l'intégrateur continue d'accumuler l'erreur ?",
+              "options": [
+                "L'emballement intégral ('windup')",
+                "L'avalanche thermique",
+                "La résonance paramétrique",
+                "La démagnétisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intégrateur saturé crée un dépassement considérable au déblocage ; on implémente un algorithme anti-windup."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme idéale parallèle de la fonction de transfert d'un régulateur PID ?",
+              "options": [
+                "C(p) = K_p + K_i / p + K_d · p",
+                "C(p) = K_p · K_i · K_d · p",
+                "C(p) = (K_p + K_i) / (1 + K_d·p)",
+                "C(p) = K_p / (p · (1 + p))"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans sa représentation parallèle, C(p) est la somme directe des actions P, I et D : K_p + K_i/p + K_d·p."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une commande en cascade (ex: vitesse et position), quelle boucle est réglée en premier ?",
+              "options": [
+                "La boucle interne (la plus rapide)",
+                "La boucle externe",
+                "Les deux simultanément sans distinction",
+                "Aucune des deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle interne (ex: courant ou vitesse) doit être réglée et stabilisée avant d'asservir la boucle externe (position)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse et commande industrielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le triptyque classique des performances d'un système asservi ?",
+              "options": [
+                "Stabilité, précision, rapidité",
+                "Masse, volume, puissance",
+                "Tension, courant, résistance",
+                "Force, vitesse, accélération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cahier des charges d'un asservissement s'articule toujours autour de la stabilité, la précision et la rapidité."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles informations figurent typiquement dans le cahier des charges fonctionnel d'un asservissement de position ?",
+              "options": [
+                "Le temps de réponse à 5 % maximal",
+                "L'erreur statique admissible sous couple perturbateur",
+                "Le dépassement maximal toléré D1%",
+                "La marque du fabricant de vis"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le cahier des charges précise les exigences quantitatives sur le temps de réponse, l'erreur tolérée et le dépassement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour asservir la position d'un axe de robot industriel avec grande précision, quelle structure est standard ?",
+              "options": [
+                "Un asservissement en cascade : boucle de courant, boucle de vitesse, puis boucle de position",
+                "Une commande tout-ou-rien par relais",
+                "Une boucle ouverte sans codeur",
+                "Un correcteur dérivateur pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'architecture en cascade imbriquée (courant/couple -> vitesse -> position) est le standard absolu en robotique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel capteur est couramment monté sur l'arbre d'un moteur brushless pour mesurer sa position et sa vitesse ?",
+              "options": [
+                "Un codeur incrémental optique ou magnétique",
+                "Une jauge de déformation",
+                "Un thermocouple",
+                "Un débitmètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les codeurs rotatifs (incrémentaux ou absolus) fournissent les impulsions nécessaires au calcul de position et de vitesse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle modulation est universellement employée par le hacheur de puissance pour commander un moteur à courant continu ?",
+              "options": [
+                "La modulation de largeur d'impulsion (MLI ou PWM)",
+                "La modulation d'amplitude radio AM",
+                "La modulation de fréquence FM",
+                "Le hachage purement résistif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La MLI permet de faire varier la tension moyenne appliquée au moteur avec un excellent rendement énergétique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une commande par pré-compensation (ou 'feedforward') ?",
+              "options": [
+                "Une anticipation calculée à partir de la consigne injectée directement sur la commande sans attendre l'erreur",
+                "Un retard volontaire de la commande",
+                "Une mesure après coup de la perturbation",
+                "Une réinitialisation du programme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le feedforward calcule l'effort nécessaire théorique pour suivre la consigne, allégeant le travail de la boucle de rétroaction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un système discret échantillonné à la période T_e, le théorème de Shannon impose pour la fréquence d'échantillonnage f_e :",
+              "options": [
+                "f_e > 2 · f_max du signal",
+                "f_e < f_max / 2",
+                "f_e = f_max",
+                "f_e = 10 Hz obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le théorème d'échantillonnage de Nyquist-Shannon impose f_e > 2·f_max pour éviter tout repliement spectral."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel composant électronique convertit le signal analogique issu d'un capteur en données exploitables par le microcontrôleur ?",
+              "options": [
+                "Un convertisseur analogique-numérique (CAN ou ADC)",
+                "Un onduleur autonome",
+                "Un transformateur",
+                "Une photodiode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CAN convertit une tension analogique continue en un mot binaire numérique échantillonné."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi utilise-t-on un filtre anti-repliement analogique avant la conversion analogique-numérique ?",
+              "options": [
+                "Pour couper les fréquences supérieures à f_e / 2",
+                "Pour amplifier la tension continue",
+                "Pour stabiliser la batterie",
+                "Pour générer des impulsions de commande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre passe-bas anti-repliement élimine les composantes spectrales au-delà de la fréquence de Shannon f_e/2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La robustesse d'un système asservi qualifie :",
+              "options": [
+                "Sa capacité à conserver ses performances malgré les variations des paramètres du système ou de son environnement",
+                "Sa résistance mécanique aux chocs et chutes",
+                "L'épaisseur de son châssis en acier",
+                "La puissance de son alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La robustesse traduit la stabilité et la précision face aux incertitudes de modèle et aux dérives environnementales."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

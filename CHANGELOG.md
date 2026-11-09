@@ -1,5 +1,19 @@
 # Notes de version
 
+## 0.9.4
+
+### Nouveautés
+
+* **Quizzly** : refonte de l'interface et de nouvelles fonctionnalités ont été ajoutées ! mAI connaît mieux votre profil, vos activités et de nouvelles matières, chapitres et fiches ont été crées.
+
+### Améliorations
+
+* **Performances et chargement** : optimisation du chargement des ressources et performances accrues.
+
+### Corrections
+
+* **Nombreuses corrections** : correction de nombreux bugs majeurs et mineurs ainsi que des vulnérabilités de sécurité
+
 ## 0.9.3
 
 ### Nouveautés
@@ -21,6 +35,7 @@
 
 * **Blackline** : intégration de BlackLine, un jeu vidéo divertissant pour attendre vos agents en jouant ! Disponible pour tous les plans et sur toutes les plateformes.
 * **Conversations sécurisées** : introduction de la fonctionnalité Locked Chats dans mAI pour vous permettre de verrouiller les conversations publiques avec un code PIN à 4 chiffres. Disponible pour tous les plans et sur toutes les plateformes mais uniquement dans mAI Web.
+
 
 
 ### Améliorations
@@ -142,3 +157,4 @@
 * Le bouton « Avancé » des Skills est remplacé par des accès explicites à la gestion et à la création.
 * Les fiches de modèles MCP s’ouvrent dans l’onglet courant avec la navigation de l’application.
 * Les notes de version restent accessibles sans connexion et sont incluses dans l’artefact de déploiement.
+

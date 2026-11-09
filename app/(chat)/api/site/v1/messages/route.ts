@@ -1,12 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { resolveAuthorizationHeader } from "@/lib/site/session-bearer";
 
 // POST /api/v1/messages - Anthropic Messages SDK Proxy
 export async function POST(req: NextRequest) {
   try {
-    const authHeader =
-      req.headers.get("authorization") ||
-      req.headers.get("Authorization") ||
-      "";
+    const authHeader = await resolveAuthorizationHeader(req);
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return NextResponse.json(
         {

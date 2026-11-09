@@ -28,7 +28,6 @@ import {
   scoreRetenu,
 } from "@/lib/quizzly/coach";
 import { lireNomAffiche } from "@/lib/quizzly/display-name";
-import { compterDemandes } from "@/lib/quizzly/friend-store";
 import { corrigerQuestion, corrigerQuiz } from "@/lib/quizzly/grade";
 import {
   assurerSiege,
@@ -43,7 +42,7 @@ import {
   precedentQuiz,
   suivantQuiz,
 } from "@/lib/quizzly/load";
-import { portraitsPour, trouverCompteParPseudo } from "@/lib/quizzly/portraits";
+import { portraitsPour } from "@/lib/quizzly/portraits";
 import {
   type ChapterFileName,
   estAnneeScolaire,
@@ -194,10 +193,7 @@ export async function resumeQuizzly(
   await assurerSiege(userId);
   const aujourdhui = jourParis(new Date());
   const semaine = semaineIso(aujourdhui);
-  const [hebdo, demandes] = await Promise.all([
-    xpSemaine(userId, semaine),
-    compterDemandes(userId),
-  ]);
+  const hebdo = await xpSemaine(userId, semaine);
   const cosmetiques = normaliserCosmetiques(profil.cosmetics);
   const annee = estAnneeScolaire(profil.schoolYear) ? profil.schoolYear : "6e";
   const niveau = niveauDepuisXp(profil.xp);
@@ -215,7 +211,7 @@ export async function resumeQuizzly(
     modelId: profil.modelId,
     niveau: niveau.niveau,
     ownedFrames: cosmetiques.ownedFrames,
-    pendingFriends: demandes,
+    pendingFriends: 0,
     schoolYear: annee,
     streakBest: recordSerie(profil.streakCount, profil.streakBest),
     streakCount: profil.streakCount,
@@ -308,11 +304,15 @@ export async function enregistrerModeleQuizzly(
 }
 
 export async function chargerCoach(userId: string): Promise<{
+  league: LeagueId;
   modelId: string | null;
+  niveau: number;
   passedCount: number;
   schoolYear: SchoolYear;
   streakCount: number;
+  subjects: string[];
   tentatives: { lastAttempt: unknown; quizId: string }[];
+  weeklyXp: number;
   xp: number;
 }> {
   const profil = await assurerProfil(userId);
@@ -343,12 +343,22 @@ export async function chargerCoach(userId: string): Promise<{
       ),
   ]);
   const annee = estAnneeScolaire(profil.schoolYear) ? profil.schoolYear : "6e";
+  const ligue = ligueOuBronze(profil.league);
+  const palier = niveauDepuisXp(profil.xp);
+  const aujourdhui = jourParis(new Date());
+  const semaine = semaineIso(aujourdhui);
+  const hebdo = await xpSemaine(userId, semaine);
+
   return {
+    league: ligue,
     modelId: profil.modelId,
+    niveau: palier.niveau,
     passedCount: Number(compte[0]?.valeur ?? 0),
     schoolYear: annee,
     streakCount: profil.streakCount,
+    subjects: Array.isArray(profil.subjects) ? (profil.subjects as string[]) : [],
     tentatives: lignes,
+    weeklyXp: hebdo,
     xp: profil.xp,
   };
 }
@@ -1058,243 +1068,6 @@ export function idsOuverts(
 ): Set<string> {
   const ordre = index.ordreParMatiere.get(`${annee}/${matiereId}`) ?? [];
   return idsDebloques(ordre, passes);
-}
-
-/**
- * Offrir un cadeau (article de boutique ou gemmes) à un utilisateur destinataire.
- */
-export async function envoyerCadeauQuizzly(
-  senderUserId: string,
-  donnees: {
-    gems?: number;
-    itemId?: string;
-    message?: string;
-    recipientUsername: string;
-  }
-): Promise<{ message: string; ok: boolean }> {
-  await dbReady();
-  const articlesPersonnalises = await listerArticlesPersonnalises();
-  const destPseudo = donnees.recipientUsername.trim();
-  if (!destPseudo) {
-    return { message: "Destinataire requis.", ok: false };
-  }
-  const destinataire = await trouverCompteParPseudo(senderUserId, destPseudo);
-  if (!destinataire) {
-    return { message: `Utilisateur « ${destPseudo} » introuvable.`, ok: false };
-  }
-  if (destinataire.cle === senderUserId) {
-    return {
-      message: "Vous ne pouvez pas vous envoyer un cadeau à vous-même.",
-      ok: false,
-    };
-  }
-
-  const portraits = await portraitsPour([senderUserId]);
-  const expediteurPortrait = portraits.get(senderUserId);
-  const expediteurUsername = expediteurPortrait?.username || "Ami";
-  const expediteurDisplayName = expediteurPortrait?.displayName || "Un ami";
-
-  await assurerProfil(senderUserId);
-  await assurerProfil(destinataire.cle);
-
-  const db = getDb();
-  return db.transaction(async (tx) => {
-    const [senderProfile] = await tx
-      .select()
-      .from(quizzlyProfile)
-      .where(eq(quizzlyProfile.userId, senderUserId))
-      .for("update")
-      .limit(1);
-
-    if (!senderProfile) {
-      return { message: "Profil expéditeur introuvable.", ok: false };
-    }
-
-    let cout = 0;
-    let itemLabel: string | undefined;
-    let itemId: string | undefined;
-    let gemsDonnees = 0;
-
-    if (donnees.itemId) {
-      const art = articleBoutique(donnees.itemId, articlesPersonnalises);
-      if (!art) {
-        return { message: "Article inconnu.", ok: false };
-      }
-      cout = art.price;
-      itemLabel = art.label;
-      itemId = art.id;
-    } else if (donnees.gems && donnees.gems > 0) {
-      gemsDonnees = Math.trunc(donnees.gems);
-      cout = gemsDonnees;
-    } else {
-      return {
-        message: "Sélectionnez un article ou un montant de gemmes.",
-        ok: false,
-      };
-    }
-
-    if (senderProfile.gems < cout) {
-      return {
-        message: `Pas assez de gemmes (${senderProfile.gems}/${cout}).`,
-        ok: false,
-      };
-    }
-
-    const [recipientProfile] = await tx
-      .select()
-      .from(quizzlyProfile)
-      .where(eq(quizzlyProfile.userId, destinataire.cle))
-      .for("update")
-      .limit(1);
-
-    if (!recipientProfile) {
-      return { message: "Profil destinataire introuvable.", ok: false };
-    }
-
-    const maintenant = new Date();
-    const giftId = `gift-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
-    const nouveauCadeau: QuizzlyGift = {
-      claimed: false,
-      gems: gemsDonnees || undefined,
-      id: giftId,
-      itemId,
-      itemLabel,
-      message: donnees.message?.trim() || "Un cadeau surprise pour toi !",
-      recipientId: destinataire.cle,
-      senderDisplayName: expediteurDisplayName,
-      senderId: senderUserId,
-      senderUsername: expediteurUsername,
-      sentAt: maintenant.toISOString(),
-    };
-
-    const senderCosmetics = normaliserCosmetiques(senderProfile.cosmetics);
-    const updatedSenderSent = [
-      nouveauCadeau,
-      ...(senderCosmetics.giftsSent || []),
-    ];
-    await tx
-      .update(quizzlyProfile)
-      .set({
-        cosmetics: {
-          ...senderCosmetics,
-          giftsSent: updatedSenderSent,
-        },
-        gems: senderProfile.gems - cout,
-        updatedAt: maintenant,
-      })
-      .where(eq(quizzlyProfile.userId, senderUserId));
-
-    const recipientCosmetics = normaliserCosmetiques(
-      recipientProfile.cosmetics
-    );
-    const updatedRecipientReceived = [
-      nouveauCadeau,
-      ...(recipientCosmetics.giftsReceived || []),
-    ];
-    await tx
-      .update(quizzlyProfile)
-      .set({
-        cosmetics: {
-          ...recipientCosmetics,
-          giftsReceived: updatedRecipientReceived,
-        },
-        updatedAt: maintenant,
-      })
-      .where(eq(quizzlyProfile.userId, destinataire.cle));
-
-    return {
-      message: `Cadeau envoyé avec succès à ${destinataire.portrait.displayName} !`,
-      ok: true,
-    };
-  });
-}
-
-/**
- * Réclamer / ouvrir un cadeau reçu.
- */
-export async function reclamerCadeauQuizzly(
-  userId: string,
-  giftId: string
-): Promise<{ gems: number; hearts: number; message: string; ok: boolean }> {
-  await dbReady();
-  const articlesPersonnalises = await listerArticlesPersonnalises();
-  const db = getDb();
-  return db.transaction(async (tx) => {
-    const [profil] = await tx
-      .select()
-      .from(quizzlyProfile)
-      .where(eq(quizzlyProfile.userId, userId))
-      .for("update")
-      .limit(1);
-
-    if (!profil) {
-      return { gems: 0, hearts: 0, message: "Profil introuvable.", ok: false };
-    }
-
-    const cosmetiques = normaliserCosmetiques(profil.cosmetics);
-    const cadeaux = cosmetiques.giftsReceived || [];
-    const index = cadeaux.findIndex((c) => c.id === giftId);
-    if (index === -1) {
-      return {
-        gems: profil.gems,
-        hearts: profil.hearts,
-        message: "Cadeau introuvable.",
-        ok: false,
-      };
-    }
-
-    const cadeau = cadeaux[index];
-    if (cadeau.claimed) {
-      return {
-        gems: profil.gems,
-        hearts: profil.hearts,
-        message: "Ce cadeau a déjà été réclamé.",
-        ok: false,
-      };
-    }
-
-    const maintenant = new Date();
-    const gemsAjoutees = cadeau.gems || 0;
-    let nouveauxCoeurs = profil.hearts;
-    const ownedFrames = [...cosmetiques.ownedFrames];
-
-    if (cadeau.itemId) {
-      const art = articleBoutique(cadeau.itemId, articlesPersonnalises);
-      if (art?.kind === "frame" && !ownedFrames.includes(art.id)) {
-        ownedFrames.push(art.id);
-      } else if (art?.kind === "hearts") {
-        nouveauxCoeurs = HEARTS_MAX;
-      }
-    }
-
-    cadeaux[index] = {
-      ...cadeau,
-      claimed: true,
-      claimedAt: maintenant.toISOString(),
-    };
-
-    const newGems = profil.gems + gemsAjoutees;
-    await tx
-      .update(quizzlyProfile)
-      .set({
-        cosmetics: {
-          ...cosmetiques,
-          giftsReceived: cadeaux,
-          ownedFrames,
-        },
-        gems: newGems,
-        hearts: nouveauxCoeurs,
-        updatedAt: maintenant,
-      })
-      .where(eq(quizzlyProfile.userId, userId));
-
-    return {
-      gems: newGems,
-      hearts: nouveauxCoeurs,
-      message: `Cadeau ouvert ! +${gemsAjoutees} gemmes reçues.`,
-      ok: true,
-    };
-  });
 }
 
 export type { QuizzlyGift, ShopItem };

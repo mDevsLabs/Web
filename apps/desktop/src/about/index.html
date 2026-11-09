@@ -523,7 +523,7 @@
     }
 
     async function downloadUpdate() {
-      if (!currentUpdateData || !currentUpdateData.downloadUrl) return;
+      if (!currentUpdateData || !currentUpdateData.updateId) return;
 
       btnCheck.disabled = true;
       btnDownload.disabled = true;
@@ -545,8 +545,7 @@
 
       try {
         const res = await window.maiAbout.downloadUpdate(
-          currentUpdateData.downloadUrl,
-          currentUpdateData.fileName
+          currentUpdateData.updateId
         );
         unsubscribe();
 

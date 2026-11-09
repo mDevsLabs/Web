@@ -1,0 +1,2718 @@
+{
+  "id": "terminale-sciences-de-lingenieur-03",
+  "year": "terminale",
+  "subject": "sciences-de-lingenieur",
+  "title": "Conversion et stockage d'énergie avancés",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Batteries et piles à combustible",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Principes des accumulateurs électrochimiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments constituent impérativement une cellule électrochimique secondaire rechargeable ?",
+              "options": [
+                "Une électrode positive (cathode en décharge)",
+                "Une électrode négative (anode en décharge)",
+                "Un électrolyte conducteur ionique",
+                "Un compresseur mécanique haute pression"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une cellule électrochimique comprend deux électrodes séparées par un électrolyte assurant le transport ionique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lors de la décharge d'un accumulateur, quelle réaction a lieu à l'électrode négative ?",
+              "options": [
+                "Une oxydation libérant des électrons",
+                "Une réduction captant des électrons",
+                "Une précipitation sans échange d'électrons",
+                "Une vaporisation de l'électrolyte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'anode en décharge, il y a oxydation : l'espèce chimique cède des électrons au circuit extérieur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que représente la force électromotrice (f.e.m.) à vide d'un accumulateur ?",
+              "options": [
+                "La tension mesurée entre ses bornes en circuit ouvert",
+                "Le courant maximal de court-circuit",
+                "La puissance thermique dissipée au repos",
+                "La vitesse de dégradation de la cathode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension à vide (f.e.m. notée E ou OCV) est la différence de potentiel d'équilibre sans circulation de courant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composant interne évite le contact direct entre les deux électrodes tout en laissant passer les ions ?",
+              "options": [
+                "Le séparateur poreux",
+                "Le collecteur de courant en cuivre",
+                "Le fusible pyrotechnique",
+                "Le boîtier en aluminium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le séparateur est une membrane poreuse isolante électrique qui prévient les courts-circuits internes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans le modèle de Thévenin d'un accumulateur, la résistance interne R_int modélise :",
+              "options": [
+                "Les pertes par effet Joule et la chute ohmique de tension",
+                "La capacité de stockage totale en ampères-heures",
+                "La tension d'équilibre thermodynamique",
+                "Le taux d'autodécharge à température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance interne provoque une chute de tension proportionnelle au courant débité : U = E - R_int * I."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment évolue la tension aux bornes d'une batterie lorsqu'on augmente le courant de décharge débité ?",
+              "options": [
+                "Elle diminue à cause des chutes de tension ohmiques et de polarisation",
+                "Elle augmente pour compenser l'appel de puissance",
+                "Elle reste rigoureusement constante",
+                "Elle oscille à fréquence fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En décharge, U = E - R_int * I ; plus le courant I augmente, plus la tension disponible U diminue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel phénomène parasite entraîne une perte progressive de charge sans raccordement à une charge extérieure ?",
+              "options": [
+                "L'autodécharge",
+                "L'effet mémoire réversible",
+                "La cavitation d'électrolyte",
+                "La résonance ferromagnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autodécharge est une perte d'énergie due à des réactions chimiques secondaires internes lentes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle grandeur lie la quantité d'électricité débitée Q et l'intensité constante du courant I sur une durée t ?",
+              "options": ["Q = I * t", "Q = I / t", "Q = I² * t", "Q = t / I"],
+              "correctAnswers": [0],
+              "explanation": "Par définition, la charge électrique est le produit de l'intensité du courant par la durée : Q = I * t."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'unité internationale de l'énergie électrique stockée dans un accumulateur ?",
+              "options": [
+                "Le joule (J)",
+                "L'ampère-heure (Ah)",
+                "Le volt par seconde (V/s)",
+                "Le farad (F)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie s'exprime en joules (J) dans le SI, bien que le watt-heure (Wh) soit couramment employé (1 Wh = 3600 J)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la température influe-t-elle fortement sur le fonctionnement d'un accumulateur ?",
+              "options": [
+                "Elle modifie la viscosité de l'électrolyte et la cinétique des réactions chimiques",
+                "Elle change le nombre de protons dans le noyau des atomes",
+                "Elle annule la résistance ohmique des conducteurs métalliques",
+                "Elle supprime la force de gravitation interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le froid ralentit la mobilité ionique et augmente la résistance interne ; la chaleur accélère le vieillissement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Technologies Li-ion et dérivés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les atouts majeurs de la technologie Lithium-Fer-Phosphate (LFP) comparée au NMC ?",
+              "options": [
+                "Une excellente stabilité thermique et sécurité contre l'emballement",
+                "Une très longue durée de vie en cycles de charge/décharge",
+                "L'absence totale de cobalt et de nickel",
+                "Une énergie massique deux fois supérieure à toutes les autres chimies"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La chimie LFP est réputée pour sa sécurité, son coût modéré sans cobalt et sa grande cyclabilité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle tension nominale typique caractérise une cellule Li-ion NMC (Nickel Manganèse Cobalt) ?",
+              "options": [
+                "Environ 3,6 V à 3,7 V",
+                "Environ 1,2 V",
+                "Environ 2,0 V",
+                "Environ 12,0 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une cellule NMC présente une tension nominale d'environ 3,6 V à 3,7 V (plage de 3,0 V à 4,2 V)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la tension nominale standard d'une cellule Lithium Fer Phosphate (LiFePO4 ou LFP) ?",
+              "options": [
+                "Environ 3,2 V à 3,3 V",
+                "Environ 1,5 V",
+                "Environ 4,8 V",
+                "Environ 0,9 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La technologie LFP possède un plateau de tension très stable autour de 3,2 V."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel matériau constitue le plus couramment l'anode des cellules Li-ion commerciales conventionnelles ?",
+              "options": [
+                "Le graphite",
+                "Le platine pur",
+                "Le plomb spongieux",
+                "L'oxyde de zinc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le graphite permet l'intercalation réversible des ions lithium entre ses feuillets lors de la charge."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle technologie d'accumulateur Li-ion utilise un titanate de lithium à l'anode pour une charge ultra-rapide ?",
+              "options": [
+                "LTO (Lithium Titane Oxyde)",
+                "NCA (Nickel Cobalt Aluminium)",
+                "LMO (Lithium Manganèse Oxyde)",
+                "NiMH (Nickel Métal Hydrure)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le LTO accepte de très forts courants de charge sans formation de dendrites, au détriment de l'énergie massique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel risque sécuritaire critique survient en cas de surcharge prolongée d'une cellule Li-ion ?",
+              "options": [
+                "L'emballement thermique avec dégazage violent ou incendie",
+                "Une baisse instantanée de la température interne",
+                "Une transformation spontanée en cellule à combustible",
+                "Une multiplication de la résistance thermique par dix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surcharge provoque la décomposition exothermique des électrodes et un emballement thermique violent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que sont les 'batteries tout solide' (solid-state) en cours de développement ?",
+              "options": [
+                "Des batteries remplaçant l'électrolyte liquide inflammable par un électrolyte solide ininflammable",
+                "Des accumulateurs dont les électrodes sont en béton armé",
+                "Des piles primaires non rechargeables sans aucune chimie active",
+                "Des condensateurs électrostatiques au mica"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électrolyte solide améliore la sécurité, permet l'anode en lithium métal et accroît l'énergie volumique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel métal critique présent dans les cathodes NMC pose des défis éthiques et d'approvisionnement géopolitique majeurs ?",
+              "options": ["Le cobalt", "Le sodium", "Le fer", "L'aluminium"],
+              "correctAnswers": [0],
+              "explanation": "Le cobalt est un métal coûteux dont l'extraction est concentrée dans des zones géopolitiquement sensibles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type d'accumulateur alcalin historique sans lithium était largement utilisé avant l'avènement du Li-ion ?",
+              "options": [
+                "Ni-MH (Nickel-Métal Hydrure)",
+                "Lithium-Soufre",
+                "Sodium-Ion",
+                "Magnésium-Air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les accumulateurs Ni-MH (1,2 V) ont largement équipé l'électronique portable et les premiers véhicules hybrides."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la technologie Sodium-ion suscite-t-elle un intérêt croissant pour le stockage stationnaire ?",
+              "options": [
+                "Le sodium est très abondant, peu coûteux et réduit la dépendance au lithium",
+                "Elle offre une énergie massique trois fois supérieure au Li-ion",
+                "Elle ne nécessite aucun électrolyte",
+                "Elle génère de l'oxygène pur en fonctionnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sodium est abondant et économique, ce qui en fait une alternative idéale pour le stockage réseau fixe."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Grandeurs caractéristiques et dimensionnement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs caractérisent directement la performance massique et volumique d'un accumulateur ?",
+              "options": [
+                "L'énergie massique (exprimée en Wh/kg)",
+                "La puissance massique (exprimée en W/kg)",
+                "La densité d'énergie volumique (en Wh/L)",
+                "La permittivité diélectrique relative du vide"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'énergie massique (autonomie par kg), la puissance massique (puissance de pointe) et la densité volumique sont clés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie un régime de décharge de '2C' pour une batterie de capacité nominale C = 50 Ah ?",
+              "options": [
+                "Un courant de décharge de 100 A pendant environ 30 minutes",
+                "Un courant de 25 A pendant 2 heures",
+                "Une tension de décharge égale à 2 fois la tension nominale",
+                "Une charge complète effectuée en 2 jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le régime 2C correspond à un courant I = 2 * C = 100 A, vidant théoriquement la batterie en 0,5 h (30 min)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle énergie électrique stocke une batterie de 48 V et de capacité 100 Ah (en supposant la tension constante) ?",
+              "options": ["4,8 kWh", "480 Wh", "148 Wh", "48 kWh"],
+              "correctAnswers": [0],
+              "explanation": "E = U * Q = 48 V * 100 Ah = 4800 Wh = 4,8 kWh."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour obtenir un pack batterie de 400 V à partir de cellules unitaires NMC de 3,7 V, comment associe-t-on les cellules ?",
+              "options": [
+                "En série d'environ 108 cellules",
+                "En parallèle de 108 cellules",
+                "En étoile triphasée",
+                "En pont diviseur passif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'association en série additionne les tensions des cellules : 400 V / 3,7 V ≈ 108 cellules en série."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que permet d'augmenter le couplage en parallèle de plusieurs cellules ou branches identiques ?",
+              "options": [
+                "La capacité globale en Ah et le courant maximal admissible",
+                "La tension nominale du pack sans changer le courant",
+                "La résistance interne équivalente du circuit",
+                "La fréquence d'oscillation propre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mettre des branches en parallèle additionne les capacités et divise la résistance interne globale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que désigne la profondeur de décharge (DoD - Depth of Discharge) ?",
+              "options": [
+                "Le pourcentage de capacité déchargée par rapport à la capacité nominale",
+                "La profondeur d'immersion physique de la batterie sous l'eau",
+                "L'épaisseur en millimètres des plaques d'électrode",
+                "Le rapport entre la tension de coupure et la tension à vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La DoD exprime la fraction d'énergie extraite : DoD = 100 % - SoC."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'impact d'une profondeur de décharge (DoD) systématiquement très élevée (100 %) sur la durée de vie cyclique ?",
+              "options": [
+                "Elle réduit significativement le nombre total de cycles réalisables",
+                "Elle double la durée de vie par régénération de la matière active",
+                "Elle n'a rigoureusement aucun impact physique",
+                "Elle stabilise définitivement la résistance interne à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travailler à forte DoD accentue les contraintes mécaniques d'insertion et réduit le nombre de cycles possibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une cellule de résistance interne 20 mΩ débite un courant de 50 A, quelle est la puissance dissipée par effet Joule ?",
+              "options": ["50 W", "1 W", "1000 W", "10 W"],
+              "correctAnswers": [0],
+              "explanation": "P_joule = R * I² = 0,020 Ω * (50 A)² = 0,020 * 2500 = 50 W."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans la désignation 'pack 96S2P', que signifie '96S' ?",
+              "options": [
+                "96 cellules ou groupes connectés en série",
+                "96 cellules montées en parallèle",
+                "Une capacité de 96 Siemens",
+                "Un temps de charge de 96 secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La notation 96S2P indique 96 éléments en série pour monter la tension, avec 2 branches parallèles pour doubler la capacité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel paramètre thermodynamique limite la capacité d'une batterie à fournir une forte puissance par temps de grand gel (-20 °C) ?",
+              "options": [
+                "L'augmentation drastique de la résistance interne par chute de conductivité ionique",
+                "La diminution de la vitesse de la lumière dans le boîtier",
+                "La suppression des électrons libres dans le cuivre",
+                "L'explosion spontanée de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gel fige la diffusion ionique dans l'électrolyte, ce qui accroît la résistance interne et fait chuter la puissance."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "État de charge (SoC) et état de santé (SoH)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles méthodes sont couramment employées pour estimer l'état de charge (SoC) d'une batterie en fonctionnement ?",
+              "options": [
+                "Le comptage coulométrique (intégration du courant dans le temps)",
+                "La corrélation avec la tension à vide (OCV) au repos",
+                "L'estimation par filtre de Kalman étendu",
+                "La pesée sur balance de précision en cours de route"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le comptage coulométrique, la mesure d'OCV et les observateurs d'état (Kalman) sont les méthodes reines d'estimation du SoC."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle formule définit l'état de charge (SoC - State of Charge) en pourcentage ?",
+              "options": [
+                "SoC = (Capacité résiduelle disponible / Capacité maximale actuelle) * 100",
+                "SoC = (Tension aux bornes / Puissance maximale) * 100",
+                "SoC = (Résistance interne / Résistance de charge) * 100",
+                "SoC = (Masse de lithium / Masse totale du pack) * 100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SoC est le ratio de la charge électrique restante sur la charge maximale disponible de la batterie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la principale faiblesse du comptage coulométrique pur (intégration temporelle de I) sans recalage ?",
+              "options": [
+                "La dérive cumulative due aux erreurs de mesure et au courant d'autodécharge",
+                "L'impossibilité physique de mesurer un courant continu",
+                "Le blocage de la circulation des électrons",
+                "Une inversion spontanée de la polarité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intégration d'un capteur imparfait accumule les biais dans le temps : un recalage périodique est indispensable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la mesure de tension est-elle particulièrement difficile pour évaluer le SoC d'une cellule LFP ?",
+              "options": [
+                "Parce que sa courbe de tension présente un plateau extrêmement plat entre 20 % et 80 % de SoC",
+                "Parce que sa tension oscille en permanence à haute fréquence",
+                "Parce que la tension d'une cellule LFP est supérieure à 1000 V",
+                "Parce que la tension LFP ne dépend que de la lumière ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur les cellules LFP, la tension varie de quelques millivolts seulement sur une large plage de SoC, rendant la mesure imprécise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que quantifie l'état de santé (SoH - State of Health) d'une batterie ?",
+              "options": [
+                "Le niveau de dégradation de sa capacité et de sa résistance interne par rapport à l'état neuf",
+                "Le pourcentage d'énergie restant avant la prochaine recharge",
+                "La température instantanée de l'électrolyte",
+                "Le taux d'humidité à l'intérieur du pack scellé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SoH compare les capacités et résistances actuelles aux valeurs d'origine à l'état neuf (EOL quand SoH < 70-80 %)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quel critère usuel de SoH considère-t-on généralement qu'une batterie de traction automobile atteint sa fin de première vie ?",
+              "options": [
+                "Lorsque sa capacité résiduelle descend en dessous de 75 % à 80 % de sa capacité initiale",
+                "Lorsque sa tension nominale tombe à exactement 0 V",
+                "Dès qu'elle a subi plus de 50 cycles de charge",
+                "Lorsque son poids augmente de plus de 25 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous 75-80 % de capacité d'origine, la batterie perd trop d'autonomie pour le véhicule et passe en seconde vie stationnaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel indicateur interne augmente systématiquement lorsque le SoH d'une batterie se dégrade au fil du temps ?",
+              "options": [
+                "La résistance interne globale",
+                "La capacité maximale en ampères-heures",
+                "Le rendement énergétique global",
+                "La vitesse de diffusion des ions lithium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vieillissement s'accompagne d'une perte de matière active et d'une augmentation de la résistance interne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel outil mathématique permet d'estimer en temps réel le SoC en fusionnant modèle physique et mesures de tension et courant ?",
+              "options": [
+                "Le filtre de Kalman (KF ou EKF)",
+                "La transformée de Fourier discrète",
+                "Le théorème de Pythagore",
+                "L'algorithme de Dijkstra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre de Kalman estime les états non mesurés en minimisant la variance des erreurs de mesure et de modèle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne la couche de passivation SEI (Solid Electrolyte Interphase) qui s'épaissit au fil du vieillissement ?",
+              "options": [
+                "Une couche protectrice formée à la surface de l'anode qui piège irréversiblement du lithium",
+                "Un vernis isolant appliqué sur la carrosserie externe du véhicule",
+                "Une gaine en plastique protégeant le câble de recharge extérieur",
+                "Un joint d'étanchéité assurant la liaison mécanique des bornes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La croissance de la SEI consomme des ions lithium actifs et augmente la résistance interne de la cellule."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour recalibrer avec précision le SoC par mesure de tension à vide (OCV), que doit observer la batterie ?",
+              "options": [
+                "Une période de repos sans courant pendant plusieurs minutes à plusieurs heures",
+                "Une charge continue à puissance maximale sous 10C",
+                "Une inversion brutale de la polarité des bornes",
+                "Une mise sous vide mécanique immédiate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'OCV ne reflète fidèlement le SoC qu'après relaxation des phénomènes de diffusion et de polarisation interne."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Système de gestion de batterie (BMS)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les fonctions de protection indispensables assurées par un BMS (Battery Management System) ?",
+              "options": [
+                "Protection contre les surtensions et les sous-tensions cellule",
+                "Surveillance thermique et protection contre les surchauffes",
+                "Protection contre les surintensités et courts-circuits",
+                "Génération directe de courant alternatif 230 V sans onduleur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le BMS sécurise la batterie en surveillant tensions, températures et courants, coupant le circuit en cas de dépassement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi l'équilibrage des cellules connectées en série est-il impératif dans un pack Li-ion ?",
+              "options": [
+                "Pour compenser les disparités de capacité et de résistance afin d'éviter la surcharge ou la sous-tension d'une cellule",
+                "Pour s'assurer que toutes les cellules pèsent exactement le même nombre de grammes",
+                "Pour transformer toutes les cellules en supercondensateurs",
+                "Pour créer un champ magnétique rotatif permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En série, la cellule la plus faible dicte les limites du pack ; l'équilibrage harmonise les niveaux de charge de toutes les cellules."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En quoi consiste l'équilibrage passif (ou dissipatif) d'un pack de batterie ?",
+              "options": [
+                "À dissiper l'excédent d'énergie des cellules les plus chargées sous forme de chaleur dans une résistance",
+                "À transférer l'énergie des cellules hautes vers les cellules basses via un convertisseur à découpage",
+                "À débrancher physiquement les cellules trop pleines à l'aide de servomoteurs",
+                "À injecter de l'eau déminéralisée dans les cellules en retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibrage passif décharge par effet Joule (résistances de bleed) les cellules ayant la tension la plus haute."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le principe de l'équilibrage actif des cellules par rapport à l'équilibrage passif ?",
+              "options": [
+                "Transférer dynamiquement l'énergie entre cellules via des éléments de stockage inductifs ou capacitifs",
+                "Brûler l'énergie excédentaire dans des lampes halogènes",
+                "Refroidir le pack avec de l'azote liquide",
+                "Faire tourner le pack sur lui-même par centrifugation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibrage actif redistribue l'énergie d'une cellule à l'autre avec un rendement élevé, sans dissipation thermique inutile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel organe électromécanique de sécurité le BMS pilote-t-il pour isoler galvaniquement le pack haute tension ?",
+              "options": [
+                "Les contacteurs principaux de puissance (relais haute tension)",
+                "Le capteur de pluie du pare-brise",
+                "Le potentiomètre de volume radio",
+                "L'arbre de transmission mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le BMS pilote des contacteurs haute tension pour déconnecter la batterie de la chaîne de traction en cas d'anomalie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel bus de communication série robuste et différentiel est couramment employé par le BMS dans l'automobile ?",
+              "options": [
+                "Le bus CAN (Controller Area Network)",
+                "Le port parallèle IEEE 1284",
+                "Le câble VGA analogique",
+                "Le bus I2C standard non blindé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bus CAN est le standard automobile pour transmettre les trames de télémétrie et d'ordres entre calculateurs et BMS."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne la 'zone de fonctionnement sûr' (SOA - Safe Operating Area) surveillée par le BMS ?",
+              "options": [
+                "L'ensemble des couples courant-tension-température où la cellule fonctionne sans danger ni dégradation accélérée",
+                "La zone géographique où le véhicule a le droit de circuler",
+                "L'espace physique situé à plus de deux mètres de la carrosserie",
+                "La surface minimale du radiateur de refroidissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La SOA délimite les bornes de tension, de courant et de température garantissant la sécurité et la longévité de l'accumulateur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel dispositif de précharge utilise le BMS lors de la mise sous tension du bus continu d'un onduleur ?",
+              "options": [
+                "Une résistance de précharge en série avec un relais pour limiter le courant d'appel des condensateurs de filtrage",
+                "Un transformateur élévateur de 50 Hz",
+                "Un rhéostat manuel réglé par le conducteur",
+                "Un éclateur à étincelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le circuit de précharge évite l'arc électrique destructeur sur les contacteurs lors de la charge des gros condensateurs du bus DC."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que mesure le dispositif d'isolement surveillé par le BMS sur un véhicule électrique ?",
+              "options": [
+                "La résistance d'isolement électrique entre le réseau haute tension flottant et le châssis mécanique (masse)",
+                "L'épaisseur de peinture isolante sur le capot moteur",
+                "L'atténuation acoustique de l'habitacle",
+                "Le coefficient d'isolation thermique des vitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contrôleur permanent d'isolement (CPI) détecte tout défaut d'isolement électrique protégeant les usagers de l'électrisation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que calcule le BMS pour indiquer à l'onduleur la puissance instantanée maximale admissible en traction et en freinage ?",
+              "options": [
+                "Les limites SOP (State of Power)",
+                "Le rendement de Carnot théorique",
+                "Le coefficient aérodynamique Cx",
+                "La charge utile du coffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état de puissance (SOP) indique les puissances maximales de décharge et de recharge autorisées sans endommager la batterie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Principes des piles à combustible",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les réactifs gazeux consommés et le sous-produit direct formé dans une pile à combustible hydrogène PEMFC ?",
+              "options": [
+                "Le dihydrogène (H₂) comme combustible à l'anode",
+                "Le dioxygène (O₂) comme comburant à la cathode",
+                "L'eau (H₂O) comme produit de réaction liquide ou vapeur",
+                "Le dioxyde de soufre (SO₂) hautement toxique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La réaction globale 2 H₂ + O₂ -> 2 H₂O produit de l'électricité, de la chaleur et de l'eau pure."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le sigle PEMFC couramment utilisé dans les transports automobiles et ferroviaires ?",
+              "options": [
+                "Proton Exchange Membrane Fuel Cell (pile à membrane échangeuse de protons)",
+                "Polymer Energy Motor Fuel Circuit",
+                "Power Electronic Micro Fuel Cell",
+                "Pressure Equalized Methane Fuel Cell"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pile PEMFC fonctionne à basse température (60-80 °C) avec une membrane polymère conductrice de protons H⁺."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle réaction électrochimique d'oxydation a lieu à l'anode d'une pile PEMFC ?",
+              "options": [
+                "H₂ -> 2 H⁺ + 2 e⁻",
+                "O₂ + 4 H⁺ + 4 e⁻ -> 2 H₂O",
+                "2 H₂O -> O₂ + 4 H⁺ + 4 e⁻",
+                "C + O₂ -> CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'anode, le dihydrogène est dissocié et oxydé catalytiquement en protons H⁺ et électrons e⁻."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel matériau catalyseur noble est indispensable aux électrodes d'une pile PEMFC pour activer les réactions à basse température ?",
+              "options": [
+                "Le platine",
+                "Le fer forgé",
+                "Le plomb fondu",
+                "Le silicium polycristallin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des nanoparticules de platine déposées sur carbone catalysent l'oxydation de l'hydrogène et la réduction de l'oxygène."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel polymère fluoré conducteur protonique sert de membrane de référence dans les piles PEMFC ?",
+              "options": [
+                "Le Nafion",
+                "Le PVC rigide",
+                "Le polyéthylène téréphtalate (PET)",
+                "Le polystyrène expansé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Nafion possède des groupements sulfoniques hydrophiles qui transportent les protons H⁺ lorsqu'il est convenablement hydraté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la tension théorique à vide (f.e.m. réversible) d'une cellule unitaire H₂/O₂ à 25 °C sous 1 bar ?",
+              "options": [
+                "Environ 1,23 V",
+                "Environ 3,70 V",
+                "Environ 12,6 V",
+                "Environ 0,33 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La f.e.m. thermodynamique d'équilibre de la réaction H₂ + 1/2 O₂ -> H₂O vaut E° = -ΔG° / (2F) ≈ 1,23 V à 25 °C."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la tension de fonctionnement réelle typique d'une cellule PEMFC en charge sous courant nominal ?",
+              "options": [
+                "Entre 0,6 V et 0,7 V",
+                "Exactement 1,23 V",
+                "Supérieure à 2,5 V",
+                "Négative à -0,8 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous charge, les diverses surtensions abaissent la tension unitaire de chaque cellule vers 0,6 à 0,7 V."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel rôle essentiel jouent les plaques bipolaires dans un empilement (stack) de pile à combustible ?",
+              "options": [
+                "Distribuer les gaz de manière homogène et assurer la continuité électrique entre cellules adjacentes",
+                "Filtrer les ondes radio parasites",
+                "Stocker le dihydrogène sous forme liquide",
+                "Mesurer le couple mécanique sur les roues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plaques bipolaires distribuent les gaz réactifs via des canaux d'écoulement et collectent le courant en série."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type de pile à combustible fonctionne à très haute température (700 - 900 °C) avec un électrolyte céramique solide ?",
+              "options": [
+                "SOFC (Solid Oxide Fuel Cell)",
+                "PEMFC (Proton Exchange Membrane)",
+                "AFC (Alkaline Fuel Cell)",
+                "DMFC (Direct Methanol Fuel Cell)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pile SOFC utilise un électrolyte solide en zircone yttriée et opère à haute température, idéale pour la cogénération."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la gestion de l'eau (humidification/noyage) est-elle un enjeu critique sur une pile PEMFC ?",
+              "options": [
+                "La membrane s'assèche si l'air est trop sec et les pores se noient si l'eau liquide s'accumule",
+                "L'eau liquide transforme la pile en électrolyseur de Faraday",
+                "L'eau dissout instantanément le platine des électrodes",
+                "L'eau empêche tout transfert de chaleur vers l'extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un équilibre précis : une membrane sèche perd sa conductivité protonique, alors qu'un excès d'eau noie les canaux à gaz."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Rendement et pertes des piles à combustible",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les causes fondamentales des pertes de tension (surtensions) dans une cellule de pile à combustible sous charge ?",
+              "options": [
+                "La surtension d'activation (lenteur cinétique du transfert de charge aux électrodes)",
+                "La surtension ohmique (résistance de la membrane et des collecteurs)",
+                "La surtension de transport de matière ou de concentration à fort courant",
+                "La force de Coriolis sur les flux gazeux"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La courbe de polarisation U(j) illustre les trois régimes : activation à faible courant, ohmique à courant moyen, concentration à fort courant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur la courbe de polarisation U(I) d'une pile à combustible, que provoque la surtension d'activation aux faibles courants ?",
+              "options": [
+                "Une chute rapide et non linéaire de la tension dès les premiers milliampères débités",
+                "Une hausse linéaire de la tension au-dessus de 2 V",
+                "Une ondulation sinusoïdale de la tension",
+                "L'inversion immédiate du sens du courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La barrière d'énergie d'activation (surtout pour la réduction de l'oxygène) fait chuter la tension dès que le courant démarre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la zone intermédiaire de la courbe de polarisation, quelle est l'allure de la chute de tension ?",
+              "options": [
+                "Quasi-linéaire, dominée par les résistances ohmiques internes (loi d'Ohm : ΔU = R_ohm * I)",
+                "Exponentielle croissante vers l'infini",
+                "Parfaitement horizontale et constante",
+                "Nulle et sans aucune dissipation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la région médiane, la résistance ohmique de la membrane et des contacts impose une baisse linéaire de tension."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsque le courant débité approche de la densité de courant limite de transport de matière ?",
+              "options": [
+                "La tension s'effondre brutalement car les réactifs gazeux n'atteignent plus assez vite les sites catalytiques",
+                "Le rendement énergétique grimpe à 100 %",
+                "La pile commence à produire du dihydrogène pur",
+                "L'échauffement s'annule complètement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surtension de concentration correspond à l'épuisement local des gaz aux électrodes à très fort débit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le rendement électrique typique d'un système de pile à combustible PEMFC seul au point nominal ?",
+              "options": [
+                "Environ 50 % à 60 %",
+                "Supérieur à 98 %",
+                "Inférieur à 15 %",
+                "Strictement 100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une pile PEMFC convertit environ 50 % à 60 % de l'énergie chimique de l'hydrogène en électricité (le reste est de la chaleur)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La pile à combustible est-elle assujettie à la limite de rendement de Carnot régissant les moteurs thermiques conventionnels ?",
+              "options": [
+                "Non, car elle convertit directement l'énergie chimique en énergie électrique sans cycle thermodynamique intermédiaire",
+                "Oui, son rendement maximal ne peut dépasser 25 %",
+                "Oui, car elle utilise un piston et une chambre de combustion",
+                "Non, car elle ne dégage aucune chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie chimique est transformée directement en électricité par électrochimie sans passer par de l'énergie thermique motrice."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le rendement électrique global d'une pile par rapport au pouvoir calorifique inférieur (PCI) de l'hydrogène ?",
+              "options": [
+                "η = P_électrique_utile / (débit_massique_H2 * PCI_H2)",
+                "η = P_électrique / P_mécanique_roues",
+                "η = Tension_cathode / Tension_anode",
+                "η = Volume_H2O_produit / Volume_H2_consommé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement rapporte la puissance électrique nette fournie au flux de puissance chimique entrant (débit * PCI)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que deviennent les quelque 40 % à 50 % d'énergie chimique non convertie en électricité dans la pile ?",
+              "options": [
+                "Ils sont dissipés sous forme de chaleur thermique qu'il faut évacuer par un circuit de refroidissement",
+                "Ils sont détruits sans laisser aucune trace physique",
+                "Ils sont réémis sous forme d'ondes radioélectriques",
+                "Ils condensent l'azote de l'air en glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie non convertie en électricité apparaît sous forme de chaleur ; elle nécessite un radiateur ou est valorisée en cogénération."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quels équipements auxiliaires (BOP - Balance of Plant) consomment de l'énergie et réduisent le rendement du système global ?",
+              "options": [
+                "Le compresseur d'air cathodique, la pompe de recirculation et le ventilateur de refroidissement",
+                "Le système multimédia de l'autoradio",
+                "Les lampes d'éclairage des rétroviseurs",
+                "Les ressorts de suspension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compresseur d'air est le plus gros consommateur auxiliaire parasite, amputant le rendement net du système de pile."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle équation thermodynamique relie l'enthalpie libre de Gibbs ΔG à la tension réversible E_rev d'une pile à combustible ?",
+              "options": [
+                "ΔG = - n * F * E_rev",
+                "ΔG = n * F * E_rev²",
+                "ΔG = - F / (n * E_rev)",
+                "ΔG = E_rev / (n * F)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie maximale extractible correspond au travail électrique réversible : W_elec = -ΔG = n * F * E_rev."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Stockage et vecteur hydrogène",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les modes de stockage physique et chimique du dihydrogène couramment utilisés ou étudiés ?",
+              "options": [
+                "Le stockage gazeux sous haute pression (350 bar et 700 bar)",
+                "Le stockage liquide cryogénique à -253 °C",
+                "L'absorption solide dans des poudres d'hydrures métalliques",
+                "Le piégeage sous forme de vapeur d'eau à l'air libre"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'hydrogène peut être comprimé à 700 bar (véhicules légers), liquéfié à très basse température, ou absorbé dans des hydrures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la pression de stockage standardisée du dihydrogène gazeux dans les réservoirs des voitures particulières à hydrogène ?",
+              "options": [
+                "700 bar (70 MPa)",
+                "10 bar (1 MPa)",
+                "2000 bar (200 MPa)",
+                "1 bar (0,1 MPa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les réservoirs automobiles grand public stockent l'hydrogène gazeux à 700 bar pour maximiser l'autonomie à volume contenu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la particularité des réservoirs composites d'hydrogène dits de 'Type IV' ?",
+              "options": [
+                "Un liner thermoplastique étanche fretté d'un enroulement filamentaire en fibre de carbone et résine époxy",
+                "Une bouteille en fonte massive sans aucune fibre",
+                "Un sac en tissu perméable sans étanchéité",
+                "Une sphère en plomb coulé sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les réservoirs de Type IV allient légèreté et haute résistance grâce à une enveloppe externe en fibre de carbone bobinée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la densité énergétique massique du dihydrogène gazeux comparée à celle des carburants pétroliers usuels ?",
+              "options": [
+                "Environ 3 fois supérieure (environ 120 MJ/kg contre 43 MJ/kg)",
+                "Deux fois plus faible que l'essence",
+                "Strictement identique à celle du diesel",
+                "Cent fois plus faible que le bois sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hydrogène possède une énergie massique remarquable (~33 kWh/kg ou 120 MJ/kg), mais une très faible densité volumique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la principale difficulté physique liée au stockage volumique de l'hydrogène sous forme gazeuse ?",
+              "options": [
+                "L'hydrogène est la molécule la plus petite et légère de l'univers, occupant un volume énorme à pression ambiante",
+                "L'hydrogène réagit spontanément avec le carbone pour faire du diamant",
+                "L'hydrogène gèle spontanément dès 15 °C",
+                "L'hydrogène est attiré par le champ magnétique terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À pression atmosphérique, 1 kg d'hydrogène occupe 11 m³ ; la compression à 700 bar est indispensable pour loger 5 kg dans ~125 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que désigne l'hydrogène dit 'vert' ou renouvelable dans la transition énergétique ?",
+              "options": [
+                "De l'hydrogène produit par électrolyse de l'eau alimentée par des sources d'électricité renouvelables",
+                "De l'hydrogène extrait des mines de charbon par gazéification",
+                "De l'hydrogène coloré artificiellement en vert pour être visible",
+                "De l'hydrogène obtenu par reformage de gaz naturel sans captage de carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hydrogène vert est produit sans émission de gaz à effet de serre en électrolysant l'eau à partir d'énergies décarbonées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel organe de sécurité obligatoire détend le gaz sous 700 bar avant son injection dans la pile à combustible (quelques bar) ?",
+              "options": [
+                "Un détendeur haute pression à deux étages",
+                "Une vanne guillotine manuelle",
+                "Un condenseur frigorifique",
+                "Un injecteur piézoélectrique de carburateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des étages de détente étagés abaissent la pression du réservoir (700 bar) vers la pression de service du stack (1,5 à 3 bar)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel dispositif de sécurité pyrotechnique ou thermique évacue l'hydrogène à l'air libre en cas d'incendie du véhicule ?",
+              "options": [
+                "Une soupape de sécurité thermique TPRD (Thermal Pressure Relief Device)",
+                "Un bouchon de liège expansible",
+                "Un thermostat de radiateur domestique",
+                "Une valve de pneu Schrader"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le TPRD fond à haute température (~110 °C) et purge l'hydrogène de façon contrôlée pour éviter l'éclatement du réservoir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rendement de la chaîne hydrogène complète 'Power-to-H2-to-Power' (électricité -> électrolyse -> stockage -> pile -> électricité) ?",
+              "options": [
+                "Environ 30 % à 40 %",
+                "Plus de 90 %",
+                "Moins de 5 %",
+                "Exactement 75 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cumul des pertes de l'électrolyseur (~70 %), de la compression (~85 %) et de la pile (~50 %) donne un rendement global modéré de 30-40 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi pré-refroidit-on l'hydrogène à -40 °C lors du remplissage à 700 bar en station-service ?",
+              "options": [
+                "Pour compenser l'effet Joule-Thomson et l'échauffement adiabatique par compression dans le réservoir",
+                "Pour liquéfier l'hydrogène directement dans le pistolet",
+                "Pour congeler les poussières de l'air ambiant",
+                "Pour accélérer la réaction chimique de combustion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compression rapide échauffe le gaz ; le pré-refroidissement évite de dépasser la température limite de sécurité du composite (85 °C)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Supercondensateurs et stockage hybride",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les caractéristiques techniques distinctives d'un supercondensateur (EDLC) par rapport à une batterie Li-ion ?",
+              "options": [
+                "Une puissance massique considérablement plus élevée (plusieurs kW/kg)",
+                "Une durée de vie exceptionnelle de plusieurs centaines de milliers de cycles",
+                "Une énergie massique faible (souvent inférieure à 10 Wh/kg)",
+                "Une tension constante quel que soit son état de charge"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les supercondensateurs offrent une puissance et une cyclabilité extrêmes, mais stockent peu d'énergie et leur tension varie avec la charge."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur quel phénomène physique repose principalement le stockage d'énergie dans un supercondensateur électrostatique double couche (EDLC) ?",
+              "options": [
+                "L'accumulation électrostatique réversible d'ions à l'interface électrode/électrolyte sans transfert d'électrons",
+                "Une réaction chimique redox d'insertion de phase irréversible",
+                "La fusion thermique d'un sel d'aluminium",
+                "L'aimantation rémanente de bobines supraconductrices"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un EDLC, le stockage est purement capacitif par formation d'une double couche électrostatique de Helmholtz."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle formule donne l'énergie électrique W_c emmagasinée dans un supercondensateur de capacité C sous une tension U ?",
+              "options": [
+                "W_c = 1/2 * C * U²",
+                "W_c = C * U",
+                "W_c = 1/2 * C² * U",
+                "W_c = C / (2 * U)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie capacitive stockée s'exprime par W = 1/2 * C * U² (en joules avec C en farads et U en volts)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence directe de la loi W = 1/2 * C * U² sur la tension d'un supercondensateur lors de sa décharge ?",
+              "options": [
+                "La tension décroît linéairement avec la charge extraite (U = Q/C), contrairement au plateau de tension d'une batterie",
+                "La tension reste parfaitement fixe à 2,7 V jusqu'à épuisement total",
+                "La tension grimpe jusqu'à l'infini",
+                "La tension oscille entre -12 V et +12 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme U = Q/C, la tension d'un condensateur chute de façon continue au fur et à mesure qu'on en extrait des coulombs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel matériau poreux à très haute surface spécifique (plus de 1000 m²/g) constitue couramment les électrodes des supercondensateurs ?",
+              "options": [
+                "Le charbon actif",
+                "La feuille de plomb laminé",
+                "Le verre borosilicaté",
+                "Le quartz monocristallin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le charbon actif possède une immense surface développée microscopique, permettant d'atteindre des milliers de farads."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une chaîne de traction hybride, quel est le bénéfice principal d'associer des supercondensateurs à une batterie Li-ion ?",
+              "options": [
+                "Absorber et restituer les pics de puissance lors des accélérations et freinages pour soulager et préserver la batterie",
+                "Augmenter l'autonomie sur autoroute de plusieurs milliers de kilomètres",
+                "Remplacer le moteur électrique principal par une turbine",
+                "Supprimer le besoin d'un onduleur de traction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les supercondensateurs écrêtent les appels de courant violents, ce qui réduit l'échauffement et le vieillissement de la batterie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel convertisseur électronique de puissance est nécessaire entre un banc de supercondensateurs et le bus continu de traction ?",
+              "options": [
+                "Un hacheur bidirectionnel réversible en courant (buck-boost)",
+                "Un transformateur à fer doux 50 Hz",
+                "Un redresseur mono-alternance à diode simple",
+                "Un variateur mécanique à courroie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le convertisseur DC/DC bidirectionnel adapte la tension variable du supercondensateur à la tension stable du bus continu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la tension maximale admissible usuelle d'une cellule unitaire de supercondensateur à électrolyte organique ?",
+              "options": [
+                "Environ 2,7 V à 3,0 V",
+                "Environ 400 V",
+                "Environ 12 V",
+                "Environ 0,1 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension de décomposition de l'électrolyte organique limite la cellule unitaire à environ 2,7 V - 3,0 V."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si la tension d'un supercondensateur passe de 100 V à 50 V au cours d'une décharge, quel pourcentage de son énergie a été restitué ?",
+              "options": [
+                "75 % de son énergie initiale",
+                "50 % de son énergie initiale",
+                "25 % de son énergie initiale",
+                "100 % de son énergie initiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie étant proportionnelle à U² : E_restante = (50/100)² = 0,25. Donc 75 % de l'énergie a été extraite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le temps typique d'une charge ou décharge complète d'un supercondensateur à sa puissance nominale ?",
+              "options": [
+                "De quelques secondes à quelques minutes",
+                "De 8 à 12 heures",
+                "D'environ 3 jours ouvrés",
+                "De plusieurs semaines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce à leur faible résistance interne et à l'absence de cinétique chimique lente, ils se chargent en quelques secondes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Cycle de vie, vieillissement et recyclage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs accélèrent significativement le vieillissement d'une batterie Li-ion en exploitation ?",
+              "options": [
+                "Les températures de fonctionnement élevées (supérieures à 45 °C)",
+                "Le maintien prolongé à un état de charge (SoC) de 100 % sous forte chaleur",
+                "Les courants de charge et décharge très intenses (fort C-rate)",
+                "Le respect strict des tensions limites préconisées par le fabricant"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La chaleur, les états de charge extrêmes et les forts courants accélèrent la croissance de la SEI et la dégradation mécanique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle distinction fait-on entre le vieillissement calendaire et le vieillissement en cyclage d'une batterie ?",
+              "options": [
+                "Le vieillissement calendaire a lieu au repos au cours du temps, tandis que le cyclage dépend des charges et décharges effectuées",
+                "Le vieillissement calendaire ne concerne que les mois d'hiver",
+                "Le vieillissement en cyclage ne s'applique qu'aux bicyclettes électriques",
+                "Le vieillissement calendaire n'a aucune cause physico-chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vieillissement calendaire se produit avec le temps (repos, température, SoC) ; le cyclage ajoute l'usure mécanique et thermique due au passage du courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel phénomène dangereux de dépôt de lithium métallique à la surface de l'anode peut survenir lors d'une charge rapide à basse température ?",
+              "options": [
+                "Le plaquage de lithium (lithium plating) formant des dendrites conductrices",
+                "La gazéification spontanée du graphite",
+                "L'aimantation permanente du cuivre",
+                "La dissolution complète de la cathode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par grand froid, les ions Li+ ne s'intercalent pas assez vite dans le graphite et se déposent en lithium métal, risquant de perforer le séparateur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que désigne la 'seconde vie' (second life) des batteries issues de véhicules électriques ?",
+              "options": [
+                "Leur réutilisation dans des applications de stockage stationnaire d'énergies renouvelables ou de secours réseau",
+                "Leur réinstallation dans un véhicule de course neuf",
+                "Leur transformation immédiate en engrais agricole",
+                "Leur immersion dans les océans pour créer des récifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une batterie conservant 75 % de capacité est encore parfaitement apte à stocker de l'énergie solaire ou éolienne sur un site fixe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel procédé métallurgique utilise des solutions acides ou basiques aqueuses pour dissoudre et récupérer sélectivement le cobalt, nickel et lithium ?",
+              "options": [
+                "L'hydrométallurgie",
+                "La pyrométallurgie à haute température",
+                "La cryogénie par choc thermique",
+                "Le concassage magnétique à sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hydrométallurgie permet d'extraire les métaux stratégiques avec une grande pureté et une consommation d'énergie modérée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En pyrométallurgie du recyclage des batteries, comment traite-t-on la matière broyée ?",
+              "options": [
+                "Par fusion dans un four à très haute température pour séparer les métaux lourds sous forme d'alliage liquide",
+                "Par congélation dans un bain d'hélium liquide",
+                "Par exposition à des rayonnements ultraviolets",
+                "Par filtration sous vide d'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pyrométallurgie fond les cellules dans un haut fourneau pour récupérer le nickel, le cobalt et le cuivre, mais brûle le graphite et perd souvent le lithium."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne la 'masse noire' (black mass) obtenue après broyage mécanique et tamisage des cellules de batteries usagées ?",
+              "options": [
+                "La poudre concentrée contenant les matières actives des électrodes (cobalt, nickel, manganèse, lithium et graphite)",
+                "Le résidu de plastique brûlé de l'enveloppe extérieure",
+                "Une huile de lubrification usagée du moteur électrique",
+                "Un goudron bitumineux d'étanchéité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La black mass est le concentré à forte valeur ajoutée issu du broyage, envoyé ensuite vers les étapes de raffinage chimique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel indicateur écologique global normalisé évalue l'impact environnemental d'une batterie de l'extraction à sa fin de vie ?",
+              "options": [
+                "L'Analyse du Cycle de Vie (ACV - Life Cycle Assessment)",
+                "Le taux de rendement synthétique (TRS)",
+                "Le temps moyen entre pannes (MTBF)",
+                "L'indice de réparabilité mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ACV quantifie tous les impacts environnementaux (CO2, consommation d'eau, épuisement des ressources) sur l'ensemble du cycle de vie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle réglementation européenne récente impose aux fabricants de batteries une traçabilité rigoureuse de la mine au recyclage ?",
+              "options": [
+                "Le passeport numérique de la batterie (Battery Passport)",
+                "La directive sur les emballages en carton",
+                "Le traité de non-prolifération chimique",
+                "Le certificat de conformité thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passeport batterie consigne l'empreinte carbone, la composition en métaux recyclés et l'historique d'usage du composant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phase du cycle de vie d'une batterie Li-ion génère traditionnellement la part prépondérante de son empreinte carbone initiale ?",
+              "options": [
+                "L'extraction des minerais et la fabrication énergivore des cellules en gigafactory",
+                "Le transport final en camion jusqu'à la concession automobile",
+                "La recharge quotidienne avec de l'électricité bas-carbone",
+                "Le lavage des carrosseries des véhicules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La synthèse des matériaux cathodiques et le séchage des électrodes en salle sèche consomment beaucoup d'énergie lors de la fabrication."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Gestion intelligente de l'énergie",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Convertisseurs statiques d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les rôles des principaux convertisseurs statiques d'énergie en électronique de puissance ?",
+              "options": [
+                "Le hacheur (DC/DC) adapte la valeur moyenne d'une tension continue",
+                "L'onduleur (DC/AC) transforme une tension continue en tension alternative",
+                "Le redresseur (AC/DC) transforme une tension alternative en tension continue",
+                "Le transformateur ferromagnétique convertit du continu pur en continu pulsé"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les convertisseurs statiques à semi-conducteurs modifient la nature (AC/DC) et les grandeurs (courant/tension) de l'énergie électrique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la fonction d'un hacheur abaisseur (buck) alimenté par une tension continue E avec un rapport cyclique α (0 < α < 1) ?",
+              "options": [
+                "Fournir une tension moyenne de sortie inférieure à l'entrée : <Vs> = α * E",
+                "Fournir une tension moyenne de sortie supérieure à l'entrée : <Vs> = E / (1 - α)",
+                "Inverser le signe de la tension en multipliant par deux la fréquence",
+                "Générer une tension sinusoïdale pure de 50 Hz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hacheur série (buck) abaisse la tension moyenne selon la relation directe <Vs> = α * E."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle relation donne la tension moyenne de sortie d'un hacheur élévateur (boost) en conduction continue ?",
+              "options": [
+                "<Vs> = E / (1 - α)",
+                "<Vs> = α * E",
+                "<Vs> = (1 - α) * E",
+                "<Vs> = E / α"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un hacheur boost, la tension de sortie vaut E / (1 - α), ce qui est strictement supérieur à E pour α > 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composant semi-conducteur commandé est le plus couramment utilisé dans les onduleurs de traction des véhicules électriques récents ?",
+              "options": [
+                "Le transistor MOSFET ou IGBT (notamment en carbure de silicium SiC)",
+                "Le tube à vide thermoïonique",
+                "Le thyristor GTO à amorçage manuel",
+                "La diode Zener de faible puissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les transistors IGBT et MOSFET SiC permettent des commutations rapides avec un excellent rendement sous plusieurs centaines de volts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt technologique majeur des semi-conducteurs à large bande interdite (WBG) comme le SiC (carbure de silicium) ou le GaN ?",
+              "options": [
+                "Fonctionner à des fréquences de découpage plus élevées, avec des pertes réduites et une meilleure tenue en température",
+                "Supprimer totalement le besoin de tout conducteur en cuivre",
+                "Rendre les convertisseurs insensibles à la gravité terrestre",
+                "Générer de la lumière laser au lieu de chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SiC et le GaN commutent très vite en réduisant les pertes, autorisant des composants passifs (bobines/condensateurs) plus compacts."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un hacheur, quel composant passif stocke temporairement l'énergie magnétique pour lisser le courant ?",
+              "options": [
+                "L'inductance (bobine de lissage)",
+                "Le fusible céramique",
+                "La varistance de protection",
+                "Le transformateur d'isolement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inductance s'oppose aux variations brutales de courant en stockant de l'énergie magnétique : E_L = 1/2 * L * I²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel rôle assure la diode de roue libre dans un hacheur connecté à une charge inductive ?",
+              "options": [
+                "Assurer la continuité du courant dans la bobine lors du blocage de l'interrupteur et éviter les surtensions destructrices",
+                "Empêcher les électrons de retourner vers la prise de terre",
+                "Augmenter la vitesse de rotation des roues du véhicule",
+                "Redresser la tension du réseau triphasé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diode de roue libre offre un chemin de circulation au courant inductif quand l'interrupteur principal s'ouvre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de bras de commutation comprend un onduleur triphasé classique destiné à piloter un moteur synchrone à aimants permanents ?",
+              "options": [
+                "3 bras comprenant chacun 2 interrupteurs commandés complémentaires (soit 6 interrupteurs)",
+                "1 seul interrupteur commandé",
+                "12 ponts de diodes indépendants",
+                "4 bras en pont complet de Graetz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un onduleur triphasé comporte 3 bras (un par phase moteur), chacun constitué de deux interrupteurs en série alimentés par le bus continu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle grandeur électrique un filtre LC en sortie d'onduleur permet-il d'atténuer fortement ?",
+              "options": [
+                "Les harmoniques haute fréquence générées par le découpage MLI",
+                "La fréquence fondamentale utile de 50 Hz",
+                "Le courant continu de polarisation",
+                "La f.e.m. utile du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre passe-bas LC élimine les harmoniques de découpage haute fréquence pour délivrer des courants sinusoïdaux propres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie qu'un convertisseur statique est 'bidirectionnel en courant et unidirectionnel en tension' ?",
+              "options": [
+                "La tension garde toujours le même signe, mais le courant peut circuler dans les deux sens (traction et régénération)",
+                "Le convertisseur ne fonctionne qu'une fois dans sa vie",
+                "Le courant est constant et la tension oscille entre positif et négatif",
+                "L'énergie ne peut circuler que de la charge vers la source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce fonctionnement à deux quadrants (I > 0 et I < 0 sous V > 0) permet la charge et la décharge réversibles sur un bus DC fixe."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Commande et modulation des convertisseurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres définissent directement un signal de commande en Modulation de Largeur d'Impulsion (MLI ou PWM) ?",
+              "options": [
+                "La période de découpage T (ou fréquence f = 1/T)",
+                "Le rapport cyclique α = t_on / T",
+                "La valeur crête de la tension de commande",
+                "Le coefficient d'adhérence pneumatique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La MLI module la durée de conduction t_on par rapport à la période fixe T pour faire varier la tension moyenne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une commande MLI intersective analogique, comment génère-t-on les impulsions de commande ?",
+              "options": [
+                "En comparant un signal modulant basse fréquence (consigne) à une onde porteuse triangulaire haute fréquence",
+                "En intégrant la vitesse angulaire de l'arbre mécanique",
+                "En filtrant le bruit blanc thermique d'une résistance",
+                "En mesurant le retard optique d'un faisceau laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intersection entre la sinusoïde de consigne et le signal triangulaire haute fréquence produit les créneaux MLI."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la définition mathématique du rapport cyclique α d'un signal périodique de période T ?",
+              "options": [
+                "α = t_haut / T",
+                "α = T / t_haut",
+                "α = t_haut * T",
+                "α = 1 - T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport cyclique est le quotient de la durée à l'état haut sur la période totale : α = t_on / T (sans dimension, 0 <= α <= 1)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi insère-t-on un 'temps mort' (dead time) lors de la commutation des deux transistors d'un même bras d'onduleur ?",
+              "options": [
+                "Pour éviter le court-circuit franc de la source d'alimentation continue (phénomène de conduction simultanée ou shoot-through)",
+                "Pour laisser refroidir les moteurs thermiques",
+                "Pour permettre au microcontrôleur de se réinitialiser",
+                "Pour synchroniser le signal avec l'horloge GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps mort garantit qu'un transistor est complètement éteint avant que le transistor complémentaire ne s'allume."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De quelles deux origines principales proviennent les pertes énergétiques totales dans un transistor de puissance ?",
+              "options": [
+                "Les pertes par conduction (pendant l'état passant) et les pertes par commutation (pendant les transitions ON/OFF)",
+                "Les pertes mécaniques par frottement d'air et les pertes magnétiques par hystérésis",
+                "Les pertes radioactives et les pertes par condensation de vapeur",
+                "Les pertes optiques par fluorescence du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes se décomposent en conduction (R_on * I_on² ou V_ce * I) et commutation (croisement tension/courant à chaque front)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment évoluent les pertes par commutation d'un convertisseur lorsqu'on augmente sa fréquence de découpage f_dec ?",
+              "options": [
+                "Elles augmentent proportionnellement à la fréquence de découpage",
+                "Elles diminuent car les impulsions sont plus courtes",
+                "Elles restent strictement inchangées",
+                "Elles tombent à zéro à haute fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie perdue à chaque transition étant quasi-constante, doubler le nombre de commutations par seconde double les pertes associées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'avantage de la technique de Modulation Vectorielle (SVPWM - Space Vector PWM) par rapport à la MLI sinusoïdale classique ?",
+              "options": [
+                "Une meilleure utilisation de la tension continue du bus DC (+15 %) et une réduction des harmoniques",
+                "La suppression pure et simple de tout convertisseur électronique",
+                "L'obligation de n'utiliser que du courant continu dans le moteur",
+                "Une baisse du rendement électrique du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La MLI vectorielle optimise le vecteur de tension dans le repère de Park et exploite 15 % de tension crête en plus sans distorsion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique mesure le taux de distorsion harmonique (THD - Total Harmonic Distortion) d'une tension ou d'un courant ?",
+              "options": [
+                "La proportion d'énergie contenue dans les harmoniques indésirables par rapport à la composante fondamentale utile",
+                "La vitesse de propagation du son dans le conducteur",
+                "La température maximale admissible avant fusion",
+                "Le déphasage pur entre le champ magnétique et le champ gravitationnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le THD évalue la déformation d'un signal par rapport à une sinusoïde pure : plus il est bas, plus le signal est sinusoïdal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel composant d'aide à la commutation (snubber) protège un semi-conducteur contre les surtensions transitoires lors du blocage ?",
+              "options": [
+                "Un circuit passif RC ou RCD placé en parallèle de l'interrupteur",
+                "Une résistance de shunt de très faible valeur",
+                "Un radiateur en aluminium à ailettes",
+                "Un optocoupleur d'isolement galvanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le circuit snubber amortit les oscillations parasites et écrête les surtensions inductives d'ouverture (L * di/dt)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel étage matériel assure l'interface entre les signaux logiques 3,3 V / 5 V du microcontrôleur et les grilles des transistors de puissance ?",
+              "options": [
+                "Le circuit de commande de grille (driver de grille ou gate driver)",
+                "Le bus de données USB",
+                "Le filtre d'habitacle",
+                "Le différentiel mécanique à engrenages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gate driver amplifie le courant et adapte la tension pour charger/décharger très rapidement les capacités de grille des transistors."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Récupération d'énergie et freinage régénératif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lors d'une phase de freinage régénératif sur un véhicule électrique, quels changements de mode de fonctionnement interviennent ?",
+              "options": [
+                "La machine électrique passe du mode moteur au mode génératrice",
+                "Le convertisseur de puissance renvoie le courant vers la batterie haute tension",
+                "Le couple exercé sur les roues devient résistant (opposé à la vitesse de rotation)",
+                "La batterie est systématiquement court-circuitée pour dissiper l'énergie"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La machine freine en absorbant l'énergie cinétique du véhicule et la convertit en électricité stockée dans la batterie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel type d'énergie mécanique du véhicule est transformé en énergie électrique lors d'une décélération régénérative sur le plat ?",
+              "options": [
+                "L'énergie cinétique de translation et de rotation des masses en mouvement",
+                "L'énergie potentielle de pesanteur",
+                "L'énergie de liaison nucléaire des atomes du châssis",
+                "L'énergie élastique des amortisseurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E_cin = 1/2 * m * v² ; la décélération diminue v et l'énergie cinétique correspondante est convertie en électricité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel quadrant du plan couple-vitesse (C, Ω) opère la machine électrique lors d'un freinage régénératif en marche avant ?",
+              "options": [
+                "Quadrant II (vitesse Ω > 0 et couple C < 0 : puissance mécanique absorbée P < 0)",
+                "Quadrant I (vitesse Ω > 0 et couple C > 0 : moteur avant)",
+                "Quadrant III (vitesse Ω < 0 et couple C < 0 : moteur arrière)",
+                "Quadrant IV (vitesse Ω < 0 et couple C > 0)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En marche avant (Ω > 0), un freinage impose un couple résistant opposé (C < 0), soit une puissance mécanique négative reçue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la capacité de freinage régénératif est-elle fortement réduite ou désactivée lorsque la batterie est chargée à 100 % (SoC = 100 %) ?",
+              "options": [
+                "Pour éviter la surtension destructrice et la surcharge rédhibitoire des cellules de la batterie",
+                "Parce que le moteur refuse de tourner quand la batterie est pleine",
+                "Parce que l'air ambiant devient trop chaud",
+                "Pour économiser l'usure des roulements à billes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une batterie pleine ne peut plus accepter d'énergie sous peine de dégradation immédiate ou d'emballement thermique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel dispositif mécanique vient compléter le freinage régénératif pour garantir la sécurité et l'arrêt complet du véhicule ?",
+              "options": [
+                "Le freinage par friction hydraulique (disques et plaquettes de frein)",
+                "Un parachute arrière déployable",
+                "Un sabot d'ancrage ferroviaire",
+                "Une hélice de poussée inversée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système de freinage mécanique à friction reste indispensable à basse vitesse, lors des arrêts d'urgence ou si la batterie est saturée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que désigne la fonction 'One-Pedal driving' (conduite à une seule pédale) sur un véhicule électrique moderne ?",
+              "options": [
+                "Un calibrage du freinage régénératif suffisamment puissant pour ralentir et arrêter le véhicule simplement en relâchant la pédale d'accélérateur",
+                "La suppression définitive de tout système de freinage mécanique d'urgence",
+                "Un véhicule qui n'accélère qu'avec les boutons du volant",
+                "Un mode de conduite où l'on accélère et embraye avec la même commande mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En relâchant l'accélérateur, le freinage régénératif puissant amène le véhicule jusqu'à l'arrêt complet sans toucher au frein."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En descente de col de montagne, quelle énergie est transformée par la génératrice pour maintenir la vitesse constante sans user les freins ?",
+              "options": [
+                "L'énergie potentielle de pesanteur (ΔE_p = m * g * Δh)",
+                "L'énergie thermique du bitume",
+                "L'énergie chimique des gaz d'échappement",
+                "L'énergie centrifuge de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perte d'altitude Δh libère de l'énergie potentielle de pesanteur qui est convertie en électricité pour recharger le pack."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel système électronique coordonne de manière transparente la répartition entre freinage régénératif et freinage mécanique par friction ?",
+              "options": [
+                "Le répartiteur de freinage électronique intégré (Brake Blending)",
+                "Le régulateur de vitesse adaptatif passif",
+                "Le différentiel mécanique à glissement limité",
+                "Le capteur de couple de direction assistée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brake blending panache régénération et friction pour maximiser la récupération d'énergie tout en assurant une décélération stable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le gain d'autonomie typique apporté par le freinage régénératif en cycle de conduite urbain dense (accélérations/arrêts fréquents) ?",
+              "options": [
+                "Environ 15 % à 25 % d'énergie récupérée",
+                "Strictement 0 %",
+                "Plus de 95 % de l'énergie totale consommée",
+                "Exactement 100 % rendant le véhicule perpétuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En ville avec des arrêts fréquents, la régénération permet de récupérer entre 15 % et 25 % de l'énergie initialement dépensée pour accélérer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le cas d'une motrice de train électrique ou d'un tramway sans stockage embarqué, que devient l'énergie régénérée au freinage ?",
+              "options": [
+                "Elle est réinjectée sur la caténaire vers d'autres rames à proximité ou dissipée dans des rhéostats de toiture",
+                "Elle est évaporée sous forme d'eau lourde",
+                "Elle est stockée dans les rails de chemin de fer",
+                "Elle annule le champ magnétique terrestre local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie est renvoyée sur la caténaire pour être consommée par un train voisin qui accélère, ou dissipée dans des rhéostats si la ligne n'est pas réceptive."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Suivi de point de puissance maximale (MPPT)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les algorithmes MPPT (Maximum Power Point Tracking) les plus répandus pour l'optimisation des générateurs photovoltaïques ?",
+              "options": [
+                "Perturbation et Observation (P&O - Perturb and Observe)",
+                "Conductance Incrémentale (Incremental Conductance)",
+                "Fraction de la tension de circuit ouvert (Tension OCV fractionnaire)",
+                "Tri à bulles récursif sans mesure de capteurs"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "P&O, la conductance incrémentale et les méthodes fractionnaires sont les grands classiques du MPPT en génie électrique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la caractéristique courant-tension I(V) d'un panneau photovoltaïque nécessite-t-elle un asservissement MPPT ?",
+              "options": [
+                "Parce qu'elle est non linéaire et que la puissance maximale P_max dépend fortement de l'ensoleillement et de la température",
+                "Parce que le panneau délivre un courant alternatif triphasé constant",
+                "Parce que la tension d'un panneau photovoltaïque est rigoureusement invariable",
+                "Pour empêcher les cellules solaires d'émettre des rayons X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La courbe P(V) possède un sommet unique (MPP) dont la position varie constamment avec l'irradiance et la chaleur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur quel principe fonctionne l'algorithme MPPT par Perturbation et Observation (P&O) ?",
+              "options": [
+                "Faire varier la tension de consigne d'un pas ΔV et observer la variation de puissance ΔP pour continuer ou inverser le sens de perturbation",
+                "Couper le panneau solaire toutes les dix secondes pour compter les photons",
+                "Maintenir le rapport cyclique strictement figé à 50 %",
+                "Mesurer la direction du vent pour orienter le convertisseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si ΔP > 0, on continue dans la même direction ; si ΔP < 0, on a dépassé le sommet et on inverse le sens de variation de tension."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le principal défaut de l'algorithme P&O conventionnel en régime permanent au point de puissance maximale ?",
+              "options": [
+                "Il oscille en permanence autour du point de puissance maximale avec de légères pertes de rendement",
+                "Il provoque l'explosion thermique des diodes",
+                "Il décharge complètement la batterie en moins d'une seconde",
+                "Il inverse la polarité positive et négative des câbles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'algorithme P&O classique hésite d'un pas en avant et d'un pas en arrière, oscillant autour du sommet optimal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans l'algorithme par Conductance Incrémentale, quelle condition mathématique caractérise exactement le point de puissance maximale (MPP) ?",
+              "options": [
+                "dI / dV = - I / V (soit dP/dV = 0)",
+                "dI / dV = 0",
+                "I * V = 0",
+                "dI / dV = + I / V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme P = V * I, dP/dV = I + V * (dI/dV) = 0 équivaut rigoureusement à dI/dV = - I/V au sommet de la courbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel convertisseur de puissance est physiquement piloté par l'étage de calcul MPPT d'un onduleur photovoltaïque ?",
+              "options": [
+                "Un hacheur DC/DC (buck, boost ou buck-boost) modifiant son rapport cyclique",
+                "Un gradateur à angle de phase 50 Hz",
+                "Un amplificateur audio classe AB",
+                "Un disjoncteur différentiel électromécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'algorithme MPPT ajuste le rapport cyclique du hacheur pour faire coïncider l'impédance apparente vue par le panneau avec son point optimal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment varie la tension à vide V_co d'un panneau solaire lorsque la température de ses cellules augmente ?",
+              "options": [
+                "Elle diminue (coefficient de température négatif d'environ -0,3 %/°C à -0,4 %/°C)",
+                "Elle augmente exponentiellement",
+                "Elle reste strictement constante",
+                "Elle tombe à zéro dès 25 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élévation de température réduit la largeur de bande interdite du semi-conducteur, faisant baisser la tension et le rendement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel phénomène survient sur la courbe P(V) en cas d'ombrage partiel d'une chaîne de panneaux photovoltaïques ?",
+              "options": [
+                "L'apparition de multiples maxima locaux de puissance, piégeant les algorithmes MPPT simples",
+                "La disparition complète de toute tension aux bornes",
+                "Une multiplication de la puissance totale par deux",
+                "Une transformation du silicium en semi-conducteur supraconducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ombrage partiel et l'activation des diodes by-pass créent plusieurs bosses de puissance ; un MPPT global (GMPPT) devient requis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que permettent d'optimiser les micro-onduleurs ou optimiseurs de puissance installés individuellement sous chaque panneau ?",
+              "options": [
+                "Gérer un suivi MPPT indépendant panneau par panneau pour annuler l'impact négatif de l'ombrage partiel d'un module sur les autres",
+                "Supprimer le besoin d'installer des câbles électriques sur le toit",
+                "Réchauffer les panneaux en hiver avec de la vapeur d'eau",
+                "Augmenter l'ensoleillement météo naturel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque panneau produit son maximum indépendamment sans être bridé par un panneau voisin encrassé ou ombragé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rendement de poursuite dynamique typique d'un algorithme MPPT moderne en conditions stables ?",
+              "options": [
+                "Supérieur à 99 %",
+                "Environ 50 %",
+                "Inférieur à 25 %",
+                "Strictement 10 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les algorithmes numériques récents extraient plus de 99 % de l'énergie maximale théorique disponible en régime établi."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Stratégies de gestion des flux d'énergie (EMS)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les objectifs essentiels d'un système de gestion de l'énergie (EMS - Energy Management System) multi-sources ?",
+              "options": [
+                "Minimiser la consommation de carburant fossile ou d'électricité coûteuse",
+                "Maximiser l'autonomie et le rendement global du système",
+                "Préserver la durée de vie des composants de stockage (batteries, supercapas)",
+                "Désactiver en permanence les dispositifs de sécurité pour gagner en puissance"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'EMS optimise les flux de puissance en temps réel pour concilier autonomie, coût d'exploitation, rendement et longévité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une stratégie de gestion basée sur des règles déterministes (Rule-Based EMS), sur quoi reposent les décisions ?",
+              "options": [
+                "Sur des seuils fixes et des machines à états finis programmées selon l'expérience ingénieur",
+                "Sur la résolution en temps réel d'équations différentielles stochastiques d'ordre 10",
+                "Sur le tirage aléatoire de dés virtuels à chaque seconde",
+                "Sur l'écoute passive des bruits mécaniques du châssis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stratégies par règles utilisent des conditions logiques simples (ex: si SoC > 60 % et P_demande < 20 kW, mode 100 % électrique)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la stratégie 'Thermostat' (ou On/Off) pour la gestion d'un prolongateur d'autonomie dans un véhicule hybride série ?",
+              "options": [
+                "Le groupe moteur-générateur s'allume à son point de rendement maximal dès que la batterie atteint un seuil bas, puis s'éteint une fois rechargée",
+                "Le moteur thermique adapte sa vitesse à la température exacte de l'habitacle",
+                "Le véhicule ne peut démarrer que si la température extérieure dépasse 20 °C",
+                "La génératrice tourne en permanence à vitesse variable sans tenir compte du SoC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La stratégie tout-ou-rien fait tourner le moteur thermique uniquement dans sa zone d'efficacité optimale pour recharger le pack."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode d'optimisation mathématique théorique globale fournit la référence absolue de consommation minimale pour un trajet connu à l'avance ?",
+              "options": [
+                "La programmation dynamique de Bellman (DP)",
+                "Le tri fusion en O(n log n)",
+                "Le principe d'Archimède",
+                "La loi de Murphy appliquée aux flux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La programmation dynamique résout l'optimum global sur un cycle de conduite complet prédéterminé, servant de benchmark absolu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En quoi consiste la stratégie ECMS (Equivalent Consumption Minimization Strategy) utilisée en contrôle temps réel ?",
+              "options": [
+                "Convertir l'énergie électrique en carburant équivalent avec un facteur de pénalité pour minimiser la consommation totale",
+                "Considérer que l'électricité est toujours totalement gratuite et infinie",
+                "Interdire tout usage du moteur thermique en montée",
+                "Calculer l'équivalent monétaire en devises étrangères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ECMS attribue un coût équivalent virtuel à l'énergie de la batterie pour optimiser la répartition de puissance instantanée P_thermique / P_électrique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un véhicule électrique à pile à combustible hybride (pile + batterie), quel rôle l'EMS confie-t-il typiquement à la pile à combustible ?",
+              "options": [
+                "Fournir la puissance moyenne de croisière avec des variations lentes pour protéger la membrane",
+                "Absorber tous les chocs brutaux de puissance et les pics d'accélération",
+                "Servir de lest de masse mécanique uniquement",
+                "Fonctionner en marche/arrêt toutes les deux secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pile a une dynamique lente ; l'EMS lui demande une puissance lissée, laissant à la batterie le soin de combler les appels d'accélération."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment l'EMS d'un bâtiment intelligent (BEMS) optimise-t-il la recharge des véhicules électriques en autoconsommation solaire ?",
+              "options": [
+                "En asservissant la puissance de recharge du véhicule sur le surplus de production photovoltaïque mesuré en temps réel",
+                "En coupant l'alimentation électrique du réfrigérateur",
+                "En déchargeant la batterie de la voiture dans les lampes du salon à midi",
+                "En faisant payer un droit de passage aux piétons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recharge dynamique synchronise l'appel de courant du véhicule avec l'excédent solaire pour maximiser le taux d'autoconsommation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne la technique du 'Peak Shaving' (écrêtage des pointes) réalisée par un EMS stationnaire ?",
+              "options": [
+                "Injecter l'énergie d'une batterie lors des pics de consommation pour limiter la puissance maximale soutirée au réseau public",
+                "Raser les poteaux électriques en surplus",
+                "Augmenter la consommation aux heures les plus chères",
+                "Interdire la cuisson des repas aux heures de pointe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écrêtage évite les pénalités de dépassement de puissance souscrite auprès du gestionnaire de réseau de distribution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel apport de la navigation GPS connectée permet à un EMS prédictif d'optimiser l'usage de la batterie ?",
+              "options": [
+                "Connaître à l'avance le profil altimétrique (montées, descentes), les limites de vitesse et l'état du trafic routier",
+                "Changer la couleur du tableau de bord selon l'altitude",
+                "Augmenter la pression des pneus à distance",
+                "Calculer la position des constellations célestes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'EMS anticipe par exemple une descente de col pour vider préalablement la batterie et récupérer 100 % du freinage à venir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le contrôle prédictif basé sur modèle (MPC - Model Predictive Control), que résout l'algorithme à chaque pas de temps ?",
+              "options": [
+                "Un problème d'optimisation sous contraintes sur un horizon temporel futur glissant",
+                "Une division par zéro pour tester le microcontrôleur",
+                "L'inversion d'une matrice infinie de nombres imaginaires",
+                "Un tirage de nombres pseudo-aléatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le MPC prédit l'évolution du système sur un horizon futur, applique la première commande calculée, puis réitère au pas suivant."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Réseaux intelligents (Smart Grids) et micro-réseaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles technologies clés transforment un réseau électrique traditionnel en réseau intelligent (Smart Grid) ?",
+              "options": [
+                "L'intégration massive de capteurs communicants et de compteurs intelligents bidirectionnels",
+                "Les systèmes de pilotage automatisé et d'analyse de données en temps réel",
+                "L'intégration transparente des sources de production décentralisées (solaire, éolien)",
+                "Le remplacement systématique de tous les câbles en cuivre par des tuyaux hydrauliques"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un Smart Grid conjugue télécommunications, capteurs et informatique pour gérer les flux d'énergie bidirectionnels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle contrainte fondamentale d'équilibre physique permanent doit respecter le réseau électrique alternatif à 50 Hz ?",
+              "options": [
+                "L'égalité instantanée stricte entre la puissance totale injectée et la puissance totale soutirée (P_produite = P_consommée + Pertes)",
+                "Une tension moyenne de zéro volt sur toutes les lignes haute tension",
+                "Une production toujours trois fois supérieure à la consommation maximale",
+                "La rotation inversée des transformateurs de distribution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fréquence de 50 Hz reste stable si la production équilibre exactement la consommation à chaque fraction de seconde."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que traduit une baisse de la fréquence du réseau électrique en dessous de sa valeur nominale de 50,00 Hz (ex: 49,85 Hz) ?",
+              "options": [
+                "Un déficit de production par rapport à la demande (la demande dépasse l'offre globale)",
+                "Un surplus massif d'énergie solaire injectée sur le réseau",
+                "Une surtension atmosphérique due à un orage lointain",
+                "Une rupture de neutre dans une maison individuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand la consommation dépasse la production, les rotors des générateurs ralentissent sous la charge, faisant baisser la fréquence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'effacement tarifaire ou de consommation (Demand Response) dans un réseau intelligent ?",
+              "options": [
+                "La modulation ou réduction temporaire et volontaire de la consommation de clients industriels ou particuliers lors des pointes de tension du réseau",
+                "L'effacement complet des dettes d'électricité des abonnés",
+                "La coupure accidentelle d'une ligne suite à une tempête",
+                "La suppression des factures papier par un format PDF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effacement décale la consommation des gros consommateurs (chauffe-eau, usines) pour soulager le réseau lors des pics de demande."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que désigne un micro-réseau (Microgrid) capable de fonctionner en mode 'îloté' (islanded mode) ?",
+              "options": [
+                "Un réseau électrique local comprenant production, stockage et charges, capable de s'isoler du réseau principal en toute autonomie lors d'une panne",
+                "Un réseau miniature alimentant exclusivement des maquettes d'ingénierie",
+                "Une île artificielle flottante propulsée par des éoliennes",
+                "Une pile bouton alimentant une montre à quartz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microgrid équilibre sa propre production et consommation localement, même lorsque le grand réseau électrique national est défaillant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle distinction existe-t-il entre le taux d'autoproduction et le taux d'autoconsommation d'un bâtiment solaire équipé de stockage ?",
+              "options": [
+                "L'autoconsommation est la part de production consommée sur place ; l'autoproduction est la part des besoins couverte par sa propre production",
+                "Ce sont deux synonymes parfaits strictement équivalents",
+                "L'autoconsommation ne s'applique qu'à la consommation d'eau potable",
+                "L'autoproduction se mesure en kilomètres par heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autoconsommation = E_consommée_locale / E_produite ; Autoproduction = E_consommée_locale / E_besoin_total."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne le concept de centrale électrique virtuelle (VPP - Virtual Power Plant) ?",
+              "options": [
+                "L'agrégation logicielle et la coordination pilotée d'une multitude de petits générateurs distribués, batteries et charges effaçables",
+                "Une simulation 3D de centrale nucléaire dans un jeu vidéo",
+                "Un projet de centrale hydroélectrique non encore construit",
+                "Un réseau social dédié aux techniciens de maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une VPP pilote de manière groupée des milliers de batteries domestiques et panneaux pour fournir des services système comme une centrale classique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel compteur communicant déployé en France mesure en temps réel et transmet les index de consommation et d'injection ?",
+              "options": ["Linky", "Gazpar", "Minitel", "Baromètre à mercure"],
+              "correctAnswers": [0],
+              "explanation": "Le compteur Linky communique par Courants Porteurs en Ligne (CPL) pour transmettre les données de comptage et piloter la puissance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel service système fondamental assure l'inertie synthétique fournie par les onduleurs formeurs de réseau (grid-forming) ?",
+              "options": [
+                "Imiter le comportement mécanique des gros alternateurs pour stabiliser instantanément la fréquence face aux perturbations",
+                "Augmenter l'inertie massique de la carcasse en fonte des compteurs",
+                "Produire des ondes sonores inaudibles pour éloigner les rongeurs",
+                "Ralentir la vitesse de rotation des roues de turbines à gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de gros rotors thermiques, les onduleurs grid-forming injectent instantanément de la puissance pour maintenir la fréquence à 50 Hz."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle technologie de communication par les câbles d'énergie existants est souvent exploitée dans les réseaux de distribution intelligents ?",
+              "options": [
+                "Les Courants Porteurs en Ligne (CPL / PLC)",
+                "La fibre optique sous-marine transatlantique",
+                "Le morse acoustique par coups de marteau sur les câbles",
+                "Le faisceau laser héliothermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CPL superpose un signal haute fréquence modulé sur les conducteurs électriques de distribution existants pour transmettre des données."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Véhicules électriques et interactions réseau (V2X)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels acronymes désignent les différentes technologies d'échanges bidirectionnels d'énergie impliquant un véhicule électrique (V2X) ?",
+              "options": [
+                "V2G (Vehicle-to-Grid : injection d'énergie vers le réseau public)",
+                "V2H / V2B (Vehicle-to-Home / Vehicle-to-Building : secours ou effacement domestique)",
+                "V2L (Vehicle-to-Load : alimentation d'appareils électriques nomades 230 V)",
+                "V2W (Vehicle-to-Water : transformation des batteries en eau sous pression)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le V2X regroupe l'ensemble des interactions énergétiques entre la batterie du véhicule et son environnement (réseau, maison, chargeur)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle norme internationale régit la communication numérique évoluée et la charge bidirectionnelle (V2G) entre le véhicule et la borne ?",
+              "options": [
+                "ISO 15118",
+                "ISO 9001",
+                "IEEE 802.11b",
+                "NF P 03-001"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ISO 15118 définit les protocoles de communication pour le Plug & Charge et la gestion bidirectionnelle de puissance réseau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans le concept Vehicle-to-Grid (V2G), quel service rémunéré les véhicules branchés peuvent-ils apporter au gestionnaire de réseau ?",
+              "options": [
+                "La régulation de fréquence et la fourniture de réserve primaire/secondaire lors des pics de consommation",
+                "Le balayage automatique des feuilles mortes sous les lignes",
+                "La transmission gratuite de chaînes de télévision par câble",
+                "L'annulation des pertes diélectriques des océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les flottes de batteries sur roues connectées fournissent une gigantesque capacité de stockage distribuée pour stabiliser le réseau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mode de recharge correspond au standard 'Mode 4' selon la norme CEI 61851 pour les véhicules électriques ?",
+              "options": [
+                "La recharge rapide en courant continu (DC) avec chargeur externe dédié intégré à la borne",
+                "Le branchement direct sur une prise domestique 230 V sans boîtier de protection",
+                "L'induction magnétique sous la pluie à 50 Hz",
+                "Le remplacement manuel des cellules par l'usager sur la route"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Mode 4 délivre du courant continu haute puissance directement au pack de batterie, le convertisseur AC/DC étant dans la borne fixe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel connecteur standard européen est obligatoire sur les bornes de recharge rapide en courant continu (DC) ?",
+              "options": [
+                "Le connecteur Combo CCS2",
+                "La prise péritel 21 broches",
+                "La prise allume-cigare 12 V",
+                "Le connecteur DIN audio 5 broches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Combined Charging System (CCS2) combine une embase Type 2 pour le courant alternatif et deux grosses broches DC pour la charge rapide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En quoi consiste la charge intelligente unidirectionnelle dite 'V1G' (Smart Charging) ?",
+              "options": [
+                "Moduler dynamiquement l'heure et la puissance de charge du véhicule en fonction des prix de l'électricité et des signaux réseau",
+                "Faire rouler le véhicule uniquement en ligne droite",
+                "Brancher la voiture avec un câble contenant un seul fil de cuivre",
+                "Interdire toute recharge la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le V1G décale ou ralentit la recharge pour consommer quand l'électricité est abondante et bon marché, sans renvoi d'énergie vers le réseau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la crainte technique majeure des utilisateurs face à l'usage intensif de leur véhicule en mode V2G ?",
+              "options": [
+                "L'accélération du vieillissement cyclique de la batterie liée aux micro-cycles de décharge supplémentaires",
+                "La décoloration de la peinture des portières",
+                "L'effacement des stations radio enregistrées",
+                "Une perte de puissance définitive du klaxon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Injecter de l'énergie vers le réseau sollicite la batterie ; des stratégies V2G douces et optimisées en DoD sont nécessaires pour éviter l'usure prématurée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle puissance de recharge typique délivre une prise renforcée domestique de type Green'up en courant alternatif ?",
+              "options": [
+                "Environ 3,7 kW (16 A sous 230 V monophasé)",
+                "Environ 350 kW",
+                "Environ 50 W",
+                "Exactement 43 kW triphasé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une prise renforcée 16 A monophasée sécurisée délivre P = 230 V * 16 A ≈ 3,7 kW, contre 2,3 kW (10 A) sur une prise standard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le protocole de charge AC (Mode 3), quel signal pilote PWM basse tension entre la borne et la voiture indique le courant maximal autorisé ?",
+              "options": [
+                "La ligne Control Pilot (borne CP)",
+                "La ligne Proximity Pilot (PP)",
+                "Le câble de masse de carrosserie",
+                "L'onde radio Bluetooth du smartphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le signal PWM 1 kHz sur le fil Control Pilot (CP) indique au chargeur embarqué le courant de consigne maximal autorisé par la borne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le protocole 'Plug & Charge' prévu par la norme ISO 15118 ?",
+              "options": [
+                "L'authentification, l'autorisation et la facturation automatiques dès le branchement du câble sans badge ni application mobile",
+                "L'interdiction de débrancher le véhicule avant 24 heures",
+                "L'explosion d'un signal sonore à chaque kilowattheure facturé",
+                "L'obligation de changer de prise de courant à chaque recharge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le Plug & Charge, les certificats cryptographiques échangés par le câble identifient le compte usager automatiquement au branchement."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Efficacité énergétique et bilans de puissance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles composantes de pertes thermiques retrouve-t-on dans le bilan énergétique d'une machine électrique tournante ?",
+              "options": [
+                "Les pertes par effet Joule dans les enroulements statoriques et rotoriques (R * I²)",
+                "Les pertes fer dans les tôles magnétiques (hystérésis et courants de Foucault)",
+                "Les pertes mécaniques par frottement des roulements et ventilation aérodynamique",
+                "Les pertes gravitationnelles dues à la rotation autour du soleil"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le bilan de pertes d'une machine comprend les pertes Joule, les pertes magnétiques (fer) et les pertes mécaniques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le rendement global η_global d'une chaîne de conversion constituée de n organes en cascade de rendements η₁, η₂, ..., η_n ?",
+              "options": [
+                "η_global = η₁ * η₂ * ... * η_n (produit des rendements individuels)",
+                "η_global = η₁ + η₂ + ... + η_n (somme des rendements)",
+                "η_global = (η₁ + η_n) / 2",
+                "η_global = 1 / (η₁ * η_n)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cascade, chaque étage prélève ses pertes sur la puissance transmise : les rendements se multiplient entre eux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si une batterie (η = 90 %), un onduleur (η = 95 %) et un moteur (η = 90 %) sont montés en série, quel est le rendement global de la chaîne ?",
+              "options": [
+                "Environ 77 % (0,90 * 0,95 * 0,90 ≈ 0,7695)",
+                "Exactement 95 %",
+                "Environ 275 %",
+                "Moins de 35 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0,90 * 0,95 * 0,90 = 0,7695, soit environ 77 % de rendement global du pack jusqu'aux roues."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un circuit électrique alternatif sinusoïdal, quelle relation relie la puissance active P, réactive Q et apparente S ?",
+              "options": [
+                "S² = P² + Q² (soit S = √(P² + Q²))",
+                "S = P + Q",
+                "P = S * Q",
+                "S = P - Q"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le triangle des puissances de Boucherot établit que S² = P² + Q², avec P en watts, Q en VAR et S en voltampères."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que représente le facteur de puissance k = P / S sur une installation électrique non déformée ?",
+              "options": [
+                "Le cosinus de l'angle de déphasage entre le courant et la tension : k = cos(φ)",
+                "Le rapport entre la tension efficace et la fréquence",
+                "La résistance thermique du disjoncteur général",
+                "Le rendement électromécanique du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En régime sinusoïdal pur, le facteur de puissance est égal à cos(φ), mesurant l'efficacité d'utilisation du courant acheminé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi feuillete-t-on les circuits magnétiques des transformateurs et machines électriques avec des tôles vernies isolées ?",
+              "options": [
+                "Pour réduire les boucles de courants de Foucault et minimiser les pertes fer associées",
+                "Pour alléger le poids de la machine de plus de 80 %",
+                "Pour faciliter le passage de l'air de refroidissement",
+                "Pour permettre un démontage facile sans outil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le feuilletage isole électriquement les tranches de métal, divisant les trajets des courants induits de Foucault et les pertes Joule induites."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle conséquence négative a un mauvais facteur de puissance (cos φ faible) pour le gestionnaire du réseau électrique ?",
+              "options": [
+                "Il impose de transporter un courant apparent plus élevé, provoquant des chutes de tension et des pertes Joule supplémentaires en ligne",
+                "Il accélère la rotation des compteurs Linky au détriment de l'usager",
+                "Il abaisse la fréquence du réseau sous 10 Hz",
+                "Il transforme le courant alternatif en continu pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une même puissance active utile P, un cos(φ) dégradé augmente le courant en ligne I = P / (U * cos φ) et les pertes Joule associées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment compense-t-on classiquement une consommation excessive d'énergie réactive inductive sur un réseau industriel ?",
+              "options": [
+                "En installant des batteries de condensateurs de compensation en parallèle",
+                "En insérant des bobines d'inductance en série sur chaque phase",
+                "En diminuant la tension d'alimentation de moitié",
+                "En remplaçant les câbles électriques par des câbles coaxiaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les condensateurs fournissent de la puissance réactive capacitive qui compense la puissance réactive inductive absorbée par les moteurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la définition de la puissance déformante D dans un réseau pollué par des harmoniques ?",
+              "options": [
+                "La grandeur représentant la distorsion harmonique telle que S² = P² + Q² + D²",
+                "Le couple mécanique développé sur l'arbre de transmission",
+                "La puissance lumineuse émise par les voyants LED",
+                "La perte de puissance due au frottement de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En présence de charges non linéaires, les harmoniques créent un terme supplémentaire D (puissance déformante) dans le bilan des puissances."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel principe thermodynamique fondamental stipule que l'énergie ne peut être ni créée ni détruite mais seulement transformée ?",
+              "options": [
+                "Le premier principe de la thermodynamique (principe de conservation de l'énergie)",
+                "Le second principe de Carnot sur l'entropie",
+                "Le troisième principe de Nernst",
+                "Le principe d'incertitude de Heisenberg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier principe de conservation impose que l'énergie totale entrante égale l'énergie utile sortante plus les pertes dissipées."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Stockage thermique et mécanique stationnaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les principaux systèmes de stockage stationnaire d'énergie à grande échelle alternatifs aux batteries électrochimiques ?",
+              "options": [
+                "Les Stations de Transfert d'Énergie par Pompage hydraulique (STEP)",
+                "Le stockage d'énergie par air comprimé (CAES - Compressed Air Energy Storage)",
+                "Les volants d'inertie mécaniques haute vitesse (Flywheels)",
+                "Les dynamos manuelles à manivelle pour smartphone"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les STEP, le CAES et les volants d'inertie sont des piliers du stockage mécanique de masse et de puissance sur les réseaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment fonctionne une Station de Transfert d'Énergie par Pompage (STEP) ?",
+              "options": [
+                "Elle pompe de l'eau d'un bassin inférieur vers un bassin supérieur en heures creuses, puis turboturbine cette eau en heures de pointe",
+                "Elle comprime de l'air dans des bouteilles de plongée sous-marines",
+                "Elle vaporise de l'eau lourde dans un réacteur d'enrichissement",
+                "Elle utilise des éoliennes pour faire tourner des roues de moulin à vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La STEP stocke de l'énergie potentielle de pesanteur (m * g * h) à grande échelle avec un excellent rendement de cycle (75-80 %)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel pourcentage du stockage d'électricité stationnaire installé dans le monde les STEP représentent-elles actuellement ?",
+              "options": [
+                "Plus de 90 % de la capacité mondiale totale d'énergie stockée",
+                "Moins de 2 %",
+                "Exactement 25 %",
+                "Environ 10 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les STEP constituent historiquement et encore aujourd'hui la quasi-totalité du stockage d'électricité de masse à l'échelle planétaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle formule donne l'énergie cinétique de rotation E_k stockée dans un volant d'inertie de moment d'inertie J tournant à la vitesse angulaire ω ?",
+              "options": [
+                "E_k = 1/2 * J * ω²",
+                "E_k = J * ω",
+                "E_k = 1/2 * J² * ω",
+                "E_k = J / (2 * ω)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie cinétique de rotation est analogue à celle de translation : E_cin = 1/2 * J * ω² (en joules avec J en kg·m² et ω en rad/s)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelles technologies de pointe sont employées dans les volants d'inertie modernes pour minimiser les pertes par frottement ?",
+              "options": [
+                "Une enceinte sous vide d'air poussé et des paliers magnétiques supraconducteurs sans contact",
+                "Une immersion dans de l'huile de moteur épaisse",
+                "Des roulements en bois de chêne lubrifiés à l'eau de mer",
+                "Des ailettes de freinage aérodynamique sur la périphérie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vide élimine la traînée aérodynamique et les paliers magnétiques suppriment le frottement mécanique, autorisant > 50 000 tr/min."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un système de stockage par air comprimé adiabatique (A-CAES), que fait-on de la chaleur produite lors de la compression de l'air ?",
+              "options": [
+                "Elle est captée et stockée dans un accumulateur thermique pour réchauffer l'air avant sa détente dans la turbine de restitution",
+                "Elle est immédiatement rejetée à l'air libre sans récupération",
+                "Elle sert à congeler l'azote atmosphérique",
+                "Elle est convertie en rayons ultraviolets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compression échauffe l'air ; stocker cette chaleur pour la réinjecter à la détente augmente considérablement le rendement (A-CAES)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur quel principe thermodynamique repose le stockage thermique par chaleur latente à Matériaux à Changement de Phase (MCP) ?",
+              "options": [
+                "L'absorption ou la libération d'une grande quantité d'énergie à température quasi-constante lors de la fusion/solidification",
+                "L'élévation de température d'une masse de béton sans aucun changement d'état",
+                "La décomposition chimique explosive d'acides forts",
+                "La réfraction de la lumière du soleil dans un prisme de verre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les MCP emmagasinent l'enthalpie de changement d'état (chaleur latente, ex: paraffines ou sels hydratés) à température constante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est l'application privilégiée des volants d'inertie sur le réseau électrique par rapport aux batteries ?",
+              "options": [
+                "La régulation ultra-rapide de fréquence (réponse en quelques millisecondes) et l'absorption de pointes de puissance brèves",
+                "Le stockage saisonnier de l'énergie solaire entre l'été et l'hiver",
+                "L'éclairage d'une ville entière pendant une semaine de panne générale",
+                "L'abaissement de la tension continue des câbles sous-marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les volants excellent dans les applications de puissance à cyclabilité infinie sur des durées courtes (quelques secondes à minutes)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel matériau dense à haute capacité thermique massique est couramment employé pour le stockage thermique par chaleur sensible jusqu'à 500 °C ?",
+              "options": [
+                "Les sels fondus (mélanges de nitrates de sodium et de potassium)",
+                "Le polystyrène expansé",
+                "L'air comprimé à basse température",
+                "L'acétone liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sels fondus restent liquides à très haute température et stockent d'immenses quantités d'énergie dans les centrales solaires thermodynamiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rendement de cycle aller-retour (round-trip efficiency) moyen d'une STEP hydroélectrique moderne ?",
+              "options": [
+                "Entre 75 % et 82 %",
+                "Inférieur à 30 %",
+                "Strictement égal à 100 %",
+                "Supérieur à 98 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes aux pompes, turbines, conduites forcées et alternateurs laissent un excellent rendement global de 75 % à 82 %."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Modélisation et simulation multiphysique des flux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils et formalismes graphiques sont couramment utilisés en Sciences de l'Ingénieur pour modéliser les systèmes énergétiques multiphysiques ?",
+              "options": [
+                "La Représentation Énergétique Macroscopique (REM / EMR)",
+                "Les Bond Graphs (graphes de liaison basés sur les variables d'effort et de flux)",
+                "Les schémas-blocs causaux sous environnements de simulation type MATLAB/Simulink ou Modelica",
+                "Les diagrammes de Gantt de gestion de plannings de chantier"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'EMR, les Bond Graphs et le langage Modelica permettent d'analyser et simuler rigoureusement les transferts d'énergie multiphysiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le formalisme des Bond Graphs, quel produit de deux variables complémentaires représente systématiquement la puissance instantanée transmise ?",
+              "options": [
+                "La variable d'effort (e) multipliée par la variable de flux (f) : P(t) = e(t) * f(t)",
+                "L'accélération divisée par la masse volumique",
+                "La température divisée par la pression absolue",
+                "La tension électrique additionnée au volume massique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance est toujours le produit de l'effort par le flux : P = u * i (électrique), P = F * v (mécanique trans.), P = C * Ω (rotation)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans le domaine mécanique de rotation, quelles sont les variables d'effort et de flux respectives ?",
+              "options": [
+                "Effort = Couple (C en N·m) ; Flux = Vitesse angulaire (Ω en rad/s)",
+                "Effort = Force (F en N) ; Flux = Vitesse linéaire (v en m/s)",
+                "Effort = Pression (p en Pa) ; Flux = Débit volumique (Q en m³/s)",
+                "Effort = Tension (U en V) ; Flux = Courant (I en A)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En rotation, le couple est la variable d'effort et la vitesse angulaire est la variable de flux (P = C * Ω)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que postule le principe de causalité intégrale privilégié dans la simulation numérique des systèmes physiques dynamiques ?",
+              "options": [
+                "Calculer les sorties par intégration temporelle des flux entrants pour garantir la stabilité numérique",
+                "Toutes les grandeurs doivent être calculées par dérivation pure",
+                "L'effet précède systématiquement la cause temporelle",
+                "Les équations sont résolues sans aucune horloge de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La causalité intégrale est stable numériquement car elle lisse les discontinuités, contrairement à la dérivation qui amplifie les bruits."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans la Représentation Énergétique Macroscopique (REM), quel pictogramme graphique normalisé représente un élément de stockage d'énergie ?",
+              "options": [
+                "Un rectangle barré d'un trait diagonal orange",
+                "Un cercle vert traversé par une flèche",
+                "Un double triangle bleu formant un papillon",
+                "Un losange blanc transparent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la méthodologie REM (développée par l'Université de Lille), le rectangle barré d'oblique symbolise l'accumulation d'énergie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que permet d'obtenir directement l'inversion méthodique des blocs de la chaîne d'action en Représentation Énergétique Macroscopique ?",
+              "options": [
+                "La structure de commande rapprochée et d'asservissement en boucle fermée du système",
+                "Le plan de câblage physique des fusibles de protection",
+                "Le coût financier unitaire des semi-conducteurs",
+                "Le diagnostic automatique d'usure des roulements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle de déduction systématique de l'EMR génère la structure de commande par inversion pas à pas de la chaîne de puissance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle équation différentielle fondamentale régit la dynamique de vitesse d'un véhicule de masse m sous l'effet des forces motrices et résistantes ?",
+              "options": [
+                "m * (dv/dt) = F_motrice - (F_roulement + F_aero + F_pente)",
+                "m * v = F_motrice * t",
+                "dv/dt = m * g * v",
+                "F_motrice = 1/2 * m * v²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la deuxième loi de Newton : m * a = somme des forces. La force motrice s'oppose aux résistances à l'avancement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment s'exprime la force de traînée aérodynamique F_aero subie par un véhicule roulant à la vitesse relative v dans l'air ?",
+              "options": [
+                "F_aero = 1/2 * ρ * S * Cx * v²",
+                "F_aero = m * g * Cx * v",
+                "F_aero = ρ * S * v",
+                "F_aero = 1/2 * Cx / v"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance de l'air est proportionnelle au carré de la vitesse : F_aero = 1/2 * ρ_air * S * Cx * v²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt fondamental des cycles de conduite normalisés (comme le WLTP) dans la simulation des véhicules ?",
+              "options": [
+                "Fournir un profil de vitesse-temps standardisé et reproductible pour comparer équitablement l'autonomie et l'efficacité énergétique",
+                "Imposer aux conducteurs une vitesse fixe obligatoire sur route",
+                "Remplacer les tests de freinage d'urgence sur piste",
+                "Mesurer la résistance mécanique des ceintures de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle WLTP définit un profil v(t) de référence servant de consigne d'entrée identique pour simuler et comparer les consommations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que permet la démarche de co-simulation multiphysique (ou Hardware-in-the-Loop - HIL) lors du développement d'un véhicule électrique ?",
+              "options": [
+                "Connecter le calculateur électronique réel (BMS ou ECU) à un simulateur numérique temps réel modélisant la batterie et le moteur",
+                "Remplacer les ingénieurs par des automates programmables",
+                "Tester le gonflage des pneus sur ordinateur sans capteurs",
+                "Supprimer tout contrôle de conformité avant commercialisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test HIL valide le code du calculateur physique en le branchant sur une simulation temps réel reproduisant le comportement des organes physiques."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

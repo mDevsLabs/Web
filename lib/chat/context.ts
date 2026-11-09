@@ -51,6 +51,24 @@ export type ChatRequestBodyShape = {
   // Mode de la conversation créée : « chat » (défaut) ou « agent ».
   mode?: "chat" | "agent";
   persistIncomingMessage?: boolean;
+  // Historique complet de la session en mode Fantôme. Rien n'étant persisté en
+  // mode Fantôme, la base reste vide : c'est le client qui renvoie la session
+  // en mémoire, à chaque tour, pour que le modèle garde le contexte sans qu'une
+  // seule ligne Fantôme n'entre dans l'historique permanent.
+  ghostHistory?: SessionHistoryMessage[] | null;
+  // Régénération (mode truncate) : la nouvelle réponse remplace tout ce qui
+  // suit ce message repère. La suppression en base est différée tant que la
+  // nouvelle réponse n'est pas persistée (issue #46).
+  truncateAfterMessageId?: string | null;
+};
+
+// Message brut d'une session Fantôme, tel que validé par le schéma de la
+// route : les parts sont libres (texte, fichier, outil), l'id est celui du
+// client.
+export type SessionHistoryMessage = {
+  id: string;
+  parts: unknown[];
+  role: "assistant" | "system" | "user";
 };
 
 export type ChatRequestContext = {
@@ -107,6 +125,9 @@ export type ChatRequestContext = {
   userDefaultTopP: number | null;
   reasoningLevel: string | null;
 
+  // Régénération (mode truncate) : repère de remplacement différé.
+  truncateAfterMessageId: string | null;
+
   // Overrides au niveau chat
   chatCustomInstructions: string | null;
   chatTempOverride: number | null;
@@ -135,8 +156,10 @@ export async function buildChatContext(
     tags,
     customInstructions,
     temperatureOverride,
+    ghostHistory,
     isGhostMode,
     mode,
+    truncateAfterMessageId,
   } = body;
   const { maiUser, sessionToken, userId, isFreeUser } = auth;
 
@@ -362,10 +385,18 @@ export async function buildChatContext(
       throw new ChatbotError("forbidden:chat");
     }
     messagesFromDb = await getMessagesByChatId({ id });
-    // Renommer seulement si c'est la première interaction (pas de messages en DB)
+    // Renommer seulement si c'est la première interaction : soit aucun message
+    // en base, soit le seul message présent EST le message entrant — le cas
+    // d'une régénération du premier tour, où le message utilisateur reste en
+    // base (la suppression est différée, issue #46).
+    const firstInteractionOnly =
+      messagesFromDb.length === 0 ||
+      (message?.role === "user" &&
+        messagesFromDb.length === 1 &&
+        messagesFromDb[0].id === message.id);
     if (
       !isGhostMode &&
-      messagesFromDb.length === 0 &&
+      firstInteractionOnly &&
       message?.role === "user" &&
       chat.title === "Nouvelle discussion"
     ) {
@@ -420,7 +451,25 @@ export async function buildChatContext(
 
   let uiMessages: ChatMessage[];
 
-  if (isToolApprovalFlow && messages) {
+  if (isGhostMode) {
+    // Session éphémère : rien n'est lu ni écrit en base. L'historique de la
+    // session voyage dans la requête (ghostHistory, à défaut messages pour les
+    // continuations d'approbation d'outils) et il est reconstruit ici SANS être
+    // persisté. C'est ce qui garde le contexte entre deux tours Fantôme sans
+    // laisser de trace dans l'historique permanent ni dans les statistiques du
+    // compte.
+    const rawSession: { id: string; parts: unknown[]; role: string }[] =
+      ghostHistory ?? messages ?? [];
+    const sessionMessages: ChatMessage[] = rawSession.map((entry) => ({
+      id: entry.id,
+      parts: entry.parts as ChatMessage["parts"],
+      role: entry.role as ChatMessage["role"],
+    }));
+    uiMessages =
+      message && !sessionMessages.some((entry) => entry.id === message.id)
+        ? [...sessionMessages, message as ChatMessage]
+        : sessionMessages;
+  } else if (isToolApprovalFlow && messages) {
     const dbMessages = convertToUIMessages(messagesFromDb);
     const toolUpdates = new Map(
       messages.flatMap(
@@ -448,10 +497,33 @@ export async function buildChatContext(
       }),
     })) as ChatMessage[];
   } else {
-    uiMessages = [
-      ...convertToUIMessages(messagesFromDb),
-      message as ChatMessage,
-    ];
+    const dbMessages = convertToUIMessages(messagesFromDb);
+    const targetId = truncateAfterMessageId ?? null;
+    const targetIndex =
+      targetId === null
+        ? -1
+        : dbMessages.findIndex((entry) => entry.id === targetId);
+    if (targetIndex >= 0) {
+      // Régénération (mode truncate) : la conversation s'arrête au message
+      // régénéré. L'ancienne réponse et ce qui suit seront remplacés par la
+      // nouvelle génération : ils ne doivent pas nourrir le modèle, et le
+      // message entrant (le repère) est déjà dans la liste — pas de doublon.
+      uiMessages = dbMessages.slice(0, targetIndex + 1);
+    } else {
+      const incomingAlreadyStored =
+        message !== null &&
+        dbMessages.some((entry) => entry.id === (message as ChatMessage).id);
+      // Un message entrant déjà présent en base (régénération, rejeu réseau)
+      // n'est pas ré-écrit : il garde sa ligne et sa date d'origine, seul son
+      // contenu courant remplace l'entrée de contexte.
+      uiMessages = incomingAlreadyStored
+        ? dbMessages.map((entry) =>
+            entry.id === (message as ChatMessage).id
+              ? (message as ChatMessage)
+              : entry
+          )
+        : [...dbMessages, message as ChatMessage];
+    }
   }
 
   const { longitude, latitude, city, country } = geolocation(request);
@@ -466,7 +538,11 @@ export async function buildChatContext(
   if (
     message?.role === "user" &&
     !isGhostMode &&
-    body.persistIncomingMessage !== false
+    body.persistIncomingMessage !== false &&
+    // Régénération ou rejeu : la ligne existe déjà, la ré-insérer lèverait une
+    // clé primaire dupliquée (Message_v2.id) — l'exception observée sur le
+    // chemin de régénération, mappée en `bad_request:database` (HTTP 500).
+    !messagesFromDb.some((stored) => stored.id === message.id)
   ) {
     await saveMessages({
       messages: [
@@ -568,6 +644,7 @@ export async function buildChatContext(
     skillTools,
     tags,
     temperatureOverride,
+    truncateAfterMessageId: truncateAfterMessageId ?? null,
     uiMessages,
     userApiKey,
     userCustomEnabled: userPrefs.customInstructionsEnabled,

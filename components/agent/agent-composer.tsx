@@ -185,10 +185,12 @@ export function AgentComposer({
   );
 
   const {
+    dismissUploadFailure,
     fileInputRef,
     handleCloudAttachments,
     handleFileChange,
     removeAttachment,
+    uploadFailures,
     uploadQueue,
   } = useChatAttachments({
     attachments,
@@ -738,13 +740,25 @@ export function AgentComposer({
       </div>
 
       <ComposerShell className="p-2">
-        {attachments.length > 0 || uploadQueue.length > 0 ? (
+        {attachments.length > 0 ||
+        uploadQueue.length > 0 ||
+        uploadFailures.length > 0 ? (
           <div className="flex flex-wrap gap-2 px-2 pt-2">
             {attachments.map((attachment, index) => (
               <PreviewAttachment
                 attachment={attachment}
                 key={`${attachment.url}-${index}`}
                 onRemove={() => removeAttachment(index)}
+              />
+            ))}
+            {/* Échecs d'envoi : le fichier reste visible avec sa cause
+                (issue #47) — jamais retiré comme s'il l'avait été exprès. */}
+            {uploadFailures.map((failure) => (
+              <PreviewAttachment
+                attachment={{ contentType: "", name: failure.name, url: "" }}
+                errorMessage={failure.message}
+                key={`echec-${failure.name}`}
+                onRemove={() => dismissUploadFailure(failure.name)}
               />
             ))}
           </div>

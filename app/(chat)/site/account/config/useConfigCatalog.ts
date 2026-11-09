@@ -20,7 +20,7 @@ export type ConfigModelOption = {
 };
 
 export function useConfigCatalog() {
-  const { token, isAuthenticated, loading: authLoading } = useAuth();
+  const { isAuthenticated, loading: authLoading } = useAuth();
   const [selectedModel, setSelectedModel] = useState(DEFAULT_CLOUD_MODEL);
   const [hostTarget, setHostTarget] = useState<ConfigHostTarget>("cloud");
   const [userKeys, setUserKeys] = useState<ApiKeyMetadata[]>([]);
@@ -34,7 +34,7 @@ export function useConfigCatalog() {
 
   useEffect(() => {
     if (authLoading) return;
-    if (!isAuthenticated || !token) {
+    if (!isAuthenticated) {
       setUserKeys([]);
       setSelectedKeyRef("");
       return;
@@ -48,7 +48,6 @@ export function useConfigCatalog() {
         const res = await fetch(SITE_API_ROUTES.devKeys, {
           cache: "no-store",
           credentials: "include",
-          headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
         if (!res.ok || !data.success || !Array.isArray(data.keys)) {
@@ -81,7 +80,7 @@ export function useConfigCatalog() {
     return () => {
       cancelled = true;
     };
-  }, [authLoading, isAuthenticated, token]);
+  }, [authLoading, isAuthenticated]);
 
   /**
    * Charge le catalogue Cloud.
@@ -96,13 +95,14 @@ export function useConfigCatalog() {
     try {
       const headers: Record<string, string> = {};
       if (selectedKeyRef) {
-        if (!token) {
+        if (!isAuthenticated) {
           throw new Error(
             "Session expirée. Reconnectez-vous pour utiliser une clé."
           );
         }
+        // Pas de Bearer côté client : le relais BFF résout la session via le
+        // cookie httpOnly (issue #10).
         headers["x-mai-key-ref"] = selectedKeyRef;
-        headers.Authorization = `Bearer ${token}`;
       }
       const res = await fetch(SITE_API_ROUTES.models, {
         cache: selectedKeyRef ? "no-store" : "default",
@@ -149,7 +149,7 @@ export function useConfigCatalog() {
     } finally {
       setModelsLoading(false);
     }
-  }, [selectedKeyRef, token]);
+  }, [isAuthenticated, selectedKeyRef]);
 
   useEffect(() => {
     if (authLoading) return;
@@ -252,7 +252,6 @@ export function useConfigCatalog() {
     setModelsRetry,
     setSelectedKeyRef,
     setSelectedModel,
-    token,
     userKeys,
   };
 }

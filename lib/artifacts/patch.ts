@@ -17,6 +17,15 @@ import { hashContent } from "./hash";
 
 export const documentPatchOpSchema = z.discriminatedUnion("type", [
   z.object({
+    // Ancrage de la sélection (offsets dans le contenu de base) : cible
+    // l'occurrence EXACTE choisie par l'utilisateur, jamais « la première
+    // qui passe » (issue #52).
+    anchor: z
+      .object({
+        end: z.number().int().min(1),
+        start: z.number().int().min(0),
+      })
+      .optional(),
     caseSensitive: z.boolean().optional(),
     find: z.string().min(1).max(100_000),
     occurrence: z.number().int().min(1).max(10_000).optional(),
@@ -54,8 +63,16 @@ export type DocumentPatch = z.infer<typeof documentPatchSchema>;
 export type PatchOpError = {
   /** Index de l'op fautive dans le tableau ops. */
   opIndex: number;
-  /** Type d'échec : base périmée, introuvable, hors bornes, invalide. */
-  reason: "stale_base" | "not_found" | "out_of_bounds" | "invalid";
+  /**
+   * Type d'échec : base périmée, introuvable, hors bornes, invalide, ou
+   * correspondance multiple sans ancrage (« ambiguous »).
+   */
+  reason:
+    | "ambiguous"
+    | "invalid"
+    | "not_found"
+    | "out_of_bounds"
+    | "stale_base";
   message: string;
 };
 
@@ -125,6 +142,95 @@ function findOccurrenceIndex(
 }
 
 /**
+ * Résout un ancrage de sélection en une occurrence (1-indexée) de `find`.
+ *
+ * L'ancrage est VÉRIFIÉ : la tranche [start, end) doit être exactement le texte
+ * recherché, et la correspondance doit commencer à `start`. Le moindre écart
+ * retourne null — jamais de repli sur la première occurrence, c'est
+ * précisément ce qui remplaçait la mauvaise occurrence (issue #52).
+ */
+function resolveAnchorOccurrence(
+  base: string,
+  needle: string,
+  anchor: { end: number; start: number },
+  caseSensitive: boolean
+): number | null {
+  const { end, start } = anchor;
+  if (
+    !Number.isInteger(start) ||
+    !Number.isInteger(end) ||
+    start < 0 ||
+    end > base.length ||
+    start >= end
+  ) {
+    return null;
+  }
+  const exact = new RegExp(
+    `^${escapeRegExp(needle)}$`,
+    caseSensitive ? "" : "i"
+  );
+  if (!exact.test(base.slice(start, end))) {
+    return null;
+  }
+  const regex = buildNeedleRegex(needle, caseSensitive, true);
+  let occurrence = 1;
+  let match = regex.exec(base);
+  while (match !== null) {
+    if (match.index === start) {
+      return occurrence;
+    }
+    if (match.index > start) {
+      break;
+    }
+    occurrence += 1;
+    match = regex.exec(base);
+  }
+  return null;
+}
+
+export type SelectionContext = {
+  /** Ancrage de la sélection dans le contenu, ou null s'il n'est pas résoluble. */
+  anchor: { end: number; start: number } | null;
+  /** Texte sélectionné tel que présenté à l'assistant. */
+  text: string;
+};
+
+/**
+ * Ancre les opérations de remplacement qui ciblent EXACTEMENT la sélection.
+ *
+ * L'assistant ne reçoit qu'une chaîne pour la sélection : sans cette passe, un
+ * `replace_text` sur un texte présent plusieurs fois retombait sur la première
+ * occurrence — parfois PAS celle que l'utilisateur avait sélectionnée (issue
+ * #52). L'ancre est vérifiée contre le contenu courant ; sans vérification,
+ * l'op est laissée telle quelle et c'est le refus d'ambiguïté
+ * d'`applyDocumentPatch` qui prend le relais.
+ */
+export function anchorOpsToSelection(
+  content: string,
+  ops: DocumentPatchOp[],
+  selection: SelectionContext | null
+): DocumentPatchOp[] {
+  const anchor = selection?.anchor;
+  if (!selection?.text || !anchor) {
+    return ops;
+  }
+  if (content.slice(anchor.start, anchor.end) !== selection.text) {
+    return ops;
+  }
+  return ops.map((op) => {
+    if (
+      op.type !== "replace_text" ||
+      op.replaceAll ||
+      op.occurrence !== undefined ||
+      op.anchor
+    ) {
+      return op;
+    }
+    return op.find === selection.text ? { ...op, anchor } : op;
+  });
+}
+
+/**
  * Applique un patch ciblé de façon atomique.
  *
  * La vérification baseHash se fait sur le contenu tel quel : c'est l'appelant
@@ -150,10 +256,32 @@ export function applyDocumentPatch(
   // Pré-validation de toutes les opérations sur la base d'origine :
   // aucune mutation n'a lieu tant qu'une op est invalide.
   const lines = base.split("\n");
+  // Occurrences résolues depuis un ancrage de sélection (1-indexées) :
+  // l'application réutilise la mécanique d'occurrence, stable même si les ops
+  // précédentes décalent les offsets du contenu courant.
+  const resolvedOccurrences = new Map<number, number>();
 
   patch.ops.forEach((op, opIndex) => {
     if (op.type === "replace_text") {
       const caseSensitive = op.caseSensitive ?? true;
+      if (op.anchor) {
+        const resolved = resolveAnchorOccurrence(
+          base,
+          op.find,
+          op.anchor,
+          caseSensitive
+        );
+        if (resolved === null) {
+          errors.push({
+            message: `L'ancrage de la sélection [${op.anchor.start}, ${op.anchor.end}) ne correspond pas au texte « ${op.find.slice(0, 80)}${op.find.length > 80 ? "…" : ""} ». Le patch est refusé : une autre occurrence ne sera jamais remplacée à la place.`,
+            opIndex,
+            reason: "invalid",
+          });
+        } else {
+          resolvedOccurrences.set(opIndex, resolved);
+        }
+        return;
+      }
       const count = countOccurrences(base, op.find, caseSensitive);
       if (count === 0) {
         errors.push({
@@ -163,8 +291,18 @@ export function applyDocumentPatch(
         });
         return;
       }
+      if (!op.replaceAll && op.occurrence === undefined && count > 1) {
+        // Refus d'un patch ambigu : prendre silencieusement la première
+        // occurrence remplaçait PARFOIS la mauvaise (issue #52).
+        errors.push({
+          message: `Le texte « ${op.find.slice(0, 80)}${op.find.length > 80 ? "…" : ""} » apparaît ${count} fois : précisez l'occurrence (1 à ${count}), ancrez la sélection (anchor), élargissez le texte recherché ou utilisez replaceAll.`,
+          opIndex,
+          reason: "ambiguous",
+        });
+        return;
+      }
       const occurrence = op.replaceAll ? 1 : (op.occurrence ?? 1);
-      if (occurrence > count) {
+      if (!op.replaceAll && occurrence > count) {
         errors.push({
           message: `Occurrence ${occurrence} demandée mais seulement ${count} occurrence(s) trouvée(s).`,
           opIndex,
@@ -228,7 +366,8 @@ export function applyDocumentPatch(
           replaceFn
         );
       } else {
-        const occurrence = op.occurrence ?? 1;
+        const occurrence =
+          resolvedOccurrences.get(opIndex) ?? op.occurrence ?? 1;
         const index = findOccurrenceIndex(
           content,
           op.find,

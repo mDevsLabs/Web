@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { resolveAuthorizationHeader } from "@/lib/site/session-bearer";
 
 export async function PUT(
   req: NextRequest,
@@ -7,7 +8,7 @@ export async function PUT(
   const { id } = await params;
   try {
     const body = await req.json();
-    const authHeader = req.headers.get("authorization") || "";
+    const authHeader = await resolveAuthorizationHeader(req);
     const userAgent = req.headers.get("user-agent") || "";
     const ip = req.headers.get("x-forwarded-for") || "";
     const res = await fetch(`https://mai.val.run/v1/devices/${id}`, {
@@ -36,7 +37,7 @@ export async function DELETE(
 ) {
   const { id } = await params;
   try {
-    const authHeader = req.headers.get("authorization") || "";
+    const authHeader = await resolveAuthorizationHeader(req);
     const userAgent = req.headers.get("user-agent") || "";
     const ip = req.headers.get("x-forwarded-for") || "";
     const res = await fetch(`https://mai.val.run/v1/devices/${id}`, {

@@ -58,6 +58,13 @@ type ActiveChatContextValue = {
   status: UseChatHelpers<ChatMessage>["status"];
   stop: UseChatHelpers<ChatMessage>["stop"];
   regenerate: UseChatHelpers<ChatMessage>["regenerate"];
+  // Régénération « truncate » (issue #46) : la suppression des messages de
+  // queue est différée côté serveur et n'a lieu qu'après la nouvelle réponse ;
+  // l'écran est restauré si la génération échoue.
+  regenerateTruncated: (params: {
+    removedMessages: ChatMessage[];
+    targetMessageId: string;
+  }) => void;
   addToolApprovalResponse: UseChatHelpers<ChatMessage>["addToolApprovalResponse"];
   addToolOutput: UseChatHelpers<ChatMessage>["addToolOutput"];
   input: string;
@@ -563,6 +570,16 @@ export function ActiveChatProvider({
     revalidateOnFocus: false,
   });
 
+  // Régénération truncate : les messages retirés de l'écran sont gardés ici
+  // pour être restaurés si la génération échoue. La suppression en base, elle,
+  // est différée côté serveur (issue #46) — un échec ne détruit plus le tour.
+  const chatIdRef = useRef(chatId);
+  chatIdRef.current = chatId;
+  const pendingTruncationRef = useRef<{
+    chatId: string;
+    removed: ChatMessage[];
+  } | null>(null);
+
   const initialMessages: ChatMessage[] = isNewChat
     ? []
     : (chatData?.messages ?? []);
@@ -592,6 +609,24 @@ export function ActiveChatProvider({
       setDataStream((ds) => (ds ? [...ds, dataPart] : []));
     },
     onError: (error) => {
+      // Régénération truncate échouée : remettre à l'écran le tour retiré — la
+      // suppression en base n'a pas eu lieu non plus.
+      const pendingTruncation = pendingTruncationRef.current;
+      if (pendingTruncation) {
+        pendingTruncationRef.current = null;
+        if (
+          pendingTruncation.chatId === chatIdRef.current &&
+          pendingTruncation.removed.length > 0
+        ) {
+          setMessages((current) => {
+            const known = new Set(current.map((entry) => entry.id));
+            const restored = pendingTruncation.removed.filter(
+              (entry) => !known.has(entry.id)
+            );
+            return restored.length > 0 ? [...current, ...restored] : current;
+          });
+        }
+      }
       if (error.message?.includes("AI Gateway requires a valid credit card")) {
         setShowCreditCardAlert(true);
       } else {
@@ -599,6 +634,9 @@ export function ActiveChatProvider({
       }
     },
     onFinish: () => {
+      // La nouvelle réponse est persistée : le remplacement est consommé, plus
+      // rien à restaurer.
+      pendingTruncationRef.current = null;
       if (!isGhostModeRef.current) {
         mutate(unstable_serialize(getChatHistoryPaginationKey));
       }
@@ -699,6 +737,12 @@ export function ActiveChatProvider({
                 }),
             agentId: activeAgentIdRef.current,
             enabledTools: toolsToSend,
+            // Mode Fantôme : rien n'est persisté côté serveur, donc l'historique
+            // de la session doit voyager avec chaque tour — sinon le modèle ne
+            // voit que le dernier message (issue #44).
+            ...(isGhostModeRef.current
+              ? { ghostHistory: request.messages }
+              : {}),
             isGhostMode: isGhostModeRef.current,
             pendingPrompt: pendingPromptToSend,
             selectedChatMode: currentModeIdRef.current,
@@ -736,6 +780,7 @@ export function ActiveChatProvider({
     const newId = generateUUID();
     newChatIdRef.current = newId;
     lastLoadedChatIdRef.current = newId;
+    pendingTruncationRef.current = null;
     setMessages([]);
     setInput("");
     setActiveSkill(null);
@@ -850,6 +895,22 @@ export function ActiveChatProvider({
     void mutateChat();
   }, [mutateChat]);
 
+  const regenerateTruncated = useCallback(
+    ({
+      removedMessages,
+      targetMessageId,
+    }: {
+      removedMessages: ChatMessage[];
+      targetMessageId: string;
+    }) => {
+      pendingTruncationRef.current = { chatId, removed: removedMessages };
+      // Le serveur ne supprimera les messages de queue qu'après le succès de la
+      // nouvelle réponse (truncateAfterMessageId) ; onError restaure l'écran.
+      regenerate({ body: { truncateAfterMessageId: targetMessageId } });
+    },
+    [chatId, regenerate]
+  );
+
   const { data: votes } = useSWR<Vote[]>(
     !isReadonly && messages.length >= 2
       ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/vote?chatId=${chatId}`
@@ -886,6 +947,7 @@ export function ActiveChatProvider({
       pendingTools,
       refreshChat,
       regenerate,
+      regenerateTruncated,
       resetChat,
       resetEpoch,
       sendMessage,
@@ -918,6 +980,7 @@ export function ActiveChatProvider({
       status,
       stop,
       regenerate,
+      regenerateTruncated,
       addToolApprovalResponse,
       addToolOutput,
       input,

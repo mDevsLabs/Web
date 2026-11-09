@@ -1,0 +1,2718 @@
+{
+  "id": "2nde-emc-02",
+  "year": "2nde",
+  "subject": "emc",
+  "title": "La protection des libertés",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Le Conseil constitutionnel",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les origines et le rôle du Conseil constitutionnel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les missions principales confiées au Conseil constitutionnel en 1958 ?",
+              "options": [
+                "Contrôler la conformité des lois à la Constitution",
+                "Veiller à la régularité des élections nationales",
+                "Juger les litiges civils entre particuliers",
+                "Fixer le taux des impôts nationaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Conseil constitutionnel vérifie la constitutionnalité des lois et veille à la régularité des scrutins nationaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En quelle année le Conseil constitutionnel a-t-il été créé ?",
+              "options": ["1789", "1946", "1958", "1968"],
+              "correctAnswers": [2],
+              "explanation": "Le Conseil constitutionnel est une institution créée par la Constitution de la Ve République en 1958."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel ministre est considéré comme le principal rédacteur de la Constitution de 1958 ?",
+              "options": [
+                "Michel Debré",
+                "Charles de Gaulle",
+                "Robert Badinter",
+                "René Coty"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Michel Debré, garde des Sceaux en 1958, a dirigé les travaux de rédaction de la Constitution."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où siège le Conseil constitutionnel à Paris ?",
+              "options": [
+                "Au Palais-Royal",
+                "Au Palais Bourbon",
+                "Au Palais du Luxembourg",
+                "À l'Hôtel de Matignon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel est installé dans une aile du Palais-Royal à Paris."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À l'origine en 1958, quel était le rôle prioritaire assigné au Conseil constitutionnel ?",
+              "options": [
+                "Protéger le domaine de compétence du gouvernement face au Parlement",
+                "Servir de cour pénale internationale",
+                "Organiser les référendums locaux",
+                "Nommer les ambassadeurs de France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il était initialement conçu comme un régulateur des pouvoirs publics pour limiter les empiétements du Parlement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on couramment le Conseil constitutionnel dans l'État de droit ?",
+              "options": [
+                "Le gardien de la Constitution",
+                "La chambre haute du Parlement",
+                "Le tribunal suprême de commerce",
+                "Le conseil supérieur de police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On le nomme le gardien de la Constitution car il assure la primauté de la norme constitutionnelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la durée du mandat d'un membre nommé du Conseil constitutionnel ?",
+              "options": ["5 ans", "7 ans", "9 ans", "À vie"],
+              "correctAnswers": [2],
+              "explanation": "Les membres nommés exercent un mandat de 9 ans."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mandat de neuf ans d'un membre du Conseil constitutionnel est-il renouvelable ?",
+              "options": [
+                "Non, il est strictement non renouvelable",
+                "Oui, renouvelable une fois",
+                "Oui, renouvelable sans limite",
+                "Oui, sous réserve d'un vote du Sénat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mandat est non renouvelable pour garantir une indépendance absolue vis-à-vis du pouvoir de nomination."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le bénéfice principal de la durée et du non-renouvellement du mandat des membres ?",
+              "options": [
+                "L'indépendance à l'égard des pressions politiques",
+                "La diminution des dépenses de l'État",
+                "L'alignement direct sur les consignes gouvernementales",
+                "Le contrôle direct par les électeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pouvant être réélus ni révoqués, les membres jugent en toute indépendance d'esprit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel engagement solennel prennent les membres avant d'entrer en fonction ?",
+              "options": [
+                "Prester serment d'impartialité et de secret des délibérations",
+                "S'engager à soutenir la majorité présidentielle",
+                "Promettre de démissionner après cinq ans",
+                "Adhérer à un syndicat de magistrats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les membres prêtent serment devant le Président de la République de garder le secret et d'agir avec impartialité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La composition et le statut des membres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles autorités nomment chacune trois membres du Conseil constitutionnel ?",
+              "options": [
+                "Le Président de la République",
+                "Le Président du Sénat",
+                "Le ministre de la Justice",
+                "Le maire de Paris"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Président de la République, le président de l'Assemblée nationale et le président du Sénat nomment 3 membres chacun."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de membres nommés siègent au total au Conseil constitutionnel ?",
+              "options": ["7 membres", "9 membres", "12 membres", "15 membres"],
+              "correctAnswers": [1],
+              "explanation": "Le Conseil constitutionnel compte 9 membres nommés (3 par autorité habilitée)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quel rythme le Conseil constitutionnel est-il renouvelé par tiers ?",
+              "options": [
+                "Tous les 2 ans",
+                "Tous les 3 ans",
+                "Tous les 5 ans",
+                "Tous les 9 ans"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un tiers des membres (soit trois membres) est renouvelé tous les trois ans."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qui désigne le président du Conseil constitutionnel parmi ses membres ?",
+              "options": [
+                "Le Président de la République",
+                "Les membres du Conseil par élection interne",
+                "L'Assemblée nationale à la majorité absolue",
+                "Le Premier ministre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le président du Conseil constitutionnel est nommé directement par le Président de la République."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qui sont les membres de droit du Conseil constitutionnel ?",
+              "options": [
+                "Les anciens Présidents de la République",
+                "Les anciens Premiers ministres",
+                "Les plus hauts magistrats de la Cour de cassation",
+                "Les doyens des facultés de droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 56 de la Constitution prévoit que les anciens présidents de la République en font partie de droit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle obligation morale et déontologique interdit aux membres d'exprimer des prises de position publiques ?",
+              "options": [
+                "Le devoir de réserve",
+                "Le droit de retrait",
+                "Le secret de fabrication",
+                "L'immunité parlementaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le devoir de réserve leur interdit toute manifestation publique susceptible d'altérer la neutralité de l'institution."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La fonction de membre du Conseil constitutionnel est-elle compatible avec un mandat électoral ?",
+              "options": [
+                "Non, il existe une stricte incompatibilité avec tout mandat électif",
+                "Oui, uniquement avec un mandat de conseiller municipal",
+                "Oui, avec le mandat de député",
+                "Oui, avec un mandat de sénateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction est incompatible avec tout mandat électoral, public ou fonction ministérielle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment se déroulent les délibérations et votes du Conseil constitutionnel ?",
+              "options": [
+                "Dans un secret absolu sans publication des opinions dissidentes",
+                "En direct à la télévision",
+                "Avec publication nominative du vote de chaque membre",
+                "Sous le contrôle d'un huissier de justice extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les délibérations sont secrètes et la décision est collégiale, sans publication des opinions divergentes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Depuis la révision constitutionnelle de 2008, comment les nominations sont-elles encadrées ?",
+              "options": [
+                "Par une audition et un avis des commissions parlementaires compétentes",
+                "Par un vote d'approbation des citoyens par référendum",
+                "Par un examen écrit de droit constitutionnel",
+                "Par un tirage au sort parmi les juristes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les commissions des lois du Parlement peuvent bloquer une nomination à la majorité des trois cinquièmes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel ancien Premier ministre a présidé le Conseil constitutionnel à partir de 2016 ?",
+              "options": [
+                "Laurent Fabius",
+                "Lionel Jospin",
+                "Jean-Pierre Raffarin",
+                "Alain Juppé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laurent Fabius a été nommé président du Conseil constitutionnel en 2016 par François Hollande."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le bloc de constitutionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels textes fondamentaux font partie intégrante du bloc de constitutionnalité ?",
+              "options": [
+                "La Déclaration des droits de l'homme et du citoyen de 1789",
+                "La Charte de l'environnement de 2004",
+                "Le Code pénal français",
+                "Le règlement intérieur de l'Assemblée nationale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bloc comprend la Constitution de 1958, la DDHC de 1789, le Préambule de 1946 et la Charte de l'environnement de 2004."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle décision historique du 16 juillet 1971 a donné valeur constitutionnelle au Préambule ?",
+              "options": [
+                "La décision Liberté d'association",
+                "La décision IVG",
+                "La décision Sécurité et liberté",
+                "La décision Bioéthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par la décision Liberté d'association, le Conseil a intégré le Préambule et ses principes dans le corpus constitutionnel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le sigle PFRLR dans le droit constitutionnel français ?",
+              "options": [
+                "Principes fondamentaux reconnus par les lois de la République",
+                "Pouvoirs financiers régis par les lois républicaines",
+                "Procédures formelles requises pour la législation républicaine",
+                "Pratiques fédérales reconnues par les libertés régionales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les PFRLR sont des principes issus de lois de républiques antérieures consacrés au niveau constitutionnel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sous quel régime républicain les lois servant de base aux PFRLR ont-elles été adoptées ?",
+              "options": [
+                "Sous des régimes républicains antérieurs à 1946 (notamment la IIIe République)",
+                "Exclusivement sous la Ve République",
+                "Sous le Premier Empire de Napoléon Ier",
+                "Sous la Restauration monarchique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les PFRLR doivent être issus d'une législation républicaine antérieure à l'entrée en vigueur de la Constitution de 1946."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel droit économique et social majeur est garanti par le Préambule de 1946 ?",
+              "options": [
+                "Le droit de grève",
+                "Le droit de porter une arme à feu",
+                "L'interdiction de tout syndicat",
+                "L'exemption générale d'impôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Préambule de 1946 proclame le droit de grève qui s'exerce dans le cadre des lois qui le réglementent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel principe écologique majeur est consacré par la Charte de l'environnement de 2004 ?",
+              "options": [
+                "Le principe de précaution",
+                "Le principe du libre pillage des ressources",
+                "Le principe du silence environnemental",
+                "Le principe de dérégulation climatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 5 de la Charte de l'environnement consacre le principe de précaution en cas de risque de dommage grave."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où se situe le bloc de constitutionnalité dans la hiérarchie des normes en droit interne ?",
+              "options": [
+                "Au sommet de la hiérarchie des normes",
+                "Au même niveau que les décrets ministériels",
+                "En dessous des lois votées par le Parlement",
+                "Au niveau des arrêtés municipaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l'ordre juridique interne français, la Constitution et son bloc se situent au niveau suprême."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel texte du bloc garantit l'égalité des droits entre femmes et hommes dans tous les domaines ?",
+              "options": [
+                "Le Préambule de la Constitution de 1946",
+                "Le Code civil de 1804",
+                "La Déclaration des droits de 1789",
+                "L'ordonnance de 1958"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Préambule de 1946 affirme que la loi garantit à la femme, dans tous les domaines, des droits égaux à ceux de l'homme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La liberté de conscience et la liberté d'enseignement sont protégées au titre :",
+              "options": [
+                "Des principes fondamentaux reconnus par les lois de la République",
+                "Des coutumes non écrites du Moyen Âge",
+                "Des traités bilatéraux de commerce",
+                "Des simples circulaires ministérielles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces deux grandes libertés ont été reconnues par le Conseil constitutionnel comme des PFRLR."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel célèbre juriste théoricien a formalisé la pyramide de la hiérarchie des normes ?",
+              "options": [
+                "Hans Kelsen",
+                "Montesquieu",
+                "Jean-Jacques Rousseau",
+                "Alexis de Tocqueville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hans Kelsen est le théoricien de la hiérarchie des normes juridiques (pyramide kelsénienne)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le contrôle de constitutionnalité a priori",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles autorités politiques peuvent saisir le Conseil constitutionnel pour un contrôle a priori ?",
+              "options": [
+                "Le Président de la République",
+                "Un groupe d'au moins 60 députés ou 60 sénateurs",
+                "Un maire d'une commune rurale seul",
+                "Une association de consommateurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Président de la République, le Premier ministre, les présidents des assemblées et 60 parlementaires peuvent le saisir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel moment précis intervient le contrôle dit « a priori » d'une loi ordinaire ?",
+              "options": [
+                "Entre le vote définitif par le Parlement et la promulgation par le Président",
+                "Dix ans après la parution au Journal officiel",
+                "Dès le dépôt du premier projet de loi",
+                "Au cours d'un procès en cour d'assises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contrôle a priori s'exerce sur les lois votées mais non encore promulguées par le chef de l'État."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle réforme constitutionnelle de 1974 a permis à 60 députés ou 60 sénateurs de saisir le Conseil ?",
+              "options": [
+                "La révision constitutionnelle sous Valéry Giscard d'Estaing",
+                "La réforme De Gaulle de 1962",
+                "La révision constitutionnelle de 2008",
+                "La loi constitutionnelle de 1958"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En ouvrant la saisine à 60 parlementaires, la révision de 1974 a accordé ce droit à l'opposition politique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel a été l'impact démocratique majeur de l'ouverture de la saisine à 60 parlementaires en 1974 ?",
+              "options": [
+                "Permettre à l'opposition de soumettre les lois contestées au contrôle constitutionnel",
+                "Supprimer l'obligation de promulguer les lois",
+                "Remplacer le vote des lois par des décrets",
+                "Interdire tout débat public au Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opposition parlementaire peut désormais faire vérifier la conformité des lois aux droits fondamentaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour quelle catégorie de textes le contrôle de constitutionnalité a priori est-il obligatoire ?",
+              "options": [
+                "Les lois organiques",
+                "Les lois de finances rectificatives",
+                "Les arrêtés préfectoraux",
+                "Les conventions collectives de travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lois organiques et les règlements des assemblées parlementaires doivent être obligatoirement transmis au Conseil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "De quel délai dispose en principe le Conseil constitutionnel pour statuer lors d'une saisine a priori ?",
+              "options": [
+                "Un mois (réduit à huit jours en cas d'urgence déclarée par le gouvernement)",
+                "Six mois incompressibles",
+                "Un an renouvelable",
+                "Quarante-huit heures sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 61 de la Constitution prévoit un délai normal d'un mois, réduit à huit jours en cas d'urgence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que devient un article de loi déclaré non conforme à la Constitution lors d'un contrôle a priori ?",
+              "options": [
+                "Il est censuré et ne peut pas être promulgué",
+                "Il est appliqué provisoirement pendant un an",
+                "Il est soumis au vote d'une cour d'appel",
+                "Il devient un simple décret d'application"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une disposition inconstitutionnelle ne peut pas être promulguée ni entrer en vigueur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Conseil constitutionnel peut-il s'autosaisir d'une loi ordinaire avant sa promulgation ?",
+              "options": [
+                "Non, il ne peut agir que s'il est formellement saisi par les autorités prévues",
+                "Oui, dès qu'il estime qu'une loi pose problème",
+                "Oui, sur simple pétition citoyenne",
+                "Oui, si un professeur de droit le réclame"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel ne dispose d'aucun pouvoir d'autosaisine pour les lois ordinaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle autre personnalité peut saisir le Conseil constitutionnel a priori ?",
+              "options": [
+                "Le Premier ministre",
+                "Le maire de la capitale",
+                "Le Défenseur des droits",
+                "Le secrétaire général de l'ONU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Premier ministre fait partie des autorités politiques habilitées par l'article 61."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « cavalier législatif » censuré par le Conseil constitutionnel ?",
+              "options": [
+                "Une disposition introduite par amendement sans lien suffisant avec le projet de loi initial",
+                "Une loi régissant les sports équestres",
+                "Un parlementaire arrivant en retard au vote",
+                "Un décret signé par un général d'armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil censure les amendements qui ne présentent pas de lien suffisant avec le texte en discussion."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La Question Prioritaire de Constitutionnalité (QPC)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les caractéristiques de la Question Prioritaire de Constitutionnalité (QPC) ?",
+              "options": [
+                "C'est un contrôle a posteriori qui intervient à l'occasion d'un procès",
+                "Elle permet à tout justiciable de contester la constitutionnalité d'une loi",
+                "Elle s'applique aux règlements de copropriété entre voisins",
+                "Elle permet de contester une note scolaire auprès du rectorat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La QPC est un contrôle a posteriori qui permet aux justiciables de contester une loi lors d'un litige."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle révision constitutionnelle a créé le mécanisme de la QPC en France ?",
+              "options": [
+                "La révision constitutionnelle du 23 juillet 2008",
+                "La Constitution d'origine de 1958",
+                "La réforme constitutionnelle de 1962",
+                "Le traité européen de Maastricht de 1992"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La QPC a été introduite par la révision constitutionnelle de modernisation des institutions du 23 juillet 2008."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En quelle année la QPC est-elle entrée en vigueur pour les justiciables ?",
+              "options": ["2008", "2010", "2015", "2020"],
+              "correctAnswers": [1],
+              "explanation": "La QPC est entrée en application effective le 1er mars 2010 après le vote d'une loi organique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel article de la Constitution de 1958 consacre le mécanisme de la QPC ?",
+              "options": [
+                "L'article 61-1",
+                "L'article 16",
+                "L'article 49 alinéa 3",
+                "L'article 89"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 61-1 de la Constitution définit les conditions de la Question Prioritaire de Constitutionnalité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qui a la qualité pour soulever une QPC ?",
+              "options": [
+                "Toute personne qui est partie à un procès en cours",
+                "Seul le procureur de la République",
+                "Exclusivement le juge présidant le tribunal",
+                "Uniquement les parlementaires de l'opposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout justiciable, demandeur ou défendeur à une instance judiciaire ou administrative, peut poser une QPC."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur quel fondement précis une QPC doit-elle impérativement reposer ?",
+              "options": [
+                "L'atteinte portée par une disposition législative aux droits et libertés garantis par la Constitution",
+                "Le mécontentement face au montant d'une amende pénale",
+                "Le désaccord avec une convention collective privée",
+                "Une divergence d'opinion politique avec le maire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La QPC ne peut invoquer que la violation des droits et libertés que la Constitution garantit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on cette question de « prioritaire » ?",
+              "options": [
+                "Elle doit être examinée avant les moyens tirés de la non-conformité aux traités internationaux",
+                "Elle dispense immédiatement le justiciable de payer les frais de justice",
+                "Elle suspend définitivement toutes les lois du pays",
+                "Elle oblige le tribunal à rendre un acquittement immédiat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le juge doit statuer en priorité sur la constitutionnalité avant d'examiner la conformité de la loi aux traités."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Devant quelles juridictions une QPC peut-elle être soulevée en première instance ?",
+              "options": [
+                "Devant toutes les juridictions relevant du Conseil d'État ou de la Cour de cassation",
+                "Devant le Conseil municipal",
+                "Devant le bureau du Parlement",
+                "Devant la chambre d'agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une QPC peut être soulevée devant toute juridiction de l'ordre judiciaire ou administratif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Devant quelle formation de jugement pénale une QPC ne peut-elle pas être posée en première instance ?",
+              "options": [
+                "La cour d'assises (elle doit l'être pendant l'instruction ou en appel)",
+                "Le tribunal de police",
+                "Le tribunal correctionnel",
+                "Le juge des enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant la cour d'assises, la QPC ne peut être posée qu'en appel ou devant le juge d'instruction."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle métamorphose la QPC a-t-elle entraînée pour le Conseil constitutionnel ?",
+              "options": [
+                "Il est devenu une cour constitutionnelle protectrice des libertés individuelles",
+                "Il a été transformé en ministère gouvernemental",
+                "Il est devenu le tribunal des litiges de consommation",
+                "Il a perdu tout pouvoir sur les textes de loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La QPC a ouvert les prétoires du Conseil constitutionnel aux citoyens pour la défense de leurs droits."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La procédure et le filtrage de la QPC",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les deux cours suprêmes chargées de filtrer les QPC avant transmission au Conseil ?",
+              "options": [
+                "Le Conseil d'État",
+                "La Cour de cassation",
+                "La Cour des comptes",
+                "La Haute Cour de justice"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Conseil d'État (ordre administratif) et la Cour de cassation (ordre judiciaire) opèrent le filtrage des QPC."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle condition de forme formelle est requise pour poser une QPC devant le premier juge ?",
+              "options": [
+                "Présenter un écrit distinct et spécialement motivé",
+                "Faire une déclaration orale impromptue à la barre",
+                "Envoyer un message sur les réseaux sociaux du tribunal",
+                "Déposer une pétition signée par ses voisins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La QPC doit être formulée par un mémoire écrit, distinct et motivé sous peine d'irrecevabilité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le premier critère légal que vérifie le juge saisi d'une QPC ?",
+              "options": [
+                "La disposition législative contestée est applicable au litige",
+                "Le justiciable dispose de revenus élevés",
+                "L'affaire concerne des sommes en devises étrangères",
+                "Le procès dure depuis plus de trois années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La disposition contestée doit nécessairement commander l'issue du litige ou constituer le fondement des poursuites."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel critère relatif aux décisions antérieures du Conseil constitutionnel doit être respecté ?",
+              "options": [
+                "La disposition n'a pas déjà été déclarée conforme à la Constitution (sauf changement de circonstances)",
+                "La disposition doit avoir été rédigée avant 1958",
+                "Le Conseil doit avoir déjà rejeté un recours similaire",
+                "Aucun avis ne doit avoir été publié par le gouvernement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une loi déjà jugée conforme ne peut être réexaminée sauf en cas de changement de circonstances de droit ou de fait."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel troisième critère de fond permet la transmission par la cour suprême au Conseil constitutionnel ?",
+              "options": [
+                "La question est nouvelle ou présente un caractère sérieux",
+                "La question a été approuvée par un sondage d'opinion",
+                "La question a été rédigée par un député",
+                "La question porte sur un montant supérieur à un million d'euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour être transmise au Conseil constitutionnel, la question doit être inédite ou présenter un doute juridique sérieux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "De quel délai dispose le Conseil d'État ou la Cour de cassation pour examiner la transmission d'une QPC ?",
+              "options": ["Trois mois", "Six mois", "Un an", "Quinze jours"],
+              "correctAnswers": [0],
+              "explanation": "Les cours suprêmes disposent d'un délai strict de trois mois pour décider du renvoi au Conseil constitutionnel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De quel délai dispose le Conseil constitutionnel pour trancher la QPC une fois saisi ?",
+              "options": [
+                "Trois mois",
+                "Six mois",
+                "Un an",
+                "Quarante-huit heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel dispose également d'un délai légal de trois mois pour statuer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si le premier juge refuse de transmettre la QPC, comment le justiciable peut-il contester ce refus ?",
+              "options": [
+                "Uniquement à l'occasion d'un appel contre le jugement tranchant le litige",
+                "En saisissant immédiatement la police judiciaire",
+                "Par un recours immédiat autonome devant le préfet",
+                "En refusant de quitter la salle d'audience"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refus de transmission ne peut être contesté qu'en interjetant appel de la décision finale du tribunal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment se déroulent les audiences de plaidoirie de QPC devant le Conseil constitutionnel ?",
+              "options": [
+                "Elles sont publiques et retransmises en direct sur son site Internet",
+                "Elles ont lieu à huis clos absolu",
+                "Elles sont secrètes et sans public",
+                "Elles se tiennent par simple vote postal des juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La procédure est contradictoire, les audiences sont publiques et accessibles en vidéo sur Internet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui a le droit de présenter des observations orales lors de l'audience de QPC ?",
+              "options": [
+                "Les avocats des parties au litige et le représentant du Premier ministre",
+                "Tous les spectateurs présents dans la salle",
+                "Les journalistes accrédités",
+                "Les parlementaires ayant voté la loi contestée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les avocats des parties ainsi que le représentant du gouvernement soutiennent leurs mémoires à l'audience."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "La portée et les effets des décisions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles décisions le Conseil constitutionnel peut-il prendre à l'issue de l'examen d'une QPC ?",
+              "options": [
+                "Déclarer la disposition conforme à la Constitution",
+                "Déclarer la disposition inconstitutionnelle et prononcer son abrogation",
+                "Condamner le justiciable à une peine de travaux forcés",
+                "Révoyager les députés ayant voté la loi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Conseil peut juger la disposition conforme, inconstitutionnelle (abrogée), ou émettre des réserves d'interprétation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Selon l'article 62 de la Constitution, quel recours existe contre les décisions du Conseil constitutionnel ?",
+              "options": [
+                "Aucun recours n'est possible, les décisions sont insusceptibles de tout recours",
+                "Un recours devant le Président de la République",
+                "Un appel devant la Cour de cassation",
+                "Une contestation devant le Sénat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les décisions du Conseil constitutionnel ne sont susceptibles d'aucun recours en droit interne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À qui s'imposent les décisions du Conseil constitutionnel selon la Constitution ?",
+              "options": [
+                "Aux pouvoirs publics et à toutes les autorités administratives et juridictionnelles",
+                "Uniquement aux particuliers",
+                "Exclusivement au ministère de la Justice",
+                "Seulement aux tribunaux administratifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 62 dispose que ses décisions s'imposent à toutes les autorités publiques, administratives et juridictionnelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « réserve d'interprétation » émise par le Conseil constitutionnel ?",
+              "options": [
+                "Une condition imposée par le Conseil pour que la loi soit appliquée de façon constitutionnelle",
+                "Une annulation totale et immédiate de l'ensemble du Code civil",
+                "Une demande d'autorisation adressée au Conseil de l'Europe",
+                "Une suspension du droit de vote des parlementaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi est déclarée conforme à condition d'être interprétée et appliquée selon les précisions fixées par le Conseil."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la force de chose jugée attachée aux décisions constitutionnelles ?",
+              "options": [
+                "L'autorité juridique de la décision est définitive et s'impose à tous",
+                "Le jugement peut être annulé par un simple arrêté préfectoral",
+                "La décision ne vaut que pour une durée de trente jours",
+                "Le procès doit recommencer devant un jury populaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La décision a autorité absolue de chose jugée et ne peut plus être contestée devant aucun juge national."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que devient une disposition législative déclarée inconstitutionnelle sur QPC ?",
+              "options": [
+                "Elle est abrogée à compter de la publication ou d'une date fixée par le Conseil",
+                "Elle reste valable pour une durée de dix ans",
+                "Elle s'applique uniquement la nuit",
+                "Elle est transférée au droit européen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La disposition est abrogée et disparaît définitivement de l'ordre juridique français."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi le Conseil constitutionnel reporte-t-il parfois dans le temps les effets d'une abrogation ?",
+              "options": [
+                "Pour éviter un vide juridique dangereux et laisser au Parlement le temps de voter une nouvelle loi",
+                "Pour partir en vacances avant d'appliquer la décision",
+                "Pour permettre aux ministres de contester la censure",
+                "Pour percevoir des droits d'enregistrement supplémentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une abrogation immédiate pourrait priver les citoyens de protection juridique en attendant une nouvelle loi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel effet direct la censure de la loi a-t-elle sur le procès du justiciable ayant soulevé la QPC ?",
+              "options": [
+                "La disposition abrogée ne peut plus lui être appliquée par le juge du litige",
+                "Le justiciable perd immédiatement son procès civil",
+                "Le justiciable est condamné aux dépens",
+                "L'avocat du justiciable est rayé du barreau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le justiciable bénéficie de la décision : la loi jugée contraire à la Constitution est écartée de son procès."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où sont officiellement publiées les décisions du Conseil constitutionnel ?",
+              "options": [
+                "Au Journal officiel de la République française",
+                "Dans un recueil confidentiel accessible aux seuls ministres",
+                "Sur les panneaux d'affichage des mairies exclusivement",
+                "Dans un journal d'annonces légales privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les décisions sont publiées in extenso au Journal officiel pour être connues de tous."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si le pouvoir politique souhaite maintenir une disposition censurée, quelle voie juridique doit-il emprunter ?",
+              "options": [
+                "Réviser la Constitution pour y inscrire la règle en cause",
+                "Publier un décret en conseil des ministres",
+                "Saisir le maire de Paris",
+                "Attendre l'élection présidentielle suivante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule une révision constitutionnelle adoptée par le pouvoir constituant peut surmonter une censure constitutionnelle."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le contrôle des élections et du référendum",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels scrutins nationaux le Conseil constitutionnel contrôle-t-il directement ?",
+              "options": [
+                "L'élection du Président de la République",
+                "Les opérations de référendum national",
+                "Les élections municipales dans les communes",
+                "Les élections des comités sociaux et économiques d'entreprise"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'article 58 et l'article 60 confient au Conseil le contrôle de l'élection présidentielle et du référendum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui proclame officiellement les résultats définitifs de l'élection présidentielle en France ?",
+              "options": [
+                "Le Conseil constitutionnel",
+                "Le ministre de l'Intérieur",
+                "Le président de l'Assemblée nationale",
+                "Le Conseil supérieur de l'audiovisuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel vérifie les procès-verbaux et proclame officiellement le président élu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le Conseil constitutionnel est également le juge électoral de l'élection :",
+              "options": [
+                "Des députés et des sénateurs",
+                "Des maires et de leurs adjoints",
+                "Des conseillers départementaux",
+                "Des juges de proximité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En application de l'article 59 de la Constitution, il statue sur la régularité de l'élection des parlementaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle juridiction est compétente pour juger les litiges des élections municipales et régionales ?",
+              "options": [
+                "La juridiction administrative (tribunaux administratifs et Conseil d'État)",
+                "Le Conseil constitutionnel",
+                "La Cour de cassation",
+                "La Cour pénale internationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contentieux des élections locales (municipales, départementales, régionales) relève de la justice administrative."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que peut prononcer le Conseil constitutionnel s'il constate des fraudes graves lors d'une élection législative ?",
+              "options": [
+                "L'annulation de l'élection dans la circonscription concernée",
+                "La désignation automatique du candidat arrivé en seconde position",
+                "La suppression du siège de député pour 5 ans",
+                "La dissolution de l'Assemblée nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel annule l'élection s'il estime que les irrégularités ont faussé le résultat final."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle commission contrôle en amont les comptes de campagne des candidats avant transmission éventuelle au Conseil ?",
+              "options": [
+                "La CNCCFP (Commission nationale des comptes de campagne et des financements politiques)",
+                "La Banque de France",
+                "La Cour des comptes",
+                "L'Inspection générale des finances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CNCCFP vérifie le respect des plafonds de dépenses et des règles de financement des candidats."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle sanction le Conseil constitutionnel peut-il prononcer contre un candidat ayant fraudé ses comptes de campagne ?",
+              "options": [
+                "L'inéligibilité temporaire pour une durée déterminée",
+                "L'exil hors du territoire national",
+                "L'emprisonnement à perpétuité sans procès",
+                "La déchéance définitive de sa nationalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le juge électoral peut déclarer le candidat inéligible et le déchoir de son mandat s'il a été élu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qui arrête la liste officielle des candidats à l'élection présidentielle après réception des parrainages ?",
+              "options": [
+                "Le Conseil constitutionnel",
+                "Le Premier ministre",
+                "Le ministre de l'Intérieur",
+                "L'Assemblée nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil contrôle la validité des parrainages d'élus et publie la liste officielle des candidats."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de parrainages d'élus un candidat à la présidentielle doit-il obligatoirement réunir ?",
+              "options": [
+                "Au moins 500 parrainages valides répartis sur au moins 30 départements",
+                "Au moins 100 parrainages sans condition de répartition",
+                "Exactement 1 000 parrainages par région",
+                "Au moins 50 signatures de députés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi impose 500 parrainages d'élus d'au moins 30 départements ou collectivités d'outre-mer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le cadre du Référendum d'Initiative Partagée (RIP), quel est le rôle du Conseil constitutionnel ?",
+              "options": [
+                "Contrôler la conformité de la proposition de loi avant le recueil des signatures citoyennes",
+                "Dépouiller lui-même les bulletins de vote",
+                "Interdire la campagne électorale dans les médias",
+                "Décider seul du résultat sans consulter le peuple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil vérifie que la proposition de loi respecte les critères de l'article 11 de la Constitution."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les grandes décisions protectrices des libertés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles libertés fondamentales ont été protégées par des décisions majeures du Conseil constitutionnel ?",
+              "options": [
+                "La liberté d'association",
+                "La liberté individuelle face aux détentions arbitraires",
+                "La liberté de frauder les impôts légaux",
+                "La liberté de violer le code de la route"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Conseil constitutionnel a développé une vaste jurisprudence protectrice des libertés publiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle liberté a été protégée contre un projet d'autorisation préalable dans la décision historique de 1971 ?",
+              "options": [
+                "La liberté d'association",
+                "La liberté de manifestation armée",
+                "La liberté de chasse nocturne",
+                "La liberté d'installation industrielle sans contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 1971, le Conseil a censuré une loi soumettant la création d'associations à une autorisation préalable du préfet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans sa décision de 1975 relative à l'IVG, que s'est refusé à faire le Conseil constitutionnel ?",
+              "options": [
+                "Contrôler la conformité des lois aux traités internationaux (contrôle de conventionnalité)",
+                "Vérifier le quorum des députés présents",
+                "Signer la loi à la place du Président",
+                "Appliquer le Code de procédure pénale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil a confié le contrôle de conventionnalité (traité vs loi) aux juges judiciaires et administratifs ordinaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans sa décision QPC du 30 juillet 2010 sur la garde à vue, qu'a imposé le Conseil constitutionnel ?",
+              "options": [
+                "La présence effective d'un avocat dès le début de la mesure de garde à vue",
+                "La suppression pure et simple de toute audition de police",
+                "L'interdiction de placer un suspect en cellule",
+                "La gratuité des transports pour les personnes interrogées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil a censuré l'ancien régime de garde à vue pour garantir l'assistance d'un avocat dès la première heure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle grande liberté républicaine consacrée par la loi du 29 juillet 1881 est protégée au niveau constitutionnel ?",
+              "options": [
+                "La liberté de la presse",
+                "La liberté de diffamer sans limite",
+                "La censure préalable des publications",
+                "Le monopole d'État sur l'imprimerie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liberté de la presse et d'expression est une composante essentielle de l'article 11 de la DDHC de 1789."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans sa décision de 2009 relative à la loi HADOPI, comment le Conseil a-t-il qualifié l'accès à Internet ?",
+              "options": [
+                "Un outil essentiel à l'exercice de la liberté d'expression et de communication",
+                "Un luxe facultatif réservé aux administrations",
+                "Une menace nécessitant une coupure automatique sans juge",
+                "Une compétence exclusive du ministère de la Défense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil a jugé que seul un juge judiciaire peut prononcer la coupure d'un accès Internet pour protéger l'expression."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel principe constitutionnel fraternel a été consacré dans la décision QPC du 6 juillet 2018 (aide aux migrants) ?",
+              "options": [
+                "Le principe de fraternité",
+                "Le principe d'hospitalité commerciale",
+                "Le principe de précaution économique",
+                "Le principe de solidarité patronale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil a jugé que le principe de fraternité protège l'aide désintéressée apportée à autrui dans un but humanitaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le droit de mener une vie familiale normale découle :",
+              "options": [
+                "Du Préambule de la Constitution de 1946",
+                "Du Code des douanes",
+                "De la loi sur les transports fluviaux",
+                "D'une directive de la Banque mondiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Préambule de 1946 dispose que la Nation assure à l'individu et à la famille les conditions nécessaires à leur développement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel principe fondamental du droit pénal interdit de punir une personne en vertu d'une loi votée après les faits ?",
+              "options": [
+                "Le principe de non-rétroactivité de la loi pénale plus sévère",
+                "Le principe de culpabilité automatique",
+                "La règle de la vengeance privée",
+                "Le principe d'arbitraire du magistrat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consacré par l'article 8 de la DDHC de 1789, nul ne peut être puni qu'en vertu d'une loi établie antérieurement au délit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment résumer l'évolution historique du Conseil constitutionnel depuis 1958 ?",
+              "options": [
+                "D'un arbitre entre pouvoirs exécutif et législatif vers une véritable cour de protection des libertés",
+                "D'un tribunal pénal vers une agence de notation financière",
+                "D'une assemblée délibérante vers un organe consultatif sans pouvoir",
+                "D'une cour martiale vers un conseil économique d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par la décision de 1971 et la QPC en 2008, il s'est affirmé comme le garant suprême des droits et libertés des citoyens."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Le Conseil constitutionnel face aux crises et au numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels impératifs le Conseil constitutionnel doit-il concilier lors des crises sanitaires ou terroristes ?",
+              "options": [
+                "La préservation de l'ordre public et de la sécurité des personnes",
+                "La garantie des droits fondamentaux et des libertés publiques",
+                "La suppression totale du Parlement",
+                "L'annulation définitive de toute élection future"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Conseil opère une conciliation entre les exigences de l'ordre public et la sauvegarde des libertés fondamentales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel contrôle rigoureux le Conseil exerce-t-il sur les restrictions de liberté édictées par la loi ?",
+              "options": [
+                "Un contrôle d'adéquation, de nécessité et de proportionnalité des mesures",
+                "Un contrôle purement financier sans examen des droits",
+                "Une acceptation systématique de toutes les demandes du gouvernement",
+                "Un refus de principe de toute mesure d'urgence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute atteinte à une liberté constitutionnelle doit être strictement nécessaire, adaptée et proportionnée à l'objectif poursuivi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pendant la crise sanitaire du Covid-19, quelle mesure privative de liberté a été strictement encadrée par le Conseil ?",
+              "options": [
+                "L'isolement obligatoire des personnes testées positives",
+                "Le paiement obligatoire de tous les achats par carte bancaire",
+                "L'interdiction définitive de circuler en voiture",
+                "La réquisition de tous les logements privés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil a imposé un contrôle rapide par le juge judiciaire pour toute mesure d'isolement complet dépassant une durée minimale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel droit fondamental de l'article 2 de la DDHC protège les citoyens contre la surveillance numérique de masse ?",
+              "options": [
+                "Le droit au respect de la vie privée",
+                "La liberté d'entreprendre des commerces illicites",
+                "Le droit au secret des dettes publiques",
+                "L'inviolabilité des comptes en banque étrangers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel rattache le droit au respect de la vie privée à la liberté proclamée à l'article 2 de la DDHC."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans sa décision de juin 2020 sur la loi contre les contenus haineux en ligne, pourquoi le Conseil a-t-il censuré l'obligation de retrait en 24h ?",
+              "options": [
+                "Ce délai trop court risquait de conduire les plateformes à censurer excessivement des contenus licites",
+                "Le Conseil a jugé que la haine en ligne était légale",
+                "Les plateformes numériques échappent au droit français",
+                "Seule l'Union européenne a le droit de légiférer sur les réseaux sociaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le risque de censure préalable automatisée par les hébergeurs portait une atteinte excessive à la liberté d'expression."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel article de la Constitution confie au Président de la République des pouvoirs exceptionnels en temps de crise extrême ?",
+              "options": [
+                "L'article 16",
+                "L'article 24",
+                "L'article 49",
+                "L'article 72"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 16 permet au chef de l'État de prendre les mesures exigées par les circonstances en cas de menace grave et immédiate."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le rôle du Conseil constitutionnel lors de la mise en œuvre de l'article 16 ?",
+              "options": [
+                "Il donne un avis obligatoire et peut vérifier après 30 ou 60 jours si les conditions restent réunies",
+                "Il assume directement le commandement de l'armée",
+                "Il remplace le Premier ministre au gouvernement",
+                "Il ferme les cours et tribunaux de France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel émet un avis motivé et peut être saisi par les parlementaires pour contrôler le maintien du régime."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Face à l'usage de caméras embarquées sur des drones par les forces de l'ordre, quelle règle le Conseil a-t-il posée ?",
+              "options": [
+                "Leur utilisation doit être strictement encadrée par la loi pour préserver la vie privée des citoyens",
+                "L'usage des nouvelles technologies est totalement interdit à la police",
+                "Les forces de l'ordre peuvent filmer partout sans aucune autorisation",
+                "Tous les enregistrements doivent être immédiatement diffusés sur les réseaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil exige des garanties légales suffisantes pour empêcher une surveillance disproportionnée de l'espace public."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les libertés fondamentales peuvent-elles faire l'objet de restrictions légales ?",
+              "options": [
+                "Elles doivent s'harmoniser avec la sécurité publique et les droits des autres citoyens",
+                "L'État a un droit arbitraire sur les citoyens",
+                "Les libertés cessent de s'appliquer dès que le gouvernement change",
+                "Elles ne valent que pour les personnes détenant un diplôme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucune liberté n'est absolue : l'exercice des droits de chacun trouve ses limites dans le respect des droits d'autrui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la garantie suprême offerte par le contrôle de constitutionnalité dans une démocratie ?",
+              "options": [
+                "Empêcher qu'une majorité politique temporaire ne viole les droits fondamentaux inaliénables",
+                "Assurer la victoire électorale du parti au pouvoir",
+                "Supprimer tous les impôts des particuliers",
+                "Accélérer le vote des lois sans aucun débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil garantit que la volonté de la majorité parlementaire reste subordonnée au respect de la Constitution et des libertés."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Justice administrative et judiciaire",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La dualité des ordres de juridiction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les deux ordres de juridiction distincts qui composent le système juridictionnel français ?",
+              "options": [
+                "L'ordre judiciaire",
+                "L'ordre administratif",
+                "L'ordre ecclésiastique",
+                "L'ordre corporatif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La France connaît le principe de dualité juridictionnelle : l'ordre judiciaire d'un côté, l'ordre administratif de l'autre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel texte historique révolutionnaire a posé l'interdiction aux juges judiciaires de troubler les opérations des corps administratifs ?",
+              "options": [
+                "La loi des 16-24 août 1790",
+                "Le Code civil de 1804",
+                "L'ordonnance de Villers-Cotterêts de 1539",
+                "La Déclaration de Philadelphie de 1944"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi des 16-24 août 1790 et le décret du 16 fructidor an III fondent la séparation des autorités administratives et judiciaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel tribunal paritaire arbitre les conflits de compétence entre l'ordre judiciaire et l'ordre administratif ?",
+              "options": [
+                "Le Tribunal des conflits",
+                "La Cour de justice de la République",
+                "La Cour des comptes",
+                "Le Conseil supérieur de la magistrature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Tribunal des conflits est composé à parité de magistrats du Conseil d'État et de la Cour de cassation pour trancher les compétences."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Depuis la réforme de 2015, comment est présidé le Tribunal des conflits ?",
+              "options": [
+                "Par un membre élu alternativement issu du Conseil d'État ou de la Cour de cassation",
+                "Par le ministre de la Justice",
+                "Par le préfet de police de Paris",
+                "Par le président de l'Assemblée nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présidence n'est plus confiée au garde des Sceaux mais à un magistrat élu par ses pairs pour garantir l'indépendance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type de litige relève par principe de la compétence des juridictions administratives ?",
+              "options": [
+                "Les litiges opposant un administré à une personne publique ou relatifs à un service public",
+                "Les litiges de succession entre héritiers d'une même famille",
+                "Les poursuites pour cambriolage d'une maison individuelle",
+                "Les contestations de droit des marques commerciales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le juge administratif tranche les litiges mettant en cause une décision, un acte ou la responsabilité d'une administration publique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel type de litige relève par principe de la compétence de l'ordre judiciaire ?",
+              "options": [
+                "Les litiges entre personnes privées et la répression des infractions pénales",
+                "L'annulation d'un arrêté préfectoral de police",
+                "La contestation des résultats d'une élection municipale",
+                "Les sanctions infligées à un fonctionnaire d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le juge judiciaire est le juge des rapports entre particuliers et le gardien de la liberté individuelle en matière pénale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les révolutionnaires de 1789 ont-ils séparé le contentieux administratif des tribunaux judiciaires ?",
+              "options": [
+                "Par méfiance envers les Parlements d'Ancien Régime qui s'opposaient aux réformes de l'État",
+                "Parce qu'il n'existait pas de magistrats en France",
+                "Pour appliquer un modèle imposé par l'Angleterre",
+                "Pour faire des économies de papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les révolutionnaires craignaient que les juges judiciaires ne paralysent l'action modernisatrice de l'administration."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel arrêt fondamental du Tribunal des conflits de 1873 a consacré l'autonomie du droit administratif ?",
+              "options": [
+                "L'arrêt Blanco",
+                "L'arrêt Nicolo",
+                "L'arrêt Cadot",
+                "L'arrêt Dame Lamotte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arrêt Blanco pose que la responsabilité de l'État pour les services publics a ses règles propres distinctes du Code civil."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la situation où les deux ordres de juridiction se déclarent incompétents pour une même affaire ?",
+              "options": [
+                "Un conflit négatif de compétence",
+                "Un conflit positif de compétence",
+                "Un déni de démocratie",
+                "Une forfaiture judiciaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de conflit négatif, le Tribunal des conflits est saisi pour désigner l'ordre juridictionnel compétent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel principe constitutionnel protège l'existence même de la juridiction administrative ?",
+              "options": [
+                "Un principe fondamental reconnu par les lois de la République (décision du Conseil de 1987)",
+                "Une simple coutume non écrite",
+                "Un règlement européen sur la justice",
+                "Un accord entre les syndicats de juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La décision Conseil de la concurrence de 1987 consacre la compétence du juge administratif pour annuler les actes publics."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'ordre judiciaire et les litiges civils",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels litiges relèvent de la compétence des juridictions civiles de l'ordre judiciaire ?",
+              "options": [
+                "Les litiges contractuels et les impayés entre particuliers",
+                "Les affaires de divorce, de filiation et d'autorité parentale",
+                "Le jugement des crimes passibles de réclusion criminelle",
+                "L'annulation d'un décret du Premier ministre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La justice civile règle les différends d'intérêts privés entre personnes physiques ou morales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle juridiction judiciaire de droit commun en matière civile est née de la fusion des TI et TGI en 2020 ?",
+              "options": [
+                "Le Tribunal judiciaire",
+                "Le Tribunal administratif",
+                "La Cour de cassation",
+                "Le Tribunal de police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Depuis le 1er janvier 2020, les tribunaux d'instance et de grande instance ont fusionné dans le Tribunal judiciaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel juge spécialisé au sein du Tribunal judiciaire statue sur les divorces et les pensions alimentaires ?",
+              "options": [
+                "Le Juge aux affaires familiales (JAF)",
+                "Le Juge d'instruction",
+                "Le Juge de l'application des peines",
+                "Le Juge des libertés et de la détention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le JAF est le magistrat spécialisé chargé de trancher les litiges familiaux et de protection des personnes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle juridiction spécialisée paritaire tranche les conflits individuels entre un salarié et son employeur ?",
+              "options": [
+                "Le Conseil de prud'hommes",
+                "Le Tribunal de commerce",
+                "La Chambre d'agriculture",
+                "Le Tribunal paritaire des baux ruraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil de prud'hommes est compétent pour tous les litiges nés de la conclusion ou rupture d'un contrat de travail."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qui sont les juges qui siègent au Conseil de prud'hommes ?",
+              "options": [
+                "Des juges non professionnels représentant à parité les employeurs et les salariés",
+                "Des magistrats de carrière formés à l'ENM",
+                "Des policiers à la retraite",
+                "Des inspecteurs des impôts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La juridiction est paritaire : elle réunit un nombre égal de conseillers prud'hommes salariés et employeurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle juridiction spécialisée est compétente pour trancher les litiges entre commerçants ?",
+              "options": [
+                "Le Tribunal de commerce",
+                "La Cour d'assises",
+                "Le Tribunal de police",
+                "Le Conseil des sages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Tribunal de commerce est composé de juges consulaires bénévoles élus parmi les commerçants."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la personne qui prend l'initiative d'intenter un procès civil ?",
+              "options": [
+                "Le demandeur",
+                "Le défendeur",
+                "Le prévenu",
+                "L'accusé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le demandeur est celui qui assigne une autre partie en justice pour faire reconnaître un droit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la partie contre laquelle une action en justice civile est intentée ?",
+              "options": [
+                "Le défendeur",
+                "Le procureur",
+                "La partie civile",
+                "Le témoin assisté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le défendeur est la personne contre qui la demande en justice est formée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la principale sanction civile accordée pour réparer un dommage causé à autrui ?",
+              "options": [
+                "L'octroi de dommages et intérêts financiers",
+                "Une peine d'emprisonnement ferme",
+                "Une amende au Trésor public",
+                "Un travail d'intérêt général"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La responsabilité civile a pour objet de réparer le préjudice de la victime par une indemnisation financière."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mode alternatif permet de résoudre un litige à l'amiable avec un tiers bénévole sans procès formel ?",
+              "options": [
+                "La conciliation de justice",
+                "La comparution immédiate",
+                "Le renvoi en correctionnelle",
+                "Le mandat de dépôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le conciliateur de justice aide les parties à trouver un compromis amiable pour éviter une procédure judiciaire longue."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "L'ordre judiciaire et la justice pénale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les trois catégories d'infractions pénales en droit français, selon leur gravité croissante ?",
+              "options": [
+                "Les contraventions et les délits",
+                "Les crimes",
+                "Les fautes contractuelles civiles",
+                "Les désaccords de mitoyenneté"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La classification tripartite du droit pénal français distingue les contraventions, les délits et les crimes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle juridiction pénale est compétente pour juger les contraventions ?",
+              "options": [
+                "Le Tribunal de police",
+                "Le Tribunal correctionnel",
+                "La Cour d'assises",
+                "Le Conseil de prud'hommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Tribunal de police juge les infractions les moins graves (contraventions de 1re à 5e classe) punies d'amendes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle juridiction pénale juge les délits (vols, escroqueries, violences graves) ?",
+              "options": [
+                "Le Tribunal correctionnel",
+                "Le Tribunal de police",
+                "La Cour criminelle internationale",
+                "Le Tribunal de commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Tribunal correctionnel (formation pénale du Tribunal judiciaire) juge les délits punis d'emprisonnement jusqu'à 10 ans."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle juridiction juge les crimes les plus graves (meurtres, viols) avec un jury populaire de citoyens ?",
+              "options": [
+                "La Cour d'assises",
+                "Le Tribunal correctionnel",
+                "La Cour d'appel civile",
+                "Le Tribunal administratif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Cour d'assises est la juridiction compétente pour juger les crimes passibles de réclusion criminelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment sont choisis les citoyens qui siègent comme jurés à la Cour d'assises ?",
+              "options": [
+                "Par tirage au sort sur les listes électorales",
+                "Par un concours national de droit pénal",
+                "Par désignation du maire de la commune",
+                "Par élection lors des législatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jurés d'assises sont des citoyens majeurs tirés au sort sur les listes électorales de leur département."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle juridiction a été instaurée pour juger certains crimes punis de 15 à 20 ans de prison sans jurés populaires ?",
+              "options": [
+                "La Cour criminelle départementale",
+                "Le Tribunal révolutionnaire",
+                "La Chambre maritime criminelle",
+                "Le Tribunal militaire permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Composée de cinq magistrats professionnels sans jury, elle vise à réduire les délais de jugement des crimes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel magistrat instructeur mène l'enquête préparatoire pour rassembler les preuves à charge et à décharge ?",
+              "options": [
+                "Le Juge d'instruction",
+                "Le Procureur de la République",
+                "Le Juge aux affaires familiales",
+                "Le Bâtonnier de l'ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le juge d'instruction est un magistrat indépendant qui instruit les dossiers criminels et délits complexes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel magistrat décide du placement éventuel d'un suspect en détention provisoire avant son procès ?",
+              "options": [
+                "Le Juge des libertés et de la détention (JLD)",
+                "Le Commissaire de police",
+                "Le Directeur de la prison",
+                "Le Préfet de région"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le JLD a été créé pour séparer le pouvoir d'enquêter (juge d'instruction) du pouvoir d'incarcérer avant jugement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel magistrat intervient au procès pénal pour requérir une peine au nom de la société ?",
+              "options": [
+                "Le magistrat du parquet (Procureur ou substitut)",
+                "L'avocat de la défense",
+                "Le greffier audiencier",
+                "Le juge du siège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le ministère public représente la société et défend l'intérêt général en réclamant la sanction de la loi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la victime qui intervient au procès pénal pour réclamer l'indemnisation de son préjudice ?",
+              "options": [
+                "La partie civile",
+                "Le prévenu",
+                "L'accusé",
+                "Le témoin sous contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En se constituant partie civile, la victime participe au procès et sollicite la réparation financière de ses dommages."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'organisation de la justice administrative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles juridictions constituent les juridictions administratives de droit commun en France ?",
+              "options": [
+                "Les Tribunaux administratifs",
+                "Les Cours administratives d'appel",
+                "Les Tribunaux judiciaires",
+                "Les Conseils de prud'hommes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ordre administratif comprend les tribunaux administratifs (1er ressort) et les cours administratives d'appel (appel)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la juridiction suprême de l'ordre administratif en France ?",
+              "options": [
+                "Le Conseil d'État",
+                "La Cour de cassation",
+                "Le Conseil constitutionnel",
+                "La Cour des comptes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil d'État est placé au sommet de l'ordre administratif comme juge suprême de cassation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où est établi le siège historique du Conseil d'État ?",
+              "options": [
+                "Au Palais-Royal à Paris",
+                "Au Palais de Justice sur l'île de la Cité",
+                "Au château de Versailles",
+                "À l'Hôtel de Brienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil d'État partage le Palais-Royal à Paris avec le Conseil constitutionnel et le ministère de la Culture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles sont les deux missions historiques exercées par le Conseil d'État ?",
+              "options": [
+                "Conseiller juridique du gouvernement et juge suprême de l'administration",
+                "Diriger la police nationale et lever l'impôt",
+                "Voter les lois et nommer les députés",
+                "Juger les litiges commerciaux entre banques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil d'État donne des avis sur les projets de loi du gouvernement et juge les recours administratifs ultimes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Devant quelle juridiction administrative un citoyen conteste-t-il la décision d'un maire en première instance ?",
+              "options": [
+                "Le Tribunal administratif",
+                "La Cour administrative d'appel",
+                "Le Conseil d'État",
+                "Le Tribunal d'arbitrage de commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Tribunal administratif est la juridiction de première instance pour la grande majorité des litiges administratifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Devant quelle juridiction fait-on appel d'un jugement rendu par un Tribunal administratif ?",
+              "options": [
+                "Devant la Cour administrative d'appel",
+                "Devant la Cour d'appel judiciaire",
+                "Devant la Cour de cassation",
+                "Devant le préfet de région"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cours administratives d'appel réexaminent en fait et en droit les jugements des tribunaux administratifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel magistrat administratif formule publiquement ses conclusions en toute indépendance lors de l'audience ?",
+              "options": [
+                "Le rapporteur public",
+                "Le procureur de la République",
+                "Le commissaire aux comptes",
+                "L'agent judiciaire de l'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapporteur public expose en toute impartialité son analyse du litige et propose une solution juridique aux juges."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle juridiction financière spécialisée vérifie la régularité des comptes publics des collectivités locales ?",
+              "options": [
+                "La Chambre régionale des comptes",
+                "Le Tribunal de commerce",
+                "La Commission bancaire",
+                "Le Conseil économique et social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Chambres régionales des comptes et la Cour des comptes contrôlent la gestion financière des deniers publics."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les magistrats des tribunaux administratifs sont-ils soumis au statut de la magistrature judiciaire ?",
+              "options": [
+                "Non, ils relèvent d'un corps autonome de magistrats administratifs garanti dans son indépendance",
+                "Oui, ils sont nommés selon les mêmes règles que les substituts judiciaires",
+                "Non, ce sont des contractuels révocables par le préfet",
+                "Oui, ils dépendent directement de la Cour de cassation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les magistrats administratifs bénéficient d'un statut légal propre qui protège rigoureusement leur indépendance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui a créé le Conseil d'État sous sa forme contemporaine en 1799 (Constitution de l'an VIII) ?",
+              "options": [
+                "Napoléon Bonaparte",
+                "Louis XIV",
+                "Robespierre",
+                "Charles de Gaulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil d'État a été institué par la Constitution de l'an VIII sous le Consulat de Napoléon Bonaparte."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les recours devant le juge administratif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles procédures d'urgence modernes (référés) ont été créées en 2000 devant le juge administratif ?",
+              "options": [
+                "Le référé-suspension",
+                "Le référé-liberté",
+                "Le référé-expulsion sans délai",
+                "Le référé d'emprisonnement préventif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La loi du 30 juin 2000 a créé les référés d'urgence pour protéger rapidement les droits des justiciables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel recours emblématique permet à un citoyen d'obtenir l'annulation d'un acte administratif illégal ?",
+              "options": [
+                "Le recours pour excès de pouvoir (REP)",
+                "Le recours en révision pénale",
+                "La plainte contre x",
+                "La citation directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recours pour excès de pouvoir est le procès fait à un acte administratif unilatéral illégal pour obtenir son annulation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle caractéristique démocratique distingue le recours pour excès de pouvoir ?",
+              "options": [
+                "Il est très accessible, dispensé du ministère d'avocat obligatoire en 1re instance et peu coûteux",
+                "Il exige une caution bancaire de 50 000 euros",
+                "Il ne peut être formé que par des parlementaires",
+                "Il impose l'accord écrit préalable du ministre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le REP est considéré comme une garantie fondamentale de l'État de droit par son accessibilité financière et juridique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel délai le juge doit-il statuer en référé-liberté en cas d'atteinte grave et manifestement illégale à une liberté ?",
+              "options": [
+                "En 48 heures",
+                "En 15 jours",
+                "En 1 mois",
+                "En 6 mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le référé-liberté (article L. 521-2 du CJA) impose au juge de rendre une ordonnance dans un délai maximal de 48 heures."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel recours administratif engage la responsabilité pécuniaire de l'État pour obtenir une indemnisation financière ?",
+              "options": [
+                "Le recours de plein contentieux",
+                "Le recours gracieux simple",
+                "L'action en diffamation",
+                "Le référé constat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recours de plein contentieux permet au juge d'accorder des indemnités ou de réformer directement des droits financiers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un recours administratif « gracieux » ?",
+              "options": [
+                "Un recours amiable adressé à l'auteur même de la décision litigieuse",
+                "Une demande de pardon adressée au tribunal pénal",
+                "Une demande d'asile politique",
+                "Une supplique adressée au pape"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recours gracieux est formulé auprès de l'autorité qui a pris la décision pour lui demander de la reconsidérer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un recours administratif « hiérarchique » ?",
+              "options": [
+                "Un recours adressé au supérieur hiérarchique de l'auteur de l'acte (ex: au ministre)",
+                "Une action devant le Conseil des prud'hommes",
+                "Une plainte au commissariat de quartier",
+                "Une manifestation non déclarée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recours hiérarchique sollicite l'intervention de l'autorité supérieure pour annuler ou réformer la décision subordonnée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le délai de droit commun pour saisir le juge administratif d'un recours contentieux ?",
+              "options": [
+                "Deux mois à compter de la publication ou notification de la décision",
+                "Quinze jours seulement",
+                "Six mois pleins",
+                "Cinq ans à compter des faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le délai de recours contentieux est généralement de deux mois à compter de la notification ou publication de l'acte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le juge administratif peut-il adresser des injonctions sous astreinte financière à l'administration ?",
+              "options": [
+                "Oui, depuis la loi de 1995 pour forcer l'administration à exécuter ses jugements",
+                "Non, c'est formellement interdit pour respecter l'État",
+                "Uniquement avec l'accord de la police nationale",
+                "Seulement lors des périodes d'état d'urgence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi du 8 février 1995 a doté le juge administratif du pouvoir d'ordonner à l'administration d'exécuter la décision."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel célèbre arrêt du Conseil d'État de 1950 a affirmé que le recours pour excès de pouvoir existe même sans texte ?",
+              "options": [
+                "L'arrêt Dame Lamotte",
+                "L'arrêt Benjamin",
+                "L'arrêt Barel",
+                "L'arrêt Canal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par l'arrêt Dame Lamotte, le REP a été érigé en principe général du droit pour assurer le respect de la légalité."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les principes fondamentaux de la justice",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels principes fondamentaux garantissent une justice républicaine impartiale et équitable ?",
+              "options": [
+                "L'indépendance de l'autorité judiciaire vis-à-vis du pouvoir exécutif",
+                "L'égalité de tous les justiciables devant la loi",
+                "Le secret permanent de tous les jugements rendus",
+                "Le paiement obligatoire de pots-de-vin aux magistrats"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'indépendance des juges et l'égalité d'accès devant la loi sont les piliers fondamentaux de la justice en démocratie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle règle constitutionnelle protège les magistrats du siège contre tout déplacement ou sanction arbitraire ?",
+              "options": [
+                "Le principe d'inamovibilité",
+                "Le secret des sources",
+                "L'immunité diplomatique",
+                "Le droit de veto présidentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les juges du siège ne peuvent recevoir de nouvelle affectation sans leur consentement, même en cas d'avancement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel organe constitutionnel participe à la nomination et veille à la discipline des magistrats ?",
+              "options": [
+                "Le Conseil supérieur de la magistrature (CSM)",
+                "Le Conseil économique et social",
+                "La Cour de justice de la République",
+                "Le Conseil constitutionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CSM est l'organe garant de l'indépendance des magistrats de l'ordre judiciaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que garantit le principe républicain de publicité des débats judiciaires ?",
+              "options": [
+                "L'accès libre du public aux salles d'audience pour empêcher une justice secrète",
+                "La diffusion de publicités commerciales pendant les procès",
+                "L'obligation de voter sur Internet sur la peine du condamné",
+                "L'affichage du casier judiciaire sur la place publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La justice est rendue au nom du peuple français : la publicité garantit la transparence et le contrôle citoyen."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quel cas exceptionnel le tribunal peut-il ordonner que l'audience se tienne à « huis clos » ?",
+              "options": [
+                "Pour protéger l'ordre public, la sérénité des débats ou la vie privée de victimes mineures",
+                "Pour permettre aux juges de finir plus tôt leur journée",
+                "Si la personne accusée est un ministre en exercice",
+                "Dès qu'un avocat le réclame sans motif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le huis clos exclut le public de la salle pour protéger les victimes vulnérables ou les secrets d'État légitimes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mécanisme permet aux citoyens ayant de faibles revenus de faire payer les honoraires de leur procès par l'État ?",
+              "options": [
+                "L'aide juridictionnelle",
+                "Le crédit à la consommation",
+                "L'assurance automobile obligatoire",
+                "La souscription participative privée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aide juridictionnelle permet aux plus modestes de bénéficier d'un avocat et d'actes d'huissier pris en charge par l'État."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les tribunaux ont-ils l'obligation de motiver leurs décisions ?",
+              "options": [
+                "Pour justifier juridiquement la décision et permettre son contrôle en appel ou en cassation",
+                "Pour remplir un volume obligatoire de pages imposé par la loi",
+                "Pour faire plaisir aux journalistes",
+                "Pour empêcher tout recours futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La motivation est le rempart contre l'arbitraire : elle explique les raisons de fait et de droit ayant convaincu le juge."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le principe de collégialité des juges dans un tribunal ?",
+              "options": [
+                "L'affaire est jugée par plusieurs magistrats qui délibèrent ensemble",
+                "Le juge doit être issu de la même université que les avocats",
+                "Le public dans la salle vote à main levée sur la sentence",
+                "L'affaire est jugée par un magistrat unique sans conseil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La collégialité (trois juges ou plus) limite les erreurs individuelles et renforce l'impartialité du jugement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que prescrit le principe d'impartialité pour un magistrat ?",
+              "options": [
+                "Il ne doit avoir aucun parti pris ni préjugé personnel sur l'affaire ou les parties",
+                "Il doit obligatoirement donner raison au demandeur",
+                "Il doit appartenir au même parti politique que l'accusé",
+                "Il ne doit jamais prononcer de condamnation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impartialité impose au juge de se récuser s'il existe un conflit d'intérêts ou un lien avec une partie au litige."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que risquerait un juge qui refuserait de rendre une décision au motif que la loi est obscure ?",
+              "options": [
+                "Une condamnation pour déni de justice selon l'article 4 du Code civil",
+                "Une promotion au Conseil supérieur de la magistrature",
+                "Une dispense de travail payée",
+                "Une médaille d'honneur de l'Assemblée nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 4 du Code civil interdit le déni de justice : le juge a l'obligation légale d'interpréter la loi pour trancher."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Le procès équitable et les droits de la défense",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les droits fondamentaux inhérents à la garantie d'un procès équitable ?",
+              "options": [
+                "La présomption d'innocence",
+                "Le principe du contradictoire et l'égalité des armes",
+                "L'interdiction formelle d'être défendu par un avocat",
+                "Le droit de punir les proches de l'accusé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le procès équitable exige la présomption d'innocence, le débat contradictoire et les droits de la défense."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel article fondamental de la Convention européenne des droits de l'homme (CEDH) protège le droit à un procès équitable ?",
+              "options": [
+                "L'article 6 de la CEDH",
+                "L'article 1er du traité de Rome",
+                "L'article 50 des accords de Schengen",
+                "L'article 100 de la Charte de l'ONU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 6 de la CEDH est la référence européenne majeure en matière de procès équitable et de garanties procédurales."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la présomption d'innocence pour toute personne suspectée ou poursuivie ?",
+              "options": [
+                "Elle est tenue pour innocente tant que sa culpabilité n'a pas été légalement démontrée",
+                "Elle ne peut jamais être convoquée au commissariat",
+                "Elle est dispensée de comparaître devant le tribunal",
+                "Elle a le droit d'exiger la démission du juge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consacrée par l'article 9 de la DDHC de 1789, la culpabilité doit être établie par une condamnation définitive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur qui pèse la charge de la preuve dans le procès pénal républicain ?",
+              "options": [
+                "Sur l'accusation (ministère public et parties poursuivantes)",
+                "Sur le prévenu qui doit prouver son innocence",
+                "Sur le public présent dans la salle d'audience",
+                "Sur le greffier en chef du tribunal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est à l'accusation d'apporter la preuve de la commission de l'infraction et de la culpabilité du suspect."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que garantit le principe fondamental du contradictoire au procès ?",
+              "options": [
+                "Que chaque partie ait pu prendre connaissance et discuter librement des preuves et pièces du dossier",
+                "Que les magistrats du tribunal se querellent à voix haute",
+                "Que l'avocat soutienne le contraire des souhaits de son client",
+                "Que les dépositions des témoins soient cachées à la défense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contradictoire impose la communication de tous les arguments et pièces pour permettre une défense éclairée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel droit cardinal protège une personne suspectée contre toute auto-incrimination lors d'un interrogatoire ?",
+              "options": [
+                "Le droit de garder le silence et de ne pas témoigner contre soi-même",
+                "Le droit de porter une arme devant le tribunal",
+                "Le droit de falsifier les procès-verbaux d'enquête",
+                "Le droit de s'enfuir du commissariat sans conséquences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le droit de garder le silence est un principe constitutionnel et conventionnel rattaché aux droits de la défense."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un avocat désigné par l'autorité du barreau pour assister une personne démunie d'avocat ?",
+              "options": [
+                "Un avocat commis d'office",
+                "Un procureur honoraire",
+                "Un médiateur judiciaire privé",
+                "Un greffier suppléant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'avocat commis d'office est désigné par le bâtonnier pour assurer la continuité de la défense de tout justiciable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que garantit la règle du « délai raisonnable » dans la justice moderne ?",
+              "options": [
+                "Que les poursuites et le procès ne s'étirent pas de manière abusive dans le temps",
+                "Que tout procès commence à minuit précise",
+                "Qu'un procès dure obligatoirement au moins dix ans",
+                "Que la décision soit rendue sans entendre les témoins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une justice trop lente viole l'article 6 de la CEDH : toute personne a droit à ce que sa cause soit entendue dans un délai raisonnable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour un acte de police (perquisition, écoute) mené en violation grave des règles procédurales ?",
+              "options": [
+                "Il est frappé de nullité par le tribunal et retiré du dossier pénal",
+                "Il entraîne une récompense financière pour les enquêteurs",
+                "Il est publié dans la presse quotidienne",
+                "Il double automatiquement la peine du prévenu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le non-respect des formalités substantielles de procédure pénale entraîne l'annulation de l'acte litigieux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adage latin exprime la règle qu'en cas de doute sur la culpabilité, le juge doit acquitter ou relaxer ?",
+              "options": [
+                "In dubio pro reo",
+                "Pacta sunt servanda",
+                "Caveat emptor",
+                "Nemo censetur ignorare legem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Le doute profite à l'accusé » : si un doute subsiste après l'instruction à l'audience, la personne doit être relaxée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les professionnels de la justice",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les deux branches de la magistrature de l'ordre judiciaire français ?",
+              "options": [
+                "Les magistrats du siège (juges)",
+                "Les magistrats du parquet (procureurs)",
+                "Les officiers d'état civil communaux",
+                "Les juristes d'entreprises privées"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La magistrature judiciaire se divise entre magistrats du siège (qui jugent) et magistrats du parquet (qui poursuivent)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la mission fondamentale des magistrats du siège ?",
+              "options": [
+                "Entendre les parties et trancher les litiges en toute indépendance et impartialité",
+                "Diriger les brigades de gendarmerie sur le terrain",
+                "Rédiger les discours officiels du ministre de la Justice",
+                "Collecter les impôts sur le revenu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les juges du siège statuent sur les litiges civils ou prononcent les peines au nom du peuple français."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la mission des magistrats du parquet (ministère public) ?",
+              "options": [
+                "Exercer l'action publique et requérir l'application de la loi pénale au nom de l'intérêt général",
+                "Rendre les jugements définitifs",
+                "Défendre les intérêts privés des accusés",
+                "Gérer les prisons régionales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les procureurs reçoivent les plaintes, dirigent les enquêtes de police et requièrent à l'audience."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle école nationale basée à Bordeaux assure la formation initiale des magistrats de l'ordre judiciaire ?",
+              "options": [
+                "L'École nationale de la magistrature (ENM)",
+                "L'Institut national du service public (ex-ENA)",
+                "L'École nationale des greffes",
+                "L'École des officiers de la gendarmerie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ENM forme les futurs auditeurs de justice qui deviendront juges du siège ou procureurs du parquet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel professionnel du droit libéral indépendant conseille, défend et représente son client en justice ?",
+              "options": [
+                "L'avocat",
+                "Le commissaire de police",
+                "Le greffier de chambre",
+                "L'administrateur judiciaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'avocat est un auxiliaire de justice indépendant affilié à un barreau dirigé par un bâtonnier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle indispensable du greffier au sein d'une juridiction ?",
+              "options": [
+                "Garantir le respect des procédures, consigner les débats et authentifier les jugements",
+                "Prononcer la sentence finale à la place du juge",
+                "Arrêter les délinquants dans la rue",
+                "Rédiger les contrats de travail privés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le greffier est le garant de l'authenticité des actes de procédure ; sans sa présence, une audience est nulle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel officier public réunit depuis 2022 les compétences des huissiers de justice et commissaires-priseurs judiciaires ?",
+              "options": [
+                "Le commissaire de justice",
+                "Le notaire consulaire",
+                "L'agent de probation",
+                "Le médiateur républicain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le commissaire de justice signifie les actes juridiques, exécute les décisions et réalise les ventes aux enchères judiciaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel professionnel du droit reçoit les actes notariés (successions, achats immobiliers) et leur confère force exécutoire ?",
+              "options": [
+                "Le notaire",
+                "L'avocat général",
+                "Le juge de police",
+                "L'assesseur d'assises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le notaire est un officier public délégataire de la puissance publique pour authentifier les contrats privés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel service du ministère de la Justice intervient spécifiquement auprès des mineurs sous mandat judiciaire ?",
+              "options": [
+                "La Protection judiciaire de la jeunesse (PJJ)",
+                "La Direction générale des finances publiques",
+                "L'Office français de protection des réfugiés",
+                "Le Service pénitentiaire d'insertion des adultes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La PJJ prend en charge les mineurs auteurs d'infractions ou en danger pour concilier éducation et sanction."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel membre du gouvernement est à la tête de l'administration pénitentiaire et des services judiciaires ?",
+              "options": [
+                "Le garde des Sceaux, ministre de la Justice",
+                "Le ministre de l'Intérieur",
+                "Le Premier président de la Cour de cassation",
+                "Le président du Conseil d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le garde des Sceaux dirige le ministère de la Justice et conduit la politique pénale déterminée par le gouvernement."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "L'appel et les cours suprêmes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les objectifs essentiels de la procédure d'appel en justice ?",
+              "options": [
+                "Mettre en œuvre le principe du double degré de juridiction",
+                "Permettre un réexamen complet de l'affaire en fait et en droit par des juges plus expérimentés",
+                "Interdire tout contrôle ultérieur par la Cour de cassation",
+                "Condamner systématiquement la personne qui a fait appel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'appel permet à une juridiction supérieure de réexaminer entièrement le litige pour corriger les erreurs éventuelles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle juridiction examine les recours en appel formés contre les jugements du Tribunal judiciaire ?",
+              "options": [
+                "La Cour d'appel",
+                "La Cour de cassation",
+                "Le Conseil d'État",
+                "Le Tribunal des conflits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Cour d'appel est la juridiction de second degré de l'ordre judiciaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le fait que la Cour d'appel juge « en fait et en droit » ?",
+              "options": [
+                "Elle réexamine l'intégralité du litige, les preuves matérielles comme les règles juridiques",
+                "Elle ne s'intéresse qu'aux fautes de syntaxe du jugement",
+                "Elle interroge uniquement les témoins de moralité",
+                "Elle valide obligatoirement le premier jugement sans examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Cour d'appel réévalue l'ensemble des éléments de fait et réapplique le droit applicable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la plus haute juridiction de l'ordre judiciaire en France ?",
+              "options": [
+                "La Cour de cassation",
+                "Le Conseil constitutionnel",
+                "Le Conseil d'État",
+                "La Haute Cour de justice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Cour de cassation est la cour suprême de l'ordre judiciaire, siégeant au Palais de Justice de Paris."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la mission essentielle et unique de la Cour de cassation ?",
+              "options": [
+                "Vérifier la stricte conformité au droit des décisions rendues par les juges du fond",
+                "Réentendre l'ensemble des témoins et experts",
+                "Refaire les enquêtes de police depuis le début",
+                "Fixer le montant exact des amendes de circulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Cour de cassation est juge du droit et non des faits : elle contrôle l'exacte application de la loi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que la Cour de cassation n'est pas un « troisième degré de juridiction » ?",
+              "options": [
+                "Parce qu'elle ne réexamine pas les faits matériels de l'affaire",
+                "Parce qu'elle est située en dehors du territoire français",
+                "Parce que ses décisions ne sont jamais obligatoires",
+                "Parce qu'elle ne compte que trois magistrats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les justiciables n'ont droit qu'à deux degrés de juridiction sur le fond (1re instance et appel)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsque la Cour de cassation rejette le pourvoi formé contre un arrêt d'appel ?",
+              "options": [
+                "L'arrêt attaqué devient définitif et irrévocable en droit interne",
+                "L'affaire doit être rejugée par le Tribunal administratif",
+                "Le procès recommence depuis la première instance",
+                "L'accusé est remis en liberté sans condition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rejet du pourvoi confirme la décision d'appel qui acquiert force de chose irrévocablement jugée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que fait la Cour de cassation lorsqu'elle accueille le pourvoi et « casse » la décision attaquée ?",
+              "options": [
+                "Elle annule la décision et renvoie l'affaire devant une autre cour d'appel pour être rejugée",
+                "Elle condamne immédiatement le juge d'appel à une amende",
+                "Elle modifie elle-même la Constitution",
+                "Elle supprime la juridiction d'appel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de cassation avec renvoi, une cour d'appel désignée réexamine l'affaire conformément au droit rappelé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Devant quelle cour suprême forme-t-on un pourvoi en cassation contre un arrêt d'une Cour administrative d'appel ?",
+              "options": [
+                "Devant le Conseil d'État",
+                "Devant la Cour de cassation",
+                "Devant le Conseil constitutionnel",
+                "Devant la Cour des comptes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil d'État est le juge de cassation suprême des décisions des juridictions administratives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des décisions de justice des hautes cours qui unifient l'interprétation des lois ?",
+              "options": [
+                "La jurisprudence",
+                "La coutume notariale",
+                "La doctrine parlementaire",
+                "La circulaire préfectorale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jurisprudence harmonise l'application du droit sur tout le territoire national."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Les juridictions européennes et internationales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles cours supranationales majeures protègent les droits et font respecter le droit à l'échelle européenne ?",
+              "options": [
+                "La Cour européenne des droits de l'homme (CEDH)",
+                "La Cour de justice de l'Union européenne (CJUE)",
+                "La Cour suprême fédérale des États-Unis",
+                "La Haute Assemblée diplomatique de Genève"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La CEDH (Conseil de l'Europe) et la CJUE (Union européenne) sont les deux grandes cours européennes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quelle ville française siège la Cour européenne des droits de l'homme (CEDH) ?",
+              "options": [
+                "À Strasbourg",
+                "À Lyon",
+                "À Bordeaux",
+                "À Marseille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CEDH siège au Palais des droits de l'homme à Strasbourg."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De quelle organisation internationale européenne distincte de l'Union européenne la CEDH dépend-elle ?",
+              "options": [
+                "Du Conseil de l'Europe (46 États membres)",
+                "De l'Organisation du traité de l'Atlantique nord (OTAN)",
+                "De l'Organisation mondiale du commerce (OMC)",
+                "De l'Agence spatiale européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CEDH est l'organe juridictionnel du Conseil de l'Europe créé pour faire respecter la Convention de 1950."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle règle impérative impose à un citoyen d'avoir exercé tous les recours possibles dans son pays avant de saisir la CEDH ?",
+              "options": [
+                "L'épuisement préalable des voies de recours internes",
+                "Le versement d'une caution consulaire",
+                "L'obligation de parler couramment anglais",
+                "La demande d'autorisation au ministre des Affaires étrangères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le requérant doit être allé jusqu'en cassation ou devant le Conseil d'État national avant de pouvoir saisir la CEDH."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel principe juridique fondamental guide les rapports entre la CEDH et les tribunaux nationaux ?",
+              "options": [
+                "Le principe de subsidiarité",
+                "Le principe de primauté hiérarchique absolue",
+                "Le principe d'ingérence militaire",
+                "Le principe de substitution administrative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tribunaux nationaux sont les premiers juges des droits fondamentaux ; la CEDH intervient en dernier recours subsidiaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel pays siège la Cour de justice de l'Union européenne (CJUE) ?",
+              "options": [
+                "Au Luxembourg",
+                "En Belgique",
+                "En Allemagne",
+                "Aux Pays-Bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CJUE est installée à Luxembourg et veille au respect uniforme du droit de l'Union européenne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle procédure essentielle permet à un juge national d'interroger la CJUE sur l'interprétation d'un texte européen ?",
+              "options": [
+                "Le renvoi préjudiciel",
+                "La Question Prioritaire de Constitutionnalité",
+                "Le pourvoi en cassation direct",
+                "L'appel d'offres communautaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le renvoi préjudiciel permet au juge national de demander à la CJUE d'éclairer le sens d'une norme de l'Union."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle juridiction pénale internationale permanente établie à La Haye juge les crimes contre l'humanité et crimes de guerre ?",
+              "options": [
+                "La Cour pénale internationale (CPI)",
+                "La Cour de justice internationale des droits de l'homme",
+                "Le Tribunal pénal militaire européen",
+                "La Commission d'arbitrage de Genève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CPI poursuit les individus responsables de génocide, crimes de guerre et crimes contre l'humanité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel traité international adopté en 1998 a créé la Cour pénale internationale ?",
+              "options": [
+                "Le Statut de Rome",
+                "Le Traité de Lisbonne",
+                "Les Accords d'Helsinki",
+                "La Charte de San Francisco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Statut de Rome de la CPI a été adopté en 1998 et est entré en vigueur en 2002."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la portée des arrêts de condamnation prononcés par la CEDH à l'encontre d'un État ?",
+              "options": [
+                "L'État condamné doit réparer le préjudice subi et adapter ses pratiques ou sa législation nationale",
+                "L'État est immédiatement exclu du continent européen",
+                "Le gouvernement national est dissous d'office",
+                "La décision est purement indicative sans force obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les États parties ont l'obligation conventionnelle d'exécuter les arrêts de la CEDH sous le contrôle du Comité des Ministres."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

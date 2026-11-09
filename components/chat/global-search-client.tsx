@@ -6,9 +6,11 @@ import {
   ChevronDownIcon,
   CodeIcon,
   CpuIcon,
+  CrosshairIcon,
   FileIcon,
   FolderKanbanIcon,
   GlobeIcon,
+  GraduationCapIcon,
   ImageIcon,
   ListChecksIcon,
   Loader2Icon,
@@ -78,6 +80,8 @@ const SOURCES: Array<{
 }> = [
   { href: pagePath("/"), icon: MessageSquareIcon, key: "chat" },
   { href: pagePath("/"), icon: MessageSquareIcon, key: "message" },
+  { href: pagePath("/quizzly"), icon: GraduationCapIcon, key: "quizzly" },
+  { href: pagePath("/blackline"), icon: CrosshairIcon, key: "blackline" },
   { href: pagePath("/wakies"), icon: BotGlyph, key: "wakies" },
   { href: pagePath("/projects"), icon: FolderKanbanIcon, key: "project" },
   { href: pagePath("/coder"), icon: CodeIcon, key: "coder" },
@@ -508,15 +512,22 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
                 </p>
               </div>
             ) : groups.length === 0 ? (
-              <div className="surface-muted flex flex-col items-center gap-2 text-center">
+              <div className="surface-muted flex flex-col items-center gap-3 text-center">
                 <SearchIcon className="size-6 text-muted-foreground" />
                 <p className="text-sm font-medium text-foreground">
-                  Aucun résultat pour « {query} »
+                  Aucun résultat interne pour « {query} »
                 </p>
                 <p className="max-w-sm text-xs text-muted-foreground">
-                  Élargissez la recherche à « Tout », ou essayez un terme plus
-                  court.
+                  Élargissez la recherche à « Tout », essayez un terme plus
+                  court, ou cherchez sur le Web avec mAI Search.
                 </p>
+                <Link
+                  className="chip mt-1 inline-flex items-center gap-2 border-primary/30 bg-primary/10 text-primary hover:bg-primary/20"
+                  href={`/search?q=${encodeURIComponent(query)}`}
+                >
+                  <GlobeIcon className="size-3.5" />
+                  <span>Rechercher sur le Web avec mAI Search</span>
+                </Link>
               </div>
             ) : (
               <>

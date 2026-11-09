@@ -28,7 +28,7 @@ import {
 
 const ROUTE_DEFINITIONS = API_ROUTE_DEFINITIONS;
 export default function RequestsClient() {
-  const { token } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   // Seules les métadonnées publiques sont conservées côté client.
   const [createdKeys, setCreatedKeys] = useState<ApiKeyMetadata[]>([]);
@@ -65,10 +65,10 @@ export default function RequestsClient() {
   // Charger les clés API de l'utilisateur
   useEffect(() => {
     async function loadCreatedKeys() {
-      if (!token) return;
+      if (!isAuthenticated) return;
       try {
         const res = await fetch(SITE_API_ROUTES.devKeys, {
-          headers: { Authorization: `Bearer ${token}` },
+          credentials: "same-origin",
         });
         if (res.ok) {
           const data = await res.json();
@@ -89,7 +89,7 @@ export default function RequestsClient() {
       }
     }
     loadCreatedKeys();
-  }, [token]);
+  }, [isAuthenticated]);
 
   // Réinitialiser les champs d'édition lors du changement de route
   useEffect(() => {
@@ -112,7 +112,7 @@ export default function RequestsClient() {
   });
   // Exécution via l'exécuteur serveur : aucune URL ni clé secrète client.
   const handleExecuteRequest = async () => {
-    if (!token) {
+    if (!isAuthenticated) {
       setResponseStatus(401);
       setResponseData(
         JSON.stringify({ error: { message: "Session expirée." } }, null, 2)
@@ -163,7 +163,6 @@ export default function RequestsClient() {
         cache: "no-store",
         credentials: "include",
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         method: "POST",

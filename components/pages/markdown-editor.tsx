@@ -48,13 +48,19 @@ import {
   type PageMarkAttrs,
   type PageShapeKind,
 } from "@/lib/pages/style";
+import {
+  countTextOccurrences,
+  findSelectionAnchor,
+  type SelectionAnchor,
+} from "@/lib/pages/text";
 import { promptInApp } from "@/lib/ui/app-dialog";
 import { cn } from "@/lib/utils";
 
 type MarkdownEditorProps = {
   defaultFont?: PageFont;
   onChange: (markdown: string) => void;
-  onSelection: (text: string) => void;
+  /** Texte sélectionné ET son ancrage dans le Markdown (null si non résoluble). */
+  onSelection: (text: string, anchor: SelectionAnchor | null) => void;
   readOnly: boolean;
   value: string;
 };
@@ -103,8 +109,10 @@ export function MarkdownEditor({
   const emitted = useRef(value);
   const onChangeRef = useRef(onChange);
   const onSelectionRef = useRef(onSelection);
+  const valueRef = useRef(value);
   onChangeRef.current = onChange;
   onSelectionRef.current = onSelection;
+  valueRef.current = value;
   const [mode, setMode] = useState<"source" | "visual">("visual");
   const [findQuery, setFindQuery] = useState("");
   const [replaceWith, setReplaceWith] = useState("");
@@ -127,9 +135,23 @@ export function MarkdownEditor({
     immediatelyRender: false,
     onSelectionUpdate: ({ editor: current }) => {
       const { from, to } = current.state.selection;
-      onSelectionRef.current(
-        from === to ? "" : current.state.doc.textBetween(from, to, "\n")
-      );
+      const text =
+        from === to ? "" : current.state.doc.textBetween(from, to, "\n");
+      // Ancrage dans le Markdown : l'éditeur visuel ne connaît que des
+      // positions de document (TipTap), la sélection est donc localisée par son
+      // texte et le rang de l'occurrence qui la précède (issue #52). Un texte
+      // introuvable dans le Markdown donne un ancrage null — jamais de devinette.
+      const anchor = text
+        ? findSelectionAnchor(
+            valueRef.current,
+            text,
+            countTextOccurrences(
+              current.state.doc.textBetween(0, from, "\n"),
+              text
+            )
+          )
+        : null;
+      onSelectionRef.current(text, anchor);
     },
     onUpdate: ({ editor: current }) => {
       const markdown = readMarkdown(current);
@@ -189,10 +211,14 @@ export function MarkdownEditor({
   function publishSelectionFromSource() {
     const field = sourceRef.current;
     if (!field) {
-      onSelection("");
+      onSelection("", null);
       return;
     }
-    onSelection(value.slice(field.selectionStart, field.selectionEnd));
+    // Mode source : les offsets du champ SONT les offsets du Markdown.
+    const start = field.selectionStart;
+    const end = field.selectionEnd;
+    const text = value.slice(start, end);
+    onSelection(text, text ? { end, start } : null);
   }
 
   function switchMode(next: "source" | "visual") {

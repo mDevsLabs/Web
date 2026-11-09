@@ -217,9 +217,19 @@ export function vuesErreurs(
 }
 
 export type ContexteCoach = {
+  leagueLabel?: string;
+  niveau?: number;
   passedCount: number;
+  sheetContext?: {
+    formulaOrRule?: string;
+    id: string;
+    subjectLabel?: string;
+    title: string;
+  };
   streakCount: number;
+  subjectsLabels?: string[];
   tentatives: readonly QuizTente[];
+  weeklyXp?: number;
   xp: number;
   yearLabel: string;
 };
@@ -297,11 +307,22 @@ function decrireErreur(tentative: QuizTente, erreur: TentativeErreur): string {
 
 function decrireFaits(contexte: ContexteCoach): string {
   const lignes = [
-    `Année : ${contexte.yearLabel}`,
-    `XP : ${contexte.xp}`,
-    `Série : ${contexte.streakCount} jour${contexte.streakCount > 1 ? "s" : ""}`,
-    `Quiz validés : ${contexte.passedCount}`,
-  ];
+    `Année scolaire : ${contexte.yearLabel}`,
+    contexte.niveau ? `Niveau de l'élève : Niveau ${contexte.niveau}` : null,
+    contexte.leagueLabel ? `Ligue actuelle : ${contexte.leagueLabel}` : null,
+    contexte.subjectsLabels?.length ? `Matières suivies : ${contexte.subjectsLabels.join(", ")}` : null,
+    `XP Total : ${contexte.xp}${contexte.weeklyXp ? ` (+${contexte.weeklyXp} cette semaine)` : ""}`,
+    `Série en cours : ${contexte.streakCount} jour${contexte.streakCount > 1 ? "s" : ""}`,
+    `Quiz validés au total : ${contexte.passedCount}`,
+  ].filter(Boolean) as string[];
+
+  if (contexte.sheetContext) {
+    lignes.push(
+      `Fiche de révision consultée : ${contexte.sheetContext.title}${contexte.sheetContext.subjectLabel ? ` (${contexte.sheetContext.subjectLabel})` : ""}`,
+      contexte.sheetContext.formulaOrRule ? `Formule / Règle : ${contexte.sheetContext.formulaOrRule}` : ""
+    );
+  }
+
   if (contexte.tentatives.length === 0) {
     lignes.push("Aucune tentative détaillée pour l'instant.");
     return lignes.join("\n");
@@ -336,11 +357,21 @@ function decrireFaits(contexte: ContexteCoach): string {
 /** Titres et scores, sans les options ni l'explication du cours. */
 function decrireFaitsCourts(contexte: ContexteCoach): string {
   const lignes = [
-    `Année : ${contexte.yearLabel}`,
-    `XP : ${contexte.xp}`,
+    `Année scolaire : ${contexte.yearLabel}`,
+    contexte.niveau ? `Niveau de l'élève : Niveau ${contexte.niveau}` : null,
+    contexte.leagueLabel ? `Ligue : ${contexte.leagueLabel}` : null,
+    contexte.subjectsLabels?.length ? `Matières : ${contexte.subjectsLabels.join(", ")}` : null,
+    `XP : ${contexte.xp}${contexte.weeklyXp ? ` (+${contexte.weeklyXp} hebdo)` : ""}`,
     `Série : ${contexte.streakCount} jour${contexte.streakCount > 1 ? "s" : ""}`,
     `Quiz validés : ${contexte.passedCount}`,
-  ];
+  ].filter(Boolean) as string[];
+
+  if (contexte.sheetContext) {
+    lignes.push(
+      `Fiche de révision : ${contexte.sheetContext.title}${contexte.sheetContext.formulaOrRule ? ` (${contexte.sheetContext.formulaOrRule})` : ""}`
+    );
+  }
+
   if (contexte.tentatives.length === 0) {
     lignes.push("Aucune tentative détaillée pour l'instant.");
     return lignes.join("\n");
@@ -355,14 +386,18 @@ function decrireFaitsCourts(contexte: ContexteCoach): string {
   return lignes.join("\n");
 }
 
-function consigne(yearLabel: string): string {
+function consigne(contexte: ContexteCoach): string {
+  const yearLabel = contexte.yearLabel;
+  const matieres = contexte.subjectsLabels?.length ? contexte.subjectsLabels.join(", ") : "toutes matières";
   return [
-    `Tu es le coach de Quizzly, pour un élève de ${yearLabel}.`,
-    "Tu parles français, en phrases courtes, sans titre ni liste markdown.",
-    "Tu encourages. Tu ne te moques pas.",
+    `Tu es le coach mAI bienveillant et pédagogue de Quizzly, pour un élève de ${yearLabel}.`,
+    `L'élève étudie principalement : ${matieres}. Sa ligue actuelle est : ${contexte.leagueLabel ?? "Bronze"}.`,
+    "Tu parles français, avec bienveillance, en phrases claires et pédagogiques.",
+    "Tu encourages les efforts et tu valorises les progrès. Tu ne te moques jamais.",
+    "Tu adaptes ton vocabulaire et ta pédagogie au programme scolaire officiel pour ce niveau.",
     "La note est déjà décidée. Tu ne la changes pas.",
     "L'explication du cours fait foi. Tu ne proposes pas une autre bonne réponse.",
-    "Tu ne parles pas d'un autre quiz et tu ne donnes pas la réponse d'une question absente du message.",
+    "Si l'élève pose une question sur une notion ou formule, donne-lui une explication simple, imagée et un exemple concret.",
     "Tu restes sur le sujet de cette demande.",
   ].join("\n");
 }
@@ -395,7 +430,7 @@ export function preparerEchangeCoach(params: {
 }):
   | { code: "missing_error" | "unknown_question"; ok: false }
   | { faits: string; ok: true; ouverture: string; system: string } {
-  const system = consigne(params.contexte.yearLabel);
+  const system = consigne(params.contexte);
   if (params.intent === "explain") {
     if (!params.quizId || !params.questionId) {
       return { code: "missing_error", ok: false };

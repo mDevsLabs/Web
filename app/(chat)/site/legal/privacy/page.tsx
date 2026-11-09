@@ -303,28 +303,28 @@ export default function PrivacyPage() {
                   Forfait Free (Gratuit)
                 </p>
                 <p className="text-slate-600 mt-1">
-                  1 000 requêtes / mois. Accès exclusif aux modèles étiquetés{" "}
+                  500 requêtes / semaine. Accès exclusif aux modèles étiquetés{" "}
                   <code className="text-purple-600 font-mono">:free</code>.
                 </p>
               </div>
               <div className="p-3.5 bg-white/70 rounded-2xl border border-slate-200">
                 <p className="font-bold text-purple-700">Forfait Plus</p>
                 <p className="text-slate-600 mt-1">
-                  5 000 requêtes / mois. Accès à tous les modèles Cloud &amp;
+                  1 500 requêtes / semaine. Accès à tous les modèles Cloud &amp;
                   Locaux mAI.
                 </p>
               </div>
               <div className="p-3.5 bg-white/70 rounded-2xl border border-slate-200">
                 <p className="font-bold text-blue-700">Forfait Pro</p>
                 <p className="text-slate-600 mt-1">
-                  25 000 requêtes / mois. Priorité de calcul et limites de débit
+                  3 000 requêtes / semaine. Priorité de calcul et limites de débit
                   accrues.
                 </p>
               </div>
               <div className="p-3.5 bg-white/70 rounded-2xl border border-slate-200">
                 <p className="font-bold text-emerald-700">Forfait Max</p>
                 <p className="text-slate-600 mt-1">
-                  100 000 requêtes / mois. Quotas ultra-larges et support
+                  7 500 requêtes / semaine. Quotas ultra-larges et support
                   technique dédié.
                 </p>
               </div>
@@ -332,7 +332,7 @@ export default function PrivacyPage() {
             <p className="leading-relaxed font-light text-xs text-slate-500 mt-1">
               Chaque requête valide vers l'API incrémente votre quota d'usage de
               +1. La réinitialisation des compteurs s'effectue automatiquement
-              le premier jour de chaque mois calendaire à 00:00 UTC.
+              chaque lundi à 00:00 UTC.
             </p>
           </section>
 

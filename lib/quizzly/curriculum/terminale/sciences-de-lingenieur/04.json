@@ -1,0 +1,2678 @@
+{
+  "id": "terminale-sciences-de-lingenieur-04",
+  "year": "terminale",
+  "subject": "sciences-de-lingenieur",
+  "title": "Informatique industrielle et systèmes embarqués",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Programmation événementielle",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Principes de la programmation événementielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les composants fondamentaux d'une architecture logicielle événementielle ?",
+              "options": [
+                "Une boucle d'événements (event loop)",
+                "Des gestionnaires d'événements (callbacks)",
+                "Une boucle séquentielle bloquante sans interruption",
+                "Un cycle d'horloge purement analogique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La programmation événementielle repose sur une boucle principale qui surveille et distribue les événements aux callbacks dédiés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le comportement d'une fonction de rappel (callback) ?",
+              "options": [
+                "Elle est exécutée automatiquement en réponse à un événement donné",
+                "Elle s'exécute en continu sans interruption",
+                "Elle réinitialise le microcontrôleur",
+                "Elle remplace la mémoire morte du système"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un callback est une fonction passée en paramètre ou enregistrée pour être déclenchée dès la survenue d'un événement précis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Par rapport à l'attente active (polling), la programmation événementielle permet de :",
+              "options": [
+                "Libérer le processeur tant qu'aucun événement ne survient",
+                "Augmenter la fréquence maximale du processeur",
+                "Supprimer le besoin d'horloge système",
+                "Empêcher l'usage de mémoire vive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attente active consomme du temps CPU inutilement, alors que le modèle événementiel permet la mise en sommeil et économise l'énergie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une file d'événements (event queue), comment sont généralement traités les événements reçus ?",
+              "options": [
+                "Selon le principe premier entré, premier sorti (FIFO)",
+                "Selon le principe dernier entré, premier sorti (LIFO)",
+                "De façon aléatoire",
+                "Uniquement par ordre alphabétique de leur nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure FIFO (First In, First Out) garantit le respect de la chronologie des événements détectés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que provoque un blocage prolongé au sein d'une fonction de rappel ?",
+              "options": [
+                "Le retard ou la perte du traitement des événements suivants",
+                "L'augmentation immédiate de la mémoire Flash",
+                "La destruction du bus de données",
+                "Le passage automatique en mode haute tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction de rappel ne doit jamais être bloquante pour préserver la réactivité de la boucle d'événements."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel patron de conception (design pattern) est couramment mis en œuvre dans la programmation événementielle ?",
+              "options": [
+                "Observateur / Observable (Observer)",
+                "Singleton matériel",
+                "Usine abstraite purement séquentielle",
+                "Modèle analogique direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pattern Observateur permet aux objets abonnés d'être notifiés automatiquement dès qu'un sujet change d'état."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un système embarqué, quel élément matériel génère des événements asynchrones ?",
+              "options": [
+                "Une broche d'interruption externe",
+                "Le registre d'instructions du processeur",
+                "La table de partitions statique",
+                "Le connecteur d'alimentation continue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une variation de tension sur une broche configurée en interruption externe génère un événement asynchrone pour le CPU."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le temps de latence de réaction à un événement ?",
+              "options": [
+                "Le délai entre l'apparition de l'événement et le début de son traitement",
+                "La durée totale d'exécution du programme",
+                "La période de l'horloge quartz principale",
+                "Le temps de flashage du microcontrôleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La latence correspond au temps écoulé entre l'occurrence de l'événement et l'exécution de la première instruction de réponse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la notion de système réactif en informatique industrielle ?",
+              "options": [
+                "Un système capable de réagir aux sollicitations de son environnement dans un temps maîtrisé",
+                "Un système qui s'arrête dès qu'un capteur change d'état",
+                "Un système fonctionnant exclusivement sans aucun capteur",
+                "Un programme qui compile son code en direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système réactif maintient une interaction permanente avec son environnement physique à des rythmes imposés par celui-ci."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel avantage clé offre l'architecture événementielle pour l'autonomie énergétique d'un objet connecté ?",
+              "options": [
+                "Permettre de placer le CPU en sommeil profond entre deux événements",
+                "Augmenter la capacité chimique de la batterie",
+                "Convertir l'énergie thermique en signaux logiques",
+                "Éviter d'utiliser des résistances de tirage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le processeur reste en veille (low power) et n'est réveillé que par l'occurrence d'un événement externe ou d'un timer."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Interruptions matérielles et logicielles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes sont automatiquement réalisées par le matériel lors du déclenchement d'une interruption ?",
+              "options": [
+                "Sauvegarde du compteur de programme (PC) sur la pile",
+                "Bascule vers l'adresse de la routine d'interruption (ISR)",
+                "Effacement définitif de la mémoire Flash",
+                "Déconnexion physique des périphériques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le CPU sauvegarde le contexte d'exécution (notamment le PC) sur la pile puis branche l'exécution vers l'ISR correspondante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que désigne l'acronyme ISR en informatique embarquée ?",
+              "options": [
+                "Interrupt Service Routine",
+                "Integrated System Register",
+                "Internal Serial Receiver",
+                "Instruction Storage Relay"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une ISR (Interrupt Service Routine) est la routine logicielle exécutée en réponse immédiate à une interruption."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la table des vecteurs d'interruption ?",
+              "options": [
+                "Un tableau contenant les adresses mémoires des différentes routines d'interruption",
+                "Une liste des valeurs analogiques converties en binaire",
+                "Un registre contenant la tension d'alimentation du CPU",
+                "Une matrice de calcul vectoriel pour accélérateur graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La table des vecteurs associe à chaque source d'interruption l'adresse mémoire du sous-programme chargé de la traiter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle bonne pratique est primordiale lors de la rédaction d'une ISR ?",
+              "options": [
+                "Garder la routine la plus courte et rapide possible",
+                "Insérer de longues pauses d'attente (delay)",
+                "Réaliser des calculs mathématiques lourds à virgule flottante",
+                "Réécrire intégralement le chargeur de démarrage (bootloader)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une ISR longue bloque les autres interruptions de même priorité ou de priorité inférieure et dégrade la réactivité du système."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle différence distingue une interruption masquable d'une interruption non masquable (NMI) ?",
+              "options": [
+                "La NMI ne peut jamais être désactivée par le logiciel",
+                "La NMI a une priorité inférieure à toutes les autres",
+                "L'interruption masquable provient obligatoirement d'un bug logiciel",
+                "L'interruption masquable détruit le contenu de la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une NMI (Non-Maskable Interrupt) est réservée aux événements critiques (défaut d'alimentation, erreur matérielle grave) et ne peut être ignorée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on une variable de 'volatile' en langage C lorsqu'elle est partagée avec une ISR ?",
+              "options": [
+                "Pour interdire au compilateur d'optimiser ses accès en la conservant dans un registre",
+                "Pour effacer sa valeur à chaque seconde",
+                "Pour la stocker sur une clé USB externe",
+                "Pour indiquer qu'elle ne contient que des valeurs négatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot-clé volatile force le compilateur à relire la variable en RAM à chaque utilisation car sa valeur peut changer hors du flux principal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si deux interruptions de même priorité surviennent simultanément ?",
+              "options": [
+                "L'arbitrage matériel fixe l'ordre selon la priorité matérielle câblée",
+                "Le microcontrôleur s'arrête définitivement",
+                "Les deux routines s'exécutent en parallèle sur un cœur simple",
+                "Toutes les interruptions sont définitivement perdues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contrôleur d'interruptions (ex: NVIC sur ARM Cortex-M) applique un ordre de priorité matérielle prédéfini en cas d'égalité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment signale-t-on au contrôleur d'interruptions que le traitement d'une interruption externe est achevé ?",
+              "options": [
+                "En acquittant (clear) le fanion d'interruption (flag) correspondant",
+                "En éteignant la diode témoin d'alimentation",
+                "En vidant l'ensemble de la mémoire morte Flash",
+                "En déclenchant une remise à zéro générale du circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut réinitialiser le bit de drapeau (flag) de l'interruption pour éviter qu'elle ne se redéclenche immédiatement en boucle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le phénomène d'interruptions imbriquées (nested interrupts) ?",
+              "options": [
+                "L'interruption d'une ISR en cours par une interruption de priorité plus élevée",
+                "L'exécution en boucle infinie de la même interruption",
+                "La fusion de deux signaux analogiques sur une seule broche",
+                "La transformation d'une interruption en signal PWM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le processeur l'autorise, une interruption plus prioritaire peut préempter une routine d'interruption de priorité plus faible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une interruption logicielle est déclenchée par :",
+              "options": [
+                "Une instruction spécifique exécutée par le programme (ex: appel système)",
+                "Un bouton poussoir physique relié au circuit",
+                "Une surchauffe de la batterie",
+                "Une perturbation électromagnétique sur le bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les interruptions logicielles (comme les traps ou SVC) sont générées volontairement par le code pour solliciter des services privilégiés du système."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Gestion des timers et horloges système",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels rôles essentiels remplit un périphérique de timer dans un microcontrôleur ?",
+              "options": [
+                "Générer des bases de temps périodiques régulières",
+                "Générer des signaux à modulation de largeur d'impulsion (PWM)",
+                "Remplacer l'alimentation électrique régulée",
+                "Multiplier la tension continue de la batterie par cent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un timer matériel permet d'ordonnancer des tâches temporelles précises et de produire des signaux modulés tels que la PWM."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle du diviseur d'horloge (prescaler) associé à un timer ?",
+              "options": [
+                "Diviser la fréquence de l'horloge source pour ralentir l'incrémentation du compteur",
+                "Augmenter la résolution du convertisseur analogique-numérique",
+                "Inverser l'ordre des octets reçus sur la liaison série",
+                "Doubler la taille de la mémoire Flash disponible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prescaler divise l'horloge primaire afin d'obtenir des périodes de comptage plus longues adaptées aux besoins de l'application."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si un timer 16 bits compte de 0 jusqu'à sa valeur maximale, quelle est cette valeur ?",
+              "options": ["65535", "255", "1023", "4095"],
+              "correctAnswers": [0],
+              "explanation": "Un compteur de 16 bits non signé peut représenter 2¹⁶ valeurs, soit de 0 à 65535 (0xFFFF)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se produit-il lors d'un débordement de timer (timer overflow) ?",
+              "options": [
+                "Le compteur repasse à zéro et peut lever un drapeau d'interruption",
+                "Le microcontrôleur grille irrémédiablement",
+                "La mémoire vive est réinitialisée par défaut",
+                "L'horloge quartz s'arrête automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque le compteur atteint sa valeur maximale, il revient à zéro en déclenchant un événement de débordement (overflow)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Avec une horloge de 16 MHz et un prescaler réglé à 16, à quelle fréquence le timer s'incrémente-t-il ?",
+              "options": ["1 MHz", "16 MHz", "256 MHz", "100 kHz"],
+              "correctAnswers": [0],
+              "explanation": "La fréquence d'incrémentation est f = 16 MHz / 16 = 1 MHz, soit un incrément toutes les 1 µs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En mode 'Compare Match', que réalise le timer lorsque sa valeur égale celle du registre de comparaison ?",
+              "options": [
+                "Il peut commuter une broche de sortie ou déclencher une interruption dédiée",
+                "Il stoppe définitivement l'exécution du code principal",
+                "Il efface la table des vecteurs d'interruption",
+                "Il force la réinitialisation de la mémoire vive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mode comparaison permet de générer des fronts d'onde très précis ou de déclencher des événements périodiques sans charge CPU."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que mesure le mode 'Capture' (Input Capture) d'un timer matériel ?",
+              "options": [
+                "L'instant précis auquel survient une transition sur une broche d'entrée",
+                "La tension efficace du secteur alternatif",
+                "La résistance interne du quartz oscillateur",
+                "Le courant consommé par l'étage de puissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Input Capture fige la valeur courante du timer lors d'un événement externe, permettant de mesurer précisément une durée ou une fréquence."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la fonction d'une horloge temps réel (RTC) par rapport à un timer standard ?",
+              "options": [
+                "Conserver l'heure calendaire (date, heures, minutes) même hors tension grâce à une pile",
+                "Accélérer les calculs vectoriels du processeur",
+                "Réguler la tension continue du bus CAN",
+                "Filtrer les bruits parasites sur les entrées logiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une RTC (Real-Time Clock) fournit une référence horaire absolue en maintenant le calendrier sous très faible consommation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un système d'exploitation temps réel (RTOS), quel élément génère le 'SysTick' ?",
+              "options": [
+                "Un timer dédié déclenchant une interruption périodique pour l'ordonnanceur",
+                "Une impulsion manuelle de l'opérateur sur un commutateur",
+                "La réception d'un paquet de données réseau",
+                "Le redémarrage du régulateur de tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SysTick est une interruption de timer à fréquence fixe (ex: 1 kHz) qui rythme le changement de tâche au sein du RTOS."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la période T d'un timer comptant N pas avec une fréquence d'horloge de comptage f_count ?",
+              "options": [
+                "T = N / f_count",
+                "T = N × f_count",
+                "T = f_count / N",
+                "T = (f_count)² / N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque pas durant 1 / f_count, le temps nécessaire pour compter N pas est donné par T = N / f_count."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Entrées/Sorties numériques et déclenchements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types de transitions sur un signal logique peuvent être configurés pour déclencher une interruption externe ?",
+              "options": [
+                "Front montant (rising edge)",
+                "Front descendant (falling edge)",
+                "Tension continue stabilisée sans variation",
+                "Changement d'état logique (toggle)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les broches d'interruption externe détectent généralement les fronts montants, descendants ou les deux (tout changement d'état)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel phénomène parasite survient lors de l'appui sur un bouton poussoir mécanique ?",
+              "options": [
+                "Des rebonds mécaniques créant une série d'oscillations logiques rapides",
+                "Une inversion permanente de la polarité de la carte",
+                "Une surtension détruisant instantanément la broche",
+                "Une baisse irréversible de la fréquence du processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lames élastiques d'un contact mécanique rebondissent pendant quelques millisecondes, générant de fausses impulsions multiples."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment réalise-t-on un anti-rebond logiciel simple et efficace ?",
+              "options": [
+                "En ignorant les nouvelles transitions pendant un délai de garde suivant la première détection",
+                "En augmentant indéfiniment la tension de polarisation",
+                "En désactivant définitivement les interruptions du système",
+                "En inversant la logique des registres de configuration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un filtrage logiciel ou un timer de masquage (généralement 10 à 50 ms) permet d'éliminer les détections multiples parasites."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composant passif externe permet un anti-rebond matériel élémentaire ?",
+              "options": [
+                "Un circuit RC (résistance-condensateur) associé à un trigger de Schmitt",
+                "Une diode Zener montée en direct sans résistance",
+                "Une inductance pure en série avec le bus de données",
+                "Un fusible thermique réarmable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le condensateur amortit les variations rapides de tension et la porte à hystérésis (Schmitt) garantit une transition logique franche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la fonction d'une résistance de tirage (pull-up) sur une broche d'entrée numérique ?",
+              "options": [
+                "Fixer un niveau logique haut par défaut lorsque le circuit externe est ouvert",
+                "Augmenter l'intensité maximale fournie par l'alimentation",
+                "Protéger le microcontrôleur contre les courts-circuits à la terre",
+                "Générer une oscillation sinusoïdale de référence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans pull-up (ou pull-down), une entrée non connectée reste flottante et capte des bruits électromagnétiques imprévisibles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le mode de sortie 'Collecteur ouvert' (ou drain ouvert) ?",
+              "options": [
+                "La sortie ne peut que tirer la ligne à la masse ou la laisser flottante à haute impédance",
+                "La sortie impose toujours une tension double de celle de l'alimentation",
+                "La sortie est connectée en permanence à la terre via un fusible",
+                "La sortie délivre un courant alternatif triphasé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En drain ouvert, le transistor peut relier la sortie à 0 V ; le retour au niveau haut nécessite une résistance de pull-up externe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quoi sert un registre de direction de port (ex: DDR ou MODER) dans un microcontrôleur ?",
+              "options": [
+                "À définir individuellement chaque broche comme entrée ou comme sortie",
+                "À modifier la direction du flux de données sur le réseau internet",
+                "À orienter le sens de rotation du moteur principal",
+                "À inverser la mémoire Flash et la mémoire RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le registre de direction commande l'étage tampon de chaque GPIO pour le configurer en récepteur (entrée) ou émetteur (sortie)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel avantage offre une entrée numérique à hystérésis (Trigger de Schmitt) ?",
+              "options": [
+                "Éviter les commutations intempestives lors du passage de signaux lents ou bruités",
+                "Convertir directement les tensions négatives en signaux binaires",
+                "Réduire la consommation de la carte à zéro watt",
+                "Supprimer tout retard de propagation dans la puce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hystérésis définit deux seuils distincts (haut et bas), empêchant les oscillations lorsque l'entrée traverse lentement la zone de transition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'état 'haute impédance' (Hi-Z) d'une broche numérique ?",
+              "options": [
+                "La broche se comporte comme un circuit ouvert déconnecté du reste du bus",
+                "La broche injecte un courant très élevé dans le circuit",
+                "La broche impose une tension infinie sur la ligne",
+                "La broche conduit directement tout le courant vers la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état Hi-Z isole électriquement la broche, permettant à un autre composant de piloter la ligne partagée sans conflit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le cas d'une interruption sur changement d'état (Pin Change Interrupt), que doit faire l'ISR pour identifier la broche activée ?",
+              "options": [
+                "Comparer l'état logique lu sur le port avec l'état précédent mémorisé",
+                "Consulter le registre de la batterie",
+                "Interroger l'adresse IP de la passerelle réseau",
+                "Attendre l'expiration du chien de garde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une interruption commune à plusieurs broches nécessite une relecture du port pour déterminer par masque quelle broche a changé d'état."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Machines à états finis et diagrammes états-transitions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les éléments constitutifs indispensables d'une machine à états finis (FSM) ?",
+              "options": [
+                "Un ensemble fini d'états discrets",
+                "Des transitions conditionnées par des événements et des gardes",
+                "Une mémoire vive de taille obligatoirement illimitée",
+                "Une infinité de modes opératoires non dénombrables"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une FSM modélise le comportement d'un système à l'aide d'un ensemble fini d'états et de règles de transition précises."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique fondamentale d'une machine de Moore ?",
+              "options": [
+                "Les sorties dépendent exclusivement de l'état présent du système",
+                "Les sorties dépendent à la fois de l'état présent et des entrées actuelles",
+                "Elle ne possède aucun état stable",
+                "Ses transitions ne peuvent jamais être synchronisées par une horloge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le modèle de Moore, les sorties sont associées directement aux états, ce qui fiabilise leur synchronisme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une machine de Mealy, les sorties sont déterminées par :",
+              "options": [
+                "L'état présent combiné aux entrées courantes",
+                "Uniquement l'état suivant anticipé",
+                "L'historique complet de toutes les exécutions antérieures",
+                "Un générateur de nombres purement aléatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le modèle de Mealy, les sorties sont attachées aux transitions et réagissent immédiatement aux variations des entrées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle structure de contrôle en langage C est particulièrement adaptée pour coder une FSM simple ?",
+              "options": [
+                "L'instruction 'switch(etat)' avec plusieurs 'case'",
+                "Une succession de boucles 'while(1)' imbriquées",
+                "Un unique bloc 'do...while' sans condition de test",
+                "L'instruction 'goto' systématique vers des adresses fixes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure switch-case couplée à un type énuméré (enum) offre une lisibilité et une maintenabilité optimales pour coder une FSM."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une 'condition de garde' sur une transition d'état ?",
+              "options": [
+                "Une condition booléenne qui doit être vraie pour valider le franchissement de la transition",
+                "Un mot de passe protégeant la mémoire Flash contre l'écriture",
+                "Une temporisation obligatoire de 10 secondes",
+                "Une diode de protection contre les inversions de polarité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une garde est une expression logique associée à un événement : la transition n'est franchie que si la garde est évaluée à vrai."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel formalisme graphique normalisé en ingénierie système est fondé sur les machines à états étendues ?",
+              "options": [
+                "Les diagrammes d'états (State Machine Diagrams) de SysML / UML",
+                "Les schémas unifilaires de distribution basse tension",
+                "Les diagrammes de Gantt prévisionnels",
+                "Les tables de vérité booléennes à deux variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SysML et UML intègrent les diagrammes d'états pour modéliser les comportements dynamiques et réactifs des systèmes complexes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un état puits dans un graphe d'états ?",
+              "options": [
+                "Un état duquel aucune transition sortante n'est possible",
+                "Un état qui s'exécute uniquement lors de la mise sous tension",
+                "Un état qui génère des interruptions matérielles permanentes",
+                "Un état intermédiaire traversé à chaque cycle d'horloge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un état puits (ou absorbant) est un état terminal sans issue : le système y reste confiné une fois atteint."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet le concept d'états composites ou hiérarchiques (Statecharts) ?",
+              "options": [
+                "Factoriser des comportements communs en imbriquant des sous-états dans un super-état",
+                "Augmenter la vitesse de calcul du microprocesseur",
+                "Éviter d'utiliser une variable pour mémoriser l'état courant",
+                "Remplacer les liaisons séries par des connexions optiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Statecharts introduits par Harel permettent la hiérarchisation et la décomposition modulaire de systèmes réactifs complexes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une FSM événementielle, comment l'état courant est-il généralement mis à jour ?",
+              "options": [
+                "À l'arrivée d'un événement qui déclenche une transition valide",
+                "De manière aléatoire après chaque instruction arithmétique",
+                "Uniquement lors de la reprogrammation du firmware",
+                "Par incrémentation constante toutes les millisecondes sans condition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La machine reste dans son état jusqu'à ce qu'un événement admissible provoque le changement d'état courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel risque majeur survient si deux transitions sortant d'un même état ont des conditions simultanément vraies sans ordre de priorité ?",
+              "options": [
+                "Le non-déterminisme du système",
+                "Une fusion physique des broches du processeur",
+                "La perte irréversible du programme en Flash",
+                "Une inversion de la tension d'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système doit être déterministe : pour un état et un ensemble d'entrées donnés, l'état suivant doit être unique et prévisible."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Modèles de communication asynchrone",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les principaux avantages d'un tampon circulaire (ring buffer) pour l'échange de données ?",
+              "options": [
+                "Permettre de découpler temporellement le producteur et le consommateur",
+                "Optimiser l'usage mémoire sans déplacement continuel des données en RAM",
+                "Multiplier la vitesse de la lumière sur les liaisons cuivre",
+                "Éliminer le besoin d'un émetteur sur la liaison"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le buffer circulaire permet à un producteur (ex: ISR de réception) d'empiler des octets sans bloquer le traitement principal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment gère-t-on les pointeurs d'écriture et de lecture dans un tampon circulaire ?",
+              "options": [
+                "Ils avancent à chaque opération et reviennent au début du tableau lorsqu'ils atteignent la fin",
+                "Le pointeur d'écriture reste toujours fixé à l'indice 0",
+                "Les deux pointeurs sont systématiquement remis à zéro après chaque octet",
+                "Ils sont stockés dans un registre inaccessible au logiciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opération modulo (ou masquage binaire si la taille est une puissance de 2) permet de boucler naturellement les indices."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'état 'dépassement de capacité' (overflow) dans une file de réception asynchrone ?",
+              "options": [
+                "Le producteur écrit plus vite que le consommateur ne lit et écrase des données non traitées",
+                "Le consommateur tente de lire dans une file vide",
+                "La tension électrique sur le bus dépasse la limite nominale",
+                "La fréquence d'horloge du processeur a chuté brutalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un overflow survient quand la file est saturée : de nouveaux éléments arrivent alors que le tampon est déjà plein."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une 'section critique' lors de la manipulation d'un buffer partagé entre une tâche et une ISR ?",
+              "options": [
+                "Une portion de code accédant à des variables partagées où les interruptions doivent être désactivées",
+                "Un secteur défectueux de la mémoire morte Flash",
+                "Une zone du circuit exposée à des températures extrêmes",
+                "Une commande provoquant l'arrêt d'urgence de la machine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protéger la section critique évite les conditions de course (race conditions) où une ISR modifierait les pointeurs pendant leur mise à jour."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur une liaison série UART asynchrone, comment les deux extrémités se synchronisent-elles ?",
+              "options": [
+                "Grâce au bit de départ (start bit) présent au début de chaque octet transmis",
+                "Par un câble d'horloge partagé dédié",
+                "En échangeant un signal radio haute fréquence",
+                "Par une mesure continue de la résistance du câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transmission asynchrone UART ne comporte pas d'horloge partagée : le récepteur se cale sur le front descendant du bit de START."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que représente la vitesse de transmission exprimée en bauds ?",
+              "options": [
+                "Le nombre de symboles ou changements d'états transmis par seconde sur le canal",
+                "Le nombre d'octets stockés par unité de surface de silicium",
+                "La tension crête à crête du signal logique",
+                "Le temps nécessaire pour exécuter une instruction en mémoire vive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit en bauds mesure le nombre de modulations de la ligne par seconde (égal aux bits/s pour un signal binaire à deux états)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quoi sert le bit de parité sur une trame de transmission série ?",
+              "options": [
+                "Détecter une éventuelle erreur sur un bit lors de la transmission",
+                "Chiffrer le message pour des raisons de sécurité",
+                "Indiquer que le message s'adresse à deux récepteurs",
+                "Doubler automatiquement la vitesse de transmission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bit de parité permet de détecter simplement si le nombre de bits à '1' a été altéré par une perturbation sur la ligne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel composant matériel permet de transférer des blocs de données en mémoire sans solliciter le CPU ?",
+              "options": [
+                "Le contrôleur DMA (Direct Memory Access)",
+                "Le régulateur linéaire LDO",
+                "Le comparateur analogique",
+                "L'oscillateur RC interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contrôleur DMA transfère directement les octets entre un périphérique (ex: UART, SPI) et la RAM, déchargeant le processeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une communication par file de messages, quel est l'avantage du couplage lâche entre modules ?",
+              "options": [
+                "Un module peut émettre sans connaître l'état instantané ou la vitesse de traitement du destinataire",
+                "Les câbles électriques peuvent être supprimés sans relais radio",
+                "Les erreurs de transmission sont converties en messages valides",
+                "Les composants consomment une puissance rigoureusement négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'asynchronisme et la mise en file isolent les modules : l'émetteur n'a pas à attendre la disponibilité du récepteur pour continuer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie un 'dépassement par le bas' (underflow) lors de la lecture d'une file d'attente ?",
+              "options": [
+                "La tentative de prélever un élément alors que la file est vide",
+                "L'écriture d'un octet de valeur zéro",
+                "L'apparition d'une tension négative sur la masse",
+                "La saturation de l'espace de stockage Flash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'underflow se produit lorsqu'un consommateur cherche à extraire une information d'une file ne contenant aucune donnée."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Multitâche coopératif et préemptif dans les microcontrôleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations caractérisent un ordonnancement préemptif par rapport à un ordonnancement coopératif ?",
+              "options": [
+                "L'ordonnanceur peut interrompre une tâche en cours sans son consentement",
+                "Une tâche prioritaire peut prendre la main immédiatement sur une tâche moins prioritaire",
+                "Chaque tâche doit obligatoirement rendre volontairement la main pour libérer le CPU",
+                "Aucune interruption matérielle ne peut être utilisée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En préemptif, le noyau (RTOS) utilise les interruptions d'horloge pour allouer le CPU et suspendre les tâches si nécessaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le risque majeur d'un ordonnanceur purement coopératif ?",
+              "options": [
+                "Si une tâche boucle indéfiniment ou tarde à rendre la main, tout le système est gelé",
+                "La mémoire Flash est effacée après chaque commutation de tâche",
+                "Le processeur ne peut plus exécuter d'instructions logiques",
+                "La tension d'alimentation s'effondre instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En multitâche coopératif, la régularité repose sur la bonne volonté de chaque tâche ; un blocage individuel bloque toutes les autres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le 'changement de contexte' (context switch) dans un RTOS ?",
+              "options": [
+                "La sauvegarde de l'état du processeur pour la tâche active et la restauration de celui de la tâche élue",
+                "Le remplacement physique de la puce de silicium",
+                "Le passage de la tension d'alimentation de 3,3 V à 5 V",
+                "La conversion d'un signal alternatif en signal continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le context switch sauvegarde les registres et le pointeur de pile de la tâche quittée avant de charger ceux de la nouvelle tâche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel objet de synchronisation permet de protéger une ressource partagée contre les accès simultanés ?",
+              "options": [
+                "Un mutex (exclusion mutuelle)",
+                "Un diviseur de tension résistif",
+                "Un compteur binaire asynchrone",
+                "Une diode de roue libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mutex garantit qu'une seule tâche à la fois peut détenir le verrou pour manipuler une ressource partagée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on l'inversion de priorité dans un système temps réel ?",
+              "options": [
+                "Une situation où une tâche prioritaire est indirectement bloquée par une tâche de faible priorité",
+                "Le classement alphabétique inversé des sous-programmes",
+                "L'inversion de la logique des broches d'entrée-sortie",
+                "La diminution automatique de la fréquence du processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inversion de priorité survient quand une tâche basse détient un mutex requis par une tâche haute et est préemptée par une tâche moyenne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mécanisme résout élégamment le problème de l'inversion de priorité ?",
+              "options": [
+                "Le protocole d'héritage de priorité (priority inheritance)",
+                "L'interdiction totale d'utiliser des variables globales",
+                "L'arrêt du quartz d'horloge principal",
+                "La réinitialisation brutale du système à chaque seconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec l'héritage de priorité, la tâche basse hérite temporairement de la priorité de la tâche haute bloquée sur le verrou."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un RTOS, chaque tâche possède obligatoirement :",
+              "options": [
+                "Sa propre zone de pile d'exécution (stack) dédiée",
+                "Son propre processeur physique indépendant",
+                "Sa propre alimentation stabilisée à découpage",
+                "Son propre quartz piézoélectrique externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque tâche doit avoir sa pile privée pour mémoriser ses variables locales et ses adresses de retour d'appel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle politique d'ordonnancement attribue à chaque tâche de même priorité un quantum de temps égal à tour de rôle ?",
+              "options": [
+                "Le tourniquet (Round-Robin)",
+                "Le premier arrivé premier servi non préemptif",
+                "Le tri à bulles dynamique",
+                "L'ordonnancement par détection de tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordonnancement Round-Robin distribue équitablement le temps processeur entre les tâches de même niveau de priorité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une situation d'interblocage (deadlock) ?",
+              "options": [
+                "Deux tâches s'attendent mutuellement sur des ressources verrouillées par l'autre, restant bloquées à jamais",
+                "Une coupure générale de l'alimentation électrique externe",
+                "La destruction physique des liaisons de données",
+                "L'impossibilité de compiler le code source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le deadlock survient lorsque la tâche A attend la ressource 2 verrouillée par B, tandis que B attend la ressource 1 verrouillée par A."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la particularité d'un système d'exploitation dit 'dur' (Hard Real-Time) ?",
+              "options": [
+                "Le non-respect d'une seule échéance temporelle (deadline) est considéré comme une défaillance critique",
+                "Le système est coulé dans une résine protectrice ultra-résistante",
+                "Il ne fonctionne qu'avec des signaux analogiques haute tension",
+                "Il interdit tout usage d'interruptions matérielles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un système temps réel dur (ex: freinage ABS, avionique), dépasser l'échéance temporelle équivaut à un dysfonctionnement catastrophique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Bus de communication événementiels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques techniques sont propres au bus industriel CAN (Controller Area Network) ?",
+              "options": [
+                "Arbitrage non destructif bit à bit fondé sur l'identifiant du message",
+                "Transmission différentielle sur deux fils (CAN_H et CAN_L)",
+                "Nécessité d'une adresse de nœud attribuée à chaque puce physique",
+                "Liaison optique obligatoirement synchrone avec horloge dédiée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bus CAN repose sur des paires différentielles et un arbitrage bit à bit où le message au plus petit identifiant est prioritaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur un bus CAN, quel niveau logique est qualifié de 'dominant' ?",
+              "options": [
+                "Le niveau logique 0",
+                "Le niveau logique 1",
+                "Le niveau haute impédance",
+                "Le niveau alternatif sinusoïdal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le niveau 0 est dominant : si deux nœuds émettent simultanément, le bit 0 l'emporte électriquement sur le bit récessif (1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi place-t-on deux résistances de 120 ohms aux extrémités d'une ligne de bus CAN ?",
+              "options": [
+                "Pour adapter l'impédance de la ligne et éviter les réflexions d'ondes du signal",
+                "Pour charger la batterie de sauvegarde de l'installation",
+                "Pour diviser par deux la tension d'alimentation générale",
+                "Pour filtrer les signaux à très basse fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les résistances de terminaison de 120 Ω égalisent l'impédance caractéristique de la paire torsadée (60 Ω équivalents) et évitent les échos."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur le bus série synchrone I2C, quels sont les deux signaux utilisés ?",
+              "options": [
+                "SDA (données série) et SCL (horloge série)",
+                "TXD (émission) et RXD (réception)",
+                "MOSI (sortie maître) et MISO (entrée maître)",
+                "CAN_H et CAN_L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bus I2C utilise deux lignes bidirectionnelles en collecteur ouvert : SDA pour les données et SCL pour le signal d'horloge."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment un récepteur acquitte-t-il la bonne réception d'un octet sur le bus I2C ?",
+              "options": [
+                "En tirant la ligne SDA au niveau bas pendant le 9e cycle d'horloge (bit ACK)",
+                "En envoyant une impulsion de haute tension sur SCL",
+                "En coupant temporairement son alimentation électrique",
+                "En émettant un signal radio de confirmation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant le neuvième coup d'horloge généré par le maître, le composant récepteur force SDA à '0' pour signifier l'acquittement (ACK)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur le bus SPI, à quoi sert le signal SS (ou CS) ?",
+              "options": [
+                "À sélectionner le circuit esclave avec lequel le maître souhaite communiquer",
+                "À transmettre l'horloge principale du système",
+                "À alimenter le capteur en énergie solaire",
+                "À réinitialiser la table des interruptions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ligne Slave Select (ou Chip Select), active au niveau bas, active l'esclave cible pour la transmission de données."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel avantage offre le protocole SPI par rapport à l'I2C en termes de débit ?",
+              "options": [
+                "Il fonctionne en liaison point à point Full-Duplex sans surcoût d'acquittement, atteignant des dizaines de MHz",
+                "Il utilise moins de fils de connexion que l'I2C",
+                "Il intègre un système d'adressage logiciel illimité",
+                "Il s'affranchit totalement du signal d'horloge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bus SPI dispose de lignes d'émission et de réception séparées (MOSI et MISO) et atteint des débits bien supérieurs à l'I2C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le protocole CAN, qu'est-ce que le mécanisme de 'Bit Stuffing' ?",
+              "options": [
+                "L'insertion automatique d'un bit de polarité inverse après cinq bits consécutifs identiques",
+                "L'effacement automatique des zéros inutiles dans le message",
+                "La compression de données sans perte sur le réseau",
+                "L'ajout d'octets de remplissage à la fin de chaque trame"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bit stuffing garantit des transitions d'état régulières sur la ligne pour permettre la resynchronisation des récepteurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment le bus CAN garantit-il l'intégrité des messages transmis ?",
+              "options": [
+                "Par un champ CRC (contrôle de redondance cyclique) calculé sur le corps de la trame",
+                "Par la présence obligatoire d'un câble de terre blindé",
+                "En limitant les messages à un seul octet de données",
+                "En réémettant systématiquement chaque trame dix fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le champ CRC de 15 bits permet à tous les nœuds du réseau de détecter d'éventuelles corruptions de bits avec une très haute fiabilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que se passe-t-il sur le bus CAN lorsqu'un nœud détecte une erreur de transmission ?",
+              "options": [
+                "Il émet un drapeau d'erreur (Error Frame) qui invalide la trame pour tous les récepteurs",
+                "Il se déconnecte définitivement du réseau",
+                "Il augmente sa tension de fonctionnement",
+                "Il bloque le processeur principal du véhicule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trame d'erreur viole volontairement la règle de bit stuffing, forçant tous les participants à rejeter le message corrompu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Gestion des erreurs et chiens de garde",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les causes courantes de plantage d'un système embarqué nécessitant une surveillance par chien de garde (Watchdog) ?",
+              "options": [
+                "Boucle infinie consécutive à une condition imprévue",
+                "Blocage dans l'attente d'une ressource ou d'un drapeau matériel défaillant",
+                "Augmentation normale du débit de calcul sans erreur",
+                "Stockage de constantes en mémoire Flash"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Watchdog détecte les blocages logiciels (boucles sans fin, attentes d'interruptions perdues) et réinitialise automatiquement le système."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le principe de fonctionnement fondamental d'un Watchdog matériel ?",
+              "options": [
+                "Un compteur décrémenté en permanence qui provoque un reset du microcontrôleur s'il atteint zéro",
+                "Un capteur thermique qui mesure l'échauffement du boîtier",
+                "Un circuit mesurant la pureté du signal de masse",
+                "Un fusible qui fond dès que la tension varie de 5 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme doit rafraîchir périodiquement le compteur (kick/feed) avant son échéance pour attester de son bon fonctionnement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si le programme principal oublie de rafraîchir le Watchdog avant le délai imparti ?",
+              "options": [
+                "Le Watchdog génère une réinitialisation matérielle (Reset) du microcontrôleur",
+                "Le code source est immédiatement supprimé de la Flash",
+                "Le système continue de fonctionner au ralenti",
+                "Le processeur bascule en calcul analogique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expiration du timer Watchdog force un Reset global, permettant au système de redémarrer dans un état initial propre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi est-il fortement déconseillé de rafraîchir le Watchdog directement dans une routine d'interruption périodique ?",
+              "options": [
+                "L'ISR de timer peut continuer à fonctionner normalement même si la boucle principale du programme est totalement plantée",
+                "Le Watchdog refuserait de compter les impulsions d'horloge",
+                "L'interruption ferait griller la mémoire vive",
+                "Le temps de calcul du timer serait multiplié par dix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placer le rafraîchissement dans une ISR masque le plantage de la boucle applicative principale, rendant la protection inefficace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un Watchdog à fenêtre (Window Watchdog) ?",
+              "options": [
+                "Un Watchdog qui déclenche un reset si le rafraîchissement intervient trop tôt ou trop tard",
+                "Un système de surveillance visuelle à travers le boîtier",
+                "Un logiciel de débogage pour système d'exploitation de bureau",
+                "Un capteur de luminosité ambiante pour écran industriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Window Watchdog impose une fenêtre temporelle stricte pour le rafraîchissement, détectant ainsi les emballements précoces du code."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle mesure de sécurité permet le circuit 'Brown-Out Reset' (BOR) intégré au microcontrôleur ?",
+              "options": [
+                "Maintenir le processeur en Reset si la tension d'alimentation chute sous un seuil critique",
+                "Déconnecter les broches en cas d'inversion thermique",
+                "Recharger la batterie de secours par induction",
+                "Chiffrer les données contenues dans les registres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le BOR évite l'exécution d'instructions erronées et la corruption de mémoire lorsque la tension d'alimentation devient insuffisante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un état de repli (ou mode dégradé) dans un automate industriel ?",
+              "options": [
+                "Une configuration sécurisée préprogrammée vers laquelle le système bascule lors d'une défaillance",
+                "L'arrêt du ventilateur de refroidissement",
+                "L'augmentation maximale de la vitesse des actionneurs",
+                "La recopie de tous les fichiers sur un serveur distant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas d'anomalie, le mode dégradé garantit la sécurité des personnes et des biens en plaçant les actionneurs en position sûre (fail-safe)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet la journalisation des erreurs (error logging) dans une mémoire non volatile (EEPROM ou Flash) ?",
+              "options": [
+                "Conserver l'historique des codes d'erreur et des états pour analyse post-incident",
+                "Accélérer le démarrage à froid de la machine",
+                "Augmenter la sensibilité des entrées analogiques",
+                "Supprimer le besoin d'un opérateur de maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les journaux d'événements enregistrés en mémoire non volatile permettent de diagnostiquer la cause d'un incident après coup."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que teste un contrôle de redondance cyclique (CRC) appliqué à la mémoire Flash au démarrage ?",
+              "options": [
+                "L'intégrité du firmware pour vérifier qu'aucune corruption d'octets n'a eu lieu",
+                "La vitesse maximale de rotation du disque dur",
+                "L'existence d'une connexion réseau sans fil",
+                "Le niveau d'usure des roulements à billes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le calcul du CRC au démarrage valide que le programme stocké en Flash n'a subi aucune dégradation physique avant de s'exécuter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le modèle de gestion d'erreurs en C, quelle valeur renvoie généralement une fonction système pour signaler un échec ?",
+              "options": [
+                "Un code d'erreur négatif ou non nul (ou un pointeur NULL)",
+                "La chaîne de caractères 'OK'",
+                "La tension courante mesurée sur la batterie",
+                "L'adresse du début de la mémoire Flash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par convention en C, le retour 0 indique souvent le succès et une valeur différente de zéro caractérise le code d'erreur spécifique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse et optimisation des systèmes événementiels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres mesurent la qualité temporelle d'un système événementiel temps réel ?",
+              "options": [
+                "Le temps de latence de réponse",
+                "La gigue temporelle (jitter)",
+                "Le poids volumique du boîtier en plastique",
+                "La couleur des diodes témoins de la carte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La latence (délai de réaction) et le jitter (variabilité de ce délai) sont les deux grandeurs critiques en temps réel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la gigue temporelle (jitter) ?",
+              "options": [
+                "La variation statistique du temps de réponse ou de la période d'un événement",
+                "La vitesse de déplacement des électrons dans le cuivre",
+                "L'augmentation progressive de la température du processeur",
+                "Le nombre de fois où le programme est recompilé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un jitter faible est essentiel pour assurer la régularité des asservissements numériques et des échantillonnages."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour minimiser la consommation électrique d'un nœud de capteurs sans fil, quelle stratégie logicielle applique-t-on ?",
+              "options": [
+                "Placer le CPU en mode veille profonde et ne le réveiller que sur interruption externe ou timer périodique",
+                "Laisser le processeur en boucle d'attente active permanente à pleine puissance",
+                "Supprimer toutes les résistances de polarisation du montage",
+                "Augmenter la fréquence de calcul au niveau maximal sans arrêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle d'activité (duty cycle) très faible (99 % en sommeil, 1 % en mesure/émission) maximise l'autonomie sur pile."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le taux de charge CPU moyen U d'une tâche périodique de période T et de temps d'exécution pire-cas C ?",
+              "options": ["U = C / T", "U = C × T", "U = T / C", "U = C + T"],
+              "correctAnswers": [0],
+              "explanation": "Le taux d'utilisation processeur correspond au ratio entre le temps d'exécution pire cas (WCET) et la période de la tâche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le WCET (Worst-Case Execution Time) d'un algorithme ?",
+              "options": [
+                "La borne supérieure du temps d'exécution dans les conditions les plus défavorables",
+                "Le temps moyen d'exécution mesuré sur un banc d'essai",
+                "Le délai nécessaire pour expédier le produit au client",
+                "La durée de garantie du microcontrôleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'estimation du WCET garantit mathématiquement que les tâches respecteront leurs échéances temporelles quoi qu'il arrive."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel risque engendre une profondeur de pile (stack depth) sous-évaluée lors d'interruptions imbriquées fréquentes ?",
+              "options": [
+                "Un débordement de pile (stack overflow) écrasant des données critiques en RAM",
+                "Une coupure thermique du régulateur de tension",
+                "La désaimantation des inductances de filtrage",
+                "L'inversion de polarité des broches de sortie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque interruption empile le contexte ; si la pile déborde sur le tas (heap) ou les variables globales, le comportement devient imprévisible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi privilégie-t-on l'allocation statique de mémoire plutôt que l'allocation dynamique (malloc) dans les systèmes critiques ?",
+              "options": [
+                "Pour éliminer le risque de fragmentation mémoire et garantir la disponibilité de l'espace à l'exécution",
+                "Pour accélérer la gravure des puces de silicium en usine",
+                "Pour permettre de connecter plus de capteurs analogiques",
+                "Pour remplacer les variables locales par des constantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'allocation dynamique présente un risque de fragmentation et de fuite mémoire inadmissible dans les applications critiques (ex: norme DO-178C)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel instrument de mesure permet de visualiser avec précision la chronologie des signaux numériques et des ISR ?",
+              "options": [
+                "Un analyseur logique numérique",
+                "Un débitmètre massique",
+                "Un luxmètre de précision",
+                "Un manomètre différentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyseur logique capture et affiche simultanément les transitions logiques sur de multiples broches pour vérifier les chronogrammes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment instrumente-t-on simplement une broche GPIO pour mesurer la durée d'une ISR à l'oscilloscope ?",
+              "options": [
+                "Mettre la broche au niveau haut en début d'ISR et la remettre au niveau bas à la fin",
+                "Brancher la broche directement au secteur 230 V",
+                "Faire clignoter une diode à une fréquence inaudible",
+                "Appliquer une tension sinusoïdale sur la broche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La largeur de l'impulsion observée à l'oscilloscope correspond fidèlement au temps d'exécution de la routine d'interruption."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le but d'un test de robustesse par injection de fautes logicielles ?",
+              "options": [
+                "Vérifier la capacité du système à détecter des anomalies et à retrouver un état stable et sûr",
+                "Mesurer la résistance mécanique du boîtier aux chocs physiques",
+                "Détruire délibérément les pistes en cuivre de la carte",
+                "Augmenter artificiellement le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'injection de fautes valide le bon comportement des mécanismes défensifs (watchdogs, timeouts, assertions, modes dégradés)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Traitement numérique du signal",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Chaîne d'acquisition et échantillonnage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Selon le théorème d'échantillonnage de Shannon-Nyquist, que doit respecter la fréquence d'échantillonnage Fe pour échantillonner sans perte un signal de fréquence maximale Fmax ?",
+              "options": [
+                "Fe doit être strictement supérieure au double de Fmax (Fe > 2·Fmax)",
+                "La fréquence de Nyquist vaut Fe / 2",
+                "Fe peut être arbitrairement inférieure à Fmax",
+                "Fe doit être égale à la moitié de Fmax"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le théorème de Shannon-Nyquist impose Fe > 2·Fmax pour éviter le repliement spectral, et Fe/2 définit la fréquence de Nyquist."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel phénomène néfaste se produit lorsque la condition de Shannon-Nyquist n'est pas respectée ?",
+              "options": [
+                "Le repliement spectral (aliasing) qui crée de fausses fréquences basses dans le signal",
+                "La fonte instantanée du câble de transmission",
+                "L'inversion de polarité de la source de tension",
+                "L'effacement complet de la mémoire Flash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le repliement spectral replie les composantes haute fréquence au-delà de Fe/2 dans la bande utile, altérant irrémédiablement le signal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si un signal audio contient des fréquences jusqu'à 20 kHz, quelle est la fréquence d'échantillonnage minimale théorique requise ?",
+              "options": ["40 kHz", "20 kHz", "10 kHz", "80 kHz"],
+              "correctAnswers": [0],
+              "explanation": "Fe_min = 2 × Fmax = 2 × 20 kHz = 40 kHz (ce qui explique par exemple la norme CD Audio fixée à 44,1 kHz)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composant électronique analogique maintient la tension constante pendant la conversion du CAN ?",
+              "options": [
+                "L'échantillonneur-bloqueur (Track and Hold)",
+                "La diode Zener de redressement",
+                "L'inductance de lissage de puissance",
+                "Le quartz piézoélectrique de résonance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échantillonneur-bloqueur fige la valeur instantanée de la tension sur une capacité afin qu'elle ne varie pas pendant le cycle de conversion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la relation reliant la période d'échantillonnage Te et la fréquence d'échantillonnage Fe ?",
+              "options": [
+                "Te = 1 / Fe",
+                "Te = Fe / 2",
+                "Te = 2 × π × Fe",
+                "Te = Fe²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La période d'échantillonnage Te est l'inverse de la fréquence d'échantillonnage Fe : Te = 1 / Fe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour une fréquence d'échantillonnage Fe = 8 kHz, quelle est la période d'échantillonnage Te ?",
+              "options": ["125 µs", "12,5 ms", "1,25 ms", "8 ms"],
+              "correctAnswers": [0],
+              "explanation": "Te = 1 / 8000 Hz = 0,000125 s = 125 µs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le domaine temporel, que produit l'échantillonnage idéal d'un signal continu s(t) ?",
+              "options": [
+                "Une suite discrète d'échantillons prélevés aux instants t = n·Te",
+                "Une tension continue parfaitement filtrée",
+                "Un signal carré d'amplitude constante",
+                "Une modulation en fréquence purement analogique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échantillonnage idéal discrétise l'axe du temps en prélevant les valeurs s[n] = s(n·Te) à intervalles réguliers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel composant place-t-on en amont immédiat de l'échantillonneur pour prévenir l'aliasing ?",
+              "options": [
+                "Un filtre analogique passe-bas dit anti-repliement",
+                "Un amplificateur opérationnel à gain infini",
+                "Un transformateur élévateur de tension",
+                "Un filtre réjecteur à 50 Hz uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre anti-repliement élimine toutes les composantes de fréquences supérieures à Fe/2 avant la numérisation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si un signal sinusoïdal de fréquence f = 7 kHz est échantillonné à Fe = 10 kHz, à quelle fréquence apparente apparaît-il après repliement ?",
+              "options": ["3 kHz", "7 kHz", "5 kHz", "17 kHz"],
+              "correctAnswers": [0],
+              "explanation": "Comme f > Fe/2 (5 kHz), la composante se replie à la fréquence apparente |f - Fe| = |7 - 10| = 3 kHz."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le spectre d'un signal échantillonné, que provoque la discrétisation temporelle ?",
+              "options": [
+                "La périodisation du spectre continu du signal avec une période égale à Fe",
+                "La division par deux de toutes les amplitudes spectrales",
+                "La suppression des composantes harmoniques paires",
+                "Le décalage linéaire de toutes les phases vers zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échantillonnage temporel se traduit en fréquence par la duplication périodique du spectre du signal autour de chaque multiple de Fe."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quantification et codage numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs interviennent directement dans le calcul du pas de quantification (quantum q) d'un CAN ?",
+              "options": [
+                "La plage de pleine échelle de tension (U_pe)",
+                "Le nombre de bits de résolution (N)",
+                "La résistance interne du multimètre de contrôle",
+                "La longueur physique du câble reliant le capteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le pas de quantification (quantum) vaut q = U_pe / 2^N (ou U_pe / (2^N - 1)), dépendant de la pleine échelle et du nombre de bits."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pas de quantification d'un CAN 10 bits ayant une plage de mesure de 0 à 5 V ?",
+              "options": [
+                "Environ 4,88 mV",
+                "Environ 19,5 mV",
+                "Environ 1,22 mV",
+                "Environ 9,76 mV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 10 bits, 2¹⁰ = 1024. Le quantum vaut q = 5 V / 1024 ≈ 4,88 mV."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de niveaux discrets distincts permet de coder un convertisseur ayant une résolution de 12 bits ?",
+              "options": ["4096", "1024", "2048", "256"],
+              "correctAnswers": [0],
+              "explanation": "Un mot binaire de N = 12 bits offre 2¹² = 4096 combinaisons possibles (niveaux de quantification)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'erreur maximale théorique commise lors de la quantification par arrondi (en fonction du quantum q) ?",
+              "options": ["± q / 2", "± q", "± 2 q", "± q / 4"],
+              "correctAnswers": [0],
+              "explanation": "Par arrondi au niveau le plus proche, l'écart entre la valeur réelle et la valeur quantifiée est compris entre -q/2 et +q/2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De combien de décibels augmente approximativement le rapport signal sur bruit de quantification (SNR) pour chaque bit de résolution supplémentaire ?",
+              "options": ["6,02 dB", "3,01 dB", "1,5 dB", "12 dB"],
+              "correctAnswers": [0],
+              "explanation": "La formule théorique SNR ≈ 6,02·N + 1,76 dB montre qu'ajouter 1 bit de résolution améliore le rapport signal sur bruit d'environ 6 dB."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que modélise le bruit de quantification d'un CAN ?",
+              "options": [
+                "L'erreur commise en substituant un continuum de tensions par un ensemble fini de valeurs discrètes",
+                "Le bruit thermique de la résistance de charge",
+                "Les interférences créées par le réseau électrique 50 Hz",
+                "L'instabilité mécanique de l'oscillateur à quartz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quantification discrétise l'amplitude et introduit un résidu assimilable à un bruit blanc uniformément distribué sur [-q/2, +q/2]."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsque la tension d'entrée dépasse la tension de pleine échelle du convertisseur ?",
+              "options": [
+                "Le signal subit une saturation (écrêtage) au code numérique maximal",
+                "Le convertisseur s'arrête définitivement",
+                "La valeur numérique repasse immédiatement à zéro",
+                "La résolution augmente automatiquement pour s'adapter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de dépassement de la plage d'entrée, le CAN plafonne au code binaire maximal (ex: 1023 pour un CAN 10 bits)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle représentation binaire utilise-t-on le plus souvent pour traiter des grandeurs signées en traitement numérique ?",
+              "options": [
+                "Le complément à deux",
+                "Le code binaire réfléchi (code Gray)",
+                "Le décimal codé binaire (BCD)",
+                "Le code unaire pondéré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complément à deux simplifie les opérations arithmétiques matérielles (additions et soustractions identiques pour entiers signés et non signés)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de la tension mesurée par un CAN 8 bits (pleine échelle 0-5 V) s'il renvoie le code binaire 128 (0x80) ?",
+              "options": ["2,50 V", "1,28 V", "3,75 V", "0,50 V"],
+              "correctAnswers": [0],
+              "explanation": "Pour 8 bits (256 pas), le code 128 représente exactement la moitié de l'échelle : 5 V × (128 / 256) = 2,50 V."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'indique le paramètre ENOB (Effective Number of Bits) d'un convertisseur réel ?",
+              "options": [
+                "Le nombre réel de bits effectifs après prise en compte des bruits et distorsions réels",
+                "Le nombre de broches d'alimentation du circuit intégré",
+                "Le nombre total d'octets stockés dans la mémoire tampon",
+                "La résolution maximale théorique atteignable en laboratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ENOB mesure la résolution réelle du CAN calculée à partir du SINAD (Signal to Noise and Distortion Ratio)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Convertisseurs analogique-numérique et numérique-analogique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types de convertisseurs analogique-numérique (CAN) sont couramment employés dans l'industrie ?",
+              "options": [
+                "CAN à approximations successives (SAR)",
+                "CAN Flash (ou parallèle)",
+                "CAN Sigma-Delta (Σ-Δ)",
+                "Moteur pas à pas à réluctance variable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les technologies SAR, Flash et Sigma-Delta couvrent la quasi-totalité des besoins en vitesse et précision de conversion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique majeure d'un CAN Flash ?",
+              "options": [
+                "Une vitesse de conversion extrêmement rapide au prix d'un nombre élevé de comparateurs (2^N - 1)",
+                "Une consommation électrique quasi nulle sans horloge",
+                "Une très faible surface de silicium pour 24 bits de résolution",
+                "L'impossibilité de fonctionner à plus de 100 Hz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CAN Flash compare la tension simultanément à tous les seuils en un seul coup d'horloge, idéal pour les très hautes fréquences (GS/s)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment fonctionne un convertisseur à approximations successives (SAR) ?",
+              "options": [
+                "Par recherche dichotomique bit par bit, du bit de poids fort (MSB) au bit de poids faible (LSB)",
+                "Par intégration continue d'une rampe de tension linéaire",
+                "Par comptage d'impulsions à fréquence variable",
+                "En comparant directement la couleur du signal lumineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le registre SAR teste chaque bit successivement pour approcher la tension d'entrée en N cycles d'horloge pour N bits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour quelle application privilégie-t-on un CAN de type Sigma-Delta (Σ-Δ) ?",
+              "options": [
+                "La très haute résolution (ex: audio, pesage 16 à 24 bits) avec suréchantillonnage",
+                "L'acquisition radar à plusieurs gigahertz",
+                "La mesure instantanée en un seul cycle de quelques picosecondes",
+                "La conversion sans aucun filtrage numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les CAN Σ-Δ utilisent le suréchantillonnage et le façonnage de bruit pour offrir une très haute résolution sur des bandes de fréquence modérées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle structure de circuit utilise un convertisseur numérique-analogique (CNA) à réseau R-2R ?",
+              "options": [
+                "Un réseau récurrent de résistances de seulement deux valeurs distinctes (R et 2R)",
+                "Une chaîne de N condensateurs de valeurs doublées à chaque étage",
+                "Une inductance bobinée à noyau de ferrite saturable",
+                "Un ensemble de transistors optocoupleurs montés en série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau en échelle R-2R ne nécessite que deux valeurs de résistance, ce qui facilite grandement sa fabrication et sa précision d'appairage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment peut-on réaliser une conversion numérique-analogique économique avec une simple broche PWM ?",
+              "options": [
+                "En faisant suivre le signal PWM d'un filtre passe-bas pour en extraire la valeur moyenne",
+                "En reliant la broche PWM à une diode électroluminescente sans résistance",
+                "En mesurant la fréquence avec un tachymètre numérique",
+                "En court-circuitant la sortie avec la masse du circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur moyenne d'un signal PWM est directement proportionnelle à son rapport cyclique ; un filtre passe-bas extrait cette composante continue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un signal PWM a une tension crête de 5 V et un rapport cyclique de 60 %, quelle est sa tension moyenne analogique ?",
+              "options": ["3,0 V", "2,5 V", "1,5 V", "4,0 V"],
+              "correctAnswers": [0],
+              "explanation": "U_moy = U_max × Rapport_cyclique = 5 V × 0,60 = 3,0 V."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la tension de référence (Vref) d'un convertisseur ?",
+              "options": [
+                "La tension étalon qui fixe la valeur de pleine échelle de conversion",
+                "La tension minimale pour alimenter le ventilateur",
+                "La chute de tension aux bornes des diodes de protection",
+                "La tension électrique du secteur alternatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension Vref sert d'étalon de comparaison : toute dérive ou bruit sur Vref dégrade directement la précision de la mesure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le temps d'établissement (settling time) d'un CNA ?",
+              "options": [
+                "Le temps nécessaire pour que la tension de sortie atteigne et reste dans une marge donnée de sa valeur finale",
+                "Le temps d'attente avant la première mise en service",
+                "La durée de soudure du composant sur le circuit imprimé",
+                "Le délai de décharge complète de la batterie principale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le settling time quantifie la dynamique du CNA lors d'une transition numérique abrupte (ex: passage de 0 à pleine échelle)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'erreur de non-linéarité différentielle (DNL) d'un CAN ?",
+              "options": [
+                "L'écart entre le pas réel mesuré entre deux codes successifs et le pas idéal (1 LSB)",
+                "L'écart global de gain sur toute l'échelle de mesure",
+                "La tension continue résiduelle mesurée pour une entrée nulle",
+                "La résistance thermique interne du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une DNL supérieure à 1 LSB en valeur absolue peut engendrer des codes manquants (non-monotonicité) lors de la conversion."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Filtrage analogique anti-repliement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les propriétés attendues d'un filtre anti-repliement idéal ?",
+              "options": [
+                "Un gain constant unitaire (0 dB) dans toute la bande passante utile",
+                "Une atténuation infinie pour toutes les fréquences supérieures à Fe / 2",
+                "Une amplification sélective des bruits thermiques haute fréquence",
+                "Une rotation de phase discontinue et imprévisible en bande utile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le gabarit idéal présente une coupure franche à la fréquence de Nyquist (Fe/2) tout en préservant le signal utile sans distorsion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle fréquence coupe-t-on généralement un filtre anti-repliement passe-bas ?",
+              "options": [
+                "À une fréquence de coupure Fc inférieure ou égale à la fréquence de Nyquist (Fe / 2)",
+                "À deux fois la fréquence d'échantillonnage Fe",
+                "À dix fois la fréquence d'horloge du processeur",
+                "À la fréquence du secteur 50 Hz obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour éviter l'aliasing, toute composante spectrale au-delà de Fe/2 doit être atténuée avant l'entrée dans le CAN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la pente d'atténuation dans la zone réjectée d'un filtre passe-bas passif RC du premier ordre ?",
+              "options": [
+                "-20 dB par décade (-6 dB par octave)",
+                "-40 dB par décade (-12 dB par octave)",
+                "-60 dB par décade (-18 dB par octave)",
+                "0 dB par décade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ordre supplémentaire apporte une pente d'atténuation asymptotique de -20 dB par décade en haute fréquence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la fréquence de coupure à -3 dB d'un filtre passe-bas passif composé de R et C ?",
+              "options": [
+                "Fc = 1 / (2 × π × R × C)",
+                "Fc = 2 × π × R × C",
+                "Fc = R / (2 × π × C)",
+                "Fc = C / (2 × π × R)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pulsation de coupure vaut ωc = 1 / (RC), soit une fréquence Fc = 1 / (2·π·R·C)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel filtre analogique d'ordre n présente une réponse en amplitude la plus plate possible dans sa bande passante (sans ondulation) ?",
+              "options": [
+                "Le filtre de Butterworth",
+                "Le filtre de Tchebychev",
+                "Le filtre elliptique de Cauer",
+                "Le filtre passe-tout de phase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre de Butterworth est dit 'maximalement plat' : son gain décroît de façon monotone sans aucune ondulation en bande passante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel filtre analogique offre la transition la plus raide entre bande passante et bande atténuée pour un ordre donné ?",
+              "options": [
+                "Le filtre elliptique (ou de Cauer)",
+                "Le filtre de Bessel",
+                "Le filtre de Butterworth",
+                "Le simple filtre RC du premier ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre elliptique optimise la raideur de coupure en acceptant des ondulations à la fois en bande passante et en bande atténuée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la qualité remarquable d'un filtre de Bessel ?",
+              "options": [
+                "Un temps de propagation de groupe quasi constant, préservant la forme temporelle des impulsions",
+                "Une pente d'atténuation infinie dès le premier ordre",
+                "Un gain infini sans alimentation externe",
+                "Une absence totale de composants capacitifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre de Bessel minimise la distorsion de phase (réponse impulsionnelle sans suroscillation), très utile pour les signaux transitoires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle structure active permet de réaliser facilement un filtre analogique du second ordre avec un amplificateur opérationnel ?",
+              "options": [
+                "La structure de Sallen-Key",
+                "Le pont redresseur de Graetz",
+                "L'oscillateur de Colpitts",
+                "Le miroir de courant de Wilson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure active de Sallen-Key est la topologie standard pour implémenter des filtres passe-bas et passe-haut d'ordre 2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi recourt-on souvent au suréchantillonnage (oversampling) lors de l'acquisition d'un signal ?",
+              "options": [
+                "Pour relâcher les contraintes de raideur sur le filtre anti-repliement analogique",
+                "Pour réduire le nombre d'octets stockés en mémoire",
+                "Pour supprimer le processeur de calcul numérique",
+                "Pour diviser par deux la consommation du capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En choisissant Fe >> 2·Fmax, la bande de transition s'élargit considérablement, permettant l'usage d'un filtre analogique simple d'ordre faible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut l'atténuation apportée par un filtre passe-bas à sa fréquence de coupure Fc ?",
+              "options": [
+                "-3 dB (le signal en tension est divisé par racine de 2)",
+                "0 dB (le signal n'est pas modifié)",
+                "-20 dB (le signal est divisé par 10)",
+                "-60 dB (le signal est quasiment nul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par convention, la fréquence de coupure est définie à -3 dB, ce qui correspond à une division de la puissance par 2 (amplitude divisée par √2)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Filtrage numérique : principes et équations de récurrence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages d'un filtre numérique comparé à un filtre analogique classique à composants discrets ?",
+              "options": [
+                "Insensibilité aux dérives thermiques et au vieillissement des composants",
+                "Paramètres et fréquences de coupure modifiables simplement par logiciel",
+                "Capacité à traiter directement des tensions électriques de plusieurs milliers de volts sans capteur",
+                "Suppression absolue de tout besoin de conversion numérique préalable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un filtre numérique est reproductible, ne dérive pas avec la température et s'adapte en temps réel par simple modification de coefficients."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'écrit la forme générale de l'équation de récurrence d'un filtre numérique reliant la sortie y[n] aux entrées x[n] et sorties passées ?",
+              "options": [
+                "y[n] = somme(b_k · x[n-k]) - somme(a_m · y[n-m])",
+                "y[n] = x[n] / n",
+                "y[n] = (x[n])² + (y[n-1])²",
+                "y[n] = integrale(x(t) dt)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation aux différences calcule l'échantillon courant y[n] comme une combinaison linéaire des entrées présentes/passées et des sorties antérieures."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que représente la notation x[n-1] dans un algorithme de traitement numérique du signal ?",
+              "options": [
+                "L'échantillon d'entrée prélevé à la période d'échantillonnage précédente (retard d'un échantillon)",
+                "La dérivée temporelle de l'entrée x",
+                "La valeur maximale atteinte par le signal",
+                "L'entrée x divisée par le nombre n d'itérations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice [n-k] modélise un retard temporel pur de k périodes d'échantillonnage (k · Te)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quoi correspond l'opérateur retard z⁻¹ dans le formalisme de la transformée en Z ?",
+              "options": [
+                "Un décalage temporel d'un échantillon dans le passé : x[n-1] correspond à X(z)·z⁻¹",
+                "Une division arithmétique par l'impédance complexe Z",
+                "Une intégration continue par rapport au temps",
+                "La valeur de la résistance de terminaison du bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En transformée en Z, multiplier par z⁻¹ équivaut rigoureusement à retarder le signal discret d'une période d'échantillonnage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Soit l'équation : y[n] = 0,5·x[n] + 0,5·x[n-1]. Quel type de filtre élémentaire cette équation réalise-t-elle ?",
+              "options": [
+                "Un filtre passe-bas numérique (moyenneur sur deux points)",
+                "Un filtre passe-haut parfait",
+                "Un amplificateur de puissance",
+                "Un oscillateur non linéaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faire la moyenne de deux échantillons consécutifs lisse les variations rapides (hautes fréquences) et conserve les composantes continues."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit l'équation : y[n] = x[n] - x[n-1]. Quel comportement fréquentiel présente ce filtre ?",
+              "options": [
+                "Un comportement passe-haut (bloque la composante continue car pour x constant, y = 0)",
+                "Un comportement passe-bas idéal",
+                "Un filtre passe-bande très sélectif",
+                "Un intégrateur pur de tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La différence entre deux échantillons successifs agit comme un dérivateur discret : il annule les composantes continues et amplifie les hautes fréquences."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la réponse impulsionnelle h[n] d'un filtre numérique ?",
+              "options": [
+                "La sortie du filtre lorsqu'on lui applique en entrée une impulsion unité discrète (delta de Kronecker)",
+                "La tension maximale admissible par le convertisseur",
+                "La fréquence d'horloge du microprocesseur",
+                "Le temps de chauffe de la carte électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réponse impulsionnelle caractérise totalement un système linéaire invariant : la sortie est le produit de convolution de l'entrée avec h[n]."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la fonction de transfert en Z notée H(z) d'un filtre discret ?",
+              "options": [
+                "H(z) = Y(z) / X(z)",
+                "H(z) = X(z) × Y(z)",
+                "H(z) = Y(z) - X(z)",
+                "H(z) = (X(z))² / Y(z)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, la fonction de transfert H(z) est le rapport entre la transformée en Z de la sortie Y(z) et celle de l'entrée X(z)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour évaluer la réponse fréquentielle d'un filtre numérique à partir de H(z), quelle substitution effectue-t-on ?",
+              "options": [
+                "On pose z = e^(j · 2 · π · f / Fe)",
+                "On remplace z par zéro",
+                "On pose z = Fe × t",
+                "On remplace z par l'infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaluer H(z) sur le cercle trigonométrique unité z = e^(j·ω·Te) fournit le gain et la phase du filtre pour chaque fréquence f."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle condition sur les pôles de la fonction de transfert H(z) garantit la stabilité au sens BIBO (entrée bornée / sortie bornée) ?",
+              "options": [
+                "Tous les pôles doivent être situés strictement à l'intérieur du cercle unité dans le plan complexe (|p_i| < 1)",
+                "Tous les pôles doivent avoir une partie imaginaire nulle",
+                "Les pôles doivent être situés en dehors du cercle unité (|p_i| > 1)",
+                "Le filtre ne doit posséder aucun zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un filtre discret est stable si et seulement si tous ses pôles ont un module strictement inférieur à 1."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Filtres à réponse impulsionnelle finie (RIF / FIR)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les propriétés intrinsèques remarquables des filtres RIF (FIR) ?",
+              "options": [
+                "Ils sont inconditionnellement stables car ils ne comportent aucun pôle non nul",
+                "Ils peuvent présenter une phase rigoureusement linéaire si leurs coefficients sont symétriques",
+                "Leur réponse impulsionnelle dure un temps infini",
+                "Ils nécessitent toujours une division par zéro pour converger"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sans boucle de rétroaction (pas de pôles hors de l'origine), les RIF sont toujours stables et permettent un temps de propagation de groupe constant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme de l'équation d'un filtre RIF d'ordre M comportant M+1 coefficients b_k ?",
+              "options": [
+                "y[n] = somme pour k de 0 à M de (b_k · x[n-k])",
+                "y[n] = a_1 · y[n-1] + b_0 · x[n]",
+                "y[n] = x[n] / (1 + x[n-1])",
+                "y[n] = y[n-1] × y[n-2]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sortie d'un RIF est une combinaison linéaire directe des M+1 derniers échantillons d'entrée : il s'agit d'une structure purement non récursive."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'avantage majeur d'un filtre à phase linéaire dans le traitement de signaux biomédicaux (ex: ECG) ou audio ?",
+              "options": [
+                "Toutes les composantes fréquentielles subissent le même retard temporel, évitant toute déformation de la forme d'onde",
+                "L'amplitude de sortie est automatiquement multipliée par dix",
+                "Le calcul ne demande aucune mémoire RAM",
+                "La fréquence d'échantillonnage peut être divisée par deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phase linéaire assure un retard de groupe constant : la forme du signal temporel (les pics du complexe QRS par exemple) est conservée sans distorsion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour obtenir une phase strictement linéaire avec un filtre RIF, quelle relation doivent vérifier ses coefficients h[k] ?",
+              "options": [
+                "Ils doivent être symétriques : h[k] = h[M - k] (ou antisymétriques)",
+                "Ils doivent tous être égaux à 1",
+                "Leur somme doit être rigoureusement nulle",
+                "Ils doivent suivre une progression géométrique de raison 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La symétrie (ou antisymétrie) des coefficients de la réponse impulsionnelle garantit mathématiquement la linéarité de la phase."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le principal inconvénient d'un filtre RIF par rapport à un filtre RII de gabarit équivalent ?",
+              "options": [
+                "Il nécessite un ordre bien plus élevé (beaucoup plus de multiplications et de mémoire)",
+                "Il présente un risque d'instabilité numérique soudaine",
+                "Il dégrade le rapport signal sur bruit du convertisseur",
+                "Il ne peut pas être implémenté sur un microcontrôleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour obtenir une transition raide, un RIF peut exiger des dizaines ou centaines de coefficients, augmentant la charge de calcul (opérations MAC)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle opération arithmétique élémentaire est exécutée de façon répétée lors du calcul d'un filtre RIF ?",
+              "options": [
+                "L'opération MAC (Multiply-Accumulate : multiplication et accumulation)",
+                "L'extraction de racine carrée",
+                "La division à virgule flottante double précision",
+                "Le calcul logarithmique en base 10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le calcul y[n] = ∑ b_k · x[n-k] est une succession de multiplications et d'additions (MAC), souvent accélérée matériellement dans les DSP."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle méthode classique de synthèse de filtre RIF utilise la troncature de la réponse idéale par une fenêtre de pondération ?",
+              "options": [
+                "La méthode des fenêtres (Hamming, Hanning, Blackman)",
+                "La méthode de transformation bilinéaire",
+                "La méthode des moindres carrés récursifs",
+                "La méthode du gradient conjugué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode des fenêtres tronque la réponse impulsionnelle idéale infinie (en sinus cardinal) à l'aide d'une fenêtre apodisée (ex: Hamming)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi évite-t-on de tronquer brutalement une réponse impulsionnelle avec une fenêtre rectangulaire ?",
+              "options": [
+                "Pour limiter les ondulations parasites dues au phénomène de Gibbs dans le domaine fréquentiel",
+                "Pour éviter de saturer la pile d'exécution du microcontrôleur",
+                "Pour empêcher le processeur de redémarrer inopinément",
+                "Parce qu'une fenêtre rectangulaire consomme trop d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La discontinuité d'une fenêtre rectangulaire crée des lobes secondaires importants (phénomène de Gibbs) qui dégradent la sélectivité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Soit un filtre RIF moyenneur à 4 coefficients : y[n] = 0,25·(x[n] + x[n-1] + x[n-2] + x[n-3]). Si l'entrée est constante égale à 10 V, que vaut la sortie stabilisée ?",
+              "options": ["10 V", "2,5 V", "40 V", "0 V"],
+              "correctAnswers": [0],
+              "explanation": "Le gain statique (en continu) vaut la somme des coefficients : 4 × 0,25 = 1. Pour x = 10 V, y = 10 V."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel algorithme d'optimisation classique permet de concevoir des filtres RIF à ondulation équi-répartie (equiripple) ?",
+              "options": [
+                "L'algorithme de Parks-McClellan (fondé sur Remez)",
+                "L'algorithme de Dijkstra pour les graphes",
+                "Le tri rapide (QuickSort)",
+                "L'algorithme de Viterbi pour le décodage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'algorithme de Parks-McClellan résout le problème d'approximation de Tchebychev pour concevoir des filtres RIF optimaux."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Filtres à réponse impulsionnelle infinie (RII / IIR)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles particularités distinguent les filtres RII (IIR) des filtres RIF (FIR) ?",
+              "options": [
+                "Ils comportent une boucle de rétroaction récursive utilisant des sorties passées",
+                "Ils permettent d'obtenir une coupure très raide avec un ordre bien plus faible",
+                "Leur phase est rigoureusement linéaire sur toute la bande passante",
+                "Ils ne peuvent jamais devenir instables en virgule fixe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les filtres RII sont récursifs et très efficaces en calcul pour un gabarit donné, mais leur phase n'est pas linéaire et ils peuvent être instables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'équation temporelle d'un filtre RII passe-bas du premier ordre couramment utilisé pour lisser un signal capteur ?",
+              "options": [
+                "y[n] = α · x[n] + (1 - α) · y[n-1]  (avec 0 < α < 1)",
+                "y[n] = x[n] + y[n-1]",
+                "y[n] = α · x[n] - α · x[n-1]",
+                "y[n] = x[n] / (1 - α)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce filtre (moyenne mobile exponentielle) applique un coefficient de récurrence (1-α) sur la sortie précédente pour lisser le signal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans le filtre y[n] = α·x[n] + (1-α)·y[n-1], que produit le choix d'un coefficient α très proche de 0 (ex: α = 0,05) ?",
+              "options": [
+                "Un filtrage très fort qui atténue fortement le bruit mais introduit un temps de réponse lent",
+                "Une amplification par vingt de l'amplitude du signal",
+                "La transformation immédiate en filtre passe-haut",
+                "Une instabilité qui fait diverger la sortie vers l'infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un petit α donne un grand poids à l'historique y[n-1], ce qui abaisse la fréquence de coupure et ralentit la réponse transitoire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode mathématique classique permet de transposer un filtre analogique continu H(s) en un filtre numérique stable H(z) ?",
+              "options": [
+                "La transformation bilinéaire",
+                "La régression linéaire simple par moindres carrés",
+                "Le développement en série de Taylor à l'ordre 0",
+                "La décomposition en valeurs singulières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transformation bilinéaire pose s = (2/Te)·(z - 1)/(z + 1) et mappe tout le demi-plan gauche de Laplace à l'intérieur du cercle unité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel effet de déformation fréquentielle introduit la transformation bilinéaire ?",
+              "options": [
+                "La compression (ou gauchissement) non linéaire de l'axe des fréquences (frequency warping)",
+                "Une inversion complète des basses et des hautes fréquences",
+                "Une multiplication de la fréquence de coupure par deux",
+                "Une suppression aléatoire de certaines harmoniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relation tangente ω_analogique = (2/Te)·tan(ω_numérique·Te / 2) nécessite une pré-déformation (pre-warping) lors de la conception."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour quelle raison décompose-t-on souvent un filtre RII d'ordre élevé en cascade de cellules du second ordre (biquads) ?",
+              "options": [
+                "Pour réduire la sensibilité aux erreurs d'arrondi et éviter l'instabilité numérique en virgule fixe",
+                "Pour diviser par deux la tension d'alimentation de la puce",
+                "Pour doubler la bande passante maximale du filtre",
+                "Pour rendre le filtre obligatoirement passif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mise en cascade de sections biquadratiques (Biquads SOS) limite la sensibilité des pôles à la quantification des coefficients."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un cycle limite (limit cycle) dans un filtre RII implémenté en précision finie ?",
+              "options": [
+                "Une oscillation parasite autonome d'amplitude bornée due aux arrondis des calculs arithmétiques",
+                "Le nombre maximal d'instructions autorisées dans une boucle",
+                "La vitesse de rotation maximale de l'arbre moteur",
+                "La durée de vie garantie du circuit électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de signal d'entrée, les erreurs de troncature/arrondi peuvent entretenir une oscillation résiduelle appelée cycle limite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que vaut le gain continu (à f = 0 Hz, soit z = 1) d'un filtre RII de fonction de transfert H(z) = (0,2) / (1 - 0,8·z⁻¹) ?",
+              "options": ["1", "0,2", "0,8", "5"],
+              "correctAnswers": [0],
+              "explanation": "En posant z = 1, on calcule H(1) = 0,2 / (1 - 0,8) = 0,2 / 0,2 = 1 (soit 0 dB en continu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'un des pôles d'un filtre RII a un module de 1,05 dans le plan complexe en Z, quel est son comportement ?",
+              "options": [
+                "Le filtre est instable et sa réponse diverge exponentiellement",
+                "Le filtre est parfaitement stable à gain constant",
+                "Le filtre devient automatiquement un filtre à phase linéaire",
+                "Le filtre bloque complètement toutes les composantes fréquentielles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout pôle de module supérieur ou égal à 1 (|p| ≥ 1) rend le système instable : la réponse impulsionnelle croît indéfiniment."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle forme de réalisation directe (Direct Form) minimise le nombre d'éléments mémoires (retards) pour un filtre RII ?",
+              "options": [
+                "La Forme Directe II canonique",
+                "La Forme Directe I",
+                "La structure purement parallèle sans mémoire",
+                "Le réseau en treillis non récursif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Forme Directe II partage les mêmes éléments de retard pour la partie récursive et la partie non récursive, minimisant la mémoire requise."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Transformée de Fourier discrète et FFT",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes concernant la Transformée de Fourier Rapide (FFT) par rapport à la TFD classique ?",
+              "options": [
+                "La FFT est un algorithme efficace qui réduit la complexité de calcul de O(N²) à O(N·log₂N)",
+                "Elle est particulièrement rapide lorsque le nombre d'échantillons N est une puissance de 2",
+                "Elle modifie les valeurs théoriques des coefficients spectraux calculés",
+                "Elle ne fonctionne que sur des signaux continus analogiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'algorithme de Cooley-Tukey calcule exactement la TFD mais en O(N·log₂N) opérations au lieu de N² pour les tailles N = 2^k."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la résolution fréquentielle (écart entre deux raies consécutives) Δf d'une TFD calculée sur N points à la fréquence d'échantillonnage Fe ?",
+              "options": [
+                "Δf = Fe / N",
+                "Δf = N / Fe",
+                "Δf = Fe × N",
+                "Δf = Fe / (2 × N)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espacement entre deux points du spectre discret est Δf = Fe / N = 1 / Tobs, où Tobs est la durée totale d'observation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si Fe = 1000 Hz et que l'on effectue une FFT sur N = 1024 points, quelle est approximativement la résolution fréquentielle Δf ?",
+              "options": [
+                "Environ 0,98 Hz",
+                "Environ 10 Hz",
+                "Environ 1,024 kHz",
+                "Environ 0,1 Hz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Δf = 1000 Hz / 1024 ≈ 0,977 Hz, soit environ 0,98 Hz entre deux raies successives."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que représente la raie d'indice k = 0 dans le résultat d'une TFD ?",
+              "options": [
+                "La composante continue (valeur moyenne) du signal",
+                "La composante à la fréquence de Nyquist Fe / 2",
+                "L'amplitude crête maximale du signal alternatif",
+                "Le taux de distorsion harmonique globale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour k = 0, le terme exponentiel e⁰ = 1 : la somme correspond à l'intégrale discrète du signal, proportionnelle à sa valeur moyenne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour un signal réel, quelle propriété de symétrie présente le spectre calculé par TFD ?",
+              "options": [
+                "Le spectre d'amplitude est pair et le spectre de phase est impair (symétrie hermitienne)",
+                "Le spectre est rigoureusement nul pour toutes les fréquences positives",
+                "Le spectre est constant sur toute la bande de Nyquist",
+                "Le spectre d'amplitude est antisymétrique par rapport à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour tout signal d'entrée réel, X[N - k] est le complexe conjugué de X[k] : la seconde moitié du spectre est redondante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le phénomène de fuite spectrale (spectral leakage) dans l'analyse par TFD ?",
+              "options": [
+                "La dispersion de l'énergie d'une sinusoïde sur plusieurs raies adjacentes due au fenêtrage temporel fini",
+                "La perte d'électrons par effet tunnel dans le processeur",
+                "L'atténuation du signal causée par la résistance des câbles",
+                "La disparition des composantes de fréquence nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la durée de la fenêtre n'est pas un multiple exact de la période du signal, la troncature étale l'énergie sur les fréquences voisines."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel moyen permet d'atténuer efficacement la fuite spectrale lors d'une analyse FFT ?",
+              "options": [
+                "Appliquer une fenêtre de pondération lisse (ex: Hanning, Hamming, Blackman) avant la FFT",
+                "Multiplier la fréquence d'échantillonnage par un facteur impair",
+                "Supprimer tous les échantillons pairs du signal",
+                "Réduire la résolution du convertisseur à 4 bits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fenêtre d'apodisation atténue doucement les extrémités du bloc temporel, réduisant les discontinuités et donc les lobes secondaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la technique du 'Zero-Padding' en traitement spectral ?",
+              "options": [
+                "Compléter le signal temporel par des zéros pour augmenter artificiellement le nombre de points de la FFT",
+                "Remplacer les échantillons négatifs par zéro",
+                "Annuler les coefficients spectraux de forte amplitude",
+                "Forcer la moyenne du signal à zéro avant l'analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zero-padding interpole le spectre calculé en resserrant les points d'affichage, bien qu'il n'améliore pas la résolution physique réelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel théorème énonce que l'énergie totale calculée dans le domaine temporel est égale à l'énergie totale dans le domaine fréquentiel ?",
+              "options": [
+                "Le théorème de Parseval",
+                "Le théorème de Thévenin",
+                "Le principe fondamental de la statique",
+                "Le théorème de Millman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le théorème de Parseval établit la conservation de l'énergie entre la représentation temporelle et la représentation fréquentielle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la fréquence réelle f_k associée au k-ième point de la FFT (pour k ≤ N/2) ?",
+              "options": [
+                "f_k = k × (Fe / N)",
+                "f_k = k × (N / Fe)",
+                "f_k = Fe / (k × N)",
+                "f_k = k² × Fe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice k correspond à la k-ième raie spectrale, de fréquence f_k = k · Δf = k · (Fe / N)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Traitement et conditionnement du signal capteur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles opérations font partie du conditionnement et pré-traitement numérique d'un signal issu d'un capteur ?",
+              "options": [
+                "La soustraction de l'offset (tare ou zéro mécanique)",
+                "La mise à l'échelle par un gain d'étalonnage pour convertir en unité physique",
+                "Le court-circuitage volontaire des bornes du capteur",
+                "La transformation magique d'un bruit thermique en signal pur sans calcul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le pré-traitement élimine les dérives d'offset et applique la courbe d'étalonnage pour convertir les valeurs brutes en grandeurs physiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on une moyenne glissante (moving average) sur une fenêtre de N échantillons ?",
+              "options": [
+                "y[n] = (1 / N) · somme pour k de 0 à N-1 de (x[n-k])",
+                "y[n] = N · x[n] + y[n-1]",
+                "y[n] = x[n] - x[n-N]",
+                "y[n] = (x[n] + x[0]) / 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La moyenne glissante calcule la moyenne arithmétique des N derniers points acquis, atténuant le bruit aléatoire à moyenne nulle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Par quel facteur l'écart-type d'un bruit blanc aléatoire est-il réduit lorsqu'on moyenne N mesures indépendantes ?",
+              "options": [
+                "Par un facteur racine carrée de N (√N)",
+                "Par un facteur N²",
+                "Le bruit reste rigoureusement inchangé",
+                "Par un facteur 2^N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moyenner N mesures indépendantes affectées d'un bruit gaussien réduit la variance par N, donc l'écart-type (bruit résiduel) par √N."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel filtre non linéaire est particulièrement efficace pour éliminer des bruits impulsifs aberrants (pics parasites / glitches) ?",
+              "options": [
+                "Le filtre médian",
+                "Le filtre passe-bas de Butterworth",
+                "Le dérivateur pur",
+                "Le filtre réjecteur à bande étroite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre médian classe les valeurs d'une fenêtre et retient la valeur centrale, rejetant totalement les valeurs aberrantes isolées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour détecter le dépassement d'un seuil critique sans subir de commutations intempestives dues au bruit, quel algorithme applique-t-on ?",
+              "options": [
+                "Un comparateur à seuils disjoints (hystérésis logicielle)",
+                "Un comparateur à seuil unique instantané",
+                "Une division par l'amplitude crête",
+                "Un redressement double alternance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hystérésis logicielle (seuil haut pour activer, seuil bas pour désactiver) immunise la décision contre les fluctuations locales du signal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'opération d'étalonnage (ou calibration) d'un capteur ?",
+              "options": [
+                "La détermination expérimentale de la relation liant la grandeur physique mesurée au signal numérique délivré",
+                "Le nettoyage de la surface extérieure de la sonde",
+                "La mesure de la résistance d'isolement du boîtier",
+                "L'ajustement de la vitesse de la liaison série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étalonnage identifie les paramètres de la fonction de transfert (pente, décalage, non-linéarités) à partir de points d'étalon connus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un capteur de température linéaire délivre 0 V à 0 °C et 2,5 V à 100 °C, quelle est sa sensibilité S ?",
+              "options": [
+                "25 mV / °C",
+                "2,5 mV / °C",
+                "10 mV / °C",
+                "100 mV / °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sensibilité est S = ΔV / ΔT = (2,5 V - 0 V) / (100 °C - 0 °C) = 0,025 V/°C = 25 mV/°C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment compense-t-on numériquement la non-linéarité d'un capteur (ex: thermistance CTN) ?",
+              "options": [
+                "En utilisant une table de correspondance (Look-Up Table) ou un polynôme d'interpolation",
+                "En ignorant les températures supérieures à 50 °C",
+                "En appliquant une tension double à l'alimentation",
+                "En inversant les broches de connexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une LUT (Look-Up Table) en mémoire Flash ou un modèle polynomial (ex: équation de Steinhart-Hart) linéarise la réponse avec précision."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quoi sert la détection de passage par zéro (Zero-Crossing Detection) dans le traitement d'un signal alternatif ?",
+              "options": [
+                "À synchroniser des commandes de commutation ou à mesurer précisément la fréquence / la période",
+                "À détecter une coupure de courant accidentelle",
+                "À décharger les condensateurs de filtrage",
+                "À effacer la mémoire de l'automate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérer les instants de passage par zéro permet de commuter les triacs au minimum de bruit (ZVS) ou de chronométrer la période du réseau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la dérive thermique (thermal drift) d'un capteur ?",
+              "options": [
+                "La variation indésirable du point zéro ou de la sensibilité provoquée par les changements de température ambiante",
+                "L'échauffement interne provoqué par le passage du courant",
+                "La fusion du plastique sous l'effet du soleil",
+                "L'évaporation de l'électrolyte de la batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérive thermique altère les caractéristiques de mesure du capteur et doit être corrigée numériquement par une sonde de compensation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse sur le traitement numérique en temps réel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles contraintes fortes pèsent sur l'implémentation d'un filtre numérique en temps réel sur microcontrôleur ?",
+              "options": [
+                "Le temps de calcul de chaque échantillon doit être strictement inférieur à la période d'échantillonnage Te",
+                "L'espace mémoire vive (RAM) disponible pour les tampons d'historique est strictement borné",
+                "Le processeur doit impérativement fonctionner à la fréquence de 5 GHz",
+                "Toutes les opérations doivent être obligatoirement réalisées en logique floue"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En temps réel, tout le calcul d'un échantillon doit s'achever avant l'arrivée du suivant (T_calcul < Te) avec des ressources RAM limitées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel risque engendre l'usage de l'arithmétique en virgule fixe sans gestion adéquate des débordements ?",
+              "options": [
+                "Le débordement de capacité (overflow) qui provoque un changement de signe brutal et catastrophique",
+                "La division automatique de la vitesse du processeur par deux",
+                "L'effacement irréversible du chargeur de démarrage",
+                "La baisse de la tension de régulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En arithmétique signée sans saturation, un dépassement positif reboucle vers les valeurs négatives, causant des instabilités majeures."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment l'arithmétique saturante (saturation arithmetic) protège-t-elle les calculs dans un DSP ?",
+              "options": [
+                "En bloquant la valeur au maximum (ou minimum) admissible en cas de dépassement au lieu de reboucler",
+                "En générant une interruption d'arrêt d'urgence",
+                "En divisant automatiquement le résultat par zéro",
+                "En stockant l'excédent sur une carte mémoire externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arithmétique saturante fige la valeur à la pleine échelle lors d'un débordement, évitant les inversions brutales de polarité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le format de virgule fixe noté Q15 ?",
+              "options": [
+                "Un mot de 16 bits composé d'un bit de signe et de 15 bits fractionnaires représentant des nombres entre -1 et +0,9999",
+                "Un calcul réalisé avec 15 chiffres significatifs en base 10",
+                "Une valeur entière positive comprise entre 0 et 15",
+                "Un format réservé aux processeurs 64 bits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le format Q15 est le standard des DSP 16 bits : il normalise les grandeurs dans l'intervalle [-1,0 ; +1,0[ avec une résolution de 2⁻¹⁵."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt de déclencher la conversion du CAN par un événement matériel de timer plutôt que par logiciel ?",
+              "options": [
+                "Garantir une période d'échantillonnage rigoureusement constante sans gigue (jitter) liée au CPU",
+                "Économiser l'usage d'une résistance sur la carte",
+                "Augmenter l'amplitude crête du signal mesuré",
+                "Permettre de mesurer des tensions négatives sans composant additionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le déclenchement matériel par timer (Hardware Trigger) garantit un échantillonnage parfaitement isochrone, essentiel pour la validité spectrale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle architecture matérielle de processeur dispose de bus d'instructions et de données séparés pour accélérer le traitement du signal ?",
+              "options": [
+                "L'architecture de Harvard",
+                "L'architecture de Von Neumann",
+                "L'architecture série synchrone",
+                "L'architecture analogique distribuée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'architecture Harvard permet de lire simultanément une instruction et des données en mémoire en un seul cycle d'horloge."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une unité FPU (Floating-Point Unit) dans un microcontrôleur moderne (ex: ARM Cortex-M4F) ?",
+              "options": [
+                "Un coprocesseur matériel dédié à l'exécution rapide des opérations mathématiques à virgule flottante",
+                "Un régulateur de tension à découpage intégré",
+                "Une interface de communication réseau sans fil",
+                "Une mémoire tampon pour affichage vidéo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une FPU matérielle exécute les calculs sur les réels (float) en un seul cycle ou quelques cycles, sans alourdir le code par des bibliothèques logicielles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle technique de double mémoire tampon (ping-pong buffering / double buffering) utilise-t-on couramment avec le contrôleur DMA ?",
+              "options": [
+                "Le processeur traite les données d'un premier tampon pendant que le DMA remplit le second, et inversement",
+                "Les données sont systématiquement dupliquées pour être envoyées à deux serveurs",
+                "Les échantillons sont enregistrés dans l'ordre chronologique inverse",
+                "Les tampons sont effacés toutes les millisecondes sans traitement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le double buffering garantit un flux de traitement continu et ininterrompu entre les périphériques matériels et l'algorithme de calcul."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une boucle d'asservissement numérique en temps réel, quel effet néfaste produit un temps de calcul excessif du filtre ?",
+              "options": [
+                "Il introduit un retard pur (temps mort) qui réduit la marge de phase et peut déstabiliser la boucle fermée",
+                "Il augmente la fréquence de résonance mécanique de la machine",
+                "Il annule la consommation électrique du moteur",
+                "Il inverse la polarité du capteur de position"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le retard pur généré par les calculs consomme de la phase en haute fréquence (-ω·τ), dégradant la stabilité du système asservi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle démarche d'ingénierie système applique-t-on pour valider un algorithme de traitement du signal avant son déploiement sur la cible embarquée ?",
+              "options": [
+                "La simulation numérique sur modèle (Model-in-the-Loop / MIL) suivie de tests sur cible matérielle (Hardware-in-the-Loop / HIL)",
+                "L'installation directe sans essai sur une machine en production industrielle",
+                "La gravure immédiate d'un million de puces sans simulation préalable",
+                "Le remplacement arbitraire des capteurs par des résistances fixes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle de développement en V valide progressivement l'algorithme par simulation logicielle (MIL/SIL) puis sur banc temps réel (HIL)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -10,6 +10,12 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    // Même politique que `resolve.preserveSymlinks` de vite.config.ts : les
+    // paquets locaux liés en `file:` (@mdevs/icons, @mdevs/ui) doivent résoudre
+    // React, React DOM et @types/react* depuis `apps/vibe/node_modules/`, et non
+    // depuis la racine du dépôt via leurs symlinks. Sans cela, tsc voit deux
+    // identités de types React et casse bookIcons.ts en TS2322.
+    "preserveSymlinks": true,
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": false,
     "moduleDetection": "force",

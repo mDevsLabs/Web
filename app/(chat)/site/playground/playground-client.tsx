@@ -73,7 +73,7 @@ const fetcher = async (url: string) => {
 };
 
 export function PlaygroundClient() {
-  const { isAuthenticated, token } = useAuth();
+  const { isAuthenticated } = useAuth();
   const [mode, setMode] = useState<PlaygroundMode>("chat");
   const [selectedModels, setSelectedModels] = useState<
     Record<PlaygroundMode, string>
@@ -153,7 +153,7 @@ export function PlaygroundClient() {
       toast.error("Saisissez un prompt.");
       return;
     }
-    if (!token) {
+    if (!isAuthenticated) {
       toast.error("Connectez-vous pour exécuter une requête.");
       return;
     }
@@ -200,7 +200,6 @@ export function PlaygroundClient() {
         }),
         credentials: "include",
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -259,7 +258,7 @@ export function PlaygroundClient() {
     } finally {
       setIsRunning(false);
     }
-  }, [mode, prompt, selectedModels, token]);
+  }, [isAuthenticated, mode, prompt, selectedModels]);
 
   return (
     <div className="space-y-8">

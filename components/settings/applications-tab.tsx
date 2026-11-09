@@ -48,7 +48,6 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { BlacklineSettingsSection } from "@/components/blackline/blackline-settings-section";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
-import { ReglagesQuizzly } from "@/components/quizzly/reglages";
 import { SourceIcon } from "@/components/search/source-icon";
 import { PagesSettingsSection } from "@/components/settings/applications/pages-section";
 import {
@@ -1811,25 +1810,31 @@ export function ApplicationsTab() {
       <PagesSettingsSection />
 
       <section
-        className="flex scroll-mt-24 flex-col gap-6 border-t border-border/50 pt-4"
-        id="quizzly"
+        className="flex scroll-mt-24 flex-col gap-4 border-t border-border/50 pt-4"
+        id="quizzly-link"
       >
-        <div className="flex items-center justify-between border-b border-border/50 pb-3">
-          <div className="flex items-center gap-2.5">
-            <span className="flex size-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <GraduationCapIcon className="size-4" />
+        <div className="surface-card flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-3xl border border-q-border/40 bg-q-level/5">
+          <div className="flex items-center gap-3.5">
+            <span className="flex size-11 items-center justify-center rounded-2xl bg-q-level/15 text-q-level ring-1 ring-q-border/30 shrink-0">
+              <GraduationCapIcon className="size-6" />
             </span>
             <div>
-              <h3 className="text-base font-bold text-foreground sm:text-lg">
-                Quizzly
+              <h3 className="text-base font-bold text-foreground">
+                Quizzly — Onglet dédié aux réglages scolaires
               </h3>
-              <p className="text-xs text-muted-foreground">
-                Classe, matières et modèle du Coach
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Les réglages de classe, des matières, du Coach mAI, des sons et du rythme d'apprentissage ont été déplacés dans leur onglet dédié.
               </p>
             </div>
           </div>
+          <a
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-q-level px-4 py-2.5 text-xs font-bold text-q-on shadow-xs transition-all hover:opacity-90 shrink-0"
+            href="/settings?tab=quizzly"
+          >
+            <GraduationCapIcon className="size-4" />
+            <span>Ouvrir les réglages Quizzly</span>
+          </a>
         </div>
-        <ReglagesQuizzly />
       </section>
     </div>
   );

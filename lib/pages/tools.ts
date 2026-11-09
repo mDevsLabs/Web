@@ -3,7 +3,12 @@ import "server-only";
 import { tool } from "ai";
 import { z } from "zod";
 import { hashContent } from "@/lib/artifacts/hash";
-import { applyDocumentPatch, documentPatchSchema } from "@/lib/artifacts/patch";
+import {
+  anchorOpsToSelection,
+  applyDocumentPatch,
+  documentPatchSchema,
+  type SelectionContext,
+} from "@/lib/artifacts/patch";
 import {
   createPageProposal,
   getPageById,
@@ -32,6 +37,8 @@ function patchError(result: { errors: Array<{ message: string }> }): string {
 
 export function createPageTools(params: {
   pageId: string;
+  /** Sélection courante : ancre les ops qui la ciblent (issue #52). */
+  selection: SelectionContext | null;
   userId: string;
   writer: PageWriter;
 }) {
@@ -57,13 +64,23 @@ export function createPageTools(params: {
     }),
     modifier_page: tool({
       description:
-        "Applique tout de suite un patch ciblé sur la page. baseHash doit venir de lire_page. En cas d'échec, relis la page.",
+        "Applique tout de suite un patch ciblé sur la page. baseHash doit venir de lire_page. Pour un texte présent plusieurs fois, utilise anchor (offsets de la sélection) ou occurrence. En cas d'échec, relis la page.",
       execute: async (input) => {
         const current = await load();
         if (!current || current.userId !== params.userId) {
           return { error: "Page introuvable." };
         }
-        const applied = applyDocumentPatch(current.content, input);
+        // Les ops qui ciblent exactement la sélection sont ancrées sur
+        // l'occurrence choisie — jamais « la première qui passe » (issue #52).
+        const ops = anchorOpsToSelection(
+          current.content,
+          input.ops,
+          params.selection
+        );
+        const applied = applyDocumentPatch(current.content, {
+          baseHash: input.baseHash,
+          ops,
+        });
         if (!applied.ok) {
           return {
             baseHash: hashContent(current.content),
@@ -114,15 +131,22 @@ export function createPageTools(params: {
     }),
     proposer_modification: tool({
       description:
-        "Enregistre une proposition de patch sans modifier la page. L'utilisateur doit l'accepter. baseHash doit venir de lire_page.",
+        "Enregistre une proposition de patch sans modifier la page. L'utilisateur doit l'accepter. baseHash doit venir de lire_page. Pour un texte présent plusieurs fois, utilise anchor (offsets de la sélection) ou occurrence.",
       execute: async (input) => {
         const current = await load();
         if (!current || current.userId !== params.userId) {
           return { error: "Page introuvable." };
         }
+        // L'ancrage est appliqué AVANT l'enregistrement : la proposition gardée
+        // cible l'occurrence sélectionnée, même après rechargement.
+        const ops = anchorOpsToSelection(
+          current.content,
+          input.ops,
+          params.selection
+        );
         const preview = applyDocumentPatch(current.content, {
           baseHash: input.baseHash,
-          ops: input.ops,
+          ops,
         });
         if (!preview.ok) {
           return {
@@ -136,7 +160,7 @@ export function createPageTools(params: {
         const proposal = await createPageProposal({
           baseHash: input.baseHash,
           description: input.description ?? null,
-          ops: input.ops,
+          ops,
           pageId: current.id,
           userId: current.userId,
         });

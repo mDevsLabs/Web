@@ -3,6 +3,7 @@ import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Suspense } from "react";
 import { AppDialogHost } from "@/components/common/app-dialog-host";
 import { PlatformBridge } from "@/components/common/platform-bridge";
+import { SuiteCommandBarHost } from "@/components/common/suite-command-bar-host";
 import { ThemePreferenceSync } from "@/components/common/theme-preference-sync";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -125,6 +126,7 @@ export default function RootLayout({
             <ThemePreferenceSync />
             {children}
             <AppDialogHost />
+            <SuiteCommandBarHost />
             <Toaster
               position="top-center"
               theme="system"
