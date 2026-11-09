@@ -1,35 +1,17 @@
-# Prompts de correction — issues ouvertes, branche canary
+# Prompt unique — toutes les corrections ouvertes
 
-Référence de code : `canary` @ `39df0a52`. Chaque prompt décrit les issues du lot. Il ne renvoie pas vers GitHub pour le contenu du travail.
-
-Règle de taille : un lot majeur contient 5 issues, un lot mineur en contient 8.
-
-## Sommaire
-
-- **M1 — Comptes, jetons et installeurs** (majeure, 5) : #9, #10, #13, #28, #36
-- **M2 — Dépendances signalées** (majeure, 5) : #30, #33, #35, #37, #39
-- **M3 — Build, provenance et CI** (majeure, 5) : #11, #12, #14, #15, #17
-- **M4 — Chat, fichiers et pages** (majeure, 5) : #44, #45, #46, #47, #52
-- **M5 — Recherche et chiffres publics** (majeure, 5) : #48, #49, #50, #51, #71
-- **M6 — Structure et typage** (majeure, 5) : #16, #18, #19, #22, #24
-- **M7 — Erreurs, code mort et utilitaires** (majeure, 5) : #20, #21, #31, #32, #34
-- **M8 — Interface bloquante et segments** (majeure, 5) : #25, #26, #38, #56, #68
-- **m1 — Rendu, export et contenu affiché** (mineure, 8) : #23, #53, #54, #57, #65, #66, #67, #72
-- **m2 — Accessibilité des contrôles** (mineure, 8) : #55, #58, #59, #60, #61, #62, #63, #64
-- **m3 — Hygiène documentaire et dépôt** (mineure, 8) : #27, #29, #40, #41, #42, #43, #69, #70
-
----
-
-## Prompt M1
+Un seul prompt. Il décrit les 64 issues ouvertes (#9 à #72) et demande de les corriger toutes.
 
 ```text
 Tu es un développeur spécialisé dans le TypeScript.
 
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est M1 — Comptes, jetons et installeurs. Il contient 5 issues majeures, ni plus ni moins. Corriger les failles de compte, de session, de mise à jour Desktop et de journaux d’e-mail. Chaque issue est indépendante : ne pas les fusionner en un seul refactor d’authentification.
+Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce prompt unique regroupe les 64 corrections encore ouvertes, de l’issue #9 à l’issue #72. Tu dois les traiter toutes, dans l’ordre des groupes ci-dessous, sans t’arrêter après un groupe et sans en ajouter.
 
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
+La description de chaque issue fait foi. Ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Quand deux issues touchent le même fichier, garde les deux critères d’acceptation. Ne marque une issue comme réglée que si ses critères sont vérifiés.
 
-Issues à traiter :
+Les groupes servent seulement à ordonner le travail. Ils ne sont pas des prompts séparés.
+
+Groupe — Comptes, jetons et installeurs
 
 1. Issue #9 — [Majeure][P1] Auth — l’API Hono accepte un mot de passe d’un caractère
 
@@ -206,21 +188,10 @@ Hors périmètre
 - Ne pas recopier les adresses trouvées dans le code dans l’issue, les commits ou les logs de test.
 - Ne pas traiter dans ce lot les `console.log` de `scripts/admin.ts` ni réactiver `noConsole` sur tout le dépôt : le noter comme suite, pas comme critère.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt M2
+Groupe — Dépendances signalées
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est M2 — Dépendances signalées. Il contient 5 issues majeures, ni plus ni moins. Mettre à jour uniquement les dépendances encore sous un plancher d’advisory confirmé. Rejouer l’audit. Ne pas recopier les versions déjà corrigées sur canary.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #30 — [Majeure][P2] Site — Next.js 16.3.8 reste en deçà de la version racine
+6. Issue #30 — [Majeure][P2] Site — Next.js 16.3.8 reste en deçà de la version racine
 
 Constat
 Sur `canary`, le décalage de lock cité auparavant n’existe plus : `apps/site/package.json` et la racine du lock concordent (`0.9.3`, Next `16.3.8`). La racine de l’application utilise déjà Next `16.4.2`.
@@ -256,7 +227,7 @@ Hors périmètre
 - Ne pas traiter Undici/Nodemailer de la racine ici (issue #31) ni les dépendances Vibe (issue #33).
 - Ne pas prétendre qu’une exploitation a été tentée.
 
-2. Issue #33 — [Majeure][P2] Vibe — DOMPurify, markdown-it et Nodemailer restent signalés
+7. Issue #33 — [Majeure][P2] Vibe — DOMPurify, markdown-it et Nodemailer restent signalés
 
 Constat
 Le lock de `apps/vibe` contient encore DOMPurify `3.4.16`, markdown-it `15.0.2` et Nodemailer `10.0.15`. L’audit antérieur citait des XSS DOMPurify (dont GHSA-cg2g-xh64-v4q7), un DoS markdown-it corrigé en `>=15.0.3` (GHSA-gfr2-rv44-r23c) et un parsing d’adresses Nodemailer corrigé en `>=10.1.4`.
@@ -289,7 +260,7 @@ Hors périmètre
 - Ne pas présenter le score critical comme la preuve d’une XSS exploitable.
 - Ne pas corriger ici le décalage de types React de `bookIcons.ts` (issue #12), sauf s’il bloque le build de validation.
 
-3. Issue #35 — [Majeure][P2] Electron — Coder embarque encore Electron 44.5.1
+8. Issue #35 — [Majeure][P2] Electron — Coder embarque encore Electron 44.5.1
 
 Constat
 Sur `canary`, les deux applications ne sont plus dans le même état. Le lock Coder résout Electron `44.5.1`. Le lock Desktop résout Electron `44.10.2`, au-dessus du plancher `44.9.1` cité pour GHSA-jr5w-w6x2-84p9.
@@ -323,7 +294,7 @@ Hors périmètre
 - Ne pas ouvrir d’installeur non vérifié (issue #28).
 - Ne pas affirmer que chaque primitive X.509 vulnérable est appelée.
 
-4. Issue #37 — [Majeure][P2] Blackline — Vite 6.4.4 contourne server.fs.deny en développement
+9. Issue #37 — [Majeure][P2] Blackline — Vite 6.4.4 contourne server.fs.deny en développement
 
 Constat
 `apps/blackline/package.json` épingle Vite `6.4.4`. L’advisory GHSA-8g5g-mxqh-grgj décrit un contournement de `server.fs.deny` par paramètres de requête sur cette version, corrigé en `6.4.5`. Les scripts `dev` et `preview` lancent Vite avec `--host 0.0.0.0`.
@@ -354,7 +325,7 @@ Hors périmètre
 - Ne pas présenter ce défaut comme une faille du build de production.
 - Ne pas écrire de preuve de contournement opérationnelle.
 
-5. Issue #39 — [Majeure][P2] Mobile — la chaîne Capacitor conserve tar 6.2.1
+10. Issue #39 — [Majeure][P2] Mobile — la chaîne Capacitor conserve tar 6.2.1
 
 Constat
 `apps/mobile/package.json` déclare `@capacitor/cli` en `^6.2.3`. Le lock contient encore `tar@6.2.1`. `@xmldom/xmldom` est déjà en `0.9.12`, le plancher cité par l’ancienne formulation : ne plus le traiter comme non corrigé.
@@ -388,21 +359,10 @@ Hors périmètre
 - Ne pas recopier le décompte de 28 alertes comme un fait actuel.
 - Ne pas élargir le correctif au runtime de l’application mobile.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt M3
+Groupe — Build, provenance et CI
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est M3 — Build, provenance et CI. Il contient 5 issues majeures, ni plus ni moins. Rendre l’installation, le build Vibe, la provenance Wakies et le typecheck backend vérifiables. Un seul job qualité suffit : ne pas créer plusieurs workflows concurrents.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #11 — [Majeure][P2] Site — figer l’installation maintenant que le lock est resynchronisé
+11. Issue #11 — [Majeure][P2] Site — figer l’installation maintenant que le lock est resynchronisé
 
 Constat
 L’échec `npm ci` décrit auparavant (lock `1.1.5` contre manifeste `0.9.3`, Next `16.2.10` contre `16.3.8`) n’est plus présent sur `canary`. Les specs racine de `apps/site/package-lock.json` concordent avec `package.json`, y compris Next `16.3.8`.
@@ -437,7 +397,7 @@ Hors périmètre
 - Ne pas réécrire l’issue comme si Next `16.2.10` était encore verrouillé.
 - Ne pas absorber la mise à jour de sécurité Next (issue #30) ni le job complet lint/typecheck/test (issue #15), sauf pour y accrocher ce contrôle.
 
-2. Issue #12 — [Majeure][P2] Vibe — le build npm casse sur les types React de bookIcons
+12. Issue #12 — [Majeure][P2] Vibe — le build npm casse sur les types React de bookIcons
 
 Constat
 `apps/vibe/src/components/common/bookIcons.ts` type les icônes `@mdevs/icons` comme `BookIconComponent` (`ComponentType<SVGProps<SVGSVGElement>>`). Vibe déclare React `^19.3.0` ; la racine épingle React `19.3.1`. Les paquets locaux liés en `file:` peuvent donc exposer une autre identité de types React.
@@ -472,7 +432,7 @@ Hors périmètre
 - Ne pas mettre à jour DOMPurify dans ce lot (issue #33), sauf si le build l’exige.
 - Ne pas réécrire le catalogue d’icônes.
 
-3. Issue #14 — [Majeure][P2] Wakies — source:check ne peut pas valider un checkout canary
+13. Issue #14 — [Majeure][P2] Wakies — source:check ne peut pas valider un checkout canary
 
 Constat
 `scripts/check-wakies-source.mjs` lit `apps/wakies/SOURCE_MANIFEST.json` puis hash les octets du working tree. Sur `canary`, ce manifeste est absent : le contrôle échoue avant toute comparaison d’empreinte.
@@ -508,7 +468,7 @@ Hors périmètre
 - Ne pas réutiliser les SHA `8d33f251…` / `10febda8…` comme des faits de cet arbre : le manifeste n’y est pas.
 - Ne pas désactiver le contrôle pour le faire passer.
 
-4. Issue #15 — [Majeure][P2] CI — aucun job de lint, de typecheck ni de tests
+14. Issue #15 — [Majeure][P2] CI — aucun job de lint, de typecheck ni de tests
 
 Constat
 `.github/workflows/build.yml` ne contient aucune invocation de `ultracite`, `biome`, `typecheck`, `vitest` ou `test:unit`. Le seul garde-fou local est `.husky/pre-commit`, contournable avec `--no-verify` ou depuis l’interface GitHub.
@@ -543,7 +503,7 @@ Hors périmètre
 - Ne pas absorber le découpage des fonctions de 1 000 lignes ni la suppression des `any`.
 - Ne pas réintroduire un second ordonnanceur cron : le workflow supprimé ne doit pas revenir sous une autre forme.
 
-5. Issue #17 — [Majeure][P2] Types — le backend racine reste hors du typecheck
+15. Issue #17 — [Majeure][P2] Types — le backend racine reste hors du typecheck
 
 Constat
 `tsconfig.json` inclut l’application Next et certains scripts, et exclut nommément une partie de `scripts/`. Les modules Hono à la racine (`main.ts`, `auth.ts`, `vibe-*.ts`, `images.ts`, `config.ts`…) ne sont ni inclus ni exclus : `tsc --noEmit` ne les voit pas.
@@ -577,21 +537,10 @@ Hors périmètre
 - Ne pas déplacer le backend dans `app/` pour le faire typer.
 - Ne pas traiter la duplication `admin.ts` / `scripts/admin.ts` au-delà du choix de la copie à inclure.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt M4
+Groupe — Chat, fichiers et pages
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est M4 — Chat, fichiers et pages. Il contient 5 issues majeures, ni plus ni moins. Corriger les pertes de contexte, de tours, de fichiers et d’occurrences. Ne pas inventer une cause quand le constat dit qu’elle n’est pas établie.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #44 — [Majeure][P2] Chat — le mode Fantôme perd le contexte entre deux tours
+16. Issue #44 — [Majeure][P2] Chat — le mode Fantôme perd le contexte entre deux tours
 
 Constat
 Le mode Fantôme ne doit pas écrire la conversation dans l’historique permanent, mais le contexte doit rester disponible pendant la session. Dans un essai avec `nvidia/nemotron-3.5-super-vl:free`, l’assistant a accusé réception du marqueur `LILAS-427` puis a répondu `INCONNU` au tour suivant. Le constat a été confirmé avec deux tours courts.
@@ -627,7 +576,7 @@ Hors périmètre
 - Ne pas persister la conversation pour garder le contexte.
 - Ne pas généraliser au-delà de la perte de contexte en session.
 
-2. Issue #45 — [Majeure][P2] Chat — la régénération d’un document long renvoie parfois HTTP 500
+17. Issue #45 — [Majeure][P2] Chat — la régénération d’un document long renvoie parfois HTTP 500
 
 Constat
 Deux régénérations d’une réponse longue ont répondu HTTP 500 sur `/api/chat` (conversations QA B03 et B03bis). Une régénération courte (B02) a réussi. La cause source n’est pas identifiée. B03bis avait une réponse complète avant la seconde tentative.
@@ -661,7 +610,7 @@ Hors périmètre
 - Ne pas présenter le 500 comme systématique.
 - Ne pas absorber la perte persistante du tour (issue #46) comme déjà corrigée par un simple message d’erreur.
 
-3. Issue #46 — [Majeure][P1] Chat — une régénération truncate échouée supprime le tour valide
+18. Issue #46 — [Majeure][P1] Chat — une régénération truncate échouée supprime le tour valide
 
 Constat
 Après l’échec d’une régénération truncate, le message utilisateur et la réponse visés disparaissent au rechargement. Le chemin actuel supprime d’abord la suite : `components/chat/message-actions.tsx` autour de 271, `app/(chat)/actions.ts` `deleteTrailingMessages`, `lib/db/queries/chats.ts` `deleteMessagesByChatIdAfterTimestamp`.
@@ -697,7 +646,7 @@ Hors périmètre
 - Ne pas corriger uniquement l’affichage client si la base a déjà supprimé les lignes.
 - Ne pas traiter le 500 lui-même comme le seul livrable (issue #45).
 
-4. Issue #47 — [Majeure][P2] Fichiers — les imports PNG, JPEG et TXT acceptés échouent en HTTP 500
+19. Issue #47 — [Majeure][P2] Fichiers — les imports PNG, JPEG et TXT acceptés échouent en HTTP 500
 
 Constat
 `app/(chat)/api/files/upload/route.ts` accepte notamment `image/png`, `image/jpeg` et `text/plain`. Trois envois QA (PNG 20 062 o, TXT 272 o, JPEG 33 779 o) ont répondu HTTP 500. Le PNG et le TXT affichent « Échec de l’envoi du fichier » ; le JPEG passe par « Chargement » puis disparaît. Aucune pièce jointe n’est conservée.
@@ -730,7 +679,7 @@ Hors périmètre
 - Ne pas élargir les types acceptés.
 - Ne pas conclure que l’échec vient de l’authentification sans trace.
 
-5. Issue #52 — [Majeure][P2] Pages — le remplacement IA peut modifier une autre occurrence
+20. Issue #52 — [Majeure][P2] Pages — le remplacement IA peut modifier une autre occurrence
 
 Constat
 Un remplacement assisté a modifié la mauvaise occurrence d’un texte répété. Avec `ALPHA beta ALPHA`, l’occurrence non sélectionnée a été remplacée (observation unique, remplacement vu comme `SIGMA` dans la passe Goat). Le remplacement manuel de la seconde occurrence par `OMEGA` fonctionnait.
@@ -765,21 +714,10 @@ Hors périmètre
 - Ne pas présenter l’observation comme systématique.
 - Ne pas modifier le comportement du remplacement manuel.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt M5
+Groupe — Recherche et chiffres publics
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est M5 — Recherche et chiffres publics. Il contient 5 issues majeures, ni plus ni moins. Rendre les recherches honnêtes et aligner les quotas annoncés sur le compteur réellement appliqué. Ne pas élargir une autorisation au-delà de la route citée.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #48 — [Majeure][P2] Recherche — le filtre « Tout » masque des discussions trouvées
+21. Issue #48 — [Majeure][P2] Recherche — le filtre « Tout » masque des discussions trouvées
 
 Constat
 Dans la recherche globale, « Tout » n’affiche pas les conversations que « Discussions » trouve. Le client envoie `sources: []` lorsque `scope === "all"` (`components/chat/global-search-client.tsx` autour de 319). Le serveur traite cet ensemble comme aucune source (`lib/search/index-query.ts` autour de 1596, `requested.has`).
@@ -815,7 +753,7 @@ Hors périmètre
 - Ne pas élargir « Tout » à des sources non autorisées pour faire apparaître des résultats.
 - Ne pas confondre ce défaut avec le 401 du Support (issue #49) ni le 500 Wakies (issue #50).
 
-2. Issue #49 — [Majeure][P2] Support — la recherche publique reçoit 401 en mode anonyme
+22. Issue #49 — [Majeure][P2] Support — la recherche publique reçoit 401 en mode anonyme
 
 Constat
 La recherche documentaire du Support et la recherche du site appellent `/api/site/search`. Sans session, la requête répond HTTP 401 `auth_required`. Le champ affiche alors « La documentation ne répond pas pour le moment ».
@@ -850,7 +788,7 @@ Hors périmètre
 - Ne pas rendre publiques toutes les routes `/api/site/`.
 - Ne pas affaiblir le cookie de session pour faire passer la recherche.
 
-3. Issue #50 — [Majeure][P2] Wakies — une erreur de recherche s’affiche comme une absence de résultat
+23. Issue #50 — [Majeure][P2] Wakies — une erreur de recherche s’affiche comme une absence de résultat
 
 Constat
 `/api/wakies/search?q=Salut` a répondu HTTP 500 alors qu’une conversation portait ce titre. Le client (`components/wakies/workspace-app.tsx` autour de 179) convertit toute erreur en liste vide, affichée comme « Aucun résultat ». L’origine du 500 n’est pas établie.
@@ -883,7 +821,7 @@ Hors périmètre
 - Ne pas inventer la cause du 500.
 - Ne pas modifier la recherche globale (issue #48) dans ce correctif.
 
-4. Issue #51 — [Majeure][P2] Vibe — le lien #mAI ouvre un onglet Hashtags vide
+24. Issue #51 — [Majeure][P2] Vibe — le lien #mAI ouvre un onglet Hashtags vide
 
 Constat
 Depuis un post contenant `#mAI`, le lien ouvre `/vibe/explore?q=%23mAI&tab=hashtags`. L’onglet Hashtags indique qu’aucun hashtag n’a été trouvé, alors que l’onglet Publications contient le post tagué.
@@ -918,7 +856,7 @@ Hors périmètre
 - Ne pas expliquer le vide par une période de tendances sans preuve dans le code appelé.
 - Ne pas modifier le résumé de skill Brave (issue #72).
 
-5. Issue #71 — [Majeure][P2] Tarifs — les quotas API annoncés se contredisent
+25. Issue #71 — [Majeure][P2] Tarifs — les quotas API annoncés se contredisent
 
 Constat
 Trois familles de chiffres coexistent sur `canary`, sans que le compteur réellement appliqué soit identifié :
@@ -956,21 +894,10 @@ Hors périmètre
 - Ne pas inférer que le compteur hebdomadaire est le bon uniquement parce qu’il est dans `config.ts`, ni l’inverse.
 - Ne pas réécrire les quotas d’images ou de tokens dans ce lot, sauf s’ils sont dans la même phrase contradictoire.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt M6
+Groupe — Structure et typage
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est M6 — Structure et typage. Il contient 5 issues majeures, ni plus ni moins. Réduire la dette structurelle visible sans réécrire le dépôt. Extraire par responsabilité, déplacer les types, et rendre le lint honnête. Pas de suppression de masse.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #16 — [Majeure][P2] Scripts — quatre fichiers sont dupliqués entre la racine et scripts/
+26. Issue #16 — [Majeure][P2] Scripts — quatre fichiers sont dupliqués entre la racine et scripts/
 
 Constat
 Sur `canary`, quatre paires sont encore identiques à l’octet :
@@ -1008,7 +935,7 @@ Hors périmètre
 - Ne pas supprimer `email.ts` racine s’il est dans le graphe Val Town plutôt qu’un simple doublon de script : le vérifier avant suppression.
 - Ne pas fusionner aveuglément les 2 102 lignes d’écart.
 
-2. Issue #18 — [Majeure][P2] Structure — cinq fonctions dépassent encore 1 000 lignes
+27. Issue #18 — [Majeure][P2] Structure — cinq fonctions dépassent encore 1 000 lignes
 
 Constat
 Sur `canary`, la fermeture en colonne 0 confirme encore :
@@ -1047,7 +974,7 @@ Hors périmètre
 - Ne pas réécrire `MessagesPage.tsx` dans ce lot.
 - Ne pas traiter les 2 050 `any` (issue #19) ni les frontières d’import (issue #22) au-delà des fichiers touchés.
 
-3. Issue #19 — [Majeure][P2] Types — des milliers de any explicites avec noExplicitAny désactivé
+28. Issue #19 — [Majeure][P2] Types — des milliers de any explicites avec noExplicitAny désactivé
 
 Constat
 `biome.jsonc` désactive `noExplicitAny`. Hors `apps/` et `packages/`, `canary` contient encore au moins 1 850 occurrences de `: any` ou `as any`. L’ancienne mesure, formes comprises, était d’environ 2 050, dont 354 `catch (e: any)`.
@@ -1082,7 +1009,7 @@ Hors périmètre
 - Ne pas typer le backend racine ici (issue #17).
 - Ne pas remplacer un `any` par un autre `any` déguisé en `object`.
 
-4. Issue #22 — [Majeure][P2] Architecture — lib/ importe l’UI et des types métier vivent dans components/
+29. Issue #22 — [Majeure][P2] Architecture — lib/ importe l’UI et des types métier vivent dans components/
 
 Constat
 `lib/` importe des types définis dans `components/`, et au moins deux valeurs : `lib/editor/functions.tsx` importe `MessageResponse`, `lib/vibe/services/` importe `htmlToPlainText` et `stripVibeBasePath`. `ArtifactKind` et `VisibilityType` sont donc des types de domaine dont la source est un composant.
@@ -1115,7 +1042,7 @@ Hors périmètre
 - Ne pas déplacer des composants React dans `lib/` pour « inverser » la dépendance dans l’autre sens.
 - Ne pas traiter les 10 fichiers comme un prétexte pour réarchitecturer Vibe.
 
-5. Issue #24 — [Majeure][P2] Lint — biome.jsonc désactive des garde-fous qui masquent des bugs
+30. Issue #24 — [Majeure][P2] Lint — biome.jsonc désactive des garde-fous qui masquent des bugs
 
 Constat
 `biome.jsonc` désactive notamment `noEmptyBlockStatements`, `noExplicitAny`, `noArrayIndexKey`, `noUnusedVariables`, `noUnusedImports`, `noUnusedFunctionParameters`, `noUndeclaredVariables`, `useHookAtTopLevel` et `noExcessiveCognitiveComplexity`.
@@ -1150,21 +1077,10 @@ Hors périmètre
 - Ne pas réactiver d’un coup les 31 désactivations si certaines sont des choix documentés du design system.
 - Ne pas corriger ici les 50 `key={i}` (issue #23) au-delà du passage en `warn`.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt M7
+Groupe — Erreurs, code mort et utilitaires
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est M7 — Erreurs, code mort et utilitaires. Il contient 5 issues majeures, ni plus ni moins. Fermer les échecs silencieux, unifier les contrats d’erreur et les helpers, brancher ou retirer les garde-fous morts, et solder le reste d’audit racine. Ne pas supprimer un export encore atteint par Val Town.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #20 — [Majeure][P2] Erreurs — des catch vides avalent des échecs, dont les filtres d’outils
+31. Issue #20 — [Majeure][P2] Erreurs — des catch vides avalent des échecs, dont les filtres d’outils
 
 Constat
 `canary` compte 94 blocs `catch` vides sous `lib/`, `app/` et `components/`. Cinq sont dans `lib/chat/context.ts` (188, 269, 308, 418, 509). La ligne 308 entoure l’intersection des filtres d’outils. `noEmptyBlockStatements` est `off`.
@@ -1197,7 +1113,7 @@ Hors périmètre
 - Ne pas traiter tous les catch vides du dépôt comme des failles.
 - Ne pas activer `noEmptyBlockStatements` en `error` tant que les cas légitimes ne sont pas commentés (le `warn` relève de l’issue #24).
 
-2. Issue #21 — [Majeure][P2] API — 78 routes sortent encore de l’enveloppe errorResponse
+32. Issue #21 — [Majeure][P2] API — 78 routes sortent encore de l’enveloppe errorResponse
 
 Constat
 Sur `canary`, 220 routes `app/**/route.ts` existent et 142 importent `errorResponse`. 78 ne l’utilisent donc pas. Plusieurs répondent `{ error: "..." }` au lieu de `{ code, message }`, par exemple `app/(chat)/api/mai-search/recent/route.ts`, `mai-search/vote/route.ts` et `site/v1/images/usage/route.ts`. `api-executor/route.ts` sérialise encore à la main.
@@ -1228,7 +1144,7 @@ Hors périmètre
 - Ne pas réécrire le corps métier des 78 routes.
 - Ne pas imposer l’enveloppe aux réponses de succès ni aux flux SSE dont le contrat est déjà documenté.
 
-3. Issue #31 — [Majeure][P2] Dépendances — le lock racine conserve Vite 8.3.0 signalé
+33. Issue #31 — [Majeure][P2] Dépendances — le lock racine conserve Vite 8.3.0 signalé
 
 Constat
 L’ancienne formulation demandait Undici `>=7.30.1`, Nodemailer `>=10.1.4` et Zod `>=4.6.6`. Sur `canary`, le lock racine contient Undici `7.30.2`, Nodemailer `10.3.1` et Zod `4.6.7`. Ces trois planchers sont atteints.
@@ -1261,7 +1177,7 @@ Hors périmètre
 - Ne pas réécrire l’issue comme si Undici `7.30.0` et Nodemailer `10.0.16` étaient encore verrouillés.
 - Ne pas traiter le Site autonome ni Vibe ici.
 
-4. Issue #32 — [Majeure][P2] Code mort — des garde-fous exportés ne sont jamais branchés
+34. Issue #32 — [Majeure][P2] Code mort — des garde-fous exportés ne sont jamais branchés
 
 Constat
 Une analyse statique antérieure comptait 174 exports jamais référencés et 41 référencés seulement par des tests. Ces chiffres sont à recompter avant toute suppression.
@@ -1295,7 +1211,7 @@ Hors périmètre
 - Ne pas supprimer en masse les 174 exports.
 - Ne pas considérer un test unitaire comme une preuve d’usage en production.
 
-5. Issue #34 — [Majeure][P2] Utilitaires — readEnv, viewerIdOf et asRecord divergent en silence
+35. Issue #34 — [Majeure][P2] Utilitaires — readEnv, viewerIdOf et asRecord divergent en silence
 
 Constat
 Plusieurs helpers sont recopiés. `asRecord` existe en variantes qui ne rendent pas la même chose (`null` ou `{}`). `readEnv` est défini dans `lib/integrations/oauth.ts`, `lib/integrations/status.ts` et `lib/mcp/encryption.ts`. `viewerIdOf` est recopié dans trois requêtes Vibe. Le masquage d’e-mail est recopié, y compris la regex défaillante de l’issue #36.
@@ -1329,21 +1245,10 @@ Hors périmètre
 - Ne pas créer `lib/utils/everything.ts`.
 - Ne pas modifier le contrat public des routes pour unifier un helper.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt M8
+Groupe — Interface bloquante et segments
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est M8 — Interface bloquante et segments. Il contient 5 issues majeures, ni plus ni moins. Débloquer les dialogues, l’hydratation, le nommage qui masque une API, les segments nus et la commande CLI publique. Ne pas élargir chaque correctif à tout le dépôt.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #25 — [Majeure][P2] Hydratation — Math.random() initialise la salutation
+36. Issue #25 — [Majeure][P2] Hydratation — Math.random() initialise la salutation
 
 Constat
 `components/chat/greeting.tsx:30-32` tire l’index de salutation dans l’initialiseur de `useState` via `Math.random()`. Le composant est client et rendu dans une page pré-rendue. Le serveur et le client ne tirent pas le même index.
@@ -1375,7 +1280,7 @@ Hors périmètre
 - Ne pas « corriger » tous les `new Date()` du dépôt dans ce lot.
 - Ne pas changer le texte des salutations.
 
-2. Issue #26 — [Majeure][P2] Wakies — setInterval d’état masque l’API globale
+37. Issue #26 — [Majeure][P2] Wakies — setInterval d’état masque l’API globale
 
 Constat
 `components/wakies/WorkspaceDialog.tsx:108` déclare `const [interval, setInterval] = useState("86400")`. Le setter masque `setInterval` / `clearInterval` dans tout le composant. Le fichier n’appelle pas `clearInterval`.
@@ -1409,7 +1314,7 @@ Hors périmètre
 - Ne pas auditer les 53 effets dans ce lot.
 - Ne pas inventer une fuite serveur pour justifier le correctif.
 
-3. Issue #38 — [Majeure][P2] Routes — des segments restent sans loading.tsx ni metadata
+38. Issue #38 — [Majeure][P2] Routes — des segments restent sans loading.tsx ni metadata
 
 Constat
 `canary` compte 107 `page.tsx`, 15 `loading.tsx` et 80 pages sans `metadata` ni `generateMetadata`. `app/(chat)/error.tsx` existe déjà, ainsi que `app/error.tsx`, `app/global-error.tsx` et `app/(wakies)/wakies/share/error.tsx`. Il ne faut pas réajouter la frontière `(chat)`.
@@ -1443,7 +1348,7 @@ Hors périmètre
 - Ne pas créer 93 `loading.tsx` mécaniquement.
 - Ne pas présenter plusieurs absences de `error.tsx` local comme une panne actuelle du shell `(chat)`.
 
-4. Issue #56 — [Majeure][P2] Dialogues — l’overlay recouvre Projets et Bots
+39. Issue #56 — [Majeure][P2] Dialogues — l’overlay recouvre Projets et Bots
 
 Constat
 Les dialogues Nouveau projet et Créer un bot ont leurs contrôles interceptés par `div[data-slot="dialog-overlay"].md-overlay`. Le clic QA échoue avec `REF_NOT_INTERACTABLE`, cause `covered`.
@@ -1478,7 +1383,7 @@ Hors périmètre
 - Ne pas confondre avec le dépassement de hauteur (issue #57).
 - Ne pas retirer l’overlay pour « débloquer » les clics.
 
-5. Issue #68 — [Majeure][P2] CLI — la page publique recommande un paquet npm introuvable
+40. Issue #68 — [Majeure][P2] CLI — la page publique recommande un paquet npm introuvable
 
 Constat
 `app/(chat)/site/projects/cli/page.tsx` affiche `npm install -g @mdevslabs/mai-cli`. Ce nom répond 404. Le paquet publié cité est `@mdevs/mai-cli`, déjà utilisé dans `apps/site/lib/downloads-data.ts`. `apps/site/docs/documentation/app-cli.md` et `apps/site/app/projects/cli/page.tsx` répètent le nom introuvable.
@@ -1514,21 +1419,10 @@ Hors périmètre
 - Ne pas modifier les SDK Python ou TypeScript ici (issues #69 et #70).
 - Ne pas publier un paquet npm dans ce correctif.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt m1
+Groupe — Rendu, export et contenu affiché
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est m1 — Rendu, export et contenu affiché. Il contient 8 issues mineures, ni plus ni moins. Corriger des défauts localisés d’affichage, d’export et de clés de liste. L’issue du résumé Brave est un texte de skill, pas un bug d’export : la traiter à part.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #23 — [Mineure][P3] React — 50 listes utilisent encore key={i}
+41. Issue #23 — [Mineure][P3] React — 50 listes utilisent encore key={i}
 
 Constat
 `canary` contient encore 50 `key={i}` dans `components/` et `app/`. `noArrayIndexKey` est `off`. Les cas à risque cités restent à confirmer ligne à ligne : mentions filtrées (`mention-utils.tsx`), listes éditables (`agent-editor-dialog.tsx`), liste tronquée (`document-parser-card.tsx`). `greeting.tsx` est une liste statique, risque faible.
@@ -1558,7 +1452,7 @@ Hors périmètre
 - Ne pas traiter ce lot comme un prétexte pour réactiver toutes les règles Biome.
 - Ne pas changer l’ordre ni le filtre des listes.
 
-2. Issue #53 — [Mineure][P2] Export — le PDF remplace des caractères Unicode
+42. Issue #53 — [Mineure][P2] Export — le PDF remplace des caractères Unicode
 
 Constat
 `lib/export/document-export.ts` documente des polices PDF standard WinAnsi : les accents français passent, pas les emoji ni une partie d’Unicode. L’export PDF remplace donc des caractères que le document source contient.
@@ -1588,7 +1482,7 @@ Hors périmètre
 - Ne pas changer l’export DOCX dans ce correctif s’il encode déjà Unicode.
 - Ne pas réécrire le parseur Markdown.
 
-3. Issue #54 — [Mineure][P2] Export — le PDF et le DOCX perdent le gras inline
+43. Issue #54 — [Mineure][P2] Export — le PDF et le DOCX perdent le gras inline
 
 Constat
 `lib/export/document-export.ts` construit des runs inline (`inlineRuns`, autour de 545, et le commentaire autour de 142). Le gras inline Markdown n’est pas conservé dans les exports PDF et DOCX observés.
@@ -1618,7 +1512,7 @@ Hors périmètre
 - Ne pas refondre le moteur d’export.
 - Ne pas traiter les tableaux comme un bug de gras.
 
-4. Issue #57 — [Mineure][P2] Projets — le dialogue Nouveau projet dépasse les fenêtres peu hautes
+44. Issue #57 — [Mineure][P2] Projets — le dialogue Nouveau projet dépasse les fenêtres peu hautes
 
 Constat
 À 1270×649, le dialogue Nouveau projet mesure environ 769 px, commence à `y=-60` et place ses actions hors écran, sans défilement interne. Le dialogue Bot, lui, défile. Sources : `app/(chat)/projects/page.tsx` autour de 1082 et `components/ui/dialog.tsx` autour de 64.
@@ -1648,7 +1542,7 @@ Hors périmètre
 - Ne pas traiter le clic `covered` ici.
 - Ne pas généraliser à toutes les tailles d’écran sans mesure.
 
-5. Issue #65 — [Mineure][P2] Responsive — le titre Confidentialité est tronqué à 320–360 px
+45. Issue #65 — [Mineure][P2] Responsive — le titre Confidentialité est tronqué à 320–360 px
 
 Constat
 `app/(chat)/site/legal/privacy/page.tsx:43-49` affiche un H1 en `uppercase`, `text-4xl` dès le plus petit breakpoint, italique et très resserré. À 320 et 360 px, la fin du titre est masquée. À 390 px, le texte peut dépasser sa carte sans dépasser le viewport : ce cas n’est pas une troncature de viewport.
@@ -1677,7 +1571,7 @@ Hors périmètre
 - Ne pas changer le contenu juridique.
 - Ne pas appliquer le même correctif à toutes les pages légales sans les mesurer.
 
-6. Issue #66 — [Mineure][P2] Responsive — le bouton Documentation déborde à 768 px
+46. Issue #66 — [Mineure][P2] Responsive — le bouton Documentation déborde à 768 px
 
 Constat
 À 768×1024, le bouton « Parcourir la documentation » du hero `/site/docs` déborde d’environ 179 px, jusqu’à environ `x=947`. Le constat a été reproduit deux fois. Il ne faut pas le généraliser à toutes les largeurs. Source : `app/(chat)/site/docs/DocsClient.tsx` autour de 156-178.
@@ -1706,7 +1600,7 @@ Hors périmètre
 - Ne pas refondre toute la page Docs.
 - Ne pas généraliser le débordement de 179 px à d’autres viewports.
 
-7. Issue #67 — [Mineure][P2] Chat — fermer la recherche locale laisse le Markdown simplifié
+47. Issue #67 — [Mineure][P2] Chat — fermer la recherche locale laisse le Markdown simplifié
 
 Constat
 Après une recherche non vide dans une conversation, Échap masque la barre mais laisse le rendu textuel simplifié. Effacer le terme restaure tableaux, code et formules. Sources : `components/chat/messages.tsx` autour de 68 et 181, `components/chat/message.tsx` autour de 534.
@@ -1738,7 +1632,7 @@ Hors périmètre
 - Ne pas modifier la recherche globale (issue #48).
 - Ne pas changer le moteur Markdown au-delà de cette bascule.
 
-8. Issue #72 — [Mineure][P3] Skills — le résumé Brave Tech Watch décrit Maps
+48. Issue #72 — [Mineure][P3] Skills — le résumé Brave Tech Watch décrit Maps
 
 Constat
 Dans `lib/skill-templates/index.ts` autour de 193, la skill « Veille technologique Brave » a pour description « Zones de chalandise, temps de trajet et comparaison de lieux via Maps. » Ses instructions décrivent une veille via le serveur MCP Brave Search : sources, faits datés, incertitudes. Le résumé ne correspond pas aux instructions.
@@ -1767,21 +1661,10 @@ Hors périmètre
 - Ne pas modifier le routage des hashtags (issue #51).
 - Ne pas inventer de nouvelles capacités de veille.
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt m2
+Groupe — Accessibilité des contrôles
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est m2 — Accessibilité des contrôles. Il contient 8 issues mineures, ni plus ni moins. Exposer un nom, un état ou une hiérarchie accessible sur les contrôles cités. Ne pas changer le comportement métier. Ne pas présenter plusieurs H1 comme une invalidité HTML.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #55 — [Mineure][P3] Agent — une erreur d’outil JSON s’affiche comme Terminé
+49. Issue #55 — [Mineure][P3] Agent — une erreur d’outil JSON s’affiche comme Terminé
 
 Constat
 Une erreur d’outil dont la charge est du JSON s’affiche comme « Terminé » avec une coche verte. `lib/agent/tool-controller.ts` distingue `completed` et `failed` selon `result.success`. Le rendu (`components/ai-elements/tool.tsx`, `components/chat/message.tsx`) peut afficher le libellé de succès si l’état ou la charge dépliée ne portent pas l’échec.
@@ -1812,7 +1695,7 @@ Hors périmètre
 - Ne pas changer la politique d’autorisation des outils (issue #32).
 - Ne pas présenter toutes les coches vertes comme fausses.
 
-2. Issue #58 — [Mineure][P2] Accessibilité — les libellés Projet et Bot ne sont pas associés aux champs
+50. Issue #58 — [Mineure][P2] Accessibilité — les libellés Projet et Bot ne sont pas associés aux champs
 
 Constat
 Dans Nouveau projet et Créer un bot, les textes visibles Nom, Description et Instructions système ne sont pas reliés à leurs champs. `getByLabel` exact ne les trouve pas : le nom accessible vient du placeholder. Sources : `app/(chat)/projects/page.tsx` autour de 1091 et `components/agents/agent-editor-dialog.tsx` autour de 173 et 237.
@@ -1841,7 +1724,7 @@ Hors périmètre
 - Ne pas refondre les dialogues.
 - Ne pas traiter les pastilles de couleur ici (issue #59).
 
-3. Issue #59 — [Mineure][P3] Accessibilité — les choix de couleur des projets n’ont pas de nom
+51. Issue #59 — [Mineure][P3] Accessibilité — les choix de couleur des projets n’ont pas de nom
 
 Constat
 Le sélecteur de couleur de projet (`app/(chat)/projects/page.tsx` autour de 1162) expose des contrôles sans nom accessible. La couleur n’est perceptible que visuellement.
@@ -1870,7 +1753,7 @@ Hors périmètre
 - Ne pas changer la palette.
 - Ne pas modifier les libellés de texte (issue #58) au-delà du nécessaire pour le groupe.
 
-4. Issue #60 — [Mineure][P2] Accessibilité — le bouton d’arrêt n’a pas de nom accessible
+52. Issue #60 — [Mineure][P2] Accessibilité — le bouton d’arrêt n’a pas de nom accessible
 
 Constat
 `components/chat/input/stop-button.tsx` rend un bouton icône sans `aria-label`, sans texte et sans `title`. Il est affiché pendant `submitted` ou `streaming` (`multimodal-input.tsx` autour de 1044). Le nom accessible n’est ni « Arrêter » ni « Stop ».
@@ -1898,7 +1781,7 @@ Hors périmètre
 - Ne pas changer la logique d’arrêt.
 - Ne pas traduire d’autres boutons icône non cités.
 
-5. Issue #61 — [Mineure][P3] Accessibilité — les filtres de Bibliothèque n’annoncent pas leur état
+53. Issue #61 — [Mineure][P3] Accessibilité — les filtres de Bibliothèque n’annoncent pas leur état
 
 Constat
 Les filtres de catégorie et les filtres avancés de `/library` changent le contenu, mais leur état actif est seulement visuel. Les boutons n’exposent ni `aria-pressed` ni `aria-selected`. Source : `components/library/library-header.tsx` autour de 231 et 328.
@@ -1926,7 +1809,7 @@ Critères d'acceptation
 Hors périmètre
 - Ne pas renommer le panneau Filtres avancés ici (issue #62), sauf si le même contrôle porte les deux défauts.
 
-6. Issue #62 — [Mineure][P3] Accessibilité — le panneau Filtres avancés n’a pas de nom
+54. Issue #62 — [Mineure][P3] Accessibilité — le panneau Filtres avancés n’a pas de nom
 
 Constat
 Le panneau Filtres avancés de Bibliothèque n’a ni `aria-label` ni `aria-labelledby`. `components/ui/popover.tsx` ne fournit pas de nom par défaut. Source : `components/library/library-header.tsx` autour de 224.
@@ -1954,7 +1837,7 @@ Critères d'acceptation
 Hors périmètre
 - Ne pas changer la logique de filtre (issue #61) au-delà du nom du panneau.
 
-7. Issue #63 — [Mineure][P3] Accessibilité — Agents et Applications imbriquent deux landmarks main
+55. Issue #63 — [Mineure][P3] Accessibilité — Agents et Applications imbriquent deux landmarks main
 
 Constat
 `components/ui/sidebar.tsx` rend un `main` (`SidebarInset`). `app/(chat)/agents/agents-client.tsx` autour de 474 et `app/(chat)/tools/tools-client.tsx` autour de 80 en rendent un second. Les routes Agents et Applications exposent donc un landmark principal imbriqué.
@@ -1983,7 +1866,7 @@ Critères d'acceptation
 Hors périmètre
 - Ne pas réécrire toute la hiérarchie de titres (issue #64).
 
-8. Issue #64 — [Mineure][P3] Accessibilité — les pages Support répètent un H1
+56. Issue #64 — [Mineure][P3] Accessibilité — les pages Support répètent un H1
 
 Constat
 `app/(chat)/site/support/layout.tsx` rend un H1, et les pages Nouveau ticket et Statistiques en rendent un autre. La hiérarchie est redondante. Plusieurs H1 ne sont pas, en soi, une invalidité HTML : le problème à décrire est la redondance pour la navigation par titres.
@@ -2015,21 +1898,10 @@ Hors périmètre
 - Ne pas réécrire les textes d’aide.
 - Ne pas traiter les landmarks `main` ici (issue #63).
 
-Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
-```
 
-## Prompt m3
+Groupe — Hygiène documentaire et dépôt
 
-```text
-Tu es un développeur spécialisé dans le TypeScript.
-
-Tu travailles dans le dépôt mDevsLabs/Web, sur la branche canary (commit de référence 39df0a52). Ce lot est m3 — Hygiène documentaire et dépôt. Il contient 8 issues mineures, ni plus ni moins. Aligner la documentation et retirer les artefacts ou commentaires trompeurs. Ne pas publier de paquet, ne pas inventer une source, ne pas réécrire l’historique.
-
-Traite chacune des issues décrites ci-dessous. La description qui suit fait foi : ne te contente pas du numéro. Si un constat n’est plus reproductible sur canary, dis-le et ne le corrige pas par hypothèse. Interface, messages et commentaires de correctif en français. N’ajoute pas de any pour faire taire le compilateur. Ne traite aucune issue absente de cette liste. Quand un correctif touche un fichier partagé par deux issues de ce lot, garde les deux critères d’acceptation.
-
-Issues à traiter :
-
-1. Issue #27 — [Mineure][P3] Dépôt — des rapports et fichiers temporaires sont versionnés
+57. Issue #27 — [Mineure][P3] Dépôt — des rapports et fichiers temporaires sont versionnés
 
 Constat
 `.lint-diagnostics.txt` n’est plus dans l’arbre. Restent versionnés : `RAPPORT_IMPLANTATION_MDEVS_UI_ICONS.txt` (environ 51 Ko), 21 fichiers sous `artifacts/`, quatre `.bak` dans `apps/site`, et `lib/quizzly/curriculum/5e/arts/06-part.tmp`.
@@ -2060,7 +1932,7 @@ Hors périmètre
 - Ne pas vider `artifacts/` s’il contient des fixtures référencées, sans les reloger.
 - Ne pas réécrire l’historique Git.
 
-2. Issue #29 — [Mineure][P3] Sécurité — le biome-ignore du layout dit seulement Required
+58. Issue #29 — [Mineure][P3] Sécurité — le biome-ignore du layout dit seulement Required
 
 Constat
 `app/layout.tsx:106` ignore `noDangerouslySetInnerHtml` avec le motif « Required ». Le HTML injecté sert à éviter le flash de thème. D’autres exceptions du dépôt nomment la fonction qui purifie ou la raison précise. Celle-ci ne le fait pas.
@@ -2089,7 +1961,7 @@ Hors périmètre
 - Ne pas supprimer toutes les exceptions `dangerouslySetInnerHTML`.
 - Ne pas traiter ce commentaire comme une faille prouvée.
 
-3. Issue #40 — [Mineure][P3] Lint — dix eslint-disable sont inertes, dont une dépendance manquante
+59. Issue #40 — [Mineure][P3] Lint — dix eslint-disable sont inertes, dont une dépendance manquante
 
 Constat
 L’application racine est lintée par Biome, pas par ESLint : pas de dépendance `eslint` à la racine, pas de config ESLint hors `apps/site`. `apps/site` a, lui, ESLint 9. Le dire « aucun ESLint dans le dépôt » est donc faux.
@@ -2122,7 +1994,7 @@ Hors périmètre
 - Ne pas ajouter ESLint à la racine pour rendre les commentaires utiles.
 - Ne pas réactiver `noImgElement` dans ce lot.
 
-4. Issue #41 — [Mineure][P2] Site — les scripts de package.json ne pointent plus au bon endroit
+60. Issue #41 — [Mineure][P2] Site — les scripts de package.json ne pointent plus au bon endroit
 
 Constat
 `apps/site/package.json` déclare `admin`, `reset:*`, `code:create` et `newsletter:send` vers `scripts/admin.ts` et `scripts/newsletter-send.ts`. Ces fichiers ne sont pas dans `apps/site/scripts/` (seulement des migrations). Les scripts réels sont à la racine du dépôt : `scripts/admin.ts` et `scripts/newsletter-send.ts`. Lancées depuis `apps/site`, les commandes ne trouvent pas leur cible.
@@ -2152,7 +2024,7 @@ Hors périmètre
 - Ne pas fusionner les copies `admin.ts` (issue #16) dans ce correctif.
 - Ne pas exécuter de reset destructif sur une base réelle pour prouver le script.
 
-5. Issue #42 — [Mineure][P2] Quizzly — le rang de Gemini 3.8 Flash n’est pas sourcé
+61. Issue #42 — [Mineure][P2] Quizzly — le rang de Gemini 3.8 Flash n’est pas sourcé
 
 Constat
 `apps/site/docs/news/introducing-quizzly/index.md` affirme que Gemini 3.8 Flash était 10e du classement Texte d’Arena au 4 novembre 2026, sans relevé daté. Une annonce consultée au lancement le situait 7e. Cela ne réfute pas le rang du 4 novembre : la preuve datée manque dans le billet.
@@ -2180,7 +2052,7 @@ Hors périmètre
 - Ne pas modifier le lien « Sources officielles » ici (issue #43), sauf si la source ajoutée crée cette section.
 - Ne pas changer le modèle utilisé pour générer les quiz.
 
-6. Issue #43 — [Mineure][P3] Quizzly — le sommaire pointe vers une ancre absente
+62. Issue #43 — [Mineure][P3] Quizzly — le sommaire pointe vers une ancre absente
 
 Constat
 Dans `apps/site/docs/news/introducing-quizzly/index.md`, le sommaire lien vers `#sources-officielles`. Aucune section de cette ancre n’existe dans le billet.
@@ -2208,7 +2080,7 @@ Hors périmètre
 - Ne pas inventer de sources pour remplir la section.
 - Ne pas réécrire le billet.
 
-7. Issue #69 — [Mineure][P3] Docs — le guide Python cite un paquet absent de PyPI
+63. Issue #69 — [Mineure][P3] Docs — le guide Python cite un paquet absent de PyPI
 
 Constat
 `apps/site/docs/documentation/api-python-sdk.md` recommande d’installer `mdevslabs-python`. Deux contrôles du registre PyPI ont renvoyé 404. Aucune installation réelle n’a été tentée. Cela ne prouve pas que le code du SDK n’existe nulle part.
@@ -2236,7 +2108,7 @@ Hors périmètre
 - Ne pas créer le paquet PyPI.
 - Ne pas traiter le SDK TypeScript ici (issue #70).
 
-8. Issue #70 — [Mineure][P3] Docs — le guide TypeScript cite un paquet absent de npm
+64. Issue #70 — [Mineure][P3] Docs — le guide TypeScript cite un paquet absent de npm
 
 Constat
 `apps/site/docs/documentation/api-typescript-sdk.md` recommande `@mdevslabs/sdk`. Deux contrôles npm ont renvoyé 404. Aucune installation n’a été tentée. Cela ne prouve pas que le code du SDK n’existe nulle part. Le 404 n’est pas un bug distinct du nom documenté.
@@ -2263,6 +2135,7 @@ Critères d'acceptation
 Hors périmètre
 - Ne pas modifier la page CLI (issue #68) dans ce correctif.
 - Ne pas créer de paquet npm.
+
 
 Analyser le code concerné puis poser des questions si nécessaire avant de procéder aux modifications.
 ```
