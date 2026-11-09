@@ -62,5 +62,6 @@ apps/blackline/dist/
 # Fichiers temporaires, sauvegardes et artefacts de travail
 *.bak
 *.tmp
-artifacts/
+/artifacts/
+!lib/artifacts/
 RAPPORT_IMPLANTATION_MDEVS_UI_ICONS.txt
