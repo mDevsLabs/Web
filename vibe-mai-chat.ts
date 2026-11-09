@@ -280,7 +280,7 @@ async function blocPersonnalisationCompte(
 }
 
 export function registerVibeMAIChatRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 1. mAI CHAT & TOOL EXECUTION

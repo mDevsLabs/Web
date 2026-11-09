@@ -89,7 +89,7 @@ async function propagateReadState(params: {
   sourceMeta: Record<string, unknown> | null;
   userId: string;
 }) {
-  const { isRead, origin, sourceId, sourceMeta, userId } = params;
+  const { isRead, origin, sourceMeta, userId } = params;
 
   if (origin === "wakies") {
     if (!isRead) {

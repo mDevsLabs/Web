@@ -1,18 +1,12 @@
 import "server-only";
 import {
   and,
-  asc,
   count,
   desc,
   eq,
-  gt,
-  gte,
   inArray,
   isNull,
-  lt,
-  lte,
   notInArray,
-  or,
   type SQL,
   sql,
 } from "drizzle-orm";
@@ -20,40 +14,18 @@ import { ChatbotError } from "@/lib/errors";
 import { checkInviteUsability } from "@/lib/projects/permissions";
 import {
   agent,
-  agentTemplate,
-  type Chat,
   chat,
-  customCommand,
-  type DBMessage,
-  type DocumentProposal,
-  document,
-  documentProposal,
-  mcpLog,
-  mcpServer,
-  mcpServerSecret,
   message,
-  pluginInstallation,
   project,
   projectFile,
   projectInvite,
   projectMember,
-  type ScheduledMessage,
-  type Skill,
-  type Suggestion,
-  scheduledMessage,
-  skill,
-  skillUsage,
-  skillVersion,
   stream,
-  suggestion,
-  toolExecution,
-  userMcpPrefs,
-  userMemory,
   vote,
 } from "../schema";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { dbReady } from "./connection";
 
-async function getProjectAccessGuard() {
+async function _getProjectAccessGuard() {
   return import("@/lib/projects/access");
 }
 

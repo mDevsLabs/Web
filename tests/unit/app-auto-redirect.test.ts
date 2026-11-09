@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { resolveTargetApp } from "@/hooks/use-app-auto-redirect";
 
 describe("resolveTargetApp", () => {
-  const originalWindow = global.window;
+  const _originalWindow = global.window;
 
   beforeEach(() => {
     // Réinitialisation de l'environnement mock window

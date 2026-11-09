@@ -60,7 +60,7 @@ import {
   rmSync,
   writeFileSync,
 } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { resolve } from "node:path";
 
 const RACINE = resolve(import.meta.dirname, "..");
 const JEU = resolve(RACINE, "apps/blackline");

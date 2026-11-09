@@ -40,7 +40,7 @@ export default function PrivacyPage() {
           <Shield className="w-8 h-8" />
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black italic tracking-tighter leading-[0.9] md:leading-[0.85] uppercase text-slate-900 mb-6">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-black italic tracking-tighter leading-[0.9] md:leading-[0.85] uppercase text-slate-900 mb-6 break-words">
           Politique de <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-emerald-500">
             Confidentialité
@@ -317,8 +317,8 @@ export default function PrivacyPage() {
               <div className="p-3.5 bg-white/70 rounded-2xl border border-slate-200">
                 <p className="font-bold text-blue-700">Forfait Pro</p>
                 <p className="text-slate-600 mt-1">
-                  3 000 requêtes / semaine. Priorité de calcul et limites de débit
-                  accrues.
+                  3 000 requêtes / semaine. Priorité de calcul et limites de
+                  débit accrues.
                 </p>
               </div>
               <div className="p-3.5 bg-white/70 rounded-2xl border border-slate-200">

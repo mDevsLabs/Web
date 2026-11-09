@@ -471,7 +471,10 @@ export default function AgentsClient() {
         </div>
       </header>
 
-      <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full flex flex-col gap-8">
+      <section
+        aria-label="Gestion des agents"
+        className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full flex flex-col gap-8"
+      >
         {activeTab === "stats" ? (
           <AgentsStats />
         ) : activeTab === "templates" ? (
@@ -551,7 +554,7 @@ export default function AgentsClient() {
             )}
           </>
         )}
-      </main>
+      </section>
 
       {/* Modale Édition / Création de bot */}
       <AgentEditorDialog

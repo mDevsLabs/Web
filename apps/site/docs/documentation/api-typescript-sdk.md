@@ -13,6 +13,9 @@ Le SDK officiel `@mdevslabs/sdk` permet d'intégrer facilement les services **mA
 
 ## Installation
 
+> [!NOTE]
+> **Publication en cours** : Le package `@mdevslabs/sdk` est actuellement en cours de préparation et sera publié prochainement sur le registre officiel npm. D'ici sa publication, vous pouvez consommer directement les endpoints de l'API REST mAI ou lier le package depuis le monorepo source.
+
 ```bash
 npm install @mdevslabs/sdk
 # ou via pnpm

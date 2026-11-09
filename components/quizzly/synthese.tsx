@@ -2,9 +2,7 @@
 
 import {
   ArrowRightIcon,
-  BookOpenIcon,
   BotIcon,
-  CheckIcon,
   ChevronDownIcon,
   GraduationCapIcon,
   LightbulbIcon,
@@ -17,10 +15,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useResumeQuizzly } from "@/components/quizzly/shell";
 import { IconeMatiere } from "@/components/quizzly/subject-icon";
-import {
-  FICHES_SYNTHESE,
-  type FicheSynthese,
-} from "@/lib/quizzly/synthese-data";
+import { FICHES_SYNTHESE } from "@/lib/quizzly/synthese-data";
 import { cn } from "@/lib/utils";
 
 const NIVEAUX = [
@@ -50,41 +45,52 @@ const MATIERES = [
 
 export function SyntheseQuizzly() {
   const resume = useResumeQuizzly();
-  const niveauCompte = resume.data?.schoolYear;
+  const _niveauCompte = resume.data?.schoolYear;
 
   const [niveauSelectionne, setNiveauSelectionne] = useState<string>("tous");
-  const [matiereSelectionnee, setMatiereSelectionnee] = useState<string>("toutes");
+  const [matiereSelectionnee, setMatiereSelectionnee] =
+    useState<string>("toutes");
   const [recherche, setRecherche] = useState("");
   const [ficheOuverte, setFicheOuverte] = useState<string | null>(null);
 
-  const fichesFiltrees = useMemo(() => {
-    return FICHES_SYNTHESE.filter((fiche) => {
-      if (
-        niveauSelectionne !== "tous" &&
-        !fiche.schoolYears.includes(niveauSelectionne)
-      ) {
-        return false;
-      }
-      if (
-        matiereSelectionnee !== "toutes" &&
-        fiche.subjectId !== matiereSelectionnee
-      ) {
-        return false;
-      }
-      if (recherche.trim()) {
-        const query = recherche.toLowerCase().trim();
-        const matchTitle = fiche.title.toLowerCase().includes(query);
-        const matchSummary = fiche.summary.toLowerCase().includes(query);
-        const matchKeyPoints = fiche.keyPoints.some((p) =>
-          p.toLowerCase().includes(query)
-        );
-        const matchFormula = fiche.formulaOrRule?.toLowerCase().includes(query);
-        const matchSubject = fiche.subjectLabel.toLowerCase().includes(query);
-        return matchTitle || matchSummary || matchKeyPoints || matchFormula || matchSubject;
-      }
-      return true;
-    });
-  }, [niveauSelectionne, matiereSelectionnee, recherche]);
+  const fichesFiltrees = useMemo(
+    () =>
+      FICHES_SYNTHESE.filter((fiche) => {
+        if (
+          niveauSelectionne !== "tous" &&
+          !fiche.schoolYears.includes(niveauSelectionne)
+        ) {
+          return false;
+        }
+        if (
+          matiereSelectionnee !== "toutes" &&
+          fiche.subjectId !== matiereSelectionnee
+        ) {
+          return false;
+        }
+        if (recherche.trim()) {
+          const query = recherche.toLowerCase().trim();
+          const matchTitle = fiche.title.toLowerCase().includes(query);
+          const matchSummary = fiche.summary.toLowerCase().includes(query);
+          const matchKeyPoints = fiche.keyPoints.some((p) =>
+            p.toLowerCase().includes(query)
+          );
+          const matchFormula = fiche.formulaOrRule
+            ?.toLowerCase()
+            .includes(query);
+          const matchSubject = fiche.subjectLabel.toLowerCase().includes(query);
+          return (
+            matchTitle ||
+            matchSummary ||
+            matchKeyPoints ||
+            matchFormula ||
+            matchSubject
+          );
+        }
+        return true;
+      }),
+    [niveauSelectionne, matiereSelectionnee, recherche]
+  );
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-6 p-4 sm:p-6 lg:p-8">
@@ -100,7 +106,8 @@ export function SyntheseQuizzly() {
           Fiches de Synthèse & Essentiels du Cours
         </h1>
         <p className="max-w-3xl text-sm font-medium text-slate-600 dark:text-slate-300">
-          Révisez les notions clés, les formules incontournables et les règles d'or pour vos devoirs et examens.
+          Révisez les notions clés, les formules incontournables et les règles
+          d'or pour vos devoirs et examens.
         </p>
       </div>
 
@@ -174,7 +181,9 @@ export function SyntheseQuizzly() {
                   onClick={() => setMatiereSelectionnee(mat.id)}
                   type="button"
                 >
-                  {mat.id !== "toutes" && <IconeMatiere className="size-3.5" id={mat.id} />}
+                  {mat.id !== "toutes" && (
+                    <IconeMatiere className="size-3.5" id={mat.id} />
+                  )}
                   <span>{mat.label}</span>
                 </button>
               );
@@ -208,7 +217,10 @@ export function SyntheseQuizzly() {
                     {/* Badges matière & classes */}
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-bold text-blue-700 dark:bg-blue-950/80 dark:text-blue-300">
-                        <IconeMatiere className="size-3.5" id={fiche.subjectId} />
+                        <IconeMatiere
+                          className="size-3.5"
+                          id={fiche.subjectId}
+                        />
                         <span>{fiche.subjectLabel}</span>
                       </span>
 
@@ -320,7 +332,9 @@ export function SyntheseQuizzly() {
                     <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-blue-50/60 p-4 dark:bg-blue-950/40">
                       <div className="flex items-center gap-2 text-xs font-semibold text-blue-800 dark:text-blue-200">
                         <BotIcon className="size-4 text-blue-600" />
-                        <span>Une question ou un exercice sur ce chapitre ?</span>
+                        <span>
+                          Une question ou un exercice sur ce chapitre ?
+                        </span>
                       </div>
                       <Link
                         className="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-blue-500"

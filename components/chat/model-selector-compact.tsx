@@ -11,7 +11,6 @@ import {
 import {
   type Dispatch,
   memo,
-  type ReactNode,
   type SetStateAction,
   useCallback,
   useEffect,
@@ -51,7 +50,6 @@ import {
 // officiel consomme exactement la même forme.
 import {
   MAI_PROVIDER_KEY,
-  MAI_PROVIDER_RECOMMENDED_LABEL,
   PROVIDER_NAMES,
   resolveProviderKey,
 } from "@/lib/ai/model-selector/provider";

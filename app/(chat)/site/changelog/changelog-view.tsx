@@ -1,6 +1,5 @@
 "use client";
 
-import type { IconProps } from "@mdevs/icons";
 import {
   ArrowLeftIcon as ArrowLeft,
   ExternalLinkIcon as ExternalLink,

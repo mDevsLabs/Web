@@ -35,9 +35,9 @@ import {
   poursuivreConversationCoach,
 } from "@/lib/quizzly/coach-store";
 import { origineConfiance } from "@/lib/quizzly/http";
+import { libelleLigue } from "@/lib/quizzly/leagues";
 import { obtenirIndex } from "@/lib/quizzly/load";
 import { libelleAnnee, PROGRAM } from "@/lib/quizzly/program";
-import { libelleLigue } from "@/lib/quizzly/leagues";
 import { chargerCoach } from "@/lib/quizzly/queries";
 import { enregistrerUsageCoach } from "@/lib/quizzly/usage";
 import { generateUUID } from "@/lib/utils";
@@ -75,7 +75,9 @@ async function contexteDuCompte(
   });
   const matieresLabels =
     PROGRAM[charge.schoolYear]
-      ?.filter((m) => charge.subjects.length === 0 || charge.subjects.includes(m.id))
+      ?.filter(
+        (m) => charge.subjects.length === 0 || charge.subjects.includes(m.id)
+      )
       ?.map((m) => m.label) ?? [];
 
   return {

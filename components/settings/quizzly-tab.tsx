@@ -5,12 +5,10 @@ import {
   CheckIcon,
   FlameIcon,
   GraduationCapIcon,
-  HeartIcon,
   SparklesIcon,
   TrophyIcon,
   Volume2Icon,
   VolumeXIcon,
-  ZapIcon,
 } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -28,7 +26,6 @@ import {
   isSoundEnabled,
   playClickSound,
   playCorrectSound,
-  playFanfareSound,
   setSoundEnabled,
 } from "@/lib/quizzly/sound-effects";
 import { cn } from "@/lib/utils";
@@ -57,6 +54,19 @@ const DAILY_TARGETS = [
   { id: 5, label: "5 quiz / jour", subtitle: "Intensif (25 min)" },
 ] as const;
 
+const LEAGUE_GOALS = [
+  {
+    description: "La carte de position montre ce qu'il manque pour monter.",
+    id: "monter",
+    label: "Monter de ligue",
+  },
+  {
+    description: "Elle précise l'avance sur la zone de relégation.",
+    id: "maintenir",
+    label: "Se maintenir",
+  },
+] as const;
+
 export function QuizzlyTab() {
   const { data, error, isLoading, mutate } = useResumeQuizzly();
   const [enCours, setEnCours] = useState(false);
@@ -65,6 +75,11 @@ export function QuizzlyTab() {
   const [tonCoach, setTonCoach] = useState<string>("bienveillant");
   const [objectifQuiz, setObjectifQuiz] = useState<number>(3);
   const [rappelsActifs, setRappelsActifs] = useState(true);
+  const [zonesLigue, setZonesLigue] = useState(true);
+  const [alertesLigue, setAlertesLigue] = useState(true);
+  const [objectifLigue, setObjectifLigue] = useState<"maintenir" | "monter">(
+    "monter"
+  );
 
   useEffect(() => {
     setSonActif(isSoundEnabled());
@@ -84,6 +99,18 @@ export function QuizzlyTab() {
       const rem = localStorage.getItem("quizzly_reminders");
       if (rem !== null) {
         setRappelsActifs(rem === "true");
+      }
+      const zones = localStorage.getItem("quizzly_league_zones");
+      if (zones !== null) {
+        setZonesLigue(zones === "true");
+      }
+      const alertes = localStorage.getItem("quizzly_league_alerts");
+      if (alertes !== null) {
+        setAlertesLigue(alertes === "true");
+      }
+      const objectif = localStorage.getItem("quizzly_league_objectif");
+      if (objectif === "maintenir" || objectif === "monter") {
+        setObjectifLigue(objectif);
       }
     } catch {
       // Ignorer si localStorage indisponible
@@ -168,10 +195,45 @@ export function QuizzlyTab() {
       localStorage.setItem("quizzly_reminders", String(suivant));
     } catch {}
     toast.success(
-      suivant
-        ? "Rappels de série quotidienne activés."
-        : "Rappels désactivés."
+      suivant ? "Rappels de série quotidienne activés." : "Rappels désactivés."
     );
+  }
+
+  function toggleZonesLigue() {
+    const suivant = !zonesLigue;
+    setZonesLigue(suivant);
+    try {
+      localStorage.setItem("quizzly_league_zones", String(suivant));
+    } catch {}
+    playClickSound();
+    toast.success(
+      suivant
+        ? "Zones de montée et de relégation affichées dans les ligues."
+        : "Zones de montée et de relégation masquées."
+    );
+  }
+
+  function toggleAlertesLigue() {
+    const suivant = !alertesLigue;
+    setAlertesLigue(suivant);
+    try {
+      localStorage.setItem("quizzly_league_alerts", String(suivant));
+    } catch {}
+    playClickSound();
+    toast.success(
+      suivant
+        ? "Alertes de ligue activées sur cet appareil."
+        : "Alertes de ligue désactivées sur cet appareil."
+    );
+  }
+
+  function changerObjectifLigue(id: "maintenir" | "monter") {
+    setObjectifLigue(id);
+    try {
+      localStorage.setItem("quizzly_league_objectif", id);
+    } catch {}
+    playClickSound();
+    toast.success("Objectif de ligue mis à jour.");
   }
 
   if (isLoading) {
@@ -231,7 +293,8 @@ export function QuizzlyTab() {
               Quizzly — Paramètres & Préférences
             </h2>
             <p className="text-xs text-muted-foreground">
-              Personnalisez votre classe, vos matières scolaires, le Coach mAI et votre expérience de jeu.
+              Personnalisez votre classe, vos matières scolaires, le Coach mAI
+              et votre expérience de jeu.
             </p>
           </div>
         </div>
@@ -245,7 +308,8 @@ export function QuizzlyTab() {
               1. Classe & Niveau scolaire
             </h3>
             <p className="text-xs text-muted-foreground">
-              Le programme, les quiz et les synthèses s'adaptent automatiquement à votre classe.
+              Le programme, les quiz et les synthèses s'adaptent automatiquement
+              à votre classe.
             </p>
           </div>
           <span className="rounded-full bg-q-level/15 px-2.5 py-0.5 text-xs font-bold text-q-level">
@@ -289,14 +353,18 @@ export function QuizzlyTab() {
       </section>
 
       {/* 2. MATIÈRES SUIVIES */}
-      <section className="flex flex-col gap-4 scroll-mt-24" id="quizzly-matieres">
+      <section
+        className="flex flex-col gap-4 scroll-mt-24"
+        id="quizzly-matieres"
+      >
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-sm font-bold text-foreground">
               2. Matières suivies
             </h3>
             <p className="text-xs text-muted-foreground">
-              Sélectionnez les matières que vous souhaitez travailler. Sans sélection, toutes les matières de la classe sont affichées.
+              Sélectionnez les matières que vous souhaitez travailler. Sans
+              sélection, toutes les matières de la classe sont affichées.
             </p>
           </div>
           <button
@@ -344,7 +412,8 @@ export function QuizzlyTab() {
             3. Coach mAI & Pédagogie
           </h3>
           <p className="text-xs text-muted-foreground">
-            Configurez le modèle d'intelligence artificielle et l'approche pédagogique de votre tuteur.
+            Configurez le modèle d'intelligence artificielle et l'approche
+            pédagogique de votre tuteur.
           </p>
         </div>
 
@@ -354,7 +423,8 @@ export function QuizzlyTab() {
               Modèle d'IA dédié au Coach
             </label>
             <p className="text-[11px] text-muted-foreground">
-              Ce modèle répondra à vos questions sur les cours et analysera vos erreurs de quiz.
+              Ce modèle répondra à vos questions sur les cours et analysera vos
+              erreurs de quiz.
             </p>
             <div className="mt-1">
               <ModelSelectorCompact
@@ -416,7 +486,8 @@ export function QuizzlyTab() {
             4. Expérience d'apprentissage & Effets sonores
           </h3>
           <p className="text-xs text-muted-foreground">
-            Ajustez l'ambiance sonore, les célébrations visuelles et votre rythme quotidien.
+            Ajustez l'ambiance sonore, les célébrations visuelles et votre
+            rythme quotidien.
           </p>
         </div>
 
@@ -525,7 +596,8 @@ export function QuizzlyTab() {
             5. Série, Ligues & Notifications
           </h3>
           <p className="text-xs text-muted-foreground">
-            Maintenez votre série active et restez motivé pour la compétition hebdomadaire.
+            Maintenez votre série active et restez motivé pour la compétition
+            hebdomadaire.
           </p>
         </div>
 
@@ -539,7 +611,8 @@ export function QuizzlyTab() {
                 Rappel de série quotidienne
               </span>
               <span className="text-[11px] text-muted-foreground">
-                Recevez une notification avant 20h si vous n'avez pas encore validé de quiz aujourd'hui.
+                Recevez une notification avant 20h si vous n'avez pas encore
+                validé de quiz aujourd'hui.
               </span>
             </div>
           </div>
@@ -555,6 +628,111 @@ export function QuizzlyTab() {
           >
             {rappelsActifs ? "Activé" : "Désactivé"}
           </button>
+        </div>
+      </section>
+
+      {/* 6. LIGUES : COMPÉTITION HEBDOMADAIRE */}
+      <section className="flex flex-col gap-4 scroll-mt-24" id="quizzly-ligues">
+        <div>
+          <h3 className="text-sm font-bold text-foreground">
+            6. Ligues & compétition
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            Soyez informé sur les montées, relégations et votre bouclier. Ces
+            réglages sont mémorisés sur cet appareil.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="surface-card flex items-center justify-between p-4 rounded-3xl">
+            <div className="flex items-center gap-3">
+              <span className="flex size-9 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500">
+                <TrophyIcon className="size-4" />
+              </span>
+              <div>
+                <span className="text-xs font-bold text-foreground block">
+                  Zones de montée / relégation
+                </span>
+                <span className="text-[11px] text-muted-foreground">
+                  Badges verdict sur le classement.
+                </span>
+              </div>
+            </div>
+            <button
+              className={cn(
+                "rounded-full px-3 py-1 text-xs font-bold transition-all cursor-pointer",
+                zonesLigue
+                  ? "bg-amber-500 text-white"
+                  : "bg-muted text-muted-foreground"
+              )}
+              onClick={toggleZonesLigue}
+              type="button"
+            >
+              {zonesLigue ? "Activé" : "Désactivé"}
+            </button>
+          </div>
+
+          <div className="surface-card flex items-center justify-between p-4 rounded-3xl">
+            <div className="flex items-center gap-3">
+              <span className="flex size-9 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-500">
+                <BellIcon className="size-4" />
+              </span>
+              <div>
+                <span className="text-xs font-bold text-foreground block">
+                  Alertes de ligue
+                </span>
+                <span className="text-[11px] text-muted-foreground">
+                  Clôture, montée et bouclier.
+                </span>
+              </div>
+            </div>
+            <button
+              className={cn(
+                "rounded-full px-3 py-1 text-xs font-bold transition-all cursor-pointer",
+                alertesLigue
+                  ? "bg-blue-600 text-white"
+                  : "bg-muted text-muted-foreground"
+              )}
+              onClick={toggleAlertesLigue}
+              type="button"
+            >
+              {alertesLigue ? "Activé" : "Désactivé"}
+            </button>
+          </div>
+        </div>
+
+        <div className="surface-card flex flex-col gap-3 p-5 rounded-3xl">
+          <label className="text-xs font-bold text-foreground">
+            Ce que vise la carte de position
+          </label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {LEAGUE_GOALS.map((but) => {
+              const actif = objectifLigue === but.id;
+              return (
+                <button
+                  className={cn(
+                    "flex flex-col gap-1 rounded-2xl border p-3.5 text-left transition-all cursor-pointer",
+                    actif
+                      ? "border-q-level bg-q-level/10 ring-1 ring-q-level/30 shadow-xs"
+                      : "border-border/60 bg-card hover:bg-muted/40"
+                  )}
+                  key={but.id}
+                  onClick={() => changerObjectifLigue(but.id)}
+                  type="button"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-foreground">
+                      {but.label}
+                    </span>
+                    {actif && <CheckIcon className="size-3.5 text-q-level" />}
+                  </div>
+                  <p className="text-[10px] text-muted-foreground leading-relaxed">
+                    {but.description}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
     </div>

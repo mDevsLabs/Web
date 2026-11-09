@@ -3,11 +3,9 @@
 import {
   CheckIcon,
   FlameIcon,
-  GraduationCapIcon,
   HeartIcon,
   SparklesIcon,
   TrophyIcon,
-  UserIcon,
   XIcon,
   ZapIcon,
 } from "@mdevs/icons";
@@ -17,7 +15,12 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { IconeClasse, IconeLigue, nomLigue } from "@/components/quizzly/icones";
 import { BarreNiveau } from "@/components/quizzly/niveau";
-import { estLigue, type LeagueId } from "@/lib/quizzly/leagues";
+import {
+  ECHELLE_LIGUES,
+  estLigue,
+  type LeagueId,
+  type SeuilsLigue,
+} from "@/lib/quizzly/leagues";
 import { libelleAnnee, type SchoolYear } from "@/lib/quizzly/program";
 import { classeCadre } from "@/lib/quizzly/shop";
 import { playClickSound, playFanfareSound } from "@/lib/quizzly/sound-effects";
@@ -34,10 +37,51 @@ type Ligne = {
 };
 
 type Classement = {
+  clotureAt: string;
   league: LeagueId;
   lignes: Ligne[];
+  liguePrecedente: LeagueId;
+  ligueSuivante: LeagueId;
+  moi: SeuilsLigue;
+  shieldActif: boolean;
   weekKey: string;
 };
+
+/** Objectif affiché dans la carte de position (« monter » ou « se maintenir »). */
+type ObjectifLigue = "maintenir" | "monter";
+
+function lireObjectifLigue(): ObjectifLigue {
+  try {
+    return localStorage.getItem("quizzly_league_objectif") === "maintenir"
+      ? "maintenir"
+      : "monter";
+  } catch {
+    return "monter";
+  }
+}
+
+function lireZonesAffichees(): boolean {
+  try {
+    return localStorage.getItem("quizzly_league_zones") !== "false";
+  } catch {
+    return true;
+  }
+}
+
+function formaterCloture(iso: string): string {
+  try {
+    return new Intl.DateTimeFormat("fr-FR", {
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      month: "long",
+      timeZone: "Europe/Paris",
+      weekday: "long",
+    }).format(new Date(iso));
+  } catch {
+    return "lundi 00:00";
+  }
+}
 
 type ProfilPublic = {
   avatarUrl: string | null;
@@ -114,11 +158,7 @@ function ModalActiviteJoueur({
               Chargement de l'activité…
             </p>
           </div>
-        ) : !profil ? (
-          <div className="py-8 text-center text-sm text-destructive">
-            Impossible de charger le profil de cet élève.
-          </div>
-        ) : (
+        ) : profil ? (
           <>
             {/* En-tête profil */}
             <div className="flex items-center gap-4">
@@ -194,7 +234,8 @@ function ModalActiviteJoueur({
 
               <div className="rounded-2xl border border-q-border/30 bg-card p-3 flex flex-col gap-1">
                 <span className="flex items-center gap-1.5 text-[11px] font-medium text-muted-foreground">
-                  <FlameIcon className="size-3.5 text-orange-500" /> Série en cours
+                  <FlameIcon className="size-3.5 text-orange-500" /> Série en
+                  cours
                 </span>
                 <span className="text-base font-bold text-foreground">
                   {profil.streakCount} jour{profil.streakCount > 1 ? "s" : ""}
@@ -206,7 +247,8 @@ function ModalActiviteJoueur({
 
               <div className="rounded-2xl border border-q-border/30 bg-card p-3 flex flex-col gap-1">
                 <span className="flex items-center gap-1.5 text-[11px] font-medium text-muted-foreground">
-                  <CheckIcon className="size-3.5 text-emerald-500" /> Quiz validés
+                  <CheckIcon className="size-3.5 text-emerald-500" /> Quiz
+                  validés
                 </span>
                 <span className="text-base font-bold text-foreground">
                   {profil.quizzesPassedCount}
@@ -247,8 +289,105 @@ function ModalActiviteJoueur({
               </button>
             )}
           </>
+        ) : (
+          <div className="py-8 text-center text-sm text-destructive">
+            Impossible de charger le profil de cet élève.
+          </div>
         )}
       </motion.div>
+    </div>
+  );
+}
+
+function CartePosition({ classement }: { classement: Classement }) {
+  const [objectif] = useState<ObjectifLigue>(lireObjectifLigue);
+  const [zones] = useState(lireZonesAffichees);
+  const moi = classement.moi;
+  if (moi.rang === null || moi.taille === 0) {
+    return null;
+  }
+  const estChampion = classement.league === "champion";
+  const estBronze = classement.league === "bronze";
+  const peutMonter = !estChampion && moi.seuilMontee !== null;
+  const peutDescendre = !estBronze && moi.seuilRellegation !== null;
+  const sansMouvement =
+    moi.seuilMontee === null && moi.seuilRellegation === null;
+  const viseur = objectif === "maintenir" ? "Maintien" : "Montée";
+  const ligneEcart =
+    objectif === "maintenir"
+      ? peutDescendre
+        ? moi.dansZoneRelagation
+          ? classement.shieldActif
+            ? "Relégation annulée par votre bouclier"
+            : "Vous êtes dans la zone de relégation"
+          : `Encore ${moi.margeRellegation.toLocaleString("fr-FR")} XP d'avance avant la relégation`
+        : "Aucune relégation en Bronze"
+      : peutMonter
+        ? moi.dansZoneMontee
+          ? "Vous êtes dans la zone de montée"
+          : `Encore ${moi.ecartMontee.toLocaleString("fr-FR")} XP pour monter en Ligue ${nomLigue(classement.ligueSuivante)}`
+        : "Vous êtes en Champion : maintenez votre place";
+  const progression =
+    peutMonter && !estChampion
+      ? Math.max(
+          0,
+          Math.min(
+            100,
+            Math.round((moi.xpMoi / Math.max(1, moi.seuilMontee ?? 1)) * 100)
+          )
+        )
+      : null;
+  return (
+    <div className="surface-quizzly-card rounded-3xl border border-q-border/40 bg-card p-5 shadow-sm">
+      <div className="flex items-center justify-between gap-3">
+        <div>
+          <p className="text-sm font-bold text-foreground">
+            {moi.rang}ᵉ sur {moi.taille}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {moi.xpMoi.toLocaleString("fr-FR")} XP cette semaine
+          </p>
+        </div>
+        <div className="flex items-center gap-1.5">
+          {classement.shieldActif && (
+            <span className="rounded-full bg-info/15 px-2.5 py-0.5 text-[11px] font-bold text-info">
+              🛡 Bouclier actif
+            </span>
+          )}
+          <span className="rounded-full bg-q-level/15 px-2.5 py-0.5 text-[11px] font-bold text-q-level">
+            Objectif : {viseur}
+          </span>
+        </div>
+      </div>
+      <p className="mt-2 text-xs font-semibold text-foreground">{ligneEcart}</p>
+      {progression !== null && (
+        <div className="mt-3">
+          <div className="h-2 overflow-hidden rounded-full bg-muted">
+            <div
+              className="h-full rounded-full bg-q-level transition-all"
+              style={{ width: `${progression}%` }}
+            />
+          </div>
+          <p className="mt-1 text-[10px] text-muted-foreground">
+            {progression} % du seuil de montée atteint
+          </p>
+        </div>
+      )}
+      {sansMouvement && (
+        <p className="mt-2 text-[11px] text-muted-foreground">
+          Cohorte de moins de 10 élèves : personne ne monte ni ne descend cette
+          semaine.
+        </p>
+      )}
+      {zones &&
+        peutDescendre &&
+        moi.dansZoneRelagation &&
+        !classement.shieldActif && (
+          <p className="mt-2 rounded-2xl border border-destructive/20 bg-destructive/5 px-3 py-2 text-[11px] font-semibold text-destructive">
+            Dernier sprint conseillé : une victoire de quiz suffit souvent à
+            remonter.
+          </p>
+        )}
     </div>
   );
 }
@@ -261,6 +400,7 @@ export function LiguesQuizzly() {
   const [joueurSelectionne, setJoueurSelectionne] = useState<string | null>(
     null
   );
+  const [zonesAffichees] = useState(lireZonesAffichees);
 
   if (isLoading) {
     return (
@@ -297,10 +437,65 @@ export function LiguesQuizzly() {
           </div>
           <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
             Les 5 premiers montent dans la division supérieure, les 5 derniers
-            descendent. Clôture le lundi à minuit (Paris).
+            descendent. Clôture {formaterCloture(data.clotureAt)} (Paris).
           </p>
         </div>
       </div>
+
+      {/* Carte de position : où en est le lecteur, et quoi viser ? */}
+      <CartePosition classement={data} />
+
+      {/* Échelle des divisions : la ligne d'arrivée et celle de départ */}
+      <ol
+        aria-label="Échelle des ligues"
+        className="flex items-end justify-between gap-1 px-1"
+      >
+        {ECHELLE_LIGUES.map((etape, _index) => {
+          const active = etape.id === data.league;
+          const suivante =
+            etape.id === data.ligueSuivante && data.league !== "champion";
+          const precedente =
+            etape.id === data.liguePrecedente && data.league !== "bronze";
+          return (
+            <li
+              className={cn(
+                "flex flex-1 flex-col items-center gap-1 rounded-2xl border px-1 py-2 text-center",
+                active
+                  ? "border-q-level bg-q-level/10 shadow-sm"
+                  : precedente || suivante
+                    ? "border-q-border/50 bg-card"
+                    : "border-q-border/30 bg-card/60 opacity-60"
+              )}
+              key={etape.id}
+            >
+              <IconeLigue className="size-5" league={etape.id} />
+              <span
+                className={cn(
+                  "text-[10px] font-bold leading-tight",
+                  active ? "text-foreground" : "text-muted-foreground"
+                )}
+              >
+                {etape.libelle}
+              </span>
+              {active && (
+                <span className="rounded-full bg-q-level px-1.5 py-0.2 text-[8px] font-bold text-q-on">
+                  Vous
+                </span>
+              )}
+              {suivante && !active && (
+                <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">
+                  Prochaine ↑
+                </span>
+              )}
+              {precedente && !active && (
+                <span className="text-[8px] font-semibold text-destructive">
+                  Risque ↓
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
 
       {/* Guide interactif */}
       <div className="flex items-center justify-between px-2 text-xs text-muted-foreground font-medium">
@@ -312,9 +507,11 @@ export function LiguesQuizzly() {
       <ol className="flex flex-col gap-2.5">
         {data.lignes.map((ligne) => {
           const estTop3 = ligne.rank <= 3;
-          const estPromotion = ligne.rank <= 5;
+          const estPromotion = zonesAffichees && ligne.rank <= 5;
           const estRelegation =
-            data.lignes.length > 10 && ligne.rank > data.lignes.length - 5;
+            zonesAffichees &&
+            data.lignes.length > 10 &&
+            ligne.rank > data.lignes.length - 5;
 
           return (
             <motion.li

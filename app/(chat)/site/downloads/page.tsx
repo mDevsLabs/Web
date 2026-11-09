@@ -16,7 +16,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { PageSearch } from "@/components/site/ui/search-bar";
-import { PLATFORM_DEVICE_ICONS } from "@/lib/site/projects-data";
+import { PLATFORM_DEVICE_ICONS } from "@/lib/site/downloads-data";
 
 interface AppDownload {
   borderHover: string;

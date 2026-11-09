@@ -104,7 +104,7 @@ export default function RootLayout({
     >
       <head>
         <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: "Required"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: "Script inline bloquant indispensable pour synchroniser la theme-color et la classe de thème avant le premier rendu du DOM, éliminant tout clignotement ou FOUC (Flash of Unstyled Content)."
           dangerouslySetInnerHTML={{
             __html: THEME_COLOR_SCRIPT,
           }}

@@ -130,7 +130,7 @@ export function resolveSlashCommandOutcome(params: {
   action: SlashCommandAction;
   resolvedTheme?: string;
 }): SlashCommandOutcome {
-  const { action, resolvedTheme } = params;
+  const { action } = params;
 
   switch (action) {
     case "new":

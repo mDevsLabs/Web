@@ -310,7 +310,9 @@ function decrireFaits(contexte: ContexteCoach): string {
     `Année scolaire : ${contexte.yearLabel}`,
     contexte.niveau ? `Niveau de l'élève : Niveau ${contexte.niveau}` : null,
     contexte.leagueLabel ? `Ligue actuelle : ${contexte.leagueLabel}` : null,
-    contexte.subjectsLabels?.length ? `Matières suivies : ${contexte.subjectsLabels.join(", ")}` : null,
+    contexte.subjectsLabels?.length
+      ? `Matières suivies : ${contexte.subjectsLabels.join(", ")}`
+      : null,
     `XP Total : ${contexte.xp}${contexte.weeklyXp ? ` (+${contexte.weeklyXp} cette semaine)` : ""}`,
     `Série en cours : ${contexte.streakCount} jour${contexte.streakCount > 1 ? "s" : ""}`,
     `Quiz validés au total : ${contexte.passedCount}`,
@@ -319,7 +321,9 @@ function decrireFaits(contexte: ContexteCoach): string {
   if (contexte.sheetContext) {
     lignes.push(
       `Fiche de révision consultée : ${contexte.sheetContext.title}${contexte.sheetContext.subjectLabel ? ` (${contexte.sheetContext.subjectLabel})` : ""}`,
-      contexte.sheetContext.formulaOrRule ? `Formule / Règle : ${contexte.sheetContext.formulaOrRule}` : ""
+      contexte.sheetContext.formulaOrRule
+        ? `Formule / Règle : ${contexte.sheetContext.formulaOrRule}`
+        : ""
     );
   }
 
@@ -360,7 +364,9 @@ function decrireFaitsCourts(contexte: ContexteCoach): string {
     `Année scolaire : ${contexte.yearLabel}`,
     contexte.niveau ? `Niveau de l'élève : Niveau ${contexte.niveau}` : null,
     contexte.leagueLabel ? `Ligue : ${contexte.leagueLabel}` : null,
-    contexte.subjectsLabels?.length ? `Matières : ${contexte.subjectsLabels.join(", ")}` : null,
+    contexte.subjectsLabels?.length
+      ? `Matières : ${contexte.subjectsLabels.join(", ")}`
+      : null,
     `XP : ${contexte.xp}${contexte.weeklyXp ? ` (+${contexte.weeklyXp} hebdo)` : ""}`,
     `Série : ${contexte.streakCount} jour${contexte.streakCount > 1 ? "s" : ""}`,
     `Quiz validés : ${contexte.passedCount}`,
@@ -388,7 +394,9 @@ function decrireFaitsCourts(contexte: ContexteCoach): string {
 
 function consigne(contexte: ContexteCoach): string {
   const yearLabel = contexte.yearLabel;
-  const matieres = contexte.subjectsLabels?.length ? contexte.subjectsLabels.join(", ") : "toutes matières";
+  const matieres = contexte.subjectsLabels?.length
+    ? contexte.subjectsLabels.join(", ")
+    : "toutes matières";
   return [
     `Tu es le coach mAI bienveillant et pédagogue de Quizzly, pour un élève de ${yearLabel}.`,
     `L'élève étudie principalement : ${matieres}. Sa ligue actuelle est : ${contexte.leagueLabel ?? "Bronze"}.`,

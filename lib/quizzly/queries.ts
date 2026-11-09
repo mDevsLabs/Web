@@ -24,7 +24,6 @@ import {
 import {
   COACH_TENTATIVES_MAX,
   construireTentative,
-  type DerniereTentative,
   scoreRetenu,
 } from "@/lib/quizzly/coach";
 import { lireNomAffiche } from "@/lib/quizzly/display-name";
@@ -42,7 +41,6 @@ import {
   precedentQuiz,
   suivantQuiz,
 } from "@/lib/quizzly/load";
-import { portraitsPour } from "@/lib/quizzly/portraits";
 import {
   type ChapterFileName,
   estAnneeScolaire,
@@ -356,7 +354,9 @@ export async function chargerCoach(userId: string): Promise<{
     passedCount: Number(compte[0]?.valeur ?? 0),
     schoolYear: annee,
     streakCount: profil.streakCount,
-    subjects: Array.isArray(profil.subjects) ? (profil.subjects as string[]) : [],
+    subjects: Array.isArray(profil.subjects)
+      ? (profil.subjects as string[])
+      : [],
     tentatives: lignes,
     weeklyXp: hebdo,
     xp: profil.xp,

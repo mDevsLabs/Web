@@ -41,7 +41,10 @@ const JPEG = new Uint8Array([0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10]);
 
 function uploadRequest(name: string, type: string, bytes: Uint8Array): Request {
   const formData = new FormData();
-  formData.append("file", new File([bytes as unknown as BlobPart], name, { type }));
+  formData.append(
+    "file",
+    new File([bytes as unknown as BlobPart], name, { type })
+  );
   return new Request("https://test.local/api/files/upload", {
     body: formData,
     method: "POST",

@@ -64,7 +64,7 @@ function quand(horodatage: number): string {
 
 export function ConversationList({
   wakies,
-  wakieId,
+  wakieId: _wakieId,
   local,
   selected,
   onSelect,

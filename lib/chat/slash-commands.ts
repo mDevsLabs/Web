@@ -1,11 +1,11 @@
 import type { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
-import type { SlashCommand } from "@/components/chat/slash-commands";
 import { downloadChatAsMarkdown } from "@/lib/chat/export-markdown";
 import { pagePath } from "@/lib/client/api-endpoints";
-import { executeCustomCommand } from "@/lib/commands/exec";
+import { executeCustomCommand, type PendingCommand } from "@/lib/commands/exec";
 import type { Agent, Skill } from "@/lib/db/schema";
 import { saveThemePreference } from "@/lib/theme/preference";
+import type { SlashCommand } from "./slash-commands-types";
 
 // Contexte injecté par multimodal-input pour exécuter une commande slash.
 export type SlashCommandContext = {
@@ -30,15 +30,15 @@ export type SlashCommandContext = {
    */
   stopStream: () => void;
   pendingTools: readonly unknown[];
-  togglePendingTool: (toolId: any) => void;
+  togglePendingTool: (toolId: string) => void;
   clearPendingTools: () => void;
   toggleGhostMode: () => void;
   isGhostMode: boolean;
   userAgents: Agent[];
   userSkills: Skill[];
-  setActiveAgent: (agent: any) => void;
-  setActiveSkill: (skill: any) => void;
-  setPendingCommand: (command: any) => void;
+  setActiveAgent: (agent: Agent | null) => void;
+  setActiveSkill: (skill: Skill | null) => void;
+  setPendingCommand: (command: PendingCommand) => void;
   setTheme: (theme: string) => void;
   resolvedTheme: string | undefined;
   onOpenQuizConfig: () => void;

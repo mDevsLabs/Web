@@ -124,9 +124,15 @@ function PureMessages({
 
   useEffect(() => {
     const handler = () => setSearchOpen((prev) => !prev);
-    window.addEventListener("open-conversation-search", handler as any);
+    window.addEventListener(
+      "open-conversation-search",
+      handler as EventListener
+    );
     return () =>
-      window.removeEventListener("open-conversation-search", handler as any);
+      window.removeEventListener(
+        "open-conversation-search",
+        handler as EventListener
+      );
   }, []);
 
   const prevChatIdRef = useRef(chatId);
@@ -180,6 +186,8 @@ function PureMessages({
                 }
                 if (e.key === "Escape") {
                   setSearchOpen(false);
+                  setSearchQuery("");
+                  setCurrentMatch(0);
                 }
               }}
               placeholder="Rechercher dans la conversation..."

@@ -226,7 +226,12 @@ function VibeShell({
   // Le filet ne tourne que sur un onglet VISIBLE : un onglet en arrière-plan
   // ne rend personne, et interroger le serveur toutes les minutes pour
   // personne coûte du temps et de la batterie.
-  const { isTabHidden } = useEconomy();
+  // `isVeille` : une activité lourde (Blackline) a la main — le filet et le
+  // flux temps réel s'arrêtent aussi, comme pour un onglet caché. Personne ne
+  // lit les badges d'une page de jeu, et deux boucles concurrentes font
+  // saccader le rendu 3D.
+  const { isTabHidden, isVeille } = useEconomy();
+  const doitSuspendre = isTabHidden || isVeille;
   useEffect(() => {
     if (!isAuthenticated) {
       return;
@@ -241,7 +246,7 @@ function VibeShell({
     const token = ApiService.getToken();
     // Un onglet caché n'a besoin du flux temps réel de personne : la
     // connexion est coupée, et rouverte au retour.
-    if (token && !isTabHidden) {
+    if (token && !doitSuspendre) {
       RealtimeService.start(token);
     }
     const handleUnread = () => {
@@ -269,7 +274,7 @@ function VibeShell({
     window.addEventListener("vibe:realtime", handleRealtime);
     window.addEventListener("vibe:unread_updated", handleUnread);
     // Le filet de sécurité ne tourne que sur un onglet visible.
-    const interval = isTabHidden
+    const interval = doitSuspendre
       ? undefined
       : setInterval(refreshUnreadCounts, 60_000);
     return () => {
@@ -280,7 +285,7 @@ function VibeShell({
       window.removeEventListener("vibe:realtime", handleRealtime);
       window.removeEventListener("vibe:unread_updated", handleUnread);
     };
-  }, [isAuthenticated, isTabHidden, location.pathname, refreshUnreadCounts]);
+  }, [isAuthenticated, doitSuspendre, location.pathname, refreshUnreadCounts]);
 
   // Déconnexion : coupe le flux temps réel.
   useEffect(() => {
@@ -294,7 +299,7 @@ function VibeShell({
     if (!isAuthenticated) {
       return;
     }
-    if (isTabHidden) {
+    if (doitSuspendre) {
       RealtimeService.stop();
       return;
     }
@@ -302,7 +307,7 @@ function VibeShell({
     if (token) {
       RealtimeService.start(token);
     }
-  }, [isAuthenticated, isTabHidden]);
+  }, [isAuthenticated, doitSuspendre]);
 
   // Composeur prérempli (« Publier sur Vibe » depuis mAI, « Citer » depuis un post).
   useEffect(() => {

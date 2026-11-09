@@ -1,5 +1,5 @@
 import type { Geo } from "@vercel/functions";
-import type { ArtifactKind } from "@/components/chat/artifact";
+import type { ArtifactKind } from "@/lib/artifacts/kinds";
 
 // Prompts de sous-tâches et contrat partagé. Le prompt système du Chat et celui
 // d'Agent vivent désormais dans lib/prompts/ (voir buildChatSystemPrompt et

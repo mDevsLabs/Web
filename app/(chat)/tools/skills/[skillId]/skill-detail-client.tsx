@@ -4,7 +4,6 @@ import {
   BookOpenIcon,
   CheckCircle2Icon,
   CpuIcon,
-  ExternalLinkIcon,
   Loader2Icon,
   LockIcon,
   PlusIcon,

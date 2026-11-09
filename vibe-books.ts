@@ -24,7 +24,6 @@ import { pushToUsers } from "./vibe-dms-core.ts";
 import {
   attachBookRefs,
   attachQuotedPosts,
-  stripHtmlTags,
   visibilityFilter,
 } from "./vibe-posts-core.ts";
 
@@ -210,7 +209,7 @@ async function fetchBookMembers(sql: any, bookId: string) {
 }
 
 export function registerVibeBooksRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 1. LISTE DES LIVRES ACCESSIBLES (possédés + rejoints)

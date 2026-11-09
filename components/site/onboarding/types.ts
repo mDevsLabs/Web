@@ -1,6 +1,5 @@
 "use client";
 
-import type { IconProps } from "@mdevs/icons";
 import type { ReactNode } from "react";
 
 export type Flow = "main" | "upgrade";

@@ -36,7 +36,7 @@ export const PREFIXES_API_AUTONOMES = [
   // declaring d'origine externe dans la CSP.
   "/api/site/github/",
   // Recherche publique de contenu documentaire (site vitrine et support)
-  "/api/site/search",
+  "/api/site/search/",
   "/api/skills/share/",
 ] as const;
 

@@ -18,7 +18,7 @@ import {
 import { stripHtmlTags } from "./vibe-posts-core.ts";
 
 export function registerDMModerationRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 4d. BLOCK / UNBLOCK / LIST BLOCKED USERS

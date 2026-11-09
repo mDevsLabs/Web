@@ -28,10 +28,12 @@ export interface WorkspaceSidebarProps {
   mobile: boolean;
   navCollapsed: boolean;
   newConversation: () => Promise<void>;
+  onRetrySearch?: () => void;
   openPage: (space: string, page?: string) => void;
   ouvrirReglages: () => void;
   pageId?: string;
   refresh: () => Promise<void>;
+  searchError?: string | null;
   /**
    * Les résultats de la recherche, déjà filtrés par le serveur.
    *
@@ -58,8 +60,6 @@ export interface WorkspaceSidebarProps {
     title: string;
     wakieId?: string;
   }>;
-  searchError?: string | null;
-  onRetrySearch?: () => void;
   selectedThread?: string;
   selectedWakie: string;
   setCibleMessageId: (id: string | null) => void;

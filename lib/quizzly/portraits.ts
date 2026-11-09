@@ -6,7 +6,7 @@
 
 import "server-only";
 
-import { dbReady, getDb, getRawClient } from "@/lib/db/queries";
+import { dbReady, getRawClient } from "@/lib/db/queries";
 import { vibeSql } from "@/lib/vibe/server/db";
 import { tableExists } from "@/lib/vibe/server/schema";
 

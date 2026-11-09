@@ -80,7 +80,7 @@ const BOOLEENS = {
 } as const;
 
 /** Longueur maximale du texte libre (indicatif, couleur du réticule). */
-const TEXTE_MAX = 32;
+const _TEXTE_MAX = 32;
 
 /**
  * Codes de touche acceptés.

@@ -218,7 +218,8 @@ export const FICHES_SYNTHESE: readonly FicheSynthese[] = [
       "Guerres par procuration en Asie et au Moyen-Orient (Corée, Vietnam, Afghanistan).",
       "Chute du mur de Berlin (9 nov 1989) et dislocation de l'Union Soviétique en décembre 1991.",
     ],
-    mnemonic: "Guerre Froide : Paix impossible, guerre improbable (Raymond Aron).",
+    mnemonic:
+      "Guerre Froide : Paix impossible, guerre improbable (Raymond Aron).",
     schoolYears: ["3e", "1ere", "terminale"],
     subjectId: "histoire-geographie",
     subjectLabel: "Histoire-Géographie",
@@ -285,7 +286,8 @@ export const FICHES_SYNTHESE: readonly FicheSynthese[] = [
       "L'immunité adaptative fait intervenir les lymphocytes B (médiation humorale, anticorps) et les lymphocytes T CD8 (médiation cellulaire, cytotoxicité).",
       "La mémoire immunitaire permet une réponse secondaire beaucoup plus rapide et intense lors d'un second contact (principe de la vaccination).",
     ],
-    mnemonic: "Innée = Bouclier immédiat ; Adaptative = Arme de précision sur-mesure !",
+    mnemonic:
+      "Innée = Bouclier immédiat ; Adaptative = Arme de précision sur-mesure !",
     schoolYears: ["3e", "1ere", "terminale"],
     subjectId: "svt",
     subjectLabel: "SVT",
@@ -330,7 +332,8 @@ export const FICHES_SYNTHESE: readonly FicheSynthese[] = [
       "2ème loi : La somme vectorielle des forces appliquées est égale au produit de la masse par l'accélération.",
       "3ème loi (Actions réciproques) : Toute action d'un corps A sur un corps B engendre une réaction opposée de B sur A : FAB = - FBA.",
     ],
-    mnemonic: "Forces = Masse × Accélération : F = m·a au cœur de la trajectoire !",
+    mnemonic:
+      "Forces = Masse × Accélération : F = m·a au cœur de la trajectoire !",
     schoolYears: ["1ere", "terminale"],
     subjectId: "physique-chimie",
     subjectLabel: "Physique-Chimie",
@@ -351,7 +354,8 @@ export const FICHES_SYNTHESE: readonly FicheSynthese[] = [
       "La loi de Beer-Lambert établit la proportionnalité directe entre l'absorbance et la concentration de l'espèce absorbante.",
       "La droite d'étalonnage permet de déterminer graphiquement ou par calcul la concentration inconnue d'une solution.",
     ],
-    mnemonic: "Absorbance proportionnelle à la Concentration : la couleur trahit la quantité !",
+    mnemonic:
+      "Absorbance proportionnelle à la Concentration : la couleur trahit la quantité !",
     schoolYears: ["1ere", "terminale"],
     subjectId: "physique-chimie",
     subjectLabel: "Physique-Chimie",
@@ -398,7 +402,8 @@ export const FICHES_SYNTHESE: readonly FicheSynthese[] = [
       "La création monétaire est réalisée par les banques commerciales lors de l'octroi de crédits à l'économie.",
       "La Banque centrale contrôle et régule la masse monétaire via ses taux directeurs pour stabiliser l'inflation.",
     ],
-    mnemonic: "Les crédits font les dépôts : la banque crée la monnaie en prêtant !",
+    mnemonic:
+      "Les crédits font les dépôts : la banque crée la monnaie en prêtant !",
     schoolYears: ["1ere", "terminale"],
     subjectId: "ses",
     subjectLabel: "SES",
@@ -414,15 +419,15 @@ export const FICHES_SYNTHESE: readonly FicheSynthese[] = [
       "Oublier le cas de base dans une fonction récursive (provoque un dépassement de pile `RecursionError`).",
       "Confondre complexité temporelle (nombre d'opérations élémentaires) et temps d'exécution en secondes (dépendant du matériel).",
     ],
-    formulaOrRule:
-      "O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ)",
+    formulaOrRule: "O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ)",
     id: "nsi-complexite-recursivite",
     keyPoints: [
       "Une fonction récursive s'appelle elle-même et exige impérativement un cas de base pour stopper la récursion.",
       "La complexité algorithmique (notation Grand O) évalue le comportement asymptotique d'un algorithme quand la taille des données grandit.",
       "La recherche dichotomique a une complexité logarithmique O(log n), contre O(n) pour la recherche linéaire.",
     ],
-    mnemonic: "Cas de base obligatoire, sinon boucle infinie dans la pile d'appels !",
+    mnemonic:
+      "Cas de base obligatoire, sinon boucle infinie dans la pile d'appels !",
     schoolYears: ["1ere", "terminale"],
     subjectId: "nsi",
     subjectLabel: "NSI",
@@ -541,7 +546,8 @@ export const FICHES_SYNTHESE: readonly FicheSynthese[] = [
       "Pour Aristote, l'équité permet de corriger la rigueur aveugle de la loi en l'adaptant aux cas particuliers.",
       "Le devoir moral selon Kant découle de l'impératif catégorique : agir par pur respect pour la loi morale de la raison.",
     ],
-    mnemonic: "Légal ≠ Juste : Antigone obéit aux lois divines contre les ordres du tyran Créon.",
+    mnemonic:
+      "Légal ≠ Juste : Antigone obéit aux lois divines contre les ordres du tyran Créon.",
     schoolYears: ["terminale"],
     subjectId: "philosophie",
     subjectLabel: "Philosophie",

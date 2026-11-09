@@ -82,7 +82,9 @@ export function BoutiqueQuizzly() {
   }
 
   function offrir(article: ShopItem) {
-    toast.info(`Fonctionnalité d'envoi de cadeau : ${article.label} bientôt disponible pour vos amis !`);
+    toast.info(
+      `Fonctionnalité d'envoi de cadeau : ${article.label} bientôt disponible pour vos amis !`
+    );
   }
 
   if (isLoading) {
@@ -114,14 +116,21 @@ export function BoutiqueQuizzly() {
             Boutique & Récompenses
           </h1>
           <p className="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-400">
-            <span className="text-blue-600 dark:text-blue-400 font-bold">{data.gems} gemmes</span> ·{" "}
-            {data.streakFreezes} gel{data.streakFreezes > 1 ? "s" : ""} de série
+            <span className="text-blue-600 dark:text-blue-400 font-bold">
+              {data.gems} gemmes
+            </span>{" "}
+            · {data.streakFreezes} gel{data.streakFreezes > 1 ? "s" : ""} de
+            série
           </p>
         </div>
 
         <button
           className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:bg-blue-500 active:scale-95"
-          onClick={() => toast.info("Choisissez un ami dans votre liste d'amis pour lui offrir un cadeau !")}
+          onClick={() =>
+            toast.info(
+              "Choisissez un ami dans votre liste d'amis pour lui offrir un cadeau !"
+            )
+          }
           type="button"
         >
           <GiftIcon className="size-4" />
@@ -199,7 +208,9 @@ export function BoutiqueQuizzly() {
                     {article.label}
                   </h2>
                   <p className="text-sm font-extrabold text-blue-600 dark:text-blue-400">
-                    {article.price === 0 ? "Gratuit" : `${article.price} gemmes`}
+                    {article.price === 0
+                      ? "Gratuit"
+                      : `${article.price} gemmes`}
                   </p>
                   <p className="mt-1 line-clamp-2 text-xs font-medium text-slate-500 dark:text-slate-400">
                     {article.description}

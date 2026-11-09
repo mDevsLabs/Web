@@ -3,20 +3,15 @@
 import {
   BookOpenIcon,
   BotIcon,
-  BrainIcon,
-  CheckCircle2Icon,
   Code2Icon,
   CompassIcon,
   CrosshairIcon,
   FlameIcon,
   FolderKanbanIcon,
-  Gamepad2Icon,
   GemIcon,
   GlobeIcon,
   GraduationCapIcon,
   HeartIcon,
-  HistoryIcon,
-  ImageIcon,
   LibraryIcon,
   MessageSquareIcon,
   SearchIcon,
@@ -29,7 +24,7 @@ import {
   UsersIcon,
 } from "@mdevs/icons";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 import {
   CommandDialog,
@@ -41,6 +36,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import { fetcher } from "@/lib/utils";
 
 type ResumeQuizzlyLight = {
@@ -288,6 +284,7 @@ export function SuiteCommandBar({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const { isDesktop } = useIsDesktopApp();
   const [searchQuery, setSearchQuery] = useState("");
 
   const isQuizzly = pathname.startsWith("/quizzly");
@@ -478,7 +475,11 @@ export function SuiteCommandBar({
               : "Applications de la suite mAI"
           }
         >
-          {MAI_SUITE_APPS.map((app) => {
+          {MAI_SUITE_APPS.filter(
+            // Coder n'existe que dans l'application de bureau : hors desktop,
+            // l'entrée ne propose qu'un accès impossible.
+            (app) => app.id !== "app-coder" || isDesktop
+          ).map((app) => {
             const AppIcon = app.icon;
             const isCurrent =
               pathname === app.href ||

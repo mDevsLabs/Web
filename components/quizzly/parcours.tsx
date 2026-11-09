@@ -1,6 +1,11 @@
 "use client";
 
-import { CheckIcon, ChevronDownIcon, LockIcon, SparklesIcon } from "@mdevs/icons";
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  LockIcon,
+  SparklesIcon,
+} from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -66,7 +71,9 @@ function MenuDeroulantClasse({
       >
         <span className="flex items-center gap-2 truncate">
           <span className="text-slate-400 dark:text-slate-500">🎓</span>
-          <span className="truncate">{actif?.label ?? "Choisir la classe"}</span>
+          <span className="truncate">
+            {actif?.label ?? "Choisir la classe"}
+          </span>
         </span>
         <ChevronDownIcon className="size-3.5 text-slate-400 shrink-0" />
       </DropdownMenuTrigger>
@@ -75,7 +82,8 @@ function MenuDeroulantClasse({
           <DropdownMenuItem
             className={cn(
               "cursor-pointer rounded-xl px-3 py-2 text-xs font-semibold",
-              option.id === valeur && "bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300"
+              option.id === valeur &&
+                "bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300"
             )}
             key={option.id}
             onSelect={() => onChoisir(option.id)}
@@ -167,7 +175,8 @@ export function ParcoursQuizzly() {
             Quelle est votre classe ?
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Le parcours s'adapte à votre niveau scolaire. Vous pourrez changer à tout moment dans les réglages.
+            Le parcours s'adapte à votre niveau scolaire. Vous pourrez changer à
+            tout moment dans les réglages.
           </p>
           <MenuDeroulantClasse
             desactive={enregistrement}
@@ -178,7 +187,9 @@ export function ParcoursQuizzly() {
             }))}
             valeur=""
           />
-          {message ? <p className="text-xs text-destructive">{message}</p> : null}
+          {message ? (
+            <p className="text-xs text-destructive">{message}</p>
+          ) : null}
         </div>
       </section>
     );
@@ -273,7 +284,9 @@ export function ParcoursQuizzly() {
                       <span className="truncate">{entree.label}</span>
                     </div>
                     {actif && (
-                      <span className="text-blue-600 dark:text-blue-400">&gt;</span>
+                      <span className="text-blue-600 dark:text-blue-400">
+                        &gt;
+                      </span>
                     )}
                   </button>
                 );

@@ -197,9 +197,9 @@ export default function NewTicketClient() {
         <div className="border-b border-slate-100 p-6 sm:p-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h1 className="flex items-center gap-3 text-2xl font-black tracking-tight text-slate-900">
+              <h2 className="flex items-center gap-3 text-2xl font-black tracking-tight text-slate-900">
                 {isBug ? <><Bug className="h-7 w-7 text-red-500" aria-hidden="true" /> Signaler un incident</> : <><Sparkles className="h-7 w-7 text-purple-600" aria-hidden="true" /> Créer une nouvelle demande</>}
-              </h1>
+              </h2>
               <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-500 sm:text-sm">Un e-mail sera transmis à l&apos;équipe mAI. Vous pourrez suivre la demande et échanger directement avec elle.</p>
             </div>
             <span className="w-fit rounded-full bg-slate-100 px-3 py-1.5 text-[11px] font-bold text-slate-600">{step + 1} / {WIZARD_STEPS.length}</span>

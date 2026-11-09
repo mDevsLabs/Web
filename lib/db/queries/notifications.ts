@@ -1,61 +1,12 @@
 import "server-only";
+import { and, count, desc, eq, inArray, sql } from "drizzle-orm";
 import {
-  and,
-  asc,
-  count,
-  desc,
-  eq,
-  gt,
-  gte,
-  inArray,
-  isNull,
-  lt,
-  lte,
-  notInArray,
-  or,
-  type SQL,
-  sql,
-} from "drizzle-orm";
-import { ChatbotError } from "@/lib/errors";
-import {
+  type NOTIFICATION_TYPES,
   type NotificationOrigin,
   type NotificationType,
   originForNotificationType,
 } from "@/lib/notifications/types";
-import {
-  agent,
-  agentTemplate,
-  type Chat,
-  chat,
-  customCommand,
-  type DBMessage,
-  type DocumentProposal,
-  document,
-  documentProposal,
-  mcpLog,
-  mcpServer,
-  mcpServerSecret,
-  message,
-  pluginInstallation,
-  project,
-  projectFile,
-  projectInvite,
-  projectMember,
-  type ScheduledMessage,
-  type Skill,
-  type Suggestion,
-  scheduledMessage,
-  skill,
-  skillUsage,
-  skillVersion,
-  stream,
-  suggestion,
-  toolExecution,
-  userMcpPrefs,
-  userMemory,
-  vote,
-} from "../schema";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { dbReady } from "./connection";
 
 // ==========================================
 // NOTIFICATIONS QUERIES
@@ -63,7 +14,7 @@ import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 
 export async function getUserNotificationPrefs(userId: string) {
   const db = await dbReady();
-  const { notification, userNotificationPrefs } = await import("../schema");
+  const { userNotificationPrefs } = await import("../schema");
   const [prefs] = await db
     .select()
     .from(userNotificationPrefs)

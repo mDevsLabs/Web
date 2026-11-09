@@ -13,7 +13,6 @@ import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { getIntegrationByPluginId } from "@/lib/integrations/providers";
 import type { IntegrationStatus } from "@/lib/integrations/status";
 import { PLUGIN_CATEGORIES } from "@/lib/plugins/catalog";

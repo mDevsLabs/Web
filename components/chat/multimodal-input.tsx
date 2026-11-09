@@ -73,7 +73,6 @@ import { useComposerTriggers } from "@/hooks/use-composer-triggers";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
 import { chatModels } from "@/lib/ai/models";
-import type { ToolId } from "@/lib/ai/tools/config";
 import { asArray, jsonArray, jsonObject } from "@/lib/api/client-fetch";
 import { memoryLimitForTier } from "@/lib/auth/plan";
 import { markInFlightChat } from "@/lib/chat/in-flight";

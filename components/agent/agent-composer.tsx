@@ -58,9 +58,7 @@ import { useSharedDraft } from "@/hooks/use-shared-draft";
 import { useTier } from "@/hooks/use-tier";
 import { AGENT_HOME_PLACEHOLDER } from "@/lib/agent/channel";
 import type { AgentFlags } from "@/lib/agent/flags";
-import type { ToolCategory } from "@/lib/agent/types";
 import type { AgentComposerActionId } from "@/lib/agent/ui/composer-actions";
-import { getAgentComposerAction } from "@/lib/agent/ui/composer-actions";
 import type { ModelCapabilities } from "@/lib/ai/registry/capabilities";
 import { resolveReasoningEffort } from "@/lib/ai/registry/capabilities";
 import {
@@ -210,11 +208,11 @@ export function AgentComposer({
   // mentirait sur l'effort qui partira.
   // Un choix absent n'est pas « medium » : c'est le réglage du compte, celui que
   // le serveur lira dans le repli `requested ?? fallback`.
-  const reasoning = resolveReasoningEffort({
+  const _reasoning = resolveReasoningEffort({
     capabilities,
     preferred: options.reasoningLevel ?? defaultReasoningLevel,
   });
-  const reasoningLevels = showReasoning ? capabilities.reasoningLevels : [];
+  const _reasoningLevels = showReasoning ? capabilities.reasoningLevels : [];
 
   // Données des menus @ : projets, skills, agents, plugins et serveurs MCP
   // de l'utilisateur. Les effects de session sont retransmis dans la requête

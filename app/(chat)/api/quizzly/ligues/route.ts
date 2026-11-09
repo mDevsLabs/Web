@@ -26,6 +26,7 @@ export async function GET() {
     );
     return Response.json(
       {
+        clotureAt: cohorte.clotureAt,
         league: cohorte.league,
         lignes: cohorte.lignes.map((ligne) => {
           const portrait = portraits.get(ligne.userId);
@@ -39,6 +40,10 @@ export async function GET() {
             weeklyXp: ligne.weeklyXp,
           };
         }),
+        liguePrecedente: cohorte.liguePrecedente,
+        ligueSuivante: cohorte.ligueSuivante,
+        moi: cohorte.moi,
+        shieldActif: cohorte.shieldActif,
         weekKey: cohorte.weekKey,
       },
       { headers: { "Cache-Control": "private, no-store" } }

@@ -272,7 +272,7 @@ export interface SupportTicketEmailPayload {
   user_tier?: string;
 }
 
-const PRIORITY_COLORS: Record<
+const _PRIORITY_COLORS: Record<
   string,
   { label: string; bg: string; text: string; border: string }
 > = {
@@ -379,9 +379,9 @@ export async function sendSupportTicketUpdateEmail({
   recipientName,
   message,
   isFromAdmin: isFromAdminParam,
-  newStatus,
+  newStatus: _newStatus,
   appUrl = "https://m-ai.fr",
-  isAiGenerated = false,
+  isAiGenerated: _isAiGenerated = false,
   authorRole,
 }: {
   ticket: SupportTicketEmailPayload;

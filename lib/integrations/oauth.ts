@@ -1,3 +1,4 @@
+import { readEnv } from "@/lib/utils/env";
 import "server-only";
 
 import { randomBytes } from "node:crypto";
@@ -79,11 +80,6 @@ export type OAuthCredentials = {
   clientId: string;
   clientSecret: string;
 };
-
-function readEnv(name: string): string | undefined {
-  const value = process.env[name]?.trim();
-  return value ? value : undefined;
-}
 
 /** Les identifiants ne sont lus qu'ici, côté serveur : le descripteur reste exportable au client. */
 export function readCredentials(

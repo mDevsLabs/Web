@@ -4,6 +4,9 @@
   "description": "React and TypeScript Liquid Glass components with independent domain APIs",
   "type": "module",
   "license": "MIT",
+  "scripts": {
+    "build:css": "node ../../scripts/build-ui-css.mjs"
+  },
   "sideEffects": [
     "**/*.css"
   ],

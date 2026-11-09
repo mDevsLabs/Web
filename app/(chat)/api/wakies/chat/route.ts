@@ -365,7 +365,7 @@ export async function POST(request: Request) {
         "Ce modèle n’est pas disponible pour votre compte. Choisissez un modèle du catalogue mAI.",
     });
   const capabilities = getModelCapabilitiesFor(modelId, models);
-  let modelMessages: UIMessage[];
+  let _modelMessages: UIMessage[];
 
   /**
    * MENTIONS DE CAPACITÉS ET DE DOCUMENTS — deux temps, une seule validation.
@@ -629,7 +629,7 @@ export async function POST(request: Request) {
     const history = storedMessages(
       await listMessages(auth.userId, conversationId, { limite: 199 })
     );
-    modelMessages = await resolveMessageAttachments(
+    _modelMessages = await resolveMessageAttachments(
       auth.userId,
       [...history, dernier],
       capabilities

@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { chatOwnerMatches } from "@/lib/agent/channel";
 import { approvalDecisionSchema } from "@/lib/agent/contracts";
 import { paramsHashOf } from "@/lib/agent/params-hash";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";

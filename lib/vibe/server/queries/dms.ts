@@ -20,12 +20,7 @@ import { vibeSql } from "../db";
 import type { VibeIdentity } from "../identity";
 import { columnExists } from "../schema";
 import { isoDeep } from "../shape";
-
-function viewerIdOf(identity: VibeIdentity | null): number | null {
-  return identity && /^\d+$/.test(String(identity.userId))
-    ? Number(identity.userId)
-    : null;
-}
+import { viewerIdOf } from "./viewer";
 
 export async function readConversations(
   identity: VibeIdentity | null

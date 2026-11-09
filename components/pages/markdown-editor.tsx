@@ -221,7 +221,7 @@ export function MarkdownEditor({
     onSelection(text, text ? { end, start } : null);
   }
 
-  function switchMode(next: "source" | "visual") {
+  function _switchMode(next: "source" | "visual") {
     if (next === mode) {
       return;
     }

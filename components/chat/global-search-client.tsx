@@ -40,7 +40,7 @@ import {
   type SearchIndexResponse,
   type SearchSourceKey,
 } from "@/lib/search/types";
-import { cn, fetcher } from "@/lib/utils";
+import { fetcher } from "@/lib/utils";
 
 // Recherche interne du compte : une page, un index, dix-sept sources.
 //

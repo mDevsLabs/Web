@@ -241,6 +241,9 @@ const REQUIRED_COLUMNS = [
   // décomposition du quota (les tokens de réflexion sont un sous-ensemble des
   // tokens de sortie : ils sont comptés, mais gardés à part).
   { column: "defaultMode", table: "AgentSettings" },
+  // Migration 0084 : les préférences de confort (densité, période, alertes)
+  // sont lues à chaque ouverture de l'onglet Agent des paramètres.
+  { column: "preferences", table: "AgentSettings" },
   { column: "reasoningTokens", table: "UsageEvent" },
   // Migration 0033 : la page Statistiques est la première lecture de
   // `UsageEvent`. Sans ce lien, ses filtres « projet » et « mode » ne sont pas

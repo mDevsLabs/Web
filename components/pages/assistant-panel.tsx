@@ -120,7 +120,7 @@ export function AssistantPanel({
     setProposals(pendingProposals);
   }, [pendingProposals]);
 
-  const { data: systemPrompt } = useSWR<{ prompt: string }>(
+  const { data: _systemPrompt } = useSWR<{ prompt: string }>(
     `/api/pages/${pageId}/prompt`,
     fetcher
   );

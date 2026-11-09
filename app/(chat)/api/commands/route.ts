@@ -11,7 +11,6 @@ import {
   createCustomCommand,
   getCustomCommandsByUserId,
 } from "@/lib/db/queries";
-import { ChatbotError } from "@/lib/errors";
 
 const createCommandSchema = z.object({
   actionType: z.enum([

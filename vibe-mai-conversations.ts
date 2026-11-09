@@ -19,7 +19,7 @@ import {
 import { stripHtmlTags } from "./vibe-posts-core.ts";
 
 export function registerVibeMAIConversationRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 1ter. HISTORIQUE DE LA CONVERSATION mAI (persistance serveur, multi-conversations)

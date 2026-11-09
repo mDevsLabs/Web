@@ -13,7 +13,6 @@ import {
 import {
   attachDocumentToProject,
   getDocumentById,
-  getProjectById,
   saveDocument,
 } from "@/lib/db/queries";
 import { generateUUID } from "@/lib/utils";

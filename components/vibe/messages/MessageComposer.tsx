@@ -1,8 +1,34 @@
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — MESSAGE COMPOSER (components/vibe/messages/MessageComposer.tsx)
- * Formulaire de saisie de message : texte riche, médias, dictée vocale, suggestions mAI et Livre
+ * Barre de saisie : texte riche, médias, dictée, réponses rapides et Livre
  * ============================================================================
+ *
+ * POURQUOI CETTE BARRE A ÉTÉ SIMPLIFIÉE
+ *
+ * La version précédente affichait en permanence, au-dessus du champ, sept
+ * boutons de mise en forme — gras, italique, souligné, barré, lien, @tous —
+ * puis, sur la ligne du bas, un bouton « + », un bouton d'envoi programmé et
+ * un bouton d'envoi. Neuf cibles pour écrire trois mots.
+ *
+ * La règle retenue : la mise en forme apparaît QUAND on écrit. Le champ vide
+ * n'affiche plus que trois commandes — ajouter (+), dicter, envoyer — et la
+ * barre de mise en forme se déplie dès la première frappe (ou via le bouton
+ * « Aa » de la pastille de saisie, qui la maintient ouverte). L'envoi programmé
+ * et les presets mAI passent dans le menu « + » : ce sont des actions
+ * occasionnelles, pas les gestes d'un message sur deux.
+ *
+ * LES FONCTIONNALITÉS DE RÉDACTION AJOUTÉES
+ *
+ * 1. RÉPONSES RAPIDES : des phrases enregistrées, réinsérées en un clic, et
+ *    « enregistrer ce texte comme réponse rapide » depuis le menu. Stockées
+ *    sur l'appareil (`lib/vibe/services/quickReplies.ts`) — c'est un raccourci
+ *    de rédaction, pas une donnée de compte.
+ * 2. MODE RÉDACTION : le composeur occupe l'écran, avec le compteur de
+ *    caractères et les réponses rapides à portée. Utile pour les messages
+ *    longs, où la barre d'un chat est trop étroite.
+ * 3. RAPPEL DU DERNIER MESSAGE : flèche haut dans un champ vide (geste
+ *    standard d'une messagerie), traité par `MessageRichInput`.
  */
 
 import {
@@ -19,21 +45,28 @@ import {
   ItalicIcon as Italic,
   Link2Icon as Link2,
   Loader2Icon as Loader2,
+  Maximize2Icon as Maximize2,
   MicIcon as Mic,
   MicOffIcon as MicOff,
+  Minimize2Icon as Minimize2,
   PencilIcon as Pencil,
   PenLineIcon as PenLine,
   PinIcon as Pin,
   PlusIcon as Plus,
+  QuoteIcon as Quote,
   ScissorsIcon as Scissors,
   SparklesIcon as Sparkles,
   StrikethroughIcon as Strikethrough,
+  TypeIcon as Type,
   UnderlineIcon as Underline,
   Wand2Icon as Wand2,
   XIcon as X,
+  ZapIcon as Zap,
 } from "@mdevs/icons";
 import { motion } from "framer-motion";
 import type React from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { htmlToPlainText } from "@/components/vibe/common/RichContent";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
@@ -41,6 +74,14 @@ import {
   MessageRichInput,
   type MessageRichInputHandle,
 } from "@/components/vibe/messages/MessageRichInput";
+import {
+  addQuickReply,
+  QUICK_REPLIES_MAX,
+  type QuickReply,
+  readQuickReplies,
+  removeQuickReply,
+  writeQuickReplies,
+} from "@/lib/vibe/services/quickReplies";
 import type { DirectMessage, VibeBookPost } from "@/lib/vibe/types/vibe";
 import { useNavigate } from "../router";
 import {
@@ -71,6 +112,8 @@ export interface MessageComposerProps {
   isSupported: boolean;
   isUploading: boolean;
   justSent: boolean;
+  /** Texte du dernier message envoyé — rappelé par la flèche haut. */
+  lastSentText?: string;
   mediaLimitLabel: string;
   mentionQuery: string | null;
   mentionSuggestions: Array<{
@@ -184,6 +227,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
   justSent,
   animationsEnabled,
   attachedMediaList,
+  lastSentText,
   richInputRef,
   fileInputRef,
   onSendMessage,
@@ -216,9 +260,101 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
 }) => {
   const navigate = useNavigate();
 
+  /**
+   * Le composeur a-t-il le focus ? La barre de mise en forme suit cette
+   * information autant que le contenu : on écrit rarement un message vide.
+   */
+  const [focused, setFocused] = useState(false);
+  /** Épinglage manuel de la barre de mise en forme (bouton « Aa »). */
+  const [formattingPinned, setFormattingPinned] = useState(false);
+  /** Mode rédaction : le composeur occupe l'écran. */
+  const [focusMode, setFocusMode] = useState(false);
+  /** Réponses rapides de l'appareil. */
+  const [quickReplies, setQuickReplies] = useState<QuickReply[]>(() =>
+    readQuickReplies()
+  );
+
+  // Un message parti referme le mode rédaction : rester en plein écran après
+  // l'envoi donnerait l'impression que rien n'a été envoyé.
+  useEffect(() => {
+    if (justSent) {
+      setFocusMode(false);
+    }
+  }, [justSent]);
+
+  // Le mode rédaction capture l'écran : Échap doit en sortir, sinon on s'y
+  // retrouve enfermé sans savoir comment revenir à la conversation.
+  useEffect(() => {
+    if (!focusMode) {
+      return;
+    }
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setFocusMode(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [focusMode]);
+
+  const persistQuickReplies = useCallback((next: QuickReply[]) => {
+    setQuickReplies(next);
+    writeQuickReplies(next);
+  }, []);
+
+  const insertQuickReply = useCallback(
+    (reply: QuickReply) => {
+      richInputRef.current?.setHTML(reply.html);
+      richInputRef.current?.focus();
+      onClosePlusMenu();
+    },
+    [onClosePlusMenu, richInputRef]
+  );
+
+  const saveCurrentAsQuickReply = useCallback(() => {
+    if (!messagePlain.trim()) {
+      return;
+    }
+    if (quickReplies.length >= QUICK_REPLIES_MAX) {
+      toast.warning(
+        `Limite de ${QUICK_REPLIES_MAX} réponses rapides atteinte. Supprimez-en une.`
+      );
+      return;
+    }
+    const next = addQuickReply(quickReplies, {
+      html: richInputRef.current?.getHTML() || messagePlain,
+      text: messagePlain,
+    });
+    persistQuickReplies(next);
+    toast.success("Réponse rapide enregistrée.");
+  }, [messagePlain, persistQuickReplies, quickReplies, richInputRef]);
+
+  const recallLastMessage = useCallback(() => {
+    if (!lastSentText?.trim()) {
+      return;
+    }
+    richInputRef.current?.setHTML(
+      lastSentText
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\r?\n/g, "<br>")
+    );
+    richInputRef.current?.focus();
+  }, [lastSentText, richInputRef]);
+
+  const nearLimit = messagePlain.length >= messageCharLimit * 0.8;
+  const overLimit = messagePlain.length > messageCharLimit;
+  const showFormatting =
+    !editingMessage && (formattingPinned || focused || messagePlain.length > 0);
+  const words = useMemo(
+    () => messagePlain.trim().split(/\s+/).filter(Boolean).length,
+    [messagePlain]
+  );
+
   return (
     <>
-      {/* Attached Multi-Media Preview */}
+      {/* Aperçu des médias joints */}
       {attachedMediaList.length > 0 && (
         <div className="vibe-chat-bottom-bar p-3 border-t flex items-center gap-2 overflow-x-auto">
           {attachedMediaList.map((media, idx) => (
@@ -262,11 +398,48 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
         </div>
       )}
 
-      {/* Message Input Box */}
+      {/* Mode rédaction : le composeur prend l'écran, la conversation reste
+          derrière. Le fond vient du thème Vibe (`--bg-primary`), jamais d'une
+          couleur d'hôte : Vibe vit sous `.vibe-root`. */}
       <form
-        className="vibe-chat-bottom-bar p-3 space-y-2 relative"
+        className={
+          focusMode
+            ? "vibe-composer-focus fixed inset-0 z-[60] flex flex-col gap-3 p-4 sm:p-8 bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-y-auto"
+            : "vibe-chat-bottom-bar p-3 space-y-2 relative"
+        }
+        onBlur={(event) => {
+          // `relatedTarget` est la cible qui reçoit le focus : si elle est
+          // encore dans le composeur (bouton de mise en forme, menu), on ne
+          // referme pas la barre d'outils.
+          if (
+            !event.currentTarget.contains(event.relatedTarget as Node | null)
+          ) {
+            setFocused(false);
+          }
+        }}
+        onFocus={() => setFocused(true)}
         onSubmit={onSendMessage}
       >
+        {focusMode && (
+          <div className="flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-sm font-bold">Rédaction</p>
+              <p className="text-[11px] text-zinc-500">
+                Échap pour revenir à la conversation · Maj+Entrée pour un retour
+                à la ligne
+              </p>
+            </div>
+            <button
+              className="vibe-chat-icon-btn p-2 shrink-0"
+              onClick={() => setFocusMode(false)}
+              title="Revenir à la conversation"
+              type="button"
+            >
+              <Minimize2 className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
         {activePartnerBlocked && (
           <p className="text-center text-[11px] text-zinc-500 py-1">
             Utilisateur bloqué — l'envoi de messages est désactivé.
@@ -421,82 +594,76 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
           </button>
         )}
 
-        {/* Barre de mise en forme AU-DESSUS de la bulle */}
-        {(!editingMessage || messagePlain.length >= 2400) && (
+        {/* Barre de mise en forme — repliée tant que l'on n'écrit pas. */}
+        {showFormatting && (
           <div className="flex items-center gap-0.5 px-1 flex-wrap">
-            {!editingMessage && (
+            <button
+              className="vibe-chat-icon-btn p-1.5"
+              onClick={() => onToolbarCommand("bold")}
+              onMouseDown={(e) => e.preventDefault()}
+              title="Gras (ou **texte**)"
+              type="button"
+            >
+              <Bold className="w-3.5 h-3.5" />
+            </button>
+            <button
+              className="vibe-chat-icon-btn p-1.5"
+              onClick={() => onToolbarCommand("italic")}
+              onMouseDown={(e) => e.preventDefault()}
+              title="Italique (ou *texte*)"
+              type="button"
+            >
+              <Italic className="w-3.5 h-3.5" />
+            </button>
+            <button
+              className="vibe-chat-icon-btn p-1.5"
+              onClick={() => onToolbarCommand("underline")}
+              onMouseDown={(e) => e.preventDefault()}
+              title="Souligné"
+              type="button"
+            >
+              <Underline className="w-3.5 h-3.5" />
+            </button>
+            <button
+              className="vibe-chat-icon-btn p-1.5"
+              onClick={() => onToolbarCommand("strikeThrough")}
+              onMouseDown={(e) => e.preventDefault()}
+              title="Barré"
+              type="button"
+            >
+              <Strikethrough className="w-3.5 h-3.5" />
+            </button>
+            <button
+              className="vibe-chat-icon-btn p-1.5"
+              onClick={onInsertLink}
+              onMouseDown={(e) => e.preventDefault()}
+              title="Insérer un lien"
+              type="button"
+            >
+              <Link2 className="w-3.5 h-3.5" />
+            </button>
+            {isGroupConv && (
               <>
                 <button
-                  className="vibe-chat-icon-btn p-1.5"
-                  onClick={() => onToolbarCommand("bold")}
+                  className="ml-1 px-2 py-1 rounded-full bg-zinc-900 text-white vibe-dark:bg-white vibe-dark:text-black text-[10px] font-bold"
+                  onClick={() => richInputRef.current?.insertText("@tous ")}
                   onMouseDown={(e) => e.preventDefault()}
-                  title="Gras (ou **texte**)"
+                  title="Mentionner tout le groupe (urgent)"
                   type="button"
                 >
-                  <Bold className="w-3.5 h-3.5" />
+                  @tous
                 </button>
-                <button
-                  className="vibe-chat-icon-btn p-1.5"
-                  onClick={() => onToolbarCommand("italic")}
-                  onMouseDown={(e) => e.preventDefault()}
-                  title="Italique (ou *texte*)"
-                  type="button"
-                >
-                  <Italic className="w-3.5 h-3.5" />
-                </button>
-                <button
-                  className="vibe-chat-icon-btn p-1.5"
-                  onClick={() => onToolbarCommand("underline")}
-                  onMouseDown={(e) => e.preventDefault()}
-                  title="Souligné"
-                  type="button"
-                >
-                  <Underline className="w-3.5 h-3.5" />
-                </button>
-                <button
-                  className="vibe-chat-icon-btn p-1.5"
-                  onClick={() => onToolbarCommand("strikeThrough")}
-                  onMouseDown={(e) => e.preventDefault()}
-                  title="Barré"
-                  type="button"
-                >
-                  <Strikethrough className="w-3.5 h-3.5" />
-                </button>
-                <button
-                  className="vibe-chat-icon-btn p-1.5"
-                  onClick={onInsertLink}
-                  onMouseDown={(e) => e.preventDefault()}
-                  title="Insérer un lien"
-                  type="button"
-                >
-                  <Link2 className="w-3.5 h-3.5" />
-                </button>
-                {isGroupConv && (
-                  <>
-                    <button
-                      className="ml-1 px-2 py-1 rounded-full bg-zinc-900 text-white vibe-dark:bg-white vibe-dark:text-black text-[10px] font-bold"
-                      onClick={() => richInputRef.current?.insertText("@tous ")}
-                      onMouseDown={(e) => e.preventDefault()}
-                      title="Mentionner tout le groupe (urgent)"
-                      type="button"
-                    >
-                      @tous
-                    </button>
-                    {hasUrgentMention && (
-                      <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-red-500/15 text-red-600 vibe-dark:text-red-400 text-[10px] font-bold animate-pulse">
-                        <BellRing className="w-3 h-3" /> Mention urgente
-                      </span>
-                    )}
-                  </>
+                {hasUrgentMention && (
+                  <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-red-500/15 text-red-600 vibe-dark:text-red-400 text-[10px] font-bold animate-pulse">
+                    <BellRing className="w-3 h-3" /> Mention urgente
+                  </span>
                 )}
               </>
             )}
-            {messagePlain.length >= messageCharLimit * 0.8 && (
+            {nearLimit && (
               <span
                 className={`ml-auto text-[10px] font-mono ${
-                  messagePlain.length > messageCharLimit
-                    ? "text-red-500 font-bold"
-                    : "text-zinc-500"
+                  overLimit ? "text-red-500 font-bold" : "text-zinc-500"
                 }`}
               >
                 {messagePlain.length}/{messageCharLimit.toLocaleString("fr-FR")}
@@ -633,7 +800,13 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
           </>
         )}
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div
+          className={
+            focusMode
+              ? "flex flex-col gap-2 flex-1 min-h-0"
+              : "flex items-center gap-2 sm:gap-3"
+          }
+        >
           <input
             accept="image/*,video/*,application/pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
             className="hidden"
@@ -643,144 +816,253 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
             type="file"
           />
 
-          {/* Bouton + avec menu déroulant */}
-          <div className="relative shrink-0">
-            <button
-              className={`vibe-chat-plus-btn w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-                plusMenuOpen ? "rotate-45 shadow-md" : ""
-              }`}
-              onClick={onTogglePlusMenu}
-              title="Ajouter des médias ou options mAI"
-              type="button"
-            >
-              <Plus className="w-5 h-5 transition-transform" />
-            </button>
+          <div className={focusMode ? "flex items-center gap-2" : "contents"}>
+            {/* Bouton + avec menu déroulant */}
+            <div className="relative shrink-0">
+              <button
+                className={`vibe-chat-plus-btn w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                  plusMenuOpen ? "rotate-45 shadow-md" : ""
+                }`}
+                onClick={onTogglePlusMenu}
+                title="Ajouter des médias, une réponse rapide ou une option mAI"
+                type="button"
+              >
+                <Plus className="w-5 h-5 transition-transform" />
+              </button>
 
-            {plusMenuOpen && (
-              <>
-                <div className="fixed inset-0 z-40" onClick={onClosePlusMenu} />
-                <div className="absolute bottom-full left-0 mb-2.5 z-50 w-64 rounded-3xl vibe-menu p-2 shadow-2xl animate-fadeIn space-y-1">
-                  <button
-                    className="vibe-chat-menu-item w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs transition-colors text-left"
-                    disabled={isUploading}
-                    onClick={() => {
-                      onClosePlusMenu();
-                      fileInputRef.current?.click();
-                    }}
-                    type="button"
-                  >
-                    <div className="vibe-chat-modal-card p-2 rounded-xl shrink-0">
-                      <ImageIcon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-zinc-900 vibe-dark:text-white">
-                        Importer photos & vidéos
-                      </p>
-                      <p className="text-[10px] text-zinc-500">
-                        Jusqu'à {mediaLimitLabel} de médias au total
-                      </p>
-                    </div>
-                  </button>
-
-                  <div className="border-t border-zinc-200 vibe-dark:border-zinc-800 my-1" />
-
-                  {/* Presets mAI */}
-                  <div className="px-3 pt-1 pb-1 text-[10px] uppercase font-bold tracking-wider text-zinc-500 flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-zinc-700 vibe-dark:text-white" />
-                    <span>Assistant mAI</span>
-                  </div>
-                  {PRESET_OPTIONS.map((opt) => (
+              {plusMenuOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={onClosePlusMenu}
+                  />
+                  <div className="absolute bottom-full left-0 mb-2.5 z-50 w-72 max-h-[70vh] overflow-y-auto rounded-3xl vibe-menu p-2 shadow-2xl animate-fadeIn space-y-1">
                     <button
-                      className="vibe-chat-menu-item w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs transition-colors text-left disabled:opacity-40 disabled:hover:bg-transparent"
-                      disabled={!messagePlain.trim() && opt.key !== "custom"}
-                      key={opt.key}
+                      className="vibe-chat-menu-item w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs transition-colors text-left"
+                      disabled={isUploading}
                       onClick={() => {
                         onClosePlusMenu();
-                        onGenerateSuggestion(opt.key);
+                        fileInputRef.current?.click();
                       }}
                       type="button"
                     >
-                      <span className="text-zinc-500 vibe-dark:text-zinc-400">
-                        {opt.icon}
-                      </span>
-                      <span>{opt.label}</span>
+                      <div className="vibe-chat-modal-card p-2 rounded-xl shrink-0">
+                        <ImageIcon className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-zinc-900 vibe-dark:text-white">
+                          Importer photos & vidéos
+                        </p>
+                        <p className="text-[10px] text-zinc-500">
+                          Jusqu'à {mediaLimitLabel} de médias au total
+                        </p>
+                      </div>
                     </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
 
-          {/* Bulle de saisie avec micro */}
-          <div className="vibe-chat-input-pill flex-1 flex items-end px-4 py-1.5 min-w-0">
-            <MessageRichInput
-              className="flex-1 min-w-0 py-1 text-xs max-h-32 overflow-y-auto whitespace-pre-wrap break-words"
-              disabled={activePartnerBlocked}
-              maxChars={messageCharLimit}
-              onChange={onRichInputChange}
-              onEnterSend={() => {
-                if (!activePartnerBlocked && !isSending) onSendMessage();
-              }}
-              onUserInput={onUserInput}
-              placeholder={
-                isListening
-                  ? "Parlez, dictée en cours..."
-                  : editingMessage
-                    ? "Modifier votre message..."
-                    : "Écrire un message..."
-              }
-              ref={richInputRef}
-            />
+                    {/* Réponses rapides : rédaction en un clic */}
+                    <div className="border-t border-zinc-200 vibe-dark:border-zinc-800 my-1" />
+                    <div className="px-3 pt-1 pb-1 text-[10px] uppercase font-bold tracking-wider text-zinc-500 flex items-center gap-1.5">
+                      <Zap className="w-3 h-3 text-zinc-700 vibe-dark:text-white" />
+                      <span>Réponses rapides</span>
+                      <span className="ml-auto font-mono text-[9px] normal-case">
+                        {quickReplies.length}/{QUICK_REPLIES_MAX}
+                      </span>
+                    </div>
+                    {quickReplies.length === 0 ? (
+                      <p className="px-3 pb-1 text-[10px] text-zinc-500">
+                        Aucune réponse enregistrée.
+                      </p>
+                    ) : (
+                      quickReplies.map((reply) => (
+                        <div
+                          className="flex items-center gap-1 rounded-xl pr-1"
+                          key={reply.id}
+                        >
+                          <button
+                            className="vibe-chat-menu-item flex-1 min-w-0 flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs text-left"
+                            onClick={() => insertQuickReply(reply)}
+                            title={reply.text}
+                            type="button"
+                          >
+                            <Quote className="w-3 h-3 shrink-0 text-zinc-500" />
+                            <span className="truncate">{reply.label}</span>
+                          </button>
+                          <button
+                            className="p-1 rounded-lg text-zinc-400 hover:text-red-500 shrink-0"
+                            onClick={() =>
+                              persistQuickReplies(
+                                removeQuickReply(quickReplies, reply.id)
+                              )
+                            }
+                            title="Supprimer cette réponse rapide"
+                            type="button"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
+                        </div>
+                      ))
+                    )}
+                    <button
+                      className="vibe-chat-menu-item w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs text-left disabled:opacity-40"
+                      disabled={!messagePlain.trim()}
+                      onClick={saveCurrentAsQuickReply}
+                      title="Enregistrer le texte en cours comme réponse rapide"
+                      type="button"
+                    >
+                      <Plus className="w-3 h-3 text-zinc-500" />
+                      Enregistrer ce texte
+                    </button>
 
-            {isSupported && (
-              <button
-                className={`p-1.5 rounded-full transition-colors ml-1.5 shrink-0 ${
+                    <div className="border-t border-zinc-200 vibe-dark:border-zinc-800 my-1" />
+
+                    {/* Presets mAI */}
+                    <div className="px-3 pt-1 pb-1 text-[10px] uppercase font-bold tracking-wider text-zinc-500 flex items-center gap-1.5">
+                      <Sparkles className="w-3 h-3 text-zinc-700 vibe-dark:text-white" />
+                      <span>Assistant mAI</span>
+                    </div>
+                    {PRESET_OPTIONS.map((opt) => (
+                      <button
+                        className="vibe-chat-menu-item w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs transition-colors text-left disabled:opacity-40 disabled:hover:bg-transparent"
+                        disabled={!messagePlain.trim() && opt.key !== "custom"}
+                        key={opt.key}
+                        onClick={() => {
+                          onClosePlusMenu();
+                          onGenerateSuggestion(opt.key);
+                        }}
+                        type="button"
+                      >
+                        <span className="text-zinc-500 vibe-dark:text-zinc-400">
+                          {opt.icon}
+                        </span>
+                        <span>{opt.label}</span>
+                      </button>
+                    ))}
+
+                    <div className="border-t border-zinc-200 vibe-dark:border-zinc-800 my-1" />
+
+                    {/* Actions occasionnelles : programmation, Livre, rédaction */}
+                    <button
+                      className="vibe-chat-menu-item w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-left"
+                      onClick={() => {
+                        onClosePlusMenu();
+                        onToggleSchedule();
+                      }}
+                      type="button"
+                    >
+                      <Clock className="w-3.5 h-3.5 text-zinc-500" />
+                      Programmer l'envoi
+                    </button>
+                    {isBookConv && (
+                      <button
+                        className="vibe-chat-menu-item w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-left"
+                        onClick={() => {
+                          onClosePlusMenu();
+                          onOpenBookPostPicker();
+                        }}
+                        type="button"
+                      >
+                        <BookOpen className="w-3.5 h-3.5 text-zinc-500" />
+                        Joindre une Vibe du Livre
+                      </button>
+                    )}
+                    <button
+                      className="vibe-chat-menu-item w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-left"
+                      onClick={() => {
+                        onClosePlusMenu();
+                        setFocusMode(true);
+                      }}
+                      type="button"
+                    >
+                      <Maximize2 className="w-3.5 h-3.5 text-zinc-500" />
+                      Mode rédaction (plein écran)
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Bulle de saisie : pastille compacte, mise en forme optionnelle */}
+            <div
+              className={`vibe-chat-input-pill flex-1 flex items-end px-3 py-1.5 min-w-0 ${
+                focusMode ? "items-start" : ""
+              }`}
+            >
+              {!editingMessage && (
+                <button
+                  aria-pressed={formattingPinned}
+                  className={`p-1.5 rounded-full transition-colors shrink-0 ${
+                    formattingPinned
+                      ? "text-black vibe-dark:text-white bg-black/10 vibe-dark:bg-white/10"
+                      : "vibe-chat-icon-btn"
+                  }`}
+                  onClick={() => setFormattingPinned((value) => !value)}
+                  onMouseDown={(e) => e.preventDefault()}
+                  title={
+                    formattingPinned
+                      ? "Masquer la mise en forme"
+                      : "Afficher la mise en forme"
+                  }
+                  type="button"
+                >
+                  <Type className="w-3.5 h-3.5" />
+                </button>
+              )}
+
+              <MessageRichInput
+                className={`flex-1 min-w-0 py-1 text-xs overflow-y-auto whitespace-pre-wrap break-words ${
+                  focusMode ? "max-h-none text-sm leading-relaxed" : "max-h-32"
+                }`}
+                disabled={activePartnerBlocked}
+                maxChars={messageCharLimit}
+                onChange={onRichInputChange}
+                onEmptyArrowUp={recallLastMessage}
+                onEnterSend={() => {
+                  if (!activePartnerBlocked && !isSending) onSendMessage();
+                }}
+                onUserInput={onUserInput}
+                placeholder={
                   isListening
-                    ? "bg-red-500 text-white animate-pulse"
-                    : "vibe-chat-icon-btn"
-                }`}
-                onClick={isListening ? onStopListening : onStartListening}
-                title={isListening ? "Arrêter la dictée" : "Dicter le message"}
-                type="button"
-              >
-                {isListening ? (
-                  <MicOff className="w-4 h-4" />
-                ) : (
-                  <Mic className="w-4 h-4" />
-                )}
-              </button>
-            )}
-          </div>
+                    ? "Parlez, dictée en cours..."
+                    : editingMessage
+                      ? "Modifier votre message..."
+                      : "Écrire un message..."
+                }
+                ref={richInputRef}
+              />
 
-          {/* Envoi programmé */}
-          {(messagePlain.trim() || attachedMediaList.length > 0) &&
-            !activePartnerBlocked &&
-            !editingMessage &&
-            !isGroupConv && (
-              <button
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shrink-0 ${
-                  showSchedule || scheduledAt
-                    ? "bg-zinc-900 text-white vibe-dark:bg-white vibe-dark:text-black"
-                    : "vibe-chat-icon-btn"
-                }`}
-                onClick={onToggleSchedule}
-                title="Programmer l'envoi"
-                type="button"
-              >
-                <Clock className="w-4 h-4" />
-              </button>
-            )}
+              {isSupported && (
+                <button
+                  className={`p-1.5 rounded-full transition-colors ml-1.5 shrink-0 ${
+                    isListening
+                      ? "bg-red-500 text-white animate-pulse"
+                      : "vibe-chat-icon-btn"
+                  }`}
+                  onClick={isListening ? onStopListening : onStartListening}
+                  title={
+                    isListening ? "Arrêter la dictée" : "Dicter le message"
+                  }
+                  type="button"
+                >
+                  {isListening ? (
+                    <MicOff className="w-4 h-4" />
+                  ) : (
+                    <Mic className="w-4 h-4" />
+                  )}
+                </button>
+              )}
+            </div>
+          </div>
 
           {/* Bouton d'envoi */}
           <motion.button
             className={`vibe-chat-send-btn w-10 h-10 rounded-full flex items-center justify-center transition-all disabled:opacity-40 shrink-0 shadow cursor-pointer ${
               justSent ? "just-sent animate-pop" : ""
-            }`}
+            } ${focusMode ? "self-end" : ""}`}
             disabled={
               activePartnerBlocked ||
               (!messagePlain.trim() && attachedMediaList.length === 0) ||
               isSending ||
-              messagePlain.length > messageCharLimit
+              overLimit
             }
             title={
               editingMessage
@@ -800,6 +1082,19 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
             )}
           </motion.button>
         </div>
+
+        {/* Ligne d'aide du mode rédaction : ce que l'on gagne à y être. */}
+        {focusMode && (
+          <div className="flex flex-wrap items-center gap-3 text-[11px] text-zinc-500">
+            <span className="font-mono">
+              {messagePlain.length}/{messageCharLimit.toLocaleString("fr-FR")}{" "}
+              caractères
+            </span>
+            <span>
+              {words} mot{words > 1 ? "s" : ""}
+            </span>
+          </div>
+        )}
       </form>
     </>
   );

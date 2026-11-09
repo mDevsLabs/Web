@@ -54,18 +54,6 @@ export const navLinks: NavItem[] = [
     ],
   },
   {
-    href: "/projects",
-    name: "Projets",
-    subitems: [
-      { href: "/projects", name: "Tous les projets" },
-      { href: "/projects/web", name: "Web" },
-      { href: "/projects/vibe", name: "Vibe" },
-      { href: "/projects/coder", name: "Coder" },
-      { href: "/projects/cli", name: "CLI" },
-      { href: "/projects/pulse", name: "Pulse" },
-    ],
-  },
-  {
     href: "/account/keys",
     name: "API",
     subitems: [

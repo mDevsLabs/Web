@@ -1,3 +1,4 @@
+import { asRecord } from "@/lib/utils/records";
 import type { McpApprovalPolicy, McpServerConfig } from "./types";
 
 /**
@@ -79,13 +80,6 @@ const GENERIC_COMMANDS = new Set([
 const MAX_COMMAND_LENGTH = 256;
 const MAX_ARGUMENTS = 64;
 const MAX_ARGUMENT_LENGTH = 2000;
-
-function asRecord(value: unknown): Record<string, unknown> | null {
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    return null;
-  }
-  return value as Record<string, unknown>;
-}
 
 function boundedInteger(
   value: unknown,

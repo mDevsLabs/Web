@@ -48,7 +48,9 @@ export function setSoundEnabled(enabled: boolean): void {
   if (typeof window === "undefined") return;
   try {
     localStorage.setItem(STORAGE_KEY, enabled ? "true" : "false");
-    window.dispatchEvent(new CustomEvent("quizzly-sound-toggled", { detail: enabled }));
+    window.dispatchEvent(
+      new CustomEvent("quizzly-sound-toggled", { detail: enabled })
+    );
   } catch {
     // Ignore les erreurs de stockage
   }
@@ -149,10 +151,10 @@ export function playFanfareSound(): void {
   try {
     const now = ctx.currentTime;
     const arpege = [
-      { f: 523.25, d: 0.12, t: 0 },
-      { f: 659.25, d: 0.12, t: 0.1 },
-      { f: 783.99, d: 0.12, t: 0.2 },
-      { f: 1046.5, d: 0.35, t: 0.32 },
+      { d: 0.12, f: 523.25, t: 0 },
+      { d: 0.12, f: 659.25, t: 0.1 },
+      { d: 0.12, f: 783.99, t: 0.2 },
+      { d: 0.35, f: 1046.5, t: 0.32 },
     ];
 
     arpege.forEach((note) => {

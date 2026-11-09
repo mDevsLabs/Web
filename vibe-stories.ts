@@ -519,7 +519,7 @@ function assemblerRail(
 }
 
 export function registerVibeStoriesRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // Les chemins statiques (tray, active, archive) sont enregistrés AVANT

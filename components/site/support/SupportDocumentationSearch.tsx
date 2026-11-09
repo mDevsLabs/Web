@@ -75,7 +75,9 @@ export function SupportDocumentationSearch() {
         });
         if (!response.ok) {
           if (response.status === 401) {
-            throw new Error("Connexion requise pour effectuer cette recherche.");
+            throw new Error(
+              "Connexion requise pour effectuer cette recherche."
+            );
           }
           throw new Error(`La recherche a répondu ${response.status}.`);
         }

@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import { jsx, jsxs } from "react/jsx-runtime";
 import { useEffect, useId, useRef, useState } from "react";
 import { cx } from "../internal/utils.js";
@@ -8,15 +7,17 @@ function Combobox({ label, options, value, onValueChange, disabled, placeholder 
   const input = useRef(null);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
   const [active, setActive] = useState(-1);
-  const available = options.filter((option) => option.label.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
   const selected = options.find((option) => option.value === value);
+  const available = isSearching && query.trim() !== "" ? options.filter((option) => option.label.toLocaleLowerCase().includes(query.toLocaleLowerCase())) : options;
   const selectable = available.map((option, index) => option.disabled ? -1 : index).filter((index) => index >= 0);
   const highlighted = active >= 0 && !available[active]?.disabled ? available[active] : void 0;
   useEffect(() => {
     if (disabled) {
       setOpen(false);
       setQuery("");
+      setIsSearching(false);
       setActive(-1);
     }
   }, [disabled]);
@@ -26,23 +27,25 @@ function Combobox({ label, options, value, onValueChange, disabled, placeholder 
     onValueChange(next);
     setOpen(false);
     setQuery("");
+    setIsSearching(false);
     setActive(-1);
     input.current?.focus();
   };
   return /* @__PURE__ */ jsxs("div", { ...props, className: cx("md-field md-combobox", className), children: [
     /* @__PURE__ */ jsx("label", { htmlFor: id, children: label }),
-    /* @__PURE__ */ jsx("input", { ref: input, id, className: "md-input", role: "combobox", autoComplete: "off", "aria-autocomplete": "list", "aria-expanded": open, "aria-controls": open ? `${id}-list` : void 0, "aria-activedescendant": open && highlighted ? `${id}-option-${active}` : void 0, disabled, value: open ? query : selected?.label ?? "", placeholder, onFocus: () => {
+    /* @__PURE__ */ jsx("input", { ref: input, id, className: "md-input", role: "combobox", autoComplete: "off", "aria-autocomplete": "list", "aria-expanded": open, "aria-controls": open ? `${id}-list` : void 0, "aria-activedescendant": open && highlighted ? `${id}-option-${active}` : void 0, disabled, value: isSearching ? query : (selected?.label ?? ""), placeholder, onFocus: () => {
       setOpen(true);
-      setQuery("");
       setActive(-1);
     }, onBlur: (event) => {
       if (!event.currentTarget.parentElement?.contains(event.relatedTarget)) {
         setOpen(false);
         setQuery("");
+        setIsSearching(false);
         setActive(-1);
       }
     }, onChange: (event) => {
       setQuery(event.target.value);
+      setIsSearching(true);
       setOpen(true);
       setActive(-1);
     }, onKeyDown: (event) => {
@@ -62,6 +65,7 @@ function Combobox({ label, options, value, onValueChange, disabled, placeholder 
         event.preventDefault();
         setOpen(false);
         setQuery("");
+        setIsSearching(false);
         setActive(-1);
       }
     } }),

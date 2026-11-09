@@ -46,10 +46,7 @@ import {
   SITE_MODEL_CATALOG_ENDPOINTS,
 } from "@/lib/ai/model-catalog";
 import { groupModelsByProvider } from "@/lib/ai/model-selector/order";
-import {
-  PROVIDER_NAMES,
-  resolveProviderKey,
-} from "@/lib/ai/model-selector/provider";
+import { PROVIDER_NAMES } from "@/lib/ai/model-selector/provider";
 import type { SharedModel } from "@/lib/ai/model-selector/types";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { cn } from "@/lib/utils";

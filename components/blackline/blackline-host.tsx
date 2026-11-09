@@ -49,6 +49,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { BlacklineAgeGate } from "@/components/blackline/age-gate";
 import { Button } from "@/components/ui/button";
+import {
+  type DevicePowerProfile,
+  deriveSessionDerogation,
+  readDevicePowerProfile,
+  type SessionDerogation,
+} from "@/lib/blackline/power";
 import { useEconomy } from "@/lib/resources/economy";
 
 /** Chunk d'entrée du jeu. Son nom est stable : voir scripts/build-blackline.mjs. */
@@ -96,19 +102,54 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
   const [erreur, setErreur] = useState<string | null>(null);
   const conteneurRef = useRef<HTMLDivElement>(null);
   const scriptRef = useRef<HTMLScriptElement | null>(null);
+  // Profil énergétique de l'appareil et dérogation de session. Lus une fois,
+  // avant la confirmation d'âge : l'accueil les affiche, et le montage les
+  // applique par-dessus les réglages du compte.
+  const [power, setPower] = useState<DevicePowerProfile | null>(null);
+  const [derogation, setDerogation] = useState<SessionDerogation | null>(null);
+  const [derogationLue, setDerogationLue] = useState(false);
 
   // Les réglages sont lus UNE FOIS : le jeu les applique à son montage, et
   // changer la référence ne doit pas remonter le jeu.
   const reglagesRef = useRef(settings);
   reglagesRef.current = settings;
+  // La dérogation est lue au moment du montage, pas à chaque rendu : le jeu
+  // applique ses réglages une seule fois.
+  const derogationRef = useRef(derogation);
+  derogationRef.current = derogation;
 
   /**
    * Le jeu est une activité LOURDE : pendant qu'il tourne, l'hôte passe en
-   * économie (animations coupées, rafraîchissements suspendus). Le signal
-   * est libéré par la fonction de nettoyage, quoi qu'il arrive.
+   * VEILLE (animations coupées, rafraîchissements et temps réel suspendus).
+   * Le signal est libéré par la fonction de nettoyage, quoi qu'il arrive.
+   *
+   * Il n'est posé QU'UNE FOIS LE MOTEUR MONTÉ : pendant l'accueil et le
+   * chargement, rien ne tourne encore au rythme du jeu, et mettre mAI en
+   * veille pour un écran de présentation serait une économie imaginaire.
    */
   const { registerHeavyTask } = useEconomy();
-  useEffect(() => registerHeavyTask("blackline"), [registerHeavyTask]);
+  useEffect(() => {
+    if (chargement !== "pret") {
+      return;
+    }
+    return registerHeavyTask("blackline");
+  }, [chargement, registerHeavyTask]);
+
+  // Lecture du profil énergétique au montage de l'hôte. Une API absente vaut
+  // « inconnu» : l'accueil l'écrit, et rien n'est dérogé.
+  useEffect(() => {
+    let annule = false;
+    void readDevicePowerProfile().then((profil) => {
+      if (annule) {
+        return;
+      }
+      setPower(profil);
+      setDerogation(deriveSessionDerogation(profil));
+    });
+    return () => {
+      annule = true;
+    };
+  }, []);
 
   const monterJeu = useCallback(async () => {
     const conteneur = conteneurRef.current;
@@ -131,10 +172,17 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
           "Le jeu n'a pas publié son point de montage (window.blackline.mount)."
         );
       }
+      // Les réglages du COMPTE restent la référence ; la dérogation de
+      // session ne fait que les resserrer (batterie faible, mémoire limitée).
+      // Elle n'est écrite nulle part : elle disparaît avec la page.
+      const reglagesSession = {
+        ...(reglagesRef.current ?? {}),
+        ...(derogationRef.current?.overrides ?? {}),
+      };
       await contrat.mount({
         container: conteneur,
         root: conteneur,
-        settings: reglagesRef.current ?? undefined,
+        settings: reglagesSession,
       });
       setChargement("pret");
     } catch (error) {
@@ -247,6 +295,32 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
         </button>
       )}
 
+      {/*
+        Pendant la partie : l'état de veille est VISIBLE, et la dérogation de
+        session est expliquée. Une réduction de qualité silencieuse passerait
+        pour un défaut d'affichage ; ici, elle est datée et refermable.
+      */}
+      {age === "accepted" && chargement === "pret" && (
+        <div className="pointer-events-none absolute bottom-3 left-3 z-20 flex max-w-xs flex-col items-start gap-2">
+          <span className="flex items-center gap-1.5 rounded-full border border-white/15 bg-black/55 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/70 backdrop-blur-md">
+            <span className="size-1.5 rounded-full bg-[#c6dd94]" />
+            Veille mAI active
+          </span>
+          {derogation?.reason && !derogationLue && (
+            <div className="pointer-events-auto rounded-xl border border-white/15 bg-black/65 p-2.5 text-[11px] leading-relaxed text-white/80 backdrop-blur-md">
+              <p>{derogation.reason}</p>
+              <button
+                className="mt-1.5 rounded-lg border border-white/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/70 transition-colors hover:bg-white/10 hover:text-white cursor-pointer"
+                onClick={() => setDerogationLue(true)}
+                type="button"
+              >
+                Compris
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
       {chargement === "chargement" && (
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 text-[#c6dd94]">
           <div className="size-10 animate-spin rounded-full border-2 border-[#c6dd94]/30 border-t-[#c6dd94]" />
@@ -279,6 +353,7 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
 
       {age === "pending" && (
         <BlacklineAgeGate
+          derogation={derogation}
           onDecide={(result) => {
             setAge(result);
             if (result === "refused") {
@@ -287,6 +362,7 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
               );
             }
           }}
+          power={power}
         />
       )}
     </div>

@@ -5,11 +5,9 @@ import {
   STATS_MODE_LABELS,
   STATS_PERIOD_LABELS,
   type StatsConsumptionPoint,
-  type StatsConversationsPoint,
   type StatsGranularity,
   type StatsKind,
   type StatsModelUsage,
-  type StatsPeriod,
   type UsageStats,
 } from "@/lib/stats/stats-types";
 
@@ -86,7 +84,7 @@ const HEADER_H = 108;
 const KPI_H = 116;
 const CONSUMPTION_H = 310;
 const CONVERSATIONS_H = 268;
-const MODELS_MAX_H = 40 + 46 * 3 + 18;
+const _MODELS_MAX_H = 40 + 46 * 3 + 18;
 const FOOTER_H = 52;
 
 export type PosterInput = {

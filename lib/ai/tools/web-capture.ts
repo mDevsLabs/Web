@@ -58,7 +58,7 @@ function buildScreenshotUrls(url: string): string[] {
 export const webCapture = tool({
   description:
     "Capture une page web comme un navigateur : screenshot réel de l'URL + métadonnées OpenGraph (titre, image, description), informations SEO (robots, canonical, lang, h1) et technologies détectées. À activer pour critiquer le design d'un site, analyser une landing page, auditer le SEO ou montrer visuellement un site à l'utilisateur.",
-  execute: async ({ url }, options) => {
+  execute: async ({ url }, _options) => {
     const target = safeExternalUrl(url.trim());
     if (target.error || !target.url) {
       return { error: target.error ?? "URL invalide." };
@@ -110,7 +110,7 @@ export const webCapture = tool({
         meta("twitter:description");
       const ogImage = meta("og:image");
       const robots = meta("robots");
-      const canonical =
+      const _canonical =
         html.match(
           /<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i
         )?.[1] ?? undefined;

@@ -13,13 +13,35 @@ import { shell } from "electron";
 import SftpClient from "ssh2-sftp-client";
 import { getTerminalProfilePassword } from "./terminalProfileSecrets.js";
 
-const {
-  SUPPORTED_CIPHER,
-  SUPPORTED_COMPRESSION,
-  SUPPORTED_KEX,
-  SUPPORTED_MAC,
-  SUPPORTED_SERVER_HOST_KEY,
-} = require("ssh2/lib/protocol/constants");
+/**
+ * Noms d'algorithmes exposés par `ssh2`.
+ *
+ * `ssh2` n'est PAS une dépendance directe de l'application : il arrive avec
+ * `ssh2-sftp-client`. Sous un gestionnaire de paquets strict (pnpm), ce
+ * sous-chemin interne n'est donc pas résolu depuis la racine du paquet — et
+ * un `require` en tête de module faisait alors échouer TOUT le fichier, donc
+ * l'enregistrement du registre IPC complet (les tests de fumée IPC
+ * échouaient sur un `Cannot find module`).
+ *
+ * On charge donc la table de façon TOLÉRANTE. Sans elle, la validation des
+ * algorithmes demandés par l'utilisateur est simplement désactivée : ssh2
+ * reste seul juge de ce qu'il accepte, et une liste vide ne casse aucune
+ * connexion.
+ */
+type Ssh2Constants = {
+  SUPPORTED_CIPHER: string[];
+  SUPPORTED_COMPRESSION: string[];
+  SUPPORTED_KEX: string[];
+  SUPPORTED_MAC: string[];
+  SUPPORTED_SERVER_HOST_KEY: string[];
+};
+
+let ssh2Constants: Ssh2Constants | null = null;
+try {
+  ssh2Constants = require("ssh2/lib/protocol/constants") as Ssh2Constants;
+} catch {
+  ssh2Constants = null;
+}
 
 export type TerminalSftpProfileSnapshot = {
   id: string;
@@ -77,13 +99,26 @@ type TerminalSftpEditSession = {
 
 const connections = new Map<string, TerminalSftpConnection>();
 const editSessions = new Map<string, TerminalSftpEditSession>();
-const SUPPORTED_SFTP_ALGORITHMS = {
-  cipher: new Set<string>(SUPPORTED_CIPHER),
-  compression: new Set<string>(SUPPORTED_COMPRESSION),
-  hmac: new Set<string>(SUPPORTED_MAC),
-  kex: new Set<string>(SUPPORTED_KEX),
-  serverHostKey: new Set<string>(SUPPORTED_SERVER_HOST_KEY),
-} as const;
+/**
+ * Table des algorithmes acceptés, ou `null` si `ssh2` ne peut pas être lu.
+ * Un ensemble vide signifierait « aucun algorithme autorisé» : c'est
+ * exactement le contraire de ce qu'on veut, d'où le `null` explicite.
+ */
+const SUPPORTED_SFTP_ALGORITHMS: {
+  cipher: Set<string>;
+  compression: Set<string>;
+  hmac: Set<string>;
+  kex: Set<string>;
+  serverHostKey: Set<string>;
+} | null = ssh2Constants
+  ? {
+      cipher: new Set<string>(ssh2Constants.SUPPORTED_CIPHER),
+      compression: new Set<string>(ssh2Constants.SUPPORTED_COMPRESSION),
+      hmac: new Set<string>(ssh2Constants.SUPPORTED_MAC),
+      kex: new Set<string>(ssh2Constants.SUPPORTED_KEX),
+      serverHostKey: new Set<string>(ssh2Constants.SUPPORTED_SERVER_HOST_KEY),
+    }
+  : null;
 
 export async function openTerminalSftpConnection(
   profile: TerminalSftpProfileSnapshot,
@@ -509,37 +544,40 @@ function buildAlgorithms(
     return {};
   }
   const next: Record<string, string[]> = {};
+  // La table peut être absente (voir SUPPORTED_SFTP_ALGORITHMS) : on lit
+  // chaque entrée via un accès optionnel plutôt que de dupliquer le test.
+  const supported = SUPPORTED_SFTP_ALGORITHMS;
   const cipher = filterSupportedAlgorithmList(
     algorithms.cipher,
-    SUPPORTED_SFTP_ALGORITHMS.cipher
+    supported?.cipher ?? null
   );
   if (cipher.length) {
     next.cipher = cipher;
   }
   const kex = filterSupportedAlgorithmList(
     algorithms.kex,
-    SUPPORTED_SFTP_ALGORITHMS.kex
+    supported?.kex ?? null
   );
   if (kex.length) {
     next.kex = kex;
   }
   const hmac = filterSupportedAlgorithmList(
     algorithms.hmac,
-    SUPPORTED_SFTP_ALGORITHMS.hmac
+    supported?.hmac ?? null
   );
   if (hmac.length) {
     next.hmac = hmac;
   }
   const serverHostKey = filterSupportedAlgorithmList(
     algorithms.serverHostKey,
-    SUPPORTED_SFTP_ALGORITHMS.serverHostKey
+    supported?.serverHostKey ?? null
   );
   if (serverHostKey.length) {
     next.serverHostKey = serverHostKey;
   }
   const compression = filterSupportedAlgorithmList(
     algorithms.compression,
-    SUPPORTED_SFTP_ALGORITHMS.compression
+    supported?.compression ?? null
   );
   if (compression.length) {
     next.compress = compression;
@@ -549,10 +587,15 @@ function buildAlgorithms(
 
 function filterSupportedAlgorithmList(
   source: string[] | undefined,
-  supported: Set<string>
+  supported: Set<string> | null
 ): string[] {
   if (!Array.isArray(source) || !source.length) {
     return [];
+  }
+  // Sans table de référence (module `ssh2` illisible), on ne filtre pas :
+  // ssh2 appliquera sa propre liste et refusera ce qu'il ne connaît pas.
+  if (!supported) {
+    return source.filter((item) => typeof item === "string");
   }
   return source.filter(
     (item) => typeof item === "string" && supported.has(item)

@@ -484,7 +484,7 @@ export const compareEurostatCountries = tool({
       string,
       Array<{ period: string | null; value: number | null }>
     >();
-    for (const [index, raw] of Object.entries(data.value)) {
+    for (const [index, _raw] of Object.entries(data.value)) {
       const decoded = decodeEurostatIndex(index, data);
       if (!decoded) continue;
       const country = decoded.dimensions.geo;

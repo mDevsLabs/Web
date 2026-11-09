@@ -1,29 +1,20 @@
 "use client";
 
 import {
-  AlertCircleIcon,
   BrainIcon,
   CheckIcon,
-  CopyIcon,
   DownloadIcon,
-  FileJsonIcon,
-  FolderKanbanIcon,
-  GlobeIcon,
   Loader2Icon,
-  PencilIcon,
-  PowerIcon,
   SearchIcon,
   SparklesIcon,
   StarIcon,
   TagIcon,
-  Trash2Icon,
   UploadIcon,
   XIcon,
 } from "@mdevs/icons";
 import { type ChangeEvent, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
-import { BotGlyph } from "@/components/agents/bot-avatar";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,14 +26,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useTier } from "@/hooks/use-tier";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
@@ -50,77 +33,20 @@ import { memoryLimitForTier } from "@/lib/auth/plan";
 import { readJson } from "@/lib/client/read-json";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { MemoryEntryRow } from "./memory/memory-entry-row";
+import { MemoryImportDialog } from "./memory/memory-import-dialog";
+import { MemorySummaryDialog } from "./memory/memory-summary-dialog";
+import {
+  isGlobalScope,
+  type MemoryCardProps,
+  type MemoryEntry,
+  matchesScopeFilter,
+  normalizeStr,
+  SCOPE_FILTERS,
+  type ScopeFilter,
+} from "./memory/types";
 
-export type MemoryEntry = {
-  agentId: string | null;
-  agentName?: string | null;
-  content: string;
-  createdAt: string;
-  id: string;
-  isEnabled?: boolean;
-  isImportant?: boolean;
-  projectId: string | null;
-  projectName?: string | null;
-  tags?: string[] | null;
-  updatedAt?: string;
-};
-
-type MemoryCardProps = {
-  agentId?: string;
-  /** Onglet Mémoire: liste toutes les portées avec un filtre. */
-  allScopes?: boolean;
-  projectId?: string;
-};
-
-type ScopeFilter = "agent" | "all" | "global" | "project";
-
-const SCOPE_FILTERS: { id: ScopeFilter; label: string }[] = [
-  { id: "all", label: "Toutes les portées" },
-  { id: "global", label: "Globales" },
-  { id: "agent", label: "Bots" },
-  { id: "project", label: "Projets" },
-];
-
-function formatMemoryDate(value: string): string {
-  try {
-    return new Date(value).toLocaleDateString("fr-FR", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-  } catch {
-    return "";
-  }
-}
-
-function isGlobalScope(entry: MemoryEntry): boolean {
-  return !entry.agentId && !entry.projectId;
-}
-
-function matchesScopeFilter(entry: MemoryEntry, filter: ScopeFilter): boolean {
-  if (filter === "all") return true;
-  if (filter === "global") return isGlobalScope(entry);
-  if (filter === "agent") return Boolean(entry.agentId);
-  return Boolean(entry.projectId);
-}
-
-function scopeLabel(entry: MemoryEntry): string {
-  if (entry.agentId) {
-    return entry.agentName ? `Bot · ${entry.agentName}` : "Bot";
-  }
-  if (entry.projectId) {
-    return entry.projectName ? `Projet · ${entry.projectName}` : "Projet";
-  }
-  return "Globale";
-}
-
-function normalizeStr(text: string): string {
-  return text
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
-}
+export type { MemoryCardProps, MemoryEntry, ScopeFilter } from "./memory/types";
 
 export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   const { raw: tierRaw } = useTier();
@@ -187,36 +113,35 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
     () => memories.filter((m) => m.isImportant).length,
     [memories]
   );
-  const filteredMemories = useMemo(() => {
-    return memories.filter((m) => {
-      // Filtre scope
-      if (allScopes && !matchesScopeFilter(m, scopeFilter)) {
-        return false;
-      }
-      // Filtre « Important» (booléen isImportant, pas une catégorie)
-      if (importantOnly && !m.isImportant) {
-        return false;
-      }
-      // Filtre recherche textuelle
-      if (searchQuery.trim()) {
-        const q = normalizeStr(searchQuery);
-        const contentMatch = normalizeStr(m.content).includes(q);
-        const tagsMatch = (m.tags || []).some((t) =>
-          normalizeStr(t).includes(q)
-        );
-        const agentMatch = m.agentName
-          ? normalizeStr(m.agentName).includes(q)
-          : false;
-        const projMatch = m.projectName
-          ? normalizeStr(m.projectName).includes(q)
-          : false;
-        if (!contentMatch && !tagsMatch && !agentMatch && !projMatch) {
+  const filteredMemories = useMemo(
+    () =>
+      memories.filter((m) => {
+        if (allScopes && !matchesScopeFilter(m, scopeFilter)) {
           return false;
         }
-      }
-      return true;
-    });
-  }, [memories, allScopes, scopeFilter, importantOnly, searchQuery]);
+        if (importantOnly && !m.isImportant) {
+          return false;
+        }
+        if (searchQuery.trim()) {
+          const q = normalizeStr(searchQuery);
+          const contentMatch = normalizeStr(m.content).includes(q);
+          const tagsMatch = (m.tags || []).some((t) =>
+            normalizeStr(t).includes(q)
+          );
+          const agentMatch = m.agentName
+            ? normalizeStr(m.agentName).includes(q)
+            : false;
+          const projMatch = m.projectName
+            ? normalizeStr(m.projectName).includes(q)
+            : false;
+          if (!contentMatch && !tagsMatch && !agentMatch && !projMatch) {
+            return false;
+          }
+        }
+        return true;
+      }),
+    [memories, allScopes, scopeFilter, importantOnly, searchQuery]
+  );
 
   // Ajouter une mémoire
   const handleAdd = async () => {
@@ -249,19 +174,18 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       setNewContent("");
       setNewTagsInput("");
       setNewIsImportant(false);
-      toast.success("Mémoire enregistrée avec succès! ");
       await mutate();
+      toast.success("Mémoire enregistrée");
     } catch {
-      toast.error("Erreur d'enregistrement");
+      toast.error("Impossible de contacter le serveur");
     } finally {
       setIsSaving(false);
     }
   };
 
-  // Mettre à jour une mémoire
+  // Mettre à jour le texte / tags
   const handleUpdate = async () => {
-    const content = editContent.trim();
-    if (!editingId || !content) return;
+    if (!editingId || isUpdating || !editContent.trim()) return;
     setIsUpdating(true);
     try {
       const tags = editTagsInput
@@ -269,10 +193,9 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         .map((t) => t.replace(/^[#\s]+/, "").trim())
         .filter(Boolean);
 
-      const res = await fetch("/api/memory", {
+      const res = await fetch(`/api/memory/${editingId}`, {
         body: JSON.stringify({
-          content,
-          id: editingId,
+          content: editContent.trim(),
           tags,
         }),
         headers: { "Content-Type": "application/json" },
@@ -283,420 +206,360 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         toast.error(resp.message || resp.cause || "Erreur de modification");
         return;
       }
-      toast.success("Mémoire mise à jour");
       setEditingId(null);
-      setEditContent("");
       await mutate();
+      toast.success("Mémoire mise à jour");
     } catch {
-      toast.error("Erreur de modification");
+      toast.error("Impossible de contacter le serveur");
     } finally {
       setIsUpdating(false);
     }
   };
 
-  // Basculer l'état Important (Étoile)
-  const handleToggleImportant = async (m: MemoryEntry) => {
-    const nextVal = !m.isImportant;
-    // Mise à jour optimiste
-    mutate((curr: any) => {
-      if (!curr?.memories) return curr;
-      return {
-        ...curr,
-        memories: curr.memories.map((item: MemoryEntry) =>
-          item.id === m.id ? { ...item, isImportant: nextVal } : item
-        ),
-      };
-    }, false);
-
-    try {
-      const res = await fetch("/api/memory", {
-        body: JSON.stringify({ id: m.id, isImportant: nextVal }),
-        headers: { "Content-Type": "application/json" },
-        method: "PATCH",
-      });
-      if (!res.ok) {
-        toast.error("Échec de la modification de priorité");
-        await mutate();
-        return;
-      }
-      toast.success(
-        nextVal
-          ? "Marqué comme important (injecté en priorité)"
-          : "Retiré des mémoires importantes"
-      );
-      await mutate();
-    } catch {
-      toast.error("Erreur de communication avec le serveur");
-      await mutate();
-    }
-  };
-
-  // Basculer l'état Activé / Désactivé (Interrupteur)
+  // Basculer suspension On / Off
   const handleToggleEnabled = async (m: MemoryEntry) => {
-    const nextVal = !(m.isEnabled ?? true);
-    // Mise à jour optimiste
-    mutate((curr: any) => {
-      if (!curr?.memories) return curr;
-      return {
-        ...curr,
-        memories: curr.memories.map((item: MemoryEntry) =>
-          item.id === m.id ? { ...item, isEnabled: nextVal } : item
-        ),
-      };
-    }, false);
-
+    const nextState = m.isEnabled === false;
     try {
-      const res = await fetch("/api/memory", {
-        body: JSON.stringify({ id: m.id, isEnabled: nextVal }),
+      const res = await fetch(`/api/memory/${m.id}`, {
+        body: JSON.stringify({ isEnabled: nextState }),
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
       if (!res.ok) {
-        toast.error("Échec de l'activation/désactivation");
-        await mutate();
+        toast.error("Impossible de modifier l'état de la mémoire");
         return;
       }
-      toast.success(
-        nextVal ? "Mémoire activée " : "Mémoire suspendue (non injectée) "
-      );
       await mutate();
+      toast.success(nextState ? "Mémoire réactivée" : "Mémoire suspendue");
     } catch {
-      toast.error("Erreur de communication");
-      await mutate();
+      toast.error("Erreur réseau");
     }
   };
 
-  // Supprimer une mémoire
+  // Basculer Étoile / Important
+  const handleToggleImportant = async (m: MemoryEntry) => {
+    const nextState = !m.isImportant;
+    try {
+      const res = await fetch(`/api/memory/${m.id}`, {
+        body: JSON.stringify({ isImportant: nextState }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      if (!res.ok) {
+        toast.error("Impossible de modifier l'importance");
+        return;
+      }
+      await mutate();
+      toast.success(
+        nextState ? "Marquée comme importante ⭐" : "Importance retirée"
+      );
+    } catch {
+      toast.error("Erreur réseau");
+    }
+  };
+
+  // Supprimer
   const handleDelete = async (id: string) => {
     setDeletingId(id);
     try {
-      const res = await fetch(`/api/memory?id=${id}`, { method: "DELETE" });
-      const resp = await res.json();
+      const res = await fetch(`/api/memory/${id}`, { method: "DELETE" });
       if (!res.ok) {
-        toast.error(resp.message || resp.cause || "Erreur de suppression");
+        toast.error("Erreur de suppression");
         return;
       }
-      toast.success("Mémoire supprimée");
       await mutate();
+      toast.success("Mémoire effacée");
     } catch {
-      toast.error("Erreur de suppression");
+      toast.error("Impossible de contacter le serveur");
     } finally {
       setDeletingId(null);
       setPendingDelete(null);
     }
   };
 
-  // Synthèse IA
+  // Export JSON
+  const handleExport = () => {
+    if (memories.length === 0) {
+      toast.error("Aucune mémoire à exporter.");
+      return;
+    }
+    const exportData = {
+      exportedAt: new Date().toISOString(),
+      memories: memories.map((m) => ({
+        content: m.content,
+        createdAt: m.createdAt,
+        isImportant: Boolean(m.isImportant),
+        tags: m.tags || [],
+      })),
+      version: 1,
+    };
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `mai-memoire-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success(`${memories.length} mémoires exportées.`);
+  };
+
+  // Sélection fichier JSON
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const json = JSON.parse(event.target?.result as string);
+        const rawList = Array.isArray(json)
+          ? json
+          : Array.isArray(json?.memories)
+            ? json.memories
+            : null;
+
+        if (!rawList) {
+          toast.error("Format de fichier JSON non reconnu.");
+          return;
+        }
+
+        const validEntries: MemoryEntry[] = [];
+        for (const item of rawList) {
+          if (typeof item?.content === "string" && item.content.trim()) {
+            validEntries.push({
+              agentId: null,
+              content: item.content.trim().slice(0, MEMORY_CONTENT_MAX_LENGTH),
+              createdAt: item.createdAt || new Date().toISOString(),
+              id: item.id || `temp-${Math.random()}`,
+              isImportant: Boolean(item.isImportant),
+              projectId: null,
+              tags: Array.isArray(item.tags)
+                ? item.tags.filter((t: unknown) => typeof t === "string")
+                : [],
+            });
+          }
+        }
+
+        if (validEntries.length === 0) {
+          toast.error("Aucune mémoire valide trouvée dans ce fichier.");
+          return;
+        }
+
+        setPendingImportData(validEntries);
+        setImportModalOpen(true);
+      } catch {
+        toast.error("Fichier JSON invalide.");
+      } finally {
+        if (fileInputRef.current) fileInputRef.current.value = "";
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  // Confirmer l'importation
+  const handleConfirmImport = async () => {
+    if (!pendingImportData || pendingImportData.length === 0) return;
+    setIsImporting(true);
+    let successCount = 0;
+    try {
+      for (const item of pendingImportData) {
+        const res = await fetch("/api/memory", {
+          body: JSON.stringify({
+            content: item.content,
+            isImportant: item.isImportant,
+            tags: item.tags,
+            ...(agentId ? { agentId } : {}),
+            ...(projectId ? { projectId } : {}),
+          }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        });
+        if (res.ok) {
+          successCount++;
+        }
+      }
+      await mutate();
+      setImportModalOpen(false);
+      setPendingImportData(null);
+      toast.success(`${successCount} mémoire(s) importée(s) avec succès!`);
+    } catch {
+      toast.error("Erreur lors de l'importation");
+    } finally {
+      setIsImporting(false);
+    }
+  };
+
+  // Résumé IA
   const handleSummarize = async () => {
+    if (memories.length === 0) {
+      toast.error("Aucune mémoire à synthétiser.");
+      return;
+    }
     setIsSummarizing(true);
     try {
       const res = await fetch("/api/memory/summary", {
         body: JSON.stringify({
           ...(agentId ? { agentId } : {}),
           ...(projectId ? { projectId } : {}),
-          scope: allScopes ? scopeFilter : undefined,
         }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
       const data = await res.json();
       if (!res.ok) {
-        toast.error(
-          extractApiErrorMessage(data) ||
-            "Erreur lors de la génération du résumé"
-        );
-        return;
+        throw new Error(extractApiErrorMessage(data) ?? "Erreur de génération");
       }
-      setSummaryText(data.summary || "");
-      setSummaryCount(data.count || 0);
+      setSummaryText(data.summary);
+      setSummaryCount(data.memoryCount || memories.length);
       setSummaryModalOpen(true);
-      toast.success("Résumé de mémoire généré avec succès! ");
-    } catch {
-      toast.error("Erreur de communication avec le serveur");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erreur de génération";
+      toast.error(msg);
     } finally {
       setIsSummarizing(false);
     }
   };
 
-  // Export JSON (JSON seulement)
-  const handleExportJson = () => {
-    if (memories.length === 0) {
-      toast.error("Aucune mémoire à exporter.");
-      return;
-    }
-    const exportPayload = {
-      count: memories.length,
-      exportedAt: new Date().toISOString(),
-      memories: memories.map((m) => ({
-        content: m.content,
-        createdAt: m.createdAt,
-        isEnabled: m.isEnabled ?? true,
-        isImportant: m.isImportant ?? false,
-        scope: m.agentId ? "agent" : m.projectId ? "project" : "global",
-        tags: m.tags || [],
-      })),
-      version: "1.0",
-    };
-
-    const blob = new Blob([JSON.stringify(exportPayload, null, 2)], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `mAI-memoire-${new Date().toISOString().slice(0, 10)}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    toast.success("Mémoire exportée en format JSON! ");
-  };
-
-  // Sélection de fichier JSON pour Import
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    if (!file.name.endsWith(".json")) {
-      toast.error(
-        "Seuls les fichiers JSON (.json) sont autorisés pour l'import."
-      );
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const text = event.target?.result as string;
-        const parsed = JSON.parse(text);
-        const rawList = Array.isArray(parsed)
-          ? parsed
-          : Array.isArray(parsed?.memories)
-            ? parsed.memories
-            : null;
-
-        if (!rawList || rawList.length === 0) {
-          toast.error("Fichier JSON invalide ou sans aucune mémoire.");
-          return;
-        }
-
-        const validItems: MemoryEntry[] = rawList
-          .map((item: any, idx: number) => ({
-            agentId: item.agentId || null,
-            content:
-              typeof item === "string" ? item : String(item.content || ""),
-            createdAt: item.createdAt || new Date().toISOString(),
-            id: `temp-${idx}`,
-            isEnabled: item.isEnabled !== false,
-            isImportant: Boolean(item.isImportant),
-            projectId: item.projectId || null,
-            tags: Array.isArray(item.tags) ? item.tags : [],
-          }))
-          .filter((item: MemoryEntry) => item.content.trim().length > 0);
-
-        if (validItems.length === 0) {
-          toast.error("Aucune mémoire valide trouvée dans ce JSON.");
-          return;
-        }
-
-        setPendingImportData(validItems);
-        setImportModalOpen(true);
-      } catch {
-        toast.error("Erreur de lecture du fichier JSON. Format corrompu.");
-      }
-    };
-    reader.readAsText(file);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
-
-  // Exécution de l'Import JSON
-  const handleConfirmImport = async () => {
-    if (!pendingImportData || pendingImportData.length === 0) return;
-    setIsImporting(true);
-    try {
-      const res = await fetch("/api/memory/import", {
-        body: JSON.stringify({ memories: pendingImportData }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        toast.error(extractApiErrorMessage(data) || "Erreur lors de l'import");
-        return;
-      }
-      toast.success(
-        `Import réussi! ${data.count} mémoires ajoutées${data.skipped ? ` (${data.skipped} doublons ignorés)` : ""}.`
-      );
-      setImportModalOpen(false);
-      setPendingImportData(null);
-      await mutate();
-    } catch {
-      toast.error("Erreur de connexion au serveur.");
-    } finally {
-      setIsImporting(false);
-    }
-  };
-
-  const title = allScopes
-    ? "Mémoire"
-    : `Mémoire ${agentId ? "du bot" : projectId ? "du projet" : "personnalisée"}`;
-  const scopeLabelHeader = agentId
-    ? "mémoires de ce bot"
-    : projectId
-      ? "mémoires de ce projet"
-      : "informations que mAI retient sur vous";
-
   const remainingSlots = Math.max(0, limit - scopeCount);
 
   return (
-    <div
-      className="surface-card flex flex-col gap-4"
-      data-app-update-blocked={
-        isSaving || isUpdating || deletingId || isImporting || isSummarizing
-          ? "true"
-          : undefined
-      }
-    >
-      {/* En-tête */}
-      <div className="flex items-center gap-2.5 flex-wrap">
-        <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
-          <BrainIcon className="size-5" />
-        </div>
-        <div className="flex-1 min-w-[200px]">
-          <h3 className="text-base font-semibold text-foreground">{title}</h3>
-          <p className="text-xs text-muted-foreground">
-            {scopeLabelHeader.charAt(0).toUpperCase() +
-              scopeLabelHeader.slice(1)}{" "}
-            — injectées intelligemment dans les réponses de l'IA.
-          </p>
+    <div className="surface-card flex flex-col gap-4">
+      {/* Header & Stats */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <BrainIcon className="size-5" />
+          </span>
+          <div>
+            <h3 className="text-sm font-semibold text-foreground">
+              Mémoire personnalisée
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              Faits et préférences mémorisés pour adapter les réponses à votre
+              contexte.
+            </p>
+          </div>
         </div>
 
-        {/* Actions header: Import/Export, Résumé, Quota */}
+        {/* Boutons d'action : Synthèse IA, Import, Export, Quota */}
         <div className="flex items-center gap-1.5 flex-wrap">
-          {/* Export JSON */}
-          <Button
-            className="h-8 px-2.5 text-xs gap-1.5 rounded-xl cursor-pointer"
-            disabled={memories.length === 0}
-            onClick={handleExportJson}
-            size="sm"
-            title="Exporter vos mémoires en fichier JSON"
+          <button
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border/60 bg-background/50 hover:bg-muted text-xs font-medium text-foreground transition cursor-pointer disabled:opacity-50"
+            disabled={isSummarizing || memories.length === 0}
+            onClick={handleSummarize}
+            title="Générer une vue d'ensemble IA de vos mémoires"
             type="button"
-            variant="outline"
           >
-            <DownloadIcon className="size-3.5" />
-            <span className="hidden sm:inline">Exporter (JSON)</span>
-          </Button>
+            {isSummarizing ? (
+              <Loader2Icon className="size-3.5 animate-spin text-primary" />
+            ) : (
+              <SparklesIcon className="size-3.5 text-primary" />
+            )}
+            <span className="hidden sm:inline">Synthèse</span>
+          </button>
 
-          {/* Import JSON */}
+          <button
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border/60 bg-background/50 hover:bg-muted text-xs font-medium text-foreground transition cursor-pointer"
+            onClick={() => fileInputRef.current?.click()}
+            title="Importer des mémoires depuis un fichier JSON"
+            type="button"
+          >
+            <UploadIcon className="size-3.5" />
+            <span className="hidden sm:inline">Importer</span>
+          </button>
           <input
             accept=".json,application/json"
+            aria-label="Fichier JSON de mémoires à importer"
             className="hidden"
             onChange={handleFileChange}
             ref={fileInputRef}
             type="file"
           />
-          <Button
-            className="h-8 px-2.5 text-xs gap-1.5 rounded-xl cursor-pointer"
-            onClick={() => fileInputRef.current?.click()}
-            size="sm"
-            title="Importer des mémoires depuis un fichier JSON"
-            type="button"
-            variant="outline"
-          >
-            <UploadIcon className="size-3.5" />
-            <span className="hidden sm:inline">Importer (JSON)</span>
-          </Button>
 
-          {/* Résumer IA */}
-          <Button
-            className="gap-1.5 rounded-xl bg-primary text-primary-foreground text-xs h-8 px-3 cursor-pointer"
-            disabled={isSummarizing || memories.length === 0}
-            onClick={handleSummarize}
-            size="sm"
+          <button
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border/60 bg-background/50 hover:bg-muted text-xs font-medium text-foreground transition cursor-pointer disabled:opacity-50"
+            disabled={memories.length === 0}
+            onClick={handleExport}
+            title="Exporter vos mémoires au format JSON"
             type="button"
           >
-            {isSummarizing ? (
-              <Loader2Icon className="size-3.5 animate-spin" />
-            ) : (
-              <SparklesIcon className="size-3.5" />
+            <DownloadIcon className="size-3.5" />
+            <span className="hidden sm:inline">Exporter</span>
+          </button>
+
+          <span
+            className={cn(
+              "text-xs px-2.5 py-1 rounded-full font-medium ml-1",
+              isAtLimit
+                ? "bg-destructive/10 text-destructive"
+                : "bg-muted text-muted-foreground"
             )}
-            <span>Résumer</span>
-          </Button>
-
-          {/* Badge quota */}
-          <span className="text-[11px] bg-muted/60 px-2.5 py-1 rounded-lg text-muted-foreground font-semibold">
-            {data ? `${scopeCount}/${limit}` : "Quota indisponible"}
+          >
+            {scopeCount} / {limit > 0 ? limit : "∞"}
           </span>
         </div>
       </div>
 
-      {/* Barre de recherche & Filtres */}
-      <div className="flex flex-col gap-2.5 pt-1 border-t border-border/40">
-        <div className="flex items-center gap-2">
-          {/* Input de recherche */}
-          <div className="relative flex-1">
-            <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-            <Input
-              aria-label="Rechercher dans la mémoire"
-              className="pl-9 pr-8 h-9 text-xs rounded-xl bg-muted/30 border-border/60"
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Rechercher dans la mémoire (texte, #tag, catégorie)..."
-              value={searchQuery}
-            />
-            {searchQuery ? (
-              <button
-                aria-label="Effacer la recherche de mémoire"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground cursor-pointer"
-                onClick={() => setSearchQuery("")}
-                type="button"
-              >
-                <XIcon className="size-3.5" />
-              </button>
-            ) : null}
-          </div>
+      {/* Barre de Recherche et Filtres */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 pt-1 border-t border-border/40">
+        <div className="relative flex-1 max-w-sm">
+          <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+          <Input
+            aria-label="Rechercher dans les mémoires"
+            className="pl-8 h-8 text-xs bg-background/50"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Rechercher par contenu, #tag, bot..."
+            value={searchQuery}
+          />
+          {searchQuery ? (
+            <button
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 text-muted-foreground hover:text-foreground"
+              onClick={() => setSearchQuery("")}
+              type="button"
+            >
+              <XIcon className="size-3" />
+            </button>
+          ) : null}
         </div>
 
-        {/* Filtres: portée (si allScopes) + bascule « Important».
-            Les catégories ont été retirées — « Important» est un booléen
-            (isImportant), pas une catégorie, et reste donc filtrable. */}
         <div className="flex items-center gap-1.5 flex-wrap">
           {allScopes ? (
-            <>
-              <span className="text-[11px] text-muted-foreground font-medium mr-1">
-                Portée:
-              </span>
-              {SCOPE_FILTERS.map((filter) => {
-                const count = memories.filter((m) =>
-                  matchesScopeFilter(m, filter.id)
-                ).length;
-                return (
-                  <button
-                    aria-pressed={scopeFilter === filter.id}
-                    className="chip"
-                    data-active={scopeFilter === filter.id}
-                    key={filter.id}
-                    onClick={() => setScopeFilter(filter.id)}
-                    type="button"
-                  >
-                    {filter.label}
-                    <span className="opacity-70 text-[10px]">{count}</span>
-                  </button>
-                );
-              })}
-              <span className="mx-1 text-muted-foreground/40 text-[11px]">
-                ·
-              </span>
-            </>
+            <div className="flex items-center rounded-lg border border-border/60 bg-muted/40 p-0.5 text-xs">
+              {SCOPE_FILTERS.map((f) => (
+                <button
+                  className={cn(
+                    "px-2 py-1 rounded-md text-[11px] font-medium transition cursor-pointer",
+                    scopeFilter === f.id
+                      ? "bg-background text-foreground shadow-xs"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                  key={f.id}
+                  onClick={() => setScopeFilter(f.id)}
+                  type="button"
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
           ) : null}
+
           <button
             aria-pressed={importantOnly}
-            className="chip"
-            data-active={importantOnly}
-            onClick={() => setImportantOnly((v) => !v)}
+            className={cn(
+              "inline-flex items-center gap-1 h-7 px-2.5 rounded-lg text-xs font-medium transition cursor-pointer border",
+              importantOnly
+                ? "bg-warning/15 text-warning border-warning/30"
+                : "bg-background/50 text-muted-foreground border-border/60 hover:text-foreground"
+            )}
+            onClick={() => setImportantOnly(!importantOnly)}
             type="button"
           >
-            <StarIcon className="size-3 fill-current" />
-            <span>Important</span>
+            <StarIcon
+              className={cn("size-3.5", importantOnly && "fill-current")}
+            />
+            <span className="hidden xs:inline">Importantes</span>
             <span className="opacity-70 text-[10px]">{importantCount}</span>
           </button>
         </div>
@@ -722,7 +585,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         {/* Tags & importance */}
         <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
           <div className="flex items-center gap-2 flex-wrap">
-            {/* Input de tags */}
             <div className="flex items-center gap-1 rounded-lg border border-border/60 bg-background px-2 h-7">
               <TagIcon className="size-3 text-muted-foreground" />
               <input
@@ -734,7 +596,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               />
             </div>
 
-            {/* Étoile importante */}
             <button
               aria-pressed={newIsImportant}
               className={cn(
@@ -821,217 +682,34 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         </div>
       ) : (
         <div className="flex flex-col gap-2.5">
-          {filteredMemories.map((m) => {
-            const isEditing = editingId === m.id;
-            const isEnabled = m.isEnabled !== false;
-            const isImportant = Boolean(m.isImportant);
-
-            return (
-              <div
-                className={cn(
-                  "rounded-xl border transition-all p-3",
-                  !isEnabled && "opacity-60 bg-muted/10 border-border/30",
-                  isEnabled &&
-                    (isImportant
-                      ? "bg-warning/5 border-warning/30 shadow-xs"
-                      : "bg-muted/20 border-border/40 hover:border-border/70")
-                )}
-                key={m.id}
-              >
-                {isEditing ? (
-                  /* Mode Édition */
-                  <div className="flex flex-col gap-2.5">
-                    <textarea
-                      aria-label="Modifier le contenu de la mémoire"
-                      className="w-full rounded-lg border border-border/60 bg-background px-2.5 py-2 text-xs outline-none focus:ring-2 focus:ring-primary/20 resize-y"
-                      maxLength={MEMORY_CONTENT_MAX_LENGTH}
-                      onChange={(e) => setEditContent(e.target.value)}
-                      onKeyDown={(e) => {
-                        if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-                          handleUpdate();
-                        }
-                        if (e.key === "Escape") {
-                          setEditingId(null);
-                        }
-                      }}
-                      rows={3}
-                      value={editContent}
-                    />
-
-                    <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <div className="flex items-center gap-2">
-                        <input
-                          aria-label="Modifier les tags de la mémoire"
-                          className="h-7 w-32 rounded-lg border border-border/60 bg-background px-2 text-[11px] outline-none"
-                          onChange={(e) => setEditTagsInput(e.target.value)}
-                          placeholder="Tags séparés par virgule"
-                          value={editTagsInput}
-                        />
-                      </div>
-
-                      <div className="flex items-center gap-1.5 ml-auto">
-                        <Button
-                          className="h-7 px-2 text-xs gap-1"
-                          onClick={() => setEditingId(null)}
-                          size="sm"
-                          type="button"
-                          variant="ghost"
-                        >
-                          <XIcon className="size-3" /> Annuler
-                        </Button>
-                        <Button
-                          className="h-7 px-3 text-xs gap-1 bg-primary text-primary-foreground"
-                          disabled={isUpdating || !editContent.trim()}
-                          onClick={handleUpdate}
-                          size="sm"
-                          type="button"
-                        >
-                          {isUpdating ? (
-                            <Loader2Icon className="size-3 animate-spin" />
-                          ) : (
-                            <CheckIcon className="size-3" />
-                          )}
-                          Enregistrer
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  /* Mode Visualisation */
-                  <div className="flex items-start gap-2.5">
-                    {/* Bouton Étoile (Important) */}
-                    <button
-                      className={cn(
-                        "mt-0.5 p-1 rounded-md transition-colors cursor-pointer shrink-0",
-                        isImportant
-                          ? "text-warning fill-warning hover:text-warning/80"
-                          : "text-muted-foreground/40 hover:text-warning"
-                      )}
-                      onClick={() => handleToggleImportant(m)}
-                      title={
-                        isImportant
-                          ? "Mémoire Importante (injectée en priorité)"
-                          : "Marquer comme importante"
-                      }
-                      type="button"
-                    >
-                      <StarIcon
-                        className={cn("size-4", isImportant && "fill-current")}
-                      />
-                    </button>
-
-                    {/* Contenu et Métadonnées */}
-                    <div className="flex-1 min-w-0">
-                      <p
-                        className={cn(
-                          "text-xs leading-relaxed text-foreground break-words",
-                          !isEnabled && "line-through text-muted-foreground"
-                        )}
-                      >
-                        {m.content}
-                      </p>
-
-                      {/* Badges: Tags, Scope, Date */}
-                      <div className="flex items-center gap-1.5 flex-wrap mt-1.5 text-[10.5px]">
-                        {/* Badges Tags */}
-                        {m.tags && m.tags.length > 0
-                          ? m.tags.map((t) => (
-                              <span
-                                className="bg-info/10 text-info px-1.5 py-0.5 rounded font-mono text-[10px]"
-                                key={t}
-                              >
-                                #{t}
-                              </span>
-                            ))
-                          : null}
-
-                        {/* Scope */}
-                        {allScopes ? (
-                          <span className="text-muted-foreground">
-                            {m.agentId ? (
-                              <BotGlyph className="size-3 inline -mt-0.5 mr-0.5" />
-                            ) : m.projectId ? (
-                              <FolderKanbanIcon className="size-3 inline -mt-0.5 mr-0.5" />
-                            ) : (
-                              <GlobeIcon className="size-3 inline -mt-0.5 mr-0.5" />
-                            )}
-                            {scopeLabel(m)} ·{" "}
-                          </span>
-                        ) : null}
-
-                        {/* Date */}
-                        <span className="text-muted-foreground/70">
-                          {formatMemoryDate(m.createdAt)}
-                        </span>
-
-                        {/* Badge statut Suspendue */}
-                        {isEnabled ? null : (
-                          <span className="bg-warning/10 text-warning font-semibold px-1.5 py-0.5 rounded">
-                            Suspendue
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Actions sur la carte: Interrupteur On/Off, Modifier, Supprimer */}
-                    <div className="flex items-center gap-1 shrink-0">
-                      {/* Interrupteur On/Off */}
-                      <button
-                        className={cn(
-                          "p-1.5 rounded-lg transition-colors cursor-pointer",
-                          isEnabled
-                            ? "text-success hover:bg-success/10"
-                            : "text-muted-foreground hover:bg-muted"
-                        )}
-                        onClick={() => handleToggleEnabled(m)}
-                        title={
-                          isEnabled
-                            ? "Désactiver temporairement cette mémoire"
-                            : "Réactiver cette mémoire"
-                        }
-                        type="button"
-                      >
-                        <PowerIcon className="size-3.5" />
-                      </button>
-
-                      {/* Modifier */}
-                      <button
-                        className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
-                        onClick={() => {
-                          setEditingId(m.id);
-                          setEditContent(m.content);
-                          setEditTagsInput((m.tags || []).join(", "));
-                        }}
-                        title="Modifier"
-                        type="button"
-                      >
-                        <PencilIcon className="size-3.5" />
-                      </button>
-
-                      {/* Supprimer */}
-                      <button
-                        className="p-1.5 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors cursor-pointer"
-                        disabled={deletingId === m.id}
-                        onClick={() => setPendingDelete(m)}
-                        title="Supprimer"
-                        type="button"
-                      >
-                        {deletingId === m.id ? (
-                          <Loader2Icon className="size-3.5 animate-spin" />
-                        ) : (
-                          <Trash2Icon className="size-3.5" />
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          {filteredMemories.map((m) => (
+            <MemoryEntryRow
+              allScopes={allScopes}
+              deletingId={deletingId}
+              editContent={editContent}
+              editTagsInput={editTagsInput}
+              entry={m}
+              isEditing={editingId === m.id}
+              isUpdating={isUpdating}
+              key={m.id}
+              onCancelEdit={() => setEditingId(null)}
+              onChangeContent={setEditContent}
+              onChangeTags={setEditTagsInput}
+              onRequestDelete={setPendingDelete}
+              onSaveEdit={handleUpdate}
+              onStartEdit={(entry) => {
+                setEditingId(entry.id);
+                setEditContent(entry.content);
+                setEditTagsInput((entry.tags || []).join(", "));
+              }}
+              onToggleEnabled={handleToggleEnabled}
+              onToggleImportant={handleToggleImportant}
+            />
+          ))}
         </div>
       )}
 
-      {/* Dialogue de suppression */}
+      {/* Dialogue de confirmation de suppression */}
       <AlertDialog
         onOpenChange={(open) => {
           if (!open) setPendingDelete(null);
@@ -1065,156 +743,28 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       </AlertDialog>
 
       {/* Modal de Résumé IA */}
-      <Dialog onOpenChange={setSummaryModalOpen} open={summaryModalOpen}>
-        <DialogContent className="sm:max-w-[620px] max-h-[85vh] flex flex-col">
-          <DialogHeader>
-            <div className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-info/10 text-info">
-                <BrainIcon className="size-4" />
-              </span>
-              <DialogTitle>Synthèse de votre Mémoire</DialogTitle>
-            </div>
-            <DialogDescription>
-              Synthèse structurée de vos {summaryCount} informations mémorisées,
-              organisée par sections.
-            </DialogDescription>
-          </DialogHeader>
+      <MemorySummaryDialog
+        onOpenChange={setSummaryModalOpen}
+        open={summaryModalOpen}
+        summaryCount={summaryCount}
+        summaryText={summaryText}
+      />
 
-          <div className="flex-1 overflow-y-auto max-h-[50vh] rounded-xl border border-border/50 bg-muted/20 p-4 text-xs leading-relaxed text-foreground space-y-3 whitespace-pre-wrap font-sans">
-            {summaryText}
-          </div>
-
-          <DialogFooter className="flex items-center justify-between sm:justify-between pt-2">
-            <Button
-              className="gap-1.5"
-              onClick={() => {
-                navigator.clipboard.writeText(summaryText);
-                toast.success("Synthèse copiée dans le presse-papiers!");
-              }}
-              size="sm"
-              type="button"
-              variant="outline"
-            >
-              <CopyIcon className="size-3.5" />
-              <span>Copier la synthèse</span>
-            </Button>
-            <Button
-              onClick={() => setSummaryModalOpen(false)}
-              size="sm"
-              type="button"
-            >
-              Fermer
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Modal d'Importation JSON (avec limite de forfait) */}
-      <Dialog onOpenChange={setImportModalOpen} open={importModalOpen}>
-        <DialogContent className="sm:max-w-[540px]">
-          <DialogHeader>
-            <div className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-info/10 text-info">
-                <FileJsonIcon className="size-4" />
-              </span>
-              <DialogTitle>Importer des mémoires (JSON)</DialogTitle>
-            </div>
-            <DialogDescription>
-              Vérifiez les éléments à importer dans votre profil mAI.
-            </DialogDescription>
-          </DialogHeader>
-
-          {pendingImportData ? (
-            <div className="space-y-3">
-              <div className="flex items-center justify-between rounded-xl bg-muted/30 p-3 border border-border/50 text-xs">
-                <div>
-                  <p className="font-semibold text-foreground">
-                    {pendingImportData.length} élément(s) détecté(s)
-                  </p>
-                  <p className="text-[11px] text-muted-foreground">
-                    Quota actuel: {scopeCount}/{limit} ({remainingSlots}{" "}
-                    place(s) restante(s))
-                  </p>
-                </div>
-                {pendingImportData.length > remainingSlots ? (
-                  <span className="text-[11px] bg-destructive/10 text-destructive font-semibold px-2 py-1 rounded-md">
-                    Dépassement de quota
-                  </span>
-                ) : (
-                  <span className="text-[11px] bg-success/10 text-success font-semibold px-2 py-1 rounded-md">
-                    Compatible
-                  </span>
-                )}
-              </div>
-
-              {pendingImportData.length > remainingSlots ? (
-                <div className="flex items-start gap-2 rounded-xl bg-destructive/10 p-3 text-xs text-destructive">
-                  <AlertCircleIcon className="size-4 shrink-0 mt-0.5" />
-                  <p>
-                    Le fichier contient plus de mémoires que votre quota
-                    disponible. Veuillez passer à un forfait supérieur (Plus,
-                    Pro ou Max) ou réduire le fichier JSON.
-                  </p>
-                </div>
-              ) : null}
-
-              {/* Aperçu des premiers éléments */}
-              <div className="max-h-48 overflow-y-auto space-y-1.5 rounded-xl border border-border/40 p-2.5 bg-background">
-                {pendingImportData.slice(0, 5).map((item, i) => (
-                  <div
-                    className="rounded-lg bg-muted/20 p-2 text-[11.5px] text-foreground border border-border/30 flex items-start gap-2"
-                    key={i}
-                  >
-                    <span className="text-muted-foreground font-mono">
-                      {i + 1}.
-                    </span>
-                    <span className="flex-1 line-clamp-2">{item.content}</span>
-                    {item.isImportant ? (
-                      <StarIcon className="size-3 fill-warning text-warning shrink-0 mt-0.5" />
-                    ) : null}
-                  </div>
-                ))}
-                {pendingImportData.length > 5 ? (
-                  <p className="text-center text-[10.5px] text-muted-foreground pt-1">
-                    ... et {pendingImportData.length - 5} autre(s) mémoire(s).
-                  </p>
-                ) : null}
-              </div>
-            </div>
-          ) : null}
-
-          <DialogFooter className="gap-2 sm:gap-0">
-            <Button
-              onClick={() => {
-                setImportModalOpen(false);
-                setPendingImportData(null);
-              }}
-              type="button"
-              variant="outline"
-            >
-              Annuler
-            </Button>
-            <Button
-              className="bg-primary text-primary-foreground gap-1.5"
-              disabled={
-                isImporting ||
-                !pendingImportData ||
-                pendingImportData.length === 0 ||
-                pendingImportData.length > remainingSlots
-              }
-              onClick={handleConfirmImport}
-              type="button"
-            >
-              {isImporting ? (
-                <Loader2Icon className="size-3.5 animate-spin" />
-              ) : (
-                <UploadIcon className="size-3.5" />
-              )}
-              <span>Confirmer l'import</span>
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* Modal d'Importation JSON */}
+      <MemoryImportDialog
+        isImporting={isImporting}
+        limit={limit}
+        onCancel={() => {
+          setImportModalOpen(false);
+          setPendingImportData(null);
+        }}
+        onConfirmImport={handleConfirmImport}
+        onOpenChange={setImportModalOpen}
+        open={importModalOpen}
+        pendingImportData={pendingImportData}
+        remainingSlots={remainingSlots}
+        scopeCount={scopeCount}
+      />
     </div>
   );
 }

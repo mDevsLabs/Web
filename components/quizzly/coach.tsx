@@ -174,7 +174,7 @@ export function CoachQuizzly({
   questionId,
   quizId,
   sheetId,
-  sheetSubject,
+  sheetSubject: _sheetSubject,
   sheetTitle,
 }: {
   conversationId: string | null;
@@ -321,6 +321,7 @@ export function CoachQuizzly({
     []
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: défilement automatique vers le bas à chaque nouveau message ou transition d'étape.
   useEffect(() => {
     bas.current?.scrollIntoView({ behavior: "smooth" });
   }, [courant, epilogue, fil.data?.messages]);
@@ -658,7 +659,10 @@ export function CoachQuizzly({
           {epingles.length > 0 ? (
             <div className="surface-muted flex flex-col gap-1 rounded-2xl border border-amber-500/20 bg-amber-500/5 px-4 py-2.5 text-xs">
               {epingles.map((entree) => (
-                <p className="truncate text-foreground font-medium" key={entree.id}>
+                <p
+                  className="truncate text-foreground font-medium"
+                  key={entree.id}
+                >
                   <PinIcon className="mr-1.5 inline size-3 text-amber-500" />
                   {entree.text}
                 </p>
@@ -686,8 +690,8 @@ export function CoachQuizzly({
                 Écris une question, ou choisis une action.
               </h2>
               <p className="mt-1 text-xs text-muted-foreground max-w-sm">
-                Je connais ta classe, ta ligue, tes fiches et tes derniers quiz pour
-                t'aider à progresser chaque jour !
+                Je connais ta classe, ta ligue, tes fiches et tes derniers quiz
+                pour t'aider à progresser chaque jour !
               </p>
 
               {sheetTitle && (
@@ -988,7 +992,9 @@ export function CoachQuizzly({
             </p>
           ) : null}
           {message ? (
-            <p className="mt-2 text-center text-xs text-destructive">{message}</p>
+            <p className="mt-2 text-center text-xs text-destructive">
+              {message}
+            </p>
           ) : null}
         </form>
       </div>

@@ -8,54 +8,23 @@ import {
   gt,
   gte,
   inArray,
-  isNull,
-  lt,
-  lte,
   notInArray,
-  or,
   type SQL,
   sql,
 } from "drizzle-orm";
-import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { resolveBillableTotal } from "@/lib/agent/usage";
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import type { VisibilityType } from "@/lib/chat/visibility";
 import { ChatbotError } from "@/lib/errors";
 import {
   agent,
-  agentTemplate,
-  type Chat,
   chat,
   chatSecurity,
-  customCommand,
   type DBMessage,
-  type DocumentProposal,
-  document,
-  documentProposal,
-  mcpLog,
-  mcpServer,
-  mcpServerSecret,
   message,
-  pluginInstallation,
-  project,
-  projectFile,
-  projectInvite,
-  projectMember,
-  type ScheduledMessage,
-  type Skill,
-  type Suggestion,
-  scheduledMessage,
-  skill,
-  skillUsage,
-  skillVersion,
   stream,
-  suggestion,
-  toolExecution,
-  userMcpPrefs,
-  userMemory,
   vote,
 } from "../schema";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
-import { getProjectById } from "./projects";
+import { _rawClient, dbReady, getRawClient } from "./connection";
 
 export async function saveChat({
   id,
@@ -65,7 +34,7 @@ export async function saveChat({
   projectId,
   tags,
   customInstructions,
-  modeId,
+  modeId: _modeId,
   agentId,
   skillId,
   temperatureOverride,
@@ -472,7 +441,7 @@ export async function bulkUpdateChats({
   action,
   projectId,
   tags,
-  isArchived,
+  isArchived: _isArchived,
 }: {
   userId: string;
   email?: string | null;

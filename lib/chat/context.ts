@@ -19,7 +19,6 @@ import {
   getUserModelPreferences,
   saveChat,
   saveMessages,
-  trackSkillUsage,
   updateChatProjectById,
 } from "@/lib/db/queries";
 import type { Chat, DBMessage } from "@/lib/db/schema";
@@ -208,7 +207,12 @@ export async function buildChatContext(
       if (proj?.defaultModel) {
         projectDefaultModel = proj.defaultModel;
       }
-    } catch {}
+    } catch (error: unknown) {
+      console.error(
+        "[chat:context] Impossible de charger les métadonnées du projet :",
+        error
+      );
+    }
   }
 
   // Les Skills et serveurs MCP associés sont ouverts à tous les forfaits.
@@ -289,7 +293,12 @@ export async function buildChatContext(
           );
         }
       }
-    } catch {}
+    } catch (error: unknown) {
+      console.error(
+        "[chat:context] Impossible de charger les outils de l'agent :",
+        error
+      );
+    }
   }
   if (agentSkillIds.length > 0) {
     try {
@@ -328,7 +337,13 @@ export async function buildChatContext(
         skillMcpToolFilter,
         ...filtresAgent,
       ]);
-    } catch {}
+    } catch (error: unknown) {
+      console.error(
+        "[chat:context] Échec de l'intersection des filtres d'outils MCP (fail-closed) :",
+        error
+      );
+      skillMcpToolFilter = null;
+    }
   }
 
   const chatModel =
@@ -446,7 +461,12 @@ export async function buildChatContext(
         projectId: projectId ?? null,
         userId,
       });
-    } catch {}
+    } catch (error: unknown) {
+      console.error(
+        "[chat:context] Échec de la mise à jour du projet pour la discussion :",
+        error
+      );
+    }
   }
 
   let uiMessages: ChatMessage[];
@@ -582,7 +602,12 @@ export async function buildChatContext(
           files: projectFiles,
         });
       }
-    } catch {}
+    } catch (error: unknown) {
+      console.error(
+        "[chat:context] Échec lors de la préparation des fichiers du projet :",
+        error
+      );
+    }
   }
 
   // Récupérer custom instructions utilisateur + chat

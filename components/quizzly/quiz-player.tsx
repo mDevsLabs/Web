@@ -4,10 +4,7 @@ import {
   ArrowLeftIcon,
   CheckIcon,
   FlameIcon,
-  GraduationCapIcon,
   HeartIcon,
-  MessageSquareIcon,
-  SparklesIcon,
   Volume2Icon,
   VolumeXIcon,
   XIcon,
@@ -265,7 +262,8 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
               </h1>
             </div>
             <p className="text-sm text-slate-600 dark:text-slate-300">
-              Un cœur revient toutes les 30 minutes. Vous pouvez également recharger vos cœurs dans la boutique avec vos gemmes.
+              Un cœur revient toutes les 30 minutes. Vous pouvez également
+              recharger vos cœurs dans la boutique avec vos gemmes.
             </p>
             <div className="flex flex-wrap gap-2.5 pt-2">
               <Link
@@ -339,14 +337,18 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
 
             <div className="grid grid-cols-2 gap-3 rounded-2xl bg-slate-50 p-3 text-center dark:bg-slate-800/60">
               <div className="flex flex-col items-center">
-                <span className="text-[11px] font-semibold text-slate-400">Série</span>
+                <span className="text-[11px] font-semibold text-slate-400">
+                  Série
+                </span>
                 <span className="flex items-center gap-1 text-sm font-bold text-orange-500">
                   <FlameIcon className="size-4" />
                   {bilan.streakCount} {jours}
                 </span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-[11px] font-semibold text-slate-400">Gemmes</span>
+                <span className="text-[11px] font-semibold text-slate-400">
+                  Gemmes
+                </span>
                 <span className="text-sm font-bold text-blue-600 dark:text-blue-400">
                   +{bilan.gemsAwarded} 💎
                 </span>
@@ -369,8 +371,12 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                           className="flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50/60 px-3 py-2 text-xs font-semibold text-blue-800 hover:bg-blue-100 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-300"
                           href={`/quizzly/coach?quiz=${encodeURIComponent(quiz.id)}&question=${encodeURIComponent(ligne.questionId)}`}
                         >
-                          <span className="truncate">{question?.question ?? "Cette question"}</span>
-                          <span className="ml-2 shrink-0 font-bold text-blue-600 dark:text-blue-400">&gt;</span>
+                          <span className="truncate">
+                            {question?.question ?? "Cette question"}
+                          </span>
+                          <span className="ml-2 shrink-0 font-bold text-blue-600 dark:text-blue-400">
+                            &gt;
+                          </span>
                         </Link>
                       </li>
                     );
@@ -600,12 +606,18 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         {/* Jauge de progression du quiz */}
         <div className="flex-1 flex flex-col gap-1">
           <div className="flex items-center justify-between text-[11px] font-bold text-slate-500">
-            <span>Question {index + 1} sur {quiz.questions.length}</span>
-            <span>{Math.round(((index + 1) / quiz.questions.length) * 100)}%</span>
+            <span>
+              Question {index + 1} sur {quiz.questions.length}
+            </span>
+            <span>
+              {Math.round(((index + 1) / quiz.questions.length) * 100)}%
+            </span>
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-blue-100 dark:bg-blue-950">
             <motion.div
-              animate={{ width: `${((index + 1) / quiz.questions.length) * 100}%` }}
+              animate={{
+                width: `${((index + 1) / quiz.questions.length) * 100}%`,
+              }}
               className="h-full rounded-full bg-blue-600"
               initial={false}
               transition={{ duration: 0.35, ease: "easeInOut" }}
@@ -625,7 +637,11 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
           title={sonActif ? "Couper le son" : "Activer le son"}
           type="button"
         >
-          {sonActif ? <Volume2Icon className="size-4" /> : <VolumeXIcon className="size-4" />}
+          {sonActif ? (
+            <Volume2Icon className="size-4" />
+          ) : (
+            <VolumeXIcon className="size-4" />
+          )}
         </button>
       </div>
 
@@ -644,8 +660,11 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         <div
           className={cn(
             "surface-quizzly-card flex flex-col gap-4 p-5 sm:p-6 transition-all",
-            revelation?.correct && "border-emerald-300 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/20",
-            revelation && !revelation.correct && "border-rose-300 bg-rose-50/50 q-shake dark:border-rose-800 dark:bg-rose-950/20"
+            revelation?.correct &&
+              "border-emerald-300 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/20",
+            revelation &&
+              !revelation.correct &&
+              "border-rose-300 bg-rose-50/50 q-shake dark:border-rose-800 dark:bg-rose-950/20"
           )}
           key={`${question.id}-${revelation ? "vu" : "choix"}`}
         >
@@ -661,12 +680,20 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
 
               return (
                 <button
+                  aria-pressed={actif}
                   className={cn(
-                    "flex items-center gap-3 rounded-2xl border p-3.5 text-left text-xs sm:text-sm font-semibold transition-all cursor-pointer",
-                    !revelation && !actif && "border-slate-200/90 bg-white/90 text-slate-800 hover:border-blue-400 hover:bg-blue-50/60 shadow-xs dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800",
-                    !revelation && actif && "border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-500/20 scale-[1.01]",
-                    attendue && "border-emerald-500 bg-emerald-100/80 text-emerald-900 ring-2 ring-emerald-500/30 dark:bg-emerald-950 dark:text-emerald-200",
-                    donnee && !attendue && "border-rose-500 bg-rose-100/80 text-rose-900 ring-2 ring-rose-500/30 dark:bg-rose-950 dark:text-rose-200"
+                    "flex min-h-14 items-center gap-3 rounded-2xl border p-3.5 text-left text-sm font-semibold transition-all cursor-pointer touch-manipulation active:scale-[0.99] sm:text-sm",
+                    !revelation &&
+                      !actif &&
+                      "border-slate-200/90 bg-white/90 text-slate-800 hover:border-blue-400 hover:bg-blue-50/60 shadow-xs dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800",
+                    !revelation &&
+                      actif &&
+                      "border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-500/20 scale-[1.01]",
+                    attendue &&
+                      "border-emerald-500 bg-emerald-100/80 text-emerald-900 ring-2 ring-emerald-500/30 dark:bg-emerald-950 dark:text-emerald-200",
+                    donnee &&
+                      !attendue &&
+                      "border-rose-500 bg-rose-100/80 text-rose-900 ring-2 ring-rose-500/30 dark:bg-rose-950 dark:text-rose-200"
                   )}
                   disabled={Boolean(revelation)}
                   key={option}
@@ -676,8 +703,12 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                   <span
                     className={cn(
                       "flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-all",
-                      !revelation && !actif && "border border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300",
-                      !revelation && actif && "bg-white text-blue-600 font-black",
+                      !revelation &&
+                        !actif &&
+                        "border border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300",
+                      !revelation &&
+                        actif &&
+                        "bg-white text-blue-600 font-black",
                       attendue && "bg-emerald-600 text-white font-black",
                       donnee && !attendue && "bg-rose-600 text-white font-black"
                     )}
@@ -687,7 +718,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                     ) : donnee && !attendue ? (
                       <XIcon className="size-4 stroke-[3]" />
                     ) : (
-                      LETTRES[position] ?? position + 1
+                      (LETTRES[position] ?? position + 1)
                     )}
                   </span>
                   <span className="flex-1">{option}</span>
@@ -699,18 +730,20 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
           <AnimatePresence>
             {revelation && (
               <motion.div
-                animate={{ opacity: 1, height: "auto" }}
+                animate={{ height: "auto", opacity: 1 }}
                 className={cn(
                   "rounded-2xl p-3.5 text-xs font-medium",
                   revelation.correct
                     ? "bg-emerald-100/70 text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200"
                     : "bg-rose-100/70 text-rose-900 dark:bg-rose-950/50 dark:text-rose-200"
                 )}
-                exit={{ opacity: 0, height: 0 }}
-                initial={{ opacity: 0, height: 0 }}
+                exit={{ height: 0, opacity: 0 }}
+                initial={{ height: 0, opacity: 0 }}
               >
                 <p className="font-bold mb-1">
-                  {revelation.correct ? "Excellente réponse ! 👏" : "Pas tout à fait… 💡"}
+                  {revelation.correct
+                    ? "Excellente réponse ! 👏"
+                    : "Pas tout à fait… 💡"}
                 </p>
                 <p>{revelation.explanation}</p>
               </motion.div>
@@ -719,7 +752,9 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         </div>
       </Rangee>
 
-      {erreur && <p className="text-xs font-semibold text-destructive">{erreur}</p>}
+      {erreur && (
+        <p className="text-xs font-semibold text-destructive">{erreur}</p>
+      )}
 
       <div className="flex items-center justify-between gap-3 pt-2">
         <FormulaireSignalement
@@ -731,7 +766,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
 
         <button
           className={cn(
-            "rounded-full px-7 py-3 text-sm font-bold text-white transition-all shadow-md",
+            "min-h-12 rounded-full px-7 py-3 text-sm font-bold text-white transition-all shadow-md touch-manipulation",
             (!revelation && selection.length === 0) || envoi
               ? "cursor-not-allowed bg-slate-300 text-slate-500 opacity-60 dark:bg-slate-800 dark:text-slate-400"
               : "cursor-pointer bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95"
@@ -746,11 +781,11 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
             ? "Correction…"
             : revelation?.gameOver
               ? "Terminer (plus de cœurs)"
-              : !revelation
-                ? "Vérifier"
-                : derniere
+              : revelation
+                ? derniere
                   ? "Terminer le quiz"
-                  : "Continuer"}
+                  : "Continuer"
+                : "Vérifier"}
         </button>
       </div>
     </section>

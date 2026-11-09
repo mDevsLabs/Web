@@ -50,8 +50,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 15 }}
           transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
         >
-          Découvrez la suite mAI (Web, Pulse, CLI, Coder), nos modèles d&apos;IA
-          de pointe et notre API unifiée haute performance.
+          Découvrez la plateforme unifiée mAI, nos modèles d&apos;IA de pointe,
+          notre moteur d&apos;agents autonomes et notre API souveraine haute
+          performance.
         </motion.p>
 
         {/* Boutons d'Action */}
@@ -61,25 +62,25 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           transition={{ delay: 0.35, duration: 0.8, ease: "easeOut" }}
         >
-          <Link className="w-full sm:w-auto" href="/projects">
+          <Link className="w-full sm:w-auto" href="/models">
             <motion.button
               className="w-full sm:w-auto px-8 py-4 rounded-2xl md:rounded-full bg-gradient-to-r from-purple-600 via-blue-600 to-slate-900 text-white font-bold flex items-center justify-center gap-2.5 shadow-[0_10px_30px_rgba(147,51,234,0.3)] hover:shadow-[0_15px_35px_rgba(147,51,234,0.4)] transition-all"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.96 }}
             >
-              Explorer les Projets
+              Découvrir les Modèles
               <ArrowRight className="w-5 h-5" />
             </motion.button>
           </Link>
 
-          <Link className="w-full sm:w-auto" href="/models">
+          <Link className="w-full sm:w-auto" href="/docs">
             <motion.button
               className="w-full sm:w-auto px-8 py-4 rounded-2xl md:rounded-full bg-white/60 backdrop-blur-md border border-slate-200 text-slate-900 font-bold flex items-center justify-center gap-2.5 hover:bg-white/90 hover:border-purple-300 transition-all shadow-sm"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.96 }}
             >
               <Sparkles className="w-5 h-5 text-purple-600" />
-              Découvrir les Modèles
+              Centre de Documentation
             </motion.button>
           </Link>
 

@@ -1,24 +1,25 @@
 # mAI Mobile
 
 Client **Capacitor 6** qui ouvre `https://mai-officiel.vercel.app` dans une
-WebView Android ou iOS. Il n'embarque **ni le serveur Next.js, ni aucune logique** :
-une connexion réseau et un site distant accessible sont nécessaires.
+WebView Android ou iOS. Il n'embarque **ni le serveur Next.js, ni aucune logique
+métier** : une connexion réseau et un site distant accessible sont nécessaires.
 
 Ce n'est pas l'endroit du CLI ni de mAI Coder : ils utilisent des terminaux et des
 fichiers locaux et sont distribués par [mAI Desktop](../desktop/README.md).
 
-## Il n'y a pas de code applicatif ici
+## Raccourcis natifs
 
-L'application tient dans un seul fichier de configuration. `tsconfig.json`
-n'inclut que `capacitor.config.ts` ; `src/` n'existe pas.
+Le client expose 20 actions rapides décrites dans `scripts/shortcuts.json` :
+Capacitor les matérialise en App Intents (iOS 16+) et en raccourcis dynamiques
+Android (la limite visible est fixée par Android). `scripts/sync-native.mjs` ajoute aussi un widget Android Quizzly avec
+les XP, le niveau, la série, et des accès à Wakies/Vibe/Quizzly. Le widget est
+actualisé depuis le résumé Quizzly reçu par la WebView ; les scores ne sont pas
+stockés sur un serveur tiers. Les projets natifs restent générés et non versionnés,
+mais le script est relancé lors de chaque génération/build/synchronisation.
 
-```
-capacitor.config.ts   Origine distante, schémas, appId, plugins
-resources/            Icônes et splash (générés)
-www/                  Coquille locale de repli — écrite à la main, versionnée
-scripts/              generate-icons.mjs
-android/  ios/        Absents de Git, créés par `cap add`
-```
+Les widgets iOS (WidgetKit) nécessitent une extension d'application et une
+signature Xcode, absentes de ce client Capacitor non signé. Sur iOS, les
+raccourcis App Intents sont disponibles à partir d'iOS 16.
 
 **`www/` n'est pas un export de Next.js.** C'est une page HTML posée à la main,
 utilisée lorsque la WebView ne peut pas joindre l'origine distante. Rien à
@@ -43,9 +44,9 @@ Sur macOS, `pnpm run add:ios` à la place de `add:android`.
 
 | Commande | Action |
 | --- | --- |
-| `pnpm run dev` | **`cap sync`** — ce n'est pas un serveur de développement |
+| `pnpm run dev` | `cap sync` puis génération des intégrations natives — ce n'est pas un serveur de développement |
 | `pnpm run build` | `tsc --noEmit` sur la configuration |
-| `pnpm run sync` | Recopie la configuration et `www/` dans les projets natifs |
+| `pnpm run sync` | Recopie la configuration et `www/`, puis génère les intégrations natives mobiles |
 | `pnpm run add:android` / `add:ios` | Génère le projet natif |
 | `pnpm run build:android` | APK de debug |
 | `pnpm run build:android:release` | APK « release » **non signé** |

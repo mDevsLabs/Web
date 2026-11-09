@@ -56,7 +56,7 @@ const CITIES: Record<
   },
 };
 
-function stubGeocoding() {
+function _stubGeocoding() {
   vi.stubGlobal(
     "fetch",
     vi.fn(async (input: RequestInfo | URL) => {
@@ -150,7 +150,7 @@ describe("Météo enrichie", () => {
 
   it("borne une demande de prévision hors limites au lieu de la laisser filer", async () => {
     const calls = stubForecast({});
-    const result = await runTool(getWeather, {
+    const _result = await runTool(getWeather, {
       city: "Paris, France",
       forecastDays: 99,
       pastDays: 900,

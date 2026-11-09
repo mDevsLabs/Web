@@ -22,7 +22,10 @@ import { cn } from "@/lib/utils";
 
 type IconeType = ComponentType<{ className?: string }>;
 
-const ICONES_ARTICLES: Record<string, { icone: IconeType; fond: string; couleur: string }> = {
+const ICONES_ARTICLES: Record<
+  string,
+  { icone: IconeType; fond: string; couleur: string }
+> = {
   "booster-xp": {
     couleur: "text-blue-600 dark:text-blue-400",
     fond: "bg-blue-500/10 dark:bg-blue-500/20",

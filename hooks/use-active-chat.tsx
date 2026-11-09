@@ -38,7 +38,6 @@ import {
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import type { PendingCommand } from "@/lib/commands/exec";
 import type { Agent, Skill, Vote } from "@/lib/db/schema";
-import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
 
@@ -1029,6 +1028,10 @@ export function ActiveChatProvider({
       {children}
     </ActiveChatContext.Provider>
   );
+}
+
+export function useOptionalActiveChat() {
+  return useContext(ActiveChatContext);
 }
 
 export function useActiveChat() {

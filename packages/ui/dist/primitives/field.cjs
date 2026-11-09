@@ -1,39 +1,24 @@
 "use client";
-"use strict";
-"use client";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var field_exports = {};
-__export(field_exports, {
-  Field: () => Field
-});
-module.exports = __toCommonJS(field_exports);
-var import_jsx_runtime = require("react/jsx-runtime");
-var import_utils = require("../internal/utils.cjs");
+const { jsx, jsxs } = require("react/jsx-runtime");
+const { cloneElement, isValidElement } = require("react");
+const { cx } = require("../internal/utils.cjs");
 function Field({ label, htmlFor, hint, error, className, children, ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { ...props, className: (0, import_utils.cx)("md-field", className), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", { htmlFor, children: label }),
-    children,
-    hint && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { id: `${htmlFor}-hint`, className: "md-muted", children: hint }),
-    error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { id: `${htmlFor}-error`, className: "md-error", role: "alert", children: error })
+  const describedBy = [
+    hint ? `${htmlFor}-hint` : null,
+    error ? `${htmlFor}-error` : null
+  ].filter(Boolean).join(" ") || void 0;
+
+  const content = isValidElement(children) ? cloneElement(children, {
+    id: children.props.id || htmlFor,
+    "aria-describedby": children.props["aria-describedby"] || describedBy,
+    "aria-invalid": children.props["aria-invalid"] ?? (error ? true : void 0)
+  }) : children;
+
+  return /* @__PURE__ */ jsxs("div", { ...props, className: cx("md-field", className), children: [
+    /* @__PURE__ */ jsx("label", { htmlFor, children: label }),
+    content,
+    hint && /* @__PURE__ */ jsx("p", { id: `${htmlFor}-hint`, className: "md-muted", children: hint }),
+    error && /* @__PURE__ */ jsx("p", { id: `${htmlFor}-error`, className: "md-error", role: "alert", children: error })
   ] });
 }
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  Field
-});
+exports.Field = Field;

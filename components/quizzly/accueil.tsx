@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  AwardIcon,
   BookOpenIcon,
   CheckIcon,
   ChevronRightIcon,
@@ -67,8 +66,18 @@ export function AccueilQuizzly() {
   const [feteCadeau, setFeteCadeau] = useState(false);
 
   // Recherche du prochain quiz à faire
-  let prochainQuiz: { id: string; title: string; subjectLabel: string; subjectId: string; chapterTitle: string } | null = null;
-  const progressionNodes: { id: string; status: "completed" | "current" | "locked"; title: string }[] = [];
+  let prochainQuiz: {
+    id: string;
+    title: string;
+    subjectLabel: string;
+    subjectId: string;
+    chapterTitle: string;
+  } | null = null;
+  const progressionNodes: {
+    id: string;
+    status: "completed" | "current" | "locked";
+    title: string;
+  }[] = [];
 
   if (parcours?.subjects) {
     for (const sub of parcours.subjects) {
@@ -77,7 +86,11 @@ export function AccueilQuizzly() {
           for (const q of un.quizzes) {
             if (q.passed) {
               if (progressionNodes.length < 8) {
-                progressionNodes.push({ id: q.id, status: "completed", title: q.title });
+                progressionNodes.push({
+                  id: q.id,
+                  status: "completed",
+                  title: q.title,
+                });
               }
             } else if (q.unlocked && !prochainQuiz) {
               prochainQuiz = {
@@ -88,10 +101,18 @@ export function AccueilQuizzly() {
                 title: q.title,
               };
               if (progressionNodes.length < 8) {
-                progressionNodes.push({ id: q.id, status: "current", title: q.title });
+                progressionNodes.push({
+                  id: q.id,
+                  status: "current",
+                  title: q.title,
+                });
               }
             } else if (progressionNodes.length < 8) {
-              progressionNodes.push({ id: q.id, status: "locked", title: q.title });
+              progressionNodes.push({
+                id: q.id,
+                status: "locked",
+                title: q.title,
+              });
             }
           }
         }
@@ -169,21 +190,31 @@ export function AccueilQuizzly() {
               <div className="flex flex-1 flex-col items-center gap-3 sm:items-start">
                 <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
                   <SparklesIcon className="size-3.5 text-blue-600 dark:text-blue-400" />
-                  <span>{schoolYear ? libelleAnnee(schoolYear as SchoolYear) : "Prêt à réviser ?"}</span>
+                  <span>
+                    {schoolYear
+                      ? libelleAnnee(schoolYear as SchoolYear)
+                      : "Prêt à réviser ?"}
+                  </span>
                 </div>
 
                 <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-                  Bonjour ! <span className="inline-block animate-wiggle">👋</span>
+                  Bonjour !{" "}
+                  <span className="inline-block animate-wiggle">👋</span>
                 </h1>
 
                 <p className="max-w-md text-base font-medium text-slate-600 dark:text-slate-300">
-                  Prêt à progresser aujourd'hui et à consolider vos connaissances ?
+                  Prêt à progresser aujourd'hui et à consolider vos
+                  connaissances ?
                 </p>
 
                 <div className="mt-2 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
                   <Link
                     className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-500 hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-98"
-                    href={prochainQuiz ? `/quizzly/quiz/${prochainQuiz.id}` : "/quizzly/apprentissage"}
+                    href={
+                      prochainQuiz
+                        ? `/quizzly/quiz/${prochainQuiz.id}`
+                        : "/quizzly/apprentissage"
+                    }
                   >
                     <span>Commencer une leçon</span>
                     <ChevronRightIcon className="size-4 stroke-[2.5]" />
@@ -264,7 +295,9 @@ export function AccueilQuizzly() {
                 <ZapIcon className="size-6 fill-amber-500/20" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total XP</p>
+                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  Total XP
+                </p>
                 <p className="truncate text-2xl font-black text-slate-900 dark:text-white">
                   {data?.xp ?? 0}
                 </p>
@@ -281,13 +314,18 @@ export function AccueilQuizzly() {
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Niveau</p>
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    Niveau
+                  </p>
                   <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
                     Niv. {data?.niveau ?? 1}
                   </span>
                 </div>
                 <p className="truncate text-2xl font-black text-slate-900 dark:text-white">
-                  {data?.xpDansPalier ?? 0} <span className="text-xs font-semibold text-slate-400">/ {data?.xpPalier ?? 100}</span>
+                  {data?.xpDansPalier ?? 0}{" "}
+                  <span className="text-xs font-semibold text-slate-400">
+                    / {data?.xpPalier ?? 100}
+                  </span>
                 </p>
                 <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                   <div
@@ -306,9 +344,14 @@ export function AccueilQuizzly() {
                 <FlameIcon className="size-6 fill-orange-500/20" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Série active</p>
+                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  Série active
+                </p>
                 <p className="truncate text-2xl font-black text-slate-900 dark:text-white">
-                  {data?.streakCount ?? 0} <span className="text-xs font-semibold text-slate-500">jours</span>
+                  {data?.streakCount ?? 0}{" "}
+                  <span className="text-xs font-semibold text-slate-500">
+                    jours
+                  </span>
                 </p>
                 <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
                   Record : {data?.streakBest ?? 0} jours
@@ -360,17 +403,29 @@ export function AccueilQuizzly() {
                 {joursSemaine.map((jour, index) => {
                   const estPasse = index < aujourdhuiIndex;
                   const estAujourdhui = index === aujourdhuiIndex;
-                  const valide = streakCount > 0 && (estPasse || (estAujourdhui && streakCount > 0));
+                  const valide =
+                    streakCount > 0 &&
+                    (estPasse || (estAujourdhui && streakCount > 0));
 
                   return (
-                    <div className="flex flex-col items-center gap-1.5" key={jour}>
-                      <span className="text-[10px] font-bold text-slate-400">{jour}</span>
+                    <div
+                      className="flex flex-col items-center gap-1.5"
+                      key={jour}
+                    >
+                      <span className="text-[10px] font-bold text-slate-400">
+                        {jour}
+                      </span>
                       <div
                         className={cn(
                           "flex size-7 items-center justify-center rounded-full text-xs transition-all",
-                          valide && "bg-orange-500 text-white font-bold shadow-xs",
-                          !valide && estAujourdhui && "border-2 border-orange-400 bg-orange-50 text-orange-600 dark:bg-orange-950/40",
-                          !valide && !estAujourdhui && "bg-slate-200/80 text-slate-400 dark:bg-slate-700/60"
+                          valide &&
+                            "bg-orange-500 text-white font-bold shadow-xs",
+                          !valide &&
+                            estAujourdhui &&
+                            "border-2 border-orange-400 bg-orange-50 text-orange-600 dark:bg-orange-950/40",
+                          !valide &&
+                            !estAujourdhui &&
+                            "bg-slate-200/80 text-slate-400 dark:bg-slate-700/60"
                         )}
                       >
                         {valide ? (
@@ -386,7 +441,8 @@ export function AccueilQuizzly() {
 
               {data?.streakFreezes ? (
                 <p className="text-xs font-medium text-sky-600 dark:text-sky-400">
-                  🛡️ {data.streakFreezes} gel{data.streakFreezes > 1 ? "s" : ""} de série actif{data.streakFreezes > 1 ? "s" : ""}
+                  🛡️ {data.streakFreezes} gel{data.streakFreezes > 1 ? "s" : ""}{" "}
+                  de série actif{data.streakFreezes > 1 ? "s" : ""}
                 </p>
               ) : null}
             </div>
@@ -423,7 +479,9 @@ export function AccueilQuizzly() {
                     ? "cursor-not-allowed bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
                     : "cursor-pointer bg-blue-600 text-white shadow-md shadow-blue-500/20 hover:bg-blue-500 active:scale-95"
                 )}
-                disabled={Boolean(data?.dailyGiftClaimed || recuperationEnCours)}
+                disabled={Boolean(
+                  data?.dailyGiftClaimed || recuperationEnCours
+                )}
                 onClick={recupererCadeau}
                 type="button"
               >
@@ -458,7 +516,10 @@ export function AccueilQuizzly() {
             <div className="mt-4 flex items-center gap-4 rounded-2xl bg-slate-50 p-3.5 dark:bg-slate-800/60">
               <div className="relative shrink-0">
                 {data?.league ? (
-                  <IconeLigue className="size-12 drop-shadow-md" league={data.league as any} />
+                  <IconeLigue
+                    className="size-12 drop-shadow-md"
+                    league={data.league as any}
+                  />
                 ) : (
                   <ShieldIcon className="size-12 text-slate-400" />
                 )}
@@ -482,7 +543,10 @@ export function AccueilQuizzly() {
                 <div className="flex items-center justify-between gap-3">
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5">
-                      <IconeMatiere className="size-3.5" id={prochainQuiz.subjectId} />
+                      <IconeMatiere
+                        className="size-3.5"
+                        id={prochainQuiz.subjectId}
+                      />
                       <span className="truncate text-xs font-bold text-slate-700 dark:text-slate-300">
                         {prochainQuiz.subjectLabel}
                       </span>

@@ -8,7 +8,6 @@ import {
   CalendarClockIcon as CalendarClock,
   CheckCheckIcon,
   CheckCircle2Icon as CheckCircle2,
-  CheckIcon,
   FolderIcon as Folder,
   GraduationCapIcon as GraduationCap,
   HeartIcon as Heart,

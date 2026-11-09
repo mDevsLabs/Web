@@ -383,7 +383,7 @@ export async function DELETE(request: Request) {
   if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const { user: maiUser, userId } = session;
+  const { userId } = session;
 
   const chat = await getChatById({ id });
   if (!chat) {

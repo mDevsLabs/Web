@@ -22,7 +22,7 @@ export { htmlToPlainText, isRichHtml };
 
 const MENTION_RE = /^@[a-zA-Z0-9_]{1,30}$/;
 const HASHTAG_RE = /^#[\w\u00C0-\u017F]{1,50}$/;
-const URL_RE = /^https?:\/\/[^\s]+$/i;
+const _URL_RE = /^https?:\/\/[^\s]+$/i;
 const URL_CORE_RE = /^https?:\/\/[^\s]+$/i;
 
 /**

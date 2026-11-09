@@ -467,8 +467,33 @@ export const MessageItem: React.FC<MessageItemProps> = ({
             </div>
           )}
 
-          {/* Bouton d'options (⋮) : centré verticalement, apparaît au survol */}
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+          {/*
+            Actions rapides du message.
+
+            Sur un pointeur (souris / trackpad) elles apparaissent au survol ;
+            sur un écran TACTILE, il n'y a pas de survol — les laisser en
+            `opacity-0` les rendait inatteignables. Elles sont donc visibles
+            d'emblée sous le point de rupture `sm`, et le restent sur desktop
+            une fois le menu ouvert.
+          */}
+          <div
+            className={`shrink-0 flex items-center gap-0.5 transition-opacity ${
+              actionMenuFor === String(m.id)
+                ? "opacity-100"
+                : "opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100"
+            }`}
+          >
+            <button
+              className="vibe-chat-icon-btn p-1.5 transition-colors max-sm:hidden"
+              onClick={(e) => {
+                e.stopPropagation();
+                onReplyTo(m);
+              }}
+              title="Répondre à ce message"
+              type="button"
+            >
+              <Reply className="w-3.5 h-3.5" />
+            </button>
             <button
               className="vibe-chat-icon-btn p-1.5 transition-colors"
               onClick={(e) => {

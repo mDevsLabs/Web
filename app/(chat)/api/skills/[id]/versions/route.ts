@@ -2,7 +2,6 @@ import { z } from "zod";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { getSkillVersions, restoreSkillVersion } from "@/lib/db/queries";
-import { ChatbotError } from "@/lib/errors";
 
 export async function GET(
   _request: Request,

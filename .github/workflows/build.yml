@@ -397,6 +397,9 @@ jobs:
       - name: Patch icônes natives Android (logo → mipmap)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
+      - name: Générer les raccourcis Android et le widget Quizzly
+        working-directory: apps/mobile
+        run: node scripts/sync-native.mjs
       - name: Build Android – Debug APK (debug keystore, non production)
         working-directory: apps/mobile/android
         run: |
@@ -445,6 +448,9 @@ jobs:
       - name: Patch icônes natives iOS (logo → AppIcon)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
+      - name: Générer les App Intents iOS
+        working-directory: apps/mobile
+        run: node scripts/sync-native.mjs
       - name: Construire l’archive iOS non signée
         working-directory: apps/mobile
         run: |

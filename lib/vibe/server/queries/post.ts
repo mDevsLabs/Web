@@ -28,15 +28,10 @@ import {
   attachQuotedPosts,
   fetchPostMedia,
 } from "./post-hydrate";
+import { viewerIdOf } from "./viewer";
 
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-
-function viewerIdOf(identity: VibeIdentity | null): number | null {
-  return identity && /^\d+$/.test(String(identity.userId))
-    ? Number(identity.userId)
-    : null;
-}
 
 /** Synthèse locale du fil — réplique `synthesizeThread`. */
 export function synthesizeThreadLocal(

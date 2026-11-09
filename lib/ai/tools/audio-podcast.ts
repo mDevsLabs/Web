@@ -180,7 +180,7 @@ export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
         voice: string;
       }> = [];
 
-      for (const [index, segment] of segments.entries()) {
+      for (const [_index, segment] of segments.entries()) {
         if (abortSignal?.aborted) {
           break;
         }

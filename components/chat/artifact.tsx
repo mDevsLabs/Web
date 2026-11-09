@@ -37,7 +37,10 @@ export const artifactDefinitions = [
   sheetArtifact,
   htmlArtifact,
 ];
-export type ArtifactKind = (typeof artifactDefinitions)[number]["kind"];
+
+import type { ArtifactKind } from "@/lib/artifacts/kinds";
+
+export type { ArtifactKind };
 
 export type UIArtifact = {
   title: string;

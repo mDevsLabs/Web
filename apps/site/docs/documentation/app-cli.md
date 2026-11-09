@@ -17,7 +17,7 @@ order: 4
 
 ```bash
 # Via npm
-npm install -g @mdevslabs/mai-cli
+npm install -g @mdevs/mai-cli
 
 # Ou via Homebrew (macOS)
 brew install mDevsLabs/CLI/mai

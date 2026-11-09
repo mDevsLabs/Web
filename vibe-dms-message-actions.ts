@@ -25,7 +25,7 @@ import {
 import { MAIAgentFleet } from "./vibe-mai-fleet.ts";
 
 export function registerDMMessageActionRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 4c. PIN / UNPIN MESSAGE (max 3 par conversation, adressage partnerId)

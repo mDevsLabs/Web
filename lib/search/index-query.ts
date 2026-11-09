@@ -1853,7 +1853,8 @@ export async function searchIndex(
 
   // Si aucune source n'est précisée (sources = [] ou non spécifié, scope "all"),
   // interroger l'ensemble des sources autorisées pour le forfait.
-  const hasSpecificSources = Array.isArray(input.sources) && input.sources.length > 0;
+  const hasSpecificSources =
+    Array.isArray(input.sources) && input.sources.length > 0;
   const requested = hasSpecificSources ? new Set(input.sources) : null;
   const resolvers = ALL_SOURCES.filter(
     (resolver) =>

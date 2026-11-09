@@ -58,3 +58,9 @@ apps/coder/release/
 # le build Next, qui ne compile pas le jeu.)
 public/blackline/
 apps/blackline/dist/
+
+# Fichiers temporaires, sauvegardes et artefacts de travail
+*.bak
+*.tmp
+artifacts/
+RAPPORT_IMPLANTATION_MDEVS_UI_ICONS.txt

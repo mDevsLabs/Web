@@ -11,7 +11,6 @@ import { useDataStream } from "@/components/chat/data-stream-provider";
 import { getChatHistoryPaginationKey } from "@/components/chat/sidebar-history";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import type {
-  AgentAutonomy,
   AgentStepRecord,
   AgentToolActivity,
   ToolCategory,

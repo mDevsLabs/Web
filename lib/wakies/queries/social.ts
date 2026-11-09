@@ -4,67 +4,25 @@ import {
   asc,
   desc,
   eq,
-  gt,
   ilike,
   inArray,
   isNull,
-  lt,
-  lte,
-  ne,
   or,
   sql,
 } from "drizzle-orm";
 import { dbReady, getDb } from "@/lib/db/queries";
 import {
-  wakiesCall,
-  wakiesCapture,
-  wakiesChatTurn,
   wakiesConversation,
   wakiesFriend,
-  wakiesMemory,
   wakiesMessage,
   wakiesMessageReaction,
-  wakiesNotification,
-  wakiesPage,
-  wakiesPageConversation,
-  wakiesPageReview,
-  wakiesSettings,
-  wakiesSpace,
-  wakiesTask,
-  wakiesTaskConversation,
-  wakiesTaskEvent,
-  wakiesTaskRun,
   wakiesWakie,
   wakiesWakieImage,
   wakiesWakieProfile,
-  wakiesWakieSpace,
 } from "@/lib/db/schema";
-import type { PageSettings } from "@/lib/wakies/pages";
-import { preserveGoalMarker } from "@/lib/wakies/shared/goals";
-import { apercuMessage } from "@/lib/wakies/shared/messages";
-import {
-  prochaineExecution,
-  STATUT_TACHE,
-  TACHE_BAIL_MS,
-  TACHE_MAX_TENTATIVES,
-  tentativesEpuisees,
-} from "@/lib/wakies/task-lease";
 import { estReactionValide, PALETTE_REACTIONS } from "../shared/reactions";
 import { ownedConversationIds } from "./messages";
-import type {
-  SetupStatus,
-  WakieCallRow,
-  WakieConversationRow,
-  WakieMemoryRow,
-  WakiePageRow,
-  WakieRow,
-  WakieSettingsRow,
-  WakieSpaceRow,
-  WakieTaskEventRow,
-  WakieTaskRow,
-  WakieTaskRunRow,
-  WakieWithSpaces,
-} from "./types";
+import type { WakieRow, WakieWithSpaces } from "./types";
 import { createWakie, findWakie, hashCompte, listWakies } from "./wakies";
 
 // ─── Profils sociaux, galerie et amis ─────────────────────────────────────────
@@ -311,7 +269,7 @@ export async function ajouterImageWakie(
 }
 
 export async function supprimerImageWakie(
-  userId: string,
+  _userId: string,
   imageIdOrWakieId: string,
   maybeImageId?: string
 ): Promise<boolean> {

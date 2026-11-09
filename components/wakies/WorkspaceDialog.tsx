@@ -105,7 +105,7 @@ export function WorkspaceDialog({
   const [model, setModel] = useState<string | null>(
     dialog.type === "wakie" ? (dialog.wakie?.model ?? null) : null
   );
-  const [interval, setInterval] = useState("86400");
+  const [scheduleInterval, setScheduleInterval] = useState("86400");
 
   // Sélection d'outils du WAKIE. Elle sert de DÉFAUT aux conversations qui
   // n'ont rien choisi (colonne `null`) ; une conversation qui a coché
@@ -247,7 +247,7 @@ export function WorkspaceDialog({
               path = "/tasks";
               body = {
                 conversationId: dialog.conversationId,
-                intervalSeconds: Number(interval),
+                intervalSeconds: Number(scheduleInterval),
                 prompt: text,
               };
             }
@@ -464,8 +464,8 @@ export function WorkspaceDialog({
               </label>
               <select
                 id="schedule-interval"
-                onChange={(e) => setInterval(e.target.value)}
-                value={interval}
+                onChange={(e) => setScheduleInterval(e.target.value)}
+                value={scheduleInterval}
               >
                 <option value="60">Toutes les minutes (test)</option>
                 <option value="3600">Toutes les heures</option>

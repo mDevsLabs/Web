@@ -13,7 +13,6 @@ import { getAllDocs } from './docs';
 import { getChangelogs } from './changelog';
 import { getNewsArticles } from './news';
 import { modelsData } from './models-data';
-import { activeProjects, publicArchivedProjects } from './projects-data';
 import { OFFICIAL_APPS } from './downloads-data';
 import { normalizeText } from './text-utils';
 
@@ -41,12 +40,6 @@ const STATIC_PAGES: SearchEntry[] = [
     title: 'Modèles',
     description: 'Les modèles d\'IA mAI : cloud et exécution locale via Ollama.',
     href: '/models',
-  },
-  {
-    type: 'page',
-    title: 'Projets',
-    description: 'La suite d\'applications mAI : Web, Vibe, Coder, CLI et Pulse.',
-    href: '/projects',
   },
   {
     type: 'page',
@@ -134,19 +127,6 @@ export function getSearchIndex(): SearchEntry[] {
       description: model.tagline,
       href: `/models/${model.id}`,
       meta: model.badge,
-    });
-  }
-
-  // Projets : uniquement la suite active et les trois archives publiques.
-  for (const project of [...activeProjects, ...publicArchivedProjects]) {
-    // Les archives sans page publiée n'ont pas de lien : inutile de les indexer
-    if (!project.link) continue;
-    entries.push({
-      type: 'project',
-      title: project.name,
-      description: project.tagline || project.description,
-      href: project.link,
-      meta: project.platforms.join(' · '),
     });
   }
 

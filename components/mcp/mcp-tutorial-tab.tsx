@@ -1,5 +1,4 @@
 import { BookOpenIcon, TerminalIcon } from "@mdevs/icons";
-import React from "react";
 
 export function McpTutorialTab() {
   return (

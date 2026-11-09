@@ -68,6 +68,10 @@ export type ResumeClient = {
 
 const RESUME = "/api/quizzly/resume";
 
+let pluginWidgetQuizzly: {
+  updateScore?: (score: Record<string, number>) => Promise<void>;
+} | null = null;
+
 export function useResumeQuizzly() {
   return useSWR<ResumeClient>(RESUME, fetcher, {
     dedupingInterval: 5000,
@@ -138,7 +142,7 @@ function MenuSections({
           <Link
             aria-current={actif ? "page" : undefined}
             className={cn(
-              "flex items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-semibold text-muted-foreground transition-colors",
+              "flex min-h-11 items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-semibold text-muted-foreground transition-colors touch-manipulation",
               actif
                 ? "bg-q-level/15 text-q-level"
                 : "hover:bg-q-shop/10 hover:text-foreground"
@@ -210,6 +214,28 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
   }, [data, isTabHidden]);
 
   useEffect(() => {
+    if (
+      !data ||
+      window.Capacitor?.getPlatform?.() !== "android" ||
+      !window.Capacitor.registerPlugin
+    ) {
+      return;
+    }
+    pluginWidgetQuizzly ??= window.Capacitor.registerPlugin(
+      "QuizzlyWidget"
+    ) as typeof pluginWidgetQuizzly;
+    if (!pluginWidgetQuizzly?.updateScore) return;
+    void pluginWidgetQuizzly
+      .updateScore({
+        niveau: data.niveau,
+        streakCount: data.streakCount,
+        weeklyXp: data.weeklyXp,
+        xp: data.xp,
+      })
+      .catch(() => undefined);
+  }, [data]);
+
+  useEffect(() => {
     if (!data || data.hearts >= HEARTS_MAX) {
       return;
     }
@@ -235,17 +261,6 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="quizzly-root flex h-dvh overflow-hidden text-foreground">
-      <aside className="flex w-16 shrink-0 flex-col gap-2 border-r border-q-level/20 bg-q-level/8 px-1.5 py-3 md:hidden">
-        <button
-          aria-label="Ouvrir le menu"
-          className="rounded-xl p-2 text-q-level"
-          onClick={() => setMenuOuvert(true)}
-          type="button"
-        >
-          <MenuIcon className="size-5" />
-        </button>
-        <MenuSections etiquettes={false} />
-      </aside>
       <aside className="hidden w-60 shrink-0 flex-col gap-4 border-r border-q-level/20 bg-q-level/8 px-3 py-4 md:flex">
         <AppSwitcherMenu currentAppOverride="quizzly">
           <button
@@ -259,7 +274,15 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
         <MenuSections etiquettes />
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex flex-wrap items-center gap-3 border-b border-q-level/20 px-3 py-3 sm:px-4">
+        <header className="flex flex-wrap items-center gap-2 border-b border-q-level/20 px-3 py-2.5 sm:gap-3 sm:px-4">
+          <button
+            aria-label="Ouvrir le menu Quizzly"
+            className="flex size-11 shrink-0 items-center justify-center rounded-xl text-q-level transition-colors hover:bg-q-level/10 active:scale-95 md:hidden"
+            onClick={() => setMenuOuvert(true)}
+            type="button"
+          >
+            <MenuIcon className="size-5" />
+          </button>
           <div className="min-w-0 flex-1">
             {data ? (
               <BarreNiveau
@@ -324,8 +347,44 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
             </span>
           </div>
         </header>
-        <main className="min-h-0 flex-1 overflow-auto">{children}</main>
+        <main className="min-h-0 flex-1 overflow-auto pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
+          {children}
+        </main>
       </div>
+      <nav
+        aria-label="Navigation mobile Quizzly"
+        className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-q-level/20 bg-background/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:hidden"
+      >
+        {[LIENS[0], LIENS[1], LIENS[3], LIENS[7]].map((lien) => {
+          const Icone = lien.icone;
+          const actif = lienActif(lien.href, pathname);
+          return (
+            <Link
+              aria-current={actif ? "page" : undefined}
+              className={cn(
+                "flex min-h-12 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-semibold touch-manipulation active:scale-95",
+                actif ? "text-q-level" : "text-muted-foreground"
+              )}
+              href={lien.href}
+              key={lien.href}
+              title={lien.label}
+            >
+              <Icone className="size-5" />
+              <span>{lien.label}</span>
+            </Link>
+          );
+        })}
+        <button
+          aria-expanded={menuOuvert}
+          aria-label="Autres sections Quizzly"
+          className="flex min-h-12 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-semibold text-muted-foreground touch-manipulation active:scale-95"
+          onClick={() => setMenuOuvert(true)}
+          type="button"
+        >
+          <MenuIcon className="size-5" />
+          <span>Plus</span>
+        </button>
+      </nav>
       {menuOuvert ? (
         <div className="fixed inset-0 z-40 md:hidden">
           <button
@@ -334,7 +393,7 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
             onClick={() => setMenuOuvert(false)}
             type="button"
           />
-          <aside className="relative z-10 flex h-full w-64 flex-col gap-4 border-r border-q-level/20 bg-background px-3 py-4">
+          <aside className="relative z-10 flex h-full w-[min(20rem,85vw)] flex-col gap-4 overflow-y-auto border-r border-q-level/20 bg-background px-3 pt-[calc(env(safe-area-inset-top)+1rem)] pb-[calc(env(safe-area-inset-bottom)+1rem)] shadow-xl">
             <div className="flex items-center justify-between">
               <AppSwitcherMenu currentAppOverride="quizzly">
                 <button

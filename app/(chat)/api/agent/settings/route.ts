@@ -28,6 +28,16 @@ const patchSchema = z.object({
   defaultModel: z.string().min(1).max(200).nullable().optional(),
   defaultProjectId: z.string().uuid().nullable().optional(),
   enabledCategories: z.array(z.string().max(40)).max(12).nullable().optional(),
+  // Confort d'affichage : objet partiel, fusionné côté serveur.
+  preferences: z
+    .object({
+      activityDays: z.union([z.literal(7), z.literal(30)]),
+      notifyBrowser: z.boolean(),
+      showPlan: z.boolean(),
+      timelineDensity: z.enum(["compact", "detailed"]),
+    })
+    .partial()
+    .optional(),
   // Les sept niveaux du fournisseur, ou null pour hériter du niveau global
   // de compte défini dans user_preferences.
   reasoningLevel: z.enum(REASONING_LEVELS).nullable().optional(),

@@ -24,7 +24,6 @@ import {
   getModelCatalog,
   isFreeModelId,
   isPublicChatModel,
-  isPublicImageModel,
   ModelAccessError,
   requireChatModel,
   type SqlClient,
