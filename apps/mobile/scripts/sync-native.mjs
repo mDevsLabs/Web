@@ -287,16 +287,12 @@ import WebKit`
           `/* Begin PBXFileReference section */\n\t\t${fileRef} /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };`
         )
         .replace(
-          "504EC3071FED79650016851F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = \"<group>\"; };",
-          `504EC3071FED79650016851F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };\n\t\t\t\t${fileRef} /* AppShortcuts.swift */,`
-        )
-        .replace(
           "504EC3071FED79650016851F /* AppDelegate.swift */,",
           `504EC3071FED79650016851F /* AppDelegate.swift */,\n\t\t\t\t${fileRef} /* AppShortcuts.swift */,`
         )
         .replace(
           "504EC3081FED79650016851F /* AppDelegate.swift in Sources */,",
-          `504EC3081FED79650016851F /* AppDelegate.swift in Sources */,\n\t\t\t\t${buildRef} /* AppShortcuts.swift in Sources */`
+          `504EC3081FED79650016851F /* AppDelegate.swift in Sources */,\n\t\t\t\t${buildRef} /* AppShortcuts.swift in Sources */,`
         );
       writeFileSync(projectPath, project);
     }
