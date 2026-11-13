@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { SuiteCommandBar } from "@/components/common/suite-command-bar";
 
 /**
@@ -35,5 +35,9 @@ export function SuiteCommandBarHost() {
     };
   }, []);
 
-  return <SuiteCommandBar onOpenChange={setOpen} open={open} />;
+  return (
+    <Suspense fallback={null}>
+      {open ? <SuiteCommandBar onOpenChange={setOpen} open={open} /> : null}
+    </Suspense>
+  );
 }

@@ -126,7 +126,9 @@ export default function RootLayout({
             <ThemePreferenceSync />
             {children}
             <AppDialogHost />
-            <SuiteCommandBarHost />
+            <Suspense fallback={null}>
+              <SuiteCommandBarHost />
+            </Suspense>
             <Toaster
               position="top-center"
               theme="system"

@@ -282,7 +282,7 @@ export function SuiteCommandBar({
   onOpenChange: (open: boolean) => void;
   open: boolean;
 }) {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
   const router = useRouter();
   const { isDesktop } = useIsDesktopApp();
   const [searchQuery, setSearchQuery] = useState("");
@@ -292,7 +292,7 @@ export function SuiteCommandBar({
 
   // Charge les données légères du compte Quizzly si l'utilisateur y est
   const { data: resume } = useSWR<ResumeQuizzlyLight>(
-    isQuizzly ? "/api/quizzly/resume" : null,
+    isQuizzly && open ? "/api/quizzly/resume" : null,
     fetcher,
     { dedupingInterval: 10_000, revalidateOnFocus: false }
   );
