@@ -187,6 +187,14 @@ public class QuizzlyWidgetProvider extends AppWidgetProvider {
 }
 
 if (existsSync(iosApp)) {
+  const MAX_IOS_APP_SHORTCUTS = 10;
+  if (raccourcis.length > MAX_IOS_APP_SHORTCUTS) {
+    throw new Error(
+      `Apple autorise au maximum ${MAX_IOS_APP_SHORTCUTS} App Shortcuts par application (ExtractAppIntentsMetadata). ` +
+      `Trouvé: ${raccourcis.length} raccourcis déclarés dans shortcuts.json.`
+    );
+  }
+
   const shortcutsPath = join(iosApp, "AppShortcuts.swift");
   const alreadyCustomized =
     existsSync(shortcutsPath) &&
@@ -194,16 +202,85 @@ if (existsSync(iosApp)) {
 
   if (!alreadyCustomized) {
     const shortcuts = raccourcis
-      .map(
-        ({ title, path, phrase }) =>
-          `        AppShortcut(intent: OuvrirRaccourciMAI(chemin: "${path}"), phrases: ["${phrase} dans \\(.applicationName)"], shortTitle: "${title}", systemImageName: "sparkles")`
-      )
+      .map(({ title, path, phrase, phrases }) => {
+        const phrasesList =
+          Array.isArray(phrases) && phrases.length > 0
+            ? phrases
+            : [phrase || title];
+        const phrasesCode = phrasesList
+          .map((p) => `"${p} dans \\(.applicationName)"`)
+          .join(", ");
+        return `        AppShortcut(intent: OuvrirRaccourciMAI(chemin: "${path}"), phrases: [${phrasesCode}], shortTitle: "${title}", systemImageName: "sparkles")`;
+      })
       .join(",\n");
     ecrire(
       shortcutsPath,
       `#if canImport(AppIntents)
 import AppIntents
 import Foundation
+
+@available(iOS 18.0, *)
+enum DestinationMAI: String, AppEnum {
+    case chat = "/"
+    case search = "/search"
+    case agents = "/agents"
+    case images = "/images"
+    case library = "/library"
+    case projects = "/projects"
+    case planning = "/planning"
+    case skills = "/skills"
+    case vibe = "/vibe"
+    case vibeMessages = "/vibe/messages"
+    case vibeProfile = "/vibe/profile"
+    case wakies = "/wakies"
+    case quizzly = "/quizzly"
+    case quizzlyApprentissage = "/quizzly/apprentissage"
+    case quizzlyLigues = "/quizzly/ligues"
+    case quizzlyQuetes = "/quizzly/quetes"
+    case settings = "/settings"
+
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Destination mAI"
+    static var caseDisplayRepresentations: [DestinationMAI: DisplayRepresentation] = [
+        .chat: "Nouveau chat",
+        .search: "Rechercher",
+        .agents: "Mode Agent",
+        .images: "Créer une image",
+        .library: "Bibliothèque",
+        .projects: "Projets",
+        .planning: "Planification",
+        .skills: "Skills",
+        .vibe: "Fil Vibe",
+        .vibeMessages: "Messages Vibe",
+        .vibeProfile: "Profil Vibe",
+        .wakies: "Accueil Wakies",
+        .quizzly: "Scores Quizzly",
+        .quizzlyApprentissage: "Apprendre Quizzly",
+        .quizzlyLigues: "Ligues Quizzly",
+        .quizzlyQuetes: "Quêtes Quizzly",
+        .settings: "Réglages"
+    ]
+}
+
+@available(iOS 18.0, *)
+struct OuvrirSectionMAI: AppIntent {
+    static var title: LocalizedStringResource = "Ouvrir une section mAI"
+    static var openAppWhenRun = true
+    @Parameter(title: "Section", default: .chat) var section: DestinationMAI
+    init() { self.section = .chat }
+    init(section: DestinationMAI) { self.section = section }
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let chemin = section.rawValue
+        let cheminValide = chemin.hasPrefix("/") ? chemin : "/" + chemin
+        guard let url = URL(string: "mai://" + cheminValide) else {
+            throw NSError(
+                domain: "OuvrirSectionMAI",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "URL invalide: mai://\\(cheminValide)"]
+            )
+        }
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+}
 
 @available(iOS 18.0, *)
 struct OuvrirRaccourciMAI: AppIntent {
@@ -314,4 +391,4 @@ import WebKit`
   }
 }
 
-console.log("Configuration native des 20 raccourcis et du widget Quizzly terminée.");
+console.log("Configuration native des 10 raccourcis mAI (App Intents iOS, Shortcuts Android, widget Quizzly) terminée.");

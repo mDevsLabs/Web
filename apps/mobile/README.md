@@ -9,9 +9,12 @@ fichiers locaux et sont distribués par [mAI Desktop](../desktop/README.md).
 
 ## Raccourcis natifs
 
-Le client expose 20 actions rapides décrites dans `scripts/shortcuts.json` :
+Le client expose 10 App Shortcuts phares décrits dans `scripts/shortcuts.json` :
 Capacitor les matérialise en App Intents (iOS 16+) et en raccourcis dynamiques
-Android (la limite visible est fixée par Android). `scripts/sync-native.mjs` ajoute aussi un widget Android Quizzly avec
+Android (la limite visible est fixée par Android, et Apple limite à 10 App Shortcuts au maximum
+par application). Les phrases Siri alternatives sont regroupées sous chaque raccourci,
+et un App Intent paramétrable (`OuvrirSectionMAI` / `DestinationMAI`) permet d'accéder
+à l'ensemble des 17 sections de l'application dans l'app Raccourcis Apple. `scripts/sync-native.mjs` ajoute aussi un widget Android Quizzly avec
 les XP, le niveau, la série, et des accès à Wakies/Vibe/Quizzly. Le widget est
 actualisé depuis le résumé Quizzly reçu par la WebView ; les scores ne sont pas
 stockés sur un serveur tiers. Les projets natifs restent générés et non versionnés,

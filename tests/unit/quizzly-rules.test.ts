@@ -18,6 +18,7 @@ import {
   boosterActif,
   DAILY_GIFT_GEMS,
   delaiProchainCoeur,
+  estJourSerieValide,
   HEART_REGEN_MS,
   HEARTS_MAX,
   idsDebloques,
@@ -32,6 +33,7 @@ import {
   semaineIso,
   serieApresTentative,
   tirerUneParMesure,
+  verifierExpirationSerie,
   XP_BOOST_CAP_MS,
   XP_BOOST_MS,
   xpAvecBooster,
@@ -139,6 +141,63 @@ describe("série Quizzly", () => {
       streakLastDay: "2026-10-30",
     };
     expect(avancerSerie(etat, "2026-10-30")).toEqual(etat);
+  });
+
+  it("fait retomber la série à 0 si aucun quiz n'a été fait hier sans gel", () => {
+    // Dernier quiz avant-hier, sans gel : série expirée
+    const expirer = verifierExpirationSerie(
+      { streakCount: 1, streakFreezes: 0, streakLastDay: "2026-10-28" },
+      "2026-10-30"
+    );
+    expect(expirer.expiree).toBe(true);
+    expect(expirer.etat.streakCount).toBe(0);
+
+    // Dernier quiz hier, sans gel : série toujours active
+    const actifHier = verifierExpirationSerie(
+      { streakCount: 1, streakFreezes: 0, streakLastDay: "2026-10-29" },
+      "2026-10-30"
+    );
+    expect(actifHier.expiree).toBe(false);
+    expect(actifHier.etat.streakCount).toBe(1);
+
+    // Dernier quiz avant-hier mais avec un gel : série protégée
+    const protegeGel = verifierExpirationSerie(
+      { streakCount: 3, streakFreezes: 1, streakLastDay: "2026-10-28" },
+      "2026-10-30"
+    );
+    expect(protegeGel.expiree).toBe(false);
+    expect(protegeGel.etat.streakCount).toBe(3);
+
+    // Aucun jour joué : série à 0
+    const vierge = verifierExpirationSerie(
+      { streakCount: 0, streakFreezes: 0, streakLastDay: null },
+      "2026-10-30"
+    );
+    expect(vierge.expiree).toBe(false);
+    expect(vierge.etat.streakCount).toBe(0);
+  });
+
+  it("coche exactement 1 seul jour pour une série de 1 jour", () => {
+    // Série de 1 jour validée le 30 octobre (vendredi)
+    const dernierJour = "2026-10-30";
+    expect(estJourSerieValide("2026-10-30", 1, dernierJour)).toBe(true);
+    // Les jours précédents ne doivent PAS être cochés
+    expect(estJourSerieValide("2026-10-29", 1, dernierJour)).toBe(false);
+    expect(estJourSerieValide("2026-10-28", 1, dernierJour)).toBe(false);
+    expect(estJourSerieValide("2026-10-27", 1, dernierJour)).toBe(false);
+    expect(estJourSerieValide("2026-10-26", 1, dernierJour)).toBe(false);
+    // Un jour futur ne doit PAS être coché
+    expect(estJourSerieValide("2026-10-31", 1, dernierJour)).toBe(false);
+
+    // Série de 3 jours validée le 30 octobre
+    expect(estJourSerieValide("2026-10-30", 3, dernierJour)).toBe(true);
+    expect(estJourSerieValide("2026-10-29", 3, dernierJour)).toBe(true);
+    expect(estJourSerieValide("2026-10-28", 3, dernierJour)).toBe(true);
+    expect(estJourSerieValide("2026-10-27", 3, dernierJour)).toBe(false);
+
+    // Série à 0 jour : aucun jour coché
+    expect(estJourSerieValide("2026-10-30", 0, dernierJour)).toBe(false);
+    expect(estJourSerieValide("2026-10-30", 1, null)).toBe(false);
   });
 });
 

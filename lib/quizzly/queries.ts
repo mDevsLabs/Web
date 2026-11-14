@@ -72,6 +72,7 @@ import {
   semaineIso,
   serieApresTentative,
   tirerUneParMesure,
+  verifierExpirationSerie,
   xpAvecBooster,
 } from "@/lib/quizzly/rules";
 import type { SubmittedAnswer } from "@/lib/quizzly/schema";
@@ -102,6 +103,7 @@ export type ResumeQuizzly = {
   streakBest: number;
   streakCount: number;
   streakFreezes: number;
+  streakLastDay: string | null;
   subjects: string[];
   username: string;
   weekKey: string;
@@ -159,24 +161,45 @@ async function assurerProfil(userId: string): Promise<QuizzlyProfile> {
   if (!ligne) {
     throw new Error("Profil Quizzly illisible.");
   }
+  const maintenant = new Date();
+  const aujourdhui = jourParis(maintenant);
   const regen = regeneratedHearts(
     ligne.hearts,
     ligne.heartsUpdatedAt,
-    new Date()
+    maintenant
   );
-  if (!regen.changed) {
+  const expiration = verifierExpirationSerie(
+    {
+      streakCount: ligne.streakCount,
+      streakFreezes: ligne.streakFreezes,
+      streakLastDay: ligne.streakLastDay,
+    },
+    aujourdhui
+  );
+
+  if (!regen.changed && !expiration.expiree) {
     return ligne;
   }
+
+  const modifications: Partial<typeof quizzlyProfile.$inferInsert> = {
+    updatedAt: maintenant,
+  };
+  if (regen.changed) {
+    modifications.hearts = regen.hearts;
+    modifications.heartsUpdatedAt = regen.heartsUpdatedAt;
+  }
+  if (expiration.expiree) {
+    modifications.streakCount = 0;
+  }
+
   const [miseAJour] = await db
     .update(quizzlyProfile)
-    .set({
-      hearts: regen.hearts,
-      heartsUpdatedAt: regen.heartsUpdatedAt,
-      updatedAt: new Date(),
-    })
+    .set(modifications)
     .where(eq(quizzlyProfile.userId, userId))
     .returning();
-  return miseAJour ?? ligne;
+  return (
+    miseAJour ?? (expiration.expiree ? { ...ligne, streakCount: 0 } : ligne)
+  );
 }
 
 export async function resumeQuizzly(
@@ -214,6 +237,7 @@ export async function resumeQuizzly(
     streakBest: recordSerie(profil.streakCount, profil.streakBest),
     streakCount: profil.streakCount,
     streakFreezes: profil.streakFreezes,
+    streakLastDay: profil.streakLastDay,
     subjects: normaliserMatieres(annee, profil.subjects),
     username: nom.username,
     weekKey: semaine,

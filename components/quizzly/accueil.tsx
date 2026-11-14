@@ -24,6 +24,7 @@ import { IconeLigue, nomLigue } from "@/components/quizzly/icones";
 import { useResumeQuizzly } from "@/components/quizzly/shell";
 import { IconeMatiere } from "@/components/quizzly/subject-icon";
 import { libelleAnnee, type SchoolYear } from "@/lib/quizzly/program";
+import { estJourSerieValide, jourParis } from "@/lib/quizzly/rules";
 import { cn, fetcher } from "@/lib/utils";
 
 type QuizNode = {
@@ -165,17 +166,14 @@ export function AccueilQuizzly() {
         {/* Colonne Principale (Gauche - 8/12) */}
         <div className="flex flex-col gap-6 lg:col-span-8">
           {/* Hero Banner avec Quizzy */}
-          <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-linear-to-br from-white via-blue-50/40 to-blue-100/30 p-6 shadow-sm shadow-blue-500/5 sm:p-8 dark:border-blue-900/40 dark:from-slate-900 dark:via-blue-950/20 dark:to-slate-900">
-            {/* Effet halo lumineux doux */}
-            <div className="pointer-events-none absolute -top-16 -left-16 size-64 rounded-full bg-blue-400/10 blur-3xl dark:bg-blue-600/10" />
-
+          <div className="relative overflow-hidden rounded-3xl border border-blue-100/80 bg-white p-6 shadow-sm shadow-blue-500/5 sm:p-8 dark:border-blue-900/40 dark:bg-slate-900">
             <div className="relative z-10 flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
               {/* Mascotte Quizzy avec animation douce */}
               <div className="relative shrink-0">
                 <div className="q-float relative size-36 sm:size-44">
                   <Image
                     alt="Quizzy, la mascotte de Quizzly"
-                    className="object-contain drop-shadow-lg"
+                    className="object-contain drop-shadow-md"
                     fill
                     priority
                     sizes="(max-width: 640px) 144px, 176px"
@@ -183,7 +181,7 @@ export function AccueilQuizzly() {
                   />
                 </div>
                 {/* Ombre portée douce sous Quizzy */}
-                <div className="mx-auto h-3 w-28 rounded-full bg-blue-500/15 blur-sm dark:bg-blue-400/10" />
+                <div className="mx-auto h-3 w-28 rounded-full bg-slate-300/40 blur-xs dark:bg-blue-400/10" />
               </div>
 
               {/* Texte et appel à l'action */}
@@ -290,7 +288,7 @@ export function AccueilQuizzly() {
           {/* Section 3 Statistiques clés */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {/* Stat 1: Total XP */}
-            <div className="surface-quizzly-card flex items-center gap-4">
+            <div className="surface-quizzly-card flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white/95 p-4 shadow-xs transition-all hover:shadow-md sm:p-5 dark:border-blue-900/40 dark:bg-slate-900/80">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500 dark:bg-amber-500/20">
                 <ZapIcon className="size-6 fill-amber-500/20" />
               </div>
@@ -308,7 +306,7 @@ export function AccueilQuizzly() {
             </div>
 
             {/* Stat 2: Niveau & Palier */}
-            <div className="surface-quizzly-card flex items-center gap-4">
+            <div className="surface-quizzly-card flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white/95 p-4 shadow-xs transition-all hover:shadow-md sm:p-5 dark:border-blue-900/40 dark:bg-slate-900/80">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400">
                 <GraduationCapIcon className="size-6" />
               </div>
@@ -339,7 +337,7 @@ export function AccueilQuizzly() {
             </div>
 
             {/* Stat 3: Série & Record */}
-            <div className="surface-quizzly-card flex items-center gap-4">
+            <div className="surface-quizzly-card flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white/95 p-4 shadow-xs transition-all hover:shadow-md sm:p-5 dark:border-blue-900/40 dark:bg-slate-900/80">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-500 dark:bg-orange-500/20">
                 <FlameIcon className="size-6 fill-orange-500/20" />
               </div>
@@ -350,11 +348,12 @@ export function AccueilQuizzly() {
                 <p className="truncate text-2xl font-black text-slate-900 dark:text-white">
                   {data?.streakCount ?? 0}{" "}
                   <span className="text-xs font-semibold text-slate-500">
-                    jours
+                    {(data?.streakCount ?? 0) > 1 ? "jours" : "jour"}
                   </span>
                 </p>
                 <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
-                  Record : {data?.streakBest ?? 0} jours
+                  Record : {data?.streakBest ?? 0}{" "}
+                  {(data?.streakBest ?? 0) > 1 ? "jours" : "jour"}
                 </p>
               </div>
             </div>
@@ -401,11 +400,16 @@ export function AccueilQuizzly() {
               {/* Jauge des 7 jours de la semaine */}
               <div className="flex items-center justify-between gap-1.5 rounded-2xl bg-slate-50 p-2.5 dark:bg-slate-800/60">
                 {joursSemaine.map((jour, index) => {
-                  const estPasse = index < aujourdhuiIndex;
                   const estAujourdhui = index === aujourdhuiIndex;
-                  const valide =
-                    streakCount > 0 &&
-                    (estPasse || (estAujourdhui && streakCount > 0));
+                  const dateJour = new Date(
+                    Date.now() + (index - aujourdhuiIndex) * 86_400_000
+                  );
+                  const dateJourStr = jourParis(dateJour);
+                  const valide = estJourSerieValide(
+                    dateJourStr,
+                    streakCount,
+                    data?.streakLastDay
+                  );
 
                   return (
                     <div

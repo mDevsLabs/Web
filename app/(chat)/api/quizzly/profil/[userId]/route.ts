@@ -15,6 +15,7 @@ import {
   normaliserCosmetiques,
   recordSerie,
   semaineIso,
+  verifierExpirationSerie,
 } from "@/lib/quizzly/rules";
 
 export async function GET(
@@ -74,6 +75,15 @@ export async function GET(
     const portrait = portraits.get(userId);
     const cosmetiques = normaliserCosmetiques(profil.cosmetics);
     const niveau = niveauDepuisXp(profil.xp);
+    const expiration = verifierExpirationSerie(
+      {
+        streakCount: profil.streakCount,
+        streakFreezes: profil.streakFreezes,
+        streakLastDay: profil.streakLastDay,
+      },
+      aujourdhui
+    );
+    const streakActif = expiration.etat.streakCount;
 
     return Response.json(
       {
@@ -86,7 +96,7 @@ export async function GET(
         quizzesPassedCount: quizReussis.length,
         schoolYear: profil.schoolYear || "6e",
         streakBest: recordSerie(profil.streakCount, profil.streakBest),
-        streakCount: profil.streakCount,
+        streakCount: streakActif,
         userId,
         username: portrait?.username ?? "",
         weeklyXp: seat?.weeklyXp ?? 0,

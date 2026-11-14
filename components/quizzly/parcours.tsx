@@ -304,7 +304,7 @@ export function ParcoursQuizzly() {
           ) : (
             matiere?.chapters.map((chapitre, chapIndex) => (
               <section
-                className="surface-quizzly-card relative overflow-hidden p-6 sm:p-8"
+                className="surface-quizzly-card relative overflow-hidden bg-white p-6 sm:p-8 dark:bg-slate-900"
                 key={chapitre.id}
               >
                 {/* En-tête du Chapitre */}

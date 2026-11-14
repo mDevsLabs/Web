@@ -1,22 +1,87 @@
 [
-  { "id": "chat", "title": "Nouveau chat", "path": "/", "phrase": "Démarrer un chat" },
-  { "id": "search", "title": "Rechercher", "path": "/search", "phrase": "Rechercher dans mAI" },
-  { "id": "agent", "title": "Mode Agent", "path": "/agents", "phrase": "Ouvrir les agents" },
-  { "id": "images", "title": "Créer une image", "path": "/images", "phrase": "Créer une image" },
-  { "id": "library", "title": "Bibliothèque", "path": "/library", "phrase": "Ouvrir la bibliothèque" },
-  { "id": "projects", "title": "Projets", "path": "/projects", "phrase": "Ouvrir les projets" },
-  { "id": "planning", "title": "Planification", "path": "/planning", "phrase": "Voir la planification" },
-  { "id": "skills", "title": "Skills", "path": "/skills", "phrase": "Ouvrir les skills" },
-  { "id": "vibe", "title": "Fil Vibe", "path": "/vibe", "phrase": "Ouvrir Vibe" },
-  { "id": "vibe-create", "title": "Publier sur Vibe", "path": "/vibe", "phrase": "Publier sur Vibe" },
-  { "id": "vibe-messages", "title": "Messages Vibe", "path": "/vibe/messages", "phrase": "Ouvrir les messages Vibe" },
-  { "id": "vibe-profile", "title": "Profil Vibe", "path": "/vibe/profile", "phrase": "Ouvrir mon profil Vibe" },
-  { "id": "wakies", "title": "Accueil Wakies", "path": "/wakies", "phrase": "Ouvrir Wakies" },
-  { "id": "wakies-conversations", "title": "Conversations Wakies", "path": "/wakies", "phrase": "Ouvrir les conversations Wakies" },
-  { "id": "wakies-today", "title": "Aujourd’hui Wakies", "path": "/wakies", "phrase": "Voir ma journée Wakies" },
-  { "id": "quizzly", "title": "Scores Quizzly", "path": "/quizzly", "phrase": "Voir mes scores Quizzly" },
-  { "id": "quizzly-learn", "title": "Apprendre Quizzly", "path": "/quizzly/apprentissage", "phrase": "Réviser avec Quizzly" },
-  { "id": "quizzly-leagues", "title": "Ligues Quizzly", "path": "/quizzly/ligues", "phrase": "Voir les ligues Quizzly" },
-  { "id": "quizzly-quests", "title": "Quêtes Quizzly", "path": "/quizzly/quetes", "phrase": "Voir mes quêtes Quizzly" },
-  { "id": "settings", "title": "Réglages", "path": "/settings", "phrase": "Ouvrir les réglages mAI" }
+  {
+    "id": "chat",
+    "title": "Nouveau chat",
+    "path": "/",
+    "phrase": "Démarrer un chat",
+    "phrases": ["Démarrer un chat"]
+  },
+  {
+    "id": "search",
+    "title": "Rechercher",
+    "path": "/search",
+    "phrase": "Rechercher dans mAI",
+    "phrases": ["Rechercher dans mAI", "Rechercher"]
+  },
+  {
+    "id": "agent",
+    "title": "Mode Agent",
+    "path": "/agents",
+    "phrase": "Ouvrir les agents",
+    "phrases": ["Ouvrir les agents", "Mode Agent"]
+  },
+  {
+    "id": "images",
+    "title": "Créer une image",
+    "path": "/images",
+    "phrase": "Créer une image",
+    "phrases": ["Créer une image", "Générer une image"]
+  },
+  {
+    "id": "library",
+    "title": "Bibliothèque",
+    "path": "/library",
+    "phrase": "Ouvrir la bibliothèque",
+    "phrases": ["Ouvrir la bibliothèque"]
+  },
+  {
+    "id": "projects",
+    "title": "Projets",
+    "path": "/projects",
+    "phrase": "Ouvrir les projets",
+    "phrases": ["Ouvrir les projets"]
+  },
+  {
+    "id": "planning",
+    "title": "Planification",
+    "path": "/planning",
+    "phrase": "Voir la planification",
+    "phrases": ["Voir la planification"]
+  },
+  {
+    "id": "vibe",
+    "title": "Fil Vibe",
+    "path": "/vibe",
+    "phrase": "Ouvrir Vibe",
+    "phrases": [
+      "Ouvrir Vibe",
+      "Publier sur Vibe",
+      "Ouvrir les messages Vibe",
+      "Ouvrir mon profil Vibe"
+    ]
+  },
+  {
+    "id": "wakies",
+    "title": "Accueil Wakies",
+    "path": "/wakies",
+    "phrase": "Ouvrir Wakies",
+    "phrases": [
+      "Ouvrir Wakies",
+      "Ouvrir les conversations Wakies",
+      "Voir ma journée Wakies"
+    ]
+  },
+  {
+    "id": "quizzly",
+    "title": "Scores Quizzly",
+    "path": "/quizzly",
+    "phrase": "Ouvrir Quizzly",
+    "phrases": [
+      "Ouvrir Quizzly",
+      "Voir mes scores Quizzly",
+      "Réviser avec Quizzly",
+      "Voir les ligues Quizzly",
+      "Voir mes quêtes Quizzly"
+    ]
+  }
 ]

@@ -55,6 +55,7 @@ export type ResumeClient = {
   streakBest: number;
   streakCount: number;
   streakFreezes: number;
+  streakLastDay: string | null;
   subjects: string[];
   username: string;
   weekKey: string;
@@ -258,9 +259,19 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
   }, [data]);
 
   const coeurs = data ? coeursAffiches(data, maintenant) : 0;
+  const aQuizzyVisible =
+    pathname === "/quizzly" ||
+    pathname.startsWith("/quizzly/quiz") ||
+    pathname.startsWith("/quizzly/coach") ||
+    pathname.startsWith("/quizzly/parcours");
 
   return (
-    <div className="quizzly-root flex h-dvh overflow-hidden text-foreground">
+    <div
+      className={cn(
+        "quizzly-root flex h-dvh overflow-hidden text-foreground",
+        aQuizzyVisible && "bg-white dark:bg-[#0b1120] [background-image:none]"
+      )}
+    >
       <aside className="hidden w-60 shrink-0 flex-col gap-4 border-r border-q-level/20 bg-q-level/8 px-3 py-4 md:flex">
         <AppSwitcherMenu currentAppOverride="quizzly">
           <button
@@ -347,7 +358,12 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
             </span>
           </div>
         </header>
-        <main className="min-h-0 flex-1 overflow-auto pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
+        <main
+          className={cn(
+            "min-h-0 flex-1 overflow-auto pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0",
+            aQuizzyVisible && "bg-white dark:bg-[#0b1120]"
+          )}
+        >
           {children}
         </main>
       </div>
