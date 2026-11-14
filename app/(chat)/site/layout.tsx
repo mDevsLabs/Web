@@ -74,7 +74,7 @@ export default async function SiteLayout({
       <SiteThemeSync />
       <MotionProvider>
         <ToastProvider>
-          <AuthProvider initialToken={token} initialUser={initialUser}>
+          <AuthProvider initialUser={initialUser}>
             <OnboardingProvider>
               <Navbar changelogs={changelogs} news={news} />
               <CookieBanner />

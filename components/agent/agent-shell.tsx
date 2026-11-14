@@ -178,6 +178,47 @@ function AgentShellInner() {
     agentSettings?.settings.reasoningLevel
   );
 
+  // Préférence « afficher le plan dès l'ouverture » : appliquée une seule
+  // fois, à l'arrivée des réglages — un choix explicite dans le composer
+  // ensuite n'est jamais écrasé.
+  const prefsImportees = useRef(false);
+  useEffect(() => {
+    if (prefsImportees.current) return;
+    const prefs = agentSettings?.settings.preferences;
+    if (!prefs) return;
+    prefsImportees.current = true;
+    if (prefs.showPlan) {
+      setOptions((current) =>
+        current.tasksEnabled ? current : { ...current, tasksEnabled: true }
+      );
+    }
+  }, [agentSettings]);
+
+  // Alerte navigateur en fin de run quand l'onglet est en arrière-plan
+  // (préférence compte `notifyBrowser`). Le serveur écrit déjà la cloche
+  // mAI : ceci ne remplace que l'appel hors onglet.
+  const statutPrecedent = useRef<string | null>(null);
+  useEffect(() => {
+    const statut = state.run?.status;
+    const precedent = statutPrecedent.current;
+    statutPrecedent.current = statut ?? null;
+    if (
+      precedent === "running" &&
+      (statut === "completed" || statut === "failed") &&
+      document.hidden &&
+      agentSettings?.settings.preferences.notifyBrowser &&
+      typeof Notification !== "undefined" &&
+      Notification.permission === "granted"
+    ) {
+      const _notification = new Notification("mAI Agent", {
+        body:
+          statut === "completed"
+            ? "Votre run Agent est terminé."
+            : "Votre run Agent a échoué.",
+      });
+    }
+  }, [state.run?.status, agentSettings?.settings.preferences.notifyBrowser]);
+
   // `handleSubmit` remplace l'objet d'options en entier : sans cette
   // synchronisation, la persona choisie au composer disparaîtrait dès le
   // premier envoi. L'écriture est conditionnée pour ne pas créer de boucle
@@ -250,10 +291,13 @@ function AgentShellInner() {
   // La clé SWR est aussi revalidée en fin de run : les actions suggérées
   // persistées côté serveur apparaissent après la fin du flux.
   const runsHistoryKey = apiEndpoints.agentRunsForChat(chatId);
-  const { data: history, mutate: mutateHistory } =
-    useSWR<AgentRunHistoryPayload>(isNewChat ? null : runsHistoryKey, fetcher, {
+  const { data: history } = useSWR<AgentRunHistoryPayload>(
+    isNewChat ? null : runsHistoryKey,
+    fetcher,
+    {
       revalidateOnFocus: false,
-    });
+    }
+  );
   const suggestedActions = useMemo(() => {
     if (!history?.suggestedActions) {
       return [] as {

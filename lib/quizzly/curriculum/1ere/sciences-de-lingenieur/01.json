@@ -1,0 +1,2683 @@
+{
+  "id": "1ere-sciences-de-lingenieur-01",
+  "year": "1ere",
+  "subject": "sciences-de-lingenieur",
+  "title": "Analyse des systèmes complexes",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Fonctions et structure",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Besoin et cycle de vie d'un système",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels questionnements fondamentaux constituent l'outil bête à cornes pour formaliser le besoin ?",
+              "options": [
+                "À qui le système rend-il service ?",
+                "Sur quoi le système agit-il ?",
+                "Quelle est la tension d'alimentation de l'induit ?",
+                "Dans quel but le système existe-t-il ?"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La bête à cornes définit le besoin fondamental en explicitant le bénéficiaire, la matière d'œuvre modifiée et la finalité du système."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le cycle de vie d'un système pluri-technologique ?",
+              "options": [
+                "L'ensemble des étapes allant de l'expression du besoin jusqu'à sa fin de vie et son recyclage",
+                "La durée de validité du contrat de maintenance constructeur",
+                "Le temps moyen de bon fonctionnement entre deux défaillances consécutives",
+                "La durée d'un cycle périodique d'usinage sur machine-outil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle de vie englobe la conception, l'industrialisation, la commercialisation, l'utilisation, la maintenance et le recyclage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle étape précède immédiatement l'industrialisation et la production en série d'un produit ?",
+              "options": [
+                "La conception détaillée, le prototypage et la qualification",
+                "Le démantèlement et la dépollution des déchets",
+                "L'exploitation quotidienne par l'utilisateur final",
+                "Le recyclage des matières premières en filière agréée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant d'engager les investissements industriels, la conception détaillée et les essais sur prototypes valident les performances."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'objectif premier d'une démarche d'éco-conception ?",
+              "options": [
+                "Réduire les impacts environnementaux du système sur l'ensemble de son cycle de vie",
+                "Augmenter au maximum la vitesse de rotation des arbres de transmission",
+                "Supprimer tout contrôle qualité lors de la phase d'assemblage",
+                "Utiliser exclusivement des alliages métalliques lourds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éco-conception intègre les critères environnementaux dès la conception pour minimiser les impacts écologiques globaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La norme internationale ISO 9001 concerne principalement :",
+              "options": [
+                "Le système de management de la qualité au sein d'une organisation",
+                "Le calcul de résistance mécanique des poutres en flexion",
+                "La syntaxe des requêtes d'interrogation de bases de données",
+                "Le schéma de raccordement électrique des prises domestiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ISO 9001 spécifie les exigences relatives au management de la qualité pour accroître la satisfaction client."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le besoin directement exprimé par un client sous forme d'attentes formulées est qualifié de :",
+              "options": [
+                "Besoin explicite",
+                "Besoin parasite",
+                "Besoin latent",
+                "Besoin fictif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un besoin explicite est clairement formulé et rédigé par le client dans son cahier des charges initial."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle question permet d'identifier la matière d'œuvre modifiée par le système ?",
+              "options": [
+                "Sur quoi le système agit-il ?",
+                "Quel est le prix de vente conseillé ?",
+                "Quelle entreprise réalise la publicité ?",
+                "Quel logiciel a compilé le programme ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière d'œuvre est l'élément matériel, informationnel ou énergétique sur lequel s'exerce l'action du système."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La valorisation optimale d'un produit en fin de vie privilégie en premier lieu :",
+              "options": [
+                "Le réemploi, la réutilisation et le recyclage matière",
+                "L'enfouissement sans tri préalable en décharge",
+                "Le stockage permanent dans les locaux de l'entreprise",
+                "L'incinération sans valorisation thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'économie circulaire hiérarchise le traitement des déchets en favorisant le réemploi puis le recyclage matière."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le Cahier des Charges Fonctionnel (CdCF) a pour rôle principal de :",
+              "options": [
+                "Définir les fonctions et exigences attendues sans imposer de solution technique a priori",
+                "Fournir les plans d'usinage cotés de chaque pièce mécanique",
+                "Donner la liste exhaustive des références commerciales des vis",
+                "Écrire le code source assembleur du microcontrôleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CdCF exprime le besoin en termes de fonctions de service et de contraintes sans préjuger des solutions constructives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un besoin non exprimé par le client mais indispensable à sa satisfaction globale ?",
+              "options": [
+                "Le besoin implicite",
+                "Le besoin superflu",
+                "Le besoin imaginaire",
+                "Le besoin concurrentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le besoin implicite regroupe les évidences techniques et réglementaires que le client ne mentionne pas explicitement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Diagramme SysML des cas d'utilisation (uc)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments graphiques retrouve-t-on dans un diagramme des cas d'utilisation SysML (uc) ?",
+              "options": [
+                "Les cas d'utilisation représentés par des ellipses",
+                "Les acteurs modélisés par des figurines ou le stéréotype «actor»",
+                "Les liaisons d'association, d'inclusion ou d'extension",
+                "Les bobinages magnétiques et inductances de lissage"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le diagramme uc montre les acteurs interagissant avec les cas d'utilisation du système délimité par une frontière rectangulaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diagramme des cas d'utilisation, que symbolise le grand cadre rectangulaire englobant ?",
+              "options": [
+                "La frontière du système délimitant l'intérieur du système et son environnement extérieur",
+                "Le boîtier métallique de protection étanche IP67",
+                "La carte de circuit imprimé accueillant les composants",
+                "La zone d'expédition logistique de l'usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boîte de délimitation sépare les fonctionnalités internes au système des acteurs extérieurs qui interagissent avec lui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la relation «include» entre un cas d'utilisation A et un cas B (A «include» B) ?",
+              "options": [
+                "L'exécution du cas A entraîne systématiquement et obligatoirement l'exécution du cas B",
+                "Le cas B remplace définitivement le cas d'utilisation A",
+                "Le cas B est exécuté uniquement si une erreur critique survient",
+                "Le cas A ne peut s'exécuter que si l'utilisateur annule le cas B"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inclusion indique que le comportement du cas inclus B fait obligatoirement partie intégrante du déroulement du cas source A."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la relation «extend» entre un cas B et un cas A (B «extend» A) ?",
+              "options": [
+                "Le cas B enrichit facultativement le cas A sous certaines conditions définies par des points d'extension",
+                "Le cas B est toujours obligatoire lors de chaque cycle",
+                "Le cas A est supprimé si le cas B est indisponible",
+                "Les deux cas doivent obligatoirement être programmés en langage C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extension spécifie qu'un cas d'utilisation peut être complété de manière conditionnelle par un autre comportement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un acteur dans un diagramme SysML uc peut correspondre à :",
+              "options": [
+                "Un utilisateur humain, un système externe connecté ou une entité environnementale",
+                "Uniquement un employé de maintenance titulaire d'une habilitation",
+                "Un composant mécanique interne comme une bielle ou un piston",
+                "Un registre mémoire de 16 bits non signé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un acteur est une entité externe au système qui échange des informations, de la matière ou de l'énergie avec lui."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la définition d'un cas d'utilisation en modélisation système ?",
+              "options": [
+                "Un ensemble d'actions réalisées par le système qui produit un résultat observable d'intérêt pour un acteur",
+                "Le plan d'assemblage mécatronique d'un châssis roulant",
+                "La mesure au banc d'essai de la puissance mécanique utile",
+                "La formule mathématique reliant la tension et l'intensité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un cas d'utilisation décrit un service fonctionnel rendu par le système répondant à l'objectif d'un acteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un acteur sollicité par le système pour l'aider à rendre le service attendu ?",
+              "options": [
+                "Un acteur secondaire",
+                "Un acteur virtuel",
+                "Un acteur obsolète",
+                "Un acteur parasite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acteur principal bénéficie du service rendu, tandis que l'acteur secondaire est sollicité par le système pour accomplir le cas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment formule-t-on classiquement le libellé d'un cas d'utilisation ?",
+              "options": [
+                "Par un verbe d'action à l'infinitif suivi d'un complément d'objet",
+                "Par la référence constructeur du capteur",
+                "Par une équation différentielle du second ordre",
+                "Par un nombre entier hexadécimal sur deux octets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un cas d'utilisation s'intitule par une action orientée utilisateur, par exemple « Recharger la batterie » ou « Réguler la vitesse »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La relation de généralisation entre deux acteurs implique que :",
+              "options": [
+                "L'acteur spécialisé hérite des cas d'utilisation et des associations de l'acteur général",
+                "L'acteur général est obligatoirement un automate programmable",
+                "Les deux acteurs ne peuvent jamais utiliser le système le même jour",
+                "L'acteur spécialisé perd tous ses droits d'accès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par héritage, un acteur dérivé hérite de toutes les interactions possibles associées à l'acteur générique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le cartouche d'en-tête d'un diagramme SysML, quel trigramme identifie le diagramme des cas d'utilisation ?",
+              "options": ["uc", "req", "bdd", "act"],
+              "correctAnswers": [0],
+              "explanation": "Le type 'uc' signifie Use Case Diagram (diagramme des cas d'utilisation en langage SysML)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Diagramme des exigences (req)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels attributs textuels normalisés définissent obligatoirement un bloc d'exigence «requirement» ?",
+              "options": [
+                "Un identifiant unique (Id)",
+                "Un texte décrivant l'exigence (Text)",
+                "Le cours en bourse de l'entreprise cliente",
+                "Le numéro de série de l'imprimante 3D"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque exigence SysML comporte un identifiant pérenne (Id) et une formulation claire de la règle à respecter (Text)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diagramme des exigences, la relation «satisfy» relie :",
+              "options": [
+                "Un élément de modélisation (bloc, composant) à l'exigence qu'il implémente",
+                "Deux exigences incompatibles entre elles",
+                "Un cas de test à la méthode de calcul du coût",
+                "Deux acteurs extérieurs concurrents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relation «satisfy» relie une brique technique de conception à l'exigence fonctionnelle ou de performance qu'elle remplit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La relation stéréotypée «verify» connecte une exigence à :",
+              "options": [
+                "Un cas de test (test case) démontrant expérimentalement la conformité du système",
+                "Un bon de commande validé par la direction financière",
+                "Une formule de politesse dans le manuel utilisateur",
+                "Un schéma électrique imprimé sur papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "«verify» établit le lien de traçabilité entre une exigence et le protocole d'essai chargé d'en vérifier la validité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La relation «deriveReqt» formalise :",
+              "options": [
+                "Une exigence fille de bas niveau découlant logiquement d'une exigence de niveau supérieur",
+                "Une erreur typographique dans le libellé de l'exigence",
+                "Une dérivation mathématique par rapport au temps",
+                "Une exigence annulée suite à un dépassement budgétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérivation d'exigence permet de décomposer un besoin global en sous-exigences techniques plus élémentaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La relation «refine» permet de :",
+              "options": [
+                "Préciser et détailler une exigence par un modèle comportemental ou structurel",
+                "Arrondir une valeur décimale à l'entier le plus proche",
+                "Supprimer les exigences non obligatoires du document",
+                "Modifier le nom du sous-traitant en phase d'assemblage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le raffinement («refine») explicite une exigence textuelle à l'aide d'un diagramme SysML complémentaire (activité, séquence, etc.)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans l'évaluation d'une exigence, que définit le critère d'appréciation ?",
+              "options": [
+                "La grandeur physique ou l'indicateur mesurable permettant d'apprécier la conformité",
+                "Le nom de l'expéditeur de la commande",
+                "La marque du vernis appliqué sur la carrosserie",
+                "Le salaire horaire des techniciens d'essai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le critère d'appréciation identifie la grandeur objective servant d'étalon de mesure (masse, vitesse, autonomie...)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans l'énoncé d'une exigence, que désigne le niveau d'un critère d'appréciation ?",
+              "options": [
+                "La valeur numérique cible assortie de son unité et de sa tolérance admissible",
+                "La hauteur de l'armoire électrique par rapport au sol",
+                "Le grade de formation de l'ingénieur de projet",
+                "L'étage d'installation de la machine dans le bâtiment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le niveau chiffre la performance attendue, par exemple : 'Vitesse maximale = 45 km/h +/- 2 km/h'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle abréviation identifie le diagramme des exigences dans le cartouche d'un modèle SysML ?",
+              "options": ["req", "act", "bdd", "stm"],
+              "correctAnswers": [0],
+              "explanation": "Le cartouche d'en-tête indique 'req' pour Requirement Diagram."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une exigence non fonctionnelle porte couramment sur :",
+              "options": [
+                "Des contraintes réglementaires, de masse, d'encombrement, de sécurité ou de coût",
+                "La couleur des fils de liaison interne du circuit imprimé",
+                "Le choix de la police de caractères sur les plans de détail",
+                "L'horaire exact d'embauche de l'équipe de nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les exigences non fonctionnelles définissent les contraintes globales que le système doit respecter dans son exécution."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si une exigence stipule : 'Masse totale <= 15 kg avec flexibilité F0', cela signifie que :",
+              "options": [
+                "La tolérance est nulle et le niveau de 15 kg est une limite impérative stricte",
+                "La masse peut dépasser 15 kg de 50 % sans aucun problème",
+                "La masse de 15 kg est purement indicative et facultative",
+                "La pesée doit être effectuée uniquement en apesanteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une flexibilité nulle (F0) indique une contrainte absolue sans marge de négociation technique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Diagramme d'activité (act)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels symboles normalisés constituent le diagramme d'activité SysML (act) ?",
+              "options": [
+                "Le nœud initial (disque noir plein) et le nœud final (disque cerclé)",
+                "Les actions figurées par des rectangles aux coins arrondis",
+                "Les nœuds de décision et de fusion sous forme de losanges",
+                "Les résistances ohmiques et diodes électroluminescentes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le diagramme d'activité décrit le séquencement logique des actions au moyen de flux de contrôle, décisions et parallélismes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que représente un nœud de bifurcation (fork bar, barre noire épaisse) dans un diagramme act ?",
+              "options": [
+                "La division d'un flux d'exécution entrant en plusieurs flux exécutés en parallèle",
+                "L'extinction définitive du processeur de commande",
+                "La fusion de plusieurs alimentations électriques en une seule",
+                "L'annulation immédiate de l'action précédente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La barre de bifurcation (fork) déclenche le démarrage simultané de plusieurs branches concurrentes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la fonction d'un nœud de jonction (join bar) dans un diagramme d'activité ?",
+              "options": [
+                "Synchroniser la terminaison de plusieurs flux parallèles avant de continuer vers l'action suivante",
+                "Assembler deux pièces mécaniques par collage cyanoacrylate",
+                "Additionner les tensions électriques mesurées par deux sondes",
+                "Répartir un débit volumique de fluide vers deux vérins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La barre de synchronisation (join) attend que tous les flux incidents soient achevés pour libérer le flux sortant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un diagramme d'activité, que transportent les flèches reliant les différents éléments ?",
+              "options": [
+                "Des flux de contrôle ou des flux de matière, d'énergie et d'information",
+                "Uniquement des coefficients de frottement dynamique",
+                "Des vecteurs d'accélération gravitationnelle",
+                "Des adresses d'accès direct à la mémoire morte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les transitions acheminent soit des jetons de contrôle d'exécution, soit des objets physiques ou données numériques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que représente une condition de garde figurant entre crochets [condition] sur une transition ?",
+              "options": [
+                "Une expression booléenne qui doit obligatoirement être vraie pour franchir la transition",
+                "Une barrière de sécurité optique interdisant l'accès à la zone",
+                "La valeur maximale du courant absorbé par un moteur",
+                "Le nom de l'opérateur habilité à valider l'action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une garde conditionne le passage du flux : la branche n'est empruntée que si la condition logique est satisfaite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que permettent les couloirs ou partitions d'activité (swimlanes) ?",
+              "options": [
+                "D'affecter la responsabilité de chaque action à un bloc ou composant précis du système",
+                "D'isoler hermétiquement les réservoirs pneumatiques",
+                "De mesurer la fréquence d'échantillonnage d'un signal analogique",
+                "De chronométrer la vitesse de téléchargement d'un programme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les partitions découpent l'activité en couloirs verticaux ou horizontaux identifiant qui exécute quelle action."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un nœud d'objet représenté par un rectangle à angles vifs sur un flux modélise :",
+              "options": [
+                "Une donnée, une pièce physique ou une quantité d'énergie transmise entre deux actions",
+                "Une panne mécanique nécessitant le remplacement d'un joint",
+                "Une constante mathématique universelle",
+                "Une ligne de soudure électrique par points"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nœud d'objet (object node) représente les entités matérielles ou informationnelles produites ou consommées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel trigramme apparaît dans le cartouche d'un diagramme d'activité SysML ?",
+              "options": ["act", "seq", "stm", "bdd"],
+              "correctAnswers": [0],
+              "explanation": "Le trigramme normalisé pour Activity Diagram est 'act'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À la sortie d'un losange de décision, combien de branches peuvent être validées lors d'une exécution ?",
+              "options": [
+                "Une seule branche, celle dont la condition de garde est satisfaite",
+                "Toutes les branches sortantes simultanément",
+                "Toujours un nombre pair de branches",
+                "Aucune branche si le système est sous tension nominale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un nœud de décision assure un choix exclusif : seule la transition dont la garde est vraie est franchie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel symbole graphique indique la terminaison complète de l'ensemble de l'activité ?",
+              "options": [
+                "Un cercle noir plein entouré d'un cercle concentrique (œil de bœuf)",
+                "Un carré rouge barré d'une diagonale",
+                "Un triangle jaune avec un point d'exclamation",
+                "Une flèche brisée orientée vers le bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nœud final d'activité stoppe immédiatement tous les flux d'exécution actifs au sein du diagramme."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Diagramme de définition de bloc (bdd)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles relations structurelles normalisées peut-on modéliser entre blocs dans un diagramme bdd ?",
+              "options": [
+                "La composition figurée par un losange noir plein (relation forte tout/parties)",
+                "L'agrégation figurée par un losange blanc évidé (relation de partage sans destruction liée)",
+                "La généralisation figurée par une flèche à tête triangulaire vide (héritage)",
+                "La soudure par friction malaxage en phase solide"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le diagramme bdd décrit la décomposition structurelle statique du système au moyen de compositions, agrégations et héritages."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que représente un «block» dans le langage de modélisation SysML ?",
+              "options": [
+                "Une unité modulaire décrivant la structure d'un système, sous-système, composant matériel ou logiciel",
+                "Uniquement un arrêt d'urgence mécanique verrouillé par clé",
+                "Une zone de texte réservée aux annotations de bas de page",
+                "Une impulsion de commande transmise par faisceau hertzien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bloc est l'élément fondamental de description structurelle et fonctionnelle en ingénierie système SysML."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la multiplicité [1..4] sur une relation de composition entre un Châssis et des Roues ?",
+              "options": [
+                "Le châssis intègre entre 1 et 4 roues au sein de son architecture",
+                "Le système met 4 secondes pour changer de roue",
+                "La pression des pneus doit être comprise entre 1 et 4 bars",
+                "Il existe 4 types d'acier différents pour concevoir les roues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La multiplicité indique le nombre d'instances de la partie pouvant être reliées à l'instance conteneur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la représentation d'un bloc SysML, que contient le compartiment «values» ?",
+              "options": [
+                "Les propriétés mesurables et caractéristiques physiques du bloc (masse, puissance, tension...)",
+                "Les coordonnées bancaires du constructeur",
+                "Les avis d'utilisateurs collectés sur internet",
+                "La liste des brevets d'invention déposés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compartiment values recense les grandeurs quantitatives associées au bloc avec leurs types et unités."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que décrit le compartiment «operations» d'un bloc dans un diagramme bdd ?",
+              "options": [
+                "Les fonctions ou comportements que le bloc est capable d'exécuter sur appel",
+                "Les opérations d'usinage nécessaires à la fabrication brute de la pièce",
+                "Les accidents du travail répertoriés sur la ligne de production",
+                "Les interventions chirurgicales du personnel médical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les opérations désignent les services et méthodes exécutables fournis par le bloc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une relation de composition (losange plein noir), que se passe-t-il pour les sous-parties si le bloc tout est détruit ?",
+              "options": [
+                "Les sous-parties associées sont également détruites car leur existence dépend du tout",
+                "Les sous-parties sont automatiquement réexpédiées au fournisseur",
+                "Les sous-parties continuent d'exister de façon complètement autonome",
+                "Les sous-parties se transforment immédiatement en acteurs externes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La composition implique une appartenance forte et exclusive : la destruction du parent entraîne la disparition de ses parties."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une relation de généralisation/spécialisation entre un bloc Moteur et un bloc MoteurElectrique ?",
+              "options": [
+                "MoteurElectrique hérite des caractéristiques générales de Moteur en y ajoutant des propriétés spécifiques",
+                "MoteurElectrique contient 10 moteurs thermiques en série",
+                "Moteur ne peut fonctionner que si MoteurElectrique est en panne",
+                "Les deux blocs désignent exactement le même composant sans distinction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'héritage permet de factoriser les attributs et fonctions communes dans une classe générale réutilisable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle abréviation figure dans le cartouche d'un diagramme de définition de bloc ?",
+              "options": ["bdd", "ibd", "act", "req"],
+              "correctAnswers": [0],
+              "explanation": "Le cartouche d'un diagramme de définition de bloc porte la mention 'bdd' (Block Definition Diagram)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la principale différence entre une propriété de partie («part») et une propriété de référence («reference») ?",
+              "options": [
+                "Une référence pointe vers un bloc sans en avoir la propriété exclusive, contrairement à une partie",
+                "Une référence ne possède aucun nom dans le modèle",
+                "Une partie ne peut être composée que de composants en matière plastique",
+                "Une référence s'efface automatiquement à chaque redémarrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une référence (représentée en bordure pointillée) désigne une relation d'utilisation sans lien d'appartenance fort."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le diagramme SysML bdd propose une vue :",
+              "options": [
+                "Statique et structurelle définissant les types et architectures de composition du système",
+                "Purement chronologique des échanges réseau à la microseconde",
+                "Exclusivement financière du coût des matières premières",
+                "Géographique des sites de distribution commerciale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bdd modélise l'architecture statique, les hiérarchies de types et les associations structurelles globales."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Diagramme de bloc interne (ibd)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels constituants structurels sont modélisés dans un diagramme de bloc interne SysML (ibd) ?",
+              "options": [
+                "Les instances de parties constitutives du bloc englobant",
+                "Les ports de flux ou ports standard sur les frontières des blocs",
+                "Les connecteurs reliant les ports pour acheminer les flux",
+                "Le pas de vis normalisé pour taraudage métrique M6"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'ibd montre l'interconnexion interne des parties d'un bloc via des ports et des connecteurs orientés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diagramme ibd, à quoi sert un port de flux (flow port) ?",
+              "options": [
+                "À spécifier les échanges de matière, d'énergie ou d'information qui traversent la frontière d'un bloc",
+                "À brancher une clé USB pour mettre à jour le système d'exploitation",
+                "À ventiler la chaleur dégagée par les dissipateurs thermiques",
+                "À fixer mécaniquement le boîtier sur un rail DIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un port de flux matérialise le point de passage des flux entrants, sortants ou bidirectionnels d'un composant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'articulation méthodologique entre un diagramme bdd et un diagramme ibd ?",
+              "options": [
+                "L'ibd détaille l'agencement interne et le câblage d'un bloc préalablement défini dans le bdd",
+                "L'ibd annule et remplace toutes les définitions du bdd",
+                "Le bdd décrit le comportement alors que l'ibd mesure le coût financier",
+                "L'ibd ne s'applique qu'aux logiciels tandis que le bdd est réservé à la mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bdd déclare les blocs et leurs relations de composition, tandis que l'ibd en montre la structure interne interconnectée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un port de flux, une flèche dirigée vers l'intérieur du bloc indique :",
+              "options": [
+                "Un flux entrant consommé ou traité par le bloc",
+                "Une surchauffe thermique interne du composant",
+                "Un flux sortant envoyé vers les effecteurs",
+                "Une panne d'alimentation sur le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sens de la flèche du port formalise le sens de transit du flux : entrant (in), sortant (out) ou bidirectionnel (inout)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la ligne reliant deux ports dans un diagramme ibd ?",
+              "options": [
+                "Un connecteur",
+                "Un cordon de soudure",
+                "Un axe de révolution",
+                "Un câble de haubanage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le connecteur établit le canal d'échange physique ou logique entre les ports de deux sous-systèmes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Selon la syntaxe SysML, comment est libellée une partie dans un rectangle de diagramme ibd ?",
+              "options": [
+                "nomDuRôle : NomDuBloc (ex : mot1 : MoteurCC)",
+                "NumeroDeSerie / DateFabrication",
+                "CodePostal_Ville",
+                "TensionNominale @ CourantMaximal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La notation 'rôle : Type' distingue le rôle fonctionnel précis au sein de l'assemblage de son type générique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel trigramme apparaît dans le cartouche d'un diagramme de bloc interne ?",
+              "options": ["ibd", "bdd", "seq", "uc"],
+              "correctAnswers": [0],
+              "explanation": "L'en-tête normalisé indique 'ibd' pour Internal Block Diagram."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un diagramme ibd, que spécifie un «Item Flow» associé à un connecteur ?",
+              "options": [
+                "La nature précise de la grandeur transportée (ex : ÉnergieÉlectrique, SignalVitesse)",
+                "Le nom du livreur qui a acheminé le matériel",
+                "Le diamètre de perçage pour vis de fixation",
+                "La marque commerciale des connecteurs plastiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Item Flow qualifie le flux réel (type de matière, d'énergie ou d'information) qui circule sur le connecteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la frontière extérieure délimitant tout le diagramme ibd ?",
+              "options": [
+                "Le grand cadre rectangulaire représentant le bloc parent dont on décrit l'intérieur",
+                "La grille de ventilation du local technique",
+                "Le sol en béton armé du bâtiment industriel",
+                "La plaque signalétique rivetée sur le châssis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un ibd encapsule obligatoirement l'intérieur d'un bloc parent délimité par le cadre du diagramme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un port supportant un échange d'information bidirectionnel porte graphiquement :",
+              "options": [
+                "Une double flèche opposée inout",
+                "Une flèche circulaire fermée",
+                "Un point d'interrogation rouge",
+                "Un trait continu sans aucune flèche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un port inout permet des communications dans les deux sens (émission et réception de données)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Diagramme d'états (stm)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels constituants fondamentaux structurent un diagramme d'états SysML (stm) ?",
+              "options": [
+                "Les états du système figurés par des rectangles à coins arrondis",
+                "Les transitions orientées reliant un état source à un état cible",
+                "Les événements déclencheurs, conditions de garde et actions associées",
+                "Les plans de fabrication cotés en tolérancement géométrique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le diagramme d'états modélise les modes de marche et le comportement séquentiel réactif d'un système."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la syntaxe normalisée complète portée par une transition d'état ?",
+              "options": [
+                "événement [garde] / action",
+                "action (garde) {événement}",
+                "[garde] / événement : action",
+                "action -> événement [garde]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transition se déclenche sur survenue de l'événement, sous réserve que la garde soit vraie, exécutant alors l'action."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un état, que désigne l'instruction précédée du mot-clé «entry /» ?",
+              "options": [
+                "Une action exécutée instantanément dès l'entrée du système dans cet état",
+                "Une condition bloquant l'accès à l'état si la batterie faiblit",
+                "Une tâche de fond répétée en boucle jusqu'à extinction",
+                "Une alarme sonore signalant la sortie imminente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action entry s'exécute une seule fois lors du franchissement de la transition entrante dans l'état."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un état, que signifie la ligne de comportement préfixée par «do /» ?",
+              "options": [
+                "Une activité continue exécutée tant que le système demeure dans cet état",
+                "Une réinitialisation complète de la mémoire vive",
+                "Une commande manuelle d'arrêt d'urgence",
+                "Un diagnostic exécuté uniquement en usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité do s'exécute de façon durable pendant tout le temps où l'état reste actif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle action est désignée par la mention «exit /» au sein d'un état ?",
+              "options": [
+                "Une action exécutée juste avant que le système ne quitte cet état",
+                "Une sauvegarde définitive empêchant tout redémarrage",
+                "Une purge du liquide de refroidissement",
+                "La coupure du disjoncteur général d'atelier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action exit garantit la bonne clôture des opérations propres à l'état avant d'activer le suivant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment modélise-t-on le fait qu'un système se trouve simultanément dans deux états actifs indépendants ?",
+              "options": [
+                "Par des régions orthogonales séparées par une ligne en pointillés (concurrence)",
+                "Par deux cercles superposés au centre de la feuille",
+                "Ce comportement est rigoureusement impossible en SysML",
+                "En reliant les états par un ressort hélicoïdal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les régions orthogonales délimitent des sous-machines à états qui évoluent en parallèle de manière concurrente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la clause temporelle 'after(10 s)' portée sur une transition ?",
+              "options": [
+                "La transition est franchie automatiquement 10 secondes après l'activation de l'état source",
+                "Le système attend 10 secondes avant de commencer à charger le programme",
+                "L'horloge temps réel retarde de 10 secondes par heure",
+                "L'opérateur dispose de 10 secondes pour saisir son mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement after(durée) déclenche la transition après écoulement d'un délai chronométré depuis l'entrée dans l'état."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel trigramme identifie le diagramme d'états dans le cartouche d'en-tête SysML ?",
+              "options": ["stm", "act", "seq", "bdd"],
+              "correctAnswers": [0],
+              "explanation": "Le trigramme 'stm' correspond à State Machine Diagram."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se produit-il si un événement survient alors que sa condition de garde [garde] est fausse (booléen faux) ?",
+              "options": [
+                "La transition n'est pas franchie et le système reste dans son état actuel",
+                "Le système passe instantanément en mode défaut destructeur",
+                "Toutes les variables sont réinitialisées à zéro",
+                "Le processeur coupe son alimentation secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la garde n'est pas vérifiée, la transition reste bloquée et le système conserve son état courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment est symbolisé le point d'entrée initial dans un diagramme d'états ?",
+              "options": [
+                "Un disque plein noir relié par une flèche au premier état actif",
+                "Un losange évidé à bordure rouge",
+                "Un rectangle jaune avec une croix",
+                "Un sablier inversé surmonté d'un point"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pseudo-état initial indique l'état dans lequel se place le système lors de sa mise sous tension."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Diagramme de séquence (seq)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels constituants structurent un diagramme de séquence SysML (seq) ?",
+              "options": [
+                "Les lignes de vie verticales représentant les objets ou acteurs",
+                "Les messages horizontaux ordonnés chronologiquement du haut vers le bas",
+                "Les barres d'activation verticale marquant la durée d'exécution",
+                "Les tuyaux d'échappement des gaz sous pression"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le diagramme de séquence modélise les scénarios temporels d'interaction et d'échange de messages entre objets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diagramme de séquence, que représente la dimension verticale orientée vers le bas ?",
+              "options": [
+                "L'écoulement chronologique du temps",
+                "La baisse de tension électrique dans la batterie",
+                "La profondeur d'immersion sous l'eau",
+                "La perte de rendement par frottement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps s'écoule de haut en bas : un message situé plus bas se produit chronologiquement après un message situé plus haut."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment est représenté un message synchrone dans un diagramme de séquence ?",
+              "options": [
+                "Une flèche en trait continu terminée par une pointe pleine triangulaire noire",
+                "Une flèche en pointillés terminée par une pointe ouverte",
+                "Un arc de cercle rouge clignotant",
+                "Une ligne sinusoïdale sans pointe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le message synchrone (flèche pleine) bloque l'émetteur tant qu'il n'a pas reçu le message de retour correspondant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la particularité d'un message asynchrone (flèche à pointe ouverte) ?",
+              "options": [
+                "L'émetteur envoie le message et poursuit immédiatement ses tâches sans attendre de réponse",
+                "Le message met obligatoirement plus de dix minutes à parvenir au destinataire",
+                "Le message est détruit si le destinataire est en mode veille",
+                "La communication est chiffrée par une clé quantique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un appel asynchrone est non bloquant : l'expéditeur n'attend pas la terminaison du traitement chez le récepteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment symbolise-t-on graphiquement un message de retour (reply) en séquence ?",
+              "options": [
+                "Une flèche en trait pointillé avec une pointe ouverte",
+                "Un trait continu épais double",
+                "Une flèche ondulée bleue",
+                "Un losange noir fixé sur la ligne de vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le message de retour clôture un appel synchrone en renvoyant le résultat en trait interrompu pointillé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que spécifie le fragment combiné «alt» dans un diagramme de séquence ?",
+              "options": [
+                "Des alternatives conditionnelles exclusives (équivalent à un Si... Alors... Sinon)",
+                "Une boucle répétée un nombre infini de fois",
+                "Une mise en veille automatique de sauvegarde",
+                "Une alarme sonore de surintensité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fragment 'alt' partitionne le scénario en plusieurs blocs exclusifs gardés par des conditions booléennes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que modélise le fragment combiné «loop» ?",
+              "options": [
+                "La répétition d'une séquence de messages tant qu'une condition reste vraie ou pour un nombre d'itérations fixé",
+                "L'annulation du dernier paquet réseau corrompu",
+                "La rotation continue d'un arbre d'engrenage",
+                "Le verrouillage par mot de passe de la session"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cadre combiné 'loop' formalise les boucles d'itération et les cycles de répétition séquentiels."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel comportement décrit le fragment combiné «par» en diagramme de séquence ?",
+              "options": [
+                "L'exécution concurrente ou simultanée de plusieurs sous-séquences d'échanges",
+                "Le tri alphabétique des messages reçus",
+                "Le passage de paramètres sous forme de pointeurs",
+                "La mise hors tension d'un secteur défaillant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fragment 'par' spécifie que les sous-séquences délimitées s'exécutent en parallèle de manière entrelacée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel trigramme apparaît dans le cartouche d'un diagramme de séquence SysML ?",
+              "options": ["seq", "bdd", "stm", "req"],
+              "correctAnswers": [0],
+              "explanation": "Le cartouche d'en-tête indique 'seq' pour Sequence Diagram."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que symbolise une grande croix 'X' figurant au bas d'une ligne de vie ?",
+              "options": [
+                "La destruction ou la fin de vie de l'instance d'objet au cours du scénario",
+                "Une erreur fatale de court-circuit",
+                "Le refus de connexion par le routeur",
+                "La suppression des droits administrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison par une croix modélise l'arrêt d'existence ou la destruction de l'objet sollicité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Analyse structurelle et liaisons mécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mouvements élémentaires constituent les 6 degrés de liberté d'un solide libre dans l'espace tridimensionnel ?",
+              "options": [
+                "Trois translations indépendantes selon les axes orthogonaux X, Y et Z",
+                "Trois rotations indépendantes autour des axes X, Y et Z",
+                "Deux dilatations thermiques irréversibles",
+                "Une plastification transversale sous contrainte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans un repère cartésien 3D, tout solide indéformable dispose de 6 degrés de liberté : 3 translations et 3 rotations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté autorise une liaison pivot d'axe (O, x) ?",
+              "options": [
+                "1 degré de liberté : une seule rotation d'axe x (Rx)",
+                "2 degrés de liberté : une translation et une rotation",
+                "3 degrés de liberté : trois translations",
+                "0 degré de liberté : solide totalement immobilisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison pivot bloque les 3 translations et 2 rotations, ne laissant libre que la rotation autour de son axe géométrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté autorise une liaison glissière d'axe (O, x) ?",
+              "options": [
+                "1 degré de liberté : une seule translation rectiligne selon l'axe x (Tx)",
+                "2 degrés de liberté combinés",
+                "4 degrés de liberté en rotation",
+                "6 degrés de liberté sans aucune restriction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison glissière supprime toutes les rotations et deux translations, n'autorisant que la translation suivant son axe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une liaison encastrement (liaison complète rigide) bloque :",
+              "options": [
+                "Les 6 degrés de liberté (aucun mouvement relatif possible)",
+                "5 degrés de liberté en conservant une translation résiduelle",
+                "4 degrés de liberté en rotation",
+                "Uniquement les rotations autour des axes horizontaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison encastrement immobilise totalement les deux pièces l'une par rapport à l'autre (0 degré de liberté)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une liaison hélicoïdale de pas pz, comment la translation et la rotation axiales sont-elles couplées ?",
+              "options": [
+                "Elles sont conjuguées par la relation géométrique : Tz = (pz / 2π) × Rz (1 seul degré de liberté indépendant)",
+                "Elles sont totalement indépendantes et libres l'une de l'autre",
+                "La translation est toujours nulle quelle que soit la rotation",
+                "Le mouvement dépend uniquement de la température du lubrifiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une liaison hélicoïdale, tourner d'un angle impose mathématiquement une translation axiale proportionnelle au pas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté autorise une liaison rotule (sphérique) de centre O ?",
+              "options": [
+                "3 degrés de liberté en rotation (Rx, Ry, Rz) et aucune translation",
+                "3 degrés de liberté en translation et aucune rotation",
+                "1 seul degré de liberté en rotation",
+                "5 degrés de liberté dont deux translations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rotule bloque toutes les translations par contact de sphères concentriques, autorisant les rotations dans toutes les directions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté une liaison appui plan de normale z bloque-t-elle ?",
+              "options": [
+                "3 degrés de liberté bloqués (Tz, Rx, Ry) pour 3 degrés de liberté autorisés (Tx, Ty, Rz)",
+                "Les 6 degrés de liberté sans exception",
+                "Uniquement la rotation d'axe z",
+                "5 degrés de liberté bloqués"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appui plan autorise le glissement dans le plan (Tx, Ty) et le pivotement normal (Rz), bloquant le décollement et les basculements."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une liaison pivot glissant d'axe (O, x) autorise :",
+              "options": [
+                "2 degrés de liberté indépendants : 1 translation (Tx) et 1 rotation (Rx) de même axe",
+                "3 translations sans rotation",
+                "4 rotations autour d'axes concourants",
+                "0 mouvement relatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un contact cylindre/cylindre parfait autorise le coulissement le long de l'axe et le pivotement autour de cet axe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une liaison ponctuelle (sphère-plan) de normale z bloque :",
+              "options": [
+                "1 seul degré de liberté (la translation normale Tz) et autorise 5 degrés de liberté",
+                "5 degrés de liberté et n'autorise qu'une translation",
+                "Toutes les rotations autour du point de tangence",
+                "La translation horizontale dans le plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contact ponctuel empêche seulement l'interpénétration selon la normale au plan de contact."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel composant mécanique standardise couramment la réalisation d'une liaison pivot en limitant les frottements ?",
+              "options": [
+                "Le roulement à billes ou à rouleaux",
+                "Le joint torique d'étanchéité statique",
+                "La rondelle grower fendue",
+                "Le rivet tubulaire en cuivre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les roulements remplacent le frottement de glissement par un roulement à très faible coefficient de résistance."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Schématisation cinématique et modélisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les propriétés caractéristiques d'une classe d'équivalence cinématique (CEC) ?",
+              "options": [
+                "Elle réunit un ensemble de pièces totalement solidaires entre elles sans aucun mouvement relatif",
+                "On modélise l'ensemble des pièces comme un solide indéformable unique pour l'étude cinématique",
+                "Les pièces la composant sont liées entre elles par des liaisons encastrement",
+                "Toutes ses pièces doivent obligatoirement être moulées d'un seul tenant"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une CEC est un sous-ensemble de pièces indéformables solidaires, réduisant la complexité du mécanisme à quelques solides équivalents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans l'élaboration d'un schéma cinématique, que relie un arc dans le graphe des liaisons ?",
+              "options": [
+                "Une liaison mécanique normalisée reliant deux classes d'équivalence cinématique",
+                "Le câble d'alimentation reliant la prise au moteur",
+                "La trajectoire parabolique du centre d'inertie",
+                "Le réseau de communication sans fil de l'atelier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le graphe des liaisons relie les sommets (les classes d'équivalence) par des arêtes précisant la nature des liaisons mécaniques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traite-t-on les pièces déformables (ressorts, courroies élastiques, membranes) lors de l'établissement des CEC ?",
+              "options": [
+                "Elles sont exclues des classes d'équivalence et modélisées sous forme d'actions mécaniques extérieures d'effort",
+                "Elles forment chacune une classe d'équivalence rigide indéformable",
+                "Elles sont soudées virtuellement au bâti fixe",
+                "Elles sont ignorées sans application d'effort équivalent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pièces déformables ne constituent pas des solides rigides : on isole les pièces rigides et on applique l'effort élastique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un schéma cinématique minimal normalisé, chaque liaison est représentée par :",
+              "options": [
+                "Un symbole normalisé AFNOR / ISO précisant son centre géométrique et l'orientation de ses axes",
+                "Une vue en coupe photoréaliste avec hachures normalisées",
+                "Une esquisse à main levée en perspective conique",
+                "La référence du catalogue commercial du revendeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les symboles cinématiques normalisés définissent sans ambiguïté les degrés de liberté géométriques autorisés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'objectif premier d'un schéma cinématique d'un mécanisme ?",
+              "options": [
+                "Représenter de manière simplifiée et claire les mouvements relatifs entre solides sans surcharge de détails technologiques",
+                "Calculer le devis financier de la matière première brute",
+                "Définir la trajectoire des outils de fraisage sur machine CNC",
+                "Contrôler la compatibilité électromagnétique des cartes électroniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma cinématique synthétise l'architecture géométrique des mouvements pour préparer l'analyse cinématique et dynamique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de couleurs utilise-t-on traditionnellement pour colorier un plan d'ensemble en classes d'équivalence ?",
+              "options": [
+                "Une couleur distincte par classe d'équivalence cinématique identifiée",
+                "Une seule couleur grise pour toutes les pièces métalliques",
+                "Deux couleurs : le jaune pour les vis et le bleu pour les carters",
+                "Une couleur par type d'usinage mécanique réalisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque classe d'équivalence cinématique est coloriée d'une teinte propre pour visualiser immédiatement les sous-ensembles solidaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne le «bâti» (ou châssis) dans l'analyse cinématique d'un système ?",
+              "options": [
+                "Le solide de référence supposé fixe par rapport auquel on étudie les mouvements des autres composants",
+                "La pièce mécanique la plus coûteuse de l'ensemble",
+                "Le composant qui tourne à la vitesse angulaire la plus élevée",
+                "Le couvercle plastique démontable de protection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bâti (classe d'équivalence 0) définit le repère de référence spatial pour mesurer déplacements et vitesses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si deux solides présentent deux contacts cylindriques coaxiaux distincts de même axe, la liaison cinématique équivalente est :",
+              "options": [
+                "Une liaison pivot glissant d'axe confondu",
+                "Une liaison rotule de centre intermédiaire",
+                "Une liaison appui plan orthogonal",
+                "Une liaison ponctuelle radiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'association géométrique de deux liaisons pivot glissant de même axe conserve la translation axiale et la rotation coaxiale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on associe en série une liaison pivot d'axe (O, x) et une liaison glissière d'axe (O, x), la liaison globale résultante est :",
+              "options": [
+                "Une liaison pivot glissant d'axe (O, x)",
+                "Une liaison encastrement rigide",
+                "Une liaison rotule à doigt",
+                "Une liaison hélicoïdale de pas unitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En série, les degrés de liberté s'additionnent : une rotation pure + une translation pure de même axe forment un pivot glissant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un mécanisme est dit isostatique lorsque son degré d'hyperstatisme h vaut :",
+              "options": [
+                "h = 0 (les équations de la statique suffisent à déterminer toutes les inconnues de liaison)",
+                "h > 5 (il comporte de nombreuses contraintes redondantes)",
+                "h = -1 (il est instable et déformable)",
+                "h = 100 (les liaisons sont élastiques)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'isostatisme (h = 0) correspond à l'absence de contraintes cinématiques redondantes, évitant les surcontraintes d'assemblage."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Chaîne d'énergie et d'information",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Structure globale de la chaîne d'information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les trois fonctions génériques séquentielles qui constituent la chaîne d'information ?",
+              "options": ["Acquérir", "Traiter", "Communiquer", "Refroidir"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La chaîne d'information capte les grandeurs (Acquérir), exécute les algorithmes (Traiter) et transmet les ordres (Communiquer)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction de la chaîne d'information convertit une grandeur physique observée en un signal exploitable ?",
+              "options": ["Acquérir", "Traiter", "Distribuer", "Agir"],
+              "correctAnswers": [0],
+              "explanation": "La fonction Acquérir repose sur des capteurs pour transformer une grandeur physique (température, force...) en signal électrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel composant réalise principalement la fonction «Traiter» dans un équipement autonome moderne ?",
+              "options": [
+                "Un microcontrôleur ou un processeur de traitement de signal",
+                "Un vérin pneumatique double effet en aluminium",
+                "Une courroie crantée montée sur poulies",
+                "Un fusible thermique de protection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microcontrôleur exécute le programme informatique, traite les données des capteurs et élabore les commandes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La fonction «Communiquer» de la chaîne d'information a pour mission :",
+              "options": [
+                "De transmettre les ordres de commande aux préactionneurs et de dialoguer avec l'IHM ou d'autres systèmes",
+                "De recharger chimiquement les cellules de batterie",
+                "De lubrifier sous pression les paliers lisses",
+                "D'absorber les vibrations mécaniques par effet visqueux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communiquer assure la diffusion des ordres vers la chaîne d'énergie et les échanges de données avec l'extérieur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vers quelle fonction de la chaîne d'énergie les ordres issus de la chaîne d'information sont-ils acheminés ?",
+              "options": [
+                "La fonction Distribuer (préactionneurs)",
+                "La fonction Alimenter (source d'énergie primaire)",
+                "La fonction Transmettre (engrenages et courroies)",
+                "La fonction Agir (outils effecteurs)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les signaux de commande pilotent les préactionneurs (hacheurs, distributeurs, relais) qui distribuent la puissance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel dispositif assure le dialogue direct entre l'utilisateur humain et la chaîne d'information ?",
+              "options": [
+                "L'Interface Homme-Machine (IHM : écran tactile, boutons-poussoirs, voyants)",
+                "Le réducteur planétaire à train épicycloïdal",
+                "Le filtre déshumidificateur pneumatique",
+                "Le joint homocinétique de transmission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'IHM permet à l'opérateur de renseigner les consignes et de visualiser les états de fonctionnement du système."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une consigne imposée par l'utilisateur (ex : régler la température cible à 21 °C) pénètre dans :",
+              "options": [
+                "La chaîne d'information via les organes de saisie de l'IHM",
+                "Directement dans le carter d'huile du mécanisme",
+                "Dans l'enroulement d'induit du moteur synchrone",
+                "Dans le piston arrière du vérin pneumatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La consigne est une information d'entrée traitée par la chaîne d'information pour piloter la régulation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un système asservi en boucle fermée, comment appelle-t-on le signal renvoyé par le capteur vers l'organe de traitement ?",
+              "options": [
+                "Le retour d'information (ou signal de rétroaction / feedback)",
+                "La perte de charge singulière",
+                "La dérive thermique irréversible",
+                "Le couple de décrochage synchrone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rétroaction mesure la grandeur de sortie réelle pour que le correcteur ajuste la commande par rapport à la consigne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la nature prépondérante des signaux échangés au sein de la chaîne d'information ?",
+              "options": [
+                "Des signaux électriques de faible puissance porteurs de données logiques ou numériques",
+                "Des flux hydrauliques sous très haute pression (300 bars)",
+                "Des couples mécaniques élevés mesurés en kiloNewton-mètres",
+                "Des rayonnements calorifiques intenses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaîne d'information manipule des signaux électriques de faible niveau énergétique (quelques volts, quelques milliampères)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que se produit-il dans un système asservi si la chaîne d'information ne reçoit plus la mesure du capteur ?",
+              "options": [
+                "Le système perd sa boucle fermée et ne peut plus corriger l'écart entre consigne et état réel",
+                "La puissance mécanique du moteur est automatiquement multipliée par dix",
+                "Le rendement énergétique devient spontanément supérieur à 100 %",
+                "La tension électrique d'alimentation secteur tombe instantanément à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans retour de mesure, le système fonctionne à l'aveugle en boucle ouverte, perdant toute précision et stabilité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fonction Acquérir : Capteurs et grandeurs physiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types de signaux de sortie un capteur peut-il délivrer en fonction de sa chaîne de conditionnement ?",
+              "options": [
+                "Un signal logique ou Tout Ou Rien (TOR : deux niveaux 0 ou 1)",
+                "Un signal analogique continu représentatif de la grandeur mesurée",
+                "Un signal numérique sous forme de mots binaires codés sur N bits",
+                "Un flux mécanique de copeaux d'acier d'usinage"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Selon la technologie, la sortie est soit binaire (TOR), soit continue (analogique), soit échantillonnée et codée (numérique)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on l'étendue de mesure (EM) d'un capteur ?",
+              "options": [
+                "L'intervalle entre la valeur minimale et la valeur maximale mesurables avec la précision garantie",
+                "La longueur physique en mètres du câble de raccordement blindé",
+                "La durée de vie du capteur avant le premier étalonnage obligatoire",
+                "La distance maximale de détection d'une balise GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étendue de mesure définit la plage de variation de la grandeur physique d'entrée acceptée par le capteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un capteur analogique linéaire, comment définit-on sa sensibilité S ?",
+              "options": [
+                "La variation du signal de sortie divisée par la variation de la grandeur d'entrée (S = Δs / Δe)",
+                "Le temps nécessaire pour atteindre 95 % de la valeur de consigne",
+                "La consommation de courant au repos en mode veille",
+                "La résistance mécanique du boîtier face aux chocs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sensibilité représente la pente de la courbe d'étalonnage sortie/entrée du capteur (ex : en mV/°C ou V/bar)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un capteur de fin de course mécanique à contact sec délivre un signal de nature :",
+              "options": [
+                "Tout Ou Rien (TOR)",
+                "Analogique sinusoïdal",
+                "Numérique codé en virgule flottante",
+                "Modulé en largeur d'impulsion à 100 kHz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un contact mécanique est soit ouvert soit fermé, générant un niveau logique binaire 0 ou 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un capteur de proximité capacitif permet de détecter sans contact physique :",
+              "options": [
+                "Tous types de matériaux qu'ils soient conducteurs métalliques ou isolants (plastiques, liquides, poudres)",
+                "Uniquement les métaux ferreux sous champ magnétique",
+                "Uniquement les faisceaux laser de couleur rouge",
+                "Uniquement les gaz rares sous basse pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur capacitif détecte la modification de permittivité diélectrique créée par l'approche de tout matériau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un capteur de proximité inductif est spécifiquement conçu pour détecter :",
+              "options": [
+                "Les objets conducteurs métalliques par création de courants de Foucault",
+                "Les flacons d'eau en verre transparent",
+                "Les palettes en bois sec d'emballage",
+                "Les sacs de granulés plastiques isolants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur inductif crée un champ magnétique oscillant absorbé par les pertes par courants de Foucault dans les métaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel composant optoélectronique est couramment accouplé à un arbre moteur pour mesurer sa position et sa vitesse angulaires ?",
+              "options": [
+                "Un codeur rotatif incrémental ou absolu",
+                "Un thermocouple à jonction platine",
+                "Une jauge piézoélectrique de force",
+                "Un tube de Bourdon pour pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le codeur optique convertit la rotation d'un disque gradué en impulsions électriques numériques pour déterminer position et vitesse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La justesse d'un appareil de mesure caractérise son aptitude à :",
+              "options": [
+                "Donner des indications dont la moyenne est exempte d'erreurs systématiques par rapport à la valeur vraie",
+                "Fonctionner sans aucune source d'alimentation électrique",
+                "Résister aux variations brusques de température extérieure",
+                "Mesurer des signaux à très haute fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un instrument juste donne des mesures centrées sur la valeur vraie, sans biais ni dérive systématique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fidélité d'un capteur mesure son aptitude à :",
+              "options": [
+                "Donner des résultats très proches lors de mesures répétées de la même grandeur dans des conditions identiques",
+                "Transmettre les mesures par réseau sans fil Wi-Fi",
+                "Résister à l'immersion prolongée dans l'eau salée",
+                "Calculer automatiquement les dérivées mathématiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fidélité traduit la faible dispersion des résultats autour de leur moyenne (faible erreur aléatoire)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parmi les capteurs suivants, lequel est un capteur actif générant spontanément une tension par effet thermoélectrique (Seebeck) ?",
+              "options": [
+                "Le thermocouple",
+                "La thermistance CTN passive",
+                "Le potentiomètre rotatif bobiné",
+                "La photorésistance LDR au sulfure de cadmium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un capteur actif génère une tension électrique autonome issue d'un phénomène physique de conversion (effet Seebeck pour le thermocouple)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Conditionnement et conversion du signal",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles opérations fondamentales composent la conversion analogique-numérique (CAN / ADC) d'un signal continu ?",
+              "options": [
+                "L'échantillonnage temporel périodique à la fréquence Fe",
+                "La quantification en amplitude sur un ensemble de niveaux discrets",
+                "Le codage binaire du résultat sur N bits",
+                "Le laminage à chaud sous presse hydraulique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La numérisation prélève des valeurs à intervalles réguliers (échantillonnage), discrétise l'amplitude (quantification) et code en binaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Selon le théorème d'échantillonnage de Shannon-Nyquist, pour numériser sans repliement de spectre un signal de fréquence maximale fmax :",
+              "options": [
+                "La fréquence d'échantillonnage Fe doit respecter : Fe >= 2 × fmax",
+                "La fréquence d'échantillonnage doit être inférieure à fmax / 2",
+                "La fréquence Fe doit obligatoirement être égale à fmax / 10",
+                "La fréquence d'échantillonnage doit être nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fe doit être au moins deux fois supérieure à la fréquence maximale du signal pour éviter le phénomène d'aliasing (repliement)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un CAN de résolution N = 10 bits permet de coder une plage de tension en combien de niveaux numériques distincts ?",
+              "options": [
+                "1024 niveaux (2^10)",
+                "10 niveaux",
+                "256 niveaux",
+                "2048 niveaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mot binaire de N bits permet de représenter 2^N combinaisons distinctes, soit 2^10 = 1024 niveaux pour 10 bits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour une plage de tension pleine échelle de 0 à 5 V sur un CAN 10 bits (1024 intervalles), le quantum q vaut environ :",
+              "options": [
+                "4,88 mV (q = 5 V / 1024)",
+                "48,8 mV",
+                "0,5 V",
+                "1,25 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le quantum q représente la plus petite variation de tension mesurable : q = Plage / 2^N = 5 / 1024 ≈ 4,88 mV."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un filtre passe-bas anti-repliement placé en amont d'un convertisseur CAN ?",
+              "options": [
+                "Atténuer les composantes de fréquence supérieure à Fe / 2 pour empêcher le repliement spectral",
+                "Bloquer toute tension continue pour ne conserver que les parasites",
+                "Amplifier le bruit de commutation à très haute fréquence",
+                "Augmenter l'impédance de sortie du capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre anti-repliement élimine les fréquences supérieures à la fréquence de Nyquist (Fe/2) avant numérisation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel montage en pont de résistances permet de mesurer avec une grande sensibilité la faible variation de résistance d'une jauge ?",
+              "options": [
+                "Le pont de Wheatstone",
+                "Le pont diviseur de tension simple sans amplificateur",
+                "Le pont de Graetz à 4 diodes",
+                "Le circuit de protection par varistance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pont de Wheatstone transforme une infime variation relative de résistance en une tension différentielle mesurable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un filtre analogique passe-bande se caractérise par :",
+              "options": [
+                "L'atténuation des fréquences inférieures à fc1 et supérieures à fc2, laissant passer la bande intermédiaire",
+                "L'amplification infinie de toutes les composantes fréquentielles",
+                "Le blocage absolu de tout signal variable dans le temps",
+                "L'inversion de polarité sans modification d'amplitude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passe-bande ne transmet que les signaux dont la fréquence se situe dans la bande passante comprise entre fc1 et fc2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La fonction d'un convertisseur numérique-analogique (CNA / DAC) consiste à :",
+              "options": [
+                "Transformer un mot binaire numérique en une grandeur électrique analogique proportionnelle (tension ou courant)",
+                "Convertir une puissance électrique en puissance pneumatique",
+                "Stocker des fichiers de mesures sur disque flash",
+                "Détecter les erreurs de parité sur un bus série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CNA restitue une tension ou un courant analogique continu à partir des valeurs numériques calculées par le microcontrôleur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'erreur de quantification intrinsèque d'un CAN parfait est théoriquement bornée par :",
+              "options": [
+                "+/- q / 2 (avec q le quantum de conversion)",
+                "+/- 5 volts",
+                "Une valeur imprévisible variant de zéro à l'infini",
+                "Le double de la tension de référence maximale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout échantillon analogique est arrondi au niveau de quantification le plus proche, l'écart maximal valant un demi-quantum."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel composant actif universel est à la base des montages d'amplification, de filtrage et de soustraction de signaux ?",
+              "options": [
+                "L'amplificateur opérationnel (AOP)",
+                "Le thyristor de puissance triphasé",
+                "Le fusible céramique temporisé",
+                "La diode électroluminescente infrarouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'AOP permet de réaliser des montages suiveurs, amplificateurs, différentiels et filtres actifs indispensables au conditionnement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fonction Traiter : Microcontrôleurs et algorithmique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sous-ensembles fonctionnels sont regroupés sur la même puce silicium d'un microcontrôleur ?",
+              "options": [
+                "Une unité centrale de traitement (CPU / cœur processeur)",
+                "Des mémoires internes de travail et de stockage (RAM, Flash / ROM)",
+                "Des périphériques d'entrées/sorties (GPIO, timers, CAN, liaisons série)",
+                "Un compresseur pneumatique à piston alternatif"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un microcontrôleur intègre sur un même circuit intégré le processeur, les mémoires et les périphériques de contrôle mécatronique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique fondamentale de la mémoire Flash par rapport à la mémoire RAM dans un microcontrôleur ?",
+              "options": [
+                "La Flash est non-volatile (conserve le code hors tension) tandis que la RAM est volatile (effacée à l'extinction)",
+                "La RAM conserve les programmes pendant 10 ans sans aucune alimentation",
+                "La mémoire Flash s'efface à chaque microseconde de calcul",
+                "La mémoire RAM ne peut stocker que des nombres entiers négatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mémoire Flash accueille le programme exécutable persistant, tandis que la RAM stocke les variables volatiles de calcul."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En algorithmique, quelle structure permet de répéter un bloc d'actions tant qu'une condition reste vraie ?",
+              "options": [
+                "La boucle 'Tant que' (while)",
+                "L'instruction conditionnelle 'Si... Alors...'",
+                "La déclaration d'une variable globale constante",
+                "L'assignation d'une valeur à un registre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle 'Tant que' réévalue la condition booléenne à chaque tour et poursuit la répétition tant qu'elle est vérifiée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que réalise la structure algorithmique 'Si Condition Alors Action1 Sinon Action2' ?",
+              "options": [
+                "Un aiguillage conditionnel exécutant Action1 si la condition est vraie, ou Action2 si elle est fausse",
+                "Une exécution simultanée et permanente des deux actions",
+                "L'interdiction formelle d'exécuter la moindre action",
+                "Le redémarrage immédiat du processeur en mode sans échec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la structure de contrôle alternative de base : le choix entre les deux branches dépend du test booléen."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une interruption matérielle (hardware interrupt) sur un microcontrôleur ?",
+              "options": [
+                "Un mécanisme suspendant le programme principal pour traiter immédiatement un événement externe urgent",
+                "Une panne électrique définitive exigeant le remplacement de la puce",
+                "Un bug de programmation bloquant l'accès à la mémoire Flash",
+                "Une mise en veille profonde sans possibilité de réveil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interruption force la CPU à exécuter une routine prioritaire (ISR) sur front d'un capteur avant de reprendre le fil principal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une variable de type booléen en programmation ne peut prendre que :",
+              "options": [
+                "Deux états logiques exclusifs : VRAI (1) ou FAUX (0)",
+                "Une infinité de valeurs réelles décimales",
+                "Un texte alphanumérique de 64 caractères",
+                "Une valeur complexe avec partie imaginaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les variables booléennes représentent les grandeurs binaires d'état (haut/bas, marche/arrêt, 1/0)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quoi sert la modulation de largeur d'impulsion (MLI / PWM) générée par le timer d'un microcontrôleur ?",
+              "options": [
+                "À moduler la tension moyenne appliquée à une charge en faisant varier le rapport cyclique à fréquence constante",
+                "À amplifier la tension d'alimentation de 5 V jusqu'à 230 V sans transformateur",
+                "À supprimer le bruit thermique d'un thermocouple",
+                "À synchroniser l'horloge locale avec le fuseau horaire de Greenwich"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hachage MLI permet de faire varier la puissance moyenne fournie à un moteur ou une DEL via le rapport cyclique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si un signal PWM a une période T = 2 ms et reste à l'état haut pendant th = 0,5 ms, son rapport cyclique α vaut :",
+              "options": [
+                "25 % (α = th / T = 0,5 / 2 = 0,25)",
+                "50 %",
+                "75 %",
+                "10 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport cyclique est le quotient du temps à l'état haut par la période totale du signal : 0,5 / 2 = 25 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'utilité d'activer une résistance de tirage (pull-up) sur une entrée numérique reliée à un bouton ?",
+              "options": [
+                "Fixer un potentiel logique haut défini au repos pour éviter que l'entrée ne soit flottante et sensible aux parasites",
+                "Court-circuiter l'alimentation pour éteindre le système",
+                "Multiplier par deux le courant admissible par la broche",
+                "Convertir le signal logique en signal sinusoïdal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance de pull-up polarise l'entrée à Vcc lorsque l'interrupteur est ouvert, évitant les états indéterminés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rôle de l'oscillateur à quartz (horloge) relié à un microcontrôleur ?",
+              "options": [
+                "Fournir un signal périodique stable cadençant le séquencement pas à pas des instructions de calcul",
+                "Afficher l'heure sur un écran à cristaux liquides",
+                "Mesurer la température ambiante de l'armoire électrique",
+                "Chauffer le boîtier du processeur en hiver"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'horloge rythme le cycle machine et la synchronisation des bus internes et des périphériques de temporisation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fonction Communiquer : Bus et réseaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels protocoles de communication série à courte distance sont intégrés nativement sur les microcontrôleurs ?",
+              "options": [
+                "Le bus I2C (Inter-Integrated Circuit à deux lignes SDA et SCL)",
+                "Le bus SPI (Serial Peripheral Interface à 4 lignes synchrones)",
+                "La liaison série asynchrone universelle (UART)",
+                "Le réseau ferroviaire à crémaillère"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "I2C, SPI et UART constituent les trois grands standards de communication matérielle sur cartes électroniques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi le bus CAN (Controller Area Network) est-il la référence dans l'automobile et l'industrie ?",
+              "options": [
+                "Pour sa haute robustesse face aux parasites électromagnétiques grâce à sa transmission différentielle sur paire torsadée",
+                "Parce qu'il ne nécessite aucun conducteur métallique",
+                "Parce qu'il véhicule une tension de 10 000 V",
+                "Parce qu'il garantit une vitesse de 100 Gbit/s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transmission différentielle (CAN_H et CAN_L) annule les bruits parasites de mode commun très présents dans les véhicules."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une liaison série asynchrone UART, que représente le débit en bauds (baudrate) ?",
+              "options": [
+                "Le nombre d'éléments de signal ou de bits transmis par seconde sur la ligne",
+                "La fréquence de résonance mécanique du câble",
+                "La tension électrique minimale de détection",
+                "Le nombre de circuits esclaves connectés en parallèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le baudrate exprime la vitesse de transmission binaire sur la ligne de communication (ex : 9600, 115200 bauds)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une transmission UART sans horloge partagée, comment le récepteur repère-t-il le début d'un octet ?",
+              "options": [
+                "Par la détection du front descendant correspondant au bit de START",
+                "Par une impulsion lumineuse émise par une DEL témoin",
+                "Par un bip sonore ultrasonique émis sur une piste séparée",
+                "Par une augmentation soudaine de la température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ligne étant au repos à l'état haut (1), le passage à 0 (bit de START) synchronise l'horloge interne de réception."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de lignes physiques de signaux utilise le bus série I2C pour communiquer (hors masse et alimentation) ?",
+              "options": [
+                "2 lignes : SDA (Serial Data) et SCL (Serial Clock)",
+                "4 lignes : MOSI, MISO, SCK et CS",
+                "8 lignes de données parallèles",
+                "1 ligne unique sans conducteur de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bus I2C utilise deux lignes bidirectionnelles à collecteur ouvert : SDA pour les données et SCL pour l'horloge."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur un bus SPI, quelle ligne permet au maître de sélectionner le circuit esclave avec lequel il communique ?",
+              "options": [
+                "La ligne Chip Select (CS) ou Slave Select (SS)",
+                "La ligne Master Out Slave In (MOSI)",
+                "La ligne Master In Slave Out (MISO)",
+                "La ligne Serial Clock (SCK)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le maître active la ligne CS dédiée de l'esclave désiré pour engager l'échange de données en mode synchrone."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le modèle d'interconnexion réseau en couches (modèle OSI), quel est le rôle de la couche Réseau (couche 3) ?",
+              "options": [
+                "Assurer l'adressage logique et le routage des paquets de données entre nœuds distants (ex : protocole IP)",
+                "Définir la forme géométrique des prises de raccordement",
+                "Gérer l'interface graphique utilisateur sur l'écran",
+                "Crypter les fichiers sur le disque dur interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couche Réseau assure l'acheminement des données à travers des réseaux hétérogènes au moyen d'adresses IP."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel réseau sans fil longue portée (LPWAN) à très faible consommation est dédié aux objets connectés communicants ?",
+              "options": [
+                "LoRaWAN",
+                "Le protocole NFC courte portée (10 cm)",
+                "La liaison HDMI 2.1 filaire",
+                "Le câble ruban plat pour bus IDE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LoRaWAN permet à des capteurs autonomes sur pile d'émettre de petits messages à plusieurs kilomètres de distance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quoi sert le code de contrôle de redondance cyclique (CRC) ajouté à la fin d'une trame de communication ?",
+              "options": [
+                "À permettre au récepteur de détecter la corruption ou l'altération de bits lors de la transmission",
+                "À accélérer la vitesse de propagation des électrons dans le cuivre",
+                "À calculer le coût financier de l'abonnement internet",
+                "À refroidir les puces de communication en émission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CRC est une clé mathématique recalculée à la réception : si elle diffère de l'émission, la trame erronée est rejetée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel avantage décisif présente une liaison série par rapport à une liaison parallèle sur de grandes longueurs de câbles ?",
+              "options": [
+                "Moins de conducteurs, coût de câblage réduit et absence de désynchronisation entre bits (skew)",
+                "Elle permet de transporter directement du courant continu de 500 A",
+                "Elle ne nécessite aucun émetteur ni récepteur électronique",
+                "Elle est totalement insensible à une coupure physique du câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur longue distance, le déphasage entre les pistes d'un bus parallèle dégrade le signal, rendant les bus séries plus fiables."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Structure globale de la chaîne d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions consécutives composent la chaîne d'énergie d'un système mécatronique ?",
+              "options": [
+                "Alimenter",
+                "Distribuer",
+                "Convertir et Transmettre (puis Agir)",
+                "Compiler les scripts informatiques"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La chaîne d'énergie prend l'énergie d'une source (Alimenter), la commute (Distribuer), la transforme (Convertir/Transmettre) pour Agir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel composant assure typiquement la fonction «Alimenter» dans un drone quadrirotor autonome ?",
+              "options": [
+                "Une batterie d'accumulateurs électrochimiques Lithium-Polymère (LiPo)",
+                "Une hélice bipale en fibre de verre",
+                "Un variateur électronique de vitesse brushless",
+                "Un motoréducteur à vis sans fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La batterie stocke et fournit l'énergie électrique indispensable au fonctionnement de tout le système embarqué."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la fonction «Distribuer» dans la chaîne d'énergie ?",
+              "options": [
+                "Aiguiller, commuter et doser la puissance fournie à l'actionneur en réponse aux ordres de commande",
+                "Transformer un mouvement circulaire en translation",
+                "Fabriquer de l'énergie à partir du néant",
+                "Rédiger le manuel de consignes d'utilisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distribuer module et oriente l'énergie vers les convertisseurs (moteurs, vérins) via des préactionneurs de puissance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les composants tels que les contacteurs, relais, hacheurs et distributeurs appartiennent à la fonction :",
+              "options": ["Distribuer", "Convertir", "Acquérir", "Agir"],
+              "correctAnswers": [0],
+              "explanation": "Ces organes sont des préactionneurs dont la fonction est de distribuer l'énergie sur commande."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La mission fondamentale de la fonction «Convertir» consiste à :",
+              "options": [
+                "Transformer l'énergie d'une nature sous une autre forme (ex : énergie électrique en énergie mécanique)",
+                "Augmenter le diamètre extérieur d'un tuyau hydraulique",
+                "Traduire des textes techniques en langue étrangère",
+                "Modifier le mot de passe de la session administrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conversion change la nature physique de l'énergie (les moteurs créent de l'énergie mécanique à partir d'électricité)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel élément réalise la fonction «Agir» (effecteur) sur une perceuse industrielle ?",
+              "options": [
+                "Le foret en acier rapide qui usine la pièce",
+                "Le câble d'alimentation raccordé au réseau 400 V",
+                "Le bouton tournant de mise sous tension",
+                "Le disjoncteur magnétothermique de ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effecteur est l'organe terminal de la chaîne d'énergie qui exerce l'action finale directe sur la matière d'œuvre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La fonction «Transmettre» adapte les paramètres de l'énergie mécanique. Quel composant en fait partie ?",
+              "options": [
+                "Un réducteur à engrenages cylindriques",
+                "Un capteur de température thermocouple",
+                "Une batterie d'accumulateurs au plomb",
+                "Un microcontrôleur 32 bits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réducteur transmet la puissance mécanique en adaptant le couple et la vitesse angulaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une centrale hydraulique industrielle, quel organe assure la fonction «Alimenter» ?",
+              "options": [
+                "La pompe hydraulique entraînée par son moteur électrique et associée au réservoir d'huile",
+                "Le vérin double effet de bridage",
+                "Le distributeur à tiroir 4/3",
+                "La purge manuelle d'eau résiduelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pompe génère le débit d'huile sous pression qui constitue la source d'énergie fluidique du réseau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sous quelle forme les pertes d'énergie (frottements, effet Joule) sont-elles majoritairement évacuées ?",
+              "options": [
+                "Sous forme de chaleur dissipée dans l'environnement ambiant",
+                "Sous forme de lumière ultraviolette invisible",
+                "Sous forme d'électricité réinjectée sur le réseau",
+                "Sous forme de création de matière solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les irréversibilités thermodynamiques et mécaniques dégradent l'énergie noble sous forme de pertes thermiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une automobile électrique, l'onduleur de traction réalisant le pilotage du moteur synchrone assure la fonction :",
+              "options": ["Distribuer", "Acquérir", "Agir", "Transmettre"],
+              "correctAnswers": [0],
+              "explanation": "L'onduleur est le préactionneur de puissance qui distribue et module les tensions triphasées du moteur depuis la batterie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Fonctions Alimenter et Distribuer",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels composants électroniques et électromécaniques permettent de distribuer la puissance électrique ?",
+              "options": [
+                "Les transistors de puissance (MOSFET, IGBT)",
+                "Les contacteurs et relais électromécaniques",
+                "Les ponts en H de commande de moteurs",
+                "Les clavettes parallèles d'entraînement"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Ces composants permettent d'interrompre, d'aiguiller et de moduler le passage du courant fort vers les récepteurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel convertisseur statique continu-continu permet d'abaisser la tension moyenne appliquée à un moteur CC ?",
+              "options": [
+                "Un hacheur série abaisseur (Buck)",
+                "Un transformateur monophasé 50 Hz",
+                "Un alternateur synchrone triphasé",
+                "Un multiplicateur de tension à diodes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hacheur abaisseur module la valeur moyenne de la tension continue par découpage périodique haute fréquence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La fonction première d'un onduleur autonome consiste à convertir :",
+              "options": [
+                "Une tension continue en un système de tensions alternatives d'amplitude et fréquence réglables",
+                "Une tension alternative en une tension continue parfaitement lisse",
+                "Un mouvement de rotation continue en translation rectiligne",
+                "Une pression pneumatique en force magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'onduleur hache la tension continue d'une batterie pour générer des ondes de tension alternative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un redresseur de tension (tel qu'un pont de diodes de Graetz) réalise la conversion :",
+              "options": [
+                "Tension alternative vers tension continue redressée",
+                "Tension continue vers tension alternative sinusoïdale",
+                "Pression d'huile vers débit d'air comprimé",
+                "Signal numérique vers signal analogique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le redresseur convertit la tension alternative sinusoïdale du réseau en une tension unidirectionnelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt fondamental d'un pont en H composé de 4 transistors pour piloter un moteur CC ?",
+              "options": [
+                "Permettre la variation de vitesse et l'inversion du sens de rotation dans les deux sens de marche",
+                "Mesurer la température au sein des enroulements",
+                "Remplacer le fusible de protection contre les courts-circuits",
+                "Isoler acoustiquement le moteur électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La commande en diagonale des 4 interrupteurs inverse la polarité aux bornes du moteur pour changer son sens de rotation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une installation pneumatique, quel préactionneur commande l'envoi d'air comprimé vers les chambres d'un vérin ?",
+              "options": [
+                "Un distributeur pneumatique ou électrovanne",
+                "Un clapet anti-retour simple",
+                "Un régulateur de pression mécanique",
+                "Un silencieux d'échappement poreux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le distributeur pilote le sens de déplacement de la tige en aiguillant l'air comprimé vers la chambre avant ou arrière."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle propriété essentielle distingue un accumulateur rechargeable d'une pile primaire jetable ?",
+              "options": [
+                "L'accumulateur repose sur des réactions électrochimiques réversibles permettant de nombreux cycles de charge/décharge",
+                "L'accumulateur ne contient aucun composé chimique",
+                "La pile jetable fournit une tension infiniment stable",
+                "L'accumulateur ne fonctionne qu'exposé au soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réversibilité des réactions d'oxydo-réduction permet de régénérer les électrodes d'un accumulateur par apport de courant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que représente la capacité électrique d'une batterie exprimée en ampères-heures (Ah) ?",
+              "options": [
+                "La quantité totale de charge électrique qu'elle peut débiter sous un courant de décharge donné",
+                "La puissance maximale instantanée admissible par le carter",
+                "La résistance interne du pack d'accumulateurs",
+                "Le poids volumique des électrodes métalliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La capacité en Ah traduit la quantité d'électricité stockée (1 Ah = 3600 Coulombs) disponible pour alimenter le circuit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel appareil assure la protection obligatoire des conducteurs contre les surcharges prolongées et les courts-circuits ?",
+              "options": [
+                "Le disjoncteur magnétothermique ou le fusible calibré",
+                "Le potentiomètre rotatif d'équilibrage",
+                "L'interrupteur crépusculaire optique",
+                "Le condensateur de filtrage céramique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le déclencheur thermique protège des surcharges modérées et le déclencheur magnétique coupe instantanément les courts-circuits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une batterie de tension nominale 48 V et de capacité 25 Ah stocke une énergie théorique totale de :",
+              "options": [
+                "1200 Wh soit 1,2 kWh (E = U × Q = 48 × 25)",
+                "73 Wh",
+                "480 Wh",
+                "192 Wh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie électrique stockée se calcule par le produit de la tension par la capacité : 48 V × 25 Ah = 1200 Wh."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Fonction Convertir : Actionneurs électriques et fluidiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels actionneurs convertissent directement l'énergie électrique en puissance mécanique de rotation ?",
+              "options": [
+                "Le moteur à courant continu classique à balais",
+                "Le moteur synchrone sans balais (Brushless DC)",
+                "Le moteur pas à pas",
+                "Le détendeur d'air comprimé"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Ces trois types de moteurs électriques utilisent les interactions électromagnétiques pour produire un couple mécanique rotatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le modèle idéal d'un moteur à courant continu, la force contre-électromotrice E est proportionnelle à :",
+              "options": [
+                "La vitesse angulaire de rotation du rotor (E = k × ω)",
+                "L'accélération angulaire de l'arbre",
+                "La résistance ohmique du bobinage d'induit",
+                "La température du carter extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La force contre-électromotrice E induite par la rotation des conducteurs dans le champ magnétique est proportionnelle à la vitesse angulaire ω."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un moteur à courant continu, le couple électromagnétique utile Cem est proportionnel à :",
+              "options": [
+                "L'intensité du courant d'induit traversant les conducteurs (Cem = k × I)",
+                "La racine carrée de la tension d'alimentation",
+                "La fréquence d'échantillonnage de la commande",
+                "L'épaisseur du vernis isolant des bobines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La force de Laplace et le couple résultant sont directement proportionnels au courant I circulant dans l'induit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel avantage décisif présente un moteur Brushless (sans balais) par rapport à un moteur CC à collecteur ?",
+              "options": [
+                "L'absence d'usure mécanique de balais frottants, conférant un haut rendement et une très longue durée de vie",
+                "L'inutilité de recourir à une carte électronique de commande",
+                "Le fonctionnement sans aucun aimant permanent ni bobine",
+                "Un coût de fabrication dix fois inférieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La commutation électronique supprime le collecteur mécanique et les balais, éliminant frottements, étincelles et usure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le moteur pas à pas est particulièrement adapté aux applications :",
+              "options": [
+                "De positionnement angulaire précis sans capteur de position en boucle ouverte (imprimantes 3D, robotique)",
+                "De propulsion continue à très haute vitesse d'un TGV",
+                "De pompage d'eau d'irrigation à débit continu élevé",
+                "De ventilation de tunnels autoroutiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque impulsion de commande fait tourner le rotor d'un pas angulaire fixe connu, permettant un contrôle précis en boucle ouverte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle transformation énergétique réalise un vérin pneumatique linéaire ?",
+              "options": [
+                "Il convertit l'énergie de pression de l'air comprimé en force mécanique de translation",
+                "Il convertit l'énergie solaire en courant électrique continu",
+                "Il transforme un couple rotatif en chaleur pure",
+                "Il transforme un signal numérique en onde acoustique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression de l'air agissant sur la surface du piston engendre un effort et un déplacement rectiligne de la tige."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle différence caractérise un vérin simple effet (VSE) par rapport à un vérin double effet (VDE) ?",
+              "options": [
+                "Le VSE ne développe un effort actif pneumatique que dans un seul sens (le retour se faisant par ressort)",
+                "Le VSE fonctionne à l'huile et le VDE fonctionne à l'air",
+                "Le VSE ne possède aucun piston interne",
+                "Le VDE est incapable de développer une force en rentrée de tige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vérin simple effet n'a qu'un orifice de pression : l'air pousse dans un sens, et un ressort mécanique assure le retour."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La force théorique F développée en poussée par un vérin pneumatique se calcule par :",
+              "options": [
+                "F = p × S (Pression relative effective × Section du piston)",
+                "F = p / S (Pression divisée par Section)",
+                "F = S / p (Section divisée par Pression)",
+                "F = 0,5 × p × S^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effort mécanique découle directement de la définition de la pression : Force = Pression × Surface pressurisée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les actionneurs hydrauliques sont-ils privilégiés pour les engins de travaux publics ?",
+              "options": [
+                "L'incompressibilité de l'huile sous très haute pression (200 à 350 bars) permet de développer des forces considérables",
+                "L'huile hydraulique ne pèse presque rien par rapport à l'air",
+                "Les vérins hydrauliques ne subissent jamais de frottement de joint",
+                "Les circuits hydrauliques ne nécessitent aucun réservoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pressions très élevées de l'hydraulique autorisent des densités de puissance et des forces colossales sous un faible volume."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la force de traction (rentrée de tige) d'un vérin double effet est-elle inférieure à sa force de poussée ?",
+              "options": [
+                "La présence de la tige métallique diminue la surface utile offerte à la pression dans la chambre avant",
+                "Le distributeur réduit volontairement le débit d'air en rentrée",
+                "Le ressort de rappel s'oppose à la rentrée",
+                "L'air comprimé perd sa pression en se refroidissant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En traction, la section annulaire efficace vaut S_annulaire = S_piston - S_tige, ce qui réduit l'effort disponible à même pression."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Fonction Transmettre : Mécanismes de transmission",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes assurent la transmission de puissance mécanique de rotation entre arbres en modifiant le couple et la vitesse ?",
+              "options": [
+                "Les engrenages à roues dentées cylindriques ou coniques",
+                "Les transmissions par poulies et courroie (crantée ou trapézoïdale)",
+                "Les transmissions par pignons et chaîne à rouleaux",
+                "Les condensateurs chimiques de filtrage"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Engrenages, courroies et chaînes sont les solutions cinématiques classiques d'adaptation de vitesse et de couple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour un réducteur de rapport cinématique r = 1/4 supposé sans pertes (rendement η = 1) :",
+              "options": [
+                "La vitesse de sortie est 4 fois plus faible et le couple de sortie est 4 fois plus élevé que l'entrée",
+                "La vitesse et le couple de sortie sont tous les deux multipliés par 4",
+                "La vitesse de sortie est multipliée par 4 et le couple est divisé par 4",
+                "La puissance mécanique utile disponible est divisée par 16"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À puissance constante (P = C × ω), si la vitesse angulaire est divisée par 4, le couple utile est multiplié par 4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour deux roues dentées en contact extérieur direct de nombres de dents Z1 et Z2, le rapport de transmission r vaut :",
+              "options": [
+                "r = - Z1 / Z2 (avec Z1 menante et Z2 menée)",
+                "r = + Z2 / Z1",
+                "r = Z1 + Z2",
+                "r = (Z1 × Z2) / 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport de transmission est le quotient de la menante par la menée, avec un signe négatif lié à l'inversion du sens de rotation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi le rapport cinématique d'un engrenage cylindrique extérieur porte-t-il conventionnellement un signe négatif ?",
+              "options": [
+                "Parce que les deux arbres tournent en sens opposés (inversion du sens de rotation)",
+                "Parce que le rendement mécanique est inférieur à zéro",
+                "Parce que le mécanisme ralentit obligatoirement la machine",
+                "Parce que les dents s'usent lors du fonctionnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contact extérieur inverse le sens trigonométrique de rotation entre la roue menante et la roue menée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mécanisme transforme directement un mouvement de rotation continue en un mouvement de translation rectiligne ?",
+              "options": [
+                "Le système vis-écrou ou le système pignon-crémaillère",
+                "L'accouplement élastique à mâchoires",
+                "Le joint de Cardan homocinétique",
+                "Le roulement rigide à billes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système vis-écrou comme le pignon-crémaillère convertissent cinématiquement une rotation en déplacement linéaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un système vis-écrou à 1 filet de pas pz = 5 mm, une rotation complète de la vis (1 tour = 2π rad) produit une translation de :",
+              "options": ["5 mm", "10 mm", "2,5 mm", "15,7 mm"],
+              "correctAnswers": [0],
+              "explanation": "Par définition, le pas représente la distance longitudinale franchie lors d'une révolution complète de 360 degrés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle relation relie la vitesse de translation V et la vitesse de rotation ω d'un système vis-écrou de pas pz ?",
+              "options": [
+                "V = (pz / 2π) × ω (avec pz en mètres, ω en rad/s et V en m/s)",
+                "V = 2π × pz × ω",
+                "V = ω / (2π × pz)",
+                "V = pz × ω^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse linéaire découle de la conversion pas/angle : V = (pz / 2π) × ω."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la particularité cinématique d'un réducteur à roue et vis sans fin à faible angle d'hélice ?",
+              "options": [
+                "Il offre un très grand rapport de réduction sous un faible encombrement et peut être irréversible",
+                "Il possède systématiquement un rendement mécanique proche de 100 %",
+                "Il ne peut transmettre que des puissances électriques pures",
+                "Il multiplie la vitesse de rotation par un facteur 100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vis sans fin permet des réductions très importantes (1/50, 1/100) et empêche la roue menée d'entraîner la vis (irréversibilité)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mécanisme bielle-manivelle permet de transformer :",
+              "options": [
+                "Un mouvement de rotation continue en mouvement de translation alternatif (et inversement)",
+                "Une tension continue en tension alternative",
+                "Une pression pneumatique en dépression d'air",
+                "Une information binaire en signal sinusoïdal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système bielle-manivelle lie la rotation du vilebrequin/manivelle au mouvement de va-et-vient linéaire du piston."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un train épicycloïdal simple, comment appelle-t-on les roues dentées qui tournent sur elles-mêmes tout en orbitant ?",
+              "options": [
+                "Les satellites",
+                "Le planétaire central",
+                "La couronne extérieure",
+                "Le carter fixe de vidange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les satellites tournent sur leurs axes portés par le porte-satellites tout en engrenant avec le planétaire et la couronne."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan énergétique, rendement et puissances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules expriment correctement une puissance instantanée P selon le domaine physique envisagé ?",
+              "options": [
+                "P = U × I (en régime continu électrique : tension × intensité)",
+                "P = C × ω (en mécanique de rotation : couple × vitesse angulaire)",
+                "P = F × V (en mécanique de translation : force × vitesse linéaire)",
+                "P = 0,5 × m × V^2 (énergie cinétique de translation)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La puissance exprime le débit d'énergie par unité de temps : P = UI en électricité, P = Cω en rotation et P = FV en translation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on le rendement énergétique η d'un composant de transmission ou de conversion ?",
+              "options": [
+                "η = Puissance utile de sortie / Puissance absorbée en entrée (avec η <= 1)",
+                "η = Puissance absorbée / Puissance utile de sortie",
+                "η = Puissance absorbée + Puissance dissipée",
+                "η = Puissance perdue × Puissance utile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement mesure l'efficacité de la transmission : quotient de la puissance utile délivrée par la puissance totale absorbée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour trois sous-systèmes disposés en cascade de rendements respectifs η1 = 0,90, η2 = 0,95 et η3 = 0,80, le rendement global ηg vaut :",
+              "options": [
+                "ηg = 0,90 × 0,95 × 0,80 = 0,684 (soit 68,4 %)",
+                "ηg = (0,90 + 0,95 + 0,80) / 3 = 0,883",
+                "ηg = 0,90 + 0,95 + 0,80 = 2,65",
+                "ηg = 0,90 / (0,95 × 0,80) = 1,18"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cascade série, les rendements des étages successifs se multiplient entre eux pour donner le rendement global de la chaîne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un moteur électrique absorbe 1 200 W électriques et produit 960 W mécaniques utiles. Les pertes thermiques dissipées valent :",
+              "options": [
+                "240 W (P_pertes = P_absorbée - P_utile)",
+                "2 160 W",
+                "0,8 W",
+                "120 W"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par conservation de l'énergie, la puissance perdue correspond à la différence entre puissance absorbée et puissance utile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale du Système International (SI) servant à mesurer une quantité d'énergie ou un travail mécanique ?",
+              "options": [
+                "Le Joule (J)",
+                "Le Watt (W)",
+                "Le Newton (N)",
+                "L'Ampère (A)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Joule (J) est l'unité SI de l'énergie et du travail, le Watt étant l'unité de puissance (1 W = 1 J/s)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une puissance mécanique constante de 1 Watt équivaut à un transfert énergétique de :",
+              "options": [
+                "1 Joule par seconde (1 W = 1 J/s)",
+                "1 Joule par heure",
+                "3 600 Joules par seconde",
+                "1 Newton par centimètre carré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le watt caractérise un flux d'énergie d'un joule transféré ou consommé pendant une seconde."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle équivalence exacte relie le kilowatt-heure (kWh) au Joule (J) ?",
+              "options": [
+                "1 kWh = 1 000 W × 3 600 s = 3,6 × 10^6 J (soit 3,6 MJ)",
+                "1 kWh = 1 000 J",
+                "1 kWh = 3 600 J",
+                "1 kWh = 60 000 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 kWh correspond à une puissance de 1 000 W déployée durant 3 600 secondes, soit 3 600 000 Joules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour convertir une fréquence de rotation N exprimée en tr/min en vitesse angulaire ω en rad/s, on utilise la formule :",
+              "options": [
+                "ω = (2π / 60) × N = (π / 30) × N",
+                "ω = (60 / 2π) × N",
+                "ω = 2π × 60 × N",
+                "ω = N / 360"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tour valant 2π radians et une minute comptant 60 secondes, la formule de conversion est ω = 2πN / 60 = πN / 30."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un motoréducteur fournit un couple utile de 30 N.m à une vitesse angulaire de 100 rad/s. La puissance mécanique utile délivrée est :",
+              "options": [
+                "3 000 W (P = C × ω = 30 × 100)",
+                "130 W",
+                "3,33 W",
+                "300 W"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance mécanique en rotation est le produit direct du couple par la vitesse angulaire : 30 N.m × 100 rad/s = 3 000 W."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi le rendement d'un système pluri-technologique réel est-il obligatoirement strictement inférieur à 100 % (η < 1) ?",
+              "options": [
+                "En raison des irréversibilités thermodynamiques inhérentes aux frottements mécaniques et aux dissipations par effet Joule",
+                "À cause d'une interdiction légale édictée par les normes européennes",
+                "Parce que la vitesse de la lumière n'est pas infinie",
+                "Parce que les matériaux métalliques s'oxydent spontanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le second principe de la thermodynamique stipule qu'aucune transformation d'énergie réelle ne peut s'effectuer sans dégradation thermique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

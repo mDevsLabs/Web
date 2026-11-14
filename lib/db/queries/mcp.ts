@@ -1,62 +1,19 @@
 import "server-only";
-import {
-  and,
-  asc,
-  count,
-  desc,
-  eq,
-  gt,
-  gte,
-  inArray,
-  isNull,
-  lt,
-  lte,
-  notInArray,
-  or,
-  type SQL,
-  sql,
-} from "drizzle-orm";
+import { and, count, desc, eq, lt } from "drizzle-orm";
 import type { ToolCategory } from "@/lib/agent/types";
-import { ChatbotError } from "@/lib/errors";
 import {
   redactMcpError,
   redactMcpText,
   redactMcpValue,
 } from "@/lib/mcp/redaction";
 import {
-  agent,
-  agentTemplate,
-  type Chat,
-  chat,
-  customCommand,
-  type DBMessage,
-  type DocumentProposal,
-  document,
-  documentProposal,
   mcpLog,
   mcpServer,
   mcpServerSecret,
-  message,
-  pluginInstallation,
-  project,
-  projectFile,
-  projectInvite,
-  projectMember,
-  type ScheduledMessage,
-  type Skill,
-  type Suggestion,
-  scheduledMessage,
-  skill,
-  skillUsage,
-  skillVersion,
-  stream,
-  suggestion,
   toolExecution,
   userMcpPrefs,
-  userMemory,
-  vote,
 } from "../schema";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { dbReady, getDb } from "./connection";
 
 // ==========================================
 // MCP SERVER & LOG QUERIES

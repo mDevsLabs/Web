@@ -2011,7 +2011,7 @@ export function registerImageRoutes(app: Hono) {
       }
 
       if (route.kind === "submit") {
-        const action = route.action;
+        const _action = route.action;
         if (!isPaidTier(account.tier)) {
           return c.json(
             {

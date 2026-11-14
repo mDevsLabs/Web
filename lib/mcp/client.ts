@@ -3,7 +3,6 @@ import { safeFetchText } from "@/lib/web/safe-fetch";
 import {
   assertMcpRuntimeEnabled,
   checkAllowStdio,
-  checkGlobalKillSwitch,
   type McpRuntimePolicyInput,
   type McpRuntimePreferences,
 } from "./policy";

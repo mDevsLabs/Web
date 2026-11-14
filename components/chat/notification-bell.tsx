@@ -8,8 +8,8 @@ import {
   CalendarClockIcon as CalendarClock,
   CheckCheckIcon,
   CheckCircle2Icon as CheckCircle2,
-  CheckIcon,
   FolderIcon as Folder,
+  GraduationCapIcon as GraduationCap,
   HeartIcon as Heart,
   LockIcon as Lock,
   MegaphoneIcon as Megaphone,
@@ -116,6 +116,12 @@ function NotificationIcon({ type }: { type: string }) {
     // Type Wakies : une réponse d'assistant.
     case "wakies_reply":
       return <Bot className="size-4" />;
+    // Types Quizzly : rappels scolaires, ligues et séries.
+    case "quizzly_reminder":
+    case "quizzly_league":
+    case "quizzly_gift":
+    case "quizzly_streak":
+      return <GraduationCap className="size-4 text-q-level" />;
     default:
       return <BellIcon className="size-4" />;
   }
@@ -136,8 +142,12 @@ function NotificationIcon({ type }: { type: string }) {
 function notificationHref(notification: {
   link: string | null;
   origin: string;
+  type?: string;
 }): string {
   if (!notification.link) {
+    if (notification.type?.startsWith("quizzly_")) {
+      return "/quizzly";
+    }
     return "/";
   }
   if (notification.origin === "vibe") {
@@ -216,8 +226,11 @@ export function NotificationBell() {
         });
         n.onclick = () => {
           window.focus();
-          if (latest.link) {
-            window.location.href = latest.link;
+          const targetUrl =
+            latest.link ||
+            (latest.type?.startsWith("quizzly_") ? "/quizzly" : null);
+          if (targetUrl) {
+            window.location.href = targetUrl;
           }
           n.close();
         };

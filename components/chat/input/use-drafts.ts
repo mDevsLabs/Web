@@ -46,7 +46,6 @@ export function useDrafts(params: {
     setAttachments,
     setPendingTools,
     isNewChatInput,
-    textareaRef,
   } = params;
 
   // Clé namespacée par COMPTE et conversation. Le scope vient de la session

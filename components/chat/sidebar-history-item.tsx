@@ -88,6 +88,12 @@ const PureChatItem = ({
   }, [setVisibilityType]);
 
   const { mutate } = useSWRConfig();
+  const { data: userPref } = useSWR<{ showAgentChatIcons?: boolean }>(
+    "/api/user/preferences",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 60_000 }
+  );
+  const showIcon = userPref?.showAgentChatIcons ?? true;
   const handleDelete = useCallback(() => {
     onDelete(chat.id);
   }, [chat.id, onDelete]);
@@ -200,13 +206,6 @@ const PureChatItem = ({
       </SidebarMenuItem>
     );
   }
-
-  const { data: userPref } = useSWR<{ showAgentChatIcons?: boolean }>(
-    "/api/user/preferences",
-    (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 60_000 }
-  );
-  const showIcon = userPref?.showAgentChatIcons ?? true;
 
   return (
     <SidebarMenuItem>

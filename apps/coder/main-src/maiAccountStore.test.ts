@@ -54,6 +54,9 @@ describe("checkMaiQuotaAvailable", () => {
   });
 
   it("returns available: true when local cached usage is within limits", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+
     const settings: ShellSettings = {
       maiAccount: {
         jwtToken: "mock-jwt-token",
@@ -66,6 +69,7 @@ describe("checkMaiQuotaAvailable", () => {
 
     const result = await checkMaiQuotaAvailable(settings, false);
     expect(result.available).toBe(true);
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it("performs fresh check via API when forceFresh is true", async () => {

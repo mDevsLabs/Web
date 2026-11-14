@@ -23,7 +23,6 @@ import {
   PlayIcon,
   PodcastIcon,
   QrCodeIcon,
-  TrophyIcon,
   UserRoundIcon,
   Volume2Icon,
   WaypointsIcon,

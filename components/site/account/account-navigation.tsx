@@ -1,6 +1,5 @@
 "use client";
 
-import type { IconProps } from "@mdevs/icons";
 import {
   CloudIcon as Cloud,
   GaugeIcon as Gauge,

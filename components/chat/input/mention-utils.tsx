@@ -166,12 +166,12 @@ export function renderHighlightedMentions(
     part.startsWith("@") ? (
       <span
         className="text-blue-600 dark:text-blue-400 bg-blue-500/15 rounded-xs"
-        key={i}
+        key={`mention-${part}-${i}`}
       >
         {part}
       </span>
     ) : (
-      <span key={i}>{part}</span>
+      <span key={`text-${part.slice(0, 10)}-${i}`}>{part}</span>
     )
   );
 }

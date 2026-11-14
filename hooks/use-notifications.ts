@@ -8,6 +8,7 @@ import {
   type NotificationOrigin,
   type NotificationType,
 } from "@/lib/notifications/types";
+import { useEconomy } from "@/lib/resources/economy";
 import { fetcher } from "@/lib/utils";
 
 // La liste canonique des types vit dans lib/notifications/types.ts (elle est
@@ -70,12 +71,17 @@ export type NotificationsResponse = {
 };
 
 export function useNotifications(limit = 20) {
+  // VEILLE : pendant qu'une activité lourde tourne (Blackline), le
+  // rafraîchissement périodique s'arrête. `refreshInterval: 0` le désactive
+  // chez SWR — la liste reste affichée, elle ne se rafraîchit simplement plus
+  // tant que personne ne la regarde.
+  const { isVeille } = useEconomy();
   return useSWR<NotificationsResponse>(
     `/api/notifications?limit=${limit}`,
     fetcher,
     {
       dedupingInterval: 60_000,
-      refreshInterval: 180_000,
+      refreshInterval: isVeille ? 0 : 180_000,
       revalidateOnFocus: false,
     }
   );
@@ -92,11 +98,12 @@ export function useNotificationsByOrigin(
   origin: NotificationOrigin | "all",
   limit = 20
 ) {
+  const { isVeille } = useEconomy();
   const query =
     origin === "all" ? `?limit=${limit}` : `?limit=${limit}&origins=${origin}`;
   return useSWR<NotificationsResponse>(`/api/notifications${query}`, fetcher, {
     dedupingInterval: 60_000,
-    refreshInterval: 180_000,
+    refreshInterval: isVeille ? 0 : 180_000,
     revalidateOnFocus: false,
   });
 }

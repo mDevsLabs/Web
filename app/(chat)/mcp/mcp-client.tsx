@@ -1,33 +1,18 @@
 "use client";
-import type { IconProps } from "@mdevs/icons";
 import {
   ActivityIcon,
-  AlertCircleIcon,
   BookOpenIcon,
-  CheckCircle2Icon,
-  CircleIcon,
-  CopyIcon,
   CpuIcon,
   CreditCardIcon,
   DatabaseIcon,
   DownloadIcon,
-  Edit2Icon,
   FileTextIcon,
-  KeyIcon,
-  Loader2Icon,
-  MoreVerticalIcon,
   PlusIcon,
-  RefreshCwIcon,
   SearchIcon,
   ServerIcon,
   SettingsIcon,
-  ShieldAlertIcon,
-  ShieldCheckIcon,
   StoreIcon,
-  TerminalIcon,
-  Trash2Icon,
   WrenchIcon,
-  ZapIcon,
 } from "@mdevs/icons";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
@@ -55,23 +40,12 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { McpLog, McpServer } from "@/lib/db/schema";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";

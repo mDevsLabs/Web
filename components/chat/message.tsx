@@ -1,14 +1,6 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
-import {
-  BrainIcon,
-  CheckCircle2Icon,
-  CpuIcon,
-  ExternalLinkIcon,
-  GlobeIcon,
-  MicIcon,
-  QrCodeIcon,
-} from "@mdevs/icons";
+import { BrainIcon, CpuIcon, MicIcon } from "@mdevs/icons";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { toast } from "sonner";
@@ -19,7 +11,12 @@ import {
 import { unwrapAgentToolOutput } from "@/lib/agent/types";
 import type { Vote } from "@/lib/db/schema";
 import { mcpHashedToolLabel } from "@/lib/mcp/provider-tool-label";
-import type { ChatMessage } from "@/lib/types";
+import type {
+  ChatMessage,
+  GenericToolPart,
+  ImageToolOutputPayload,
+} from "@/lib/types";
+import { champTexte, sortieDe } from "@/lib/types";
 import {
   cn,
   copyImageToClipboard,
@@ -81,18 +78,12 @@ function AgentImageToolResult({
   output,
   toolCallId,
 }: {
-  output: {
-    error?: string;
-    height?: number;
-    image_url?: string;
-    prompt?: string;
-    width?: number;
-  };
+  output: ImageToolOutputPayload;
   toolCallId: string;
 }) {
   // Sortie de l'outil Agent generate_image: même carte que l'image du Chat
   // (aperçu, copie, téléchargement), l'identifiant de part étant identique.
-  return <ImageToolResult output={output as any} toolCallId={toolCallId} />;
+  return <ImageToolResult output={output} toolCallId={toolCallId} />;
 }
 
 function AgentAudioToolResult({
@@ -243,7 +234,7 @@ function ImageToolResult({
   output,
   toolCallId,
 }: {
-  output: any;
+  output: ImageToolOutputPayload;
   toolCallId: string;
 }) {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -388,6 +379,32 @@ function HighlightedText({
       )}
     </>
   );
+}
+
+function isToolErrorPayload(output: unknown): boolean {
+  if (!output || typeof output !== "object") return false;
+  const obj = output as Record<string, unknown>;
+  if (obj.isError === true) return true;
+  if (
+    "error" in obj &&
+    obj.error !== undefined &&
+    obj.error !== null &&
+    obj.error !== false
+  )
+    return true;
+  return false;
+}
+
+function extractToolErrorMessage(
+  output: unknown,
+  fallback?: string
+): string | undefined {
+  if (!output || typeof output !== "object") return fallback;
+  const obj = output as Record<string, unknown>;
+  if (typeof obj.error === "string" && obj.error.trim()) return obj.error;
+  if (fallback) return fallback;
+  if (obj.error) return JSON.stringify(obj.error);
+  return undefined;
 }
 
 const PurePreviewMessage = ({
@@ -600,9 +617,9 @@ const PurePreviewMessage = ({
           return (
             <div className={widthClass} key={toolCallId}>
               <Tool className="w-full" defaultOpen={true}>
-                <ToolHeader state="output-available" type="tool-getWeather" />
+                <ToolHeader state="output-error" type="tool-getWeather" />
                 <ToolContent>
-                  <div className="px-4 py-3 text-muted-foreground text-sm">
+                  <div className="px-4 py-3 text-destructive text-sm bg-destructive/10 rounded-md">
                     {part.output.error}
                   </div>
                 </ToolContent>
@@ -722,7 +739,7 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-editDocument") {
-      const { toolCallId, state } = part as any;
+      const { toolCallId, state } = part as unknown as GenericToolPart;
 
       if (
         state === "output-available" &&
@@ -753,15 +770,30 @@ const PurePreviewMessage = ({
       }
 
       // Streaming / input states
+      const isEditError =
+        state === "output-error" ||
+        (state === "output-available" &&
+          Boolean(part.output && "error" in part.output));
+      const editHeaderState = isEditError ? "output-error" : state;
       return (
         <Tool
           className="w-[min(100%,450px)]"
           defaultOpen={true}
           key={toolCallId}
         >
-          <ToolHeader state={state} type="tool-editDocument" />
+          <ToolHeader state={editHeaderState} type="tool-editDocument" />
           <ToolContent>
             {state === "input-available" && <ToolInput input={part.input} />}
+            {isEditError && (
+              <ToolOutput
+                errorText={
+                  part.output && "error" in part.output
+                    ? String((part.output as { error?: unknown }).error)
+                    : "Erreur lors de la modification du document."
+                }
+                output={undefined}
+              />
+            )}
             {state === "output-available" &&
               part.output &&
               !("error" in part.output) && (
@@ -783,6 +815,11 @@ const PurePreviewMessage = ({
 
     if (type === "tool-requestSuggestions") {
       const { toolCallId, state } = part;
+      const isReqError =
+        state === "output-error" ||
+        (state === "output-available" &&
+          Boolean(part.output && "error" in part.output));
+      const reqHeaderState = isReqError ? "output-error" : state;
 
       return (
         <Tool
@@ -790,25 +827,31 @@ const PurePreviewMessage = ({
           defaultOpen={true}
           key={toolCallId}
         >
-          <ToolHeader state={state} type="tool-requestSuggestions" />
+          <ToolHeader state={reqHeaderState} type="tool-requestSuggestions" />
           <ToolContent>
             {state === "input-available" && <ToolInput input={part.input} />}
             {state === "output-available" && (
               <ToolOutput
-                errorText={undefined}
+                errorText={
+                  isReqError && part.output && "error" in part.output
+                    ? String((part.output as { error?: unknown }).error)
+                    : undefined
+                }
                 output={
-                  "error" in part.output ? (
-                    <div className="rounded border p-2 text-red-500">
-                      Erreur: {String(part.output.error)}
-                    </div>
-                  ) : (
+                  isReqError ? undefined : (
                     <DocumentToolResult
                       isReadonly={isReadonly}
-                      result={part.output}
+                      result={part.output as never}
                       type="request-suggestions"
                     />
                   )
                 }
+              />
+            )}
+            {state === "output-error" && (
+              <ToolOutput
+                errorText="Erreur lors de la récupération des suggestions."
+                output={undefined}
               />
             )}
           </ToolContent>
@@ -817,9 +860,9 @@ const PurePreviewMessage = ({
     }
 
     if ((type as string) === "tool-generate_image") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       const { toolCallId } = toolPart;
-      const output = unwrapAgentToolOutput(toolPart.output) as any;
+      const output = sortieDe(unwrapAgentToolOutput(toolPart.output));
       if (
         toolPart.state === "output-available" &&
         output &&
@@ -829,7 +872,7 @@ const PurePreviewMessage = ({
         return (
           <AgentImageToolResult
             key={toolCallId ?? key}
-            output={output}
+            output={output as ImageToolOutputPayload}
             toolCallId={toolCallId ?? key}
           />
         );
@@ -848,8 +891,8 @@ const PurePreviewMessage = ({
     }
 
     if ((type as string) === "tool-generate_audio") {
-      const toolPart = part as any;
-      const output = unwrapAgentToolOutput(toolPart.output) as any;
+      const toolPart = part as unknown as GenericToolPart;
+      const output = sortieDe(unwrapAgentToolOutput(toolPart.output));
       if (
         toolPart.state === "output-available" &&
         output &&
@@ -859,7 +902,15 @@ const PurePreviewMessage = ({
         return (
           <AgentAudioToolResult
             key={toolPart.toolCallId ?? key}
-            output={output}
+            output={
+              output as {
+                audio_url?: string;
+                error?: string;
+                model?: string;
+                text?: string;
+                voice?: string;
+              }
+            }
           />
         );
       }
@@ -877,7 +928,7 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-imageGenerate") {
-      const { toolCallId, state } = part as any;
+      const { toolCallId, state } = part as unknown as GenericToolPart;
       if (state === "output-available" && part.output) {
         if ("error" in part.output) {
           return (
@@ -889,11 +940,11 @@ const PurePreviewMessage = ({
             </div>
           );
         }
-        if ((part.output as any).image_url) {
+        if (champTexte(part.output, "image_url")) {
           return (
             <ImageToolResult
               key={toolCallId}
-              output={part.output}
+              output={part.output as ImageToolOutputPayload}
               toolCallId={toolCallId}
             />
           );
@@ -903,12 +954,12 @@ const PurePreviewMessage = ({
         <Tool
           className="w-[min(100%,450px)]"
           defaultOpen={true}
-          key={(part as any).toolCallId}
+          key={(part as unknown as GenericToolPart).toolCallId}
         >
           <ToolHeader state={state} type="tool-imageGenerate" />
           <ToolContent>
             {state === "input-available" && (
-              <ToolInput input={(part as any).input} />
+              <ToolInput input={(part as unknown as GenericToolPart).input} />
             )}
           </ToolContent>
         </Tool>
@@ -916,7 +967,7 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-audioGenerate") {
-      const { toolCallId, state } = part as any;
+      const { toolCallId, state } = part as unknown as GenericToolPart;
       if (state === "output-available" && part.output) {
         if ("error" in part.output) {
           return (
@@ -928,7 +979,7 @@ const PurePreviewMessage = ({
             </div>
           );
         }
-        const audioUrl = (part.output as any).audio_url;
+        const audioUrl = champTexte(part.output, "audio_url");
         if (audioUrl) {
           return (
             <div
@@ -944,10 +995,10 @@ const PurePreviewMessage = ({
                     Synthèse vocale mAI
                   </span>
                 </div>
-                {(part.output as any).voice && (
+                {champTexte(part.output, "voice") && (
                   <span className="text-[11px] font-medium bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full border border-border/30">
                     Voix:{" "}
-                    {(part.output as any).voice
+                    {champTexte(part.output, "voice")
                       .replace("flux-", "")
                       .replace("-en", "")}
                   </span>
@@ -962,9 +1013,9 @@ const PurePreviewMessage = ({
                 Votre navigateur ne supporte pas l'élément audio.
               </audio>
 
-              {(part.output as any).text && (
+              {champTexte(part.output, "text") && (
                 <div className="text-[12px] leading-relaxed text-muted-foreground/90 italic bg-muted/30 p-2.5 rounded-xl border border-border/20">
-                  "{(part.output as any).text}"
+                  "{champTexte(part.output, "text")}"
                 </div>
               )}
             </div>
@@ -975,12 +1026,12 @@ const PurePreviewMessage = ({
         <Tool
           className="w-[min(100%,450px)]"
           defaultOpen={true}
-          key={(part as any).toolCallId}
+          key={(part as unknown as GenericToolPart).toolCallId}
         >
           <ToolHeader state={state} type="tool-audioGenerate" />
           <ToolContent>
             {state === "input-available" && (
-              <ToolInput input={(part as any).input} />
+              <ToolInput input={(part as unknown as GenericToolPart).input} />
             )}
           </ToolContent>
         </Tool>
@@ -988,18 +1039,18 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-codeExecution") {
-      const { toolCallId, state } = part as any;
+      const { toolCallId, state } = part as unknown as GenericToolPart;
       if (
         state === "output-available" &&
         part.output &&
         !("error" in part.output) &&
-        (part.output as any).code
+        champTexte(part.output, "code")
       ) {
         return (
           <div className="w-full" key={toolCallId}>
             <CodeExecution
-              code={(part.output as any).code}
-              language={(part.output as any).language}
+              code={champTexte(part.output, "code")}
+              language={champTexte(part.output, "language")}
             />
           </div>
         );
@@ -1014,7 +1065,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600"
             key={toolCallId}
           >
-            Erreur code: {String((part.output as any).error)}
+            Erreur code: {String(sortieDe(part.output).error)}
           </div>
         );
       }
@@ -1022,12 +1073,12 @@ const PurePreviewMessage = ({
         <Tool
           className="w-[min(100%,450px)]"
           defaultOpen={true}
-          key={(part as any).toolCallId}
+          key={(part as unknown as GenericToolPart).toolCallId}
         >
           <ToolHeader state={state} type="tool-codeExecution" />
           <ToolContent>
             {state === "input-available" && (
-              <ToolInput input={(part as any).input} />
+              <ToolInput input={(part as unknown as GenericToolPart).input} />
             )}
           </ToolContent>
         </Tool>
@@ -1081,10 +1132,13 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-memory") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       const { state, toolCallId, input } = toolPart;
-      const output = unwrapAgentToolOutput(toolPart.output) as any;
-      const action = input?.action || output?.action || "add";
+      const output = sortieDe(unwrapAgentToolOutput(toolPart.output));
+      const entree = sortieDe(input);
+      const memoire = sortieDe(output.memory);
+      const action =
+        champTexte(entree, "action") || champTexte(output, "action") || "add";
       const isAvailable = state === "output-available";
       const isError = state === "output-error" || (output && "error" in output);
 
@@ -1123,8 +1177,8 @@ const PurePreviewMessage = ({
             {action === "add" && (
               <p className="text-foreground italic bg-muted/40 p-2.5 rounded-xl border border-border/40">
                 «{" "}
-                {input?.content ||
-                  output?.memory?.content ||
+                {champTexte(entree, "content") ||
+                  champTexte(memoire, "content") ||
                   "Enregistrement d'une information..."}{" "}
                 »
               </p>
@@ -1143,18 +1197,28 @@ const PurePreviewMessage = ({
                     ? "Recherche dans la mémoire..."
                     : `${output.count} information(s) trouvée(s):`}
                 </span>
-                {output?.memories && output.memories.length > 0 && (
-                  <ul className="divide-y divide-border/30 rounded-lg border border-border/40 bg-muted/20 max-h-36 overflow-y-auto">
-                    {output.memories.map((m: any, idx: number) => (
-                      <li
-                        className="p-2 text-[12px] text-foreground"
-                        key={m.id || idx}
-                      >
-                        • {m.content}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                {Array.isArray(output.memories) &&
+                  output.memories.length > 0 && (
+                    <ul className="divide-y divide-border/30 rounded-lg border border-border/40 bg-muted/20 max-h-36 overflow-y-auto">
+                      {output.memories.map(
+                        (entreeMemoire: unknown, idx: number) => {
+                          const m = sortieDe(entreeMemoire);
+                          const id =
+                            typeof m.id === "string" || typeof m.id === "number"
+                              ? m.id
+                              : idx;
+                          return (
+                            <li
+                              className="p-2 text-[12px] text-foreground"
+                              key={id}
+                            >
+                              • {champTexte(m, "content")}
+                            </li>
+                          );
+                        }
+                      )}
+                    </ul>
+                  )}
               </div>
             )}
             {isError && (
@@ -1172,9 +1236,10 @@ const PurePreviewMessage = ({
 
     if (
       type.startsWith("tool-mcp_") ||
-      (type === "dynamic-tool" && (part as any).toolName?.startsWith("mcp_"))
+      (type === "dynamic-tool" &&
+        (part as unknown as GenericToolPart).toolName?.startsWith("mcp_"))
     ) {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       const { state, toolCallId, input } = toolPart;
       const output = unwrapAgentToolOutput(toolPart.output) as {
         error?: unknown;
@@ -1229,7 +1294,7 @@ const PurePreviewMessage = ({
             </span>
           </div>
           <div className="p-3 text-xs space-y-2">
-            {input && Object.keys(input).length > 0 && (
+            {input !== undefined && Object.keys(sortieDe(input)).length > 0 ? (
               <div>
                 <span className="text-[10.5px] font-semibold text-muted-foreground uppercase tracking-wide">
                   Paramètres
@@ -1238,7 +1303,7 @@ const PurePreviewMessage = ({
                   {JSON.stringify(input, null, 2)}
                 </div>
               </div>
-            )}
+            ) : null}
             {isAvailable && output && (
               <div>
                 <span className="text-[10.5px] font-semibold text-muted-foreground uppercase tracking-wide">
@@ -1254,7 +1319,7 @@ const PurePreviewMessage = ({
             {isError && (
               <div className="rounded-lg bg-red-500/10 border border-red-500/20 p-2 text-red-600 text-xs">
                 {String(
-                  output?.error || "Erreur lors de l'exécution de l'outil MCP."
+                  output?.error ?? "Erreur lors de l'exécution de l'outil MCP."
                 )}
               </div>
             )}
@@ -1264,12 +1329,12 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-askUser") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <AskUserCard
-          args={toolPart.input || toolPart.args}
+          args={(toolPart.input ?? toolPart.args) as never}
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
           toolCallId={toolPart.toolCallId}
         />
@@ -1283,26 +1348,26 @@ const PurePreviewMessage = ({
     // Les identifiants d'outils Agent viennent du registre serveur: le type
     // union du Chat ne peut pas les énumérer (même convention que "error").
     if ((type as string) === "tool-ask_user") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <AgentUserInputCard
-          input={toolPart.input ?? toolPart.args}
+          input={(toolPart.input ?? toolPart.args) as never}
           key={toolPart.toolCallId ?? key}
           onSubmit={submitUserInputAnswer}
-          output={toolPart.output}
+          output={toolPart.output as never}
           toolCallId={toolPart.toolCallId}
         />
       );
     }
 
     if (type === "tool-updateAccountProfile") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <AccountProfileCard
-          args={toolPart.input || toolPart.args}
+          args={(toolPart.input ?? toolPart.args) as never}
           isReadonly={isReadonly}
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
           toolCallId={toolPart.toolCallId}
         />
@@ -1310,13 +1375,13 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-updateProfilePicture") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <ProfilePictureCard
-          args={toolPart.input || toolPart.args}
+          args={(toolPart.input ?? toolPart.args) as never}
           isReadonly={isReadonly}
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
           toolCallId={toolPart.toolCallId}
         />
@@ -1324,86 +1389,94 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-getAccountUsage") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <AccountUsageCard
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
         />
       );
     }
 
     if (type === "tool-quizzly") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <QuizCard
-          args={toolPart.input || toolPart.args}
+          args={(toolPart.input ?? toolPart.args) as never}
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
         />
       );
     }
 
     if (type === "tool-generateDiagram") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <DiagramCard
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
         />
       );
     }
 
     if (type === "tool-audioPodcast") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <PodcastCard
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
         />
       );
     }
 
     if (type === "tool-webCapture") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <WebCaptureCard
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
         />
       );
     }
 
     if (type === "tool-documentParser") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <DocumentParserCard
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
         />
       );
     }
 
     if (type === "tool-calendarReminder") {
-      const toolPart = part as any;
+      const toolPart = part as unknown as GenericToolPart;
       return (
         <CalendarReminderCard
           key={toolPart.toolCallId ?? key}
-          output={toolPart.output}
+          output={toolPart.output as never}
           state={toolPart.state}
         />
       );
     }
 
     if (type.startsWith("tool-") || type === "dynamic-tool") {
-      const toolPart = part as any;
-      const { state, toolCallId } = toolPart;
+      const toolPart = part as unknown as GenericToolPart;
+      const { state: originalState, toolCallId } = toolPart;
       const approvalId = toolPart.approval?.id || toolCallId;
+      const unwrappedOutput = unwrapAgentToolOutput(toolPart.output);
+      const hasErrorOutput =
+        originalState === "output-available" &&
+        isToolErrorPayload(unwrappedOutput);
+      const effectiveState = hasErrorOutput ? "output-error" : originalState;
+      const effectiveErrorText =
+        toolPart.errorText ||
+        (hasErrorOutput ? extractToolErrorMessage(unwrappedOutput) : undefined);
 
       return (
         <Tool
@@ -1413,30 +1486,30 @@ const PurePreviewMessage = ({
         >
           {type === "dynamic-tool" ? (
             <ToolHeader
-              state={state}
+              state={effectiveState}
               toolName={toolPart.toolName ?? "Outil MCP"}
               type={type}
             />
           ) : (
-            <ToolHeader state={state} type={type as any} />
+            <ToolHeader state={effectiveState} type={type as never} />
           )}
           <ToolContent>
-            {(state === "input-available" ||
-              state === "input-streaming" ||
-              state === "approval-requested") && (
+            {(effectiveState === "input-available" ||
+              effectiveState === "input-streaming" ||
+              effectiveState === "approval-requested") && (
               <ToolInput input={toolPart.input} />
             )}
-            {state === "output-available" && (
-              <ToolOutput
-                errorText={undefined}
-                output={unwrapAgentToolOutput(toolPart.output)}
-              />
+            {effectiveState === "output-available" && (
+              <ToolOutput errorText={undefined} output={unwrappedOutput} />
             )}
 
-            {state === "output-error" && (
-              <ToolOutput errorText={toolPart.errorText} output={undefined} />
+            {effectiveState === "output-error" && (
+              <ToolOutput
+                errorText={effectiveErrorText}
+                output={unwrappedOutput}
+              />
             )}
-            {state === "approval-requested" && approvalId && (
+            {effectiveState === "approval-requested" && approvalId && (
               <ToolApprovalActions
                 addToolApprovalResponse={addToolApprovalResponse}
                 approvalId={approvalId}

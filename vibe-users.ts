@@ -33,7 +33,7 @@ const MAX_WEBSITE_LENGTH = 255;
 const MAX_LOCATION_LENGTH = 100;
 
 export function registerVibeUsersRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 1. CURRENT USER PROFILE & QUOTAS VIA JWT

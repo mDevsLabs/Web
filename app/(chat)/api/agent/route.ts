@@ -587,7 +587,7 @@ export async function POST(request: Request) {
       });
     }
 
-    const families = [
+    const _families = [
       ...new Set(enabledTools.map((tool) => familyForCategory(tool.category))),
     ];
 

@@ -11,7 +11,7 @@ import type { RegisterMultiFn } from "./vibe-common.ts";
 import { invalidateUserToolsCache } from "./vibe-tools.ts";
 
 export function registerVibeSettingsRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // Colonnes de personnalisation ajoutées paresseusement (idempotent)

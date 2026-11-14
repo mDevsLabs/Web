@@ -18,9 +18,11 @@ export function useQuotaMeter() {
     if (!dataStream?.length) {
       return;
     }
-    const last = dataStream.at(-1) as any;
+    const last = dataStream.at(-1) as
+      | { type?: string; data?: { tokens?: number } }
+      | undefined;
     if (last?.type === "data-usage" && last?.data?.tokens) {
-      setLiveSessionTokens((prev) => prev + Number(last.data.tokens));
+      setLiveSessionTokens((prev) => prev + Number(last.data?.tokens ?? 0));
     }
   }, [dataStream]);
   const quotaStatus = costSettingsError
@@ -48,8 +50,7 @@ export function useQuotaMeter() {
         `Tu as utilisé ${costPercent}% de ton quota mAI (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens) — mise à niveau recommandée.`
       );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [costPercent, costAiUsed.toLocaleString, costAiLimit, quotaKnown]);
+  }, [costPercent, costAiUsed, costAiLimit, quotaKnown]);
 
   return {
     costAiLimit,

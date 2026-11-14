@@ -88,7 +88,18 @@ export function AppMenuItems({
 }: AppMenuItemsProps) {
   return (
     <>
-      {APP_MENU_ORDER.map((item) => {
+      {APP_MENU_ORDER.filter((item) => {
+        // Hors de l'application de bureau, le CLI et Coder n'existent pas :
+        // ils ouvrent un terminal / une fenêtre Electron. Les masquer plutôt
+        // que de les griser évite de proposer un accès impossible.
+        if (!isDesktop && item.kind === "cli") {
+          return false;
+        }
+        if (!isDesktop && item.kind === "app" && item.entry.key === "code") {
+          return false;
+        }
+        return true;
+      }).map((item) => {
         // Le CLI est une entrée de menu, pas une application web : il ouvre
         // le terminal local de l'application de bureau.
         if (item.kind === "cli") {
@@ -97,7 +108,7 @@ export function AppMenuItems({
               asChild
               className={cn(
                 "cursor-pointer rounded-lg",
-                (!isDesktop || isAuthenticated === false) && "opacity-60"
+                isAuthenticated === false && "opacity-60"
               )}
               key="cli"
               onSelect={() => {
@@ -111,11 +122,6 @@ export function AppMenuItems({
                     <span className="text-[13px] font-semibold text-sidebar-foreground/90">
                       CLI
                     </span>
-                    {!isDesktop && (
-                      <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                        Bureau
-                      </span>
-                    )}
                     {isAuthenticated === false && (
                       <LockIcon className="ml-auto size-3 text-warning" />
                     )}
@@ -132,7 +138,6 @@ export function AppMenuItems({
         const entry = item.entry;
         const isCurrent = currentApp === entry.key;
         const AppGlyph = APP_MENU_ICONS[entry.key];
-        const isCodeDisabled = entry.key === "code" && !isDesktop;
         // Le Site reste accessible sans compte : c'est la vitrine de mAI.
         const isLocked =
           isAuthenticated === false && !isCurrent && entry.key !== "site";
@@ -142,7 +147,7 @@ export function AppMenuItems({
             asChild
             className={cn(
               "cursor-pointer rounded-lg",
-              (isCodeDisabled || isLocked) && "opacity-60"
+              isLocked && "opacity-60"
             )}
             key={entry.key}
             onSelect={() => onSelectApp(entry.key, entry.path)}
@@ -166,9 +171,9 @@ export function AppMenuItems({
                   >
                     {entry.label}
                   </span>
-                  {isCodeDisabled && (
-                    <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                      Bureau
+                  {entry.key === "quizzly" && (
+                    <span className="rounded bg-primary/10 px-1 py-0.2 text-[9px] font-semibold text-primary">
+                      Bêta
                     </span>
                   )}
                   {isLocked && (

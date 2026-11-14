@@ -4,10 +4,10 @@ import { codeDocumentHandler } from "@/artifacts/code/server";
 import { htmlDocumentHandler } from "@/artifacts/html/server";
 import { sheetDocumentHandler } from "@/artifacts/sheet/server";
 import { textDocumentHandler } from "@/artifacts/text/server";
-import type { ArtifactKind } from "@/components/chat/artifact";
 import { saveDocument } from "../db/queries";
 import type { Document } from "../db/schema";
 import type { ChatMessage } from "../types";
+import type { ArtifactKind } from "./kinds";
 
 export type SaveDocumentProps = {
   id: string;

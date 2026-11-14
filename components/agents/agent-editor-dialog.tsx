@@ -62,7 +62,7 @@ export interface AgentEditorDialogProps {
   isCloudPickerOpen: boolean;
   isSaving: boolean;
   mcpServers: McpServer[];
-  models: any[];
+  models: unknown[];
   modelsData?: {
     capabilities: Record<string, ModelCapabilities>;
     models: unknown[];
@@ -145,6 +145,19 @@ export function AgentEditorDialog({
   cloudFileNames,
   setCloudFileNames,
 }: AgentEditorDialogProps) {
+  // Le sélecteur compact attend des modèles à nom obligatoire (SharedModel).
+  const modeles = models.flatMap((modele) => {
+    const candidat = modele as { id?: unknown; name?: unknown } | null;
+    return typeof candidat?.id === "string"
+      ? [
+          {
+            id: candidat.id,
+            name:
+              typeof candidat.name === "string" ? candidat.name : candidat.id,
+          },
+        ]
+      : [];
+  });
   return (
     <Dialog onOpenChange={onOpenChange} open={open}>
       <DialogContent className="max-w-5xl sm:max-w-4xl lg:max-w-6xl w-[95vw] max-h-[90vh] overflow-y-auto">
@@ -171,8 +184,14 @@ export function AgentEditorDialog({
             <div className="lg:col-span-2 flex flex-col gap-4">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="sm:col-span-2 space-y-1.5">
-                  <Label className="text-xs font-semibold">Nom *</Label>
+                  <Label
+                    className="text-xs font-semibold"
+                    htmlFor="agent-form-name"
+                  >
+                    Nom *
+                  </Label>
                   <Input
+                    id="agent-form-name"
                     maxLength={100}
                     onChange={(e) => setFormName(e.target.value)}
                     placeholder="Ex: Assistant Code"
@@ -193,10 +212,14 @@ export function AgentEditorDialog({
                 </div>
               </div>
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">
+                <Label
+                  className="text-xs font-semibold"
+                  htmlFor="agent-form-desc"
+                >
                   Description courte
                 </Label>
                 <Input
+                  id="agent-form-desc"
                   maxLength={500}
                   onChange={(e) => setFormDescription(e.target.value)}
                   placeholder="Rôle ou cas d'usage résumé..."
@@ -209,9 +232,15 @@ export function AgentEditorDialog({
                 <Label className="text-xs font-semibold">
                   Icône — affichée partout (sidebar, @, cartes, dropdown)
                 </Label>
-                <div className="grid grid-cols-5 gap-2">
+                <div
+                  aria-label="Sélection de l'icône de l'agent"
+                  className="grid grid-cols-5 gap-2"
+                  role="radiogroup"
+                >
                   {AGENT_ICONS.map((o) => (
                     <button
+                      aria-label={`Icône ${o.label}`}
+                      aria-pressed={formIcon === o.id}
                       className={cn(
                         "flex w-full flex-col items-center gap-1 p-2 rounded-xl border text-xs",
                         formIcon === o.id
@@ -235,7 +264,10 @@ export function AgentEditorDialog({
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold flex items-center justify-between">
+                <Label
+                  className="text-xs font-semibold flex items-center justify-between"
+                  htmlFor="agent-form-instructions"
+                >
                   Instructions système *{" "}
                   <span
                     className={cn(
@@ -254,6 +286,7 @@ export function AgentEditorDialog({
                 />
                 <Textarea
                   className="min-h-[140px] font-mono text-xs leading-relaxed"
+                  id="agent-form-instructions"
                   maxLength={INSTRUCTIONS_MAX_LENGTH}
                   onChange={(e) => setFormInstructions(e.target.value)}
                   placeholder="Tu es un expert en…&#10;&#10;Rôle: …&#10;Ton: …&#10;Contraintes: …&#10;Interdits: …&#10;Format de sortie: …&#10;&#10;Ce que tu ne fais jamais: …"
@@ -336,7 +369,7 @@ export function AgentEditorDialog({
                 </Label>
                 <ModelSelectorCompact
                   capabilities={modelsData?.capabilities}
-                  fallbackModels={models}
+                  fallbackModels={modeles}
                   modal
                   onModelChange={setFormModelId}
                   selectedModelId={formModelId}
@@ -367,14 +400,19 @@ export function AgentEditorDialog({
                     value={formTemperature}
                   />
                   <div className="space-y-1.5">
-                    <Label className="text-xs flex items-center justify-between">
+                    <Label
+                      className="text-xs flex items-center justify-between"
+                      htmlFor="agent-form-topp"
+                    >
                       Top P{" "}
                       <span className="font-mono text-muted-foreground">
                         {formTopP.toFixed(2)}
                       </span>
                     </Label>
                     <input
+                      aria-label="Top P"
                       className="w-full accent-primary"
+                      id="agent-form-topp"
                       max={1}
                       min={0}
                       onChange={(e) => setFormTopP(Number(e.target.value))}
@@ -384,7 +422,7 @@ export function AgentEditorDialog({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="text-xs">
+                    <Label className="text-xs" htmlFor="agent-form-max-tokens">
                       Max tokens{" "}
                       <span className="text-muted-foreground font-normal">
                         (vide = défaut)
@@ -392,6 +430,7 @@ export function AgentEditorDialog({
                     </Label>
                     <Input
                       className="h-8 text-xs"
+                      id="agent-form-max-tokens"
                       max={1_000_000}
                       min={1}
                       onChange={(e) => setFormMaxTokens(e.target.value)}
@@ -413,6 +452,7 @@ export function AgentEditorDialog({
                 {formStarterPrompts.map((p, idx) => (
                   <div className="flex items-center gap-2" key={idx}>
                     <Input
+                      aria-label={`Message de démarrage ${idx + 1}`}
                       className="h-8 text-xs"
                       maxLength={500}
                       onChange={(e) => updateStarterPrompt(idx, e.target.value)}
@@ -420,6 +460,7 @@ export function AgentEditorDialog({
                       value={p}
                     />
                     <Button
+                      aria-label={`Supprimer le message ${idx + 1}`}
                       className="size-8 p-0 text-muted-foreground hover:text-destructive"
                       onClick={() => removeStarterPrompt(idx)}
                       size="sm"
@@ -445,11 +486,15 @@ export function AgentEditorDialog({
 
               {/* Message de bienvenue */}
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">
+                <Label
+                  className="text-xs font-semibold"
+                  htmlFor="agent-form-welcome"
+                >
                   Message de bienvenue
                 </Label>
                 <Textarea
                   className="min-h-[70px] text-xs"
+                  id="agent-form-welcome"
                   maxLength={2000}
                   onChange={(e) => setFormWelcomeMessage(e.target.value)}
                   placeholder="Bonjour! Je suis ton assistant dédié. Comment puis-je t'aider?"
@@ -584,13 +629,14 @@ export function AgentEditorDialog({
                     {formCloudUrls.map((url, i) => (
                       <span
                         className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] border border-border/40 max-w-[220px]"
-                        key={i}
+                        key={url}
                       >
                         <CloudIcon className="size-2.5 text-muted-foreground shrink-0" />
                         <span className="truncate">
                           {cloudFileNames[url] || url.split("/").pop() || url}
                         </span>
                         <button
+                          aria-label={`Supprimer le fichier ${cloudFileNames[url] || url.split("/").pop() || url}`}
                           className="rounded-full p-0.5 hover:bg-muted-foreground/20"
                           onClick={() => {
                             setFormCloudUrls((prev) =>
@@ -714,7 +760,7 @@ export function AgentEditorDialog({
                         .map((p, i) => (
                           <span
                             className="text-[10px] bg-success/10 text-success border border-success/20 px-1.5 py-0.5 rounded-full truncate max-w-full"
-                            key={i}
+                            key={`${p}-${i}`}
                           >
                             {p}
                           </span>

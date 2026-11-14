@@ -1,5 +1,4 @@
 import { Loader2Icon, PlusIcon, StoreIcon, ZapIcon } from "@mdevs/icons";
-import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { McpServer } from "@/lib/db/schema";

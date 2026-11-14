@@ -1,4 +1,6 @@
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import type { ApiErrorCode } from "@/lib/api/error-codes";
+import { errorResponse as unifiedErrorResponse } from "@/lib/api/error-response";
 import { resolveUserApiKeyByRef } from "@/lib/site/api-key-manager";
 import {
   type ApiRouteMethod,
@@ -10,11 +12,34 @@ import { authenticateSession } from "@/lib/site/session-auth";
 
 type ExecutorMethod = ApiRouteMethod;
 
-function errorResponse(code: string, message: string, status: number) {
-  return NextResponse.json(
-    { error: { code, message } },
-    { headers: { "Cache-Control": "private, no-store" }, status }
-  );
+function errorResponse(
+  code: string,
+  message: string,
+  status: number
+): Response {
+  const apiCode: ApiErrorCode =
+    status === 400
+      ? "invalid_request"
+      : status === 401
+        ? "auth_required"
+        : status === 403
+          ? "access_denied"
+          : status === 404
+            ? "not_found"
+            : status === 405
+              ? "invalid_request"
+              : status === 413
+                ? "payload_too_large"
+                : status === 502 || status === 504
+                  ? "upstream_error"
+                  : "internal_error";
+
+  return unifiedErrorResponse(apiCode, {
+    details: { executorCode: code },
+    headers: { "Cache-Control": "private, no-store" },
+    message,
+    status,
+  });
 }
 
 function sanitizeClientValue(value: unknown): unknown {

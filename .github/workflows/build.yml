@@ -108,19 +108,76 @@ jobs:
               - ".github/workflows/build.yml"
               - "package.json"
 
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB — Qualité (un seul job qualité : pas de workflows concurrents)
+  # Lint Biome, typecheck et tests unitaires de l'application Next, plus les
+  # contrôles de ce lot : installation verrouillée du Site (#11), provenance des
+  # sources Wakies (#14) et build Vibe (#12). Le job échoue dès qu'une étape
+  # échoue, et n'est pas contournable par l'absence de Husky côté local.
+  # ─────────────────────────────────────────────────────────────────────────────
+  quality:
+    name: Qualité — lint, typecheck et tests unitaires
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+      # Issue #11 : l'installation du Site est verrouillée. `npm ci` échoue dès
+      # que apps/site/package-lock.json diverge de apps/site/package.json.
+      # Le lock n'est jamais régénéré sans échec reproduit.
+      - name: Vérifier l'installation verrouillée du Site (npm ci)
+        working-directory: apps/site
+        run: npm ci --ignore-scripts
+      # Issue #14 : provenance des sources Wakies — empreintes sur contenu
+      # canonicalisé LF, insensibles à la conversion CRLF/LF de Git, mais
+      # sensibles à toute altération d'un octet.
+      - name: Vérifier la provenance des sources Wakies
+        run: pnpm --dir apps/wakies source:check
+      # Issue #12 : `tsc -b && vite build` protège l'alignement de React entre
+      # la racine, packages/icons, packages/ui et apps/vibe (identité unique).
+      - name: Installer les dépendances de Vibe
+        working-directory: apps/vibe
+        run: npm ci --ignore-scripts
+      - name: Compiler Vibe (tsc + vite)
+        working-directory: apps/vibe
+        run: npm run build
+      - name: Lint (ultracite / Biome)
+        run: pnpm run check
+      - name: Typecheck (application Next)
+        run: pnpm run typecheck
+      # Issue #17 : `pnpm run typecheck:backend` (tsconfig.backend.json) couvre
+      # les modules racine déployés sur Val Town. Périmètre de l'issue #15 : ce
+      # job n'exige pas encore son exécution — la commande est prête à être
+      # appelée ici en une ligne dès que le lot suivant le décide.
+      - name: Tests unitaires (vitest)
+        run: pnpm run test:unit
+
   deploy-vercel:
-    needs: [version]
+    needs: [version, quality]
     name: Déploiement Vercel
-    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary')) || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary')) }}
     environment:
-      name: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+      name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
     runs-on: ubuntu-latest
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_CLI_VERSION: 64.5.0
-      DEPLOY_TARGET: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+      DEPLOY_TARGET: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
@@ -340,6 +397,9 @@ jobs:
       - name: Patch icônes natives Android (logo → mipmap)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
+      - name: Générer les raccourcis Android et le widget Quizzly
+        working-directory: apps/mobile
+        run: node scripts/sync-native.mjs
       - name: Build Android – Debug APK (debug keystore, non production)
         working-directory: apps/mobile/android
         run: |
@@ -388,6 +448,9 @@ jobs:
       - name: Patch icônes natives iOS (logo → AppIcon)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
+      - name: Générer les App Intents iOS
+        working-directory: apps/mobile
+        run: node scripts/sync-native.mjs
       - name: Construire l’archive iOS non signée
         working-directory: apps/mobile
         run: |
@@ -748,6 +811,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     needs:
+      - version
+      - quality
       - deploy-vercel
       - desktop
       - mobile-android
@@ -894,6 +959,7 @@ jobs:
           script: |
             const fs = require('node:fs/promises');
             const path = require('node:path');
+            const crypto = require('node:crypto');
             const releaseId = Number(process.env.RELEASE_ID);
             const existing = await github.paginate(github.rest.repos.listReleaseAssets, {
               ...context.repo, release_id: releaseId, per_page: 100
@@ -955,5 +1021,69 @@ jobs:
                 headers: { 'content-type': 'application/octet-stream' }
               });
             }
+            // Manifeste d'intégrité (issue #28) : tailles et SHA-256 des
+            // binaires publiés, vérifié par apps/desktop/src/updater.ts avant
+            // d'ouvrir un installeur. Les métadonnées (latest*.yml) sont
+            // exclues : elles sont réécrites avant upload. Un binaire absent de
+            // ce manifeste n'est jamais ouvert par le client bureau.
+            const manifestFiles = [];
+            for (const { base, file } of collected) {
+              if (/^latest.*\.yml$/i.test(base)) continue;
+              const uploadName = uploadNameByFile.get(file);
+              const bytes = await fs.readFile(file);
+              manifestFiles.push({
+                name: uploadName,
+                sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+                size: bytes.length
+              });
+            }
+            if (manifestFiles.length > 0 && !existing.some(asset => asset.name === 'installer-manifest.json')) {
+              const manifest = JSON.stringify({ files: manifestFiles }, null, 2);
+              console.log('Upload du manifeste d\'intégrité des installateurs.');
+              await github.rest.repos.uploadReleaseAsset({
+                ...context.repo, release_id: releaseId, name: 'installer-manifest.json',
+                data: Buffer.from(manifest, 'utf8'),
+                headers: { 'content-type': 'application/json' }
+              });
+            }
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB — Publication NPM des packages @mdevs/ (icons et ui)
+  # Exécuté uniquement lors d'un push sur la branche main après validation qualité.
+  # ─────────────────────────────────────────────────────────────────────────────
+  publish-npm:
+    name: Publier les packages @mdevs sur NPM
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [version, quality]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: Setup Node.js avec registre NPM
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+      - name: Publier @mdevs/icons sur NPM
+        working-directory: packages/icons
+        run: pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN || secrets.NODE_AUTH_TOKEN }}
+      - name: Publier @mdevs/ui sur NPM
+        working-directory: packages/ui
+        run: pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN || secrets.NODE_AUTH_TOKEN }}
+
 
 

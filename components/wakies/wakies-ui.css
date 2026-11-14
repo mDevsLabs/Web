@@ -19,6 +19,7 @@
  * ============================================================================ */
 
 @layer wakies-base, mdevs;
+/* @mdevs/ui — Liquid Glass Design System */
 /* Inter 4.1, Copyright The Inter Project Authors, SIL OFL 1.1; see LICENSE-INTER.txt. */
 @layer mdevs {
   .wakies-root .md-root {
@@ -347,6 +348,8 @@
   }
 }
 
+
+/* Extensions */
 /* This file is a durable source concatenated into styles.css at build time. */
 @layer mdevs {
   .wakies-root .md-dialog > *,

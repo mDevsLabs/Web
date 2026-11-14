@@ -196,3 +196,14 @@ export const LOCAL_MODELS: LocalModel[] = [
     hfCommand: "hf download mDevsLabs/mAI-1-Light",
   },
 ];
+
+export const PLATFORM_DEVICE_ICONS: Record<
+  string,
+  { src: string; alt: string }
+> = {
+  Android: { alt: "Android", src: "/devices/google.png" },
+  iOS: { alt: "iOS", src: "/devices/apple.png" },
+  Linux: { alt: "Linux", src: "/devices/linux.png" },
+  macOS: { alt: "macOS", src: "/devices/apple.png" },
+  Windows: { alt: "Windows", src: "/devices/microsoft.png" },
+};

@@ -79,6 +79,35 @@ const SUITES: Record<string, readonly Trio[]> = {
     ["Présenter et commenter", "Décrire une œuvre", "Construire un regard"],
     ["Arts et société", "L'œuvre et son public", "Synthèse artistique"],
   ],
+  emc: [
+    [
+      "La laïcité et les valeurs républicaines",
+      "La charte de la laïcité",
+      "Les symboles républicains",
+    ],
+    [
+      "Engagement et solidarité",
+      "Agir au quotidien",
+      "La solidarité citoyenne",
+    ],
+    [
+      "La justice et les institutions",
+      "Principes fondamentaux",
+      "Missions de la justice",
+    ],
+    ["Médias et démocratie", "Information et liberté", "Esprit critique"],
+    [
+      "Défense et sécurité nationale",
+      "Armées et citoyens",
+      "Cohésion républicaine",
+    ],
+    [
+      "Débats éthiques et sociétaux",
+      "Sciences et bioéthique",
+      "Responsabilité collective",
+    ],
+    ["Synthèse civique et citoyenne", "Droits et devoirs", "Agir en citoyen"],
+  ],
   "enseignement-scientifique": [
     [
       "La matière et les rayonnements",
@@ -171,6 +200,43 @@ const SUITES: Record<string, readonly Trio[]> = {
     ["Mouvement et forces", "Décrire un mouvement", "Interactions"],
     ["L'énergie", "Formes", "Conversions"],
     ["Ondes, signaux et synthèse", "Lumière et son", "Révision"],
+  ],
+  "sciences-de-lingenieur": [
+    [
+      "Traitement de l'information et capteurs",
+      "Acquisition et signaux",
+      "Algorithmes et microcontrôleurs",
+    ],
+    [
+      "Éco-conception et cycle de vie",
+      "Matériaux et durabilité",
+      "Impacts environnementaux",
+    ],
+    [
+      "Dynamique et asservissement",
+      "Lois de la dynamique",
+      "Stabilité et précision",
+    ],
+    [
+      "Systèmes communicants et réseaux",
+      "Bus de données",
+      "Protocoles de communication",
+    ],
+    [
+      "Conversion et stockage de puissance",
+      "Actionneurs et accumulateurs",
+      "Bilans énergétiques",
+    ],
+    [
+      "Ingénierie système et modélisation",
+      "Modélisation multiphysique",
+      "Simulation numérique",
+    ],
+    [
+      "Projet technologique et innovation",
+      "Cahier des charges",
+      "Validation de prototype",
+    ],
   ],
   "sciences-et-technologie": [
     ["Le vivant et la santé", "Le corps humain", "Hygiène"],
@@ -474,6 +540,19 @@ export const PROGRAM: Record<SchoolYear, readonly SubjectSpec[]> = {
       "Frontières",
       "Fables et savoirs"
     ),
+    matiere(
+      "sciences-de-lingenieur",
+      "Sciences de l'ingénieur",
+      "Analyse des systèmes complexes",
+      "Fonctions et structure",
+      "Chaîne d'énergie et d'information",
+      "Modélisation cinématique et statique",
+      "Liaisons et mouvements",
+      "Équilibre et actions mécaniques",
+      "Énergie et puissance des actionneurs",
+      "Moteurs et convertisseurs",
+      "Rendement et bilans"
+    ),
     langue("italien", "Italien", "l'italien"),
     langue("chinois", "Chinois", "le chinois"),
     langue("arabe", "Arabe", "l'arabe"),
@@ -582,6 +661,19 @@ export const PROGRAM: Record<SchoolYear, readonly SubjectSpec[]> = {
       "Art et pouvoir",
       "Décrire une œuvre",
       "Convictions et débats"
+    ),
+    matiere(
+      "emc",
+      "Enseignement moral et civique",
+      "La liberté et l'État de droit",
+      "Les libertés publiques",
+      "La hiérarchie des normes",
+      "La protection des libertés",
+      "Le Conseil constitutionnel",
+      "Justice administrative et judiciaire",
+      "La démocratie et la participation",
+      "Élections et représentativité",
+      "Nouvelles formes d'engagement"
     ),
     langue("espagnol", "Espagnol", "l'espagnol"),
     langue("allemand", "Allemand", "l'allemand"),
@@ -696,6 +788,19 @@ export const PROGRAM: Record<SchoolYear, readonly SubjectSpec[]> = {
       "Présenter une œuvre",
       "Éducation musicale — créer"
     ),
+    matiere(
+      "emc",
+      "Enseignement moral et civique",
+      "Les valeurs et principes de la République",
+      "Liberté, égalité, fraternité",
+      "Laïcité et indivisibilité",
+      "La citoyenneté démocratique",
+      "Voter et participer",
+      "La souveraineté nationale",
+      "La défense nationale et la sécurité",
+      "Missions des armées",
+      "Parcours citoyen et JDC"
+    ),
     langue("espagnol", "Espagnol", "l'espagnol"),
     langue("allemand", "Allemand", "l'allemand"),
     langue("italien", "Italien", "l'italien"),
@@ -808,6 +913,19 @@ export const PROGRAM: Record<SchoolYear, readonly SubjectSpec[]> = {
       "Arts plastiques — l'œuvre et le spectateur",
       "Regarder une œuvre",
       "Éducation musicale — écouter"
+    ),
+    matiere(
+      "emc",
+      "Enseignement moral et civique",
+      "La liberté, une conquête",
+      "Les libertés fondamentales",
+      "La liberté d'expression",
+      "Les droits de l'enfant et de l'homme",
+      "La CIDE",
+      "Les droits universels",
+      "La justice en France",
+      "Principes de la justice",
+      "Justice des mineurs"
     ),
     langue("espagnol", "Espagnol", "l'espagnol"),
     langue("allemand", "Allemand", "l'allemand"),
@@ -922,6 +1040,19 @@ export const PROGRAM: Record<SchoolYear, readonly SubjectSpec[]> = {
       "Ombre et contraste",
       "Éducation musicale — les familles"
     ),
+    matiere(
+      "emc",
+      "Enseignement moral et civique",
+      "L'égalité en droits",
+      "Principes d'égalité",
+      "Lutter contre les discriminations",
+      "Identités et diversité",
+      "Identité légale et personnelle",
+      "Respect de l'autre",
+      "Droits et devoirs des collégiens",
+      "Le règlement intérieur",
+      "Les délégués et la participation"
+    ),
     langue("espagnol", "Espagnol", "l'espagnol"),
     langue("allemand", "Allemand", "l'allemand"),
     langue("italien", "Italien", "l'italien"),
@@ -1008,6 +1139,19 @@ export const PROGRAM: Record<SchoolYear, readonly SubjectSpec[]> = {
       "Arts plastiques — le récit en images",
       "La bande dessinée",
       "Chanter ensemble"
+    ),
+    matiere(
+      "emc",
+      "Enseignement moral et civique",
+      "La règle et le vivre-ensemble",
+      "La règle commune",
+      "Vivre ensemble au collège",
+      "L'égalité et la différence",
+      "Respecter les différences",
+      "Refuser les discriminations",
+      "La liberté et la responsabilité",
+      "Liberté et sécurité",
+      "Être responsable"
     ),
     langue("espagnol", "Espagnol", "l'espagnol"),
     langue("allemand", "Allemand", "l'allemand"),
@@ -1162,6 +1306,19 @@ export const PROGRAM: Record<SchoolYear, readonly SubjectSpec[]> = {
       "Savoirs et croyances",
       "Démontrer",
       "Interpréter"
+    ),
+    matiere(
+      "sciences-de-lingenieur",
+      "Sciences de l'ingénieur",
+      "Dynamique et commande des systèmes",
+      "Principe fondamental de la dynamique",
+      "Asservissement et stabilité",
+      "Systèmes multiphysiques et réseaux",
+      "Modélisation causale et acausale",
+      "Bus et protocoles de communication",
+      "Conversion et stockage d'énergie avancés",
+      "Batteries et piles à combustible",
+      "Gestion intelligente de l'énergie"
     ),
     langue("italien", "Italien", "l'italien"),
     langue("chinois", "Chinois", "le chinois"),

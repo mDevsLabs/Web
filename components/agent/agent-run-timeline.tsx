@@ -22,7 +22,6 @@ import {
   SparklesIcon,
   TimerIcon,
   TriangleAlertIcon,
-  UserIcon,
 } from "@mdevs/icons";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";

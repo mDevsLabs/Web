@@ -32,7 +32,6 @@ interface ApiUsageKey {
 export function useAccountDashboard() {
   const {
     user,
-    token,
     usage,
     cloudStorage,
     loading: authLoading,
@@ -113,7 +112,7 @@ export function useAccountDashboard() {
     if (!userId) return;
 
     const defaultLimit = getTierSpeechLimit(userTier);
-    if (!token) {
+    if (!isAuthenticated) {
       setAudioUsage({
         plan: userTier,
         requestsCount: 0,
@@ -125,7 +124,7 @@ export function useAccountDashboard() {
     }
 
     try {
-      const data = await getAudioUsage(token);
+      const data = await getAudioUsage();
       setAudioUsage({
         plan: data.plan ?? userTier,
         requestsCount: Number(data.requestsCount ?? 0),
@@ -145,7 +144,7 @@ export function useAccountDashboard() {
           }
       );
     }
-  }, [token, userId, userTier]);
+  }, [isAuthenticated, userId, userTier]);
 
   const loadResets = useCallback(async () => {
     if (!userId) return;

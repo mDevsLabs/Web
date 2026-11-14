@@ -1,71 +1,11 @@
 import "server-only";
-import {
-  and,
-  asc,
-  desc,
-  eq,
-  gt,
-  ilike,
-  inArray,
-  isNull,
-  lt,
-  lte,
-  ne,
-  or,
-  sql,
-} from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { dbReady, getDb } from "@/lib/db/queries";
-import {
-  wakiesCall,
-  wakiesCapture,
-  wakiesChatTurn,
-  wakiesConversation,
-  wakiesFriend,
-  wakiesMemory,
-  wakiesMessage,
-  wakiesMessageReaction,
-  wakiesNotification,
-  wakiesPage,
-  wakiesPageConversation,
-  wakiesPageReview,
-  wakiesSettings,
-  wakiesSpace,
-  wakiesTask,
-  wakiesTaskConversation,
-  wakiesTaskEvent,
-  wakiesTaskRun,
-  wakiesWakie,
-  wakiesWakieImage,
-  wakiesWakieProfile,
-  wakiesWakieSpace,
-} from "@/lib/db/schema";
-import type { PageSettings } from "@/lib/wakies/pages";
-import { preserveGoalMarker } from "@/lib/wakies/shared/goals";
+import { wakiesConversation, wakiesMessage } from "@/lib/db/schema";
 import { apercuMessage } from "@/lib/wakies/shared/messages";
-import {
-  prochaineExecution,
-  STATUT_TACHE,
-  TACHE_BAIL_MS,
-  TACHE_MAX_TENTATIVES,
-  tentativesEpuisees,
-} from "@/lib/wakies/task-lease";
 import { touchConversation } from "./conversations";
 
-import { appendMessages, messageExists } from "./messages";
-import type {
-  SetupStatus,
-  WakieCallRow,
-  WakieConversationRow,
-  WakieMemoryRow,
-  WakiePageRow,
-  WakieRow,
-  WakieSettingsRow,
-  WakieSpaceRow,
-  WakieTaskEventRow,
-  WakieTaskRow,
-  WakieTaskRunRow,
-  WakieWithSpaces,
-} from "./types";
+import { appendMessages } from "./messages";
 
 // ─── Messagerie : lecture, citations, transferts, recherche ────────────────
 

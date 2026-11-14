@@ -96,3 +96,17 @@ Cette version candidate pose les fondations de Quizzly, mais le catalogue et l'a
 **Gratuit et intégré à la suite mAI.**
 
 **Quizzly est ouvert en version candidate !**
+
+---
+
+## Sources officielles
+
+1. **Classement LMSYS Chatbot Arena (au 04/11/2026)** :
+   - Modèle **Gemini 3.8 Flash (High)** classé **10ème au classement Texte général** d'Arena.
+   - Modèle **Gemini 4 Argon High** pour la validation croisée et la conformité des questions.
+2. **Programmes officiels de l'Éducation nationale** :
+   - Référentiels pédagogiques et programmes scolaires du Collège (6ème à 3ème) et du Lycée (Seconde à Terminale), publiés au Bulletin Officiel de l'Éducation Nationale (BOEN) et sur Éduscol.
+3. **Suite mAI & Dépôt officiel** :
+   - Dépôt public mDevsLabs : [github.com/mDevsLabs/Web](https://github.com/mDevsLabs/Web)
+   - Documentation de Quizzly : [Documentation mAI](/docs?doc=app-quizzly)
+

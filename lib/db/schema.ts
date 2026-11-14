@@ -20,20 +20,17 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
-import { AGENT_MODES, type AgentMode } from "@/lib/agent/channel";
+import { AGENT_MODES } from "@/lib/agent/channel";
 import type { ScheduleRule } from "@/lib/agent/contracts";
 import type {
-  AgentOccurrenceRecord,
   AgentRunCheckpoint,
-  AgentRunInstructionRecord,
   AgentRunUsageNormalized,
   AgentScheduleRecord,
-  ApprovalRequestRecord,
-  ToolExecutionAttemptFields,
 } from "@/lib/agent/db-schema";
 import type {
   AgentExecutionBudget,
   AgentPlan,
+  AgentPreferences,
   AgentRunUsage,
   ToolCategory,
   ToolPermission,
@@ -970,6 +967,10 @@ export const notification = pgTable(
         "vibe_ai_digest",
         "vibe_system",
         "wakies_reply",
+        "quizzly_reminder",
+        "quizzly_league",
+        "quizzly_gift",
+        "quizzly_streak",
       ],
     }).notNull(),
     userId: text("userId").notNull(),
@@ -1823,6 +1824,13 @@ export const agentSettings = pgTable("AgentSettings", {
     .$type<ToolCategory[]>()
     .notNull()
     .default([]),
+  // Confort d'affichage (migration 0084) : normalisé par `normaliserPreferences`.
+  preferences: json("preferences").$type<AgentPreferences>().notNull().default({
+    activityDays: 30,
+    notifyBrowser: false,
+    showPlan: false,
+    timelineDensity: "detailed",
+  }),
   // Surcharge spécifique au mode Agent. Si null, hérite du reasoningLevel
   // global de user_preferences.
   reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS }),

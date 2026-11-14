@@ -6,6 +6,7 @@ import type {
   AgentAutonomy,
   AgentExecutionBudget,
   AgentPlan,
+  AgentPreferences,
   AgentRunStatus,
   AgentRunUsage,
   AgentStepStatus,
@@ -697,6 +698,7 @@ export async function upsertAgentSettingsRow({
     defaultModel?: string | null;
     defaultProjectId?: string | null;
     enabledCategories?: ToolCategory[];
+    preferences?: AgentPreferences;
     reasoningLevel?: ReasoningLevel | null;
     toolPolicies?: Record<string, ToolPermission>;
   };
@@ -712,6 +714,12 @@ export async function upsertAgentSettingsRow({
         defaultModel: patch.defaultModel ?? null,
         defaultProjectId: patch.defaultProjectId ?? null,
         enabledCategories: patch.enabledCategories ?? [],
+        preferences: patch.preferences ?? {
+          activityDays: 30,
+          notifyBrowser: false,
+          showPlan: false,
+          timelineDensity: "detailed",
+        },
         reasoningLevel: patch.reasoningLevel ?? "medium",
         toolPolicies: patch.toolPolicies ?? {},
         userId,
@@ -731,6 +739,9 @@ export async function upsertAgentSettingsRow({
           ...(patch.enabledCategories === undefined
             ? {}
             : { enabledCategories: patch.enabledCategories }),
+          ...(patch.preferences === undefined
+            ? {}
+            : { preferences: patch.preferences }),
           ...(patch.reasoningLevel === undefined
             ? {}
             : { reasoningLevel: patch.reasoningLevel }),

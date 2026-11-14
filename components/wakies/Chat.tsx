@@ -1,7 +1,5 @@
 "use client";
 import { Button } from "@mdevs/ui/primitives/button";
-import { Input } from "@mdevs/ui/primitives/input";
-import { Textarea } from "@mdevs/ui/primitives/textarea";
 import { promptInApp } from "@/lib/ui/app-dialog";
 
 /**
@@ -36,8 +34,6 @@ import { promptInApp } from "@/lib/ui/app-dialog";
  */
 
 import { useChat } from "@ai-sdk/react";
-import { PlusIcon } from "@mdevs/icons/controls/plus";
-import { XIcon } from "@mdevs/icons/controls/x";
 import { FilePlus2Icon } from "@mdevs/icons/files/file-plus-2";
 import { TimerIcon } from "@mdevs/icons/time/timer";
 import { DefaultChatTransport, type UIMessage } from "ai";
@@ -53,9 +49,7 @@ import useSWR from "swr";
 import { demandesValidation } from "@/components/wakies/ApprovalCard";
 import { api } from "@/components/wakies/api";
 import {
-  assainirNom,
   type EtatPiece,
-  formaterTaille,
   importerDansBibliotheque,
   partDePiece,
   pieceSelectionnee,
@@ -66,7 +60,6 @@ import type { ComposerMentionsHandle } from "@/components/wakies/ComposerMention
 import { useConversationDraft } from "@/components/wakies/DraftProvider";
 import { ForwardMessageModal } from "@/components/wakies/ForwardMessageModal";
 import { Mascot } from "@/components/wakies/Mascot";
-import { ModelPicker } from "@/components/wakies/ModelPicker";
 import {
   contextualMessage,
   type PageContext,
@@ -80,9 +73,8 @@ import { fusionnerHistorique } from "@/lib/wakies/shared/messaging";
 import {
   acceptePiece,
   type CapacitesPieces,
-  formatsPieces,
 } from "@/lib/wakies/shared/model-attachments";
-import { dernierSeq, texteDe } from "@/lib/wakies/shared/transcript";
+import { dernierSeq } from "@/lib/wakies/shared/transcript";
 import type {
   CallReceipt,
   Conversation,
@@ -139,10 +131,10 @@ export function Chat(props: {
   // après chaque tour (onSaved). Aucun état local d'autorité : le serveur
   // tranche (les routes pins/reactions portent le userId et la propriété).
   // Type definitions are local jamais sérialisés côté client.
-  const [reactionsParMessage, setReactionsParMessage] = useState<
+  const [_reactionsParMessage, _setReactionsParMessage] = useState<
     Map<string, MessageReaction[]>
   >(() => new Map());
-  const [epingles, setEpingles] = useState<UIMessage[]>([]);
+  const [_epingles, _setEpingles] = useState<UIMessage[]>([]);
   const [erreur, setErreur] = useState("");
   const [tentative, setTentative] = useState(0);
   const [cursor, setCursor] = useState<number | null>(null);

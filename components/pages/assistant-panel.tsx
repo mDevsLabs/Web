@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import useSWR from "swr";
 import { MessageReasoning } from "@/components/chat/message-reasoning";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import type { SelectionAnchor } from "@/lib/pages/text";
 import type {
   PageIntent,
   PageMessageView,
@@ -26,6 +27,8 @@ type AssistantPanelProps = {
   prompt: string;
   revision: number;
   selection: string;
+  /** Ancrage de la sélection dans le contenu : transmis pour cibler la bonne occurrence. */
+  selectionAnchor: SelectionAnchor | null;
 };
 
 const ACTIONS: Array<{ intent: PageIntent; label: string; text: string }> = [
@@ -96,6 +99,7 @@ export function AssistantPanel({
   prompt,
   revision,
   selection,
+  selectionAnchor,
 }: AssistantPanelProps) {
   const [draft, setDraft] = useState("");
   const [pagePrompt, setPagePrompt] = useState(prompt);
@@ -103,8 +107,10 @@ export function AssistantPanel({
   const intentRef = useRef<PageIntent>("propose");
   const modelRef = useRef(modelId ?? "");
   const selectionRef = useRef(selection);
+  const selectionAnchorRef = useRef(selectionAnchor);
   modelRef.current = modelId ?? "";
   selectionRef.current = selection;
+  selectionAnchorRef.current = selectionAnchor;
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -114,7 +120,7 @@ export function AssistantPanel({
     setProposals(pendingProposals);
   }, [pendingProposals]);
 
-  const { data: systemPrompt } = useSWR<{ prompt: string }>(
+  const { data: _systemPrompt } = useSWR<{ prompt: string }>(
     `/api/pages/${pageId}/prompt`,
     fetcher
   );
@@ -129,6 +135,7 @@ export function AssistantPanel({
             messages: all,
             modelId: modelRef.current || undefined,
             selection: selectionRef.current || undefined,
+            selectionAnchor: selectionAnchorRef.current ?? undefined,
           },
         }),
       }),

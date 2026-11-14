@@ -1,10 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { isWakiesEligible } from "@/lib/auth/plan";
-import {
-  canAccessWakies,
-  getWakiesQuota,
-  getWakiesQuotas,
-} from "@/lib/plans/tier-limits";
+import { canAccessWakies, getWakiesQuotas } from "@/lib/plans/tier-limits";
 
 vi.mock("@/lib/auth/session", () => ({
   getMaiUser: vi.fn(),

@@ -13,15 +13,15 @@ L'API mAI intègre une gouvernance stricte de gestion des erreurs et de protecti
 
 ## 1. Quotas Mensuels et Journaliers par Forfait
 
-| Forfait | Quota Requêtes API (Mensuel) | Modèles Textes Accessibles | Quota Images (Journalier) | Modèles d'Images |
+| Forfait | Quota Requêtes API (Hebdomadaire) | Modèles Textes Accessibles | Quota Images (Journalier) | Modèles d'Images |
 | :--- | :--- | :--- | :--- | :--- |
-| **Free** | **1 000 requêtes / mois** | Modèles étiquetés `:free` | **3 images / jour** | FLUX.1 Schnell |
-| **Plus** | **5 000 requêtes / mois** | Tous modèles mAI & Cloud | **5 images / jour** | Tous modèles (FLUX, Pro, etc.) |
-| **Pro** | **25 000 requêtes / mois** | Tous modèles (Priorité Haute) | **10 images / jour** | Tous modèles (FLUX, Pro, etc.) |
-| **Max** | **100 000 requêtes / mois** | Tous modèles (Débit Dédié) | **20 images / jour** | Tous modèles (FLUX, Pro, etc.) |
+| **Free** | **500 requêtes / semaine** | Modèles étiquetés `:free` | **3 images / jour** | FLUX.1 Schnell |
+| **Plus** | **1 500 requêtes / semaine** | Tous modèles mAI & Cloud | **5 images / jour** | Tous modèles (FLUX, Pro, etc.) |
+| **Pro** | **3 000 requêtes / semaine** | Tous modèles (Priorité Haute) | **10 images / jour** | Tous modèles (FLUX, Pro, etc.) |
+| **Max** | **7 500 requêtes / semaine** | Tous modèles (Débit Dédié) | **20 images / jour** | Tous modèles (FLUX, Pro, etc.) |
 
 > [!NOTE]
-> Les compteurs de requêtes mensuelles sont automatiquement réinitialisés le 1er de chaque mois à 00:00 UTC. Les quotas de génération d'images sont réinitialisés chaque jour à minuit UTC.
+> Les compteurs de requêtes hebdomadaires sont automatiquement réinitialisés le lundi à 00:00 UTC. Les quotas de génération d'images sont réinitialisés chaque jour à minuit UTC.
 
 ---
 
@@ -47,7 +47,7 @@ Toutes les erreurs sont retournées avec une structure JSON normalisée :
 {
   "error": {
     "code": "quota_exceeded",
-    "message": "Limite globale de requêtes API atteinte pour votre forfait (Free : 1000 requêtes max/mois). Veuillez mettre à niveau votre forfait.",
+    "message": "Limite globale de requêtes API atteinte pour votre forfait (Free : 500 requêtes max/semaine). Veuillez mettre à niveau votre forfait.",
     "type": "permission_error",
     "param": null
   }

@@ -24,9 +24,11 @@ function PureStopButton({
 
   return (
     <Button
+      aria-label="Arrêter la génération"
       className="h-7 w-7 rounded-xl bg-foreground p-1 text-background transition-all duration-200 hover:opacity-85 active:scale-95 disabled:bg-muted disabled:text-muted-foreground/25 disabled:cursor-not-allowed"
       data-testid="stop-button"
       onClick={handleClick}
+      title="Arrêter la génération"
     >
       <StopIcon size={14} />
     </Button>

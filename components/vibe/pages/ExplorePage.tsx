@@ -307,7 +307,12 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({
       if (overrideTab) {
         setActiveTab(overrideTab);
       } else if (isHashtag) {
-        setActiveTab("hashtags");
+        // Privilégier les publications trouvées pour ce hashtag, ou retomber sur l'onglet hashtags
+        if (postsRes.status === "fulfilled" && postsRes.value.length > 0) {
+          setActiveTab("posts");
+        } else {
+          setActiveTab("hashtags");
+        }
       } else if (
         usersRes.status === "fulfilled" &&
         usersRes.value.length >

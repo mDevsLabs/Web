@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { resolveAuthorizationHeader } from "@/lib/site/session-bearer";
 
 export async function GET(
   req: NextRequest,
@@ -6,7 +7,7 @@ export async function GET(
 ) {
   const { id } = await params;
   try {
-    const authHeader = req.headers.get("authorization") || "";
+    const authHeader = await resolveAuthorizationHeader(req);
     const res = await fetch(`https://mai.val.run/v1/projects/${id}`, {
       headers: { Authorization: authHeader },
     });
@@ -120,7 +121,7 @@ export async function PUT(
   const { id } = await params;
   try {
     const body = await req.json();
-    const authHeader = req.headers.get("authorization") || "";
+    const authHeader = await resolveAuthorizationHeader(req);
     const res = await fetch(`https://mai.val.run/v1/projects/${id}`, {
       body: JSON.stringify(body),
       headers: {
@@ -162,7 +163,7 @@ export async function DELETE(
 ) {
   const { id } = await params;
   try {
-    const authHeader = req.headers.get("authorization") || "";
+    const authHeader = await resolveAuthorizationHeader(req);
     const res = await fetch(`https://mai.val.run/v1/projects/${id}`, {
       headers: { Authorization: authHeader },
       method: "DELETE",

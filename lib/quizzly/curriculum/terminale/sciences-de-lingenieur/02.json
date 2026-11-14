@@ -1,0 +1,2693 @@
+{
+  "id": "terminale-sciences-de-lingenieur-02",
+  "year": "terminale",
+  "subject": "sciences-de-lingenieur",
+  "order": 2,
+  "title": "Systèmes multiphysiques et réseaux",
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Modélisation causale et acausale",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Principes causaux et acausaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent une modélisation acausale ?",
+              "options": [
+                "Équations sous forme algébrico-différentielle non orientée",
+                "Fixation préalable des entrées et sorties pour chaque bloc",
+                "Connexion de composants par ports physiques d'échange de puissance",
+                "Calcul séquentiel imposé par le sens des flèches"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'approche acausale repose sur des équations d'équilibre sans orienter a priori le flux de calcul."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une modélisation causale de type schéma-bloc, que représente une liaison fléchée ?",
+              "options": [
+                "Un transfert de matière réel",
+                "Un signal orienté d'information",
+                "Une connexion électrique bifilaire",
+                "Une tuyauterie hydraulique sans perte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En modélisation causale, les liaisons transmettent une variable mathématique sans réaction amont."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel langage standardisé illustre l'approche acausale multiphysique ?",
+              "options": ["Modelica", "HTML5", "Ladder", "SQL"],
+              "correctAnswers": [0],
+              "explanation": "Modelica est conçu pour la modélisation acausale par composants physiques interconnectés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel inconvénient majeur présente la modélisation causale d'un système réversible ?",
+              "options": [
+                "Elle interdit les calculs discrets",
+                "Elle exige de réécrire le schéma si la charge devient motrice",
+                "Elle ne s'applique qu'à la thermique",
+                "Elle supprime toutes les équations différentielles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans un modèle causal, inverser la cause et l'effet oblige à restructurer entièrement les blocs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un schéma-bloc, que calcule un sommateur ?",
+              "options": [
+                "La somme algébrique de signaux d'entrée",
+                "La puissance instantanée dissipée",
+                "L'intégrale temporelle du signal",
+                "Le produit des impédances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sommateur réalise l'addition ou la soustraction de grandeurs causales de même nature."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la causalité intégrale est-elle préférée en simulation causale ?",
+              "options": [
+                "Elle évite l'amplification du bruit numérique de dérivation",
+                "Elle supprime la masse des actionneurs",
+                "Elle rend les équations non linéaires",
+                "Elle garantit un temps de calcul infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intégration numérique filtre les bruits de calcul, tandis que la dérivation les amplifie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la bidirectionnalité énergétique d'une connexion acausale ?",
+              "options": [
+                "Le flux de puissance peut s'inverser selon l'état du système",
+                "La tension électrique est toujours nulle",
+                "L'énergie est absorbée deux fois",
+                "Le signal circule uniquement vers la droite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le produit des deux variables conjuguées donne une puissance pouvant être positive ou négative."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sous quel format mathématique se formule un modèle acausale complet ?",
+              "options": [
+                "Système DAE (équations différentielles algébriques)",
+                "Équations aux dérivées partielles strictes",
+                "Polynôme à une seule inconnue",
+                "Table de vérité combinatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modèles acausaux combinent équations de comportement et lois de Kirchhoff (systèmes DAE)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel outil de simulation applique historiquement la causalité stricte ?",
+              "options": [
+                "Simulink classique par blocs",
+                "Dymola pur acausal",
+                "OpenModelica standard",
+                "Simscape Foundation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simulink standard fonctionne par flot de calcul orienté d'entrée vers sortie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une liaison acausale mécanique de rotation, quelles variables sont associées ?",
+              "options": [
+                "Couple et vitesse angulaire",
+                "Force et déplacement rectiligne",
+                "Pression et débit volumique",
+                "Tension et courant électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En rotation, le couple (effort) et la vitesse angulaire (flux) forment la paire de puissance."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Variables d'effort et de flux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires associent correctement variable d'effort (e) et de flux (f) ?",
+              "options": [
+                "Électrique : Tension (e) et Courant (f)",
+                "Hydraulique : Pression (e) et Débit volumique (f)",
+                "Mécanique de translation : Déplacement (e) et Masse (f)",
+                "Thermique : Température (f) et Flux de chaleur (e)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La tension et la pression sont des grandeurs d'effort ; l'intensité et le débit sont des flux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la puissance instantanée transmise par un port multiphysique ?",
+              "options": [
+                "Produit de l'effort par le flux : P = e × f",
+                "Rapport de l'effort sur le flux : P = e / f",
+                "Somme de l'effort et du flux : P = e + f",
+                "Dérivée temporelle de l'effort seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la théorie des systèmes, la puissance instantanée est le produit de la variable d'effort et de flux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la variable de flux en mécanique de translation ?",
+              "options": [
+                "La vitesse linéaire v",
+                "La force appliquée F",
+                "La raideur du ressort k",
+                "La position initiale x0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse est la variable cinématique traversante (flux), la force étant l'effort."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle variable est considérée comme une variable d'état de potentiel (across variable) ?",
+              "options": [
+                "La tension électrique U",
+                "Le courant I",
+                "Le débit massique qm",
+                "L'entropie générée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension est mesurée entre deux points de potentiel distincts (grandeur across ou effort)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle loi régit la somme des flux à un nœud de connexion acausale ?",
+              "options": [
+                "La somme algébrique des flux est nulle",
+                "La somme des flux égale la tension",
+                "Le produit des flux est constant",
+                "Le flux maximal impose la cadence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la généralisation de la loi des nœuds de Kirchhoff (conservation du flux)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle égalité est imposée entre les efforts aux bornes d'un nœud acausal ?",
+              "options": [
+                "Égalité stricte de l'effort pour tous les ports connectés",
+                "Somme des efforts égale à zéro",
+                "Multiplication des efforts par le nombre de branches",
+                "Différence d'effort proportionnelle au flux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les ports connectés à un même nœud partagent la même grandeur d'effort (potentiel commun)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En thermique, quelle grandeur joue le rôle du flux d'énergie ?",
+              "options": [
+                "Le flux thermique en watts",
+                "La capacité calorifique",
+                "La résistance thermique en K/W",
+                "La température en kelvins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le flux thermique (puissance thermique en W) est la grandeur de flux échangée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'énergie stockée dans une inductance L parcourue par un courant i vaut :",
+              "options": [
+                "E = 1/2 · L · i²",
+                "E = L · i",
+                "E = 1/2 · L · u²",
+                "E = L / i"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inductance emmagasine de l'énergie magnétique proportionnelle au carré du flux de courant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle analogie mécanique correspond à l'énergie cinétique d'une masse E = 1/2 · M · v² ?",
+              "options": [
+                "L'inductance électrique E = 1/2 · L · i²",
+                "Le condensateur électrique E = 1/2 · C · u²",
+                "La résistance pure E = R · i² · t",
+                "La diode zener bloquante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse (inertie) stocke l'énergie sous forme cinétique, analogue à l'énergie magnétique d'une bobine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'unité SI de la variable d'effort hydraulique (pression) ?",
+              "options": [
+                "Le pascal (Pa)",
+                "Le litre par minute (L/min)",
+                "Le newton-mètre (N·m)",
+                "Le joule par seconde (J/s)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pascal équivaut à 1 N/m² et représente l'effort surfacique en hydraulique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Modelica et connecteurs physiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans la définition d'un connecteur Modelica, que précise le mot-clé 'flow' ?",
+              "options": [
+                "La variable obéit à la loi de conservation des nœuds (somme nulle)",
+                "La variable représente une quantité conservative traversante",
+                "La variable prend la même valeur sur toutes les branches du nœud",
+                "La variable est obligatoirement positive et croissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le préfixe 'flow' impose la somme algébrique nulle lors de la connexion de plusieurs composants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'écrit une égalité de comportement acausale en Modelica ?",
+              "options": ["a = b;", "a := b;", "a == b;", "assign(a, b);"],
+              "correctAnswers": [0],
+              "explanation": "En Modelica, le signe '=' dénote une équation mathématique bidirectionnelle, non une affectation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle fonction Modelica représente la dérivée temporelle d'une variable x ?",
+              "options": ["der(x)", "diff(x)", "dx_dt(x)", "integral(x)"],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur 'der(x)' calcule formellement la dérivée par rapport au temps continu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composant relie les lois de Kirchhoff à deux bornes électriques en Modelica ?",
+              "options": [
+                "Modelica.Electrical.Analog.Interfaces.OnePort",
+                "Modelica.Blocks.Sources.Step",
+                "Modelica.Mechanics.Translational.Sensors.ForceSensor",
+                "Modelica.Fluid.Valves.Simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "OnePort est le modèle de base à deux broches (p et n) définissant v = p.v - n.v et p.i + n.i = 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que génère l'environnement de compilation Modelica avant la simulation numérique ?",
+              "options": [
+                "Un tri causal des équations et la réduction de l'indice différentiel",
+                "Une image vectorielle du schéma électrique",
+                "Un fichier audio au format WAV",
+                "Une base de données relationnelle chiffrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compilateur analyse l'index structural (algorithme de Pantelides) pour transformer les DAE en ODE."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la compatibilité multiphysique native de Modelica ?",
+              "options": [
+                "Pouvoir coupler mécanique, électronique, thermique et hydraulique dans un même modèle",
+                "Nécessiter un ordinateur différent pour chaque domaine physique",
+                "Limiter les modèles aux systèmes linéaires stationnaires",
+                "Convertir tous les composants en circuits logiques booléens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modelica unifie tous les domaines grâce aux concepts universels d'effort, de flux et d'énergie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un connecteur mécanique rotationnel Modelica 'Flange', quelle est la variable sans préfixe flow ?",
+              "options": [
+                "L'angle de rotation phi",
+                "Le couple tau",
+                "Le moment d'inertie J",
+                "La puissance P"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'angle de rotation est la grandeur de potentiel (identique au point de jonction), le couple portant le préfixe flow."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que réalise l'instruction 'connect(pinA, pinB)' en Modelica ?",
+              "options": [
+                "Elle pose les équations d'égalité des potentiels et de somme des flux",
+                "Elle détruit le composant le moins chargé",
+                "Elle crée une boucle de calcul infinie",
+                "Elle attribue un numéro IP à chaque broche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'instruction connect engendre automatiquement les équations de conservation au point de raccordement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle bibliothèque open-source offre un environnement complet de développement Modelica ?",
+              "options": [
+                "OpenModelica",
+                "TensorFlow",
+                "Apache Tomcat",
+                "Docker Desktop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "OpenModelica est l'environnement libre de référence pour éditer et simuler des modèles Modelica."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un bloc Modelica purement causal (Modelica.Blocks), comment sont identifiés les ports ?",
+              "options": [
+                "Par RealInput et RealOutput",
+                "Par Flange_a et Flange_b",
+                "Par PositivePin et NegativePin",
+                "Par HeatPort_a et HeatPort_b"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les blocs causaux traitent des grandeurs unidirectionnelles étiquetées comme entrées ou sorties."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Schémas-blocs et modélisation causale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles opérations élémentaires sont directement réalisées par les blocs de base d'un schéma-bloc causal ?",
+              "options": [
+                "Gain proportionnel",
+                "Intégration temporelle",
+                "Conservation de l'énergie réversible par couplage thermique",
+                "Équilibre instantané de flux sans orientation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les schémas-blocs exécutent des opérations mathématiques orientées : amplification, intégration, sommation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le domaine de Laplace, quelle est la fonction de transfert d'un intégrateur pur ?",
+              "options": ["1 / p", "p", "1 / (1 + p)", "K · p"],
+              "correctAnswers": [0],
+              "explanation": "L'intégration temporelle d'un signal correspond à la division par l'opérateur de Laplace p."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle relation définit la transmittance en boucle fermée T(p) d'un système à retour unitaire de boucle ouverte G(p) ?",
+              "options": [
+                "T(p) = G(p) / (1 + G(p))",
+                "T(p) = G(p) · (1 + G(p))",
+                "T(p) = 1 / (1 + G(p))",
+                "T(p) = G(p) - 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule de Black pour un retour unitaire négatif donne T(p) = G(p) / (1 + G(p))."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que traduit une boucle algébrique dans un schéma causal ?",
+              "options": [
+                "Une dépendance circulaire instantanée sans retard ni intégration",
+                "Un filtre passe-bas d'ordre supérieur",
+                "Une dissipation thermique réversible",
+                "Un convertisseur analogique-numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une boucle algébrique survient quand une sortie dépend de sa propre valeur sans état dynamique intermédiaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment le solveur numérique traite-t-il généralement une boucle algébrique ?",
+              "options": [
+                "Par un algorithme itératif de résolution non linéaire à chaque pas de temps",
+                "En divisant la fréquence d'échantillonnage par deux",
+                "En ignorant complètement la sortie du bloc",
+                "En réinitialisant le modèle à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les boucles algébriques exigent des itérations numériques (type Newton-Raphson), ralentissant le calcul."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme canonique représente un système linéaire du premier ordre ?",
+              "options": [
+                "K / (1 + τ·p)",
+                "K / (1 + 2·z·p/ω0 + p²/ω0²)",
+                "K · p",
+                "K / p²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un premier ordre se caractérise par son gain statique K et sa constante de temps τ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que vaut la réponse indicielle à t = τ d'un système du 1er ordre soumis à un échelon unitaire ?",
+              "options": [
+                "Environ 63 % de la valeur finale",
+                "100 % de la valeur finale",
+                "50 % de la valeur finale",
+                "95 % de la valeur finale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À t = τ, la sortie atteint 1 - e^(-1) ≈ 0,632 soit environ 63 % du régime permanent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel paramètre gouverne l'amortissement d'un système du second ordre ?",
+              "options": [
+                "Le coefficient d'amortissement z (ou xi)",
+                "Le temps de propagation acoustique",
+                "La résistance thermique interne",
+                "Le nombre de pôles à partie réelle positive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient d'amortissement z détermine l'existence ou non d'oscillations et de dépassements."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour quelle valeur de z observe-t-on un dépassement lors d'une réponse indicielle du second ordre ?",
+              "options": ["z < 1", "z = 1", "z > 1", "z = 2"],
+              "correctAnswers": [0],
+              "explanation": "Lorsque z < 1, le régime est pseudo-périodique et présente un ou plusieurs dépassements."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que devient la transmittance équivalente de deux blocs G1(p) et G2(p) branchés en série ?",
+              "options": [
+                "G1(p) · G2(p)",
+                "G1(p) + G2(p)",
+                "G1(p) / G2(p)",
+                "G1(p) - G2(p)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cascade sans effet de charge, les transmittances s'associent par multiplication de leurs fonctions."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Analogies électromécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le modèle causal d'un moteur à courant continu à aimants permanents, quelles équations fondamentales sont couplées ?",
+              "options": [
+                "Équation électrique : u(t) = R·i(t) + L·di/dt + e(t)",
+                "Équation mécanique : J·dω/dt = C_m(t) - C_r(t) - f·ω(t)",
+                "Équation d'onde électromagnétique transverse",
+                "Loi de décroissance radioactive du cuivre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le moteur à courant continu couple la loi des mailles électrique et le principe fondamental de la dynamique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'exprime la force contre-électromotrice e(t) en fonction de la vitesse angulaire ω(t) ?",
+              "options": [
+                "e(t) = k_e · ω(t)",
+                "e(t) = k_e / ω(t)",
+                "e(t) = k_e · dω/dt",
+                "e(t) = k_e · i(t)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension induite dans l'induit est directement proportionnelle à la vitesse de rotation (e = k_e · ω)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment s'exprime le couple électromagnétique moteur C_m(t) en fonction du courant d'induit i(t) ?",
+              "options": [
+                "C_m(t) = k_c · i(t)",
+                "C_m(t) = k_c · u(t)",
+                "C_m(t) = k_c / i(t)",
+                "C_m(t) = k_c · di/dt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le couple développé par le rotor est proportionnel à l'intensité du courant traversant l'induit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En unités du Système International (SI), quelle relation lie la constante de couple k_c et la constante de f.c.e.m. k_e ?",
+              "options": [
+                "k_c = k_e",
+                "k_c = 2·π · k_e",
+                "k_c = k_e²",
+                "k_c = 1 / k_e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En unités SI strictes (N·m/A et V/(rad/s)), la conservation de la puissance impose k_c = k_e."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la grandeur d'effort duale de la force en mécanique de rotation ?",
+              "options": [
+                "Le couple (ou moment)",
+                "L'angle de rotation",
+                "La vitesse tangentielle",
+                "Le coefficient de frottement sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le couple (en N·m) est l'effort mécanique qui tend à provoquer la rotation d'un solide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle grandeur mécanique joue le rôle de dissipation analogue à la résistance électrique R ?",
+              "options": [
+                "Le coefficient de frottement visqueux f",
+                "Le moment d'inertie J",
+                "La raideur élastique k",
+                "La masse pesante m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le frottement visqueux dissipe l'énergie mécanique en chaleur par C = f·ω, tout comme u = R·i."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans l'analogie d'impédance directe (force-tension), à quoi correspond un ressort de raideur k ?",
+              "options": [
+                "À l'inverse d'une capacité électrique (1/C)",
+                "À une inductance pure L",
+                "À une résistance ohmique R",
+                "À une source de courant idéale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un ressort, F = k · ∫v dt, ce qui correspond à u = (1/C) · ∫i dt en électricité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel effet produit une réduction de vitesse par engrenages sur le couple disponible ?",
+              "options": [
+                "Le couple est multiplié par le rapport de réduction (aux pertes près)",
+                "Le couple est divisé par le carré du rapport",
+                "Le couple reste rigoureusement identique",
+                "Le couple est annulé à basse vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À puissance constante, diviser la vitesse angulaire par r multiplie le couple transmis par r."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut l'inertie équivalente ramenée sur l'arbre moteur d'une charge J_c via un réducteur de rapport r = ω_charge / ω_moteur ?",
+              "options": [
+                "J_ramenée = r² · J_c",
+                "J_ramenée = J_c / r",
+                "J_ramenée = r · J_c",
+                "J_ramenée = J_c²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie cinétique 1/2·J·ω² montre que l'inertie de la charge est divisée ou multipliée par r² selon le rapport."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que mesure la constante de temps électromécanique d'un actionneur ?",
+              "options": [
+                "Le temps nécessaire au rotor pour accélérer sous l'action du couple moteur",
+                "Le temps de propagation de la lumière dans le câble",
+                "La durée de démagnétisation des aimants",
+                "La période de découpage de l'onduleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La constante de temps mécanique τ_m = R·J / (k_c·k_e) caractérise la réponse en vitesse de la masse tournante."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Domaines hydraulique et thermique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles analogies physiques sont valides entre les domaines hydraulique et électrique ?",
+              "options": [
+                "La différence de pression ΔP s'assimile à la tension U",
+                "Le débit volumique Q s'assimile à l'intensité du courant I",
+                "La viscosité cinématique s'assimile à la fréquence du réseau",
+                "La compressibilité du fluide s'assimile à une diode bloquante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La pression motrice est l'effort et le débit volumique est le flux de charge fluide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle équation exprime la loi d'Ohm hydraulique en écoulement laminaire (loi de Poiseuille) ?",
+              "options": [
+                "ΔP = R_h · Q",
+                "ΔP = R_h · Q²",
+                "ΔP = R_h / Q",
+                "ΔP = Q · dQ/dt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En régime laminaire, la perte de charge régulière est proportionnelle au débit volumique (ΔP = R_h · Q)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En régime turbulent rugueux, comment évolue la perte de charge avec le débit volumique ?",
+              "options": [
+                "Elle est proportionnelle au carré du débit (Q²)",
+                "Elle reste indépendante du débit",
+                "Elle décroît linéairement",
+                "Elle est inversement proportionnelle à la racine de Q"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En écoulement turbulent, les pertes de charge singulières et régulières suivent une loi quadratique en Q²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composant hydraulique stocke de l'énergie sous forme de pression à la manière d'un condensateur ?",
+              "options": [
+                "L'accumulateur hydropneumatique",
+                "Le clapet anti-retour simple",
+                "Le distributeur à tiroir 4/3",
+                "Le limiteur de pression taré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accumulateur emmagasine un volume d'huile sous pression grâce à une poche d'azote compressible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la puissance hydraulique instantanée fournie par une pompe sans fuite ?",
+              "options": [
+                "P = ΔP · Q",
+                "P = ΔP / Q",
+                "P = 1/2 · ρ · Q",
+                "P = ΔP² · Q"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le produit de la pression différentielle (effort) et du débit volumique (flux) donne la puissance en watts."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En modélisation thermique par conduction (loi de Fourier), quelle grandeur représente l'effort ?",
+              "options": [
+                "L'écart de température ΔT",
+                "Le flux thermique en watts",
+                "La chaleur massique en J/(kg·K)",
+                "La surface de contact en m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La différence de température est le potentiel thermique moteur induisant le transfert de chaleur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la résistance thermique de conduction R_th d'une paroi plane d'épaisseur e, de surface S et de conductivité λ ?",
+              "options": [
+                "R_th = e / (λ · S)",
+                "R_th = (λ · S) / e",
+                "R_th = λ · e · S",
+                "R_th = S / (λ · e)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance thermique conductive augmente avec l'épaisseur et diminue avec la conductivité et la surface."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle analogie électrique correspond à la capacité thermique C_th = m · c ?",
+              "options": [
+                "Le condensateur électrique C",
+                "L'inductance pure L",
+                "Le transformateur idéal",
+                "La diode électroluminescente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La capacité thermique accumule la chaleur par Q_e = C_th · ΔT, analogue à la charge q = C · U."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi n'existe-t-il pas d'inertie thermique équivalente à une inductance pure en thermique classique ?",
+              "options": [
+                "La chaleur obéit à un phénomène purement diffusif sans oscillation intrinsèque",
+                "La température ne peut jamais être mesurée en kelvins",
+                "Le premier principe de la thermodynamique l'interdit dans l'espace",
+                "Les isolants ont une masse toujours nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transfert thermique est purement dissipatif et diffusif (pas de stockage d'énergie cinétique thermique réversible)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la constante de temps thermique d'un solide de capacité C_th refroidi à travers une résistance R_th ?",
+              "options": [
+                "τ = R_th · C_th",
+                "τ = R_th / C_th",
+                "τ = C_th / R_th",
+                "τ = √(R_th · C_th)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La constante de temps caractérisant l'échauffement ou le refroidissement vaut le produit R_th · C_th."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Bond Graphs et transfert de puissance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments passifs fondamentaux constituent le formalisme Bond Graph ?",
+              "options": [
+                "Élément R : dissipation d'énergie",
+                "Éléments I et C : stockage réversible d'énergie",
+                "Élément X : création spontanée de puissance",
+                "Élément Z : inversion du sens du temps"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les Bond Graphs structurent la physique autour des éléments R (dissipation), I (inertie) et C (élasticité/capacité)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que symbolise la demi-flèche sur un lien de puissance dans un Bond Graph ?",
+              "options": [
+                "Le sens algébrique de transfert positif de la puissance",
+                "L'orientation irréversible du courant électrique",
+                "L'obligation de brancher une résistance",
+                "Le sens de rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La demi-flèche fixe la convention de signe positif pour le flux d'énergie instantané."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que désigne le trait causal perpendiculaire à l'extrémité d'un lien Bond Graph ?",
+              "options": [
+                "Le côté qui reçoit l'effort et impose le flux en réponse",
+                "La borne de mise à la masse",
+                "Le point de rupture mécanique",
+                "Une diode passante sans seuil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le trait causal indique où est appliqué l'effort ; l'autre extrémité définit la variable de flux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une jonction '0' (isopotentielle), quelle règle s'applique aux variables ?",
+              "options": [
+                "Effort commun à tous les liens et somme des flux nulle",
+                "Flux commun à tous les liens et somme des efforts nulle",
+                "Produit des efforts égal à l'unité",
+                "Tous les flux sont strictement égaux et positifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jonction 0 généralise le nœud de tension : effort identique sur chaque branche et somme des flux nulle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une jonction '1' (isoflux), quelle règle s'applique aux variables ?",
+              "options": [
+                "Flux commun à tous les liens et somme des efforts nulle",
+                "Effort commun à tous les liens et somme des flux nulle",
+                "Puissance nulle sur chaque lien individuel",
+                "Suppression de la variable de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jonction 1 correspond à une mise en série : flux commun et somme algébrique des efforts nulle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel composant Bond Graph conserve la puissance en transformant un couple (e1, f1) en (e2, f2) sans stockage ?",
+              "options": [
+                "Le transformateur TF ou le gyrateur GY",
+                "L'élément R dissipatif",
+                "La source d'effort Se",
+                "La capacité hydraulique C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TF et GY sont des jonctions à deux ports conservatives de puissance (P1 = P2)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment le transformateur TF relie-t-il les efforts par rapport à son module m ?",
+              "options": [
+                "e1 = m · e2 et f2 = m · f1",
+                "e1 = e2 / m et f2 = f1 / m",
+                "e1 = e2 + m et f1 = f2 - m",
+                "e1 = m² · f2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour conserver la puissance (e1·f1 = e2·f2), si e1 = m·e2, alors f2 = m·f1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel système physique correspond typiquement à un gyrateur GY ?",
+              "options": [
+                "Le moteur à courant continu (couplage e = k·ω et C = k·i)",
+                "Un transformateur monophasé parfait",
+                "Un réducteur à pignons droits",
+                "Un levier mécanique indéformable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moteur DC croise effort et flux (tension vers couple, vitesse vers courant), signature d'un gyrateur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour un élément I (inertie), quelle causalité évite la dérivation numérique ?",
+              "options": [
+                "Causalité intégrale : l'effort est imposé en entrée et le flux est calculé en sortie",
+                "Causalité différentielle : le flux est imposé en entrée",
+                "Causalité aléatoire selon le pas de temps",
+                "Causalité bloquée par un relais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En causalité intégrale, f = (1/I) · ∫ e dt, ce qui assure une intégration numérique stable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel avantage clé offre l'analyse causale d'un Bond Graph avant simulation ?",
+              "options": [
+                "Détecter immédiatement les dépendances différentielles et les conflits de causalité",
+                "Remplacer l'ordinateur par un calcul analogique passif",
+                "Garantir un rendement énergétique de 100 %",
+                "Éliminer le frottement dans les mécanismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'assignation des traits de causalité (méthode SCAP) met en évidence l'ordre du système et les boucles algébriques."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Résolution et solveurs numériques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles méthodes numériques sont couramment employées pour intégrer les équations différentielles ordinaires (ODE) ?",
+              "options": [
+                "Méthode d'Euler explicite ou implicite",
+                "Méthodes de Runge-Kutta (ex: RK4)",
+                "Algorithme de Dijkstra pour les graphes",
+                "Transformée de Fourier discrète sans fenêtre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Euler et Runge-Kutta sont les familles d'intégrateurs temporels pas à pas de référence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la méthode d'Euler explicite avec un pas h, comment s'estime la valeur y(t + h) à partir de dy/dt = f(t, y) ?",
+              "options": [
+                "y(t + h) = y(t) + h · f(t, y(t))",
+                "y(t + h) = y(t) + f(t, y(t)) / h",
+                "y(t + h) = y(t) - h · f(t + h, y(t + h))",
+                "y(t + h) = h² · f(t, y(t))"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Euler explicite avance le long de la tangente locale calculée au début de l'intervalle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle condition sur le pas de calcul h garantit la stabilité d'Euler explicite sur un système du 1er ordre dy/dt = -y/τ ?",
+              "options": [
+                "h < 2·τ",
+                "h > 10·τ",
+                "h = τ²",
+                "Le pas peut être arbitrairement grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si h > 2·τ, l'erreur s'amplifie d'une itération à l'autre et la solution numérique diverge."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les solveurs implicites (ex: Euler implicite, BDF) sont-ils recommandés pour les systèmes raides (stiff) ?",
+              "options": [
+                "Ils possèdent un domaine de stabilité inconditionnel permettant des pas plus grands",
+                "Ils ne nécessitent aucune inversion de matrice",
+                "Ils fonctionnent sans connaître l'état initial",
+                "Ils annulent instantanément les non-linéarités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les systèmes raides présentent des constantes de temps très disparates que les solveurs implicites stabilisent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le principe d'un solveur à pas variable ?",
+              "options": [
+                "Ajuster automatiquement le pas h pour maintenir l'erreur locale estimée sous une tolérance fixée",
+                "Changer aléatoirement de pas de calcul à chaque seconde",
+                "Utiliser toujours le pas de calcul le plus long possible",
+                "Diviser le temps par zéro lors des discontinuités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pas se resserre lors des transitoires rapides et s'élargit en régime quasi-stationnaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que désigne l'indice différentiel d'un système d'équations algébrico-différentielles (DAE) ?",
+              "options": [
+                "Le nombre minimal de dérivations nécessaires pour ramener le système à des équations différentielles ordinaires",
+                "Le nombre total de variables d'entrée du modèle",
+                "Le temps d'exécution en microsecondes du code compilé",
+                "L'ordre du filtre anti-repliement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système DAE d'indice 1 est simulable directement, un indice supérieur exige une réduction symbolique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel problème numérique engendre une discontinuité brutale (ex: butée mécanique franche ou choc) ?",
+              "options": [
+                "Un écroulement du pas de temps ou des oscillations parasites autour du seuil",
+                "Une division par l'infini sans avertissement",
+                "L'inversion du signe de la constante de gravitation",
+                "Une accélération anormale de la simulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les solveurs à pas variable réduisent drastiquement h pour localiser l'événement de commutation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la tolérance relative (reltol) configurée dans un simulateur numérique ?",
+              "options": [
+                "L'erreur acceptable exprimée en fraction de la valeur de la variable d'état",
+                "Le décalage horaire de l'horloge du processeur",
+                "La marge de sécurité sur la puissance crête des actionneurs",
+                "Le nombre de décimales affichées à l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une tolérance de 1e-4 signifie que l'erreur estimée ne doit pas excéder 0,01 % de la grandeur calculée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel solveur d'ordre 4 est réputé pour son compromis robustesse/précision à pas fixe ?",
+              "options": [
+                "Runge-Kutta d'ordre 4 (RK4)",
+                "Méthode des trapèzes sans amortisseur",
+                "Euler rétrograde d'ordre 0",
+                "Interpolation linéaire de Lagrange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RK4 calcule quatre pentes pondérées par intervalle pour minimiser l'erreur de troncature locale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que risque-t-il d'arriver si le pas de calcul d'une simulation temps réel dépasse la période d'échantillonnage de la cible ?",
+              "options": [
+                "Un dépassement de temps d'exécution (overrun) rompant le temps réel",
+                "Une amélioration spectaculaire de la précision",
+                "Une baisse automatique de la température ambiante",
+                "Un redémarrage du moteur thermique virtuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le calcul prend plus de temps que la période physique allouée, la synchronisation temps réel échoue."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Linéarisation et non-linéarités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles non-linéarités courantes rencontrent les ingénieurs lors de la modélisation de mécanismes réels ?",
+              "options": [
+                "Saturation d'amplitude (ex: tension maximale d'amplificateur)",
+                "Zone morte (seuil minimal avant mouvement)",
+                "Gain constant indépendant de la pulsation",
+                "Intégrateur parfait linéaire sans dérive"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La saturation, la zone morte et le frottement sec sont des non-linéarités statiques typiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel outil mathématique permet de linéariser une fonction non linéaire f(x) autour d'un point de fonctionnement x0 ?",
+              "options": [
+                "Le développement limité de Taylor au premier ordre",
+                "La décomposition en éléments simples de Fourier",
+                "L'inversion matricielle de Hilbert",
+                "Le produit vectoriel dans l'espace euclidien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au premier ordre, f(x) ≈ f(x0) + f'(x0)·(x - x0), ce qui fournit un modèle tangent linéaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la condition de validité d'un modèle linéaire obtenu par développement de Taylor ?",
+              "options": [
+                "Les signaux doivent rester dans un petit voisinage du point d'équilibre choisi",
+                "Le système doit fonctionner à température nulle",
+                "La vitesse doit obligatoirement dépasser la vitesse du son",
+                "La commande doit être une onde sinusoïdale pure de 50 Hz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La linéarisation n'est exacte que pour de petits écarts autour du point de fonctionnement nominal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment modélise-t-on le frottement sec de Coulomb dans un système mécanique ?",
+              "options": [
+                "Une force de frottement opposée à la vitesse, constante en amplitude dès que v ≠ 0",
+                "Une force proportionnelle au cube de la position",
+                "Une résistance thermique qui décroît avec le temps",
+                "Une augmentation exponentielle de la masse du solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le frottement de Coulomb dépend du signe de la vitesse : F_frottement = -F_c · signe(v)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que provoque le phénomène d'hystérésis dans un actionneur piézoélectrique ou magnétique ?",
+              "options": [
+                "La sortie dépend non seulement de l'entrée actuelle mais aussi de l'historique de sollicitation",
+                "L'énergie est restituée au réseau sans perte",
+                "La pulsation de résonance devient imaginaire pure",
+                "La vitesse du signal dépasse la vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hystérésis crée une trajectoire d'aller différente de celle du retour, formant un cycle fermé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel effet néfaste produit la saturation d'un intégrateur dans une boucle d'asservissement ?",
+              "options": [
+                "L'emballement de l'intégrateur (windup) provoquant d'importants dépassements",
+                "Une réduction immédiate de la consommation d'énergie",
+                "La suppression automatique de tous les bruits de mesure",
+                "Un basculement irréversible vers un état chaotique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anti-windup est indispensable pour empêcher l'intégrateur d'accumuler une erreur fictive quand la commande sature."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la linéarisation de l'équation pendulaire J·d²θ/dt² + m·g·L·sin(θ) = 0 pour de petites oscillations autour de 0 ?",
+              "options": [
+                "sin(θ) ≈ θ, d'où J·d²θ/dt² + m·g·L·θ = 0",
+                "sin(θ) ≈ 1, d'où mouvement uniforme",
+                "sin(θ) ≈ θ², d'où équation de Riccati",
+                "sin(θ) ≈ 0, d'où accélération nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au voisinage de 0 rad, sin(θ) ≈ θ, ce qui transforme l'équation en oscillateur harmonique linéaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que décrit le jeu mécanique (backlash) entre deux dentures d'engrenage ?",
+              "options": [
+                "Une zone morte angulaire lors de l'inversion du sens de rotation",
+                "Une usure par frottement purement fluide",
+                "Une lubrification optimale sans contact",
+                "Un glissement permanent à vitesse constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le jeu mécanique impose une course morte où le pignon menant tourne sans entraîner le pignon mené."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel schéma de compensation évite le débordement de l'action intégrale lors d'une saturation de commande ?",
+              "options": [
+                "Dispositif anti-windup (anti-emballement)",
+                "Filtre de Kalman étendu sans gain",
+                "Amplificateur opérationnel différentiel",
+                "Dérivateur pur non borné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dispositif anti-windup gèle ou décharge l'intégrateur lorsque l'actionneur atteint sa butée physique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la transformée de Laplace ne s'applique-t-elle pas directement aux équations non linéaires ?",
+              "options": [
+                "Le principe de superposition n'est plus valable pour un système non linéaire",
+                "La variable de Laplace p ne peut pas être un nombre complexe",
+                "Les non-linéarités interdisent la mesure du temps continu",
+                "Les intégrales de Riemann n'existent pas pour les signaux saturés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laplace repose sur la linéarité : la réponse à la somme de deux entrées n'égale plus la somme des réponses."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Recalage et validation de modèle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes constituent une démarche rigoureuse de validation d'un modèle multiphysique ?",
+              "options": [
+                "Comparaison quantitative entre signaux mesurés et simulés",
+                "Vérification de la cohérence dimensionnelle et du bilan d'énergie",
+                "Modification arbitraire des données d'essais pour masquer les écarts",
+                "Suppression des capteurs réels non conformes à la simulation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La validation confronte modèle et essais expérimentaux en vérifiant la conservation des grandeurs physiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que désigne le recalage de paramètres (ou identification paramétrique) ?",
+              "options": [
+                "L'optimisation des valeurs numériques des paramètres pour minimiser l'écart modèle/mesure",
+                "La réinitialisation logicielle du simulateur au démarrage",
+                "L'effacement complet des bibliothèques de composants",
+                "Le remplacement d'un capteur analogique par un capteur numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recaler un modèle consiste à ajuster (par moindres carrés par exemple) des constantes physiques mal connues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel indicateur statistique quantifie fréquemment l'erreur entre mesure y_m(t) et simulation y_s(t) ?",
+              "options": [
+                "L'erreur quadratique moyenne (RMSE)",
+                "L'écart-type de la température extérieure",
+                "La dérivée seconde de la tension d'alimentation",
+                "L'intégrale du courant de court-circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le RMSE (Root Mean Square Error) calcule la racine de la moyenne des écarts au carré sur l'essai."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on valider un modèle sur un jeu de données différent de celui utilisé pour l'identification ?",
+              "options": [
+                "Pour s'assurer de sa capacité de généralisation et éviter le surapprentissage (overfitting)",
+                "Pour occuper plus d'espace sur le disque dur",
+                "Parce qu'un jeu d'essais ne peut être lu qu'une seule fois par la machine",
+                "Pour tester la résistance mécanique de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La validation croisée garantit que le modèle prédit correctement de nouvelles conditions d'usage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans l'écart simulé/mesuré du temps de montée à 95 %, que compare-t-on directement ?",
+              "options": [
+                "La rapidité de réponse du système asservi",
+                "La précision statique en régime permanent",
+                "La stabilité absolue selon le critère de Routh",
+                "Le coût financier de fabrication du prototype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps de réponse à 95 % est un critère de performance dynamique évaluant la rapidité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la démarche 'Hardware-in-the-Loop' (HIL) ?",
+              "options": [
+                "Tester un calculateur physique réel connecté à un modèle numérique simulant le procédé en temps réel",
+                "Simuler uniquement des circuits logiques sans aucun composant logiciel",
+                "Faire tourner une simulation sur une boucle infinie sans jamais s'arrêter",
+                "Mesurer la température de la carte mère sous charge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test HIL valide l'électronique de contrôle réelle face à un simulateur simulant l'environnement physique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la sensibilité d'un modèle par rapport à un paramètre p ?",
+              "options": [
+                "La variation relative de la grandeur de sortie induite par une variation de p",
+                "La fragilité thermique du composant en fonctionnement continu",
+                "Le coût du capteur mesurant ce paramètre en laboratoire",
+                "L'aptitude du modèle à refuser les valeurs négatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyse de sensibilité identifie les paramètres dont l'incertitude impacte le plus les résultats."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si un modèle prédit un comportement instable alors que le système réel reste stable, quelle peut être la cause ?",
+              "options": [
+                "Sous-estimation des frottements et pertes dissipatives dans le modèle",
+                "Surestimation de la masse totale du système",
+                "Mesure expérimentale effectuée à une altitude trop élevée",
+                "Utilisation d'un câble réseau de catégorie supérieure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négliger les amortissements passifs réels (frottement, pertes joule) conduit le modèle à surestimer l'instabilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que représente l'écart statique (ou erreur permanente) lors d'une réponse indicielle ?",
+              "options": [
+                "La différence entre la consigne visée et la valeur atteinte en régime établi",
+                "Le premier dépassement maximal en valeur absolue",
+                "Le temps nécessaire pour amorcer le mouvement",
+                "La valeur maximale de la commande lors du démarrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écart statique mesure la précision finale du système asservi en régime permanent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle démarche standardisée d'ingénierie système place la simulation au cœur du cycle de conception ?",
+              "options": [
+                "Le cycle de développement en V",
+                "La boucle d'hystérésis magnétique",
+                "Le diagramme circulaire de Gantt",
+                "La suite arithmétique de Fibonacci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle en V relie chaque phase de spécification descendante à une phase de vérification ascendante."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Bus et protocoles de communication",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Topologies et modèle OSI",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles couches appartiennent aux trois niveaux inférieurs du modèle OSI de l'ISO ?",
+              "options": [
+                "Couche 1 : Physique",
+                "Couche 2 : Liaison de données",
+                "Couche 7 : Application",
+                "Couche 6 : Présentation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les couches 1 (Physique), 2 (Liaison) et 3 (Réseau) gèrent le transport matériel des trames et paquets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle topologie de réseau relie tous les nœuds à un câble principal commun fermé par des terminaisons ?",
+              "options": [
+                "Topologie en bus",
+                "Topologie en étoile",
+                "Topologie en anneau à jeton",
+                "Topologie maillée totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La topologie en bus partage un unique médium de propagation avec adaptateurs d'impédance aux extrémités."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal de la couche physique (couche 1) dans le modèle OSI ?",
+              "options": [
+                "Transmettre les bits bruts sous forme de signaux électriques, optiques ou radiofréquences",
+                "Garantir le chiffrement asymétrique des mots de passe",
+                "Réguler le dialogue de session entre logiciels distants",
+                "Assurer l'affichage graphique sur l'écran tactile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couche physique définit les niveaux de tension, connecteurs, débits et supports de transmission."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une communication bidirectionnelle simultanée, quel terme qualifie le mode d'échange ?",
+              "options": [
+                "Full-duplex",
+                "Half-duplex",
+                "Simplex",
+                "Multiplexage spatial passif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En full-duplex, les deux équipements peuvent émettre et recevoir simultanément sans collision."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mode caractérise une transmission où chaque station émet à son tour sur un canal partagé ?",
+              "options": [
+                "Half-duplex",
+                "Full-duplex permanent",
+                "Simplex unidirectionnel",
+                "Broadcast continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En half-duplex (alternat), l'émission et la réception sont possibles mais pas au même instant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que provoque une coupure franche sur un câble de bus linéaire sans terminaison adaptée ?",
+              "options": [
+                "Des réflexions d'ondes créant des interférences destructives sur l'ensemble du bus",
+                "Une division par deux du débit binaire de l'émetteur",
+                "L'extinction immédiate de l'alimentation secteur",
+                "La synchronisation spontanée de tous les capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence d'adaptation d'impédance réfléchit le signal électrique en bout de ligne, corrompant les données."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel équipement actif interconnecte les équipements en topologie étoile Ethernet moderne ?",
+              "options": [
+                "Le commutateur (switch)",
+                "Le bouchon de terminaison BNC",
+                "Le potentiomètre de précision",
+                "L'oscilloscope cathodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le commutateur filtre et achemine les trames vers le port du destinataire grâce aux adresses MAC."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle fonction assure la sous-couche MAC (Media Access Control) de la couche 2 ?",
+              "options": [
+                "Gérer l'accès partagé au support physique et identifier matériellement les cartes",
+                "Déterminer la température optimale des conducteurs",
+                "Convertir les unités métriques en pouces",
+                "Compiler le programme automate en langage binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sous-couche MAC arbitre le droit d'émettre et exploite l'adresse matérielle unique (adresse MAC)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la transmission en bande de base sur un bus de terrain ?",
+              "options": [
+                "Le signal numérique est envoyé directement sans modulation sur porteuse haute fréquence",
+                "La fréquence est obligatoirement fixée à 50 Hz",
+                "Les câbles doivent être immergés dans l'huile",
+                "Seuls les signaux négatifs sont autorisés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En bande de base, les niveaux de tension représentent directement les '0' et '1' logiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'avantage majeur d'une liaison différentielle symétrique par rapport à une liaison asymétrique référencée à la masse ?",
+              "options": [
+                "Une excellente immunité aux bruits parasites de mode commun",
+                "L'économie complète de conducteurs électriques",
+                "Une vitesse d'horloge infinie sans dissipation",
+                "L'annulation de toute résistance interne des câbles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les perturbations affectent les deux fils de façon identique ; la soustraction différentielle les élimine."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Bus CAN : Couche physique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations caractérisent la couche physique du bus CAN haute vitesse (ISO 11898-2) ?",
+              "options": [
+                "Ligne différentielle à deux fils torsadés nommés CAN_H et CAN_L",
+                "Terminaisons d'impédance de 120 Ω placées à chaque extrémité de la ligne",
+                "Câble coaxial blindé sous vide sans résistance de fin de ligne",
+                "Tension d'alimentation triphasée 400 V portée par le bus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bus CAN utilise CAN_H et CAN_L avec deux résistances de 120 Ω équivalant à 60 Ω entre lignes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À l'état récessif (bit logique '1'), quelles sont les tensions nominales sur CAN_H et CAN_L ?",
+              "options": [
+                "CAN_H ≈ 2,5 V et CAN_L ≈ 2,5 V (différence V_diff ≈ 0 V)",
+                "CAN_H = 5 V et CAN_L = 0 V (différence V_diff = 5 V)",
+                "CAN_H = 12 V et CAN_L = -12 V",
+                "CAN_H = 0 V et CAN_L = 0 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état récessif, les deux lignes sont polarisées à 2,5 V, d'où une tension différentielle nulle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À l'état dominant (bit logique '0'), quelles sont les tensions nominales sur CAN_H et CAN_L ?",
+              "options": [
+                "CAN_H ≈ 3,5 V et CAN_L ≈ 1,5 V (différence V_diff ≈ 2 V)",
+                "CAN_H ≈ 2,5 V et CAN_L ≈ 2,5 V",
+                "CAN_H = 0 V et CAN_L = 5 V",
+                "CAN_H = -5 V et CAN_L = +5 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état dominant, le transceiver force CAN_H vers 3,5 V et CAN_L vers 1,5 V, créant un écart d'environ 2 V."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle résistance équivalente doit être mesurée à l'ohmmètre entre CAN_H et CAN_L sur un bus CAN correctement raccordé hors tension ?",
+              "options": [
+                "Environ 60 Ω (deux résistances de 120 Ω en parallèle)",
+                "Exactement 120 Ω",
+                "Une résistance infinie (circuit ouvert)",
+                "Une résistance nulle de 0 Ω"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux résistances de terminaison de 120 Ω en parallèle aux deux extrémités donnent R_eq = 120 / 2 = 60 Ω."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le débit binaire maximal normalisé pour le bus CAN classique ?",
+              "options": ["1 Mbit/s", "100 Mbit/s", "10 Gbit/s", "9600 bit/s"],
+              "correctAnswers": [0],
+              "explanation": "Le bus CAN 2.0A/B plafonne à 1 Mbit/s pour une longueur de bus maximale d'environ 40 mètres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi le débit du bus CAN doit-il diminuer lorsque la longueur du câble augmente ?",
+              "options": [
+                "Pour permettre au signal de faire l'aller-retour pendant la durée d'un seul bit pour l'arbitrage",
+                "Pour éviter l'échauffement des fils de cuivre par effet Joule",
+                "Pour respecter les règles d'autonomie des batteries de véhicule",
+                "Parce que les transistors s'usent plus vite sur les longues distances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mécanisme d'arbitrage bit à bit impose que le temps de propagation aller-retour soit inférieur au temps d'un bit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel composant électronique assure l'interface entre le contrôleur CAN (niveaux logiques 0-3.3V/5V) et la ligne physique ?",
+              "options": [
+                "Le transceiver CAN (émetteur-récepteur de ligne)",
+                "L'onduleur autonome de tension",
+                "Le pont redresseur de Graetz",
+                "Le régulateur linéaire zener"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transceiver convertit les signaux TxD/RxD en tensions différentielles CAN_H/CAN_L et réciproquement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un nœud émet un bit récessif (1) tandis qu'un autre émet simultanément un bit dominant (0) ?",
+              "options": [
+                "Le bit dominant '0' écrase le bit récessif '1' sur la ligne",
+                "La ligne se coupe définitivement par fusion d'un fusible",
+                "Une collision détruit les deux messages",
+                "Le bit récessif prend la priorité absolue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bus agit comme un 'ET câblé' en logique négative : le niveau dominant l'emporte toujours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans quel secteur industriel le bus CAN a-t-il été initialement développé par Bosch ?",
+              "options": [
+                "L'automobile (multiplexage des calculateurs de bord)",
+                "L'aérospatiale militaire géostationnaire",
+                "La téléphonie mobile cellulaire grand public",
+                "L'extraction minière sous-marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CAN (Controller Area Network) a été créé dans les années 1980 pour réduire les faisceaux de câbles automobiles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel perfectionnement récent du bus CAN permet d'augmenter le débit de données jusqu'à 5 ou 8 Mbit/s ?",
+              "options": [
+                "Le CAN FD (Flexible Data-rate)",
+                "Le bus I2C Fast-mode Plus",
+                "La norme RS232C synchrone",
+                "Le câble Ethernet coaxial 10BASE2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CAN FD accélère l'horloge sur le champ de données tout en conservant le débit nominal pendant l'arbitrage."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Bus CAN : Trame et arbitrage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels champs composent obligatoirement une trame de données CAN standard 2.0A ?",
+              "options": [
+                "Identifiant sur 11 bits",
+                "Champ de commande DLC (longueur des données de 0 à 8 octets)",
+                "Adresse IP de destination sur 32 bits",
+                "Mot de passe utilisateur chiffré en SHA-256"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une trame standard comprend l'identifiant (11 bits), le code de longueur DLC (4 bits), les données et le CRC."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment fonctionne le mécanisme d'arbitrage non destructif CSMA/CR du bus CAN ?",
+              "options": [
+                "Chaque station écoute la ligne en émettant son identifiant : dès qu'elle lit un 0 alors qu'elle émettait un 1, elle s'arrête",
+                "Une horloge centrale donne la parole à chaque station tour à tour",
+                "Les deux trames en conflit sont abandonnées et réémises après un délai aléatoire",
+                "La station la plus proche physiquement de la batterie gagne l'arbitrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce à l'écoute simultanée, le nœud émettant le plus petit identifiant binaire conserve le bus sans délai."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel message est le plus prioritaire lors d'un arbitrage simultané sur le bus CAN ?",
+              "options": [
+                "Celui dont l'identifiant possède la valeur numérique la plus faible (commençant par des 0 dominants)",
+                "Celui qui possède le plus grand nombre d'octets de données",
+                "Celui dont l'identifiant est le plus élevé possible",
+                "Celui émis par le nœud ayant le numéro de série le plus grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bit 0 étant dominant, plus l'identifiant comporte de zéros en tête, plus sa priorité est élevée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quoi sert la technique du 'bit stuffing' (rembourrage de bits) sur le bus CAN ?",
+              "options": [
+                "Insérer un bit inverse après 5 bits consécutifs identiques pour garantir la resynchronisation de l'horloge",
+                "Chiffrer le message pour empêcher l'espionnage industriel",
+                "Compléter la trame pour qu'elle atteigne toujours 1 Moctet",
+                "Diminuer la tension électrique pour économiser la batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les récepteurs se recalent sur les fronts de transition ; 5 bits identiques déclenchent l'insertion d'un bit de polarité opposée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la taille maximale du champ de données utile dans une trame CAN 2.0 classique ?",
+              "options": [
+                "8 octets (64 bits)",
+                "64 octets",
+                "1500 octets",
+                "2 octets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le protocole CAN classique limite la charge utile (payload) à 8 octets par trame."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel rôle joue le bit d'acquittement (ACK slot) dans la trame CAN ?",
+              "options": [
+                "Tout récepteur ayant validé le CRC force ce bit à l'état dominant (0)",
+                "L'émetteur confirme qu'il a bien envoyé son dernier octet",
+                "Le microcontrôleur demande l'arrêt d'urgence du véhicule",
+                "La passerelle convertit la trame en Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'émetteur diffuse un bit récessif dans le slot ACK ; les nœuds récepteurs le tirent à 0 pour signifier la bonne réception."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la longueur de l'identifiant dans une trame CAN étendue (version 2.0B) ?",
+              "options": ["29 bits", "11 bits", "16 bits", "64 bits"],
+              "correctAnswers": [0],
+              "explanation": "Le format étendu 2.0B utilise un identifiant sur 29 bits (11 bits de base + 18 bits d'extension)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel bit distingue une trame de données d'une trame de requête à distance (RTR) ?",
+              "options": [
+                "Le bit RTR (dominant pour une trame de données, récessif pour une requête)",
+                "Le bit SOF initial",
+                "Le premier bit du champ CRC",
+                "Le bit IDE uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RTR (Remote Transmission Request) vaut 0 pour une trame transportant des données et 1 pour une demande de données."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que fait un contrôleur CAN lorsqu'il détecte une erreur de bit ou de CRC ?",
+              "options": [
+                "Il émet un drapeau d'erreur (Error Flag) de 6 bits dominants consécutifs détruisant la trame pour tous",
+                "Il déconnecte l'alimentation générale du nœud",
+                "Il attend 10 secondes avant de reprendre",
+                "Il sauvegarde l'erreur dans un fichier texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le drapeau d'erreur actif viole la règle du bit stuffing, obligeant tous les nœuds à rejeter la trame corrompue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel état de confinement des fautes isole complètement un nœud CAN défaillant du bus physique ?",
+              "options": [
+                "L'état Bus-Off",
+                "L'état Error-Active",
+                "L'état Error-Passive",
+                "L'état Standby partiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après un compteur d'erreurs d'émission > 255, le nœud passe en Bus-Off et n'émet plus aucun bit sur la ligne."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Bus série synchrones : I2C et SPI",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles lignes constituent obligatoirement un bus série I2C standard ?",
+              "options": [
+                "SDA : ligne série de données bidirectionnelle",
+                "SCL : ligne série d'horloge générée par le maître",
+                "MOSI : ligne de données unidirectionnelle maître vers esclave",
+                "MISO : ligne de données unidirectionnelle esclave vers maître"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bus I2C (Inter-Integrated Circuit) ne requiert que deux lignes : SDA (données) et SCL (horloge)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi des résistances de tirage (pull-up) vers Vcc sont-elles indispensables sur les lignes I2C ?",
+              "options": [
+                "Parce que les étages de sortie des composants sont en collecteur ouvert (ou drain ouvert)",
+                "Pour alimenter directement le capteur en énergie motrice",
+                "Pour filtrer les ondes radio parasites de la pièce",
+                "Pour mesurer la température ambiante de la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En drain ouvert, les composants peuvent tirer la ligne à 0 V, mais le niveau haut '1' est assuré par la pull-up."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment est signalée une condition de départ (START) sur un bus I2C ?",
+              "options": [
+                "Une transition descendante de SDA pendant que SCL est au niveau haut",
+                "Une transition montante de SDA pendant que SCL est au niveau haut",
+                "Un niveau bas maintenu sur SCL pendant une seconde",
+                "L'envoi de huit bits à zéro consécutifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute modification de SDA alors que SCL est à l'état haut représente une condition de contrôle (START ou STOP)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de bits comporte l'adresse standard d'un esclave sur le bus I2C de base ?",
+              "options": [
+                "7 bits (suivis du bit R/W)",
+                "16 bits",
+                "32 bits",
+                "4 bits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier octet envoyé après START contient l'adresse esclave (7 bits) et le bit de direction R/W (1 bit)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de signaux utilise typiquement une liaison SPI à un seul esclave ?",
+              "options": [
+                "4 signaux : SCK, MOSI, MISO et CS (ou SS)",
+                "2 signaux : SDA et SCL",
+                "1 seul fil partagé en duplex",
+                "8 signaux parallèles de données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SPI requiert Horloge (SCK), Sortie Maître (MOSI), Entrée Maître (MISO) et Sélection d'esclave (CS/SS)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle du signal Chip Select (CS ou SS) dans une liaison SPI ?",
+              "options": [
+                "Activer l'esclave cible avec lequel le maître souhaite communiquer (généralement à l'état bas)",
+                "Régler la tension d'alimentation de l'esclave",
+                "Compter le nombre d'octets transférés",
+                "Réinitialiser le microcontrôleur maître"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le maître tire la ligne CS dédiée à l'esclave désiré à 0 V pour débuter la transmission."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la structure interne de transmission simultanée employée par le bus SPI ?",
+              "options": [
+                "Deux registres à décalage circulaires formant un anneau d'échange plein duplex",
+                "Une mémoire FIFO asynchrone à un seul bit",
+                "Une pile d'instructions LIFO sans horloge",
+                "Un multiplexeur temporel analogique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À chaque coup d'horloge, un bit sort du maître vers l'esclave (MOSI) pendant qu'un bit entre (MISO)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que définissent les paramètres CPOL et CPHA dans la configuration du protocole SPI ?",
+              "options": [
+                "La polarité de repos de l'horloge et la phase du front d'échantillonnage des données",
+                "La puissance d'émission et la fréquence de coupure",
+                "La capacité parasite maximale des pistes de cuivre",
+                "Le protocole de chiffrement des données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CPOL fixe le niveau de SCL au repos ; CPHA indique si l'échantillonnage s'effectue sur le 1er ou 2e front."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel avantage clé le bus SPI offre-t-il par rapport au bus I2C ?",
+              "options": [
+                "Des débits de transfert beaucoup plus élevés (couramment 10 à 50 Mbit/s) et un protocole très simple",
+                "Moins de fils nécessaires pour connecter 10 composants",
+                "Une portée garantie sur plus d'un kilomètre",
+                "Un adressage logiciel illimité sans ligne matérielle supplémentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SPI est simple, full-duplex et rapide, mais nécessite une ligne CS distincte par esclave supplémentaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel composant d'un système embarqué utilise très fréquemment le bus I2C sur une carte mère ?",
+              "options": [
+                "Capteur de température ou horloge temps réel (RTC)",
+                "Carte graphique haute résolution pour rendu 3D",
+                "Moteur pas-à-pas de traction ferroviaire",
+                "Barrette de mémoire vive centrale DDR5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'I2C est idéal pour les périphériques lents sur carte courte distance : RTC, EEPROM, capteurs I2C."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Liaisons séries asynchrones : RS-232 et RS-485",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres doivent être rigoureusement identiques entre émetteur et récepteur pour une liaison asynchrone (UART) ?",
+              "options": [
+                "La vitesse de modulation (baudrate, ex: 115200 bauds)",
+                "Le format de trame (nombre de bits de données, parité, bits de stop)",
+                "La marque et le fabricant des microcontrôleurs",
+                "La couleur des gaines des conducteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En asynchrone, l'absence de ligne d'horloge commune exige un accord strict sur la vitesse et la structure de la trame."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment le récepteur détecte-t-il le début d'un octet en liaison UART asynchrone ?",
+              "options": [
+                "Par un bit de Start descendant (passage du niveau repos haut au niveau bas)",
+                "Par l'envoi d'un signal sonore à 1 kHz",
+                "Par une impulsion sur une ligne d'horloge dédiée",
+                "Par un double bit de stop montant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ligne est au repos à l'état haut ; le bit de Start est une transition vers l'état bas amorçant l'échantillonnage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels sont les niveaux de tension typiques de la norme RS-232 sur la ligne de données ?",
+              "options": [
+                "Niveau logique 0 entre +3 V et +15 V, niveau logique 1 entre -3 V et -15 V",
+                "Niveau logique 0 à 0 V, niveau logique 1 à 5 V",
+                "Niveau logique 0 à 2,5 V, niveau logique 1 à 3,5 V",
+                "Niveau logique 0 à -48 V permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La norme RS-232 est bipolaire inversée : les tensions positives codent le '0', les tensions négatives le '1'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le mode de transmission physique employé par la norme RS-485 ?",
+              "options": [
+                "Liaison différentielle multipoint sur paire torsadée (lignes A et B)",
+                "Liaison asymétrique par rapport à la terre sur câble coaxial",
+                "Transmission optique infrarouge en ligne directe",
+                "Signal carré modulé en fréquence radio FM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RS-485 utilise deux lignes différentielles A et B pour s'affranchir des différences de potentiel de masse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle distance maximale de transmission peut être atteinte avec un bus RS-485 à vitesse réduite (ex: 100 kbit/s) ?",
+              "options": [
+                "Jusqu'à 1200 mètres",
+                "Seulement 15 mètres",
+                "Au maximum 30 centimètres",
+                "Plus de 50 000 kilomètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RS-485 permet de couvrir jusqu'à 1,2 km à des débits modérés grâce à sa transmission différentielle robuste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien d'émetteurs-récepteurs peuvent être connectés simultanément sur un bus RS-485 standard ?",
+              "options": [
+                "Jusqu'à 32 charges unitaires (et plus avec des transceivers haute impédance)",
+                "Strictement 2 équipements en point-à-point",
+                "Une infinité sans aucune limite physique",
+                "Uniquement 1 émetteur et aucun récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La spécification RS-485 garantit le pilotage de 32 charges unitaires (Unit Loads) sur la ligne partagée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel protocole industriel applicatif tourne très couramment sur une couche physique RS-485 ?",
+              "options": [
+                "Modbus RTU",
+                "HTTP/2",
+                "Bluetooth Low Energy",
+                "AirDrop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modbus RTU est le protocole maître-esclave universel déployé sur les bus industriels RS-485."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la notation standard de configuration '9600 8-N-1' ?",
+              "options": [
+                "9600 bauds, 8 bits de données, pas de parité (None), 1 bit de stop",
+                "9600 bits de stop, 8 bauds, parité négative, 1 bit de départ",
+                "Portée de 9600 mètres, 8 stations, niveau normalisé 1 volt",
+                "Fréquence de 9600 Hz avec 8 canaux sans fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "8-N-1 indique 8 bits de payload, aucune parité et un bit de stop assurant le retour à l'état de repos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel signal matériel d'un port RS-232 indique que le terminal de transmission de données est prêt ?",
+              "options": [
+                "DTR (Data Terminal Ready)",
+                "SCL (Serial Clock Line)",
+                "MOSI (Master Out Slave In)",
+                "CAN_L (Controller Area Low)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DTR et DSR sont des signaux de contrôle de flux matériel historique de la norme RS-232."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la norme RS-232 est-elle déconseillée en environnement industriel bruité sur longue distance ?",
+              "options": [
+                "Sa référence asymétrique commune à la masse la rend très sensible aux parasites et aux boucles de masse",
+                "Elle consomme plusieurs kilowatts de puissance électrique",
+                "Elle interdit l'utilisation de connecteurs métalliques",
+                "Elle ne permet pas d'envoyer des nombres négatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison asymétrique ne rejette pas les tensions de mode commun générées par les moteurs et variateurs."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Ethernet industriel et TCP/IP",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels protocoles constituent des variantes d'Ethernet industriel adaptées au contrôle-commande en temps réel ?",
+              "options": [
+                "PROFINET",
+                "EtherCAT",
+                "FTP (File Transfer Protocol)",
+                "POP3 (Post Office Protocol)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "PROFINET et EtherCAT modifient ou contournent la pile classique pour garantir des temps de cycle déterministes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la principale limite d'Ethernet standard (IEEE 802.3) avec méthode CSMA/CD pour l'automatisme rigide ?",
+              "options": [
+                "Son caractère probabiliste en cas de collision interdisant de garantir un temps de réponse déterministe",
+                "Son débit trop faible inférieur à 1 kbit/s",
+                "L'obligation d'utiliser des câbles en fibre de verre exclusivement",
+                "L'incompatibilité absolue avec les automates programmables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mécanisme de reprise sur collision de CSMA/CD introduit un délai aléatoire incompatible avec le temps réel strict."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment le protocole EtherCAT parvient-il à des temps de cycle inférieurs à la milliseconde ?",
+              "options": [
+                "Chaque esclave lit et insère ses données à la volée dans la trame Ethernet sans l'arrêter",
+                "En supprimant tous les câbles physiques au profit d'ondes radio térahertz",
+                "En limitant le réseau à un seul capteur et un seul actionneur",
+                "En multipliant la tension de ligne par 1000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le principe 'processing on the fly' permet à la trame de traverser tous les nœuds sans stockage intermédiaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur quelle couche du modèle OSI opère le protocole IP (Internet Protocol) ?",
+              "options": [
+                "Couche 3 : Réseau (adressage logique et routage)",
+                "Couche 1 : Physique",
+                "Couche 4 : Transport",
+                "Couche 7 : Application"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IP est le protocole de couche 3 assurant l'acheminement des paquets à travers des sous-réseaux interconnectés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle différence fondamentale distingue les protocoles de transport TCP et UDP ?",
+              "options": [
+                "TCP est orienté connexion avec accusés de réception ; UDP est non connecté, plus léger et sans garantie de remise",
+                "UDP est sécurisé par mot de passe alors que TCP est en clair",
+                "TCP ne fonctionne que sur câble coaxial",
+                "UDP est limité à un seul paquet par heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TCP contrôle la remise ordonnée et intègre des paquets ; UDP privilégie la rapidité et la faible latence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel port TCP standard est réservé pour le protocole industriel Modbus TCP ?",
+              "options": ["Port 502", "Port 80", "Port 443", "Port 21"],
+              "correctAnswers": [0],
+              "explanation": "L'IANA a officiellement alloué le port 502 aux échanges de messages Modbus TCP."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment s'appelle l'identifiant matériel unique sur 48 bits gravé dans chaque carte réseau Ethernet ?",
+              "options": [
+                "L'adresse MAC (Media Access Control)",
+                "L'adresse IP publique",
+                "Le masque de sous-réseau",
+                "Le nom d'hôte DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adresse MAC (ex: 00:1A:2B:3C:4D:5E) identifie la carte au niveau de la couche liaison de données."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet la mise en place de VLANs (Virtual Local Area Networks) selon la norme IEEE 802.1Q ?",
+              "options": [
+                "Segmenter logiquement le trafic industriel du trafic bureautique sur une même infrastructure physique",
+                "Doubler la vitesse de rotation des moteurs électriques",
+                "Alimenter le commutateur sans câble secteur",
+                "Remplacer les automates par des tablettes graphiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les VLANs isolent les flux sensibles des machines pour garantir sécurité, priorité et bande passante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle technologie transporte à la fois l'alimentation électrique continue et les données sur le câble Ethernet à 4 paires ?",
+              "options": [
+                "PoE (Power over Ethernet)",
+                "NFC (Near Field Communication)",
+                "PWM (Pulse Width Modulation)",
+                "VGA (Video Graphics Array)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le standard PoE (IEEE 802.3af/at/bt) téléalimente caméras, capteurs ou points d'accès via le câble RJ45."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel connecteur circulaire blindé étanche (indice IP67) remplace souvent le connecteur RJ45 en atelier ?",
+              "options": [
+                "Le connecteur M12 à codage D ou X",
+                "La prise péritel 21 broches",
+                "Le connecteur jack audio 3,5 mm",
+                "La fiche allume-cigare standard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les connecteurs M12 vissables résistent aux vibrations, à la poussière et aux projections de lubrifiants."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Protocoles de communication sans fil",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles technologies de communication sans fil opèrent principalement dans la bande ISM ouverte des 2,4 GHz ?",
+              "options": [
+                "Wi-Fi (IEEE 802.11 b/g/n/ax)",
+                "Bluetooth et Bluetooth Low Energy (BLE)",
+                "Zigbee (IEEE 802.15.4)",
+                "La radio FM commerciale 88-108 MHz"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Wi-Fi, Bluetooth et Zigbee partagent la bande industrielle, scientifique et médicale (ISM) des 2,4 GHz."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'atout majeur de la technologie BLE (Bluetooth Low Energy) pour les objets connectés et capteurs autonomes ?",
+              "options": [
+                "Une consommation d'énergie extrêmement faible permettant plusieurs années d'autonomie sur pile bouton",
+                "Un débit binaire dépassant 10 Gbit/s",
+                "Une portée garantie de 50 kilomètres sans relais",
+                "La capacité d'alimenter des vérins pneumatiques par radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BLE optimise les phases de sommeil profond pour minimiser le courant moyen consommé par le nœud."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle topologie de réseau caractérise la technologie Zigbee pour étendre sa couverture ?",
+              "options": [
+                "Le réseau maillé (Mesh) où chaque routeur relaie les données des voisins",
+                "Une topologie linéaire sur bus bifilaire",
+                "Une boucle optique fermée",
+                "Un point-à-point strict et exclusif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En réseau maillé Zigbee, les messages sautent de nœud en nœud jusqu'au coordinateur central."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle technologie sans fil basse fréquence et longue portée (LPWAN) convient au suivi de capteurs dispersés sur un territoire ?",
+              "options": ["LoRaWAN", "USB 3.0", "HDMI sans fil", "PCI Express"],
+              "correctAnswers": [0],
+              "explanation": "LoRaWAN offre une portée de plusieurs kilomètres à très faible débit et très basse consommation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type de modulation à étalement de spectre utilise la technologie LoRa ?",
+              "options": [
+                "CSS (Chirp Spread Spectrum)",
+                "Modulation d'amplitude AM pure",
+                "Modulation en tout ou rien OOK sans porteuse",
+                "Sauts de fréquence audio perceptibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LoRa module des impulsions dont la fréquence varie de façon linéaire dans le temps (chirps)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle distance maximale sépare typiquement deux équipements communiquant par NFC (Near Field Communication) ?",
+              "options": [
+                "Moins de 10 centimètres (quelques centimètres)",
+                "Environ 50 mètres",
+                "Exactement 1 kilomètre",
+                "Plus de 300 mètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le NFC opère à 13,56 MHz par couplage inductif en champ proche sur une portée inférieure à 10 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel inconvénient majeur présente la bande radio des 2,4 GHz dans un atelier industriel ?",
+              "options": [
+                "Forte congestion spectrale et atténuation notable par les parois métalliques et l'eau",
+                "Obligation de demander une licence payante au gouvernement pour chaque émetteur",
+                "Impossibilité totale de crypter les données",
+                "Interférence thermique faisant fondre les soudures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les machines métalliques créent des masquages et réflexions, et la cohabitation Wi-Fi/Bluetooth engendre du bruit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le protocole Wi-Fi évite-t-il les collisions sur le canal partagé ?",
+              "options": [
+                "Par le mécanisme CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)",
+                "Par la détection matérielle des collisions CSMA/CD comme sur câble",
+                "En coupant la radio des autres appareils à distance",
+                "Par l'interdiction d'émettre plus d'un octet par minute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En radio, un émetteur ne peut s'écouter lui-même ; il pratique donc l'évitement de collision (CA) avec temps d'attente (backoff)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle norme de sécurité sans fil offre actuellement le chiffrement le plus robuste pour les réseaux Wi-Fi industriels ?",
+              "options": [
+                "WPA3-Enterprise",
+                "WEP 64 bits",
+                "WPA TKIP originel",
+                "Aucune sécurité (Open System)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "WPA3 utilise des clés de chiffrement de 192 bits en mode Enterprise pour parer aux attaques par dictionnaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quel cas une liaison filaire reste-t-elle obligatoire par rapport au sans fil dans une machine de production ?",
+              "options": [
+                "Pour les fonctions d'arrêt d'urgence et de sécurité machine (SIL3 / PLe)",
+                "Pour afficher l'heure sur l'écran",
+                "Pour allumer un voyant lumineux bleu",
+                "Pour mesurer la vitesse du vent à l'extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les boucles de sécurité machine exigent une disponibilité garantie à 100 % et une défaillance en mode sûr que le sans-fil ne peut assurer seul."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Détection et correction d'erreurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles techniques de contrôle d'intégrité sont couramment implémentées dans les protocoles de communication ?",
+              "options": [
+                "Bit de parité (paire ou impaire)",
+                "Contrôle de redondance cyclique (CRC)",
+                "Somme de contrôle (Checksum)",
+                "Suppression pure et simple des octets nuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La parité, le checksum et le CRC sont les mécanismes mathématiques de détection d'erreurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si l'on transmet l'octet binaire 11010010 en parité paire, quelle sera la valeur du bit de parité ajouté ?",
+              "options": [
+                "0 (car il y a déjà 4 bits à '1', nombre pair)",
+                "1 (pour porter le total de '1' à 5)",
+                "Indéterminée sans l'horloge",
+                "Toujours 1 quel que soit le mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En parité paire, le bit ajouté doit faire en sorte que le nombre total de bits '1' soit pair (ici 4 est déjà pair, donc 0)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la limite majeure d'un simple bit de parité ?",
+              "options": [
+                "Il ne détecte pas les erreurs simultanées portant sur un nombre pair de bits (ex: 2 bits inversés)",
+                "Il ralentit la transmission d'un facteur 100",
+                "Il ne fonctionne qu'avec des nombres négatifs",
+                "Il modifie définitivement les données originales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si deux bits basculent en même temps, la parité globale reste inchangée : l'erreur passe inaperçue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur quelle opération mathématique repose le calcul du CRC (Cyclic Redundancy Check) ?",
+              "options": [
+                "La division polynomiale modulo 2 (algèbre de Boole dans le corps GF(2))",
+                "L'addition soustractive des racines carrées",
+                "La multiplication matricielle non commutative",
+                "La résolution d'équations différentielles stochastiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le message binaire est divisé modulo 2 par un polynôme générateur fixe ; le reste de la division forme le CRC."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'avantage du CRC par rapport à un simple Checksum arithmétique ?",
+              "options": [
+                "Une capacité exceptionnelle à détecter les paquets d'erreurs consécutifs (burst errors)",
+                "Une réduction de moitié de la taille du câble électrique",
+                "La possibilité de recharger la batterie de l'émetteur",
+                "L'absence totale de calcul pour le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les propriétés algébriques du polynôme générateur détectent quasiment 100 % des salves de parasites industriels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la longueur du champ CRC dans une trame de bus CAN classique ?",
+              "options": ["15 bits", "1 bit", "8 bits", "32 bits"],
+              "correctAnswers": [0],
+              "explanation": "Le bus CAN 2.0A/B utilise un polynôme générateur de degré 15 produisant un CRC de 15 bits."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que permet un code correcteur d'erreurs (FEC : Forward Error Correction) comme le code de Hamming ?",
+              "options": [
+                "Détecter et corriger automatiquement un bit erroné à la réception sans demander de réémission",
+                "Augmenter la tension de la batterie en temps réel",
+                "Prédire les pannes mécaniques du moteur avant l'allumage",
+                "Compresser une vidéo 4K en un seul bit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le FEC ajoute de la redondance calculée pour reconstruire l'information altérée sans réémission."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la distance de Hamming entre deux mots binaires de même longueur ?",
+              "options": [
+                "Le nombre de positions où les bits correspondants sont différents",
+                "La longueur physique du câble reliant les stations",
+                "Le temps de calcul du microprocesseur en cycles horloge",
+                "La moyenne arithmétique des bits à 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par exemple, la distance de Hamming entre 10110 et 10000 vaut 2 (deux bits diffèrent)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour détecter à coup sûr jusqu'à e erreurs binaires dans un mot de code, quelle doit être la distance minimale d_min du code ?",
+              "options": [
+                "d_min ≥ e + 1",
+                "d_min ≥ 2·e + 1",
+                "d_min = e",
+                "d_min ≤ e / 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour détecter e erreurs, il faut d_min ≥ e + 1 ; pour les corriger, il faut d_min ≥ 2·e + 1."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le protocole Modbus RTU, quel algorithme de contrôle est présent en fin de chaque message ?",
+              "options": [
+                "CRC-16",
+                "LRC sur 7 bits",
+                "MD5",
+                "Parité simple sans reste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modbus RTU valide chaque trame par deux octets de CRC-16 (poids faible puis poids fort)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Déterminisme et temps réel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels critères caractérisent un réseau de communication déterministe pour l'automatisme ?",
+              "options": [
+                "Temps maximal de transmission borné et garanti en toutes circonstances (pire cas)",
+                "Gigue temporelle (jitter) très faible sur la livraison des trames périodiques",
+                "Débit maximal théorique sans aucune limite de délai",
+                "Acheminement aléatoire dépendant de la météo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le déterminisme garantit que l'information arrive avant une échéance stricte avec une gigue minimale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la définition du temps réel 'dur' (hard real-time) par opposition au temps réel 'souple' (soft real-time) ?",
+              "options": [
+                "Le non-respect d'une seule échéance temporelle entraîne une défaillance critique du système",
+                "Le système utilise un boîtier en aluminium renforcé",
+                "Les calculs s'effectuent à une fréquence supérieure à 10 GHz",
+                "L'utilisateur doit appuyer sur un bouton dur pour valider"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En temps réel dur (ex: freinage ABS, commande d'axe), un retard de calcul équivaut à un résultat faux et dangereux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que désigne la gigue temporelle (jitter) dans la réception d'un flux de commande périodique ?",
+              "options": [
+                "La variation (dispersion) de l'instant d'arrivée par rapport à la période idéale prévue",
+                "La vitesse moyenne de propagation des électrons dans le cuivre",
+                "Le taux d'octets perdus pendant la transmission",
+                "L'amplitude crête du bruit électromagnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gigue mesure la fluctuation de latence ; une forte gigue dégrade la précision des boucles d'asservissement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode d'accès au bus évite tout conflit en attribuant un créneau temporel fixe et exclusif à chaque nœud ?",
+              "options": [
+                "TDMA (Time Division Multiple Access)",
+                "CSMA/CD aléatoire",
+                "ALOHA pur sans écoute préalable",
+                "Token Ring sans temporisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le TDMA découpe le temps en fenêtres cycliques prédéterminées garantissant l'accès sans collision."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel standard Ethernet moderne apporte le déterminisme garanti au niveau de la couche liaison grâce à la synchronisation d'horloge ?",
+              "options": [
+                "TSN (Time-Sensitive Networking, IEEE 802.1)",
+                "Ethernet 10BASE-T initial",
+                "NetBIOS étendu",
+                "AppleTalk local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TSN unifie l'Ethernet standard avec ordonnancement temporel, réservation de bande passante et synchronisation sub-microseconde."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel protocole de synchronisation d'horloge haute précision (sub-microseconde) régit la norme IEEE 1588 ?",
+              "options": [
+                "PTP (Precision Time Protocol)",
+                "NTP (Network Time Protocol)",
+                "SNMP v3",
+                "DNS dynamique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IEEE 1588 PTP synchronise les horloges matérielles des nœuds distribués avec une précision nanoseconde."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le risque majeur d'un réseau surchargé non déterministe lors d'une perturbation brusque ?",
+              "options": [
+                "L'allongement imprévisible des temps de latence provoquant l'instabilité de l'asservissement",
+                "La fonte spontanée des processeurs des cartes",
+                "L'inversion du sens de passage des câbles réseau",
+                "La modification spontanée du code source du programme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un retard excessif dans la boucle de rétroaction introduit un déphasage qui déstabilise le procédé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi le bus CAN peut-il poser problème pour les trames de faible priorité lors d'un pic de charge du bus ?",
+              "options": [
+                "Les messages de basse priorité peuvent subir un phénomène d'inédie (starvation) et être bloqués indéfiniment",
+                "L'émetteur de basse priorité explose sous la tension",
+                "Le bus bascule automatiquement en mode Wi-Fi",
+                "Le câble s'échauffe proportionnellement au nombre d'identifiants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque les trames prioritaires l'emportent toujours à l'arbitrage, un bus saturé empêche les identifiants élevés de passer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel protocole déterministe synchrone a été spécifiquement développé pour les commandes de vol 'x-by-wire' de l'automobile ?",
+              "options": [
+                "FlexRay",
+                "USB 2.0 Full Speed",
+                "MIDI 1.0",
+                "I2C standard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "FlexRay combine segments statiques TDMA déterministes et segments dynamiques événementiels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel paramètre représente la durée maximale acceptable entre la capture d'une mesure et l'application de l'ordre sur l'actionneur ?",
+              "options": [
+                "La latence maximale de boucle fermée (deadline)",
+                "Le débit crête en gigabits par seconde",
+                "Le coefficient d'atténuation diélectrique",
+                "La résistance thermique du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La deadline de boucle est la contrainte temporelle maximale à respecter pour garantir la stabilité physique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "CEM et robustesse des réseaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles bonnes pratiques d'installation réduisent les perturbations électromagnétiques (CEM) sur les bus industriels ?",
+              "options": [
+                "Séparation physique des câbles de puissance moteur et des câbles de communication",
+                "Utilisation de câbles blindés avec raccordement du blindage à 360° à la terre",
+                "Passage des câbles de réseau dans les mêmes goulottes que les câbles de variateurs sans écran",
+                "Suppression des résistances de terminaison de ligne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La séparation des courants forts/faibles et la continuité du blindage sont fondamentales en CEM industrielle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le principe physique de l'immunité apportée par la torsion des fils d'une paire torsadée ?",
+              "options": [
+                "Les surfaces de boucle élémentaires alternées induisent des tensions parasites opposées qui s'annulent",
+                "La torsion empêche mécaniquement les électrons de sortir du métal",
+                "Le câble torsadé possède une résistance ohmique nulle",
+                "La torsion transforme le signal électrique en rayonnement laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La torsion compense les champs magnétiques induits en alternant l'orientation des spires successives."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quoi sert l'isolation galvanique par optocoupleur ou isolateur numérique sur un port de communication ?",
+              "options": [
+                "Rompre la continuité électrique directe pour supprimer les boucles de masse et protéger l'électronique des surtensions",
+                "Augmenter la vitesse de transmission d'un facteur 10",
+                "Permettre le fonctionnement du réseau sous l'eau de mer",
+                "Remplacer le bloc d'alimentation secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'isolation galvanique empêche les courants de circulation de masse dangereux entre équipements distants."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composant de protection rapide dérive les surtensions transitoires (ESD, foudre induite) vers la terre ?",
+              "options": [
+                "La diode Transil (TVS - Transient Voltage Suppressor)",
+                "Le potentiomètre ajustable multitours",
+                "Le transformateur d'intensité sans charge",
+                "Le fusible thermique à fusion lente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les diodes TVS s'amorcent en quelques picosecondes pour écrêter les pointes destructives de tension."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le blindage d'un câble de données doit-il être raccordé à la terre aux deux extrémités en milieu industriel ?",
+              "options": [
+                "Pour assurer une protection efficace contre les champs magnétiques haute fréquence induits par les variateurs",
+                "Pour éviter que le câble ne devienne trop froid en hiver",
+                "Parce qu'un blindage relié d'un seul côté n'arrête aucun parasite électrique",
+                "Pour doubler la tension d'alimentation des capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En haute fréquence, le blindage doit être raccordé aux deux bouts sur une masse équipotentielle pour évacuer les courants HF."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que provoque une boucle de masse (ground loop) entre deux équipements distants raccordés à des terres différentes ?",
+              "options": [
+                "La circulation d'un courant parasite permanent à 50 Hz dans le blindage ou le fil de référence",
+                "La division par deux du débit binaire de la ligne",
+                "L'émission d'un signal Wi-Fi parasite non désiré",
+                "L'arrêt instantané de la rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une différence de potentiel entre terres crée un courant de circulation de masse qui perturbe les signaux utiles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel type de câble réseau est totalement insensible aux perturbations électromagnétiques extérieures ?",
+              "options": [
+                "Le câble à fibre optique",
+                "Le câble plat en nappe souple",
+                "Le fil de cuivre monobrin sans gaine",
+                "La paire torsadée non blindée (UTP)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fibre optique transporte des photons et non des électrons : elle est par nature 100 % insensible aux champs EM."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel accessoire de filtrage en ferrite clipsé sur un câble atténue les courants de mode commun haute fréquence ?",
+              "options": [
+                "Une tore de ferrite (self de choc de mode commun)",
+                "Une résistance de shunt 0,1 ohm",
+                "Un condensateur chimique polarisé",
+                "Un interrupteur à bascule bipolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tore de ferrite augmente l'impédance en haute fréquence pour les courants de mode commun sans gêner le signal différentiel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment doit s'effectuer le croisement physique d'un câble de bus de données et d'un câble de puissance moteur ?",
+              "options": [
+                "À angle droit (90°) pour minimiser le couplage inductif mutuel",
+                "En les enroulant l'un autour de l'autre",
+                "En les soudant électriquement ensemble",
+                "En maintenant un parallélisme parfait sur 20 mètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un croisement à angle droit réduit à zéro le coefficient d'induction mutuelle entre les deux conducteurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle norme internationale fixe les exigences d'immunité et d'émission électromagnétique des équipements industriels ?",
+              "options": [
+                "La directive CEM et la série de normes CEI 61000",
+                "Le code de la route pour poids lourds",
+                "La charte typographique de l'imprimerie nationale",
+                "Le règlement sanitaire départemental"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La famille CEI / EN 61000 définit les essais de décharges électrostatiques, transitoires rapides et immunité rayonnée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

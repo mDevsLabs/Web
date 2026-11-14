@@ -107,9 +107,9 @@ export default function SupportStatsClient() {
             >
               <ArrowLeft aria-hidden="true" className="h-4 w-4" /> Support
             </Link>
-            <h1 className="flex items-center gap-2 text-2xl font-black tracking-tight text-slate-900">
+            <h2 className="flex items-center gap-2 text-2xl font-black tracking-tight text-slate-900">
               Observatoire & Métriques du Support
-            </h1>
+            </h2>
           </div>
           <p className="mt-1 text-xs text-slate-500 sm:text-sm">
             {isAdmin

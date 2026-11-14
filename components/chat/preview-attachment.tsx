@@ -56,10 +56,13 @@ function getAttachmentIcon(contentType?: string, name?: string) {
 
 export const PreviewAttachment = ({
   attachment,
+  errorMessage,
   isUploading = false,
   onRemove,
 }: {
   attachment: Attachment;
+  /** Échec d'envoi : le fichier reste visible avec sa cause, jamais retiré en silence. */
+  errorMessage?: string;
   isUploading?: boolean;
   onRemove?: () => void;
 }) => {
@@ -126,7 +129,17 @@ export const PreviewAttachment = ({
         </div>
       )}
 
-      {isUploading ? (
+      {errorMessage ? (
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center rounded-xl bg-destructive/80 p-1.5 text-center backdrop-blur-sm"
+          data-testid="input-attachment-error"
+          title={errorMessage}
+        >
+          <span className="line-clamp-3 text-[9px] font-medium leading-tight text-white">
+            {errorMessage}
+          </span>
+        </div>
+      ) : isUploading ? (
         <div
           className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/40 backdrop-blur-sm"
           data-testid="input-attachment-loader"

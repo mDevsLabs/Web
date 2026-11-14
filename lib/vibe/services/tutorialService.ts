@@ -8,12 +8,9 @@
  */
 import { type Driver, driver } from "driver.js";
 import "driver.js/dist/driver.css";
-import "@/components/vibe/tutorial/tour.css";
-import { stripVibeBasePath } from "@/components/vibe/router";
-import {
-  TOUR_STEPS,
-  type TourStepDef,
-} from "@/components/vibe/tutorial/TourSteps";
+import "@/lib/vibe/tour.css";
+import { stripVibeBasePath } from "@/lib/vibe/routes";
+import { TOUR_STEPS, type TourStepDef } from "@/lib/vibe/tutorial-steps";
 
 const TOUR_DONE_KEY = "vibe_tour_completed_v1";
 /** Rejet explicite (fermeture du tour) : ne jamais relancer l'auto-démarrage. */

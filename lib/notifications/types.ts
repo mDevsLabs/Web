@@ -63,6 +63,14 @@ export const VIBE_NOTIFICATION_TYPES = [
 /** Types produits par Wakies. */
 export const WAKIES_NOTIFICATION_TYPES = ["wakies_reply"] as const;
 
+/** Types produits par Quizzly. */
+export const QUIZZLY_NOTIFICATION_TYPES = [
+  "quizzly_reminder",
+  "quizzly_league",
+  "quizzly_gift",
+  "quizzly_streak",
+] as const;
+
 /** Types produits par mAI lui-même. */
 export const MAI_NOTIFICATION_TYPES = [
   "agent_approval_required",
@@ -83,6 +91,7 @@ export const NOTIFICATION_TYPES = [
   ...MAI_NOTIFICATION_TYPES,
   ...VIBE_NOTIFICATION_TYPES,
   ...WAKIES_NOTIFICATION_TYPES,
+  ...QUIZZLY_NOTIFICATION_TYPES,
 ] as const;
 
 export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
@@ -111,6 +120,11 @@ export const NOTIFICATION_TYPE_TO_PREF_KEY: Record<NotificationType, string> = {
   // Pas de colonne dédiée : la participation à un projet est un événement
   // factuel, régi par projectCreated.
   project_member_joined: "projectCreated",
+  // Quizzly — rappels scolaires, ligues, cadeaux et séries
+  quizzly_gift: "news",
+  quizzly_league: "news",
+  quizzly_reminder: "news",
+  quizzly_streak: "news",
   quota_warning: "quotaWarning",
   vibe_ai_digest: "vibeAiDigest",
   vibe_dm: "vibeDm",

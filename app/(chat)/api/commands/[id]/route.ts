@@ -8,7 +8,6 @@ import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { isReservedSlashCommandTrigger } from "@/lib/chat/slash-command-catalog";
 import { commandPayloadSchema } from "@/lib/commands/types";
 import { deleteCustomCommand, updateCustomCommand } from "@/lib/db/queries";
-import { ChatbotError } from "@/lib/errors";
 
 const updateCommandSchema = z.object({
   actionType: z

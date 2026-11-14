@@ -52,6 +52,29 @@ const FileSchema = z.object({
     ),
 });
 
+// Étapes du téléversement blob, pour nommer la cause exacte d'un échec dans les
+// logs et dans le message rendu — jamais le contenu du fichier.
+type UploadStep = "presignature" | "signature" | "écriture";
+
+/**
+ * Vrai si AUCUNE credentiale de stockage n'est présente. `@vercel/blob` accepte
+ * un jeton de lecture/écriture, ou un couple OIDC + store : quand les trois
+ * variables sont absentes, l'envoi échouerait de toute façon — mieux vaut le
+ * dire explicitement que de renvoyer un 500 opaque (issue #47).
+ */
+function blobCredentialsMissing(): boolean {
+  return (
+    !process.env.BLOB_READ_WRITE_TOKEN &&
+    !process.env.VERCEL_OIDC_TOKEN &&
+    !process.env.BLOB_STORE_ID
+  );
+}
+
+function storageUnavailableMessage(step: UploadStep | null): string {
+  const stepLabel = step ? ` (étape : ${step})` : "";
+  return `Le stockage de fichiers est indisponible${stepLabel}. Le fichier n'a pas été envoyé, veuillez réessayer.`;
+}
+
 export async function POST(request: Request) {
   const session = await auth();
 
@@ -91,6 +114,20 @@ export async function POST(request: Request) {
       });
     }
 
+    // Stockage absent de l'instance : refus explicite AVANT l'envoi, plutôt
+    // qu'un 500 opaque venu du SDK blob. L'échec reste récupérable : le client
+    // doit afficher ce message, pas retirer le fichier en silence.
+    if (blobCredentialsMissing()) {
+      logError(
+        `Upload refusé : stockage non configuré type=${file.type} taille=${file.size}`,
+        new Error("BLOB_READ_WRITE_TOKEN / VERCEL_OIDC_TOKEN absents")
+      );
+      return errorResponse("service_unavailable", {
+        message:
+          "Le stockage de fichiers n'est pas configuré sur cette instance. Le fichier n'a pas été envoyé.",
+      });
+    }
+
     const filename = (formData.get("file") as File).name;
     const safeName = filename.replace(/[^a-zA-Z0-9._-]/g, "_");
     // Namespace par utilisateur + suffixe unique : deux utilisateurs ne peuvent
@@ -99,17 +136,20 @@ export async function POST(request: Request) {
     const fileBuffer = await file.arrayBuffer();
 
     let uploadedUrl: string | null = null;
+    let step: UploadStep = "écriture";
     try {
       const data = await put(blobKey, fileBuffer, {
         access: "private",
       });
       uploadedUrl = data.url;
       const validUntil = Date.now() + 10 * 60 * 1000;
+      step = "signature";
       const signedToken = await issueSignedToken({
         operations: ["get"],
         pathname: data.pathname,
         validUntil,
       });
+      step = "presignature";
       const { presignedUrl } = await presignUrl(signedToken, {
         access: "private",
         operation: "get",
@@ -122,9 +162,15 @@ export async function POST(request: Request) {
       if (uploadedUrl) {
         await del(uploadedUrl).catch(() => {});
       }
-      logError("Échec upload blob", error);
-      return errorResponse("internal_error", {
-        message: "L'envoi du fichier a échoué. Veuillez réessayer.",
+      // Erreur du stockage (credential, accès, indisponibilité) : échec
+      // explicite et récupérable, jamais un 500 opaque ni un succès. La trace
+      // nomme l'étape et le type du fichier, sans son contenu.
+      logError(
+        `Échec upload blob étape=${step} type=${file.type} taille=${file.size}`,
+        error
+      );
+      return errorResponse("service_unavailable", {
+        message: storageUnavailableMessage(step),
       });
     }
   } catch (error) {

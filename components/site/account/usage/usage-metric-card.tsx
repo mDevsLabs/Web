@@ -1,7 +1,5 @@
 "use client";
 
-import type { IconProps } from "@mdevs/icons";
-
 export function UsageMetricCard({
   icon: Icon,
   iconClassName,

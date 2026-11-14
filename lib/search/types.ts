@@ -37,6 +37,7 @@
  */
 export const SEARCH_SOURCE_KEYS = [
   "audio",
+  "blackline",
   "bot",
   "chat",
   "cli",
@@ -53,6 +54,7 @@ export const SEARCH_SOURCE_KEYS = [
   "planning",
   "plugin",
   "project",
+  "quizzly",
   "run",
   "site",
   "skill",
@@ -70,6 +72,7 @@ export function isSearchSourceKey(value: string): value is SearchSourceKey {
 /** Étiquettes des sources : un seul endroit fait autorité sur la casse. */
 export const SEARCH_SOURCE_LABELS: Record<SearchSourceKey, string> = {
   audio: "Générations audio",
+  blackline: "Blackline (Jeu 3D)",
   bot: "Bots",
   chat: "Discussions",
   cli: "mAI CLI & Commandes",
@@ -86,6 +89,7 @@ export const SEARCH_SOURCE_LABELS: Record<SearchSourceKey, string> = {
   planning: "Planification",
   plugin: "Plugins",
   project: "Projets",
+  quizzly: "Quizzly (Quiz & Matières)",
   run: "Étapes d'agent",
   site: "Site officiel & Docs",
   skill: "Skills",

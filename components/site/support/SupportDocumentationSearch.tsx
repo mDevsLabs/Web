@@ -74,6 +74,11 @@ export function SupportDocumentationSearch() {
           signal: controller.signal,
         });
         if (!response.ok) {
+          if (response.status === 401) {
+            throw new Error(
+              "Connexion requise pour effectuer cette recherche."
+            );
+          }
           throw new Error(`La recherche a répondu ${response.status}.`);
         }
         const payload: unknown = await response.json();
@@ -90,7 +95,11 @@ export function SupportDocumentationSearch() {
         if (!cancelled) {
           setResults([]);
           setResolvedQuery(trimmed);
-          setError("La documentation ne répond pas pour le moment.");
+          setError(
+            reason instanceof Error && reason.message
+              ? reason.message
+              : "La recherche documentaire est temporairement indisponible."
+          );
         }
       } finally {
         if (!cancelled) setLoading(false);

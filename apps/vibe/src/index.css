@@ -1061,6 +1061,22 @@ input.vibe-chat-input:focus-visible {
   color: var(--text-muted) !important;
 }
 
+/* ─────────────────────────────────────────────────────────────
+ * MODE RÉDACTION : le composeur occupe l'écran
+ * La pastille de saisie redevient un panneau : un rayon de 9999px sur toute
+ * la hauteur donnerait une gélule absurde, et le texte doit s'aligner en haut.
+ * ───────────────────────────────────────────────────────────── */
+.vibe-composer-focus .vibe-chat-input-pill {
+  border-radius: 1rem !important;
+  align-items: flex-start !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.vibe-composer-focus .vibe-chat-input {
+  min-height: 40vh;
+}
+
 /* Bouton + */
 .vibe-chat-plus-btn {
   background-color: var(--bg-secondary) !important;

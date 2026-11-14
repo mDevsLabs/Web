@@ -1,61 +1,13 @@
 import "server-only";
-import {
-  and,
-  asc,
-  count,
-  desc,
-  eq,
-  gt,
-  gte,
-  inArray,
-  isNull,
-  lt,
-  lte,
-  notInArray,
-  or,
-  type SQL,
-  sql,
-} from "drizzle-orm";
-import { ChatbotError } from "@/lib/errors";
+import { and, count, desc, eq, inArray, sql } from "drizzle-orm";
 import {
   type NOTIFICATION_TYPES,
   type NotificationOrigin,
+  type NotificationType,
   originForNotificationType,
 } from "@/lib/notifications/types";
-import {
-  agent,
-  agentTemplate,
-  type Chat,
-  chat,
-  customCommand,
-  type DBMessage,
-  type DocumentProposal,
-  document,
-  documentProposal,
-  mcpLog,
-  mcpServer,
-  mcpServerSecret,
-  message,
-  pluginInstallation,
-  project,
-  projectFile,
-  projectInvite,
-  projectMember,
-  type ScheduledMessage,
-  type Skill,
-  type Suggestion,
-  scheduledMessage,
-  skill,
-  skillUsage,
-  skillVersion,
-  stream,
-  suggestion,
-  toolExecution,
-  userMcpPrefs,
-  userMemory,
-  vote,
-} from "../schema";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { notification, userNotificationPrefs } from "../schema";
+import { dbReady } from "./connection";
 
 // ==========================================
 // NOTIFICATIONS QUERIES
@@ -63,7 +15,6 @@ import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 
 export async function getUserNotificationPrefs(userId: string) {
   const db = await dbReady();
-  const { notification, userNotificationPrefs } = await import("../schema");
   const [prefs] = await db
     .select()
     .from(userNotificationPrefs)
@@ -157,32 +108,7 @@ export async function upsertUserNotificationPrefs(
 
 export async function createNotification(data: {
   userId: string;
-  type:
-    | "ai_response"
-    | "project_created"
-    | "mcp_created"
-    | "mcp_access_request"
-    | "news"
-    | "planning_task_completed"
-    | "project_member_joined"
-    | "quota_warning"
-    // Notifications Agent (types autorisés par la contrainte 0017).
-    | "agent_approval_required"
-    | "agent_run_failed"
-    | "agent_run_finished"
-    | "agent_user_input_required"
-    // Notifications Vibe et Wakies (migration 0063) : répliquées depuis leur
-    // source, elles portent l'origine qui les a produites.
-    | "vibe_like"
-    | "vibe_repost"
-    | "vibe_reply"
-    | "vibe_mention"
-    | "vibe_quote"
-    | "vibe_follow"
-    | "vibe_dm"
-    | "vibe_ai_digest"
-    | "vibe_system"
-    | "wakies_reply";
+  type: NotificationType;
   title: string;
   body?: string | null;
   dedupeKey?: string | null;
@@ -282,7 +208,6 @@ export async function replicateNotification(data: {
   userId: string;
 }) {
   const db = await dbReady();
-  const { notification } = await import("../schema");
   const [created] = await db
     .insert(notification)
     .values({
@@ -299,15 +224,57 @@ export async function replicateNotification(data: {
     })
     .onConflictDoNothing({
       target: [notification.origin, notification.sourceId],
-      // L'index unique est PARTIEL (`sourceId is not null`) : la clause
-      // `ON CONFLICT` doit porter la même condition, sinon PostgreSQL
-      // refuse de l'appliquer à un index partiel.
-      // `where` est le prédicat d'index (le `targetWhere` n'existe que pour
-      // `onConflictDoUpdate`).
       where: sql`${notification.sourceId} is not null`,
     })
     .returning();
   return created ?? null;
+}
+
+/**
+ * Réplication en lot (batch) de notifications.
+ * Réduit drastiquement le nombre d'allers-retours SQL lors des synchronisations cron.
+ */
+export async function replicateNotificationsBatch(
+  items: Array<{
+    body?: string | null;
+    createdAt?: Date;
+    dedupeKey?: string | null;
+    link?: string | null;
+    origin: NotificationOrigin;
+    sourceId: string;
+    sourceMeta?: Record<string, unknown> | null;
+    title: string;
+    type: (typeof NOTIFICATION_TYPES)[number];
+    userId: string;
+  }>
+): Promise<number> {
+  if (!Array.isArray(items) || items.length === 0) {
+    return 0;
+  }
+  const db = await dbReady();
+  const rows = items.map((data) => ({
+    body: data.body ?? null,
+    createdAt: data.createdAt ?? new Date(),
+    dedupeKey: data.dedupeKey ?? null,
+    link: data.link ?? null,
+    origin: data.origin,
+    sourceId: data.sourceId,
+    sourceMeta: (data.sourceMeta as any) ?? null,
+    title: data.title,
+    type: data.type,
+    userId: data.userId,
+  }));
+
+  const inserted = await db
+    .insert(notification)
+    .values(rows)
+    .onConflictDoNothing({
+      target: [notification.origin, notification.sourceId],
+      where: sql`${notification.sourceId} is not null`,
+    })
+    .returning({ id: notification.id });
+
+  return inserted.length;
 }
 
 export async function getNotificationsByUserId({

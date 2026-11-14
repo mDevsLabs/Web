@@ -9,5 +9,6 @@ export interface DialogProps {
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
     closeLabel?: string;
+    container?: HTMLElement | null;
 }
-export declare function Dialog({ title, description, trigger, children, footer, closeLabel, ...props }: DialogProps): import("react").JSX.Element;
+export declare function Dialog({ title, description, trigger, children, footer, closeLabel, container, ...props }: DialogProps): import("react").JSX.Element;

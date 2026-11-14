@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { tool } from "ai";
 import { z } from "zod";
-import { PHOTO_STATUS, PROFILE_PICTURE_TOOL } from "./account-status";
+import { PHOTO_STATUS } from "./account-status";
 
 // Tool natif de changement de photo de profil. Même principe de sécurité que
 // updateAccountProfile : le tool NE MODIFIE RIEN lui-même — il prépare

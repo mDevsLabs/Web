@@ -1,6 +1,5 @@
 "use client";
 
-import { useId } from "react";
 import {
   STATS_KIND_LABELS,
   STATS_KINDS,

@@ -148,6 +148,7 @@ function WakiesWorkspaceContent({
       wakieId?: string;
     }>
   >([]);
+  const [searchError, setSearchError] = useState<string | null>(null);
 
   /**
    * LA RECHERCHE DU RAIL — une seule requête, une seule source de vérité.
@@ -172,9 +173,11 @@ function WakiesWorkspaceContent({
     const requete = sidebarSearch.trim();
     if (requete.length < 2) {
       setSearchResults([]);
+      setSearchError(null);
       return;
     }
     let active = true;
+    setSearchError(null);
     const timer = setTimeout(() => {
       void api<{
         counts: Record<string, number>;
@@ -200,10 +203,16 @@ function WakiesWorkspaceContent({
         total: number;
       }>(`/search?q=${encodeURIComponent(requete)}`)
         .then((donnees) => {
-          if (active) setSearchResults(donnees.hits ?? []);
+          if (active) {
+            setSearchResults(donnees.hits ?? []);
+            setSearchError(null);
+          }
         })
         .catch(() => {
-          if (active) setSearchResults([]);
+          if (active) {
+            setSearchResults([]);
+            setSearchError("Impossible de charger les résultats de recherche.");
+          }
         });
     }, 220);
     return () => {
@@ -651,6 +660,7 @@ function WakiesWorkspaceContent({
         ouvrirReglages={ouvrirReglages}
         pageId={pageId}
         refresh={refresh}
+        searchError={searchError}
         searchResults={searchResults}
         selectedThread={selectedThread}
         selectedWakie={selectedWakie}

@@ -1,32 +1,16 @@
 "use client";
 
 import {
-  ArchiveIcon,
-  ArchiveRestoreIcon,
-  Edit2Icon,
-  FolderIcon,
   FolderKanbanIcon,
   LayoutGridIcon,
   ListIcon,
-  MoreHorizontalIcon,
-  PinIcon,
-  PinOffIcon,
   PlusIcon,
   SearchIcon,
-  SparklesIcon,
-  TagIcon,
-  Trash2Icon,
 } from "@mdevs/icons";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
-import {
-  DataGrid,
-  type RenderCheckboxProps,
-  renderCheckbox,
-  SelectColumn,
-} from "react-data-grid";
+import { type RenderCheckboxProps, renderCheckbox } from "react-data-grid";
 import { toast } from "sonner";
 import useSWR from "swr";
 import useSWRInfinite from "swr/infinite";
@@ -35,45 +19,21 @@ import {
   revalidateChatHistories,
   useChatHistoryReset,
 } from "@/hooks/revalidate-chat-histories";
-import { confirmInApp } from "@/lib/ui/app-dialog";
 import "react-data-grid/lib/styles.css";
-import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { PROJECT_ICON_KEYS, ProjectIcon } from "@/components/chat/project-icon";
+import { BulkActionBar } from "@/components/projects/bulk-action-bar";
+import { BulkTagDialog } from "@/components/projects/bulk-tag-dialog";
+import { CreateProjectDialog } from "@/components/projects/create-project-dialog";
+import { DeleteProjectDialog } from "@/components/projects/delete-project-dialog";
+import { EditProjectDialog } from "@/components/projects/edit-project-dialog";
+import { ProjectsChatsDataGrid } from "@/components/projects/projects-chats-data-grid";
 import {
-  PROJECT_ICON_KEYS,
-  PROJECT_ICON_LIST,
-  ProjectIcon,
-} from "@/components/chat/project-icon";
-import { MemoryCard } from "@/components/settings/memory-card";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Badge } from "@/components/ui/badge";
+  ProjectsGridView,
+  type ProjectViewItem,
+} from "@/components/projects/projects-grid-view";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -110,7 +70,7 @@ type Chat = {
   visibility: string;
 };
 
-const PROJECT_COLORS = [
+const _PROJECT_COLORS = [
   "#6366f1",
   "#ec4899",
   "#10b981",
@@ -123,7 +83,7 @@ const PROJECT_COLORS = [
 const _PROJECT_ICONS = PROJECT_ICON_KEYS;
 
 // Conserver la sélection et l’état indéterminé du tableau avec des libellés français.
-const CHAT_GRID_RENDERERS = {
+const _CHAT_GRID_RENDERERS = {
   renderCheckbox: (props: RenderCheckboxProps) =>
     renderCheckbox({
       ...props,
@@ -152,9 +112,17 @@ function ProjectsPageInner() {
   const { resolvedTheme } = useTheme();
   const { data: modelsData } = useSWR<{
     capabilities?: Record<string, ModelCapabilities>;
-    models: any[];
+    models: Array<{ id: string; name?: string }>;
   }>("/api/models", fetcher);
-  const availableModels: any[] = modelsData?.models || [];
+  // Le sélecteur compact attend des modèles à nom obligatoire (SharedModel).
+  const availableModels = useMemo(
+    () =>
+      (modelsData?.models ?? []).map((modele) => ({
+        id: modele.id,
+        name: modele.name ?? modele.id,
+      })),
+    [modelsData]
+  );
 
   const [viewMode, setViewMode] = useState<"grid" | "list">(
     (searchParams.get("view") as "grid" | "list") || "grid"
@@ -170,7 +138,9 @@ function ProjectsPageInner() {
   const [debouncedSearch] = useDebounceValue(search, 300);
   const [debouncedTag] = useDebounceValue(tagFilter, 300);
   const [createOpen, setCreateOpen] = useState(false);
-  const [editingProject, setEditingProject] = useState<Project | null>(null);
+  const [editingProject, setEditingProject] = useState<ProjectViewItem | null>(
+    null
+  );
   const [deleteProjectId, setDeleteProjectId] = useState<string | null>(null);
   const [deleteWithChats, setDeleteWithChats] = useState(false);
   const [newName, setNewName] = useState("");
@@ -384,18 +354,23 @@ function ProjectsPageInner() {
       | "unpin"
       | "tag"
       | "delete",
-    extra?: any
+    extra?: string[] | string | null
   ) => {
     if (selectedChatIds.size === 0) {
       return;
     }
     const chatIds = Array.from(selectedChatIds);
-    const body: any = { action, chatIds };
+    const body: {
+      action: string;
+      chatIds: string[];
+      projectId?: string | null;
+      tags?: string[];
+    } = { action, chatIds };
     if (action === "move") {
-      body.projectId = extra ?? null;
+      body.projectId = typeof extra === "string" ? extra : null;
     }
     if (action === "tag") {
-      body.tags = extra ?? [];
+      body.tags = Array.isArray(extra) ? extra : [];
     }
     const res = await fetch("/api/history/bulk", {
       body: JSON.stringify(body),
@@ -448,190 +423,6 @@ function ProjectsPageInner() {
     setShowBulkTagDialog(false);
     setBulkTagInput("");
   };
-
-  // DataGrid columns for chats
-  const columns = useMemo(() => {
-    const cols: any[] = [
-      SelectColumn,
-      {
-        key: "title",
-        name: "Discussion",
-        renderCell: ({ row }: { row: Chat }) => (
-          <div className="flex items-center gap-2 truncate">
-            {row.pinned && (
-              <PinIcon className="size-3 text-amber-500 shrink-0" />
-            )}
-            {row.isArchived && (
-              <ArchiveIcon className="size-3 text-muted-foreground shrink-0" />
-            )}
-            <Link
-              className="truncate hover:underline text-[13px]"
-              href={`/chat/${row.id}`}
-            >
-              {row.title}
-            </Link>
-          </div>
-        ),
-        resizable: true,
-        sortable: false,
-        width: 320,
-      },
-      {
-        key: "projectId",
-        name: "Projet",
-        renderCell: ({ row }: { row: Chat }) => {
-          const p = row.projectId ? projectMap.get(row.projectId) : null;
-          if (!p) {
-            return (
-              <span className="text-xs text-muted-foreground">
-                — Sans dossier —
-              </span>
-            );
-          }
-          return (
-            <span className="inline-flex items-center gap-1.5 text-xs">
-              <ProjectIcon
-                className="size-3.5 shrink-0"
-                name={p.icon}
-                style={{ color: p.color }}
-              />
-              <span className="truncate">{p.name}</span>
-            </span>
-          );
-        },
-        width: 160,
-      },
-      {
-        key: "tags",
-        name: "Tags",
-        renderCell: ({ row }: { row: Chat }) =>
-          row.tags?.length ? (
-            <div className="flex gap-1 flex-wrap">
-              {row.tags.slice(0, 2).map((t) => (
-                <Badge
-                  className="text-[10px] px-1 py-0"
-                  key={t}
-                  variant="secondary"
-                >
-                  {t}
-                </Badge>
-              ))}
-              {row.tags.length > 2 && (
-                <span className="text-[10px] text-muted-foreground">
-                  +{row.tags.length - 2}
-                </span>
-              )}
-            </div>
-          ) : (
-            <span className="text-xs text-muted-foreground">—</span>
-          ),
-        width: 180,
-      },
-      {
-        key: "createdAt",
-        name: "Créé",
-        renderCell: ({ row }: { row: Chat }) => (
-          <span className="text-xs text-muted-foreground">
-            {new Date(row.createdAt).toLocaleDateString("fr-FR")}
-          </span>
-        ),
-        width: 140,
-      },
-      {
-        key: "actions",
-        name: "",
-        renderCell: ({ row }: { row: Chat }) => (
-          <div className="flex items-center justify-end gap-1">
-            <Button
-              className="h-7 w-7"
-              onClick={async () => {
-                await handleSingleAction(row.id, { pinned: !row.pinned });
-              }}
-              size="icon"
-              title={row.pinned ? "Désépingler" : "Épingler"}
-              variant="ghost"
-            >
-              {row.pinned ? (
-                <PinOffIcon className="size-3.5" />
-              ) : (
-                <PinIcon className="size-3.5" />
-              )}
-            </Button>
-            <Button
-              className="h-7 w-7"
-              onClick={async () => {
-                await handleSingleAction(row.id, {
-                  isArchived: !row.isArchived,
-                });
-              }}
-              size="icon"
-              title={row.isArchived ? "Désarchiver" : "Archiver"}
-              variant="ghost"
-            >
-              {row.isArchived ? (
-                <ArchiveRestoreIcon className="size-3.5" />
-              ) : (
-                <ArchiveIcon className="size-3.5" />
-              )}
-            </Button>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  aria-label={`Options de ${row.title}`}
-                  className="h-7 w-7"
-                  size="icon"
-                  variant="ghost"
-                >
-                  <MoreHorizontalIcon className="size-3.5" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem
-                  onClick={() => {
-                    setSelectedChatIds(new Set([row.id]));
-                    setShowBulkTagDialog(true);
-                  }}
-                >
-                  <TagIcon className="size-3.5 mr-2" /> Gérer tags
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="text-destructive"
-                  onClick={async () => {
-                    if (
-                      !(await confirmInApp(
-                        "Supprimer définitivement cette conversation ?"
-                      ))
-                    ) {
-                      return;
-                    }
-                    const res = await fetch(`/api/chat?id=${row.id}`, {
-                      method: "DELETE",
-                    });
-                    if (res.ok) {
-                      toast.success("Conversation supprimée");
-                      setSelectedChatIds((prev) => {
-                        const next = new Set(prev);
-                        next.delete(row.id);
-                        return next;
-                      });
-                      await revalidateChatHistories();
-                    } else {
-                      toast.error("Erreur lors de la suppression");
-                    }
-                  }}
-                >
-                  <Trash2Icon className="size-3.5 mr-2" /> Supprimer
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        ),
-        width: 140,
-      },
-    ];
-    return cols;
-  }, [projectMap, handleSingleAction]);
 
   const selectedRows = useMemo(() => {
     const s = new Set<string>();
@@ -786,574 +577,121 @@ function ProjectsPageInner() {
               Réessayer
             </Button>
           </div>
-        ) : projects.length === 0 ? (
-          <div className="rounded-xl border border-dashed p-10 text-center">
-            <FolderIcon className="mx-auto size-8 text-muted-foreground mb-3" />
-            <h3 className="font-semibold">Aucun projet</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Créez votre premier dossier pour ranger vos discussions.
-            </p>
-            <Button onClick={() => setCreateOpen(true)}>
-              <PlusIcon className="size-4 mr-2" /> Créer un projet
-            </Button>
-          </div>
-        ) : viewMode === "grid" ? (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((p) => (
-              <div
-                className="group relative rounded-2xl border border-border/60 bg-card p-5 shadow-xs transition hover:border-border hover:shadow-sm"
-                key={p.id}
-                style={{ borderLeft: `4px solid ${p.color}` }}
-              >
-                <Link className="absolute inset-0" href={`/projects/${p.id}`} />
-                <div className="flex items-start justify-between gap-2 relative z-10">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div
-                      className="size-9 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ background: `${p.color}15` }}
-                    >
-                      <ProjectIcon
-                        className="size-5"
-                        name={p.icon}
-                        style={{ color: p.color }}
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="font-semibold text-sm truncate">
-                        {p.name}
-                      </h3>
-                      <p className="text-xs text-muted-foreground truncate">
-                        {p.description || "—"}
-                      </p>
-                    </div>
-                  </div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        className="h-7 w-7 shrink-0 relative z-20"
-                        onClick={(e) => e.preventDefault()}
-                        size="icon"
-                        variant="ghost"
-                      >
-                        <MoreHorizontalIcon className="size-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      align="end"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <DropdownMenuItem
-                        onClick={() => {
-                          setEditingProject(p);
-                          setNewName(p.name);
-                          setNewDesc(p.description);
-                          setNewIcon(p.icon || "folder");
-                          setNewColor(p.color);
-                          setNewInstructions(p.customInstructions || "");
-                          setNewDefaultModel(p.defaultModel || "");
-                        }}
-                      >
-                        <Edit2Icon className="size-3.5 mr-2" /> Modifier
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={async () => {
-                          await fetch(`/api/projects/${p.id}`, {
-                            body: JSON.stringify({ isArchived: !p.isArchived }),
-                            headers: { "Content-Type": "application/json" },
-                            method: "PATCH",
-                          });
-                          mutateProjects();
-                        }}
-                      >
-                        {p.isArchived ? (
-                          <ArchiveRestoreIcon className="size-3.5 mr-2" />
-                        ) : (
-                          <ArchiveIcon className="size-3.5 mr-2" />
-                        )}{" "}
-                        {p.isArchived ? "Désarchiver" : "Archiver"}
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                        className="text-destructive"
-                        onClick={() => setDeleteProjectId(p.id)}
-                      >
-                        <Trash2Icon className="size-3.5 mr-2" /> Supprimer
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
-                <div className="mt-3 flex flex-wrap items-center gap-2 relative z-10">
-                  <Badge className="text-xs" variant="secondary">
-                    {p.chatCount ?? 0} discussions
-                  </Badge>
-                  {p.defaultModel && (
-                    <Badge
-                      className="text-[11px] bg-primary/10 text-primary border-primary/20 gap-1 font-normal"
-                      variant="secondary"
-                    >
-                      <SparklesIcon className="size-3 text-amber-500" />
-                      {availableModels.find((m) => m.id === p.defaultModel)
-                        ?.name || p.defaultModel}
-                    </Badge>
-                  )}
-                  {p.isArchived && (
-                    <Badge className="text-xs" variant="outline">
-                      Archivé
-                    </Badge>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
         ) : (
-          <div className="rounded-xl border overflow-hidden">
-            <div className="divide-y">
-              {projects.map((p) => (
-                <Link
-                  className="flex items-center justify-between p-4 hover:bg-muted/50"
-                  href={`/projects/${p.id}`}
-                  key={p.id}
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="size-8 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ background: `${p.color}15` }}
-                    >
-                      <ProjectIcon
-                        className="size-4"
-                        name={p.icon}
-                        style={{ color: p.color }}
-                      />
-                    </div>
-                    <div>
-                      <div className="font-medium text-sm">{p.name}</div>
-                      <div className="text-xs text-muted-foreground">
-                        {p.description}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="secondary">{p.chatCount ?? 0}</Badge>
-                    <div
-                      className="size-3 rounded-full"
-                      style={{ background: p.color }}
-                    />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+          <ProjectsGridView
+            availableModels={availableModels}
+            onCreateClick={() => setCreateOpen(true)}
+            onDeleteClick={(id) => setDeleteProjectId(id)}
+            onEditClick={(p) => {
+              setEditingProject(p);
+              setNewName(p.name);
+              setNewDesc(p.description);
+              setNewIcon(p.icon || "folder");
+              setNewColor(p.color);
+              setNewInstructions(p.customInstructions || "");
+              setNewDefaultModel(p.defaultModel || "");
+            }}
+            onToggleArchive={async (p) => {
+              await fetch(`/api/projects/${p.id}`, {
+                body: JSON.stringify({ isArchived: !p.isArchived }),
+                headers: { "Content-Type": "application/json" },
+                method: "PATCH",
+              });
+              mutateProjects();
+            }}
+            projects={projects}
+            viewMode={viewMode}
+          />
         )}
 
         {/* Bulk bar */}
-        {selectedChatIds.size > 0 && (
-          <div className="sticky bottom-4 z-30 mx-auto flex flex-wrap items-center gap-2 rounded-2xl border border-border/60 bg-background/95 backdrop-blur p-2 shadow-xl">
-            <span className="text-sm font-medium px-2">
-              {selectedChatIds.size} sélectionnée(s)
-            </span>
-            <div className="h-4 w-px bg-border" />
-            <Select
-              onValueChange={(v) =>
-                handleBulkAction("move", v === "none" ? null : v)
-              }
-            >
-              <SelectTrigger className="h-8 w-[160px]">
-                <SelectValue placeholder="Déplacer vers..." />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="none">Sans dossier</SelectItem>
-                {projects.map((p) => (
-                  <SelectItem key={p.id} value={p.id}>
-                    <div className="flex items-center gap-2">
-                      <ProjectIcon
-                        className="size-3.5 shrink-0"
-                        name={p.icon}
-                        style={{ color: p.color }}
-                      />
-                      <span>{p.name}</span>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Button
-              onClick={() => handleBulkAction("archive")}
-              size="sm"
-              variant="outline"
-            >
-              <ArchiveIcon className="size-3.5 mr-1" /> Archiver
-            </Button>
-            <Button
-              onClick={() => handleBulkAction("unarchive")}
-              size="sm"
-              variant="outline"
-            >
-              <ArchiveRestoreIcon className="size-3.5 mr-1" /> Désarchiver
-            </Button>
-            <Button
-              onClick={() => handleBulkAction("pin")}
-              size="sm"
-              variant="outline"
-            >
-              <PinIcon className="size-3.5 mr-1" /> Épingler
-            </Button>
-            <Button
-              onClick={() => setShowBulkTagDialog(true)}
-              size="sm"
-              variant="outline"
-            >
-              <TagIcon className="size-3.5 mr-1" /> Tags
-            </Button>
-            <Button
-              onClick={() => handleBulkAction("delete")}
-              size="sm"
-              variant="destructive"
-            >
-              <Trash2Icon className="size-3.5 mr-1" /> Supprimer
-            </Button>
-            <Button
-              onClick={() => setSelectedChatIds(new Set())}
-              size="sm"
-              variant="ghost"
-            >
-              Effacer
-            </Button>
-          </div>
-        )}
+        <BulkActionBar
+          onBulkAction={handleBulkAction}
+          onClearSelection={() => setSelectedChatIds(new Set())}
+          onOpenBulkTagDialog={() => setShowBulkTagDialog(true)}
+          projects={projects}
+          selectedCount={selectedChatIds.size}
+        />
 
         {/* Chats DataGrid */}
-        <div className="rounded-2xl border border-border/60 shadow-xs overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border/60 bg-muted/20">
-            <h2 className="font-semibold text-sm">Discussions</h2>
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">
-                {chats.length} {hasMore ? "+" : ""} affichées
-              </span>
-              {hasMore && (
-                <Button
-                  className="h-7"
-                  onClick={() => setSize(size + 1)}
-                  size="sm"
-                  variant="outline"
-                >
-                  Charger plus
-                </Button>
-              )}
-            </div>
-          </div>
-          <div className="min-h-[300px]">
-            {chatsLoading ? (
-              <div className="p-8 text-center text-sm text-muted-foreground">
-                Chargement...
-              </div>
-            ) : chatsError ? (
-              <div className="p-8 text-center text-sm text-destructive flex flex-col items-center gap-2">
-                <span>Impossible de charger les discussions.</span>
-                <Button
-                  onClick={() => mutateChats()}
-                  size="sm"
-                  variant="outline"
-                >
-                  Réessayer
-                </Button>
-              </div>
-            ) : chats.length === 0 ? (
-              <div className="p-8 text-center text-sm text-muted-foreground">
-                Aucune discussion ne correspond aux filtres.
-              </div>
-            ) : (
-              <DataGrid
-                className={resolvedTheme === "dark" ? "rdg-dark" : "rdg-light"}
-                columns={columns}
-                defaultColumnOptions={{ resizable: true }}
-                enableVirtualization={true}
-                onSelectedRowsChange={setSelectedChatIds as any}
-                renderers={CHAT_GRID_RENDERERS}
-                rowKeyGetter={(row: Chat) => row.id}
-                rows={chats}
-                selectedRows={selectedRows}
-                style={{ height: 500 } as any}
-              />
-            )}
-          </div>
-        </div>
+        <ProjectsChatsDataGrid
+          chats={chats}
+          chatsError={chatsError}
+          chatsLoading={chatsLoading}
+          hasMore={hasMore}
+          mutateChats={mutateChats}
+          onOpenBulkTagForChat={(chatId) => {
+            setSelectedChatIds(new Set([chatId]));
+            setShowBulkTagDialog(true);
+          }}
+          onSelectedChatIdsChange={(ids) => setSelectedChatIds(new Set(ids))}
+          onSingleAction={handleSingleAction}
+          projectMap={projectMap}
+          resolvedTheme={resolvedTheme}
+          selectedChatIds={selectedRows}
+          setSize={setSize}
+          size={size}
+        />
 
         {/* Dialogs */}
-        <Dialog onOpenChange={setCreateOpen} open={createOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Nouveau projet</DialogTitle>
-              <DialogDescription>
-                Créez un dossier pour organiser vos discussions.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label>Nom</Label>
-                <Input
-                  maxLength={100}
-                  onChange={(e) => setNewName(e.target.value)}
-                  placeholder="Ex: Travail, Études..."
-                  value={newName}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Description</Label>
-                <Input
-                  maxLength={500}
-                  onChange={(e) => setNewDesc(e.target.value)}
-                  placeholder="Optionnel"
-                  value={newDesc}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Instructions personnalisées (optionnel)</Label>
-                <textarea
-                  className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                  maxLength={4000}
-                  onChange={(e) => setNewInstructions(e.target.value)}
-                  placeholder="Ex: Répondre toujours en tant qu'expert TypeScript senior..."
-                  rows={3}
-                  value={newInstructions}
-                />
-                <span className="text-[11px] text-muted-foreground">
-                  Ces instructions seront appliquées à toutes les discussions
-                  créées dans ce dossier.
-                </span>
-              </div>
-              <div className="grid gap-2">
-                <Label>Modèle d'IA par défaut (optionnel)</Label>
-                <ModelSelectorCompact
-                  allowEmpty
-                  capabilities={modelsData?.capabilities}
-                  fallbackModels={availableModels}
-                  modal
-                  models={
-                    availableModels.length > 0 ? availableModels : undefined
-                  }
-                  onModelChange={setNewDefaultModel}
-                  selectedModelId={newDefaultModel}
-                  variant="block"
-                />
-                <span className="text-[11px] text-muted-foreground">
-                  Modèle utilisé par défaut pour chaque nouvelle discussion
-                  lancée dans ce projet.
-                </span>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="grid gap-2">
-                  <Label>Icône</Label>
-                  <div className="grid grid-cols-4 gap-1.5 max-h-36 overflow-y-auto p-1 rounded-lg border bg-muted/20">
-                    {PROJECT_ICON_LIST.map(({ id, label, icon: IconComp }) => (
-                      <button
-                        className={`h-8 rounded flex items-center justify-center gap-1.5 text-xs transition-all border ${newIcon === id ? "bg-primary text-primary-foreground border-primary shadow-xs font-semibold" : "bg-card border-border/50 hover:bg-muted text-muted-foreground hover:text-foreground"}`}
-                        key={id}
-                        onClick={() => setNewIcon(id)}
-                        title={label}
-                        type="button"
-                      >
-                        <IconComp className="size-3.5 shrink-0" />
-                        <span className="truncate">{label}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div className="grid gap-2">
-                  <Label>Couleur</Label>
-                  <div className="flex flex-wrap gap-1.5">
-                    {PROJECT_COLORS.map((c) => (
-                      <button
-                        className={`size-8 rounded-full border-2 ${newColor === c ? "border-foreground scale-110" : "border-transparent"}`}
-                        key={c}
-                        onClick={() => setNewColor(c)}
-                        style={{ background: c }}
-                      />
-                    ))}
-                  </div>
-                  <Input
-                    className="h-9 p-1"
-                    onChange={(e) => setNewColor(e.target.value)}
-                    type="color"
-                    value={newColor}
-                  />
-                </div>
-              </div>
-            </div>
-            <DialogFooter>
-              <Button onClick={() => setCreateOpen(false)} variant="outline">
-                Annuler
-              </Button>
-              <Button onClick={handleCreateProject}>Créer</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+        <CreateProjectDialog
+          availableModels={availableModels}
+          color={newColor}
+          defaultModel={newDefaultModel}
+          desc={newDesc}
+          icon={newIcon}
+          instructions={newInstructions}
+          modelsData={modelsData}
+          name={newName}
+          onCreate={handleCreateProject}
+          onOpenChange={setCreateOpen}
+          open={createOpen}
+          setColor={setNewColor}
+          setDefaultModel={setNewDefaultModel}
+          setDesc={setNewDesc}
+          setIcon={setNewIcon}
+          setInstructions={setNewInstructions}
+          setName={setNewName}
+        />
 
-        <Dialog
+        <EditProjectDialog
+          availableModels={availableModels}
+          color={newColor}
+          defaultModel={newDefaultModel}
+          desc={newDesc}
+          icon={newIcon}
+          instructions={newInstructions}
+          modelsData={modelsData}
+          name={newName}
           onOpenChange={(o) => !o && setEditingProject(null)}
-          open={!!editingProject}
-        >
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Modifier projet</DialogTitle>
-            </DialogHeader>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label>Nom</Label>
-                <Input
-                  onChange={(e) => setNewName(e.target.value)}
-                  value={newName}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Description</Label>
-                <Input
-                  onChange={(e) => setNewDesc(e.target.value)}
-                  value={newDesc}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Instructions personnalisées du dossier</Label>
-                <textarea
-                  className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                  maxLength={4000}
-                  onChange={(e) => setNewInstructions(e.target.value)}
-                  placeholder="Ex: Contexte, rôle IA, règles spécifiques..."
-                  rows={3}
-                  value={newInstructions}
-                />
-                <span className="text-[11px] text-muted-foreground">
-                  Injectées automatiquement comme contexte pour les échanges
-                  dans ce projet.
-                </span>
-              </div>
-              {editingProject && (
-                <div className="grid gap-2">
-                  <Label>Mémoire du projet</Label>
-                  <MemoryCard projectId={editingProject.id} />
-                </div>
-              )}
-              <div className="grid gap-2">
-                <Label>Modèle d'IA par défaut</Label>
-                <ModelSelectorCompact
-                  allowEmpty
-                  capabilities={modelsData?.capabilities}
-                  fallbackModels={availableModels}
-                  modal
-                  models={
-                    availableModels.length > 0 ? availableModels : undefined
-                  }
-                  onModelChange={setNewDefaultModel}
-                  selectedModelId={newDefaultModel}
-                  variant="block"
-                />
-                <span className="text-[11px] text-muted-foreground">
-                  Modèle utilisé par défaut pour chaque nouvelle discussion
-                  lancée dans ce projet.
-                </span>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="grid gap-2">
-                  <Label>Icône</Label>
-                  <div className="grid grid-cols-4 gap-1.5 max-h-36 overflow-y-auto p-1 rounded-lg border bg-muted/20">
-                    {PROJECT_ICON_LIST.map(({ id, label, icon: IconComp }) => (
-                      <button
-                        className={`h-8 rounded flex items-center justify-center gap-1.5 text-xs transition-all border ${newIcon === id ? "bg-primary text-primary-foreground border-primary shadow-xs font-semibold" : "bg-card border-border/50 hover:bg-muted text-muted-foreground hover:text-foreground"}`}
-                        key={id}
-                        onClick={() => setNewIcon(id)}
-                        title={label}
-                        type="button"
-                      >
-                        <IconComp className="size-3.5 shrink-0" />
-                        <span className="truncate">{label}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div className="grid gap-2">
-                  <Label>Couleur</Label>
-                  <div className="flex flex-wrap gap-1.5">
-                    {PROJECT_COLORS.map((c) => (
-                      <button
-                        className={`size-8 rounded-full border-2 ${newColor === c ? "border-foreground" : "border-transparent"}`}
-                        key={c}
-                        onClick={() => setNewColor(c)}
-                        style={{ background: c }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <DialogFooter>
-              <Button onClick={() => setEditingProject(null)} variant="outline">
-                Annuler
-              </Button>
-              <Button onClick={handleUpdateProject}>Enregistrer</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+          onUpdate={handleUpdateProject}
+          project={editingProject}
+          setColor={setNewColor}
+          setDefaultModel={setNewDefaultModel}
+          setDesc={setNewDesc}
+          setIcon={setNewIcon}
+          setInstructions={setNewInstructions}
+          setName={setNewName}
+        />
 
-        <AlertDialog
+        <DeleteProjectDialog
+          chatCount={
+            projects.find((p) => p.id === deleteProjectId)?.chatCount ?? 0
+          }
+          deleteWithChats={deleteWithChats}
+          onDelete={handleDeleteProject}
           onOpenChange={(o) => !o && setDeleteProjectId(null)}
-          open={!!deleteProjectId}
-        >
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Supprimer le projet ?</AlertDialogTitle>
-              <AlertDialogDescription>
-                Les discussions ne seront pas supprimées sauf si vous cochez
-                l&apos;option. Elles redeviendront &quot;Sans dossier&quot;.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <div className="flex items-center gap-2 py-2">
-              <input
-                checked={deleteWithChats}
-                id="deleteChats"
-                onChange={(e) => setDeleteWithChats(e.target.checked)}
-                type="checkbox"
-              />
-              <label className="text-sm" htmlFor="deleteChats">
-                Supprimer aussi les{" "}
-                {projects.find((p) => p.id === deleteProjectId)?.chatCount ?? 0}{" "}
-                discussions du projet
-              </label>
-            </div>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Annuler</AlertDialogCancel>
-              <AlertDialogAction
-                className="bg-destructive text-destructive-foreground"
-                onClick={handleDeleteProject}
-              >
-                Supprimer
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+          open={Boolean(deleteProjectId)}
+          setDeleteWithChats={setDeleteWithChats}
+        />
 
-        <Dialog onOpenChange={setShowBulkTagDialog} open={showBulkTagDialog}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Étiqueter les discussions</DialogTitle>
-              <DialogDescription>
-                Séparez les tags par des virgules (max 10, 30 caractères).
-              </DialogDescription>
-            </DialogHeader>
-            <Input
-              onChange={(e) => setBulkTagInput(e.target.value)}
-              placeholder="ex: urgent, travail, perso"
-              value={bulkTagInput}
-            />
-            <DialogFooter>
-              <Button
-                onClick={() => setShowBulkTagDialog(false)}
-                variant="outline"
-              >
-                Annuler
-              </Button>
-              <Button onClick={handleTagSelected}>Appliquer</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+        <BulkTagDialog
+          onApply={handleTagSelected}
+          onOpenChange={setShowBulkTagDialog}
+          open={showBulkTagDialog}
+          setTagInput={setBulkTagInput}
+          tagInput={bulkTagInput}
+        />
       </div>
     </div>
   );

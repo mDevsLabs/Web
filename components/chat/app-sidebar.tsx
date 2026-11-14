@@ -22,15 +22,10 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createElement, useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
-import { useSWRConfig } from "swr";
-import { unstable_serialize } from "swr/infinite";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { SearchDialog } from "@/components/chat/search-dialog";
-import {
-  getChatHistoryPaginationKey,
-  SidebarHistory,
-} from "@/components/chat/sidebar-history";
+import { SidebarHistory } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
 import { AppMenuItems } from "@/components/common/app-menu-items";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
@@ -71,16 +66,6 @@ import { appKeyFromPath } from "@/lib/apps/catalog";
 import type { MaiUser } from "@/lib/auth/session";
 import { pagePath } from "@/lib/client/api-endpoints";
 import { cn } from "@/lib/utils";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "../ui/alert-dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 function SidebarProjects() {
@@ -386,7 +371,7 @@ export function AppSidebar({
   const isPlusActive = Boolean(
     pathname?.startsWith("/archived") || pathname?.startsWith("/planning")
   );
-  const isLibraryActive = pathname?.startsWith("/library");
+  const _isLibraryActive = pathname?.startsWith("/library");
 
   const { resetChat } = useActiveChat();
 
@@ -395,7 +380,7 @@ export function AppSidebar({
     setOpenMenu(null);
   }, [setOpenMobile]);
 
-  const closeMobile = useCallback(() => {
+  const _closeMobile = useCallback(() => {
     setOpenMobile(false);
   }, [setOpenMobile]);
 
@@ -408,7 +393,7 @@ export function AppSidebar({
     toggleSidebar();
   }, [toggleSidebar]);
 
-  const handleGoHome = useCallback(() => {
+  const _handleGoHome = useCallback(() => {
     handleNavClick();
     resetChat();
     router.push("/");

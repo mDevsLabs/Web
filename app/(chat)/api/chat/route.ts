@@ -126,6 +126,7 @@ export async function POST(request: Request) {
       agentId: (body as any).agentId ?? null,
       customInstructions: body.customInstructions,
       enabledTools: body.enabledTools,
+      ghostHistory: body.ghostHistory ?? null,
       id: body.id,
       isGhostMode: body.isGhostMode ?? false,
       message: (body.message as any) ?? null,
@@ -141,6 +142,7 @@ export async function POST(request: Request) {
       skillParams: body.skillParams,
       tags: body.tags,
       temperatureOverride: body.temperatureOverride,
+      truncateAfterMessageId: body.truncateAfterMessageId ?? null,
     });
 
     // 2 bis. Compteur d'usage des commandes personnalisées.
@@ -361,7 +363,10 @@ export async function POST(request: Request) {
       );
       return error.toResponse();
     }
-    console.error("Unhandled error in chat API:", error);
+    console.error(
+      `[chat-api] rejected guard=unhandled chatId=${requestBody?.id ?? "inconnu"} errorName=${(error as Error)?.name ?? "Error"}`,
+      error
+    );
     return new ChatbotError("offline:chat").toResponse();
   }
 }
@@ -378,7 +383,7 @@ export async function DELETE(request: Request) {
   if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const { user: maiUser, userId } = session;
+  const { userId } = session;
 
   const chat = await getChatById({ id });
   if (!chat) {

@@ -169,6 +169,6 @@ export const config = {
     "/api/:path*",
     "/login",
     "/register",
-    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+    "/((?!_next/static|_next/image|favicon\\.ico|favicon\\.png|logo\\.png|preview\\.png|sitemap\\.xml|robots\\.txt|models/|blackline/|images/|icons/|demo-assets/|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|mp3|mp4|webm|woff2?|ttf|eot)$).*)",
   ],
 };

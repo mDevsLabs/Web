@@ -6,20 +6,14 @@
  */
 
 import { MailIcon as Mail } from "@mdevs/icons";
-import { PencilLineIcon } from "@mdevs/icons/editing/pencil-line";
-import { Wand2Icon } from "@mdevs/icons/editing/wand-2";
-import { DramaIcon } from "@mdevs/icons/misc/drama";
-import { ExpandIcon } from "@mdevs/icons/misc/expand";
-import { ScissorsIcon } from "@mdevs/icons/misc/scissors";
 import type React from "react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
 import { htmlToPlainText } from "@/components/vibe/common/RichContent";
 import { sanitizeRichHtml } from "@/components/vibe/common/richSanitizer";
 import {
   AddMembersModal,
   type AttachedMedia,
-  type AttachedPostPreview,
   ConversationHeader,
   ConversationList,
   CreateGroupModal,
@@ -55,7 +49,7 @@ import type {
   DMConversation,
   VibeBookPost,
 } from "@/lib/vibe/types/vibe";
-import { toVibeAbsoluteUrl, useNavigate } from "../router";
+import { toVibeAbsoluteUrl } from "../router";
 
 export const MessagesPage: React.FC<{
   hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
@@ -97,6 +91,23 @@ export const MessagesPage: React.FC<{
   const [isLoading, setIsLoading] = useState(true);
   const [isSending, setIsSending] = useState(false);
   const [justSent, setJustSent] = useState(false);
+
+  /**
+   * Dernier message envoyé par l'utilisateur, en texte brut : la flèche haut
+   * d'un champ vide le rappelle (geste standard d'une messagerie).
+   */
+  const lastSentText = useMemo(() => {
+    for (let i = messages.length - 1; i >= 0; i--) {
+      const m = messages[i];
+      if (
+        String(m.sender_id) === String(user?.id) ||
+        m.sender_username === user?.username
+      ) {
+        return htmlToPlainText(m.content);
+      }
+    }
+    return "";
+  }, [messages, user]);
   const { play: playMotion, animationsEnabled } = useMotionPrefs();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -241,7 +252,6 @@ export const MessagesPage: React.FC<{
   // du Livre joignables via la commande « / » (carte cliquable).
   const isBookConv = Boolean(isGroupConv && activeConv?.is_book);
   const bookId = isBookConv ? activeConv?.book_id || null : null;
-  const navigate = useNavigate();
 
   // Le nom/photo affichés se resynchronisent quand la liste des conversations arrive
   // (deep-link, renommage de groupe, nouvel avatar…)
@@ -1152,30 +1162,6 @@ export const MessagesPage: React.FC<{
     return () => clearTimeout(t);
   }, [convSearchQuery, convSearchOpen, activePartnerId, messages]);
 
-  /** Surlignage des occurrences (découpage React, sans HTML brut). */
-  const highlightMatches = (
-    content: string,
-    query: string
-  ): React.ReactNode => {
-    if (!query) return content;
-    const parts = content.split(query);
-    if (parts.length <= 1) return content;
-    return (
-      <>
-        {parts.map((part, i) => (
-          <span key={i}>
-            {part}
-            {i < parts.length - 1 && (
-              <mark className="bg-yellow-400/60 text-inherit rounded-sm px-0.5">
-                {query}
-              </mark>
-            )}
-          </span>
-        ))}
-      </>
-    );
-  };
-
   const handleSearchUsers = (q: string) => {
     setSearchQuery(q);
     if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
@@ -1707,38 +1693,6 @@ export const MessagesPage: React.FC<{
     return list.slice(0, 20);
   })();
 
-  const PRESET_OPTIONS: {
-    key: "shorten" | "extend" | "tone" | "improve" | "custom";
-    label: string;
-    icon: React.ReactNode;
-  }[] = [
-    {
-      icon: <ScissorsIcon className="h-3.5 w-3.5" />,
-      key: "shorten",
-      label: "Réduire",
-    },
-    {
-      icon: <ExpandIcon className="h-3.5 w-3.5" />,
-      key: "extend",
-      label: "Allonger",
-    },
-    {
-      icon: <DramaIcon className="h-3.5 w-3.5" />,
-      key: "tone",
-      label: "Changer le ton",
-    },
-    {
-      icon: <Wand2Icon className="h-3.5 w-3.5" />,
-      key: "improve",
-      label: "Améliorer",
-    },
-    {
-      icon: <PencilLineIcon className="h-3.5 w-3.5" />,
-      key: "custom",
-      label: "Personnalisé…",
-    },
-  ];
-
   const handleGenerateSuggestion = async (
     preset: "improve" | "shorten" | "extend" | "tone" | "custom" = "improve",
     customPrompt?: string
@@ -2081,6 +2035,7 @@ export const MessagesPage: React.FC<{
               isSupported={isSupported}
               isUploading={isUploading}
               justSent={justSent}
+              lastSentText={lastSentText}
               mediaLimitLabel={mediaLimitLabel}
               mentionQuery={mentionQuery}
               mentionSuggestions={mentionSuggestions}

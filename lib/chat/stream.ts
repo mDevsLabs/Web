@@ -35,6 +35,7 @@ import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
 import {
   createNotification,
   createStreamId,
+  deleteMessagesAfterMessageId,
   recordTokenUsage,
   saveMessages,
   updateMessage,
@@ -302,8 +303,10 @@ export function createChatStream(params: ChatStreamParams) {
       }
     },
     generateId: generateUUID,
-    onEnd: async ({ messages: finishedMessages }) => {
-      await persistStreamEnd(ctx, finishedMessages as ChatMessage[]);
+    onEnd: async ({ messages: finishedMessages, outcome }) => {
+      await persistStreamEnd(ctx, finishedMessages as ChatMessage[], {
+        outcomeStatus: outcome.status,
+      });
     },
     onError: (error) => {
       console.error("Erreur Stream AI:", error);
@@ -421,9 +424,12 @@ async function handleTokenAccounting(params: {
   }
 }
 
-async function persistStreamEnd(
+// Persistance de fin de flux. Exportée pour le contrat de test : c'est l'ORDRE
+// persister puis supprimer (issue #46) qui protège le tour valide.
+export async function persistStreamEnd(
   ctx: ChatRequestContext,
-  finishedMessages: ChatMessage[]
+  finishedMessages: ChatMessage[],
+  stream: { outcomeStatus: "aborted" | "completed" | "failed" | "unknown" }
 ): Promise<void> {
   if (ctx.isGhostMode) {
     // Mode fantôme : ne pas enregistrer la discussion ou les messages en BDD
@@ -498,6 +504,34 @@ async function persistStreamEnd(
     // (au-dessus), tant que le flux est ouvert, pour pouvoir émettre la part
     // `data-chat-title`. Le faire ici fonctionnait en base, mais la sidebar
     // n'apprenait le nouveau titre qu'à la revalidation suivante.
+  }
+
+  // Remplacement différé d'une régénération (mode truncate, issue #46) : la
+  // suppression de l'ancienne réponse et de ce qui suit n'a lieu qu'APRÈS la
+  // persistance de la nouvelle réponse, et seulement si le flux s'est terminé
+  // normalement. Avant, la suppression partait en même temps que la requête
+  // (fire-and-forget côté client) : un échec de génération détruisait le tour
+  // déjà valide. `keepIds` protège les messages de CE tour — y compris dans le
+  // flux d'approbation d'outils où `finishedMessages` contient tout le fil.
+  if (
+    ctx.truncateAfterMessageId &&
+    stream.outcomeStatus === "completed" &&
+    finishedMessages.length > 0
+  ) {
+    try {
+      await deleteMessagesAfterMessageId({
+        chatId: ctx.id,
+        keepIds: finishedMessages.map((currentMessage) => currentMessage.id),
+        messageId: ctx.truncateAfterMessageId,
+      });
+    } catch (error) {
+      // La nouvelle réponse est déjà persistée : une suppression ratée laisse
+      // l'ancien tour visible en plus, jamais l'inverse — tracé pour diagnostic.
+      console.error(
+        "[chat] Remplacement différé des messages impossible:",
+        error
+      );
+    }
   }
 }
 

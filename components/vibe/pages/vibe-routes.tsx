@@ -30,7 +30,6 @@ import { MessagesPage } from "@/components/vibe/pages/MessagesPage";
 import { NotificationsPage } from "@/components/vibe/pages/NotificationsPage";
 import { PostDetailPage } from "@/components/vibe/pages/PostDetailPage";
 import { ProfilePage } from "@/components/vibe/pages/ProfilePage";
-import { SettingsPage } from "@/components/vibe/pages/SettingsPage";
 import { StatsPage } from "@/components/vibe/pages/StatsPage";
 import { useNavigate, useParams } from "@/components/vibe/router";
 import type { Post, VibeHydrationSeed } from "@/lib/vibe/types/vibe";
@@ -117,7 +116,7 @@ export function VibeMaiRoute() {
   return <MAIStudioPage />;
 }
 
-export function VibeSettingsRoute({ hydration }: VibeRouteProps) {
+export function VibeSettingsRoute({ hydration: _hydration }: VibeRouteProps) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.location.href = "/settings?tab=applications#vibe";

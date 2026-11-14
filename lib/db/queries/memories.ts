@@ -1,59 +1,9 @@
 import "server-only";
-import {
-  and,
-  asc,
-  count,
-  desc,
-  eq,
-  exists,
-  gt,
-  gte,
-  inArray,
-  isNull,
-  lt,
-  lte,
-  notInArray,
-  or,
-  type SQL,
-  sql,
-} from "drizzle-orm";
+import { and, count, desc, eq, exists, isNull, or, sql } from "drizzle-orm";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
-import { ChatbotError } from "@/lib/errors";
-import {
-  agent,
-  agentTemplate,
-  type Chat,
-  chat,
-  customCommand,
-  type DBMessage,
-  type DocumentProposal,
-  document,
-  documentProposal,
-  mcpLog,
-  mcpServer,
-  mcpServerSecret,
-  message,
-  pluginInstallation,
-  project,
-  projectFile,
-  projectInvite,
-  projectMember,
-  type ScheduledMessage,
-  type Skill,
-  type Suggestion,
-  scheduledMessage,
-  skill,
-  skillUsage,
-  skillVersion,
-  stream,
-  suggestion,
-  toolExecution,
-  userMcpPrefs,
-  userMemory,
-  vote,
-} from "../schema";
+import { agent, project, projectMember, userMemory } from "../schema";
 import { getAgentById } from "./agents";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { _rawClient, dbReady, getDb } from "./connection";
 
 export async function getGlobalMemories({
   userId,

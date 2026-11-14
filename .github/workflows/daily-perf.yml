@@ -1,0 +1,45 @@
+name: Analyse Quotidienne des Performances — mAI Optimizer
+
+on:
+  schedule:
+    # Tous les jours à 03h00 UTC
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  daily-performance:
+    name: Analyse quotidienne de performance & régression
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: Génération du rapport mAI Optimizer
+        run: pnpm run optimizer:report
+
+      - name: Sauvegarder le rapport de performance
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf-report-daily
+          path: artifacts/perf-report.md
+          retention-days: 14

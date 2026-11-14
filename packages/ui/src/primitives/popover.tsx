@@ -10,5 +10,20 @@ export interface PopoverProps {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
     side?: 'top' | 'right' | 'bottom' | 'left';
+    container?: HTMLElement | null;
 }
-export function Popover({ trigger, children, label, side = 'bottom', ...props }: PopoverProps) { return <RPopover.Root {...props}><RPopover.Trigger asChild>{trigger}</RPopover.Trigger><RPopover.Portal><PortalScope><RPopover.Content side={side} sideOffset={8} className="md-glass md-popover" aria-label={label}>{children}<RPopover.Arrow className="md-popover-arrow"/></RPopover.Content></PortalScope></RPopover.Portal></RPopover.Root>; }
+export function Popover({ trigger, children, label, side = 'bottom', container, ...props }: PopoverProps) {
+    return (
+        <RPopover.Root {...props}>
+            <RPopover.Trigger asChild>{trigger}</RPopover.Trigger>
+            <RPopover.Portal container={container}>
+                <PortalScope>
+                    <RPopover.Content side={side} sideOffset={8} className="md-glass md-popover" aria-label={label}>
+                        {children}
+                        <RPopover.Arrow className="md-popover-arrow"/>
+                    </RPopover.Content>
+                </PortalScope>
+            </RPopover.Portal>
+        </RPopover.Root>
+    );
+}

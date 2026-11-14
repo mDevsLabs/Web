@@ -2,7 +2,7 @@
 
 import NextLink, { type LinkProps as NextLinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ReactNode } from "react";
 
 export const SITE_BASE_PATH = "/site";
 

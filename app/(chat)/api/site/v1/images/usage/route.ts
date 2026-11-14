@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getUserImageUsageForUser } from "@/lib/site/image-usage";
 import { authenticateOpenAIRequest } from "@/lib/site/openai-auth";
 
@@ -13,7 +14,10 @@ export async function GET(req: NextRequest) {
   const result = await getUserImageUsageForUser(userId);
 
   if (!result.success) {
-    return NextResponse.json({ error: result.error }, { status: 500 });
+    return errorResponse("internal_error", {
+      message: result.error || "Impossible de récupérer l'usage des images.",
+      status: 500,
+    });
   }
 
   return NextResponse.json(result.data);

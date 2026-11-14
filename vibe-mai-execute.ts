@@ -41,7 +41,7 @@ import {
 } from "./vibe-tools.ts";
 
 export function registerVibeMAIExecuteRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 1bis-bis. RÉGÉNÉRATION DE LA DERNIÈRE RÉPONSE mAI

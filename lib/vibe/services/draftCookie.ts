@@ -9,7 +9,7 @@
  * ============================================================================
  */
 
-import { htmlToPlainText } from "@/components/vibe/common/RichContent";
+import { htmlToPlainText } from "@/lib/vibe/rich-text";
 
 export const DRAFT_COOKIE_NAME = "vibe_draft";
 /** Durée de conservation du brouillon : 30 jours. */

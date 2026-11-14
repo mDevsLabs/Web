@@ -1,61 +1,16 @@
 import "server-only";
-import {
-  and,
-  asc,
-  count,
-  desc,
-  eq,
-  gt,
-  gte,
-  inArray,
-  isNull,
-  lt,
-  lte,
-  notInArray,
-  or,
-  type SQL,
-  sql,
-} from "drizzle-orm";
+import { and, asc, desc, eq, lte, or } from "drizzle-orm";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import { ChatbotError } from "@/lib/errors";
 import {
   normalizeScheduleToolMode,
   type ScheduleToolMode,
 } from "@/lib/planning/tool-mode";
 import {
-  agent,
-  agentTemplate,
-  type Chat,
-  chat,
-  customCommand,
-  type DBMessage,
-  type DocumentProposal,
-  document,
-  documentProposal,
-  mcpLog,
-  mcpServer,
-  mcpServerSecret,
-  message,
   pluginInstallation,
-  project,
-  projectFile,
-  projectInvite,
-  projectMember,
   type ScheduledMessage,
-  type Skill,
-  type Suggestion,
   scheduledMessage,
-  skill,
-  skillUsage,
-  skillVersion,
-  stream,
-  suggestion,
-  toolExecution,
-  userMcpPrefs,
-  userMemory,
-  vote,
 } from "../schema";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { getDb } from "./connection";
 
 // ============================================================================
 // Planification (ScheduledMessage)
