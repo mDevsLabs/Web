@@ -529,6 +529,7 @@ export async function soumettreQuiz(
         serie: serie.streakCount,
       }
     );
+    // optimizer-ignore-n1: mouvements bornés à 3 quêtes actives max
     for (const mouvement of mouvements) {
       const [quete] = await tx
         .select()

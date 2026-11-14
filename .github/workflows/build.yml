@@ -168,16 +168,16 @@ jobs:
   deploy-vercel:
     needs: [version, quality]
     name: Déploiement Vercel
-    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary')) || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary')) }}
     environment:
-      name: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+      name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
     runs-on: ubuntu-latest
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_CLI_VERSION: 64.5.0
-      DEPLOY_TARGET: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+      DEPLOY_TARGET: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4

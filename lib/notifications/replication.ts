@@ -37,10 +37,16 @@ import "server-only";
  * email plutôt que par identifiant.
  */
 
-import { replicateNotification } from "@/lib/db/queries/notifications";
+import {
+  getMaxReplicatedWakiesSeq,
+  type replicateNotification,
+  replicateNotificationsBatch,
+} from "@/lib/db/queries/notifications";
+import { resolveUserIdByEmail } from "@/lib/db/users";
 import type { NotificationType } from "@/lib/notifications/types";
 import { vibeSql } from "@/lib/vibe/server/db";
 import { isoDeep } from "@/lib/vibe/server/shape";
+import { listWakieNotifications } from "@/lib/wakies/queries";
 
 // ─────────────────────────────────────────────
 // Vibe
@@ -145,7 +151,6 @@ export async function replicateVibeNotifications(
   // est indexée sur le `userId` que produit la session (`user.id ||
   // user.email`), pas sur l'email. Écrire l'email ici mettrait la
   // notification dans une ligne que la cloche ne lira jamais.
-  const { resolveUserIdByEmail } = await import("@/lib/db/users");
   const userId = await resolveUserIdByEmail(normalized);
   if (!userId) {
     return 0;
@@ -181,21 +186,18 @@ export async function replicateVibeNotifications(
     return 0;
   }
 
-  let repliquees = 0;
+  const itemsToReplicate: Parameters<typeof replicateNotification>[0][] = [];
   for (const row of notifications) {
     const type = VIBE_TYPE_MAP[String(row.type ?? "")];
     if (!type) {
-      // Type Vibe inconnu : on ne l'invente pas. Il apparaîtra dans la page
-      // Vibe, qui lit sa propre source.
       continue;
     }
-    const sourceId = String(row.id);
-    const created = await replicateNotification({
+    itemsToReplicate.push({
       body: row.message ?? null,
       createdAt: row.created_at ? new Date(row.created_at) : new Date(),
       link: vibeLink(row),
       origin: "vibe",
-      sourceId,
+      sourceId: String(row.id),
       sourceMeta: isoDeep({
         actor_avatar_url: row.actor_avatar_url ?? null,
         actor_username: row.actor_username ?? null,
@@ -206,11 +208,9 @@ export async function replicateVibeNotifications(
       type,
       userId,
     });
-    if (created) {
-      repliquees += 1;
-    }
   }
-  return repliquees;
+
+  return replicateNotificationsBatch(itemsToReplicate);
 }
 
 /**
@@ -257,10 +257,6 @@ export async function listVibeRecipients(): Promise<string[]> {
 export async function replicateWakiesNotifications(
   userId: string
 ): Promise<number> {
-  const { listWakieNotifications } = await import("@/lib/wakies/queries");
-  const { getMaxReplicatedWakiesSeq } = await import(
-    "@/lib/db/queries/notifications"
-  );
   const dernierSeq = await getMaxReplicatedWakiesSeq(userId).catch(() => 0);
   const evenements = await listWakieNotifications(userId, dernierSeq).catch(
     () => []
@@ -269,33 +265,23 @@ export async function replicateWakiesNotifications(
     return 0;
   }
 
-  let repliquees = 0;
-  for (const evenement of evenements) {
-    const sourceId = String(evenement.seq);
-    const created = await replicateNotification({
-      body: evenement.preview ?? null,
-      // Wakies n'a pas de route par conversation : la liste des conversations
-      // vit dans le rail de l'atelier, et c'est là que l'utilisateur
-      // choisira le fil concerné. Un lien vers une route inexistante
-      // mènerait à un 404.
-      link: "/wakies",
-      origin: "wakies",
-      sourceId,
-      sourceMeta: {
-        conversationId: evenement.conversationId,
-        preview: evenement.preview ?? null,
-        seq: evenement.seq,
-        title: evenement.title ?? null,
-      },
-      title: evenement.title
-        ? `Réponse de ${evenement.title}`
-        : "Nouvelle réponse dans vos conversations",
-      type: "wakies_reply",
-      userId,
-    });
-    if (created) {
-      repliquees += 1;
-    }
-  }
-  return repliquees;
+  const items = evenements.map((evenement) => ({
+    body: evenement.preview ?? null,
+    link: "/wakies",
+    origin: "wakies" as const,
+    sourceId: String(evenement.seq),
+    sourceMeta: {
+      conversationId: evenement.conversationId,
+      preview: evenement.preview ?? null,
+      seq: evenement.seq,
+      title: evenement.title ?? null,
+    },
+    title: evenement.title
+      ? `Réponse de ${evenement.title}`
+      : "Nouvelle réponse dans vos conversations",
+    type: "wakies_reply" as const,
+    userId,
+  }));
+
+  return replicateNotificationsBatch(items);
 }

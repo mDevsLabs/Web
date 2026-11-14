@@ -66,18 +66,25 @@ export async function POST(request: Request) {
   const echecs: string[] = [];
 
   // ── Vibe ──────────────────────────────────────────────────────────────
-  // On parcourt les COMPTES, pas les notifications : le destinataire est
-  // un `users.id` numérique de Vibe, et les notifications ne le portent pas.
+  // Traitement par petits lots parallèles (concurrence bornée à 5) pour
+  // minimiser la durée d'exécution sans saturer le pool de connexions.
+  const CHUNK_SIZE = 5;
   try {
     const destinataires = await listVibeRecipients();
-    for (const email of destinataires) {
-      try {
-        vibe += await replicateVibeNotifications(email);
-      } catch (error) {
-        echecs.push(
-          `vibe:${email}:${error instanceof Error ? error.message : "inconnu"}`
-        );
-      }
+    for (let i = 0; i < destinataires.length; i += CHUNK_SIZE) {
+      const chunk = destinataires.slice(i, i + CHUNK_SIZE);
+      await Promise.all(
+        chunk.map(async (email) => {
+          try {
+            const count = await replicateVibeNotifications(email);
+            vibe += count;
+          } catch (error) {
+            echecs.push(
+              `vibe:${email}:${error instanceof Error ? error.message : "inconnu"}`
+            );
+          }
+        })
+      );
     }
   } catch (error) {
     echecs.push(
@@ -88,14 +95,20 @@ export async function POST(request: Request) {
   // ── Wakies ────────────────────────────────────────────────────────────
   try {
     const comptes = await listUsersWithWakies();
-    for (const userId of comptes) {
-      try {
-        wakies += await replicateWakiesNotifications(userId);
-      } catch (error) {
-        echecs.push(
-          `wakies:${userId}:${error instanceof Error ? error.message : "inconnu"}`
-        );
-      }
+    for (let i = 0; i < comptes.length; i += CHUNK_SIZE) {
+      const chunk = comptes.slice(i, i + CHUNK_SIZE);
+      await Promise.all(
+        chunk.map(async (userId) => {
+          try {
+            const count = await replicateWakiesNotifications(userId);
+            wakies += count;
+          } catch (error) {
+            echecs.push(
+              `wakies:${userId}:${error instanceof Error ? error.message : "inconnu"}`
+            );
+          }
+        })
+      );
     }
   } catch (error) {
     echecs.push(

@@ -137,7 +137,19 @@ function initDb() {
     );
   }
 
-  const client = postgres(connectionString, { prepare: false });
+  const maxConns = process.env.DB_MAX_CONNECTIONS
+    ? Number.parseInt(process.env.DB_MAX_CONNECTIONS, 10)
+    : process.env.NODE_ENV === "production"
+      ? 3
+      : 5;
+
+  const client = postgres(connectionString, {
+    connect_timeout: 10,
+    idle_timeout: 20,
+    max: Number.isFinite(maxConns) && maxConns > 0 ? maxConns : 3,
+    max_lifetime: 60 * 30,
+    prepare: false,
+  });
   _rawClient = client;
   _db = drizzle(client);
   _migrationPromise = ensureTableTypes(client);

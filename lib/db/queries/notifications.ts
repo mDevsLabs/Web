@@ -6,6 +6,7 @@ import {
   type NotificationType,
   originForNotificationType,
 } from "@/lib/notifications/types";
+import { notification, userNotificationPrefs } from "../schema";
 import { dbReady } from "./connection";
 
 // ==========================================
@@ -14,7 +15,6 @@ import { dbReady } from "./connection";
 
 export async function getUserNotificationPrefs(userId: string) {
   const db = await dbReady();
-  const { userNotificationPrefs } = await import("../schema");
   const [prefs] = await db
     .select()
     .from(userNotificationPrefs)
@@ -208,7 +208,6 @@ export async function replicateNotification(data: {
   userId: string;
 }) {
   const db = await dbReady();
-  const { notification } = await import("../schema");
   const [created] = await db
     .insert(notification)
     .values({
@@ -225,15 +224,57 @@ export async function replicateNotification(data: {
     })
     .onConflictDoNothing({
       target: [notification.origin, notification.sourceId],
-      // L'index unique est PARTIEL (`sourceId is not null`) : la clause
-      // `ON CONFLICT` doit porter la même condition, sinon PostgreSQL
-      // refuse de l'appliquer à un index partiel.
-      // `where` est le prédicat d'index (le `targetWhere` n'existe que pour
-      // `onConflictDoUpdate`).
       where: sql`${notification.sourceId} is not null`,
     })
     .returning();
   return created ?? null;
+}
+
+/**
+ * Réplication en lot (batch) de notifications.
+ * Réduit drastiquement le nombre d'allers-retours SQL lors des synchronisations cron.
+ */
+export async function replicateNotificationsBatch(
+  items: Array<{
+    body?: string | null;
+    createdAt?: Date;
+    dedupeKey?: string | null;
+    link?: string | null;
+    origin: NotificationOrigin;
+    sourceId: string;
+    sourceMeta?: Record<string, unknown> | null;
+    title: string;
+    type: (typeof NOTIFICATION_TYPES)[number];
+    userId: string;
+  }>
+): Promise<number> {
+  if (!Array.isArray(items) || items.length === 0) {
+    return 0;
+  }
+  const db = await dbReady();
+  const rows = items.map((data) => ({
+    body: data.body ?? null,
+    createdAt: data.createdAt ?? new Date(),
+    dedupeKey: data.dedupeKey ?? null,
+    link: data.link ?? null,
+    origin: data.origin,
+    sourceId: data.sourceId,
+    sourceMeta: (data.sourceMeta as any) ?? null,
+    title: data.title,
+    type: data.type,
+    userId: data.userId,
+  }));
+
+  const inserted = await db
+    .insert(notification)
+    .values(rows)
+    .onConflictDoNothing({
+      target: [notification.origin, notification.sourceId],
+      where: sql`${notification.sourceId} is not null`,
+    })
+    .returning({ id: notification.id });
+
+  return inserted.length;
 }
 
 export async function getNotificationsByUserId({

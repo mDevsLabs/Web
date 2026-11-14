@@ -372,6 +372,33 @@ export async function listUsersWithWakies(): Promise<string[]> {
 }
 
 /**
+ * Découvre UNIQUEMENT les comptes ayant des tâches dues ou en file.
+ * Évite le scan séquentiel de tous les comptes lors des ticks cron.
+ */
+export async function listUsersWithDueTasks(): Promise<string[]> {
+  await dbReady();
+  const maintenant = new Date();
+  const isDueCondition = or(
+    eq(wakiesTask.status, STATUT_TACHE.file),
+    and(
+      eq(wakiesTask.status, STATUT_TACHE.complete),
+      lte(wakiesTask.nextRunAt, maintenant)
+    ),
+    and(
+      eq(wakiesTask.status, STATUT_TACHE.enCours),
+      lt(wakiesTask.leaseUntil, maintenant)
+    )
+  );
+
+  const lignes = await getDb()
+    .selectDistinct({ userId: wakiesTask.userId })
+    .from(wakiesTask)
+    .where(isDueCondition);
+
+  return lignes.map((ligne) => ligne.userId);
+}
+
+/**
  * Clôt une exécution réussie et programme l'occurrence suivante.
  *
  * Le verrou est un `SELECT … FOR UPDATE` conditionnel (même forme que

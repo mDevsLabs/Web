@@ -518,13 +518,15 @@ export async function bulkUpdateChats({
       .select({ id: chat.id, tags: chat.tags })
       .from(chat)
       .where(where);
-    for (const row of existing) {
-      const merged = [...new Set([...(row.tags || []), ...sanitized])].slice(
-        0,
-        10
-      );
-      await db.update(chat).set({ tags: merged }).where(eq(chat.id, row.id));
-    }
+    await Promise.all(
+      existing.map((row) => {
+        const merged = [...new Set([...(row.tags || []), ...sanitized])].slice(
+          0,
+          10
+        );
+        return db.update(chat).set({ tags: merged }).where(eq(chat.id, row.id));
+      })
+    );
     return { updated: existing.length };
   }
   return { updated: 0 };

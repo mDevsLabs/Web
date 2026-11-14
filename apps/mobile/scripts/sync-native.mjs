@@ -187,40 +187,55 @@ public class QuizzlyWidgetProvider extends AppWidgetProvider {
 }
 
 if (existsSync(iosApp)) {
-  const shortcuts = raccourcis
-    .map(
-      ({ title, path, phrase }) =>
-        `        AppShortcut(intent: OuvrirRaccourciMAI(chemin: "${path}"), phrases: ["${phrase} dans \\(.applicationName)"], shortTitle: "${title}", systemImageName: "sparkles")`
-    )
-    .join(",\n");
-  ecrire(
-    join(iosApp, "AppShortcuts.swift"),
-    `import AppIntents
+  const shortcutsPath = join(iosApp, "AppShortcuts.swift");
+  const alreadyCustomized =
+    existsSync(shortcutsPath) &&
+    readFileSync(shortcutsPath, "utf8").includes("// @manual-shortcuts");
+
+  if (!alreadyCustomized) {
+    const shortcuts = raccourcis
+      .map(
+        ({ title, path, phrase }) =>
+          `        AppShortcut(intent: OuvrirRaccourciMAI(chemin: "${path}"), phrases: ["${phrase} dans \\(.applicationName)"], shortTitle: "${title}", systemImageName: "sparkles")`
+      )
+      .join(",\n");
+    ecrire(
+      shortcutsPath,
+      `#if canImport(AppIntents)
+import AppIntents
 import Foundation
 
-@available(iOS 16.0, *)
+@available(iOS 18.0, *)
 struct OuvrirRaccourciMAI: AppIntent {
     static var title: LocalizedStringResource = "Ouvrir mAI"
     static var openAppWhenRun = true
     @Parameter(title: "Chemin") var chemin: String
     init() { chemin = "/" }
     init(chemin: String) { self.chemin = chemin }
-    func perform() async throws -> some IntentResult {
+    func perform() async throws -> some IntentResult & OpensIntent {
         let cheminValide = chemin.hasPrefix("/") ? chemin : "/" + chemin
-        guard let url = URL(string: "mai://" + cheminValide) else { return .result() }
+        guard let url = URL(string: "mai://" + cheminValide) else {
+            throw NSError(
+                domain: "OuvrirRaccourciMAI",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "URL invalide: mai://\\(cheminValide)"]
+            )
+        }
         return .result(opensIntent: OpenURLIntent(url))
     }
 }
 
-@available(iOS 16.0, *)
+@available(iOS 18.0, *)
 struct RaccourcisMAI: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] = [
 ${shortcuts}
     ]
     static var shortcutTileColor: ShortcutTileColor = .blue
 }
+#endif
 `
-  );
+    );
+  }
 
   const delegatePath = join(iosApp, "AppDelegate.swift");
   if (existsSync(delegatePath)) {
