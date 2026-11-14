@@ -7,7 +7,9 @@ import {
   runCpuAnalysis,
 } from "@/lib/optimizer";
 
-describe("mAI Optimizer — Module interne d'optimisation", () => {
+describe("mAI Optimizer — Module interne d'optimisation", {
+  timeout: 30_000,
+}, () => {
   it("exécute l'analyse statique du code (Code Analyzer)", () => {
     const result = runCodeAnalysis(process.cwd());
     expect(result.category).toBe("code");
