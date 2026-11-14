@@ -1,20 +1,53 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 const ROOT_DIR = process.cwd();
 const SHORTCUTS_JSON_PATH = join(
   ROOT_DIR,
   "apps/mobile/scripts/shortcuts.json"
 );
-const APP_SHORTCUTS_SWIFT_PATH = join(
-  ROOT_DIR,
-  "apps/mobile/ios/App/App/AppShortcuts.swift"
-);
+const IOS_APP_DIR = join(ROOT_DIR, "apps/mobile/ios/App/App");
+const APP_SHORTCUTS_SWIFT_PATH = join(IOS_APP_DIR, "AppShortcuts.swift");
 const SYNC_NATIVE_PATH = join(ROOT_DIR, "apps/mobile/scripts/sync-native.mjs");
 
 describe("Contrats App Intents et App Shortcuts mobiles (iOS)", () => {
+  let iosExistedBefore = false;
+  let swiftExistedBefore = false;
+
+  beforeAll(() => {
+    iosExistedBefore = existsSync(join(ROOT_DIR, "apps/mobile/ios"));
+    swiftExistedBefore = existsSync(APP_SHORTCUTS_SWIFT_PATH);
+
+    // En environnement d'intégration continue (CI) ou dans un clone propre,
+    // le dossier natif `apps/mobile/ios` n'est pas versionné (généré au build).
+    // On prépare le répertoire cible pour valider la génération des App Shortcuts.
+    if (!existsSync(IOS_APP_DIR)) {
+      mkdirSync(IOS_APP_DIR, { recursive: true });
+    }
+    if (!existsSync(APP_SHORTCUTS_SWIFT_PATH)) {
+      execFileSync(process.execPath, [SYNC_NATIVE_PATH], {
+        cwd: join(ROOT_DIR, "apps/mobile"),
+        encoding: "utf8",
+      });
+    }
+  });
+
+  afterAll(() => {
+    // Si l'environnement iOS n'existait pas avant la suite, nettoyer pour préserver l'arbre git propre
+    if (!iosExistedBefore) {
+      const iosRootDir = join(ROOT_DIR, "apps/mobile/ios");
+      if (existsSync(iosRootDir)) {
+        rmSync(iosRootDir, { force: true, recursive: true });
+      }
+    } else if (!swiftExistedBefore) {
+      if (existsSync(APP_SHORTCUTS_SWIFT_PATH)) {
+        rmSync(APP_SHORTCUTS_SWIFT_PATH, { force: true });
+      }
+    }
+  });
+
   it("shortcuts.json ne dépasse jamais la limite stricte Apple de 10 App Shortcuts", () => {
     const raw = readFileSync(SHORTCUTS_JSON_PATH, "utf8");
     const shortcuts = JSON.parse(raw);
@@ -82,6 +115,7 @@ describe("Contrats App Intents et App Shortcuts mobiles (iOS)", () => {
     expect(() => {
       execFileSync(process.execPath, ["-e", inlineScript], {
         encoding: "utf8",
+        stdio: "pipe",
       });
     }).toThrow("Limite dépassée: 11");
   });

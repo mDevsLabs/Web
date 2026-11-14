@@ -347,11 +347,12 @@ import WebKit`
   }
 
   const plistPath = join(iosApp, "Info.plist");
-  let plist = readFileSync(plistPath, "utf8");
-  if (!plist.includes("mai-raccourcis")) {
-    plist = plist.replace(
-      "</dict>",
-      `\t<key>CFBundleURLTypes</key>
+  if (existsSync(plistPath)) {
+    let plist = readFileSync(plistPath, "utf8");
+    if (!plist.includes("mai-raccourcis")) {
+      plist = plist.replace(
+        "</dict>",
+        `\t<key>CFBundleURLTypes</key>
 \t<array>
 \t\t<dict>
 \t\t\t<key>CFBundleURLName</key><string>mai-raccourcis</string>
@@ -359,8 +360,9 @@ import WebKit`
 \t\t</dict>
 \t</array>
 </dict>`
-    );
-    writeFileSync(plistPath, plist);
+      );
+      writeFileSync(plistPath, plist);
+    }
   }
 
   const projectPath = join("ios", "App", "App.xcodeproj", "project.pbxproj");
