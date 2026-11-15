@@ -3283,3 +3283,35 @@ export const quizzlyCoachMessage = pgTable(
 );
 
 export type QuizzlyCoachMessage = InferSelectModel<typeof quizzlyCoachMessage>;
+
+// ─────────────────────────────────────────────
+// Périodes de maintenance planifiées et d'urgence (migration 0085).
+// Une fenêtre active (isActive=true et startAt <= NOW() < endAt) bloque
+// l'accès à l'ensemble du site et des APIs avec une page de maintenance dédiée.
+// ─────────────────────────────────────────────
+export const maintenanceWindow = pgTable(
+  "MaintenanceWindow",
+  {
+    createdAt: timestamp("createdAt", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    description: text("description").default(""),
+    endAt: timestamp("endAt", { withTimezone: true }).notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    isActive: boolean("isActive").notNull().default(true),
+    name: varchar("name", { length: 150 }).notNull(),
+    startAt: timestamp("startAt", { withTimezone: true }).notNull(),
+    updatedAt: timestamp("updatedAt", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => ({
+    activeRangeIdx: index("MaintenanceWindow_active_range_idx").on(
+      table.isActive,
+      table.startAt,
+      table.endAt
+    ),
+  })
+);
+
+export type MaintenanceWindow = InferSelectModel<typeof maintenanceWindow>;

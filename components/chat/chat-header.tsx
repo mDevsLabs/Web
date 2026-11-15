@@ -56,7 +56,7 @@ function PureChatHeader({
   isSecure: boolean;
 }) {
   const { state, toggleSidebar, isMobile } = useSidebar();
-  const { isGhostMode, toggleGhostMode } = useActiveChat();
+  const { isGhostMode, toggleGhostMode, resetChat } = useActiveChat();
   const pathname = usePathname();
   const router = useRouter();
   const isHome = pathname === "/";
@@ -276,18 +276,24 @@ function PureChatHeader({
     ) {
       return;
     }
+    // Libération défensive immédiate des pointeurs
+    if (typeof document !== "undefined") {
+      document.body.style.pointerEvents = "";
+    }
     try {
+      resetChat();
+      router.replace("/");
       const res = await fetch(`/api/chat?id=${chatId}`, { method: "DELETE" });
       if (!res.ok) {
         throw new Error();
       }
       toast.success("Conversation supprimée");
       await revalidateChatHistories();
-      router.push("/");
     } catch {
       toast.error("Erreur suppression");
+      await revalidateChatHistories();
     }
-  }, [chatId, router]);
+  }, [chatId, resetChat, router]);
 
   const isCollapsedDesktop = state === "collapsed" && !isMobile;
 

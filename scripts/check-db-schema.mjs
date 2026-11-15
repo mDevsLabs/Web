@@ -119,6 +119,8 @@ const REQUIRED_TABLES = [
   // Migration 0082 : catalogue persistant de la boutique. Sans cette table,
   // les articles ajoutés par `scripts/admin.ts` ne sont jamais lus.
   "QuizzlyShopItem",
+  // Migration 0085 : fenêtres de maintenance et verrouillage du site.
+  "MaintenanceWindow",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.

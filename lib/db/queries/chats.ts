@@ -76,6 +76,7 @@ export async function saveChat({
 export async function deleteChatById({ id }: { id: string }) {
   try {
     const db = await dbReady();
+    await db.delete(chatSecurity).where(eq(chatSecurity.chatId, id));
     await db.delete(vote).where(eq(vote.chatId, id));
     await db.delete(message).where(eq(message.chatId, id));
     await db.delete(stream).where(eq(stream.chatId, id));
@@ -83,7 +84,7 @@ export async function deleteChatById({ id }: { id: string }) {
       .delete(chat)
       .where(eq(chat.id, id))
       .returning();
-    return chatsDeleted;
+    return chatsDeleted ?? null;
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -102,6 +103,7 @@ export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
     }
 
     const chatIds = userChats.map((c) => c.id);
+    await db.delete(chatSecurity).where(inArray(chatSecurity.chatId, chatIds));
     await db.delete(vote).where(inArray(vote.chatId, chatIds));
     await db.delete(message).where(inArray(message.chatId, chatIds));
     await db.delete(stream).where(inArray(stream.chatId, chatIds));
@@ -226,16 +228,14 @@ export async function getChatsByUserId({
         .where(eq(chat.id, startingAfter))
         .limit(1);
 
-      if (!selectedChat) {
-        throw new ChatbotError(
-          "not_found:database",
-          `Chat with id ${startingAfter} not found`
+      if (selectedChat) {
+        filteredChats = await query(
+          sql`(${chat.pinned}, ${chat.createdAt}) > (${selectedChat.pinned}, ${selectedChat.createdAt})`
         );
+      } else {
+        // Le chat repère a pu être supprimé : repli gracieux sur le début sans casser SWR.
+        filteredChats = await query();
       }
-
-      filteredChats = await query(
-        sql`(${chat.pinned}, ${chat.createdAt}) > (${selectedChat.pinned}, ${selectedChat.createdAt})`
-      );
     } else if (endingBefore) {
       const [selectedChat] = await db
         .select()
@@ -243,16 +243,14 @@ export async function getChatsByUserId({
         .where(eq(chat.id, endingBefore))
         .limit(1);
 
-      if (!selectedChat) {
-        throw new ChatbotError(
-          "not_found:database",
-          `Chat with id ${endingBefore} not found`
+      if (selectedChat) {
+        filteredChats = await query(
+          sql`(${chat.pinned}, ${chat.createdAt}) < (${selectedChat.pinned}, ${selectedChat.createdAt})`
         );
+      } else {
+        // Le chat repère a pu être supprimé : repli gracieux sur le début sans casser SWR.
+        filteredChats = await query();
       }
-
-      filteredChats = await query(
-        sql`(${chat.pinned}, ${chat.createdAt}) < (${selectedChat.pinned}, ${selectedChat.createdAt})`
-      );
     } else {
       filteredChats = await query();
     }

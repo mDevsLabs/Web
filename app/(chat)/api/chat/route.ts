@@ -383,17 +383,28 @@ export async function DELETE(request: Request) {
   if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const { userId } = session;
+  const { userId, user } = session;
 
   const chat = await getChatById({ id });
   if (!chat) {
-    return new ChatbotError("not_found:chat").toResponse();
+    // Idempotence : si la conversation a déjà été supprimée, renvoyer 200
+    return Response.json({ id, success: true }, { status: 200 });
   }
 
-  if (!chatOwnerMatches({ chatUserId: chat.userId, userId })) {
+  const isOwner =
+    chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: user.email,
+      userId,
+      username: (user as { username?: string | null }).username ?? null,
+    }) ||
+    (user.email && chat.userId === user.email) ||
+    (user.id && chat.userId === user.id);
+
+  if (!isOwner) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 
   const deletedChat = await deleteChatById({ id });
-  return Response.json(deletedChat, { status: 200 });
+  return Response.json(deletedChat ?? { id, success: true }, { status: 200 });
 }
