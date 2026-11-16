@@ -1,5 +1,6 @@
 "use client";
 
+import { LockOpenIcon } from "@mdevs/icons/security/lock-open";
 import Image from "next/image";
 import { useEffect, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
@@ -338,18 +339,10 @@ export function MaintenancePanel({
           {/* Section Déverrouillage par code de maintenance */}
           <div className="mt-8 pt-6 border-t border-border/60">
             <div className="flex items-center gap-2 mb-2">
-              <svg
+              <LockOpenIcon
                 aria-hidden="true"
                 className="size-4 text-warning shrink-0"
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M21 2l-2 2m-1.5 1.5L16 7m-1.5 1.5L13 10m-3-3l6 6m-9.5 2.5a5.5 5.5 0 1 1 7.78-7.78L22 15v5h-5l-2.5-2.5" />
-              </svg>
+              />
               <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">
                 Déverrouiller l'accès au site
               </h2>

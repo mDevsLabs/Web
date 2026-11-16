@@ -239,7 +239,10 @@ const PureChatItem = ({
         </Link>
       </SidebarMenuButton>
 
-      <DropdownMenu modal={true}>
+      {/* Un dropdown modal pose pointer-events: none sur <body> pendant que
+          l'AlertDialog de suppression s'ouvre: le filet de sidebar-history ne
+          suffit pas toujours à le relâcher, et l'interface reste inerte. */}
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <SidebarMenuAction
             className="mr-0.5 rounded-md text-sidebar-foreground/50 ring-0 transition-colors duration-150 focus-visible:ring-0 hover:text-sidebar-foreground data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"

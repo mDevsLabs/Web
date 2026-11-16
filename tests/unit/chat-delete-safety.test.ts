@@ -68,6 +68,26 @@ describe("Sécurité et robustesse de la suppression de discussion", () => {
     expect(sidebarCode).toContain("filter((c) => c.id !== chatToDelete)");
   });
 
+  it("le gel Radix et la course du stream abandonné sont neutralisés", () => {
+    const itemCode = codeOnly("components/chat/sidebar-history-item.tsx");
+    // Un dropdown modal laisse pointer-events: none sur <body> en ouvrant
+    // l'AlertDialog de suppression: l'interface devient alors inerte.
+    expect(itemCode).toContain("<DropdownMenu modal={false}>");
+
+    const sidebarCode = codeOnly("components/chat/sidebar-history.tsx");
+    // Le verrou est relâché même si la requête de suppression échoue.
+    expect(sidebarCode).toContain("} finally {");
+
+    const activeChatCode = codeOnly("hooks/use-active-chat.tsx");
+    // Les erreurs du stream de la discussion supprimée sont ignorées.
+    expect(activeChatCode).toContain("awaitingResetChatIdRef.current = newId");
+    expect(activeChatCode).toContain("chatId !== awaitedId");
+
+    const headerCode = codeOnly("components/chat/chat-header.tsx");
+    // La confirmation ne peut pas rester en attente indéfiniment.
+    expect(headerCode).toContain("confirmWithFallback");
+  });
+
   it("chat-header réinitialise l'état actif et libère pointerEvents lors de la suppression", () => {
     const headerCode = codeOnly("components/chat/chat-header.tsx");
     expect(headerCode).toContain("resetChat()");

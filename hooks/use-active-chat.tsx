@@ -574,6 +574,10 @@ export function ActiveChatProvider({
   // est différée côté serveur (issue #46) — un échec ne détruit plus le tour.
   const chatIdRef = useRef(chatId);
   chatIdRef.current = chatId;
+  // Identifiant de la discussion vers laquelle resetChat() navigationne
+  // (suppression de la conversation active). Tant qu'il est posé, les erreurs
+  // du stream abandonné ne concernent plus l'écran affiché.
+  const awaitingResetChatIdRef = useRef<string | null>(null);
   const pendingTruncationRef = useRef<{
     chatId: string;
     removed: ChatMessage[];
@@ -608,6 +612,12 @@ export function ActiveChatProvider({
       setDataStream((ds) => (ds ? [...ds, dataPart] : []));
     },
     onError: (error) => {
+      // Le reset a abandonné le stream de la conversation supprimée: ignorer
+      // l'avortement (et ses effets de restauration) sur l'ancien chat.
+      const awaitedId = awaitingResetChatIdRef.current;
+      if (awaitedId !== null && chatId !== awaitedId) {
+        return;
+      }
       // Régénération truncate échouée : remettre à l'écran le tour retiré — la
       // suppression en base n'a pas eu lieu non plus.
       const pendingTruncation = pendingTruncationRef.current;
@@ -786,6 +796,7 @@ export function ActiveChatProvider({
     setSkillParamValues(null);
     setWaitingStatus(undefined);
     setDataStream([]);
+    awaitingResetChatIdRef.current = newId;
     stop();
     setResetEpoch((epoch) => epoch + 1);
   }, [
@@ -796,6 +807,19 @@ export function ActiveChatProvider({
     setDataStream,
     stop,
   ]);
+
+  // Le nouvel identifiant devient actif: le reset est terminé. On laisse une
+  // courte fenêtre à l'erreur d'avortement du stream stoppé avant de réactiver
+  // les toasts d'erreur des streams suivants.
+  useEffect(() => {
+    if (chatId !== awaitingResetChatIdRef.current) {
+      return;
+    }
+    const timer = setTimeout(() => {
+      awaitingResetChatIdRef.current = null;
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [chatId]);
 
   useEffect(() => {
     if (isNewChat) {

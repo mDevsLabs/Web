@@ -44,6 +44,18 @@ import { NotificationBell } from "./notification-bell";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 
+// Le dialogue applicatif est monté globalement, mais si son écouteur n'est pas
+// encore en place au premier clic, la promesse ne se résout jamais: on borne
+// l'attente et on annule la suppression plutôt que de figer l'interface.
+function confirmWithFallback(message: string): Promise<boolean> {
+  return Promise.race([
+    confirmInApp(message),
+    new Promise<boolean>((resolve) => {
+      setTimeout(() => resolve(false), 5000);
+    }),
+  ]);
+}
+
 function PureChatHeader({
   chatId,
   selectedVisibilityType,
@@ -272,7 +284,9 @@ function PureChatHeader({
 
   const handleDelete = useCallback(async () => {
     if (
-      !(await confirmInApp("Supprimer définitivement cette conversation ?"))
+      !(await confirmWithFallback(
+        "Supprimer définitivement cette conversation ?"
+      ))
     ) {
       return;
     }
@@ -283,7 +297,10 @@ function PureChatHeader({
     try {
       resetChat();
       router.replace("/");
-      const res = await fetch(`/api/chat?id=${chatId}`, { method: "DELETE" });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatId}`,
+        { method: "DELETE" }
+      );
       if (!res.ok) {
         throw new Error();
       }

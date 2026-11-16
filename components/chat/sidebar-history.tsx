@@ -241,6 +241,15 @@ export function SidebarHistory({
       } catch {
         toast.error("Erreur lors de la suppression");
         await revalidateChatHistories();
+      } finally {
+        // La fermeture de l'AlertDialog peut laisser le verrou Radix en place
+        // après la navigation: on le relâche quoi qu'il arrive.
+        if (
+          typeof document !== "undefined" &&
+          document.body.style.pointerEvents === "none"
+        ) {
+          document.body.style.pointerEvents = "";
+        }
       }
     })();
   }, [deleteId, mutate, pathname, resetChat, router]);

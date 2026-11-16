@@ -19,6 +19,12 @@ on:
 permissions:
   contents: read
   pull-requests: read
+# Les exécutions se déclenchent sur toutes les branches: sans garde, les jobs
+# macOS s'accumulent dans la file des runners hosted et la page du run ne
+# parvient plus à être rendue. Une seule exécution en cours par référence.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 env:
   CSC_IDENTITY_AUTO_DISCOVERY: "false"
 jobs:
@@ -246,6 +252,7 @@ jobs:
   desktop:
     name: Desktop ${{ matrix.os }} – ${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
@@ -253,7 +260,7 @@ jobs:
           - os: ubuntu-latest
             arch: x64
             target: linux
-          - os: macos-15
+          - os: macos-latest
             arch: x64 et arm64
             target: mac
           - os: windows-latest
@@ -417,7 +424,7 @@ jobs:
     if: needs.changes.outputs.mobile == 'true'
   mobile-ios:
     name: Mobile iOS (IPA non signé)
-    runs-on: macos-15
+    runs-on: macos-latest
     timeout-minutes: 45
     steps:
       - name: Checkout
@@ -549,7 +556,7 @@ jobs:
     if: needs.changes.outputs.vibe == 'true'
   build-ios:
     name: Vibe iOS (IPA non signé)
-    runs-on: macos-15
+    runs-on: macos-latest
     timeout-minutes: 45
     if: ${{ needs.changes.outputs.vibe == 'true' && ((github.event_name == 'workflow_dispatch' && inputs.build_ios) || github.event_name == 'push' || github.event_name == 'pull_request') }}
     defaults:
@@ -708,7 +715,8 @@ jobs:
 
   coder-macos:
     name: Coder macOS (DMG / ZIP non signé)
-    runs-on: macos-15
+    runs-on: macos-latest
+    timeout-minutes: 45
     needs: [changes, coder-check]
     if: needs.changes.outputs.coder == 'true'
     defaults:
