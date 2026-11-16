@@ -2,12 +2,15 @@ import { type NextRequest, NextResponse } from "next/server";
 import { API_ERROR_STATUS } from "./lib/api/error-codes";
 import { DEFAULT_MESSAGES_FR } from "./lib/api/error-messages";
 import { isLiveSessionToken } from "./lib/auth/token-liveness";
-import { MAI_MAINTENANCE_BYPASS_COOKIE, MAI_SESSION_COOKIE } from "./lib/constants";
+import {
+  MAI_MAINTENANCE_BYPASS_COOKIE,
+  MAI_SESSION_COOKIE,
+} from "./lib/constants";
+import { isMaintenanceBypassValid } from "./lib/maintenance/maintenance-bypass";
 import {
   estExempteDeMaintenance,
   MESSAGE_MAINTENANCE_API,
 } from "./lib/maintenance/maintenance-policy";
-import { isMaintenanceBypassValid } from "./lib/maintenance/maintenance-bypass";
 import { getActiveMaintenance } from "./lib/maintenance/maintenance-service";
 import { estRouteApiAutonome } from "./lib/security/proxy-policy";
 import { estPagePartageWakie } from "./lib/wakies/shared/sharing";
