@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  createMaintenanceBypassToken,
+  generateMaintenanceAccessCode,
+  isMaintenanceBypassValid,
+} from "@/lib/maintenance/maintenance-bypass";
+import {
   estExempteDeMaintenance,
   MESSAGE_MAINTENANCE_API,
   PREFIXES_EXEMPTES_MAINTENANCE,
@@ -10,14 +15,16 @@ describe("Politique de maintenance — exemptions strictes", () => {
   it("contient les préfixes critiques indispensables à la page de maintenance", () => {
     expect(PREFIXES_EXEMPTES_MAINTENANCE).toContain("/maintenance");
     expect(PREFIXES_EXEMPTES_MAINTENANCE).toContain("/api/maintenance/status");
+    expect(PREFIXES_EXEMPTES_MAINTENANCE).toContain("/api/maintenance/bypass");
     expect(PREFIXES_EXEMPTES_MAINTENANCE).toContain("/_next/");
     expect(PREFIXES_EXEMPTES_MAINTENANCE).toContain("/ping");
     expect(PREFIXES_EXEMPTES_MAINTENANCE).toContain("/api/app-version");
   });
 
-  it("autorise la page de maintenance et ses APIs de diagnostic", () => {
+  it("autorise la page de maintenance et ses APIs de diagnostic et bypass", () => {
     expect(estExempteDeMaintenance("/maintenance")).toBe(true);
     expect(estExempteDeMaintenance("/api/maintenance/status")).toBe(true);
+    expect(estExempteDeMaintenance("/api/maintenance/bypass")).toBe(true);
     expect(estExempteDeMaintenance("/api/app-version")).toBe(true);
     expect(estExempteDeMaintenance("/ping")).toBe(true);
   });
@@ -118,5 +125,58 @@ describe("Service de maintenance — calcul des phases", () => {
       refTime
     );
     expect(phase).toBe("completed");
+  });
+});
+
+describe("Contournement de maintenance (Bypass) — Un code = Une maintenance", () => {
+  it("génère des codes d'accès conformes au format MAI-MAINT-XXXX", () => {
+    const code = generateMaintenanceAccessCode();
+    expect(code).toMatch(/^MAI-MAINT-[A-F0-9]{8}$/);
+  });
+
+  it("valide un jeton valide pour une maintenance et son code exact", () => {
+    const maintId = "maint-12345";
+    const accessCode = "MAI-MAINT-ABCD1234";
+
+    const token = createMaintenanceBypassToken(maintId, accessCode);
+    expect(isMaintenanceBypassValid(token, maintId, accessCode)).toBe(true);
+    // Insensible à la casse de saisie
+    expect(
+      isMaintenanceBypassValid(token, maintId, accessCode.toLowerCase())
+    ).toBe(true);
+  });
+
+  it("invalide le jeton si la maintenance change (règle un code = une maintenance)", () => {
+    const maint1 = "maint-1";
+    const maint2 = "maint-2";
+    const code = "MAI-MAINT-ABCD1234";
+
+    const tokenMaint1 = createMaintenanceBypassToken(maint1, code);
+    expect(isMaintenanceBypassValid(tokenMaint1, maint1, code)).toBe(true);
+    // Tentative d'utiliser le token de maint-1 sur maint-2 : refus strict
+    expect(isMaintenanceBypassValid(tokenMaint1, maint2, code)).toBe(false);
+  });
+
+  it("invalide le jeton si le code de la maintenance change", () => {
+    const maintId = "maint-12345";
+    const code1 = "MAI-MAINT-CODE1";
+    const code2 = "MAI-MAINT-CODE2";
+
+    const token = createMaintenanceBypassToken(maintId, code1);
+    expect(isMaintenanceBypassValid(token, maintId, code2)).toBe(false);
+  });
+
+  it("refuse tout jeton falsifié ou corrompu", () => {
+    const maintId = "maint-12345";
+    const code = "MAI-MAINT-SECRET";
+
+    expect(isMaintenanceBypassValid(null, maintId, code)).toBe(false);
+    expect(isMaintenanceBypassValid("", maintId, code)).toBe(false);
+    expect(
+      isMaintenanceBypassValid("invalid-token-format", maintId, code)
+    ).toBe(false);
+    expect(isMaintenanceBypassValid(`${maintId}.tampered`, maintId, code)).toBe(
+      false
+    );
   });
 });

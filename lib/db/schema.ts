@@ -3292,6 +3292,7 @@ export type QuizzlyCoachMessage = InferSelectModel<typeof quizzlyCoachMessage>;
 export const maintenanceWindow = pgTable(
   "MaintenanceWindow",
   {
+    accessCode: varchar("accessCode", { length: 100 }).notNull().default(""),
     createdAt: timestamp("createdAt", { withTimezone: true })
       .notNull()
       .defaultNow(),

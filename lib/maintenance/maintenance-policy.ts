@@ -7,6 +7,7 @@ import { cheminSansBasePath } from "@/lib/security/proxy-policy";
 export const PREFIXES_EXEMPTES_MAINTENANCE = [
   "/maintenance",
   "/api/maintenance/status",
+  "/api/maintenance/bypass",
   "/api/app-version",
   "/ping",
   "/_next/",

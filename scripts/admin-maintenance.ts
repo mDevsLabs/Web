@@ -1,5 +1,8 @@
 import type * as readline from "node:readline/promises";
+import { generateMaintenanceAccessCode } from "../lib/maintenance/maintenance-bypass.ts";
 import { clearMaintenanceCache } from "../lib/maintenance/maintenance-service.ts";
+
+export { generateMaintenanceAccessCode };
 
 export type SqlClient = (
   strings: TemplateStringsArray,
@@ -66,9 +69,14 @@ export async function initMaintenanceTable(sql: SqlClient): Promise<void> {
         "startAt" timestamp with time zone NOT NULL,
         "endAt" timestamp with time zone NOT NULL,
         "isActive" boolean DEFAULT true NOT NULL,
+        "accessCode" varchar(100) DEFAULT '' NOT NULL,
         "createdAt" timestamp with time zone DEFAULT now() NOT NULL,
         "updatedAt" timestamp with time zone DEFAULT now() NOT NULL
       );
+    `;
+    await sql`
+      ALTER TABLE "MaintenanceWindow"
+        ADD COLUMN IF NOT EXISTS "accessCode" varchar(100) DEFAULT '' NOT NULL;
     `;
     await sql`
       CREATE INDEX IF NOT EXISTS "MaintenanceWindow_active_range_idx"
@@ -258,6 +266,19 @@ export async function handleStartMaintenanceNow(
     endDate = parsed;
   }
 
+  // 4. Code d'accès / Bypass (un code = une maintenance)
+  const suggestedCode = generateMaintenanceAccessCode();
+  const codeInput = (
+    await rl.question(
+      `\n 🔑 Code d'accès / bypass (défaut: "${suggestedCode}") : `
+    )
+  ).trim();
+  if (isBackOrCancel(codeInput)) {
+    console.log(`\n${c.dim}↩️  Opération annulée.${c.reset}`);
+    return;
+  }
+  const accessCode = (codeInput || suggestedCode).toUpperCase();
+
   // Confirmation
   console.log(
     `\n${c.bgYellow}${c.bold} ⚠️  RÉCAPITULATIF DU VERROUILLAGE SYSTÈME : ${c.reset}`
@@ -271,6 +292,9 @@ export async function handleStartMaintenanceNow(
     `  • Fin estimée   : ${c.brightGreen}${endDate.toLocaleString("fr-FR")}${c.reset}`
   );
   console.log(`  • Durée prévue  : ${formatDuration(startDate, endDate)}`);
+  console.log(
+    `  • Code d'accès  : ${c.brightGreen}${c.bold}${accessCode}${c.reset} (déverrouillage /maintenance)`
+  );
   console.log(
     `  • Impact        : ${c.brightRed}${c.bold}ACCÈS AU SITE ET APIS TOTALEMENT BLOQUÉ${c.reset}`
   );
@@ -288,8 +312,8 @@ export async function handleStartMaintenanceNow(
 
   try {
     const rows = (await sql`
-      INSERT INTO "MaintenanceWindow" ("name", "description", "startAt", "endAt", "isActive")
-      VALUES (${name}, ${description}, ${startDate.toISOString()}, ${endDate.toISOString()}, true)
+      INSERT INTO "MaintenanceWindow" ("name", "description", "startAt", "endAt", "isActive", "accessCode")
+      VALUES (${name}, ${description}, ${startDate.toISOString()}, ${endDate.toISOString()}, true, ${accessCode})
       RETURNING *;
     `) as unknown as any[];
 
@@ -302,7 +326,10 @@ export async function handleStartMaintenanceNow(
       ` ${c.brightGreen}✅ Fenêtre active ID : ${rows[0]?.id}${c.reset}`
     );
     console.log(
-      ` ${c.dim}Les utilisateurs sont automatiquement redirigés vers le panneau /maintenance.${c.reset}\n`
+      ` ${c.brightGreen}🔑 Code d'accès (Bypass) : ${c.bold}${accessCode}${c.reset}`
+    );
+    console.log(
+      ` ${c.dim}Les utilisateurs sont redirigés vers /maintenance. Le code ci-dessus permet de déverrouiller l'accès.${c.reset}\n`
     );
   } catch (error: any) {
     console.error(
@@ -367,12 +394,27 @@ export async function handleScheduleMaintenance(
     return;
   }
 
+  const suggestedCode = generateMaintenanceAccessCode();
+  const codePrompt = (
+    await rl.question(
+      `\n 🔑 Code d'accès / bypass (défaut: "${suggestedCode}") : `
+    )
+  ).trim();
+  if (isBackOrCancel(codePrompt)) {
+    console.log(`\n${c.dim}↩️  Planification annulée.${c.reset}`);
+    return;
+  }
+  const accessCode = (codePrompt || suggestedCode).toUpperCase();
+
   console.log(`\n${c.bold}📋 RÉCAPITULATIF DE LA PLANIFICATION :${c.reset}`);
   console.log(`  • Nom           : ${nameInput}`);
   console.log(`  • Description   : ${descInput || "(par défaut)"}`);
   console.log(`  • Début prévu   : ${startDate.toLocaleString("fr-FR")}`);
   console.log(`  • Fin prévue    : ${endDate.toLocaleString("fr-FR")}`);
   console.log(`  • Durée prévue  : ${formatDuration(startDate, endDate)}`);
+  console.log(
+    `  • Code d'accès  : ${c.brightGreen}${c.bold}${accessCode}${c.reset} (déverrouillage /maintenance)`
+  );
 
   const confirm = (
     await rl.question(
@@ -387,12 +429,15 @@ export async function handleScheduleMaintenance(
 
   try {
     await sql`
-      INSERT INTO "MaintenanceWindow" ("name", "description", "startAt", "endAt", "isActive")
-      VALUES (${nameInput}, ${descInput || "Maintenance planifiée"}, ${startDate.toISOString()}, ${endDate.toISOString()}, true);
+      INSERT INTO "MaintenanceWindow" ("name", "description", "startAt", "endAt", "isActive", "accessCode")
+      VALUES (${nameInput}, ${descInput || "Maintenance planifiée"}, ${startDate.toISOString()}, ${endDate.toISOString()}, true, ${accessCode});
     `;
     clearMaintenanceCache();
     console.log(
-      `\n${c.brightGreen}✅ Période de maintenance planifiée avec succès ! 📅${c.reset}\n`
+      `\n${c.brightGreen}✅ Période de maintenance planifiée avec succès ! 📅${c.reset}`
+    );
+    console.log(
+      ` ${c.brightGreen}🔑 Code d'accès (Bypass) : ${c.bold}${accessCode}${c.reset}\n`
     );
   } catch (error: any) {
     console.error(
@@ -409,7 +454,7 @@ export async function handleListMaintenances(sql: SqlClient) {
 
   try {
     const rows = (await sql`
-      SELECT "id", "name", "description", "startAt", "endAt", "isActive", "createdAt"
+      SELECT "id", "name", "description", "startAt", "endAt", "isActive", "accessCode", "createdAt"
       FROM "MaintenanceWindow"
       ORDER BY "startAt" DESC
       LIMIT 15;
@@ -422,19 +467,19 @@ export async function handleListMaintenances(sql: SqlClient) {
       return;
     }
 
-    console.log(`${"═".repeat(110)}`);
+    console.log(`${"═".repeat(128)}`);
     console.log(
-      `║ ${"STATUT".padEnd(20)} ║ ${"NOM".padEnd(26)} ║ ${"DÉBUT".padEnd(17)} ║ ${"FIN".padEnd(
-        17
-      )} ║ ${"DURÉE".padEnd(10)} ║ ${"ID".padEnd(8)} ║`
+      `║ ${"STATUT".padEnd(20)} ║ ${"NOM".padEnd(24)} ║ ${"DÉBUT".padEnd(16)} ║ ${"FIN".padEnd(
+        16
+      )} ║ ${"CODE ACCÈS".padEnd(18)} ║ ${"DURÉE".padEnd(10)} ║ ${"ID".padEnd(8)} ║`
     );
-    console.log("═".repeat(110));
+    console.log("═".repeat(128));
 
     for (const r of rows) {
       const start = new Date(r.startAt);
       const end = new Date(r.endAt);
       const statusBadge = badgeMaintenanceStatus(r.isActive, start, end);
-      const name = String(r.name).slice(0, 26).padEnd(26);
+      const name = String(r.name).slice(0, 24).padEnd(24);
       const startStr = start
         .toLocaleDateString("fr-FR", {
           day: "2-digit",
@@ -442,7 +487,7 @@ export async function handleListMaintenances(sql: SqlClient) {
           minute: "2-digit",
           month: "2-digit",
         })
-        .padEnd(17);
+        .padEnd(16);
       const endStr = end
         .toLocaleDateString("fr-FR", {
           day: "2-digit",
@@ -450,15 +495,18 @@ export async function handleListMaintenances(sql: SqlClient) {
           minute: "2-digit",
           month: "2-digit",
         })
-        .padEnd(17);
+        .padEnd(16);
+      const codeStr = String(r.accessCode || "-")
+        .slice(0, 18)
+        .padEnd(18);
       const dur = formatDuration(start, end).padEnd(10);
       const id = String(r.id).slice(0, 8).padEnd(8);
 
       console.log(
-        `║ ${statusBadge.padEnd(29)} ║ ${name} ║ ${startStr} ║ ${endStr} ║ ${dur} ║ ${id} ║`
+        `║ ${statusBadge.padEnd(29)} ║ ${name} ║ ${startStr} ║ ${endStr} ║ ${codeStr} ║ ${dur} ║ ${id} ║`
       );
     }
-    console.log(`${"═".repeat(110)}\n`);
+    console.log(`${"═".repeat(128)}\n`);
   } catch (error: any) {
     console.error(
       "❌ Erreur lors de la récupération des maintenances :",
@@ -535,7 +583,7 @@ export async function handleExtendOrEditMaintenance(
 
   try {
     const rows = (await sql`
-      SELECT "id", "name", "description", "startAt", "endAt", "isActive"
+      SELECT "id", "name", "description", "startAt", "endAt", "isActive", "accessCode"
       FROM "MaintenanceWindow"
       WHERE "isActive" = true AND "endAt" > NOW()
       ORDER BY "startAt" ASC;
@@ -556,6 +604,9 @@ export async function handleExtendOrEditMaintenance(
     console.log(
       ` Fin actuelle : ${new Date(current.endAt).toLocaleString("fr-FR")}`
     );
+    console.log(
+      ` 🔑 Code d'accès actuel : ${current.accessCode ? `${c.brightGreen}${c.bold}${current.accessCode}${c.reset}` : `${c.dim}(aucun)${c.reset}`}`
+    );
 
     console.log("\nQue souhaitez-vous faire ?");
     console.log("  [1] ➕ Prolonger de 15 minutes");
@@ -563,9 +614,10 @@ export async function handleExtendOrEditMaintenance(
     console.log("  [3] ➕ Prolonger de 1 heure");
     console.log("  [4] ✏️  Définir une nouvelle date/heure de fin");
     console.log("  [5] 📝 Modifier le nom ou la description");
+    console.log("  [6] 🔑 Modifier ou régénérer le code d'accès");
     console.log("  [0] ↩️  Annuler");
 
-    const choice = (await rl.question(" 👉 Votre choix [0-5] : ")).trim();
+    const choice = (await rl.question(" 👉 Votre choix [0-6] : ")).trim();
     if (choice === "0" || isBackOrCancel(choice)) {
       console.log(`\n${c.dim}↩️  Modification annulée.${c.reset}`);
       return;
@@ -574,6 +626,7 @@ export async function handleExtendOrEditMaintenance(
     let newEnd = new Date(current.endAt);
     let newName = current.name;
     let newDesc = current.description;
+    let newAccessCode = current.accessCode || "";
 
     if (choice === "1") {
       newEnd = new Date(newEnd.getTime() + 15 * 60 * 1000);
@@ -604,6 +657,14 @@ export async function handleExtendOrEditMaintenance(
         )
       ).trim();
       if (descIn) newDesc = descIn;
+    } else if (choice === "6") {
+      const suggested = generateMaintenanceAccessCode();
+      const codeIn = (
+        await rl.question(
+          ` 🔑 Nouveau code d'accès (défaut: "${suggested}", actuel: "${current.accessCode || "aucun"}") : `
+        )
+      ).trim();
+      newAccessCode = (codeIn || suggested).toUpperCase();
     }
 
     await sql`
@@ -611,6 +672,7 @@ export async function handleExtendOrEditMaintenance(
       SET "endAt" = ${newEnd.toISOString()},
           "name" = ${newName},
           "description" = ${newDesc},
+          "accessCode" = ${newAccessCode},
           "updatedAt" = NOW()
       WHERE "id" = ${current.id};
     `;
@@ -618,7 +680,11 @@ export async function handleExtendOrEditMaintenance(
     clearMaintenanceCache();
 
     console.log(
-      `\n${c.brightGreen}✅ Maintenance mise à jour avec succès ! Nouvelle fin : ${newEnd.toLocaleString("fr-FR")}${c.reset}\n`
+      `\n${c.brightGreen}✅ Maintenance mise à jour avec succès !${c.reset}`
+    );
+    console.log(`  • Nouvelle fin  : ${newEnd.toLocaleString("fr-FR")}`);
+    console.log(
+      `  • Code d'accès  : ${c.brightGreen}${c.bold}${newAccessCode}${c.reset}\n`
     );
   } catch (error: any) {
     console.error(

@@ -1,4 +1,5 @@
 export interface MaintenanceRecord {
+  accessCode: string;
   createdAt: string;
   description: string;
   endAt: string;
@@ -29,6 +30,7 @@ export interface MaintenanceStatusResponse {
 }
 
 export interface CreateMaintenanceInput {
+  accessCode?: string;
   description?: string;
   endAt: Date;
   name: string;

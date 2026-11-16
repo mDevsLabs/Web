@@ -5,7 +5,13 @@ import { neon } from "@neondatabase/serverless";
 import { articleBoutique, type ShopKind } from "../lib/quizzly/shop.ts";
 import { runNewsletterStudio, sendEmail } from "./admin-email.ts";
 import { runFormManager } from "./admin-forms.ts";
-import { runMaintenanceManager } from "./admin-maintenance.ts";
+import {
+  generateMaintenanceAccessCode,
+  runMaintenanceManager,
+} from "./admin-maintenance.ts";
+
+export { generateMaintenanceAccessCode, runMaintenanceManager };
+
 import { createConflictResolver, runModelManager } from "./admin-models.ts";
 import { loadLocalEnv } from "./cli-env.ts";
 import { updateModels } from "./updateModels.ts";

@@ -1,4 +1,5 @@
 import { neon } from "@neondatabase/serverless";
+import { generateMaintenanceAccessCode } from "./maintenance-bypass";
 import type {
   CreateMaintenanceInput,
   MaintenancePhase,
@@ -84,6 +85,7 @@ export async function getActiveMaintenance(
         "startAt",
         "endAt",
         "isActive",
+        "accessCode",
         "createdAt",
         "updatedAt"
       FROM "MaintenanceWindow"
@@ -104,6 +106,7 @@ export async function getActiveMaintenance(
 
     const row = rows[0];
     const record: MaintenanceRecord = {
+      accessCode: String(row.accessCode || ""),
       createdAt: new Date(row.createdAt).toISOString(),
       description: String(row.description || ""),
       endAt: new Date(row.endAt).toISOString(),
@@ -169,11 +172,13 @@ export async function createMaintenanceWindow(
   const startAt = input.startAt ?? new Date();
   const endAt = input.endAt;
   const description = input.description ?? "";
+  const accessCode =
+    input.accessCode?.trim().toUpperCase() || generateMaintenanceAccessCode();
 
   const rows = (await sql`
-    INSERT INTO "MaintenanceWindow" ("name", "description", "startAt", "endAt", "isActive")
-    VALUES (${input.name}, ${description}, ${startAt.toISOString()}, ${endAt.toISOString()}, true)
-    RETURNING "id", "name", "description", "startAt", "endAt", "isActive", "createdAt", "updatedAt";
+    INSERT INTO "MaintenanceWindow" ("name", "description", "startAt", "endAt", "isActive", "accessCode")
+    VALUES (${input.name}, ${description}, ${startAt.toISOString()}, ${endAt.toISOString()}, true, ${accessCode})
+    RETURNING "id", "name", "description", "startAt", "endAt", "isActive", "accessCode", "createdAt", "updatedAt";
   `) as unknown as any[];
 
   clearMaintenanceCache();
@@ -184,6 +189,7 @@ export async function createMaintenanceWindow(
 
   const row = rows[0];
   return {
+    accessCode: String(row.accessCode || ""),
     createdAt: new Date(row.createdAt).toISOString(),
     description: String(row.description || ""),
     endAt: new Date(row.endAt).toISOString(),
@@ -239,7 +245,7 @@ export async function extendCurrentMaintenance(
     UPDATE "MaintenanceWindow"
     SET "endAt" = ${newEnd.toISOString()}, "updatedAt" = NOW()
     WHERE "id" = ${active.id}
-    RETURNING "id", "name", "description", "startAt", "endAt", "isActive", "createdAt", "updatedAt";
+    RETURNING "id", "name", "description", "startAt", "endAt", "isActive", "accessCode", "createdAt", "updatedAt";
   `) as unknown as any[];
 
   clearMaintenanceCache();
@@ -250,6 +256,7 @@ export async function extendCurrentMaintenance(
 
   const row = rows[0];
   return {
+    accessCode: String(row.accessCode || ""),
     createdAt: new Date(row.createdAt).toISOString(),
     description: String(row.description || ""),
     endAt: new Date(row.endAt).toISOString(),

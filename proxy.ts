@@ -2,11 +2,12 @@ import { type NextRequest, NextResponse } from "next/server";
 import { API_ERROR_STATUS } from "./lib/api/error-codes";
 import { DEFAULT_MESSAGES_FR } from "./lib/api/error-messages";
 import { isLiveSessionToken } from "./lib/auth/token-liveness";
-import { MAI_SESSION_COOKIE } from "./lib/constants";
+import { MAI_MAINTENANCE_BYPASS_COOKIE, MAI_SESSION_COOKIE } from "./lib/constants";
 import {
   estExempteDeMaintenance,
   MESSAGE_MAINTENANCE_API,
 } from "./lib/maintenance/maintenance-policy";
+import { isMaintenanceBypassValid } from "./lib/maintenance/maintenance-bypass";
 import { getActiveMaintenance } from "./lib/maintenance/maintenance-service";
 import { estRouteApiAutonome } from "./lib/security/proxy-policy";
 import { estPagePartageWakie } from "./lib/wakies/shared/sharing";
@@ -29,8 +30,17 @@ export async function proxy(request: NextRequest) {
   const activeMaintenance = await getActiveMaintenance();
 
   if (activeMaintenance) {
-    // Si la maintenance est active et que la route n'est pas exemptée :
-    if (!estExempteDeMaintenance(pathname, base)) {
+    const bypassToken = request.cookies.get(
+      MAI_MAINTENANCE_BYPASS_COOKIE
+    )?.value;
+    const isBypassed = isMaintenanceBypassValid(
+      bypassToken,
+      activeMaintenance.id,
+      activeMaintenance.accessCode
+    );
+
+    // Si la maintenance est active, non bypassée et que la route n'est pas exemptée :
+    if (!isBypassed && !estExempteDeMaintenance(pathname, base)) {
       if (pathname.startsWith("/api/")) {
         const retryAfterSeconds = Math.max(
           0,

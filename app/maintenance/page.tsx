@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
+import { Suspense } from "react";
 import { MaintenancePanel } from "@/components/maintenance/maintenance-panel";
 import { getMaintenanceStatus } from "@/lib/maintenance/maintenance-service";
 
@@ -13,9 +14,17 @@ export const metadata: Metadata = {
   title: "Maintenance en cours | mAI Web",
 };
 
-export default async function MaintenancePage() {
+async function MaintenanceContent() {
   await connection();
   const status = await getMaintenanceStatus();
 
   return <MaintenancePanel initialMaintenance={status.currentMaintenance} />;
+}
+
+export default function MaintenancePage() {
+  return (
+    <Suspense fallback={<MaintenancePanel initialMaintenance={null} />}>
+      <MaintenanceContent />
+    </Suspense>
+  );
 }

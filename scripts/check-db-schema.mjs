@@ -125,6 +125,8 @@ const REQUIRED_TABLES = [
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  // Migration 0086 : code d'accès / bypass de maintenance.
+  { column: "accessCode", table: "MaintenanceWindow" },
   // Migration 0072 : le verrou de révision et le rattachement projet sont
   // relus à chaque enregistrement.
   { column: "projectId", table: "Page" },

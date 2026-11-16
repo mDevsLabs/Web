@@ -60,6 +60,10 @@ export function MaintenancePanel({
       : { days: 0, hours: 0, isExpired: true, minutes: 0, seconds: 0 }
   );
   const [isRefreshing, startTransition] = useTransition();
+  const [accessCode, setAccessCode] = useState("");
+  const [isSubmittingCode, setIsSubmittingCode] = useState(false);
+  const [codeError, setCodeError] = useState<string | null>(null);
+  const [codeSuccess, setCodeSuccess] = useState<string | null>(null);
 
   // Mise à jour continue du compte à rebours chaque seconde
   useEffect(() => {
@@ -98,6 +102,46 @@ export function MaintenancePanel({
         window.location.reload();
       }
     });
+  };
+
+  const handleBypassSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const clean = accessCode.trim();
+    if (!clean) {
+      setCodeError("Veuillez saisir un code d'accès.");
+      return;
+    }
+
+    setIsSubmittingCode(true);
+    setCodeError(null);
+    setCodeSuccess(null);
+
+    try {
+      const res = await fetch("/api/maintenance/bypass", {
+        body: JSON.stringify({ code: clean }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.success) {
+        setCodeSuccess(data.message || "Accès déverrouillé avec succès !");
+        setTimeout(() => {
+          window.location.href = data.redirectUrl || "/";
+        }, 600);
+      } else {
+        setCodeError(
+          data.error || "Code d'accès invalide pour cette maintenance."
+        );
+      }
+    } catch {
+      setCodeError("Erreur de communication avec le serveur.");
+    } finally {
+      setIsSubmittingCode(false);
+    }
   };
 
   const padZero = (n: number) => n.toString().padStart(2, "0");
@@ -289,6 +333,117 @@ export function MaintenancePanel({
                 </svg>
               </a>
             </Button>
+          </div>
+
+          {/* Section Déverrouillage par code de maintenance */}
+          <div className="mt-8 pt-6 border-t border-border/60">
+            <div className="flex items-center gap-2 mb-2">
+              <svg
+                aria-hidden="true"
+                className="size-4 text-warning shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21 2l-2 2m-1.5 1.5L16 7m-1.5 1.5L13 10m-3-3l6 6m-9.5 2.5a5.5 5.5 0 1 1 7.78-7.78L22 15v5h-5l-2.5-2.5" />
+              </svg>
+              <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">
+                Déverrouiller l'accès au site
+              </h2>
+            </div>
+            <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+              Vous disposez d'un code d'accès d'intervention ? Saisissez-le
+              ci-dessous pour entrer dans le site malgré la maintenance.
+            </p>
+
+            <form
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2"
+              onSubmit={handleBypassSubmit}
+            >
+              <input
+                autoCapitalize="characters"
+                autoComplete="off"
+                className="field-input flex-1 h-11 px-3.5 rounded-2xl border border-border/70 bg-background/80 text-sm font-mono uppercase tracking-wider text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-warning/40"
+                disabled={isSubmittingCode}
+                onChange={(e) => {
+                  setAccessCode(e.target.value);
+                  if (codeError) setCodeError(null);
+                }}
+                placeholder="Code d'accès (ex: MAI-MAINT-...)"
+                spellCheck="false"
+                type="text"
+                value={accessCode}
+              />
+              <Button
+                className="h-11 px-5 rounded-2xl font-semibold text-sm shrink-0"
+                disabled={isSubmittingCode || !accessCode.trim()}
+                type="submit"
+                variant="secondary"
+              >
+                {isSubmittingCode ? (
+                  <span className="flex items-center gap-2">
+                    <svg
+                      aria-hidden="true"
+                      className="size-3.5 animate-spin"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+                      <path d="M21 3v5h-5" />
+                    </svg>
+                    Vérification...
+                  </span>
+                ) : (
+                  "Déverrouiller l'accès"
+                )}
+              </Button>
+            </form>
+
+            {codeError && (
+              <p className="mt-2 text-xs font-medium text-destructive flex items-center gap-1.5">
+                <svg
+                  aria-hidden="true"
+                  className="size-3.5 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+                {codeError}
+              </p>
+            )}
+
+            {codeSuccess && (
+              <p className="mt-2 text-xs font-medium text-success flex items-center gap-1.5">
+                <svg
+                  aria-hidden="true"
+                  className="size-3.5 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                {codeSuccess}
+              </p>
+            )}
           </div>
         </div>
 

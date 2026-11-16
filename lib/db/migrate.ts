@@ -1023,6 +1023,11 @@ const runMigrate = async () => {
   } catch (error) {
     noteIgnoredStep(error);
   }
+  try {
+    await connection`ALTER TABLE "MaintenanceWindow" ADD COLUMN IF NOT EXISTS "accessCode" varchar(100) DEFAULT '' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
 
   // Un relais (pooler) peut rendre la session entre deux requêtes : on
   // répingle le schéma juste avant la phase Drizzle, qui ouvre sa propre
