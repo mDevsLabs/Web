@@ -6,20 +6,17 @@ planifiées — plus quatre applications portées sous son propre domaine
 (`/vibe`, `/wakies`, `/site`, `/blackline`) et une application de révision
 (`/quizzly`).
 
-Version : **0.9.3**.
+Version : **0.9.5**.
 
-## Deux runtimes, puis des applications à côté
-
-Le point le plus important à comprendre avant de modifier quoi que ce soit :
-**le dépôt n'est pas un workspace pnpm** (`pnpm-workspace.yaml` contient
-`packages: []`). Chaque dossier de `apps/` s'installe et se compile pour son
-compte, avec son propre gestionnaire de paquets.
+## Architecture & Runtimes
 
 | Partie | Ce que c'est | Comment elle tourne |
 | --- | --- | --- |
-| Application Web | Next 16 (App Router), React 19, BFF | `app/`, `components/`, `lib/`, `hooks/` — `pnpm build` |
-| API mAI | Backend Hono, ~64 modules racine (`main.ts`, `vibe-*.ts`, `config.ts`…) | Déployé sur Val Town, **hors** du build et du typecheck Next |
-| Ordonnanceur | `cron.ts` (val CRON Val Town) | Réveille les quatre ticks `app/api/cron/**` toutes les 5 min |
+| Application Web | Next 16 (App Router), React 19, Full-stack | `app/`, `components/`, `lib/`, `hooks/` — `pnpm build` |
+| Base de données | PostgreSQL Neon & Drizzle ORM | Persistance directe, Auth OTP (`verification_codes`), sessions |
+| Ordonnanceur | GitHub Actions (`cron-master.yml`) | Réveille les 6 ticks `app/api/cron/**` en parallèle avec protection de quota |
+| Fournisseurs IA | OpenRouter, Comet API | Appels directs, modèles mAI-2.5 (Opal, Apex, Omni) routés vers GPT |
+| API mAI (historique) | Backend Hono (Val Town) | En cours de décommissionnement complet (extinction 2026/2027) |
 | Vibe · Wakies · Site · Blackline | Sources autonomes portées dans l'hôte | `apps/vibe/`, `apps/wakies/`, `apps/site/`, `apps/blackline/` |
 | Quizzly | Application de révision | `app/(quizzly)/`, `lib/quizzly/` — dans le build Next |
 | mAI Coder | Agent de développement Electron | `apps/coder/` (pnpm, install propre) |

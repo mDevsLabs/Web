@@ -16,43 +16,26 @@ Interface et documentation **en français**.
 
 ---
 
-## 1. Le point le plus important: deux runtimes dans un seul dépôt
+## 1. Architecture : Transition vers Next.js Full-Stack, Neon & GitHub Actions
 
-Ce dépôt contient **deux applications indépendantes** qui partagent `package.json`
-mais ne se compilent pas ensemble.
+Le projet est en transition finale pour le décommissionnement complet de Val Town (extinction 2026/2027). L'application Next.js 16 prend en charge directement la persistance, l'authentification et l'intégration des modèles d'IA.
 
-| | Application Next.js | Backend Hono (Val Town) |
+| Composant | Rôle & Technologie | Emplacement |
 |---|---|---|
-| Racine | `app/`, `components/`, `lib/`, `hooks/` | 64 modules du graphe `main.ts` **à la racine du dépôt** |
-| Point d'entrée | `app/layout.tsx` | `main.ts` |
-| Build | `next build` | Aucun — déployé sur `https://mai.val.run` |
-| Base | PostgreSQL (Drizzle) | Neon **et** SQLite (`esm.town/v/std/sqlite`) |
-| Auth | `MAI_SESSION_COOKIE` + NextAuth v5 | JWT `jose` + clé API `mai-<tier>-…` |
-| Typecheck | Oui (`tsconfig.json`) | **Non** — exclu du `include` |
+| Application Full-Stack | Next.js 16 (App Router, React 19), Server Actions, Server-only | `app/`, `components/`, `lib/`, `hooks/` |
+| Base de données | PostgreSQL Neon & Drizzle ORM | `lib/db/schema.ts`, `lib/db/queries/` |
+| Authentification | Neon natif (codes OTP `verification_codes`, sessions, blacklist) | `lib/auth/verification.ts`, `lib/auth/server-auth.ts` |
+| Ordonnanceur CRON | GitHub Actions (`cron-master.yml`) en parallèle | `.github/workflows/cron-*.yml`, `scripts/cron/` |
+| Modèles d'IA & LLMs | Fournisseurs directs (OpenRouter GPT, Comet API) | `lib/ai/models.ts`, `models.ts` |
+| Usage & Quotas | Moteur d'usage en % par forfait (Free: 100, Plus: 200, Pro: 400, Max: 1 000) | `lib/plans/usage-engine.ts` |
+| Backend Val Town (legacy) | En décommissionnement — 64 modules racine | Déployé sur `https://mai.val.run` (transition) |
 
 Conséquences pratiques:
 
-- `main.ts`, `config.ts`, `vibe-*.ts`, `models.ts`, `email.ts`, `realtime.ts`…
-  sont **hors du build Next**. Les modifier ne déclenche ni typecheck ni build.
-  Ils sont déployés indépendamment sur Val Town.
-- L'application Next est un **BFF**: ses routes `app/(chat)/api/**/route.ts`
-  appellent le backend via `MAI_API_URL` (`lib/constants.ts`, défaut
-  `https://mai.val.run`) et normalisent les erreurs amont avec
-  `lib/api/error-response.ts`.
-- `cron.ts`, **à la racine hors du graphe de `main.ts`**, est le seul
-  ordonnanceur des quatre ticks `app/api/cron/**` (Agent · planning · Wakies ·
-  Vibe): c'est un val CRON Val Town, cadence 5 min, authentifié par
-  `CRON_SECRET`, qui les appelle **en parallèle** pour tenir dans le plafond
-  d'exécution d'un val. Il remplace le workflow GitHub supprimé: ne
-  réintroduire aucun second ordonnanceur.
-- **`APP_URL` du val pointe vers l'application Next, jamais vers le backend.**
-  Le backend Val Town répond « 404 Not Found» sur **toutes** ses routes: les
-  ticks y sont muets, et le journal ne dit pas pourquoi. Le val refuse de
-  partir vers un hôte `*.val.run` et interroge `/api/app-version` — route
-  présente dans tous les déploiements, sans effet de bord — avant de lancer les
-  ticks. Un 404 sur un tick signifie « cette route n'existe pas sur cette
-  cible» (déploiement trop ancien, ou `APP_URL` erroné), jamais « la route a
-  échoué».
+- **Persistance directe sur Neon** : Toutes les écritures et lectures critiques (utilisateurs, OTP, messages, fils de discussion, projets) s'exécutent directement sur PostgreSQL Neon via Drizzle avec transactions sécurisées.
+- **Modèles mAI-2.5** : Les alias souverains `mai-2.5-opal`, `mai-2.5-apex` et `mai-2.5-omni` sont routés vers les backends OpenRouter GPT (`openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`) avec le prompt d'identité souverain injecté via `mai-identity.ts`.
+- **GitHub Actions comme ordonnanceur unique** : `cron-master.yml` exécute en parallèle les 6 ticks (`/api/cron/agent`, `/api/cron/planning`, `/api/cron/wakies`, `/api/cron/vibe`, `/api/cron/notifications`, `/api/cron/quizzly`) toutes les 10 minutes, optimisé pour préserver le quota gratuit de minutes GitHub Actions.
+- **Remplacement des tokens par un usage en %** : Le comptage brut de tokens par message est remplacé par une jauge en pourcentage par forfait avec réinitialisation le lundi à 00:00 UTC. Le blocage de quota de requêtes publiques mAI est levé.
 - Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 64
   fichiers du graphe d'imports transitif de `main.ts`).
 - Le détail de l'Agent est dans **`docs/1-web/AGENT_ENGINE.md`**.

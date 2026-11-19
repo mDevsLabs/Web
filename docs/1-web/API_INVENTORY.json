@@ -44,6 +44,13 @@
       "registrations": []
     },
     {
+      "file": "auth-password-policy.ts",
+      "handlers": [],
+      "imports": [],
+      "lines": 43,
+      "registrations": []
+    },
+    {
       "file": "auth-resend-policy.ts",
       "handlers": [],
       "imports": [],
@@ -61,6 +68,7 @@
       "file": "auth.ts",
       "handlers": [],
       "imports": [
+        "./auth-password-policy.ts",
         "./auth-resend-policy.ts",
         "./config.ts",
         "./email.ts",
@@ -68,7 +76,7 @@
         "npm:bcryptjs",
         "npm:hono@4"
       ],
-      "lines": 1158,
+      "lines": 1173,
       "registrations": []
     },
     {
@@ -91,7 +99,7 @@
         "npm:@neondatabase/serverless",
         "npm:jose"
       ],
-      "lines": 763,
+      "lines": 765,
       "registrations": []
     },
     {
@@ -220,7 +228,7 @@
         "./usage-accounting.ts",
         "npm:hono@4"
       ],
-      "lines": 1105,
+      "lines": 1107,
       "registrations": []
     },
     {
@@ -362,7 +370,7 @@
         "./vibe-posts-core.ts",
         "npm:hono@4"
       ],
-      "lines": 1127,
+      "lines": 1126,
       "registrations": []
     },
     {
@@ -499,7 +507,7 @@
         "./vibe-recommender.ts",
         "npm:hono@4"
       ],
-      "lines": 1000,
+      "lines": 996,
       "registrations": []
     },
     {
@@ -516,7 +524,7 @@
         "./vibe-tools.ts",
         "npm:hono@4"
       ],
-      "lines": 802,
+      "lines": 897,
       "registrations": []
     },
     {
@@ -540,7 +548,7 @@
         "./storage.ts",
         "./vibe-posts-core.ts"
       ],
-      "lines": 1404,
+      "lines": 1405,
       "registrations": []
     },
     {
@@ -596,7 +604,7 @@
         "./vibe-tools.ts",
         "npm:hono@4"
       ],
-      "lines": 77,
+      "lines": 76,
       "registrations": []
     },
     {
@@ -908,7 +916,6 @@
     {
       "file": "app/(chat)/api/agent/runs/[id]/approval/route.ts",
       "imports": [
-        "@/lib/agent/channel",
         "@/lib/agent/contracts",
         "@/lib/agent/params-hash",
         "@/lib/api/error-response",
@@ -1127,7 +1134,8 @@
       "file": "app/(chat)/api/agents/templates/route.ts",
       "imports": [
         "@/lib/api/error-response",
-        "@/lib/db/queries"
+        "@/lib/db/queries",
+        "next/server"
       ],
       "methods": [
         "GET"
@@ -1409,7 +1417,6 @@
         "@/lib/chat/slash-command-catalog",
         "@/lib/commands/types",
         "@/lib/db/queries",
-        "@/lib/errors",
         "zod"
       ],
       "methods": [
@@ -1426,7 +1433,6 @@
         "@/lib/chat/slash-command-catalog",
         "@/lib/commands/types",
         "@/lib/db/queries",
-        "@/lib/errors",
         "zod"
       ],
       "methods": [
@@ -1479,6 +1485,18 @@
         "POST"
       ],
       "path": "/api/cron/planning"
+    },
+    {
+      "file": "app/api/cron/quizzly/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/quizzly/league-store",
+        "@/lib/security/timing"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/cron/quizzly"
     },
     {
       "file": "app/api/cron/vibe/route.ts",
@@ -1836,6 +1854,7 @@
     {
       "file": "app/(chat)/api/mai-search/recent/route.ts",
       "imports": [
+        "@/lib/api/error-response",
         "@/lib/auth/require-user",
         "@/lib/db/queries/search-history",
         "next/server",
@@ -1860,10 +1879,12 @@
         "@/lib/ai/tools/web-search",
         "@/lib/auth/require-user",
         "@/lib/auth/session",
+        "@/lib/chat/memory",
         "@/lib/constants",
         "@/lib/db/queries/chats",
         "@/lib/db/queries/search-history",
         "@/lib/db/queries/users",
+        "@/lib/search/summary-personal",
         "@/lib/search/summary-stream",
         "ai"
       ],
@@ -1875,6 +1896,7 @@
     {
       "file": "app/(chat)/api/mai-search/vote/route.ts",
       "imports": [
+        "@/lib/api/error-response",
         "@/lib/auth/require-user",
         "@/lib/db/queries/search-history",
         "next/server"
@@ -1885,12 +1907,35 @@
       "path": "/api/mai-search/vote"
     },
     {
+      "file": "app/api/maintenance/bypass/route.ts",
+      "imports": [
+        "@/lib/constants",
+        "@/lib/maintenance/maintenance-bypass",
+        "@/lib/maintenance/maintenance-service",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/maintenance/bypass"
+    },
+    {
+      "file": "app/api/maintenance/status/route.ts",
+      "imports": [
+        "@/lib/maintenance/maintenance-service",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/maintenance/status"
+    },
+    {
       "file": "app/(chat)/api/mcp/route.ts",
       "imports": [
         "@/lib/api/error-response",
         "@/lib/auth/session",
         "@/lib/db/queries",
-        "@/lib/errors",
         "@/lib/mcp/client",
         "@/lib/mcp/dto",
         "@/lib/mcp/encryption",
@@ -2220,7 +2265,9 @@
       "file": "app/(chat)/api/pages/route.ts",
       "imports": [
         "@/lib/api/error-response",
+        "@/lib/db/queries",
         "@/lib/db/queries/pages",
+        "@/lib/pages/defaults",
         "@/lib/pages/http",
         "@/lib/pages/identity",
         "@/lib/pages/limits",
@@ -2278,6 +2325,8 @@
         "@/lib/pages/http",
         "@/lib/pages/limits",
         "@/lib/pages/permissions",
+        "@/lib/pages/personal",
+        "@/lib/pages/style",
         "@/lib/pages/tools",
         "@/lib/pages/usage",
         "@/lib/prompts/pages",
@@ -2312,6 +2361,8 @@
         "@/lib/pages/access",
         "@/lib/pages/http",
         "@/lib/pages/permissions",
+        "@/lib/pages/personal",
+        "@/lib/pages/style",
         "@/lib/prompts/pages"
       ],
       "methods": [
@@ -2500,8 +2551,7 @@
         "@/lib/errors",
         "@/lib/projects/access",
         "@/lib/projects/permissions",
-        "@/lib/projects/upload-contract",
-        "zod"
+        "@/lib/projects/upload-contract"
       ],
       "methods": [
         "DELETE",
@@ -2558,13 +2608,106 @@
       "path": "/api/quizzly/boutique"
     },
     {
+      "file": "app/(chat)/api/quizzly/coach/route.ts",
+      "imports": [
+        "@/lib/ai/models",
+        "@/lib/ai/models.server",
+        "@/lib/ai/providers",
+        "@/lib/ai/registry",
+        "@/lib/ai/registry/capabilities",
+        "@/lib/ai/registry/reasoning",
+        "@/lib/ai/registry/tiers",
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/chat/memory",
+        "@/lib/db/queries/users",
+        "@/lib/errors",
+        "@/lib/quizzly/coach",
+        "@/lib/quizzly/coach-paths",
+        "@/lib/quizzly/coach-store",
+        "@/lib/quizzly/http",
+        "@/lib/quizzly/leagues",
+        "@/lib/quizzly/load",
+        "@/lib/quizzly/program",
+        "@/lib/quizzly/queries",
+        "@/lib/quizzly/usage",
+        "@/lib/utils",
+        "ai",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/quizzly/coach"
+    },
+    {
+      "file": "app/(chat)/api/quizzly/coach/conversations/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/quizzly/coach-store"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/quizzly/coach/conversations"
+    },
+    {
+      "file": "app/(chat)/api/quizzly/coach/conversations/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/quizzly/coach",
+        "@/lib/quizzly/coach-store",
+        "@/lib/quizzly/http",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/quizzly/coach/conversations/[id]"
+    },
+    {
+      "file": "app/(chat)/api/quizzly/coach/conversations/[id]/messages/[messageId]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/quizzly/coach",
+        "@/lib/quizzly/coach-store",
+        "@/lib/quizzly/http",
+        "zod"
+      ],
+      "methods": [
+        "PATCH"
+      ],
+      "path": "/api/quizzly/coach/conversations/[id]/messages/[messageId]"
+    },
+    {
+      "file": "app/(chat)/api/quizzly/ligues/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/quizzly/league-store",
+        "@/lib/quizzly/portraits"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/quizzly/ligues"
+    },
+    {
       "file": "app/(chat)/api/quizzly/parcours/route.ts",
       "imports": [
         "@/lib/api/error-response",
         "@/lib/auth/require-user",
         "@/lib/quizzly/load",
         "@/lib/quizzly/program",
-        "@/lib/quizzly/queries"
+        "@/lib/quizzly/queries",
+        "@/lib/quizzly/subjects"
       ],
       "methods": [
         "GET"
@@ -2574,8 +2717,11 @@
     {
       "file": "app/(chat)/api/quizzly/profil/route.ts",
       "imports": [
+        "@/lib/ai/models.server",
+        "@/lib/ai/registry/tiers",
         "@/lib/api/error-response",
         "@/lib/auth/require-user",
+        "@/lib/quizzly/coach",
         "@/lib/quizzly/display-name",
         "@/lib/quizzly/http",
         "@/lib/quizzly/program",
@@ -2587,6 +2733,23 @@
         "PUT"
       ],
       "path": "/api/quizzly/profil"
+    },
+    {
+      "file": "app/(chat)/api/quizzly/profil/[userId]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/db/schema",
+        "@/lib/quizzly/leagues",
+        "@/lib/quizzly/portraits",
+        "@/lib/quizzly/rules",
+        "drizzle-orm"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/quizzly/profil/[userId]"
     },
     {
       "file": "app/(chat)/api/quizzly/quetes/route.ts",
@@ -2608,10 +2771,12 @@
       "imports": [
         "@/lib/api/error-response",
         "@/lib/auth/require-user",
+        "@/lib/quizzly/grade",
         "@/lib/quizzly/http",
         "@/lib/quizzly/load",
         "@/lib/quizzly/queries",
         "@/lib/quizzly/schema",
+        "@/lib/quizzly/subjects",
         "zod"
       ],
       "methods": [
@@ -2709,6 +2874,8 @@
     {
       "file": "app/(chat)/api/site/account/api-executor/route.ts",
       "imports": [
+        "@/lib/api/error-codes",
+        "@/lib/api/error-response",
         "@/lib/site/api-key-manager",
         "@/lib/site/api-key-routes",
         "@/lib/site/ollama-url",
@@ -2719,6 +2886,21 @@
         "POST"
       ],
       "path": "/api/site/account/api-executor"
+    },
+    {
+      "file": "app/(chat)/api/site/backend/[...path]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "@/lib/site/backend-relay",
+        "next/server"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/site/backend/[...path]"
     },
     {
       "file": "app/(chat)/api/site/cron/purge-support/route.ts",
@@ -2852,6 +3034,7 @@
         "@/lib/site/openai-auth",
         "@/lib/site/openai-model-mapper",
         "@/lib/site/openai-types",
+        "@/lib/site/session-bearer",
         "next/server"
       ],
       "methods": [
@@ -2862,6 +3045,7 @@
     {
       "file": "app/(chat)/api/site/v1/devices/route.ts",
       "imports": [
+        "@/lib/site/session-bearer",
         "next/server"
       ],
       "methods": [
@@ -2872,6 +3056,7 @@
     {
       "file": "app/(chat)/api/site/v1/devices/[id]/route.ts",
       "imports": [
+        "@/lib/site/session-bearer",
         "next/server"
       ],
       "methods": [
@@ -2899,6 +3084,7 @@
     {
       "file": "app/(chat)/api/site/v1/images/usage/route.ts",
       "imports": [
+        "@/lib/api/error-response",
         "@/lib/site/image-usage",
         "@/lib/site/openai-auth",
         "next/server"
@@ -2911,6 +3097,7 @@
     {
       "file": "app/(chat)/api/site/v1/messages/route.ts",
       "imports": [
+        "@/lib/site/session-bearer",
         "next/server"
       ],
       "methods": [
@@ -2983,6 +3170,7 @@
     {
       "file": "app/(chat)/api/site/v1/projects/route.ts",
       "imports": [
+        "@/lib/site/session-bearer",
         "next/server"
       ],
       "methods": [
@@ -2994,6 +3182,7 @@
     {
       "file": "app/(chat)/api/site/v1/projects/[id]/route.ts",
       "imports": [
+        "@/lib/site/session-bearer",
         "next/server"
       ],
       "methods": [
@@ -3105,7 +3294,6 @@
         "@/lib/api/error-response",
         "@/lib/auth/require-user",
         "@/lib/db/queries",
-        "@/lib/errors",
         "zod"
       ],
       "methods": [
@@ -3310,6 +3498,7 @@
         "@/lib/db/queries",
         "@/lib/errors",
         "@/lib/i18n/languages",
+        "@/lib/pages/style",
         "@/lib/plans/custom-instructions",
         "@/lib/plans/tier-limits",
         "@/lib/search/sources",
@@ -3385,9 +3574,11 @@
         "@/lib/auth/plan",
         "@/lib/chat/auth",
         "@/lib/chat/mcp",
+        "@/lib/chat/memory",
         "@/lib/chat/tools",
         "@/lib/constants",
         "@/lib/db/queries",
+        "@/lib/db/queries/users",
         "@/lib/integrations/tokens",
         "@/lib/mcp/chat-tools",
         "@/lib/mcp/policy",
@@ -4082,7 +4273,7 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 1074,
+      "line": 1089,
       "method": "GET",
       "path": "/api-keys"
     },
@@ -4096,35 +4287,35 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 172,
+      "line": 187,
       "method": "POST",
       "path": "/api/login"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 26,
+      "line": 27,
       "method": "POST",
       "path": "/api/register"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 461,
+      "line": 476,
       "method": "POST",
       "path": "/api/resend-code"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 288,
+      "line": 303,
       "method": "POST",
       "path": "/api/verify-login"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 86,
+      "line": 94,
       "method": "POST",
       "path": "/api/verify-register"
     },
@@ -4159,98 +4350,98 @@
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 262,
+      "line": 261,
       "method": "GET",
       "path": "/api/vibe/books"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 364,
+      "line": 363,
       "method": "POST",
       "path": "/api/vibe/books"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 453,
+      "line": 452,
       "method": "DELETE",
       "path": "/api/vibe/books/:bookId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 648,
+      "line": 647,
       "method": "POST",
       "path": "/api/vibe/books/:bookId/leave"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 596,
+      "line": 595,
       "method": "GET",
       "path": "/api/vibe/books/:bookId/members"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1000,
+      "line": 999,
       "method": "DELETE",
       "path": "/api/vibe/books/:bookId/members/:userId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1079,
+      "line": 1078,
       "method": "POST",
       "path": "/api/vibe/books/:bookId/members/:userId/transfer-ownership"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 858,
+      "line": 857,
       "method": "GET",
       "path": "/api/vibe/books/:bookId/posts"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 762,
+      "line": 761,
       "method": "POST",
       "path": "/api/vibe/books/:bookId/posts/:postId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 930,
+      "line": 929,
       "method": "POST",
       "path": "/api/vibe/books/:bookId/posts/:postId/pin"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 696,
+      "line": 695,
       "method": "POST",
       "path": "/api/vibe/books/:bookId/regenerate-code"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 422,
+      "line": 421,
       "method": "POST",
       "path": "/api/vibe/books/:bookId/update"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 561,
+      "line": 560,
       "method": "POST",
       "path": "/api/vibe/books/join"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1121,
+      "line": 1120,
       "method": "GET",
       "path": "/api/vibe/books/public"
     },
@@ -4523,21 +4714,21 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 572,
+      "line": 568,
       "method": "GET",
       "path": "/api/vibe/feed"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 172,
+      "line": 187,
       "method": "POST",
       "path": "/api/vibe/login"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-chat.ts",
-      "line": 796,
+      "line": 891,
       "method": "POST",
       "path": "/api/vibe/mai/chat"
     },
@@ -4600,7 +4791,7 @@
     {
       "dynamic": false,
       "file": "vibe-mai-settings.ts",
-      "line": 42,
+      "line": 41,
       "method": "GET",
       "path": "/api/vibe/mai/quotas"
     },
@@ -4621,7 +4812,7 @@
     {
       "dynamic": false,
       "file": "vibe-mai-settings.ts",
-      "line": 71,
+      "line": 70,
       "method": "GET",
       "path": "/api/vibe/mai/tools"
     },
@@ -4887,7 +5078,7 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 772,
+      "line": 768,
       "method": "GET",
       "path": "/api/vibe/posts/top"
     },
@@ -4978,28 +5169,28 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 26,
+      "line": 27,
       "method": "POST",
       "path": "/api/vibe/register"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 461,
+      "line": 476,
       "method": "POST",
       "path": "/api/vibe/resend-code"
     },
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 863,
+      "line": 859,
       "method": "GET",
       "path": "/api/vibe/search/posts"
     },
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 989,
+      "line": 985,
       "method": "GET",
       "path": "/api/vibe/search/unified"
     },
@@ -5111,7 +5302,7 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 686,
+      "line": 682,
       "method": "GET",
       "path": "/api/vibe/trends"
     },
@@ -5167,14 +5358,14 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 288,
+      "line": 303,
       "method": "POST",
       "path": "/api/vibe/verify-login"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 86,
+      "line": 94,
       "method": "POST",
       "path": "/api/vibe/verify-register"
     },
@@ -5258,7 +5449,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 806,
+      "line": 808,
       "method": "POST",
       "path": "/chat/completions"
     },
@@ -5314,7 +5505,7 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 1015,
+      "line": 1030,
       "method": "POST",
       "path": "/confirm-delete-account"
     },
@@ -5377,7 +5568,7 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 572,
+      "line": 568,
       "method": "GET",
       "path": "/feed"
     },
@@ -5496,28 +5687,28 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 469,
+      "line": 468,
       "method": "POST",
       "path": "/log-usage"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 471,
+      "line": 470,
       "method": "POST",
       "path": "/log-usage/"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 172,
+      "line": 187,
       "method": "POST",
       "path": "/login"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 640,
+      "line": 642,
       "method": "GET",
       "path": "/mai/models"
     },
@@ -5538,7 +5729,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 956,
+      "line": 958,
       "method": "POST",
       "path": "/messages"
     },
@@ -5608,7 +5799,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 599,
+      "line": 601,
       "method": "GET",
       "path": "/models"
     },
@@ -5629,7 +5820,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 639,
+      "line": 641,
       "method": "GET",
       "path": "/models/mai"
     },
@@ -5769,7 +5960,7 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 26,
+      "line": 27,
       "method": "POST",
       "path": "/register"
     },
@@ -5783,28 +5974,28 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 987,
+      "line": 1002,
       "method": "POST",
       "path": "/request-delete-account"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 461,
+      "line": 476,
       "method": "POST",
       "path": "/resend-code"
     },
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 863,
+      "line": 859,
       "method": "GET",
       "path": "/search/posts"
     },
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 989,
+      "line": 985,
       "method": "GET",
       "path": "/search/unified"
     },
@@ -5867,7 +6058,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 652,
+      "line": 654,
       "method": "GET",
       "path": "/status"
     },
@@ -5888,14 +6079,14 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 686,
+      "line": 682,
       "method": "GET",
       "path": "/trends"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 789,
+      "line": 804,
       "method": "POST",
       "path": "/update-profile"
     },
@@ -5930,14 +6121,14 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 396,
+      "line": 395,
       "method": "GET",
       "path": "/usage"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 398,
+      "line": 397,
       "method": "GET",
       "path": "/usage/"
     },
@@ -6077,105 +6268,105 @@
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 262,
+      "line": 261,
       "method": "GET",
       "path": "/v1/books"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 364,
+      "line": 363,
       "method": "POST",
       "path": "/v1/books"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 453,
+      "line": 452,
       "method": "DELETE",
       "path": "/v1/books/:bookId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 648,
+      "line": 647,
       "method": "POST",
       "path": "/v1/books/:bookId/leave"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 596,
+      "line": 595,
       "method": "GET",
       "path": "/v1/books/:bookId/members"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1000,
+      "line": 999,
       "method": "DELETE",
       "path": "/v1/books/:bookId/members/:userId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1079,
+      "line": 1078,
       "method": "POST",
       "path": "/v1/books/:bookId/members/:userId/transfer-ownership"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 858,
+      "line": 857,
       "method": "GET",
       "path": "/v1/books/:bookId/posts"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 762,
+      "line": 761,
       "method": "POST",
       "path": "/v1/books/:bookId/posts/:postId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 930,
+      "line": 929,
       "method": "POST",
       "path": "/v1/books/:bookId/posts/:postId/pin"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 696,
+      "line": 695,
       "method": "POST",
       "path": "/v1/books/:bookId/regenerate-code"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 422,
+      "line": 421,
       "method": "POST",
       "path": "/v1/books/:bookId/update"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 561,
+      "line": 560,
       "method": "POST",
       "path": "/v1/books/join"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1121,
+      "line": 1120,
       "method": "GET",
       "path": "/v1/books/public"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 805,
+      "line": 807,
       "method": "POST",
       "path": "/v1/chat/completions"
     },
@@ -6518,7 +6709,7 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 572,
+      "line": 568,
       "method": "GET",
       "path": "/v1/feed"
     },
@@ -6623,28 +6814,28 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 470,
+      "line": 469,
       "method": "POST",
       "path": "/v1/log-usage"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 472,
+      "line": 471,
       "method": "POST",
       "path": "/v1/log-usage/"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 172,
+      "line": 187,
       "method": "POST",
       "path": "/v1/login"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-chat.ts",
-      "line": 796,
+      "line": 891,
       "method": "POST",
       "path": "/v1/mai/chat"
     },
@@ -6707,14 +6898,14 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 638,
+      "line": 640,
       "method": "GET",
       "path": "/v1/mai/models"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-settings.ts",
-      "line": 42,
+      "line": 41,
       "method": "GET",
       "path": "/v1/mai/quotas"
     },
@@ -6735,7 +6926,7 @@
     {
       "dynamic": false,
       "file": "vibe-mai-settings.ts",
-      "line": 71,
+      "line": 70,
       "method": "GET",
       "path": "/v1/mai/tools"
     },
@@ -6756,7 +6947,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 955,
+      "line": 957,
       "method": "POST",
       "path": "/v1/messages"
     },
@@ -6826,14 +7017,14 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 598,
+      "line": 600,
       "method": "GET",
       "path": "/v1/models"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 1102,
+      "line": 1104,
       "method": "POST",
       "path": "/v1/models/*:generateContent"
     },
@@ -6854,7 +7045,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 1103,
+      "line": 1105,
       "method": "POST",
       "path": "/v1/models/*:streamGenerateContent"
     },
@@ -6882,7 +7073,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 637,
+      "line": 639,
       "method": "GET",
       "path": "/v1/models/mai"
     },
@@ -7127,7 +7318,7 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 772,
+      "line": 768,
       "method": "GET",
       "path": "/v1/posts/top"
     },
@@ -7260,28 +7451,28 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 26,
+      "line": 27,
       "method": "POST",
       "path": "/v1/register"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 461,
+      "line": 476,
       "method": "POST",
       "path": "/v1/resend-code"
     },
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 863,
+      "line": 859,
       "method": "GET",
       "path": "/v1/search/posts"
     },
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 989,
+      "line": 985,
       "method": "GET",
       "path": "/v1/search/unified"
     },
@@ -7386,7 +7577,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 651,
+      "line": 653,
       "method": "GET",
       "path": "/v1/status"
     },
@@ -7491,7 +7682,7 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 686,
+      "line": 682,
       "method": "GET",
       "path": "/v1/trends"
     },
@@ -7526,14 +7717,14 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 397,
+      "line": 396,
       "method": "GET",
       "path": "/v1/usage"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 399,
+      "line": 398,
       "method": "GET",
       "path": "/v1/usage/"
     },
@@ -7589,14 +7780,14 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 288,
+      "line": 303,
       "method": "POST",
       "path": "/v1/verify-login"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 86,
+      "line": 94,
       "method": "POST",
       "path": "/v1/verify-register"
     },
@@ -7617,14 +7808,14 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 600,
+      "line": 602,
       "method": "GET",
       "path": "/v1beta/models"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 1101,
+      "line": 1103,
       "method": "POST",
       "path": "/v1beta/models/*"
     },
@@ -7659,28 +7850,28 @@
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 585,
+      "line": 600,
       "method": "POST",
       "path": "/verify-code"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 288,
+      "line": 303,
       "method": "POST",
       "path": "/verify-login"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 953,
+      "line": 968,
       "method": "POST",
       "path": "/verify-new-email"
     },
     {
       "dynamic": false,
       "file": "auth.ts",
-      "line": 86,
+      "line": 94,
       "method": "POST",
       "path": "/verify-register"
     },
@@ -7715,98 +7906,98 @@
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 262,
+      "line": 261,
       "method": "GET",
       "path": "/vibe/books"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 364,
+      "line": 363,
       "method": "POST",
       "path": "/vibe/books"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 453,
+      "line": 452,
       "method": "DELETE",
       "path": "/vibe/books/:bookId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 648,
+      "line": 647,
       "method": "POST",
       "path": "/vibe/books/:bookId/leave"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 596,
+      "line": 595,
       "method": "GET",
       "path": "/vibe/books/:bookId/members"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1000,
+      "line": 999,
       "method": "DELETE",
       "path": "/vibe/books/:bookId/members/:userId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1079,
+      "line": 1078,
       "method": "POST",
       "path": "/vibe/books/:bookId/members/:userId/transfer-ownership"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 858,
+      "line": 857,
       "method": "GET",
       "path": "/vibe/books/:bookId/posts"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 762,
+      "line": 761,
       "method": "POST",
       "path": "/vibe/books/:bookId/posts/:postId"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 930,
+      "line": 929,
       "method": "POST",
       "path": "/vibe/books/:bookId/posts/:postId/pin"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 696,
+      "line": 695,
       "method": "POST",
       "path": "/vibe/books/:bookId/regenerate-code"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 422,
+      "line": 421,
       "method": "POST",
       "path": "/vibe/books/:bookId/update"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 561,
+      "line": 560,
       "method": "POST",
       "path": "/vibe/books/join"
     },
     {
       "dynamic": false,
       "file": "vibe-books.ts",
-      "line": 1121,
+      "line": 1120,
       "method": "GET",
       "path": "/vibe/books/public"
     },
@@ -8079,14 +8270,14 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 572,
+      "line": 568,
       "method": "GET",
       "path": "/vibe/feed"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-chat.ts",
-      "line": 796,
+      "line": 891,
       "method": "POST",
       "path": "/vibe/mai/chat"
     },
@@ -8149,7 +8340,7 @@
     {
       "dynamic": false,
       "file": "vibe-mai-settings.ts",
-      "line": 42,
+      "line": 41,
       "method": "GET",
       "path": "/vibe/mai/quotas"
     },
@@ -8170,7 +8361,7 @@
     {
       "dynamic": false,
       "file": "vibe-mai-settings.ts",
-      "line": 71,
+      "line": 70,
       "method": "GET",
       "path": "/vibe/mai/tools"
     },
@@ -8359,7 +8550,7 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 772,
+      "line": 768,
       "method": "GET",
       "path": "/vibe/posts/top"
     },
@@ -8450,14 +8641,14 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 863,
+      "line": 859,
       "method": "GET",
       "path": "/vibe/search/posts"
     },
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 989,
+      "line": 985,
       "method": "GET",
       "path": "/vibe/search/unified"
     },
@@ -8569,7 +8760,7 @@
     {
       "dynamic": false,
       "file": "vibe-feed.ts",
-      "line": 686,
+      "line": 682,
       "method": "GET",
       "path": "/vibe/trends"
     },
