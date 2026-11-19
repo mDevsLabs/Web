@@ -185,10 +185,10 @@ export function AccountUsageCard({ output, state }: AccountUsageCardProps) {
                 gradient="bg-gradient-to-r from-indigo-500 to-purple-600"
                 icon={<BotGlyph className="size-3.5" />}
                 label="Utilisation de l'IA"
-                note="Tokens hebdomadaires (invites + réponses)"
+                note="Consommation hebdomadaire du forfait"
                 percent={output.ai.percent}
                 resetLabel={formatResetFr(output.ai.resetAt)}
-                right={`${formatTokensFr(output.ai.tokensUsed)} / ${formatTokensFr(output.ai.limit)}`}
+                right={`${output.ai.percent}% consommé`}
               />
             )}
 
@@ -211,10 +211,10 @@ export function AccountUsageCard({ output, state }: AccountUsageCardProps) {
                 gradient="bg-gradient-to-r from-emerald-500 to-teal-600"
                 icon={<Volume2Icon className="size-3.5" />}
                 label="Synthèse vocale"
-                note="Tokens audio hebdomadaires"
+                note="Consommation hebdomadaire audio"
                 percent={output.speech.percent}
                 resetLabel={formatResetFr(output.speech.resetAt)}
-                right={`${formatTokensFr(output.speech.tokensUsed)} / ${formatTokensFr(output.speech.limit)}`}
+                right={`${output.speech.percent}% consommé`}
               />
             ) : (
               <UnavailableRow label="synthèse vocale" />

@@ -661,7 +661,7 @@ function PureMultimodalInput({
   const submitForm = useCallback(() => {
     if (isQuotaExhausted) {
       toast.error(
-        `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Consultez les forfaits pour continuer.`
+        "Votre limite hebdomadaire d'usage mAI est atteinte (100%). Consultez les forfaits pour continuer."
       );
       return;
     }
@@ -689,8 +689,6 @@ function PureMultimodalInput({
     doSendCurrentMessage();
   }, [
     isQuotaExhausted,
-    costAiUsed,
-    costAiLimit,
     attachments,
     hasVisionSupport,
     hasStrictCaps,
@@ -842,6 +840,7 @@ function PureMultimodalInput({
           costAiUsed={costAiUsed}
           costPercent={costPercent}
           liveSessionTokens={liveSessionTokens}
+          tierLabel={tierRaw}
         />
       ) : null}
 
