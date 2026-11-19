@@ -1,6 +1,9 @@
 import type { InferUITool, UIMessage } from "ai";
 import { z } from "zod";
-import type { ArtifactKind } from "@/components/chat/artifact";
+import type { ArtifactKind } from "./artifacts/kinds";
+
+export type { ArtifactKind } from "./artifacts/kinds";
+
 import type {
   AgentArtifactRef,
   AgentPlan,
@@ -193,6 +196,58 @@ export type ChatMessage = UIMessage<
   CustomUIDataTypes,
   ChatTools
 >;
+
+/**
+ * Partie d'outil générique, telle qu'accédée par les cartes de rendu
+ * (components/chat/message.tsx). Le SDK livrant des unions discriminées que
+ * le rendu ne distingue pas toujours, l'accès passe par ce gabarit : `state`
+ * et `toolCallId` sont communs à toutes les parties d'outil, `input` /
+ * `output` portent le contenu côté modèle.
+ */
+export type GenericToolState =
+  | "approval-requested"
+  | "approval-responded"
+  | "input-available"
+  | "input-streaming"
+  | "output-available"
+  | "output-denied"
+  | "output-error";
+
+export type GenericToolPart = {
+  approval?: { id?: string | null } | null;
+  args?: unknown;
+  errorText?: string;
+  input: unknown;
+  output: unknown;
+  state: GenericToolState;
+  toolCallId: string;
+  toolName?: string;
+};
+
+/**
+ * Sortie d'outil lue comme un dictionnaire. Les sorties traversent le flux
+ * en `unknown` : l'accès indexé passerait sinon par des `as any` épars.
+ */
+export function sortieDe(output: unknown): Record<string, unknown> {
+  return output && typeof output === "object"
+    ? (output as Record<string, unknown>)
+    : {};
+}
+
+/** Champ texte d'une sortie d'outil, ou "" quand il est absent ou non textuel. */
+export function champTexte(output: unknown, cle: string): string {
+  const valeur = sortieDe(output)[cle];
+  return typeof valeur === "string" ? valeur : "";
+}
+
+/** Payload de sortie de l'outil image (Chat `imageGenerate` et Agent `generate_image`). */
+export type ImageToolOutputPayload = {
+  error?: string;
+  height?: number;
+  image_url?: string;
+  prompt?: string;
+  width?: number;
+};
 
 export type Attachment = {
   contentType: string;

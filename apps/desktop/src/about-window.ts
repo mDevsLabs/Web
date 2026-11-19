@@ -1,9 +1,30 @@
 import path from "node:path";
-import { app, BrowserWindow, ipcMain, shell } from "electron";
-import { checkForUpdates, downloadAndInstallUpdate } from "./updater";
+import {
+  app,
+  BrowserWindow,
+  type IpcMainInvokeEvent,
+  ipcMain,
+  shell,
+} from "electron";
+import {
+  checkForUpdates,
+  downloadAndInstallUpdate,
+  getPendingUpdate,
+  isManagedInstallerPath,
+} from "./updater";
 
 let aboutWindow: BrowserWindow | null = null;
 let ipcRegistered = false;
+
+/**
+ * Vrai si l'émetteur IPC est bien la fenêtre À propos, sur son document
+ * principal (issue #28). Une frame tierce ou un expéditeur quelconque ne doit
+ * jamais pouvoir piloter un téléchargement ni ouvrir un fichier.
+ */
+function isTrustedAboutSender(event: IpcMainInvokeEvent): boolean {
+  if (!aboutWindow || aboutWindow.isDestroyed()) return false;
+  return event.senderFrame === aboutWindow.webContents.mainFrame;
+}
 
 function registerAboutIpc(): void {
   if (ipcRegistered) return;
@@ -24,29 +45,50 @@ function registerAboutIpc(): void {
   });
 
   ipcMain.handle("about:check-updates", async () => {
-    const channel = (process.env.MAI_DESKTOP_CHANNEL || "").toLowerCase().trim();
-    const isBeta = channel === "beta" || app.getVersion().includes("beta") || app.getVersion().includes("pr");
-    return checkForUpdates(isBeta);
+    return checkForUpdates();
   });
 
-  ipcMain.handle("about:download-update", async (event, args: { downloadUrl: string; fileName: string }) => {
-    return downloadAndInstallUpdate(args.downloadUrl, args.fileName, (percent, received, total) => {
-      if (aboutWindow && !aboutWindow.isDestroyed()) {
-        aboutWindow.webContents.send("about:download-progress", { percent, received, total });
+  // Le renderer ne transmet qu'un identifiant opaque : l'URL, le nom de
+  // fichier et l'empreinte sont résolus côté Main (issue #28).
+  ipcMain.handle(
+    "about:download-update",
+    async (event, args: { updateId?: string }) => {
+      if (!isTrustedAboutSender(event)) {
+        return { error: "Requête refusée.", success: false };
       }
-    });
-  });
-
-  ipcMain.handle("about:open-installer", async (_event, filePath: string) => {
-    if (filePath) {
-      await shell.openPath(filePath);
-      return true;
+      const updateId = typeof args?.updateId === "string" ? args.updateId : "";
+      const pending = getPendingUpdate(updateId);
+      if (!pending) {
+        return {
+          error: "Mise à jour inconnue : relancez la vérification.",
+          success: false,
+        };
+      }
+      return downloadAndInstallUpdate(pending, (percent, received, total) => {
+        if (aboutWindow && !aboutWindow.isDestroyed()) {
+          aboutWindow.webContents.send("about:download-progress", {
+            percent,
+            received,
+            total,
+          });
+        }
+      });
     }
-    return false;
+  );
+
+  // Seul l'installeur téléchargé et vérifié par le Main peut être ouvert.
+  ipcMain.handle("about:open-installer", async (event, filePath: string) => {
+    if (!isTrustedAboutSender(event)) return false;
+    if (typeof filePath !== "string" || !isManagedInstallerPath(filePath)) {
+      return false;
+    }
+    const openError = await shell.openPath(filePath);
+    return !openError;
   });
 
-  ipcMain.handle("about:open-external", async (_event, url: string) => {
-    if (url && (url.startsWith("https://") || url.startsWith("http://"))) {
+  ipcMain.handle("about:open-external", async (event, url: string) => {
+    if (!isTrustedAboutSender(event)) return;
+    if (typeof url === "string" && url.startsWith("https://")) {
       await shell.openExternal(url);
     }
   });

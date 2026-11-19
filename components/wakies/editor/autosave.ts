@@ -223,7 +223,7 @@ export class PageAutosave {
       return this.flush(retry);
     return success;
   }
-  useLatest() {
+  applyLatest() {
     const page = this.state.remote;
     if (!page) return;
     this.generation++;
@@ -237,6 +237,9 @@ export class PageAutosave {
       remote: page,
       status: "saved",
     });
+  }
+  useLatest() {
+    this.applyLatest();
   }
   dispose() {
     this.generation++;

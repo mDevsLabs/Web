@@ -28,7 +28,7 @@ import {
 import { stripHtmlTags } from "./vibe-posts-core.ts";
 
 export function registerDMDirectRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 1. SEARCH USERS FOR DM

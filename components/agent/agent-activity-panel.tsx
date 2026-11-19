@@ -36,8 +36,14 @@ function responseRate(value: { count: number; positive: number }) {
     : "Aucune réponse";
 }
 
-export function AgentActivityPanel() {
-  const [days, setDays] = useState(30);
+export function AgentActivityPanel({
+  defaultDays = 30,
+  densite = "detailed",
+}: {
+  defaultDays?: 7 | 30 | 90;
+  densite?: "compact" | "detailed";
+}) {
+  const [days, setDays] = useState<7 | 30 | 90>(defaultDays);
   const { data, error, mutate } = useSWR<Activity>(
     `/api/agent/runs?view=activity&days=${days}`,
     fetcher
@@ -67,7 +73,7 @@ export function AgentActivityPanel() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-xl font-semibold">Activité Agent</h2>
         <div className="flex gap-1">
-          {[7, 30, 90].map((value) => (
+          {([7, 30, 90] as const).map((value) => (
             <button
               className={`rounded-md border px-3 py-1 text-sm ${days === value ? "bg-primary text-primary-foreground" : ""}`}
               key={value}
@@ -111,13 +117,15 @@ export function AgentActivityPanel() {
             </p>
             <p className="rounded-xl border p-3 text-sm">Coût : indisponible</p>
           </div>
-          <p className="text-xs text-muted-foreground">
-            États :{" "}
-            {Object.entries(data.totals.byStatus)
-              .filter(([, count]) => count > 0)
-              .map(([status, count]) => `${status} ${count}`)
-              .join(" · ") || "aucun run"}
-          </p>
+          {densite === "detailed" ? (
+            <p className="text-xs text-muted-foreground">
+              États :{" "}
+              {Object.entries(data.totals.byStatus)
+                .filter(([, count]) => count > 0)
+                .map(([status, count]) => `${status} ${count}`)
+                .join(" · ") || "aucun run"}
+            </p>
+          ) : null}
           <div className="space-y-2">
             {data.runs.slice(0, 100).map((run) => (
               <div className="rounded-xl border p-3 text-sm" key={run.id}>
@@ -132,10 +140,12 @@ export function AgentActivityPanel() {
                     {run.status}
                   </span>
                   {run.parentRunId ? <span>Reprise</span> : null}
-                  <span className="text-muted-foreground">
-                    {run.usage?.totalTokens ?? 0} tokens ·{" "}
-                    {Math.round((run.usage?.durationMs ?? 0) / 1000)} s
-                  </span>
+                  {densite === "detailed" ? (
+                    <span className="text-muted-foreground">
+                      {run.usage?.totalTokens ?? 0} tokens ·{" "}
+                      {Math.round((run.usage?.durationMs ?? 0) / 1000)} s
+                    </span>
+                  ) : null}
                 </div>
                 {["completed", "failed", "cancelled", "timed_out"].includes(
                   run.status

@@ -36,6 +36,14 @@ interface MessageRichInputProps {
   /** Cap en caractères de texte brut (défaut 3000). */
   maxChars?: number;
   onChange?: (html: string, text: string) => void;
+  /**
+   * Flèche haut dans un champ VIDE : rappelle le dernier message envoyé.
+   *
+   * C'est le geste que tout le monde connaît d'une messagerie, et il ne doit
+   * PAS se déclencher quand le curseur est au milieu d'un texte — le laisser
+   * faire reviendrait à remplacer ce que l'utilisateur est en train d'écrire.
+   */
+  onEmptyArrowUp?: () => void;
   /** Entrée (sans Maj, hors IME) : déclenche l'envoi. */
   onEnterSend?: () => void;
   /** Frappe/collage réels de l'utilisateur (pas les setHTML programmatiques). */
@@ -55,6 +63,7 @@ export function MessageRichInput({
   onChange,
   onUserInput,
   onEnterSend,
+  onEmptyArrowUp,
   ref,
 }: MessageRichInputProps & { ref?: React.Ref<MessageRichInputHandle> }) {
   const editorRef = useRef<HTMLDivElement>(null);
@@ -192,6 +201,16 @@ export function MessageRichInput({
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "ArrowUp" && onEmptyArrowUp) {
+        // Le rappel ne vaut que sur un champ vide : sinon on volerait la
+        // navigation dans le texte en cours de rédaction.
+        const el = editorRef.current;
+        if (!el || (el.textContent || "").trim().length === 0) {
+          e.preventDefault();
+          onEmptyArrowUp();
+          return;
+        }
+      }
       if (e.key !== "Enter") return;
       const native = e.nativeEvent as KeyboardEvent;
       if (native.isComposing) return;
@@ -204,7 +223,7 @@ export function MessageRichInput({
         onEnterSend?.();
       }
     },
-    [emitChange, onEnterSend]
+    [emitChange, onEmptyArrowUp, onEnterSend]
   );
 
   const handlePaste = useCallback(

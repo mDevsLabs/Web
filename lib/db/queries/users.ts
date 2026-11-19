@@ -1,22 +1,5 @@
 import "server-only";
-import {
-  and,
-  asc,
-  count,
-  desc,
-  eq,
-  gt,
-  gte,
-  inArray,
-  isNull,
-  lt,
-  lte,
-  notInArray,
-  or,
-  type SQL,
-  sql,
-} from "drizzle-orm";
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { eq } from "drizzle-orm";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 import { normalizeAppKey } from "@/lib/apps/catalog";
 import { normalizeCreationMode } from "@/lib/creation/mode";
@@ -28,8 +11,6 @@ import {
   normalizeTranslationTarget,
 } from "@/lib/i18n/languages";
 import { normalizePageFont } from "@/lib/pages/style";
-import type { ScheduleToolMode } from "@/lib/planning/tool-mode";
-import { normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
 import {
   type MaiSearchLanguage,
   type MaiSearchSafetyLevel,
@@ -40,40 +21,7 @@ import {
   normalizeMaiSearchSources,
 } from "@/lib/search/sources";
 import { normalizeThemePreference } from "@/lib/theme/preference";
-import {
-  agent,
-  agentTemplate,
-  type Chat,
-  chat,
-  customCommand,
-  type DBMessage,
-  type DocumentProposal,
-  document,
-  documentProposal,
-  mcpLog,
-  mcpServer,
-  mcpServerSecret,
-  message,
-  pluginInstallation,
-  project,
-  projectFile,
-  projectInvite,
-  projectMember,
-  type ScheduledMessage,
-  type Skill,
-  type Suggestion,
-  scheduledMessage,
-  skill,
-  skillUsage,
-  skillVersion,
-  stream,
-  suggestion,
-  toolExecution,
-  userMcpPrefs,
-  userMemory,
-  vote,
-} from "../schema";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { _rawClient, dbReady } from "./connection";
 
 // ==========================================
 // USER AI PREFERENCES QUERIES

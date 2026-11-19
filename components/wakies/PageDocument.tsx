@@ -109,7 +109,7 @@ export function PageDocument({
       return;
     try {
       controller.receive(await api<Page>(`/pages/${page.id}`));
-      controller.useLatest();
+      controller.applyLatest();
       setNotice("");
     } catch (error) {
       setNotice(

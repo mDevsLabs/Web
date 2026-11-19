@@ -116,9 +116,9 @@ export function registerRealtimeRoutes(app: Hono) {
     // Chevauchement initial de 3 s : rattrape ce qui a été émis juste avant la
     // connexion (le client déduplique par id côté UI).
     const seenNotificationIds = new Set<string>();
-    const seenMessageIds = new Set<string>();
+    const _seenMessageIds = new Set<string>();
     let notifCursor = new Date(Date.now() - 3000).toISOString();
-    const dmCursor = new Date(Date.now() - 3000).toISOString();
+    const _dmCursor = new Date(Date.now() - 3000).toISOString();
     let lastEventId = 0;
     let tick = 0;
 

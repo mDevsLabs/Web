@@ -7,7 +7,7 @@
 import type { LeagueId } from "@/lib/quizzly/leagues";
 import { libelleLigue } from "@/lib/quizzly/leagues";
 import { LEAGUE_COLOR } from "@/lib/quizzly/palette";
-import { libelleAnnee, type SchoolYear } from "@/lib/quizzly/program";
+import { libelleAnnee } from "@/lib/quizzly/program";
 
 export type CarteProfil = {
   avatarUrl: string | null;

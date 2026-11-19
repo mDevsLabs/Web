@@ -23,7 +23,6 @@ import {
 import type { AgentFlags } from "@/lib/agent/flags";
 import {
   AGENT_FALLBACK_FINAL_RESPONSE,
-  AGENT_FINAL_RESPONSE_INSTRUCTION,
   composeAgentInstructions,
 } from "@/lib/agent/instructions";
 import {

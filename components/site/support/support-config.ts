@@ -1,4 +1,3 @@
-import type { IconProps } from "@mdevs/icons";
 import {
   AlertCircleIcon as AlertCircle,
   ArchiveIcon as Archive,

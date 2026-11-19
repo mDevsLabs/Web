@@ -8,11 +8,7 @@
 import type { Hono } from "npm:hono@4";
 import { extractToken, getDb, verifyToken } from "./config.ts";
 import { ensureCircleTable } from "./vibe-circle.ts";
-import {
-  isBlockEitherWay,
-  type RegisterMultiFn,
-  resolveHiddenUserIds,
-} from "./vibe-common.ts";
+import { type RegisterMultiFn, resolveHiddenUserIds } from "./vibe-common.ts";
 import {
   attachBookRefs,
   attachPollsAndCollabs,
@@ -220,7 +216,7 @@ export function registerVibeFeedRoutes(
       if (type === "stream" || type === "following") {
         // Keyset pagination : (published_at, id) < (ts, id) — stable et indexable
         const keyset = rawCursor ? parseKeyset(rawCursor) : null;
-        const cursorFilter = (uid: number | null) =>
+        const cursorFilter = (_uid: number | null) =>
           keyset
             ? sql`AND (p.published_at, p.id) < (${keyset.ts}::timestamptz, ${keyset.id}::uuid)`
             : sql``;

@@ -22,6 +22,10 @@ export function useNativeAppUpdate() {
     };
     const check = async () => {
       if (checking || document.visibilityState !== "visible") return;
+      // VEILLE : une activité lourde (Blackline) a la main. Vérifier une mise
+      // à jour n'apporte rien pendant une partie — et une mise à jour qui se
+      // déclencherait au milieu d'une opération serait pire que le retard.
+      if (document.documentElement.dataset.veille === "true") return;
       if (pending) {
         apply();
         return;

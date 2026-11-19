@@ -87,11 +87,7 @@ function extractToken(req: NextRequest): string {
   const authHeader = req.headers.get("authorization") || "";
   const bearer = authHeader.replace(/^Bearer\s+/i, "").trim();
   if (bearer) return bearer;
-  return (
-    req.cookies.get(MAI_SESSION_COOKIE)?.value ||
-    req.cookies.get("mai_token")?.value ||
-    ""
-  );
+  return req.cookies.get(MAI_SESSION_COOKIE)?.value || "";
 }
 
 export type SessionAuthResult =
@@ -122,7 +118,6 @@ export async function authenticateSession(
 /** Pour les Server Actions : identité dérivée du cookie de session signé ou validé. */
 export async function getSessionIdentity(): Promise<SessionIdentity | null> {
   const store = await cookies();
-  const token =
-    store.get(MAI_SESSION_COOKIE)?.value || store.get("mai_token")?.value || "";
+  const token = store.get(MAI_SESSION_COOKIE)?.value || "";
   return resolveSessionIdentity(token);
 }

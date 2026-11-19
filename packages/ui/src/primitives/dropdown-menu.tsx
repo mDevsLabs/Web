@@ -15,5 +15,26 @@ export interface DropdownMenuProps {
     trigger: ReactNode;
     items: readonly DropdownMenuItem[];
     label: string;
+    container?: HTMLElement | null;
 }
-export function DropdownMenu({ trigger, items, label }: DropdownMenuProps) { return <RDropdown.Root><RDropdown.Trigger asChild>{trigger}</RDropdown.Trigger><RDropdown.Portal><PortalScope><RDropdown.Content className="md-glass md-menu" sideOffset={8} aria-label={label}>{items.map(item => <span key={item.id}>{item.separatorBefore && <RDropdown.Separator className="md-separator"/>}<RDropdown.Item className="md-menu-item" disabled={item.disabled} data-danger={item.danger || undefined} onSelect={item.onSelect}>{item.label}</RDropdown.Item></span>)}</RDropdown.Content></PortalScope></RDropdown.Portal></RDropdown.Root>; }
+export function DropdownMenu({ trigger, items, label, container }: DropdownMenuProps) {
+    return (
+        <RDropdown.Root>
+            <RDropdown.Trigger asChild>{trigger}</RDropdown.Trigger>
+            <RDropdown.Portal container={container}>
+                <PortalScope>
+                    <RDropdown.Content className="md-glass md-menu" sideOffset={8} aria-label={label}>
+                        {items.map(item => (
+                            <span key={item.id}>
+                                {item.separatorBefore && <RDropdown.Separator className="md-separator"/>}
+                                <RDropdown.Item className="md-menu-item" disabled={item.disabled} data-danger={item.danger || undefined} onSelect={item.onSelect}>
+                                    {item.label}
+                                </RDropdown.Item>
+                            </span>
+                        ))}
+                    </RDropdown.Content>
+                </PortalScope>
+            </RDropdown.Portal>
+        </RDropdown.Root>
+    );
+}

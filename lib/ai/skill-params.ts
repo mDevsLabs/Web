@@ -69,7 +69,7 @@ export function substituteSkillParams(
   }
   return instructions.replace(
     /\{\{\s*([a-zA-Z0-9_-]+)\s*\}\}/g,
-    (match, name: string) => {
+    (_match, name: string) => {
       const value = params[name];
       if (value !== undefined && value.trim().length > 0) {
         return value.trim();

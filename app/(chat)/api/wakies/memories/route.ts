@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
+import { errorResponse } from "@/lib/api/error-response";
 import {
   enforceWakiesLimit,
   isResponse,

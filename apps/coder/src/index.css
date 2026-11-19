@@ -16878,6 +16878,17 @@ body.is-resizing-browser-capture-dock {
   background: rgba(255, 255, 255, 0.04);
 }
 
+/* Ligne atteinte au clavier : elle doit se distinguer de la sélection, sinon
+   on ne sait pas si Entrée valide le modèle actif ou celui qu'on parcourt. */
+.ref-model-dd-row.is-active {
+  background: var(--void-bg-2);
+  box-shadow: inset 2px 0 0 var(--void-ring);
+}
+
+:root[data-color-scheme="light"] .ref-model-dd-row.is-active {
+  box-shadow: inset 2px 0 0 #0f172a;
+}
+
 .ref-model-dd-globe {
   display: flex;
   flex-shrink: 0;

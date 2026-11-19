@@ -35,8 +35,9 @@ import {
   poursuivreConversationCoach,
 } from "@/lib/quizzly/coach-store";
 import { origineConfiance } from "@/lib/quizzly/http";
+import { libelleLigue } from "@/lib/quizzly/leagues";
 import { obtenirIndex } from "@/lib/quizzly/load";
-import { libelleAnnee } from "@/lib/quizzly/program";
+import { libelleAnnee, PROGRAM } from "@/lib/quizzly/program";
 import { chargerCoach } from "@/lib/quizzly/queries";
 import { enregistrerUsageCoach } from "@/lib/quizzly/usage";
 import { generateUUID } from "@/lib/utils";
@@ -49,11 +50,16 @@ const corpsSchema = z
     intent: z.enum(COACH_INTENTS).optional(),
     questionId: z.string().max(8).optional(),
     quizId: z.string().max(160).optional(),
+    sheetId: z.string().max(160).optional(),
+    sheetTitle: z.string().max(160).optional(),
     text: z.string().max(COACH_MESSAGE_MAX).optional(),
   })
   .strict();
 
-async function contexteDuCompte(userId: string) {
+async function contexteDuCompte(
+  userId: string,
+  sheetInfo?: { sheetId?: string; sheetTitle?: string }
+) {
   const charge = await chargerCoach(userId);
   const index = await obtenirIndex();
   const tentatives = assemblerTentatives(charge.tentatives, (quizId) => {
@@ -67,12 +73,29 @@ async function contexteDuCompte(userId: string) {
       subjectLabel: quiz.subjectLabel,
     };
   });
+  const matieresLabels =
+    PROGRAM[charge.schoolYear]
+      ?.filter(
+        (m) => charge.subjects.length === 0 || charge.subjects.includes(m.id)
+      )
+      ?.map((m) => m.label) ?? [];
+
   return {
     charge,
     contexte: {
+      leagueLabel: libelleLigue(charge.league),
+      niveau: charge.niveau,
       passedCount: charge.passedCount,
+      sheetContext: sheetInfo?.sheetTitle
+        ? {
+            id: sheetInfo.sheetId ?? "",
+            title: sheetInfo.sheetTitle,
+          }
+        : undefined,
       streakCount: charge.streakCount,
+      subjectsLabels: matieresLabels,
       tentatives,
+      weeklyXp: charge.weeklyXp,
       xp: charge.xp,
       yearLabel: libelleAnnee(charge.schoolYear),
     },

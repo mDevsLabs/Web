@@ -153,7 +153,7 @@ export function DocsClient({ initialDocs, titleSpan }: DocsClientProps) {
   return (
     <div className="flex flex-col gap-10 md:gap-16 w-full">
       {/* Hero Section */}
-      <div className="text-left space-y-2 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div className="text-left space-y-2 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
         <div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black italic tracking-tighter leading-[0.9] md:leading-[0.85] uppercase text-slate-900">
             Documentation <br className="hidden sm:block" />
@@ -169,7 +169,7 @@ export function DocsClient({ initialDocs, titleSpan }: DocsClientProps) {
 
         {/* Bouton Mobile Toggle Sidebar */}
         <button
-          className="lg:hidden flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-md text-sm whitespace-nowrap self-start md:self-auto"
+          className="lg:hidden flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-md text-sm whitespace-nowrap self-start w-full sm:w-auto"
           onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
         >
           <Menu className="w-4 h-4" />

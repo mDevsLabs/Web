@@ -28,6 +28,7 @@ import {
   attachQuotedPosts,
   fetchPostMedia,
 } from "./post-hydrate";
+import { viewerIdOf } from "./viewer";
 
 export type VibeExploreSeed = {
   onboardingSuggestions: { users: any[] } | null;
@@ -35,12 +36,6 @@ export type VibeExploreSeed = {
   topVibers: { users: any[] } | null;
   trends: { success: boolean; trends: any[] } | null;
 };
-
-function viewerIdOf(identity: VibeIdentity | null): number | null {
-  return identity && /^\d+$/.test(String(identity.userId))
-    ? Number(identity.userId)
-    : null;
-}
 
 // ── Tendances ───────────────────────────────────────────────────────────────
 

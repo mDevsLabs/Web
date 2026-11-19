@@ -177,3 +177,130 @@ export function semaineSuivante(cle: string): string {
 export function semaineAvant(cle: string, autre: string): boolean {
   return cle < autre;
 }
+
+/**
+ * Échelle pédagogique des ligues, du bas vers le haut : reprise de `LEAGUES`
+ * avec le libellé, pour les écrans qui montrent la progression complète.
+ */
+export const ECHELLE_LIGUES: readonly { id: LeagueId; libelle: string }[] =
+  LEAGUES.map((id) => ({ id, libelle: libelleLigue(id) }));
+
+export type SeuilsLigue = {
+  /** Rang (1-based) du lecteur dans sa cohorte, ou `null` s'il n'y siège pas. */
+  rang: number | null;
+  /** Nombre de sièges de la cohorte. */
+  taille: number;
+  /** XP hebdomadaire du lecteur. */
+  xpMoi: number;
+  /** XP du dernier promu (rang `LEAGUE_MOVE`) : le seuil de montée. */
+  seuilMontee: number | null;
+  /** XP du premier relégué par le bas : le seuil de relégation. */
+  seuilRellegation: number | null;
+  /** XP qui séparent le lecteur de la zone de montée (0 s'il y est). */
+  ecartMontee: number;
+  /** XP d'avance sur la zone de relégation (0 s'il y est). */
+  margeRellegation: number;
+  dansZoneMontee: boolean;
+  dansZoneRelagation: boolean;
+};
+
+/**
+ * Seuils de position d'un élève dans sa cohorte, lus sur le classement déjà
+ * trié par `comparerMembres`. Les zones correspondent à celles de
+ * `resoudreGroupe` : les `LEAGUE_MOVE` premiers montent, les `LEAGUE_MOVE`
+ * derniers descendent. Cohortes de moins de `LEAGUE_MIN_COHORT` : personne ne
+ * bouge, les seuils sont donc absents.
+ */
+export function seuilsLigue(
+  membres: readonly MembreCohorte[],
+  userId: string
+): SeuilsLigue {
+  const tries = [...membres].sort(comparerMembres);
+  const index = tries.findIndex((membre) => membre.userId === userId);
+  if (index === -1) {
+    return {
+      dansZoneMontee: false,
+      dansZoneRelagation: false,
+      ecartMontee: 0,
+      margeRellegation: 0,
+      rang: null,
+      seuilMontee: null,
+      seuilRellegation: null,
+      taille: tries.length,
+      xpMoi: 0,
+    };
+  }
+  const moi = tries[index];
+  if (!moi) {
+    return {
+      dansZoneMontee: false,
+      dansZoneRelagation: false,
+      ecartMontee: 0,
+      margeRellegation: 0,
+      rang: null,
+      seuilMontee: null,
+      seuilRellegation: null,
+      taille: tries.length,
+      xpMoi: 0,
+    };
+  }
+  const taille = tries.length;
+  if (taille < LEAGUE_MIN_COHORT) {
+    return {
+      dansZoneMontee: false,
+      dansZoneRelagation: false,
+      ecartMontee: 0,
+      margeRellegation: 0,
+      rang: index + 1,
+      seuilMontee: null,
+      seuilRellegation: null,
+      taille,
+      xpMoi: moi.weeklyXp,
+    };
+  }
+  const denierPromu = tries[LEAGUE_MOVE - 1];
+  const premierReligue = tries[taille - LEAGUE_MOVE];
+  const seuilMontee = denierPromu ? denierPromu.weeklyXp : null;
+  const seuilRellegation = premierReligue ? premierReligue.weeklyXp : null;
+  const dansZoneMontee = index < LEAGUE_MOVE;
+  const dansZoneRelagation = index >= taille - LEAGUE_MOVE;
+  // À XP égal, le départage se fait sur l'XP total : dépasser le seuil suffit.
+  return {
+    dansZoneMontee,
+    dansZoneRelagation,
+    ecartMontee:
+      seuilMontee === null || dansZoneMontee
+        ? 0
+        : Math.max(0, seuilMontee - moi.weeklyXp),
+    margeRellegation:
+      seuilRellegation === null || dansZoneRelagation
+        ? 0
+        : Math.max(1, moi.weeklyXp - seuilRellegation + 1),
+    rang: index + 1,
+    seuilMontee,
+    seuilRellegation,
+    taille,
+    xpMoi: moi.weeklyXp,
+  };
+}
+
+/**
+ * Instant de clôture de la semaine `AAAA-Wss` : lundi suivant à minuit,
+ * heure de Paris. Renvoyé en ISO pour l'affichage du compte à rebours.
+ */
+export function clotureLigueParis(cle: string): string {
+  const lundiUtc = lundiDeSemaine(semaineSuivante(cle));
+  // Décalage Europe/Paris à cet instant (60 ou 120 min), calculé via `Intl`.
+  const parties = new Intl.DateTimeFormat("en-US", {
+    hour: "2-digit",
+    hour12: false,
+    minute: "2-digit",
+    timeZone: "Europe/Paris",
+  }).formatToParts(lundiUtc);
+  const heure = Number(
+    parties.find((p) => p.type === "hour")?.value.replace("24", "0") ?? "0"
+  );
+  const minute = Number(parties.find((p) => p.type === "minute")?.value ?? "0");
+  const decalageMs = (heure * 60 + minute) * 60_000;
+  return new Date(lundiUtc.getTime() - decalageMs).toISOString();
+}

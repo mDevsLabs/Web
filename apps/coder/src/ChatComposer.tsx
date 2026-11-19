@@ -21,13 +21,7 @@ import type {
   PersistedComposerAttachment,
 } from "./composerSegments";
 import { useI18n } from "./i18n";
-import {
-  IconArrowUp,
-  IconChevron,
-  IconImageOutline,
-  IconMic,
-  IconStop,
-} from "./icons";
+import { IconArrowUp, IconChevron, IconStop } from "./icons";
 import type { AtComposerSlot } from "./useComposerAtMention";
 
 export type ComposerAnchorSlot = "hero" | "bottom" | "inline";
@@ -278,7 +272,9 @@ export function ChatComposer({
                 }}
                 type="button"
               >
-                <span className="ref-model-name">{modelPillLabel}</span>
+                <span className="ref-model-name" title={modelPillLabel}>
+                  {modelPillLabel}
+                </span>
                 <IconChevron className="ref-model-chev" />
               </button>
             </div>
@@ -290,26 +286,14 @@ export function ChatComposer({
             isHero ? "ref-editor-rail-bar-right" : "ref-capsule-bar-end"
           }
         >
-          {isHero ? (
-            <button
-              aria-label={t("app.comingSoon")}
-              className="ref-mic-btn"
-              disabled
-              title={t("app.comingSoon")}
-              type="button"
-            >
-              <IconImageOutline className="ref-mic-btn-svg" />
-            </button>
-          ) : null}
-          <button
-            aria-label={t("app.voiceSoonAria")}
-            className="ref-mic-btn"
-            disabled
-            title={t("app.voiceSoonTitle")}
-            type="button"
-          >
-            <IconMic className="ref-mic-btn-svg" />
-          </button>
+          {/*
+            Les boutons micro et image étaient rendus DÉSACTIVÉS en
+            permanence (« bientôt disponible»). Un bouton mort dans la barre
+            de saisie est un piège : il occupe la place du geste qu'on cherche
+            et ne répond jamais. Tant que la dictée et la génération d'image
+            ne sont pas branchées, elles n'ont rien à faire ici — le
+            vocabulaire du produit les annonce ailleurs.
+          */}
           <button
             aria-label={sendTitle}
             className={`ref-send-btn ${awaitingReply ? "is-stop" : ""}`}

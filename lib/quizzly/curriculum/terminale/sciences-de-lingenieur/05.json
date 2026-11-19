@@ -1,0 +1,2728 @@
+{
+  "id": "terminale-sciences-de-lingenieur-05",
+  "year": "terminale",
+  "subject": "sciences-de-lingenieur",
+  "title": "Ingénierie système et validation de prototypes",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Démarche d'ingénierie système",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Cycle en V et ingénierie concourante",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le cycle en V de l'ingénierie système, quelles étapes appartiennent à la branche descendante ?",
+              "options": [
+                "Spécification des exigences",
+                "Conception préliminaire de l'architecture",
+                "Validation opérationnelle sur site client",
+                "Recette finale du système livré"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La branche descendante regroupe les étapes de définition du besoin, spécification et conception architecturale et détaillée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de la branche montante du cycle en V ?",
+              "options": [
+                "L'intégration et la vérification progressive des composants",
+                "La rédaction initiale du cahier des charges fonctionnel",
+                "L'estimation financière préliminaire du projet",
+                "La recherche documentaire des brevets concurrents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La branche montante procède aux tests unitaires, à l'intégration, à la vérification et enfin à la validation finale du système complet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En quoi consiste l'ingénierie concourante (ou simultanée) ?",
+              "options": [
+                "Faire collaborer simultanément les métiers de la conception, fabrication et maintenance",
+                "Attendre la validation complète d'une phase avant d'étudier la suivante",
+                "Supprimer toute étape d'expérimentation matérielle sur prototype",
+                "Concevoir uniquement à partir de pièces standardisées sur catalogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ingénierie concourante décloisonne les étapes en faisant travailler ensemble concepteurs, usineurs et mainteneurs dès l'amont."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel niveau de test fait directement face à la conception détaillée dans le cycle en V ?",
+              "options": [
+                "Les tests unitaires et d'intégration de sous-ensembles",
+                "La validation globale des besoins des utilisateurs finaux",
+                "L'étude de marché commerciale",
+                "La certification d'éco-conception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque niveau de conception dans la branche descendante possède son vis-à-vis de vérification dans la branche montante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la différence essentielle entre « vérification » et « validation » en ingénierie système ?",
+              "options": [
+                "La vérification contrôle la conformité aux spécifications, la validation prouve l'adéquation au besoin réel",
+                "La vérification se fait sur ordinateur, la validation est obligatoirement un calcul manuel",
+                "La vérification est logicielle, la validation est exclusivement mécanique",
+                "Il n'y a aucune différence technique, ce sont deux termes parfaitement synonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vérification répond à : « Avons-nous conçu le produit correctement ? », la validation à : « Avons-nous conçu le bon produit pour l'usager ? »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que permet l'approche MBSE (Model-Based Systems Engineering) par rapport à l'approche documentaire classique ?",
+              "options": [
+                "Centrer la cohérence et l'évolution du projet sur un modèle numérique partagé",
+                "Supprimer totalement les ingénieurs au profit d'algorithmes génératifs",
+                "Éviter définitivement la fabrication de pièces physiques",
+                "Interdire l'utilisation d'outils de CAO 3D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le MBSE remplace les milliers de pages de spécifications textuelles par un modèle unifié, cohérent et traçable (souvent en SysML)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel ordre logique se déroule la conception descendante d'un système ?",
+              "options": [
+                "Analyse du besoin, architecture fonctionnelle, architecture physique",
+                "Architecture physique, fabrication, formulation du besoin",
+                "Tests d'intégration, conception détaillée, étude de faisabilité",
+                "Recette usager, modélisation multiphysique, devis fournisseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La démarche va toujours du problème (besoin et fonctions) vers la solution technique concrète (architecture physique)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle méthode de gestion privilégie les itérations courtes et l'adaptation continue face aux cycles longs ?",
+              "options": [
+                "Les méthodes agiles (Scrum, Kanban)",
+                "Le modèle en cascade strict séquentiel",
+                "La planification Taylorienne parcellisée",
+                "L'approche purement linéaire sans rétroaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les démarches agiles procèdent par sprints itératifs avec démonstrations régulières au client pour adapter les spécifications."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel risque majeur cherche-t-on à réduire en appliquant l'ingénierie système dès l'amont du projet ?",
+              "options": [
+                "Découvrir des incompatibilités d'interfaces tardives et coûteuses",
+                "Augmenter le nombre de brevets déposés par l'entreprise",
+                "Accélérer l'usure mécanique normale des pièces d'usure",
+                "Diminuer l'ergonomie globale pour réduire les dépenses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus une erreur d'architecture est détectée tard (par exemple en phase d'assemblage), plus son coût de correction est exponentiel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le cycle en V, à quelle étape finale correspond l'expression initiale du besoin client ?",
+              "options": [
+                "À la validation finale (recette globale)",
+                "À la fabrication des pièces brutes en série",
+                "Au câblage interne des cartes électroniques",
+                "À la signature du bon de commande matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recette finale (validation opérationnelle) confronte le produit achevé aux attentes exprimées au tout début du projet."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Analyse du besoin et cahier des charges fonctionnel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments constituent obligatoirement la caractérisation d'une fonction de service dans un CdCF ?",
+              "options": [
+                "Les critères d'appréciation",
+                "Les niveaux d'exigence et leur tolérance",
+                "Le code source du microcontrôleur embarqué",
+                "Le devis d'achat de la visserie d'assemblage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une fonction est caractérisée par ses critères (ex: vitesse), ses niveaux (ex: 2 m/s) et ses tolérances acceptées (ex: ± 0,1 m/s)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la méthode APTE, à quelle question clé le diagramme « bête à cornes » permet-il de répondre ?",
+              "options": [
+                "À qui le système rend-il service et sur quoi agit-il ?",
+                "Quel est le coût prévisionnel de fabrication unitaire ?",
+                "Quelle est la résistance mécanique des liaisons cinématiques ?",
+                "Quel langage de programmation doit être retenu en priorité ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bête à cornes explicite le besoin en précisant le bénéficiaire, la matière d'œuvre et la finalité du système."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle du diagramme « pieuvre » (ou graphe des interactions) ?",
+              "options": [
+                "Identifier les fonctions principales et de contrainte avec l'environnement",
+                "Mesurer la vitesse de rotation des moteurs en continu",
+                "Représenter la structure électronique du microcontrôleur",
+                "Calculer l'inertie équivalente d'un arbre de transmission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diagramme pieuvre relie le système aux éléments de son milieu extérieur pour faire émerger les fonctions de service (FP et FC)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une fonction de contrainte (FC) par rapport à une fonction principale (FP) ?",
+              "options": [
+                "Une exigence imposée par l'environnement, une norme ou la sécurité",
+                "Une fonction optionnelle que l'usager peut désactiver librement",
+                "Une fonction qui ne nécessite aucun apport d'énergie",
+                "Une caractéristique esthétique sans aucun impact technique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une FP met en relation deux éléments extérieurs, tandis qu'une FC adapte le système à un élément de son environnement (norme, milieu...)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que décrit l'outil FAST (Function Analysis System Technique) ?",
+              "options": [
+                "La décomposition logique d'une fonction en solutions techniques (Pourquoi ? Comment ? Quand ?)",
+                "L'historique chronologique des pannes survenues sur le produit",
+                "Le bilan carbone détaillé lors de la phase de livraison",
+                "L'organigramme hiérarchique de l'équipe de développement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diagramme FAST organise les fonctions en cascade logique répondant de gauche à droite à la question « Comment ? »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle norme française encadre traditionnellement l'analyse fonctionnelle et l'élaboration du CdCF ?",
+              "options": ["NF X50-151", "ISO 9001", "NF C 15-100", "ISO 14001"],
+              "correctAnswers": [0],
+              "explanation": "La norme NF X50-151 définit les règles d'expression fonctionnelle du besoin et la structure du cahier des charges fonctionnel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans l'expression d'un niveau d'exigence, que représente la classe de flexibilité (F0 à F3) ?",
+              "options": [
+                "Le degré de négociation ou d'ajustement possible sur la valeur cible",
+                "La déformation élastique maximale admissible pour la pièce",
+                "La souplesse d'un faisceau de câbles d'alimentation",
+                "Le nombre de mises à jour logicielles autorisées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "F0 signifie impératif (nulle), F1 peu négociable, F2 négociable, F3 très négociable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment formule-t-on correctement l'intitulé d'une fonction de service ?",
+              "options": [
+                "Par un verbe à l'infinitif suivi de compléments sans présumer d'une solution",
+                "Par la référence constructeur d'un composant électronique",
+                "Par une équation différentielle reliant tension et vitesse",
+                "Par le coût cible unitaire hors taxes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction décrit ce que doit faire le système (ex: « Déplacer la charge ») et non comment il le fait (ex: « Vérin électrique »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vise l'analyse de la valeur associée à l'analyse fonctionnelle ?",
+              "options": [
+                "Optimiser le rapport entre la satisfaction des fonctions et le coût global engagé",
+                "Augmenter artificiellement le prix de vente pour enrichir la marque",
+                "Supprimer les dispositifs de sécurité pour gagner du temps",
+                "Doubler la cadence machine sans changer aucun composant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeur = Satisfaction du besoin / Coût. L'analyse de la valeur élimine les coûts inutiles qui n'apportent aucune valeur d'usage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi le CdCF doit-il impérativement éviter de mentionner des solutions technologiques précises ?",
+              "options": [
+                "Pour laisser libre cours à l'innovation et aux meilleures alternatives techniques",
+                "Pour cacher les secrets de fabrication aux brevets existants",
+                "Parce que la technologie choisie n'a aucun impact sur les performances",
+                "Pour empêcher le sous-traitant d'optimiser ses achats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figer une solution a priori bride la créativité et empêche d'explorer des solutions plus performantes ou plus économiques."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Diagrammes SysML structurels (bdd, ibd)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels diagrammes du langage SysML appartiennent à la vue structurelle d'un système ?",
+              "options": [
+                "Le Block Definition Diagram (bdd)",
+                "L'Internal Block Diagram (ibd)",
+                "Le State Machine Diagram (stm)",
+                "L'Use Case Diagram (uc)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bdd et l'ibd décrivent la structure (composants, classification, interfaces internes), tandis que stm et uc sont comportementaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diagramme de définition de blocs (bdd), que représente un « bloc » ?",
+              "options": [
+                "Un élément modulaire matériel, logiciel ou humain du système",
+                "Uniquement une ligne de code exécutable en C++",
+                "Un paquet de données transitant sur un réseau local",
+                "Une impulsion électrique de commande moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bloc est l'unité modulaire fondamentale en SysML pour modéliser une partie physique, logique ou organisationnelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la signification d'un lien de composition (losange plein) entre deux blocs dans un bdd ?",
+              "options": [
+                "Une relation forte : la destruction du bloc parent entraîne celle des blocs parties",
+                "Une relation faible où les parties peuvent survivre sans le parent",
+                "Une simple liaison électrique d'alimentation sans hiérarchie",
+                "Une contrainte temporelle d'exécution synchrone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La composition (losange noir) lie l'existence de la partie au tout : un sous-bloc appartient exclusivement à son bloc compositeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un diagramme de bloc interne (ibd), quel élément matérialise le point d'échange d'un bloc avec l'extérieur ?",
+              "options": [
+                "Un port (port standard ou port de flux / full port)",
+                "Une transition gardée sous condition",
+                "Une exigence textuelle annotée",
+                "Une ligne de vie temporelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ports placés sur la frontière d'un bloc définissent ses points d'interaction (électrique, mécanique, réseau...) avec son entourage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que relie un connecteur (connector) dans un diagramme SysML ibd ?",
+              "options": [
+                "Deux ports de blocs pour assurer l'échange de matière, d'énergie ou d'information",
+                "Deux états dans une machine à états finis",
+                "Une exigence à un cas d'utilisation correspondant",
+                "Deux acteurs extérieurs entre eux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un ibd, les connecteurs relient les ports des sous-parties pour acheminer les flux réels au sein de l'architecture."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la différence majeure entre un bdd et un ibd en SysML ?",
+              "options": [
+                "Le bdd montre la classification et la composition statique, l'ibd montre l'interconnexion interne des parties",
+                "Le bdd décrit l'électronique et l'ibd est réservé au logiciel",
+                "Le bdd est dynamique tandis que l'ibd est purement algorithmique",
+                "Le bdd est un schéma cinématique et l'ibd un schéma électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bdd décrit « de quoi est fait le système » (composition globale), l'ibd décrit « comment les pièces sont connectées entre elles »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un bdd, que spécifie le compartiment « values » (propriétés de valeur) d'un bloc ?",
+              "options": [
+                "Des grandeurs physiques quantifiables accompagnées de leur type et unité",
+                "Le montant en euros hors taxes facturé par le fournisseur",
+                "L'évaluation de la satisfaction client sur les réseaux sociaux",
+                "Le nombre de développeurs ayant participé au projet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compartiment values contient les variables physiques paramétrables du bloc (ex: masse: Real [kg], tension_nominale: Real [V])."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle relation SysML est représentée par une flèche terminée par un triangle blanc vide pour exprimer l'héritage ?",
+              "options": [
+                "La généralisation / spécialisation",
+                "L'association navigable unidirectionnelle",
+                "La dépendance d'utilisation simple",
+                "La dérivation d'exigence réglementaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La généralisation indique qu'un bloc spécialisé hérite des caractéristiques (propriétés, opérations) d'un bloc générique parent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que permet de modéliser un « item flow » associé à un connecteur dans un ibd ?",
+              "options": [
+                "La nature précise de l'élément qui circule (courant électrique, fluide, trame réseau)",
+                "Le coût kilométrique du transport de la pièce",
+                "La température de fusion du boîtier plastique",
+                "Le temps de pause obligatoire des techniciens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'item flow précise la matière, l'énergie ou l'information concrète qui transite sur la liaison entre deux ports."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un bdd, quel symbole représente l'agrégation partagée (relation tout/partie faible) ?",
+              "options": [
+                "Un losange blanc (ou vide) du côté du bloc agrégateur",
+                "Un cercle barré d'une diagonale rouge",
+                "Une double flèche brisée en zigzag",
+                "Un rectangle hachuré en son centre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agrégation partagée (losange blanc) exprime qu'une partie peut exister de manière autonome en dehors du système hôte."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Diagrammes SysML comportementaux (uc, act, stm, seq)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels diagrammes SysML permettent de décrire le comportement temporel ou logique d'un système ?",
+              "options": [
+                "Le diagramme de séquence (seq)",
+                "Le diagramme d'états (stm)",
+                "Le diagramme de définition de blocs (bdd)",
+                "Le diagramme de package (pkg)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les diagrammes seq, stm, act et uc sont comportementaux, alors que bdd et pkg décrivent la structure et l'organisation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diagramme des cas d'utilisation (uc), que symbolise un « acteur » ?",
+              "options": [
+                "Une entité externe (humain ou système extérieur) qui interagit avec le système",
+                "L'unité centrale de calcul du microprocesseur",
+                "Le câble d'alimentation haute tension du moteur",
+                "Une fonction interne de conversion d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un acteur est toujours situé en dehors de la frontière du système ; il consomme ou déclenche un service rendu par celui-ci."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un diagramme uc, quelle est la signification de la relation «include» entre deux cas d'utilisation ?",
+              "options": [
+                "Le cas source exécute obligatoirement le cas inclus pour accomplir sa mission",
+                "Le cas cible est purement optionnel et n'intervient qu'en cas d'incident",
+                "Le cas cible est une alternative commerciale moins onéreuse",
+                "Le cas source est désactivé lors de la mise en service"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relation «include» factorise un comportement obligatoire commun à plusieurs cas d'utilisation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la fonction principale d'un diagramme de séquence (seq) en SysML ?",
+              "options": [
+                "Représenter la chronologie des échanges de messages entre lignes de vie",
+                "Calculer l'encombrement volumique d'une pièce mécanique",
+                "Tracer la courbe de résonance d'un filtre électronique",
+                "Lister les compétences professionnelles des ingénieurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diagramme de séquence explicite l'ordre temporel (axe vertical dirigé vers le bas) des messages échangés entre composants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur une ligne de vie d'un diagramme de séquence, que représente un rectangle vertical étroit posé sur le trait discontinu ?",
+              "options": [
+                "La plage d'activation ou d'exécution d'une opération par l'instance",
+                "Une zone de mémoire défaillante ou détruite",
+                "Une mise en veille prolongée sans consommation de courant",
+                "Une rupture définitive de connexion réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La barre d'activation matérialise la période pendant laquelle l'objet traite activement une demande ou exécute un traitement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un diagramme d'états-transitions (stm), qu'appelle-t-on une « garde » ?",
+              "options": [
+                "Une condition logique entre crochets devant être vraie pour franchir la transition",
+                "Un fusible thermique protégeant le moteur en surintensité",
+                "Un mot de passe administrateur pour déverrouiller la machine",
+                "Un bouton poussoir mécanique d'arrêt d'urgence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La garde [condition] est une expression booléenne évaluée lors de l'apparition de l'événement déclencheur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un diagramme d'activité (act), à quoi sert un nœud de décision représenté par un losange ?",
+              "options": [
+                "Aiguiller le flot de contrôle vers une branche selon des gardes exclusives",
+                "Créer plusieurs flots simultanés exécutés en parallèle",
+                "Arrêter immédiatement et définitivement tout le système",
+                "Augmenter la vitesse d'échantillonnage des capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nœud de décision sélectionne un seul chemin parmi plusieurs en fonction de conditions booléennes mutuellement exclusives."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un diagramme d'activité, quelle barre scinde un flot unique en plusieurs flots concurrents ?",
+              "options": [
+                "Une barre de bifurcation (fork)",
+                "Un nœud de fusion (merge)",
+                "Une broche de paramètre de sortie",
+                "Un signal d'interruption prioritaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fork sépare un flot en plusieurs flots parallèles ; ils sont ensuite réunis par une barre de synchronisation (join)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un diagramme d'états, que provoque l'occurrence d'un événement sur une transition valide ?",
+              "options": [
+                "Le passage de l'état source vers l'état cible avec exécution d'actions éventuelles",
+                "La remise à zéro complète de la mémoire morte du système",
+                "Le redémarrage obligatoire de l'alimentation électrique",
+                "L'annulation définitive de toutes les exigences associées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand l'événement survient et que la garde est vraie, la transition est franchie : l'état source est quitté et l'état cible est activé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un diagramme de séquence, quelle notation graphique distingue un message asynchrone d'un message synchrone ?",
+              "options": [
+                "Une flèche à extrémité ouverte (simple trait) pour l'asynchrone, pleine pour le synchrone",
+                "Une double ligne ondulée rouge pour le synchrone",
+                "Un trait discontinu jaune avec un cercle à l'origine",
+                "Une flèche circulaire fermée sur elle-même"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En UML/SysML, la pointe pleine fermée indique un appel synchrone bloquant, la pointe ouverte en V indique un envoi asynchrone."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Diagramme d'exigences SysML et traçabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles relations SysML relient directement une exigence («requirement») aux éléments de conception ou de validation ?",
+              "options": [
+                "«satisfy» (satisfaction par un bloc ou une activité)",
+                "«verify» (vérification par un cas de test instrumenté)",
+                "«refactor» (réécriture algorithmique sans changement de fonction)",
+                "«encrypt» (chiffrement de sécurité des communications)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "«satisfy» relie un bloc de conception à l'exigence qu'il réalise, tandis que «verify» relie un cas de test à l'exigence qu'il valide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle fondamental du diagramme d'exigences (req) en ingénierie système ?",
+              "options": [
+                "Formaliser graphiquement les exigences du cahier des charges et assurer leur traçabilité tout au long du cycle",
+                "Tracer directement les trajectoires cinématiques des engrenages",
+                "Mesurer le courant efficace consommé par le prototype",
+                "Générer le devis commercial destiné au service comptable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diagramme req intègre le cahier des charges directement dans le modèle pour garantir qu'aucune attente n'est oubliée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelles sont les deux propriétés obligatoires d'un élément «requirement» en SysML ?",
+              "options": [
+                "L'identifiant unique (Id) et le texte explicite (Text)",
+                "Le nom du fabricant et l'adresse de son siège social",
+                "La fréquence d'échantillonnage et la tension de claquage",
+                "La couleur du schéma et la date de péremption du produit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute exigence SysML possède obligatoirement un identifiant unique (Id, ex: REQ_01) et un énoncé non ambigu (Text)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la relation «deriveReqt» entre deux exigences ?",
+              "options": [
+                "Une exigence technique découle logiquement d'une exigence de niveau supérieur",
+                "Deux exigences sont en contradiction technique irréconciliable",
+                "L'exigence cible annule et remplace une norme obsolète",
+                "L'exigence est abandonnée pour des motifs budgétaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérivation permet de décliner une exigence utilisateur globale en exigences techniques détaillées pour chaque sous-système."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel stéréotype relie un cas de test (testCase) à une exigence pour prouver sa conformité expérimentale ?",
+              "options": ["«verify»", "«allocate»", "«copy»", "«containment»"],
+              "correctAnswers": [0],
+              "explanation": "La relation «verify» établit le lien formel entre le protocole de test de validation et l'exigence correspondante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la « traçabilité amont-aval » des exigences dans un projet ?",
+              "options": [
+                "La capacité à relier chaque besoin client aux composants retenus et aux bancs de test de validation",
+                "Le suivi en temps réel par balise GPS des camions de transport",
+                "L'archivage comptable de l'ensemble des bons de commande",
+                "La surveillance de l'usure prématurée des outillages d'atelier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traçabilité garantit qu'on sait à quel besoin répond chaque pièce (aval) et quel test prouve le respect du besoin (amont)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un diagramme req, que permet de modéliser la relation «refine» ?",
+              "options": [
+                "Préciser et enrichir le sens d'une exigence par un cas d'utilisation ou un diagramme comportemental",
+                "Supprimer les tolérances trop contraignantes sur une cote d'usinage",
+                "Traduire automatiquement le texte dans une autre langue",
+                "Remplacer un alliage métallique par un plastique recyclé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relation «refine» montre comment un diagramme d'activité ou un cas d'utilisation illustre et précise une exigence textuelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet de détecter une matrice de traçabilité des exigences au cours des revues de projet ?",
+              "options": [
+                "Des exigences orphelines (ni satisfaites par un composant, ni vérifiées par un test)",
+                "La présence de microfissures dans les carters mécaniques",
+                "Les surtensions d'origine électrostatique sur le circuit imprimé",
+                "Les erreurs d'assemblage commises lors du vissage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matrice met en évidence les lacunes de conception : une exigence sans lien «satisfy» ou sans lien «verify» signale un manque critique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment s'appelle le lien montrant qu'une exigence globale englobe plusieurs sous-exigences élémentaires ?",
+              "options": [
+                "La relation de composition ou d'emboîtement (containment)",
+                "La relation d'exclusion mutuelle conditionnelle",
+                "Le transfert de données par interruption",
+                "L'asservissement en vitesse angulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le containment (représenté par une croix dans un cercle ou un emboîtement) décompose une exigence complexe en sous-exigences simples."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que relie la relation «satisfy» dans un modèle d'ingénierie système ?",
+              "options": [
+                "Un bloc de conception (ou sous-système) à l'exigence qu'il prend en charge",
+                "Deux exigences appartenant à deux cahiers des charges concurrents",
+                "Un fournisseur externe au directeur financier du groupe",
+                "Une notice utilisateur au carton d'emballage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "«satisfy» matérialise la réponse technique : « Ce bloc mécanique ou électronique a été choisi pour satisfaire cette exigence »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Architecture fonctionnelle, logique et physique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels niveaux d'architecture successifs distingue-t-on dans la démarche d'ingénierie système ?",
+              "options": [
+                "L'architecture fonctionnelle (ce que fait le système)",
+                "L'architecture physique (avec quelles technologies matérielles et logicielles)",
+                "L'architecture boursière (l'actionnariat de la société)",
+                "L'architecture publicitaire (la communication externe)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On distingue l'architecture fonctionnelle (indépendante des solutions) et l'architecture physique (composants réels implantés)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la finalité première de l'architecture fonctionnelle ?",
+              "options": [
+                "Définir les fonctions requises et leurs flux sans imposer prématurément de choix technologique",
+                "Choisir immédiatement les références commerciales des capteurs et moteurs",
+                "Imposer l'utilisation exclusive de pièces en aluminium usiné",
+                "Calculer le couple de serrage de toutes les liaisons boulonnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'architecture fonctionnelle structure les fonctions et échanges d'énergie/matière/information sans préjuger de la réalisation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que décrit l'architecture logique (ou architecture générique de principe) ?",
+              "options": [
+                "L'agencement des sous-ensembles sous forme de principes techniques indépendants de l'implantation finale",
+                "Le tracé précis des pistes de cuivre sur le circuit imprimé double couche",
+                "Le calcul thermodynamique de combustion du biocarburant",
+                "La liste nominative des opérateurs de chaîne de montage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'architecture logique définit les principes de solution (ex: transmission par engrenages, commande par microcontrôleur) avant le choix des pièces réelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En SysML, quel stéréotype permet d'affecter une fonction ou activité au bloc physique qui l'exécute ?",
+              "options": ["«allocate»", "«import»", "«include»", "«extend»"],
+              "correctAnswers": [0],
+              "explanation": "La relation «allocate» relie les éléments fonctionnels (actions) aux ressources physiques (blocs) chargées de les accomplir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans l'architecture physique, que doit-on définir rigoureusement pour garantir la modularité et l'interchangeabilité ?",
+              "options": [
+                "Des interfaces matérielles et logicielles standardisées et documentées",
+                "Une peinture extérieure rigoureusement uniforme sur toutes les faces",
+                "Des assemblages soudés indémontables pour bloquer toute maintenance",
+                "Des protocoles de communication privés tenus secrets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La maîtrise des interfaces (mécaniques, électriques, logicielles) permet de faire évoluer un sous-système sans perturber le reste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel risque encourt un concepteur qui passe directement du besoin à l'architecture physique sans étape fonctionnelle ?",
+              "options": [
+                "Figer prématurément une solution sous-optimale ou inadaptée à certaines contraintes",
+                "Réduire excessivement le coût de fabrication en série",
+                "Accélérer les calculs de dynamique des fluides",
+                "Faciliter l'obtention des labels environnementaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sauter l'analyse fonctionnelle conduit souvent à reproduire des solutions connues sans optimiser le compromis global."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une matrice N2 (N-squared chart) en ingénierie système ?",
+              "options": [
+                "Une matrice carrée récapitulant l'ensemble des flux échangés sur les interfaces entre sous-systèmes",
+                "Un tableau financier de suivi des investissements en recherche et développement",
+                "Une formule de calcul de la contrainte élastique équivalente de Von Mises",
+                "Une méthode d'estimation du temps moyen de formation du personnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matrice N2 dispose les composants sur la diagonale et visualise leurs flux d'entrées/sorties dans les cases hors diagonale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le rôle des interfaces physiques (mécaniques, thermiques, électriques) entre sous-systèmes ?",
+              "options": [
+                "Assurer la liaison matérielle et la transmission des flux dans le respect des contraintes d'encombrement",
+                "Interdire tout démontage lors des visites périodiques de révision",
+                "Multiplier les sources de dissipation thermique sans évacuation",
+                "Remplacer l'emploi de fusibles et de dispositifs de coupure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les interfaces physiques gèrent les connexions réelles : liaisons mécaniques, connecteurs de puissance, transferts thermiques..."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une architecture système dont les fonctions sont réparties dans des modules indépendants faiblement couplés ?",
+              "options": [
+                "Une architecture modulaire et découplée",
+                "Une architecture monolithique enchevêtrée",
+                "Une liaison hyperstatique bloquée",
+                "Un système thermodynamique isolé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une architecture modulaire minimise les dépendances parasites entre modules, ce qui facilite la maintenance et les tests."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « dossier de définition » associé à l'architecture physique d'un produit ?",
+              "options": [
+                "L'ensemble des plans 2D/3D, nomenclatures et spécifications nécessaires à la fabrication et au contrôle",
+                "Le récapitulatif fiscal des ventes réalisées durant l'exercice comptable",
+                "L'enquête de satisfaction réalisée après trois ans d'usage",
+                "Le recueil des articles de presse parus lors du lancement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dossier de définition décrit intégralement le produit fini (formes, matériaux, tolérances, logiciels) pour permettre sa production."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Modélisation multi-physique et simulation numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels domaines physiques peuvent être couplés dans un modèle multi-physique (ex: sous Modelica ou Simscape) ?",
+              "options": [
+                "L'électromagnétisme et la thermique",
+                "La mécanique des solides et l'hydraulique",
+                "La fiscalité internationale",
+                "Le droit de la propriété industrielle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les outils multiphysiques simulent des systèmes mécatroniques couplant mécanique, électricité, thermique et hydraulique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la particularité des langages de modélisation acausale (comme Modelica) par rapport aux schémas-blocs causaux ?",
+              "options": [
+                "Les équations d'équilibre physique ne sont pas orientées et lient variables d'effort et de flux à travers des ports de puissance",
+                "L'information se propage obligatoirement de gauche à droite sans aucune rétroaction",
+                "Ils ne permettent de manipuler que des signaux binaires tout ou rien",
+                "Ils interdisent la conservation rigoureuse de l'énergie dans les liaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En modélisation acausale, les composants s'interconnectent comme dans la réalité sans fixer a priori quelle variable est cause ou conséquence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans l'analogie électromécanique, quelle variable mécanique d'effort correspond à la tension électrique U (V) ?",
+              "options": [
+                "La force F (N) en translation ou le couple C (N·m) en rotation",
+                "La vitesse linéaire v (m/s) ou angulaire ω (rad/s)",
+                "La masse d'inertie M (kg) ou le moment d'inertie J (kg·m²)",
+                "Le frottement visqueux fluide (N·s/m)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension électrique U est une variable d'effort (across), tout comme la force mécanique F ou la pression hydraulique p."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans cette même analogie, quelle variable mécanique de flux correspond au courant électrique I (A) ?",
+              "options": [
+                "La vitesse linéaire v (m/s) ou la vitesse angulaire ω (rad/s)",
+                "Le couple mécanique statique C (N·m)",
+                "La force de précharge d'un ressort hélicoïdal",
+                "La raideur élastique du matériau (N/m)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le courant I est une variable de flux (through), analogue à la vitesse mécanique v ou au débit volumique Q."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le bénéfice majeur de la simulation numérique multi-physique avant fabrication du prototype physique ?",
+              "options": [
+                "Dimensionner les actionneurs et tester des scénarios extrêmes sans risque de détérioration matérielle",
+                "Remplacer l'avis et les besoins des utilisateurs finaux",
+                "Garantir l'obtention d'un brevet sans examen d'antériorité",
+                "Supprimer totalement les outillages de fabrication mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La simulation permet d'optimiser les choix, d'explorer les cas limites et de valider les performances avant d'engager des dépenses de fabrication."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la méthode numérique utilisée pour calculer la répartition des contraintes mécaniques dans une pièce 3D ?",
+              "options": [
+                "La méthode des éléments finis (MEF / FEA)",
+                "La transformée de Fourier discrète rapide (FFT)",
+                "L'algorithme de Dijkstra de plus court chemin",
+                "La régression polynomiale par moindres carrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La MEF découpe la géométrie en mailles élémentaires pour résoudre les équations de l'élasticité et trouver les contraintes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « pas de temps » (time step) dans un solveur de simulation temporelle ?",
+              "options": [
+                "L'intervalle de temps discrétisé séparant deux calculs consécutifs de l'état du système",
+                "La durée totale de la période de garantie contractuelle du produit",
+                "Le temps de latence réseau pour afficher la page de résultats",
+                "La fréquence d'allumage des voyants lumineux d'état"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le solveur numérique avance dans le temps par petits incréments Δt pour intégrer les équations différentielles du modèle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que risque-t-on si le pas de temps d'intégration du solveur est trop grand face à la plus petite constante de temps du système ?",
+              "options": [
+                "Une instabilité numérique du solveur ou des erreurs d'approximation grossières",
+                "Une accélération anormale de la vitesse de la lumière dans le vide",
+                "Une réduction spontanée de la masse réelle de l'objet simulé",
+                "Un blocage définitif du disque dur de la station de travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un pas trop grand viole les conditions de stabilité numérique (ex: critère de Courant) et provoque des divergences mathématiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une simulation « Hardware-in-the-Loop » (HIL) ?",
+              "options": [
+                "Faire interagir un contrôleur matériel réel avec un modèle numérique du système physique exécuté en temps réel",
+                "Simuler un circuit électronique exclusivement avec du papier et un crayon",
+                "Faire tourner un logiciel de bureautique sur une machine virtuelle",
+                "Observer une pièce mécanique au microscope optique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le HIL connecte le calculateur électronique réel (hardware) à un banc temps réel qui émule le comportement physique des capteurs et actionneurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans toute modélisation multi-physique unifiée, que représente le produit d'une variable d'effort (e) par une variable de flux (f) ?",
+              "options": [
+                "Une puissance instantanée échangée (P = e · f, exprimée en watts)",
+                "Une résistance thermique équivalente en kelvins par watt",
+                "Une énergie cinétique constante sans dimension",
+                "Un coefficient de frottement statique sans unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans tous les domaines : électrique (U·I), mécanique (F·v ou C·ω), hydraulique (p·Q), le produit effort × flux est une puissance en watts."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Chaîne d'énergie et chaîne d'information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions composent classiquement la chaîne d'énergie d'un système mécatronique ?",
+              "options": [
+                "Alimenter et stocker",
+                "Distribuer, convertir et transmettre",
+                "Crypter et archiver les mots de passe",
+                "Compiler et exécuter le code source"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La chaîne d'énergie assure : Alimenter/Stocker -> Distribuer -> Convertir -> Transmettre jusqu'à l'effecteur mécanique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel composant assure typiquement la fonction « Distribuer » dans la chaîne d'énergie d'un moteur à courant continu ?",
+              "options": [
+                "Un hacheur ou un pont en H de transistors de puissance",
+                "Un réducteur à engrenages épicycloïdaux",
+                "Un codeur optique incrémental monté sur l'arbre",
+                "Une batterie Lithium-Ion rechargeable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le variateur/hacheur commute l'énergie de puissance vers le moteur en réponse aux ordres de commande basse tension."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel composant assure la fonction « Convertir » en transformant de l'énergie électrique en énergie mécanique de rotation ?",
+              "options": [
+                "Un moteur électrique (à courant continu, synchrone ou asynchrone)",
+                "Un transformateur électrique abaisseur de tension",
+                "Une résistance de précharge thermique",
+                "Un potentiomètre rotatif d'asservissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'actionneur électrique (moteur) convertit l'énergie électrique qu'il reçoit en travail mécanique utile sur son arbre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles sont les trois fonctions fondamentales constituant la chaîne d'information ?",
+              "options": [
+                "Acquérir, Traiter, Communiquer",
+                "Refroidir, Réchauffer, Ventiler",
+                "Percer, Tarauder, Rectifier",
+                "Peser, Emballer, Expédier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaîne d'information capte les grandeurs (Acquérir), calcule la commande (Traiter) et transmet les ordres (Communiquer)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel élément se situe à l'entrée de la chaîne d'information pour transformer une grandeur physique en grandeur électrique ?",
+              "options": [
+                "Un capteur (sensor)",
+                "Un vérin pneumatique double effet",
+                "Un disjoncteur magnétothermique",
+                "Un radiateur de dissipation thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur capte une grandeur physique réelle (température, force, position) et la transforme en signal électrique exploitable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel sous-ensemble de la chaîne d'information le signal analogique est-il discrétisé par un CAN ?",
+              "options": [
+                "Dans le bloc Acquérir (ou à l'entrée du bloc Traiter)",
+                "Dans le bloc Distribuer de la puissance",
+                "Dans le réducteur mécanique de transmission",
+                "Dans la cuve de stockage du carburant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Convertisseur Analogique-Numérique (CAN) numérise la grandeur continue issue du capteur pour permettre son traitement par le microprocesseur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel organe fait la liaison entre les ordres de la chaîne d'information et la puissance de la chaîne d'énergie ?",
+              "options": [
+                "Le préactionneur (relais, variateur, hacheur, distributeur pneumatique)",
+                "Le carter de protection en tôle pliée",
+                "Le ressort de rappel mécanique",
+                "Le joint d'étanchéité à lèvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préactionneur reçoit le signal de commande à basse énergie et aiguille la forte puissance issue de l'alimentation vers l'actionneur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la fonction d'un réducteur mécanique à engrenages dans la chaîne d'énergie ?",
+              "options": [
+                "Transmettre l'énergie mécanique en réduisant la vitesse et en augmentant le couple disponible",
+                "Convertir de l'énergie thermique en tension électrique continue",
+                "Stocker de l'énergie cinétique sous forme d'électricité statique",
+                "Mesurer la température des roulements en temps réel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un réducteur adapte la vitesse et le couple entre le moteur (souvent rapide avec faible couple) et la charge (lente avec fort couple)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un bus de communication (ex: bus CAN, I2C, SPI) dans la chaîne d'information ?",
+              "options": [
+                "Transmettre de façon fiable les données numériques entre calculateurs et périphériques",
+                "Fournir les 400 volts d'alimentation triphasée au variateur",
+                "Évacuer les calories générées par les puces électroniques",
+                "Maintenir mécaniquement les capteurs sur le châssis métallique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bus numériques relient les organes de la chaîne d'information pour échanger consignes, mesures et états de diagnostic."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que devient l'énergie mécanique injectée dans un système technique en régime permanent établi ?",
+              "options": [
+                "Elle produit un travail utile et se dissipe en partie en pertes thermiques (frottements, effet Joule)",
+                "Elle disparaît totalement sans laisser la moindre trace physique",
+                "Elle augmente indéfiniment la masse de l'appareil",
+                "Elle se transforme intégralement en lumière laser visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon le premier principe de la thermodynamique, l'énergie absorbée se répartit exactement entre travail utile et pertes (chaleur)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Gestion des flux de matière, d'énergie et d'information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels flux fondamentaux transitent et interagissent simultanément au sein d'un système mécatronique automatisé ?",
+              "options": [
+                "Les flux d'énergie (électrique, cinétique, thermique)",
+                "Les flux d'information (mesures, consignes, états logiques)",
+                "Les flux juridiques de propriété intellectuelle",
+                "Les flux climatiques stratosphériques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tout système mécatronique combine des flux d'énergie, d'information et fréquemment de matière d'œuvre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une ligne de tri et conditionnement de colis, que représente le flux de matière d'œuvre ?",
+              "options": [
+                "Les colis, cartons et étiquettes manipulés et orientés par la machine",
+                "Les trames Ethernet transmises au serveur central de supervision",
+                "Le courant triphasé absorbé par les moto-réducteurs de convoyage",
+                "La notice technique imprimée au format PDF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière d'œuvre est l'objet physique sur lequel le système apporte sa valeur ajoutée (tri, pesage, conditionnement)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique exprime le débit instantané d'un flux d'énergie électrique ?",
+              "options": [
+                "La puissance électrique (P = U · I, exprimée en watts)",
+                "La capacité d'un condensateur de filtrage (en farads)",
+                "La résistance d'isolement de la gaine (en ohms)",
+                "L'inductance propre d'une bobine de lissage (en henrys)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance (Joule par seconde = Watt) représente le débit temporel d'énergie échangée ou convertie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que permet d'établir le bilan de puissance d'un système mécatronique complet ?",
+              "options": [
+                "Vérifier que la puissance absorbée équilibre la somme de la puissance utile et des puissances perdues",
+                "Calculer le prix de vente conseillé lors de la distribution en magasin",
+                "Estimer le nombre de brevets concurrents déposés sur l'année",
+                "Mesurer la température extérieure à l'ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P_absorbée = P_utile + Σ P_pertes. Ce bilan est la base du calcul de rendement et du dimensionnement thermique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le rendement global η d'une chaîne constituée de n composants placés en série ?",
+              "options": [
+                "Par le produit de leurs rendements individuels : η = η₁ · η₂ · ... · ηₙ",
+                "Par la moyenne arithmétique simple des différents rendements",
+                "Par la somme arithmétique des rendements individuels",
+                "Par la différence entre le rendement le plus élevé et le plus faible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En série, les rendements se multiplient : si trois étages ont chacun 90 % de rendement, η_global = 0,9³ ≈ 72,9 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un système asservi, quelle conséquence engendre la rupture du flux d'information de retour capteur (feedback) ?",
+              "options": [
+                "Le système fonctionne en boucle ouverte et risque de diverger ou d'accumuler une erreur statique majeure",
+                "La puissance du moteur est automatiquement multipliée par cinq",
+                "Le système se refroidit spontanément jusqu'à zéro kelvin",
+                "La batterie se recharge instantanément à 100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans retour d'information, le régulateur ne peut plus comparer la mesure à la consigne, ce qui détruit la précision et peut causer l'emballement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel dispositif mécanique permet de stocker temporairement un flux de matière sur une chaîne de production ?",
+              "options": [
+                "Un convoyeur d'accumulation ou un magasin tampon (buffer)",
+                "Un transformateur électrique abaisseur monophasé",
+                "Un filtre passe-bas actif à amplificateur opérationnel",
+                "Un pont redresseur à diodes de commutation rapide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stock tampon compense les écarts de cadence entre deux postes de travail successifs sur une ligne de production."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un système mécatronique à freinage régénératif ?",
+              "options": [
+                "Un système qui inverse le flux d'énergie lors de la décélération pour transformer le moteur en génératrice et recharger la batterie",
+                "Un mécanisme qui fonctionne indéfiniment sans aucune source d'énergie externe",
+                "Un frein à disque dont les plaquettes ne s'usent jamais",
+                "Un véhicule propulsé uniquement par des panneaux solaires fixes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le freinage régénératif récupère l'énergie cinétique du véhicule en ralentissant pour produire de l'électricité stockée dans les accumulateurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle unité quantifie le débit d'un flux d'information sur une liaison numérique série ?",
+              "options": [
+                "Le bit par seconde (bit/s ou kbit/s, Mbit/s)",
+                "Le newton-mètre par seconde (N·m/s)",
+                "Le mètre cube par heure (m³/h)",
+                "Le joule par seconde (W)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit binaire mesure le nombre d'éléments binaires (bits) transmis par unité de temps sur le canal de transmission."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un diagramme SysML ibd, quel élément graphique caractérise le passage d'un flux identifié entre deux blocs ?",
+              "options": [
+                "Un port de flux (flow port ou full port) associé à un connecteur et un item flow",
+                "Une note d'exigence réglementaire textuelle",
+                "Une barre de décomposition en packages",
+                "Une ligne de rupture mécanique d'arbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'association de ports typés et d'un «item flow» sur le connecteur spécifie précisément la nature et le sens du flux transféré."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Éco-conception, cycle de vie et sûreté de fonctionnement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phases composent le cycle de vie complet d'un produit selon la méthode d'Analyse du Cycle de Vie (ACV) ?",
+              "options": [
+                "L'extraction des matières premières et la fabrication",
+                "L'usage, la maintenance et la fin de vie (démantèlement/recyclage)",
+                "La cotation des actions sur les marchés financiers",
+                "Les assemblées générales des actionnaires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ACV analyse les impacts environnementaux à toutes les étapes : extraction, transport, fabrication, distribution, usage et fin de vie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle norme internationale définit le cadre méthodologique rigoureux de l'Analyse du Cycle de Vie (ACV) ?",
+              "options": [
+                "ISO 14040 / ISO 14044",
+                "ISO 9001",
+                "NF C 18-510",
+                "ISO 27001"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les normes ISO 14040 et 14044 fixent les principes, exigences et lignes directrices de l'analyse du cycle de vie des produits."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En éco-conception, que signifie l'approche « du berceau à la tombe » (cradle to grave) ?",
+              "options": [
+                "Prendre en compte les impacts environnementaux depuis l'extraction des ressources jusqu'au traitement final des déchets",
+                "Garantir contractuellement un produit pendant toute la vie de son propriétaire",
+                "Concevoir des produits destinés uniquement au secteur des urgences hospitalières",
+                "Réduire les coûts en utilisant exclusivement des composants de réemploi non certifiés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette approche globale évite le transfert de pollution d'une étape du cycle de vie vers une autre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que préconise le modèle d'économie circulaire « Cradle to Cradle » (C2C) pour les matériaux en fin de vie ?",
+              "options": [
+                "Considérer tout déchet comme une ressource biologique ou technique pour un nouveau cycle de fabrication",
+                "Enfouir systématiquement l'intégralité des sous-ensembles sous terre",
+                "Interdire toute réutilisation de pièces usagées en maintenance",
+                "Brûler tous les matériaux composites pour chauffer les usines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le concept C2C élimine la notion de déchet : les matières circulent en boucles fermées techniques ou biologiques sans dégradation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quels sont les quatre critères de sûreté de fonctionnement (SdF) résumés par le sigle FMDS ?",
+              "options": [
+                "Fiabilité, Maintenabilité, Disponibilité, Sécurité",
+                "Force, Masse, Densité, Surface",
+                "Fréquence, Modulation, Débit, Synchronisation",
+                "Fluidité, Mobilité, Dynamisme, Stabilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La SdF étudie la Fiabilité (R), la Maintenabilité (M), la Disponibilité (D) et la Sécurité d'emploi (S) d'un équipement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'AMDEC (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) ?",
+              "options": [
+                "Une méthode inductive préventive pour analyser les risques de panne dès la phase de conception",
+                "Un procédé d'usinage grande vitesse sur centre 5 axes",
+                "Un protocole informatique de transfert de fichiers volumineux",
+                "Une certification de gestion comptable des stocks en entrepôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'AMDEC identifie préventivement les causes et effets des défaillances pour hiérarchiser les actions correctives."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on l'Indice de Priorité du Risque ou Criticité C dans une grille AMDEC classique ?",
+              "options": [
+                "Par le produit de la Gravité (G), de la Fréquence d'apparition (F) et de la Non-Détection (D) : C = G · F · D",
+                "Par la somme arithmétique de la puissance électrique et du poids de l'appareil",
+                "Par le rapport entre le coût de la réparation et le prix d'achat neuf",
+                "Par la moyenne arithmétique des notes de satisfaction des usagers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La criticité C = G × F × D permet de classer les défaillances et de traiter en priorité celles qui dépassent le seuil admissible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne le MTBF (Mean Time Between Failures) pour un système réparable ?",
+              "options": [
+                "Le temps moyen de bon fonctionnement écoulé entre deux défaillances consécutives",
+                "Le temps moyen nécessaire pour diagnostiquer et réparer une panne (MTTR)",
+                "Le délai légal maximal de livraison accordé aux transporteurs",
+                "La température de fonctionnement continue préconisée par le fabricant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le MTBF est l'indicateur clé de fiabilité : plus il est grand, moins le système tombe en panne fréquemment."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'objectif de la directive européenne DEEE (ou WEEE) relative aux produits électriques et électroniques ?",
+              "options": [
+                "Organiser la collecte sélective, la dépollution et le recyclage des déchets d'équipements électriques et électroniques",
+                "Imposer une couleur unique pour tous les chargeurs de téléphones",
+                "Fixer le barème de taxe sur la valeur ajoutée des appareils ménagers",
+                "Interdire la vente d'appareils fonctionnant sur batterie rechargeable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La directive DEEE oblige fabricants et distributeurs à collecter et valoriser les déchets électroniques en fin de vie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt d'intégrer le « Design for Disassembly » (conception pour le démontage) dès l'ingénierie système ?",
+              "options": [
+                "Faciliter la maintenance, le remplacement de composants d'usure et le tri des matériaux en fin de vie",
+                "Permettre à l'usager d'ouvrir l'appareil pour annuler sa garantie légale",
+                "Réduire artificiellement la solidité des fixations pour accélérer le renouvellement",
+                "Multiplier le nombre d'outils spécifiques requis pour l'entretien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utiliser des liaisons démontables et standardisées rend la réparation rapide et permet un recyclage efficace matière par matière."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Essais, mesures et écarts",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Typologie des essais et chaîne de mesure",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels blocs constituent typiquement une chaîne d'acquisition et de mesure instrumentée ?",
+              "options": [
+                "Le capteur et son étage de conditionnement (amplification, filtrage)",
+                "Le convertisseur analogique-numérique (CAN) et l'unité de traitement",
+                "Le réducteur mécanique épicycloïdal à engrenages coniques",
+                "Le distributeur hydraulique à commande manuelle par levier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une chaîne de mesure comprend : Grandeur physique -> Capteur -> Conditionneur -> CAN -> Traitement numérique et affichage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre un capteur actif et un capteur passif ?",
+              "options": [
+                "Le capteur actif génère lui-même une f.é.m. ou courant, le passif fait varier une impédance nécessitant une alimentation",
+                "Le capteur actif est purement numérique, le capteur passif est toujours mécanique",
+                "Le capteur actif fonctionne obligatoirement sans contact physique avec la pièce",
+                "Le capteur actif ne consomme et ne convertit jamais aucune énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les capteurs actifs (thermocouple, piézoélectrique...) sont des générateurs ; les passifs (thermistance, jauge...) sont des impédances."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal de l'étage de « conditionnement » associé à un capteur analogique ?",
+              "options": [
+                "Adapter le signal électrique faible ou bruité (amplifier, filtrer, décaler) pour le CAN",
+                "Convertir le courant alternatif 230 V du secteur en courant continu 24 V",
+                "Assurer la fixation rigide du capteur sur le bâti de la machine",
+                "Afficher le résultat de mesure sur un écran tactile étanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le conditionneur transforme la faible variation électrique issue du capteur (quelques millivolts) en un signal calibré (ex: 0-5 V) pour le CAN."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un essai de qualification environnementale, que cherche-t-on à valider sur le prototype ?",
+              "options": [
+                "Sa tenue face aux contraintes réelles (vibrations, chocs, température, humidité, poussières, CEM)",
+                "La rentabilité financière des investissements publicitaires de la marque",
+                "L'exactitude orthographique de la notice rédigée en plusieurs langues",
+                "Le choix esthétique des teintes retenues pour le packaging carton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les essais d'environnement vérifient que le prototype conserve ses fonctionnalités dans ses conditions limites de service."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un essai mécanique destructif par rapport à un essai non destructif (END) ?",
+              "options": [
+                "Un essai mené jusqu'à la déformation permanente ou la rupture pour mesurer les limites ultimes",
+                "Un essai simulé sur ordinateur sans tester aucune pièce matérielle",
+                "Un contrôle visuel d'aspect de surface réalisé sans aucun outil",
+                "Une vérification de la version du micrologiciel installé en usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'essai destructif (ex: traction, résilience) détruit l'éprouvette pour connaître sa résistance à rupture ; l'END contrôle sans endommager."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel capteur actif exploite l'effet thermoélectrique Seebeck pour mesurer des températures élevées ?",
+              "options": [
+                "Un thermocouple (ou couple thermoélectrique)",
+                "Une jauge de déformation piézorésistive",
+                "Un capteur de proximité inductif",
+                "Un tachymètre optique à roue phonique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thermocouple produit une tension thermoélectrique proportionnelle à la différence de température entre soudure chaude et froide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un montage en pont de Wheatstone, quel est l'intérêt d'insérer une jauge de déformation résistive ?",
+              "options": [
+                "Convertir une très faible variation de résistance ΔR en une tension différentielle mesurable",
+                "Empêcher tout passage de courant pour éviter de décharger la batterie",
+                "Générer une onde sinusoïdale de fréquence réglable",
+                "Isoler optiquement le circuit de puissance du microcontrôleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pont de Wheatstone traduit la micro-variation de résistance d'une jauge étirée en une tension différentielle proportionnelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel phénomène cherche-t-on à supprimer en plaçant un filtre anti-repliement analogique en amont du CAN ?",
+              "options": [
+                "Le repliement de spectre (aliasing) créé par les composantes fréquentielles supérieures à la moitié de Fe",
+                "L'échauffement thermique excessif du microprocesseur de calcul",
+                "La perte des données de calibration stockées dans la mémoire vive",
+                "L'usure des pistes de cuivre par électromigration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre passe-bas anti-repliement élimine les fréquences supérieures à Fe/2 pour éviter qu'elles ne se superposent aux signaux utiles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que prescrit le théorème d'échantillonnage de Shannon-Nyquist pour numériser un signal sans distorsion ?",
+              "options": [
+                "La fréquence d'échantillonnage Fe doit être strictement supérieure au double de la fréquence maximale du signal (Fe > 2·Fmax)",
+                "La fréquence d'échantillonnage doit être rigoureusement égale à la fréquence du signal",
+                "La tension électrique mesurée ne doit jamais dépasser 3,3 volts",
+                "Le temps de conversion du convertisseur doit être égal à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon Shannon, Fe > 2·Fmax est la condition indispensable pour pouvoir reconstituer intégralement le signal continu d'origine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi soumet-on les prototypes électroniques à des essais de compatibilité électromagnétique (CEM) ?",
+              "options": [
+                "Pour vérifier qu'ils n'émettent pas de parasites perturbateurs et résistent aux rayonnements ambiants",
+                "Pour mesurer la vitesse de transmission sur les pistes du circuit imprimé",
+                "Pour évaluer la dureté superficielle du vernis de tropicalisation",
+                "Pour mesurer l'adhérence mécanique des étiquettes d'avertissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CEM s'assure que le produit est à la fois peu émetteur d'ondes parasites et suffisamment immunisé contre les agressions extérieures."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Métrologie : fidélité, justesse, précision et incertitudes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles qualités métrologiques fondamentales définissent ensemble l'exactitude d'un instrument de mesure ?",
+              "options": [
+                "La justesse (aptitude à donner des valeurs proches de la valeur vraie, sans biais)",
+                "La fidélité (aptitude à répéter des résultats très proches lors d'essais identiques)",
+                "La rentabilité commerciale de l'appareil chez les revendeurs",
+                "L'encombrement volumique extérieur de l'instrument"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'exactitude de mesure conjugue à la fois la justesse (absence de biais systématique) et la fidélité (faible dispersion aléatoire)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si une série de mesures répétées est très groupée mais nettement décalée par rapport à la valeur vraie étalonnée, le capteur est :",
+              "options": [
+                "Fidèle mais pas juste",
+                "Juste mais pas fidèle",
+                "Ni juste ni fidèle",
+                "Parfaitement exact et sans erreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétabilité (faible dispersion) prouve la fidélité ; le décalage systématique par rapport à la référence prouve le manque de justesse (biais)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'écart constant observé entre la moyenne d'une infinité de mesures et la valeur de référence étalon ?",
+              "options": [
+                "Le biais de mesure (ou erreur systématique)",
+                "L'écart-type expérimental de dispersion aléatoire",
+                "La résolution élémentaire du système d'affichage",
+                "La bande passante analogique à -3 décibels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'erreur systématique ou biais peut être corrigée par étalonnage ou compensation numérique du zéro (offset)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la définition de la « sensibilité » S d'un capteur à réponse linéaire ?",
+              "options": [
+                "Le rapport entre la variation du signal de sortie et la variation de la grandeur d'entrée (S = ΔS / ΔE)",
+                "La valeur maximale mesurable avant la destruction du composant",
+                "Le temps requis pour que le signal atteigne 90 % de sa valeur finale",
+                "L'écart maximal constaté entre la courbe montante et la courbe descendante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sensibilité représente la pente de la courbe d'étalonnage : plus elle est forte, plus la sortie varie pour une variation d'entrée donnée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la « résolution » d'un appareil de mesure numérique ?",
+              "options": [
+                "La plus petite variation de la grandeur d'entrée détectable et affichable par l'instrument",
+                "L'intervalle de temps entre deux étalonnages obligatoires en métrologie",
+                "L'erreur maximale tolérée inscrite sur le certificat constructeur",
+                "La tension électrique d'alimentation minimale des circuits logiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résolution correspond au plus petit incrément affichable (par exemple 0,01 mm sur un pied à coulisse numérique)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'hystérésis d'un transducteur de mesure ?",
+              "options": [
+                "L'écart de mesure constaté pour une même valeur d'entrée selon qu'on l'atteint par valeurs croissantes ou décroissantes",
+                "La dérive lente et progressive de la mesure provoquée par le vieillissement thermique",
+                "Le bruit haute fréquence généré par les résistances d'entrée",
+                "L'incapacité totale du capteur à mesurer des grandeurs périodiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hystérésis traduit un comportement différent à la charge et à la décharge, fréquent sur les capteurs magnétiques et mécaniques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le guide d'évaluation des incertitudes (GUM), comment calcule-t-on une incertitude-type de type A ?",
+              "options": [
+                "Par analyse statistique d'une série de mesures répétées (écart-type expérimental divisé par √n)",
+                "À partir des tolérances fournies dans la notice technique du constructeur",
+                "En divisant la valeur brute affichée par deux",
+                "En consultant la table périodique des éléments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaluation de type A repose sur des méthodes statistiques appliquées à des séries de mesures indépendantes répétées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment estime-t-on une incertitude-type de type B en métrologie ?",
+              "options": [
+                "À partir de connaissances a priori : spécifications constructeur, certificats d'étalonnage, résolution de l'afficheur",
+                "Par la moyenne arithmétique de 10 000 relevés consécutifs en continu",
+                "En mesurant la consommation de courant au multimètre",
+                "En effectuant une pesée sur une balance de précision"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le type B fait appel à d'autres moyens que l'analyse statistique directe (notices, données historiques, lois de probabilité a priori)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour un appareil numérique de résolution r avec distribution d'erreur supposée rectangulaire, que vaut l'incertitude-type u ?",
+              "options": [
+                "u = r / (2 · √3)",
+                "u = r · √2",
+                "u = 2 · r",
+                "u = r / 10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un intervalle de demi-largeur a = r/2 sous loi uniforme, l'écart-type est a / √3 = r / (2 · √3)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment s'écrit formellement le résultat d'un mesurage avec son incertitude élargie U (facteur k = 2 pour un niveau de confiance à 95 %) ?",
+              "options": [
+                "X = (x_mesuré ± U) avec son unité et son niveau de confiance précisé",
+                "X = x_mesuré / U sans mention d'unité",
+                "X = x_mesuré · k exprimé en décibels",
+                "X = racine carrée de (x_mesuré + U)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression normalisée précise la meilleure estimation de la valeur, l'incertitude élargie U et l'unité (ex: L = 120,4 ± 0,2 mm, k=2)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Analyse des écarts : souhaité, simulé et mesuré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les trois sommets du triptyque d'analyse des écarts en sciences de l'ingénieur ?",
+              "options": [
+                "Les performances attendues (cahier des charges / souhaité)",
+                "Les performances simulées (modèle multiphysique / simulé)",
+                "Les performances réelles mesurées (prototype instrumenté / mesuré)",
+                "Les performances financières de l'entreprise sur le marché"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La démarche compare en permanence trois pôles : le Souhaité (CdCF), le Simulé (modèle numérique) et le Mesuré (banc d'essai réel)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que quantifie l'« écart 1 » entre le système souhaité (CdCF) et le prototype réel mesuré ?",
+              "options": [
+                "La conformité directe du produit physique vis-à-vis des exigences contractuelles du client",
+                "La finesse du maillage volumique dans le logiciel d'éléments finis",
+                "La vitesse de calcul du processeur de la station de travail",
+                "Le taux d'humidité de la salle d'expérimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écart 1 (Mesuré - Souhaité) juge la conformité du prototype réel face au cahier des charges fonctionnel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que quantifie l'« écart 2 » entre le système souhaité et le modèle numérique simulé ?",
+              "options": [
+                "L'aptitude de la solution théorique conçue à satisfaire les exigences avant toute fabrication",
+                "L'usure des roulements à billes après 500 heures d'essai",
+                "Le coût kilométrique de livraison du colis",
+                "La tension d'isolement galvanique du transformateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écart 2 (Simulé - Souhaité) vérifie dès la phase de modélisation si le principe retenu permet d'atteindre les performances visées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que traduit l'« écart 3 » entre les résultats de simulation et les mesures physiques expérimentales ?",
+              "options": [
+                "La validité, la précision et la fidélité du modèle multi-physique face à la réalité",
+                "Le respect des normes de sécurité environnementales dans l'atelier",
+                "Le ratio entre le prix de vente et les coûts de développement",
+                "L'ancienneté du parc de machines-outils de l'entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écart 3 (Mesuré - Simulé) évalue la qualité du modèle : un écart faible valide la représentativité de la modélisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si l'écart 3 entre mesure et simulation est important, quelle démarche d'ingénieur rigoureuse doit-on appliquer ?",
+              "options": [
+                "Identifier les phénomènes physiques négligés ou mal paramétrés pour recaler le modèle numérique",
+                "Falsifier les relevés du banc d'essai pour les faire coïncider avec la simulation",
+                "Supprimer immédiatement le modèle théorique et renoncer à toute simulation",
+                "Arrêter définitivement le projet sans rechercher les causes techniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ingénieur analyse l'écart pour enrichir son modèle : prise en compte de frottements réels, d'élasticités, de résistances internes..."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle cause physique courante explique souvent un écart 3 entre simulation et mesure sur un réducteur de vitesse ?",
+              "options": [
+                "La sous-estimation des frottements réels (frottement sec, viscosité du lubrifiant) et des jeux d'engrènement",
+                "La couleur de la peinture appliquée sur le carter de protection",
+                "L'adresse géographique du fabricant des engrenages",
+                "L'ordre de parution des articles scientifiques de référence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modèles idéaux négligent souvent les frottements réels, la viscosité du lubrifiant ou les déformations sous charge des arbres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on l'écart relatif en pourcentage entre une valeur mesurée V_mes et une valeur simulée V_sim ?",
+              "options": [
+                "E_relatif = |V_mes - V_sim| / V_sim · 100",
+                "E_relatif = (V_mes + V_sim) / 2",
+                "E_relatif = (V_mes · V_sim) / 100",
+                "E_relatif = |V_mes - V_sim| · V_sim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écart relatif rapporte l'erreur absolue à la valeur de référence (souvent la valeur simulée ou théorique attendue)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quand un écart 1 (mesuré vs souhaité) est non nul mais reste strictement dans l'intervalle de tolérance du CdCF :",
+              "options": [
+                "L'exigence est validée et le prototype physique est déclaré conforme",
+                "Le prototype doit être détruit et mis au rebut immédiatement",
+                "Le cahier des charges doit être annulé pour vice de forme",
+                "Le composant doit être obligatoirement remplacé par une pièce d'or massif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un écart dans la plage de tolérance spécifiée (ex: 50 ± 2 mm avec une mesure à 51 mm) valide pleinement l'exigence."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel outil graphique permet de superposer directement le comportement dynamique simulé et mesuré dans le temps ?",
+              "options": [
+                "La superposition des chronogrammes de réponse indicielle ou temporelle",
+                "Le diagramme de Gantt de planification des congés de l'équipe",
+                "Le diagramme de Pareto des coûts des fournitures de bureau",
+                "L'organigramme fonctionnel du service après-vente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tracer sur un même graphique la réponse simulée et la réponse expérimentale permet d'évaluer visuellement temps de réponse et dépassement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'objectif de la boucle d'analyse des écarts avant l'autorisation de mise en production de série ?",
+              "options": [
+                "S'assurer que le produit réel respecte les exigences et que le modèle de simulation est prédictif pour les futures évolutions",
+                "Supprimer tous les bancs de tests physiques des ateliers",
+                "Diviser par dix le temps de garantie contractuelle du fabricant",
+                "Empêcher les clients d'émettre des réclamations en justice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche assure la qualité du produit livré et fournit un modèle recalé fidèle pour dimensionner de futures variantes de la gamme."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Validation de prototypes et bancs d'essais",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objectifs justifient la conception d'un banc d'essais dédié pour la validation d'un prototype ?",
+              "options": [
+                "Reproduire de façon contrôlée, sécurisée et répétable les conditions de fonctionnement réelles",
+                "Mesurer avec instrumentation de haute précision les grandeurs critiques (efforts, vitesses, températures)",
+                "Remplacer l'abonnement électrique de l'usine par une pile miniature",
+                "Transformer le banc en attraction touristique pour le grand public"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le banc d'essai permet de maîtriser l'environnement, de multiplier les cycles d'essais et de mesurer sans perturber le système."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une charge active sur un banc d'essais pour moteur électrique ?",
+              "options": [
+                "Une génératrice asservie ou un frein piloté capable d'appliquer des profils de couple résistant dynamiques",
+                "Une masse suspendue constante fixée par une corde statique",
+                "Un disjoncteur différentiel de protection des personnes",
+                "Une résistance de précharge fixe sans aucune régulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une charge active émule la dynamique d'un véhicule (inertie, pente, rafales de vent) en temps réel face au moteur testé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel actionneur de freinage sans contact d'usure mécanique est très employé sur les bancs rotatifs ?",
+              "options": [
+                "Un frein à courants de Foucault ou un frein à poudre magnétique piloté en courant",
+                "Un frein à disque en carbone avec étrier hydraulique manuel",
+                "Un sabot de frein en bois comprimé",
+                "Une butée franche d'arrêt en acier trempé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le frein à courants de Foucault dissipe la puissance mécanique sous forme de chaleur induite par induction, sans usure mécanique de contact."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un essai d'endurance ou de vieillissement accéléré sur un banc d'essais ?",
+              "options": [
+                "Un essai soumettant le composant à des contraintes amplifiées (cycles continus, température) pour révéler les usures précoces",
+                "Une mesure de vitesse maximale effectuée pendant une fraction de seconde",
+                "Une vérification ponctuelle du poids du colis avant expédition",
+                "Un contrôle visuel de la netteté de la sérigraphie du logo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vieillissement accéléré simule en quelques jours ou semaines plusieurs années d'utilisation normale en intensifiant les contraintes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt d'automatiser l'acquisition des données d'essais via un système type LabVIEW ou SCADA ?",
+              "options": [
+                "Enregistrer en continu des milliers de voies de mesure synchronisées avec horodatage strict et sans erreur humaine",
+                "Réduire artificiellement la résolution des capteurs de mesure",
+                "Éliminer définitivement tout capteur physique sur le banc",
+                "Provoquer des pannes informatiques aléatoires pour tester le personnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acquisition automatisée assure l'enregistrement fiable, la traçabilité complète et le traitement statistique direct des données d'essai."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur un banc de mesure mécanique, à quoi sert une potence d'étalonnage avec masses étalons ?",
+              "options": [
+                "Vérifier et ajuster périodiquement la courbe de réponse du capteur de force ou de couple avec des références certifiées",
+                "Mesurer l'hygrométrie ambiante dans la salle de pause",
+                "Régler la hauteur du bureau des opérateurs de test",
+                "Suspendre les câbles d'alimentation pour dégager le passage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La potence applique des forces parfaitement connues (poids de masses étalonnées) pour contrôler le gain et le zéro du capteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne la « répétabilité » d'un banc de mesure expérimental ?",
+              "options": [
+                "La proximité des résultats d'essais consécutifs réalisés avec la même méthode, le même opérateur et sur le même banc",
+                "La cadence de production de pièces finies par jour ouvré",
+                "Le taux de pannes enregistrées par mois de fonctionnement",
+                "Le nombre de copies de sauvegarde du disque dur d'acquisition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétabilité quantifie la faible dispersion des mesures sous des conditions strictement identiques et à court terme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne la « reproductibilité » d'un protocole de validation d'essai ?",
+              "options": [
+                "La concordance des résultats obtenus lorsque l'essai est répété par un autre opérateur ou sur un autre banc équivalent",
+                "La duplication exacte d'un fichier informatique par copier-coller",
+                "L'impression en série de pièces identiques sur imprimante 3D",
+                "L'enregistrement simultané de deux vidéos lors du crash-test"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reproductibilité prouve que les résultats ne dépendent ni de l'expérimentateur, ni du matériel spécifique d'un seul laboratoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que doit obligatoirement inclure un rapport d'essais officiel de validation de prototype ?",
+              "options": [
+                "Le protocole précis, l'état d'étalonnage des capteurs, les données mesurées brutes et le bilan d'analyse des écarts",
+                "Uniquement l'avis subjectif de l'opérateur sans aucun relevé numérique",
+                "Le prix de vente public estimé des pièces ayant subi le test",
+                "La composition de l'équipe de football de l'entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport d'essais constitue une pièce juridique et technique prouvant la conformité méthodique aux spécifications."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle mesure de protection est prioritaire sur un banc d'essai comportant des pièces tournantes à haute vitesse ?",
+              "options": [
+                "L'installation de carters rigides transparents asservis à des capteurs de sécurité provoquant l'arrêt d'urgence",
+                "L'obligation de porter des gants amples en laine autour des arbres tournants",
+                "L'extinction de l'éclairage de l'atelier pour éviter les reflets",
+                "L'utilisation exclusive d'outils en matière plastique souple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les carters interverrouillés empêchent le démarrage si la porte est ouverte et coupent instantanément l'énergie en cas d'ouverture."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Mesures électriques et traitement du signal",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres définissent mathématiquement une tension sinusoïdale alternative u(t) = U_max · sin(ωt + φ) ?",
+              "options": [
+                "La valeur efficace U_eff (reliée par U_eff = U_max / √2)",
+                "La pulsation ω en rad/s (reliée à la fréquence par ω = 2πf)",
+                "Le taux d'humidité de la tresse de masse du conducteur",
+                "La dureté Brinell des fiches de connexion en laiton"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un signal sinusoïdal est caractérisé par sa valeur efficace (ou amplitude), sa pulsation (ou fréquence) et sa phase à l'origine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel appareil de laboratoire permet d'observer la forme d'onde temporelle, l'amplitude crête et la période d'un signal électrique ?",
+              "options": [
+                "Un oscilloscope numérique à mémoire",
+                "Un luxmètre portatif à capteur photoélectrique",
+                "Un wattmètre analogique thermique à cadran",
+                "Un mégohmmètre d'isolement sous 1000 V continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oscilloscope visualise les signaux de tension en fonction du temps et calcule automatiquement fréquence, crête à crête, RMS..."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment mesure-t-on le courant circulant dans un conducteur sans ouvrir ni interrompre le circuit électrique ?",
+              "options": [
+                "En utilisant une pince ampèremétrique à capteur à effet Hall ou transformateur de courant",
+                "En connectant un voltmètre en dérivation directe sur la charge",
+                "En mesurant la résistance d'isolement du câble avec un ohmmètre",
+                "En observant la dilatation thermique du conducteur avec un réglet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pince ampèremétrique entoure le câble et capte le champ magnétique créé par le courant pour en déduire son intensité sans contact."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quoi sert la fonction de déclenchement (« Trigger ») sur un oscilloscope ?",
+              "options": [
+                "Synchroniser le balayage horizontal sur un événement du signal pour obtenir un affichage stable à l'écran",
+                "Protéger le tube ou l'écran contre les surtensions transitoires",
+                "Régler la tension d'alimentation secteur de l'instrument",
+                "Augmenter la luminosité des courbes dans les zones sombres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le trigger démarre le tracé chaque fois que le signal franchit un seuil de tension fixé avec une pente choisie, stabilisant l'image."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le comportement d'un filtre passe-bas du 1er ordre pour un signal de fréquence égale à sa fréquence de coupure fc ?",
+              "options": [
+                "Le signal subit une atténuation de 3 dB (gain divisé par √2) et un déphasage de -45°",
+                "Le signal est totalement bloqué et son amplitude devient strictement nulle",
+                "Le signal est amplifié d'un facteur 10 en tension",
+                "La fréquence du signal est immédiatement divisée par deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la fréquence de coupure fc, l'atténuation vaut -3 dB (amplitude à 70,7 % de l'entrée) et le déphasage est de -π/4 rad (-45°)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que permet d'analyser la transformée de Fourier rapide (FFT) appliquée à un signal temporel échantillonné ?",
+              "options": [
+                "Le spectre fréquentiel (amplitudes et fréquences des harmoniques constituant le signal)",
+                "La trajectoire spatiale en trois dimensions du solide en mouvement",
+                "L'équation différentielle exacte du moteur d'entraînement",
+                "La résistance mécanique à la traction des pistes de cuivre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La FFT décompose un signal temporel en une somme d'ondes sinusoïdales pour révéler son contenu spectral (harmoniques, bruits)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la tension crête maximale d'une onde sinusoïdale est d'environ 325 V, quelle est sa valeur efficace U_eff ?",
+              "options": [
+                "230 V (car U_eff = 325 / √2 ≈ 230 V)",
+                "400 V",
+                "162,5 V",
+                "115 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau électrique monophasé 230 V présente une amplitude de crête de 230 · √2 ≈ 325 volts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'exprime le facteur de puissance k = P / S (ou cos φ en régime purement sinusoïdal) d'une installation électrique ?",
+              "options": [
+                "Le rapport entre la puissance active réellement consommée P (W) et la puissance apparente fournie S (V·A)",
+                "Le rendement énergétique global du générateur mécanique",
+                "La vitesse de propagation des électrons dans le cuivre",
+                "Le rapport entre le courant maximal et le courant moyen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un facteur de puissance proche de 1 signifie que la quasi-totalité du courant transporté sert à fournir du travail actif utile."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment mesure-t-on avec grande précision un fort courant continu à l'aide d'un voltmètre de précision ?",
+              "options": [
+                "En mesurant la chute de tension aux bornes d'un shunt de mesure étalonné de très faible résistance (U = R_shunt · I)",
+                "En branchant le voltmètre directement en série sans aucune résistance",
+                "En comptant le nombre d'étincelles aux balais du moteur",
+                "En mesurant la résistance de la batterie à vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le shunt présente une résistance connue ultra-stable (ex: 1 mΩ) sur laquelle une chute de 100 mV correspond exactement à 100 A."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi privilégie-t-on une sonde d'oscilloscope atténuatrice 10:1 plutôt qu'une liaison directe 1:1 pour mesurer des signaux rapides ?",
+              "options": [
+                "Pour diviser par 10 la capacité parasite de la sonde et réduire l'effet de charge sur le circuit testé",
+                "Pour amplifier la tension d'un facteur 10 afin d'observer les très faibles bruits",
+                "Pour isoler totalement le signal de la référence de masse du réseau",
+                "Pour filtrer toutes les fréquences supérieures à 50 hertz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sonde 10:1 présente une résistance de 10 MΩ et une très faible capacité (environ 10 pF), perturbant beaucoup moins le signal mesuré."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Mesures mécaniques : efforts, couples et contraintes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels capteurs instrumentent couramment la mesure des grandeurs mécaniques dynamiques sur un banc d'essai ?",
+              "options": [
+                "Les jauges de contrainte extensométriques (mesure de déformations et d'efforts)",
+                "Les accéléromètres piézoélectriques (mesure de chocs et de vibrations)",
+                "Les débitmètres à effet Doppler pour écoulement sanguin",
+                "Les baromètres anéroïdes pour prévisions météo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jauges de déformation et accéléromètres piézoélectriques sont les piliers de l'instrumentation mécanique en R&D."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel principe physique régit la jauge d'extensométrie métallique collée sur une structure mécanique ?",
+              "options": [
+                "Sa résistance électrique varie proportionnellement à son allongement relatif : ΔR / R = k · ε",
+                "Elle émet une lumière fluorescente dont la longueur d'onde dépend de la force",
+                "Elle génère un champ électrostatique proportionnel à l'épaisseur de la pièce",
+                "Elle produit une résonance acoustique audible dès que la pièce fléchit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous l'effet de la déformation ε, la jauge s'allonge et s'amincit, ce qui fait varier sa résistance avec un facteur de jauge k ≈ 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel instrument mesure directement le couple mécanique transmis par un arbre en rotation continue ?",
+              "options": [
+                "Un couplemètre (ou torquemètre) rotatif à transmission de signal sans contact (télémétrie ou optique)",
+                "Un niveau d'atelier à bulle d'air de haute précision",
+                "Un compte-tours optique portable à visée laser",
+                "Un comparateur mécanique à cadran au centième"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le couplemètre rotatif mesure la torsion de l'arbre d'épreuve et transmet la mesure vers la partie fixe par couplage sans contact."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un essai de traction uniaxiale normalisé sur éprouvette métallique, que représente la limite d'élasticité Re ?",
+              "options": [
+                "La contrainte au-delà de laquelle la déformation cesse d'être réversible et devient plastique permanente",
+                "La contrainte maximale provoquant la rupture brutale de l'éprouvette",
+                "La masse volumique de l'alliage mesurée sous vide",
+                "Le coefficient de frottement de glissement sur l'acier poli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant que σ < Re, la déformation est réversible (domaine élastique) ; au-delà de Re, la déformation plastique devient irréversible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle loi fondamentale relie la contrainte normale σ et la déformation relative ε dans le domaine élastique linéaire ?",
+              "options": [
+                "La loi de Hooke : σ = E · ε (avec E le module d'Young en Pa)",
+                "La deuxième loi de Newton : F = m · a",
+                "La loi d'Ohm généralisée : U = R · I",
+                "La loi de Coulomb du frottement : T = f · N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Hooke uniaxiale énonce la proportionnalité stricte entre contrainte σ (Pa) et déformation relative ε (sans unité via le module E)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle méthode optique sans contact mesure le champ bidimensionnel complet des déformations d'une pièce en charge ?",
+              "options": [
+                "La corrélation d'images numériques (DIC - Digital Image Correlation)",
+                "La mesure par pied à coulisse à vernier au 1/50e",
+                "L'utilisation d'une boîte de cales étalons de précision",
+                "Le contrôle par ultrasons par contact direct sous gel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La DIC filme un mouchetis appliqué sur la pièce et calcule le déplacement de chaque zone par comparaison d'images numériques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lors de l'analyse vibratoire d'une ligne d'arbre tournante, que révèle la présence d'une raie dominante à la fréquence de rotation f0 ?",
+              "options": [
+                "Un défaut de balourd (dissymétrie de masse par rapport à l'axe de rotation)",
+                "Une surtension transitoire sur l'alimentation de l'atelier",
+                "Une rupture imminente des spires du bobinage statorique",
+                "Un excès de graisse dans un palier lisse étanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le balourd engendre une force centrifuge tournante synchrone de la rotation, provoquant un pic caractéristique à 1×f0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une fréquence propre (ou de résonance) d'un ensemble mécanique ?",
+              "options": [
+                "Une fréquence pour laquelle la structure oscille avec une amplitude maximale sous une faible excitation extérieure",
+                "La vitesse de rotation maximale préconisée par le bureau d'études",
+                "La fréquence du courant alternatif alimentant l'usine",
+                "La vitesse de propagation du son dans l'air ambiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À une fréquence propre, l'énergie d'excitation est absorbée et amplifiée par la structure avec un minimum d'amortissement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi évite-t-on rigoureusement de faire fonctionner une machine au voisinage d'une fréquence propre de sa structure ?",
+              "options": [
+                "L'amplification par résonance engendre des contraintes excessives pouvant détruire la pièce par fatigue mécanique",
+                "Le système s'arrête instantanément par absence de courant",
+                "La masse globale du mécanisme est divisée par deux",
+                "Les roulements se soudent chimiquement sous vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résonance multiplie l'amplitude des déformations mécaniques et conduit à des ruptures catastrophiques par fatigue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du Système International (SI) employée pour exprimer une contrainte mécanique ou une pression ?",
+              "options": [
+                "Le pascal (Pa, égal à 1 N/m² ou 10⁻⁶ MPa)",
+                "Le joule (J, égal à 1 N·m)",
+                "Le watt (W, égal à 1 J/s)",
+                "Le tesla (T, unité d'induction magnétique)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La contrainte est une force par unité de surface, exprimée en pascals (Pa) ou couramment en mégapascals (1 MPa = 1 N/mm²)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mesures cinématiques et dynamiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels capteurs mesurent la vitesse angulaire ou la position angulaire d'un arbre en rotation ?",
+              "options": [
+                "Le codeur optique rotatif (incrémental ou absolu)",
+                "La génératrice tachymétrique à tension de sortie proportionnelle",
+                "Le capteur de conductivité électrolytique",
+                "Le densimètre à flotteur pour carburant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Codeurs rotatifs et dynamos tachymétriques sont les transducteurs standards de position et vitesse angulaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment un codeur optique incrémental à deux pistes déphasées de 90° (quadrature) détermine-t-il le sens de rotation ?",
+              "options": [
+                "En comparant l'état logique de la voie A au moment du front montant de la voie B (déphasage de ± 90°)",
+                "En mesurant l'amplitude de la tension crête du signal carré",
+                "En comptant le nombre de fentes optiques gravées sur le disque",
+                "En observant l'échauffement thermique de la diode émettrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon le sens de rotation, la voie A est en avance de phase de 90° sur la voie B ou inversement, ce qui signe le sens de rotation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle relation cinématique fondamentale lie la position x(t), la vitesse v(t) et l'accélération a(t) en translation uniaxiale ?",
+              "options": [
+                "v(t) = dx/dt et a(t) = dv/dt = d²x/dt²",
+                "x(t) = dv/dt et v(t) = da/dt",
+                "a(t) = v(t) · x(t)",
+                "v(t) = a(t) / x(t)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse est la dérivée première de la position par rapport au temps, et l'accélération est la dérivée de la vitesse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels instruments composent une centrale inertielle (IMU) complète à 6 degrés de liberté ?",
+              "options": [
+                "3 accéléromètres linéaires orthogonaux et 3 gyromètres angulaires orthogonaux",
+                "3 manomètres à mercure et 3 thermomètres à résistance de platine",
+                "3 tachymètres stroboscopiques et 3 balances de torsion",
+                "3 capteurs de luminosité et 3 hygromètres capacitifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une centrale 6 axes mesure les 3 accélérations linéaires (x, y, z) et les 3 vitesses angulaires de rotation (roulis, tangage, lacet)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel algorithme de filtrage associe les mesures des accéléromètres et gyromètres pour estimer une orientation sans dérive ?",
+              "options": [
+                "Le filtre de Kalman (ou filtre complémentaire fusionnant haute et basse fréquences)",
+                "Le filtre réjecteur de bande centré sur 50 Hz",
+                "Le filtre passe-haut de Tchebychev du 4e ordre",
+                "L'algorithme de compression audio MP3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre de Kalman fusionne la dynamique rapide des gyromètres avec la référence absolue à long terme des accéléromètres (gravité)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel problème numérique majeur apparaît lors de la dérivation discrète d'un signal de position bruité pour obtenir la vitesse ?",
+              "options": [
+                "Une amplification considérable des bruits de mesure haute fréquence",
+                "Une disparition instantanée de la composante continue du signal",
+                "Une diminution artificielle de la vitesse calculée",
+                "Une inversion permanente du sens de parcours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opération de dérivation multiplie le spectre par la pulsation ω, ce qui amplifie considérablement le bruit haute fréquence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À l'inverse, quel défaut survient lors de l'intégration temporelle d'un signal d'accélération contenant un léger offset continu ?",
+              "options": [
+                "Une dérive divergente de la vitesse calculée et une erreur quadratique sur la position estimée",
+                "Une atténuation excessive des variations rapides de position",
+                "Un blocage définitif de la valeur à zéro",
+                "Une saturation de la fréquence d'échantillonnage de la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégrer un biais constant produit une dérive linéaire sur la vitesse (v = a_bias · t) et quadratique sur la position (x = 1/2 · a_bias · t²)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel type de capteur mesure une distance sans contact par calcul du temps de trajet d'un faisceau lumineux pulsé ?",
+              "options": [
+                "Un télémètre laser à temps de vol (ToF - Time-of-Flight ou LiDAR)",
+                "Un capteur potentiométrique rectiligne à piste carbone",
+                "Un capteur inductif de fin de course à galet",
+                "Un transformateur différentiel LVDT étanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur ToF émet une impulsion lumineuse et mesure le délai Δt d'aller-retour pour en déduire la distance d = c · Δt / 2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'énoncé du Principe Fondamental de la Dynamique (PFD) pour un solide de masse constante m en translation ?",
+              "options": [
+                "La somme vectorielle des forces extérieures est égale au produit de la masse par l'accélération du centre d'inertie : Σ F_ext = m · a_G",
+                "La somme des forces extérieures est égale à zéro en toutes circonstances",
+                "La somme des moments extérieurs est égale au produit de la masse par la vitesse",
+                "Le produit de la force par la distance parcourue est constant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PFD (2e loi de Newton) relie directement les actions mécaniques appliquées à l'accélération instantanée du centre de masse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la formule du moment d'inertie J d'un cylindre plein homogène de masse M et de rayon R autour de son axe de révolution ?",
+              "options": [
+                "J = (1/2) · M · R²",
+                "J = M · R²",
+                "J = (2/5) · M · R²",
+                "J = (1/12) · M · R²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moment d'inertie axial d'un cylindre plein homogène vaut J = 1/2 · M · R² (en kg·m²)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Caractérisation des actionneurs et rendements énergétiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs physiques définissent le point de fonctionnement électromécanique d'un moteur électrique en charge ?",
+              "options": [
+                "La vitesse de rotation angulaire ω (rad/s) et le couple mécanique utile C (N·m)",
+                "La tension d'alimentation U (V) et le courant absorbé I (A)",
+                "La date de mise en service inscrite sur la boîte de livraison",
+                "La couleur du vernis d'isolation thermique extérieur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le point de fonctionnement associe le couple et la vitesse côté mécanique, et la tension et le courant côté électrique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les deux équations fondamentales d'un moteur à courant continu à excitation constante en régime permanent ?",
+              "options": [
+                "E = k · ω (force contre-électromotrice) et C_m = k · I (couple électromagnétique)",
+                "E = R · I² et C_m = k / ω",
+                "U = k · C_m et I = k · E",
+                "P = U / I et C_m = E · I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La constante k lie directement la vitesse à la fem E (E = k·ω) et le courant au couple moteur (C_m = k·I)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment s'exprime la puissance mécanique P_méca transmise par un arbre tournant à la vitesse angulaire ω sous un couple C ?",
+              "options": [
+                "P_méca = C · ω (avec C en N·m, ω en rad/s et P en watts)",
+                "P_méca = C / ω",
+                "P_méca = (1/2) · C · ω²",
+                "P_méca = C · 2π · N²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance mécanique de rotation est le produit direct du couple (N·m) par la vitesse angulaire (rad/s)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le rendement énergétique global η d'un actionneur en régime établi ?",
+              "options": [
+                "η = P_utile / P_absorbée (avec η ≤ 1 ou exprimé en pourcentage)",
+                "η = P_absorbée / P_utile",
+                "η = P_absorbée - P_utile",
+                "η = P_utile · P_absorbée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement est le ratio de la puissance restituée utile sur la puissance totale consommée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est l'origine physique des pertes par effet Joule dans les bobinages d'un moteur électrique ?",
+              "options": [
+                "La dissipation d'énergie thermique due à la résistance ohmique des conducteurs traversés par le courant : P_J = R · I²",
+                "Le frottement aérodynamique des pales du ventilateur",
+                "Les courants de Foucault induits dans les tôles du rotor",
+                "L'attraction magnétique des aimants permanents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage du courant dans la résistance R des bobinages génère inévitablement des pertes Joule proportionnelles au carré de l'intensité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les pertes apparaissant dans le circuit magnétique d'un moteur soumis à un flux variable ?",
+              "options": [
+                "Les pertes fer (composées des pertes par hystérésis et des pertes par courants de Foucault)",
+                "Les pertes mécaniques de frottement dans les paliers",
+                "Les pertes de ventilation aérodynamique",
+                "Les pertes Joule de collecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes fer sont causées par les cycles d'aimantation (hystérésis) et les courants induits parasites dans les tôles magnétiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'allure de la caractéristique couple-vitesse d'un moteur à courant continu alimenté sous tension constante U ?",
+              "options": [
+                "Une droite décroissante reliant la vitesse à vide maximale au couple de démarrage bloqué",
+                "Une courbe exponentielle strictement croissante avec la vitesse",
+                "Une droite horizontale à vitesse rigoureusement indépendante du couple",
+                "Une parabole inversée centrée sur l'origine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque U = E + R·I = k·ω + R·(C/k), la vitesse ω = U/k - (R/k²)·C diminue linéairement quand le couple résistant C augmente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que vaut le courant de démarrage d'un moteur à courant continu sous tension nominale à l'instant où le rotor est encore immobile (ω = 0) ?",
+              "options": [
+                "I_démarrage = U / R (courant maximal élevé car la f.é.m. E est nulle)",
+                "I_démarrage = 0 A car le moteur n'a pas encore commencé à tourner",
+                "I_démarrage = U · R",
+                "I_démarrage = 1 A quelle que soit la taille du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'arrêt (ω=0), la f.é.m. E = 0 : le courant n'est limité que par la faible résistance d'induit R, provoquant un fort appel de courant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le principe de commande d'un hacheur abaisseur à modulation de largeur d'impulsion (MLI / PWM) ?",
+              "options": [
+                "Faire varier la tension moyenne appliquée au moteur en ajustant le rapport cyclique de conduction à fréquence constante",
+                "Faire varier la fréquence du réseau sans changer la durée des impulsions",
+                "Insérer des résistances variables en série pour dissiper la puissance",
+                "Modifier le nombre de pôles magnétiques du stator"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension moyenne <U> = α · U_alim varie proportionnellement au rapport cyclique α (0 ≤ α ≤ 1) avec un excellent rendement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment convertit-on une vitesse de rotation N exprimée en tr/min en vitesse angulaire ω exprimée en rad/s ?",
+              "options": [
+                "ω = N · 2π / 60 (ou approximativement N · π / 30)",
+                "ω = N · 60 / (2π)",
+                "ω = N · 360 / 60",
+                "ω = N / 3600"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 tour = 2π radians et 1 minute = 60 secondes, d'où ω = N · (2π / 60) ≈ N · 0,1047 rad/s."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Identification des lois de comportement et recalage de modèle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres physiques d'un modèle électromécanique cherche-t-on couramment à identifier par essai ?",
+              "options": [
+                "Le coefficient de frottement visqueux f et le frottement sec de Coulomb C_s",
+                "L'inertie mécanique équivalente J et la constante de couple k",
+                "L'adresse de messagerie électronique des techniciens d'atelier",
+                "Le numéro d'immatriculation du véhicule de livraison"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'identification paramétrique extrait d'essais réels les constantes physiques clés (inertie, frottements, constante de couple...)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En quoi consiste l'identification indicielle (méthode de Broida ou de Strejc) d'un système asservi ?",
+              "options": [
+                "Déterminer les paramètres d'une fonction de transfert (gain, constante de temps, retard) à partir de sa réponse à un échelon",
+                "Mesurer la vitesse de frappe au clavier des opérateurs de test",
+                "Calculer le nombre d'erreurs de syntaxe dans le programme informatique",
+                "Vérifier le bon serrage des vis de fixation du socle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'identification indicielle applique un échelon d'entrée et modélise la courbe de sortie par une fonction de transfert standard."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un système du 1er ordre H(p) = K / (1 + τ·p) soumis à un échelon, quelle fraction de la valeur finale la sortie atteint-elle à t = τ ?",
+              "options": [
+                "63,2 % de la valeur finale",
+                "50,0 % de la valeur finale",
+                "95,0 % de la valeur finale",
+                "99,3 % de la valeur finale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réponse indicielle vaut s(t) = K·(1 - e^(-t/τ)). Pour t = τ, s(τ) = K·(1 - e^(-1)) ≈ 0,632 · K."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À combien de constantes de temps τ considère-t-on classiquement que le régime permanent est établi à 95 % (temps de réponse à 5 %) ?",
+              "options": [
+                "3 · τ (car 1 - e⁻³ ≈ 0,95)",
+                "1 · τ",
+                "7 · τ",
+                "10 · τ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps de réponse à 5 % d'un système du premier ordre vaut tr_5% ≈ 3·τ (et à 2 %, tr_2% ≈ 4·τ)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans la réponse d'un système du 2nd ordre sous-amorti (z < 1), que désigne le premier dépassement D1 ?",
+              "options": [
+                "L'écart maximal au-dessus de la valeur finale en régime établi, souvent exprimé en pourcentage",
+                "Le temps écoulé avant que la sortie ne quitte l'axe des abscisses",
+                "L'erreur subsistant après un temps infini",
+                "La fréquence d'échantillonnage minimale du capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier dépassement D1 dépend directement du coefficient d'amortissement z via la formule D1% = 100 · e^(-π·z / √(1-z²))."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel essai simple permet d'estimer les frottements et l'inertie d'un ensemble tournant ?",
+              "options": [
+                "L'essai de ralentissement libre (mesure de la décélération après coupure instantanée de l'alimentation)",
+                "Le maintien du rotor bloqué sous pleine tension pendant une heure",
+                "Une immersion prolongée de la machine dans un bac d'eau froide",
+                "La pesée statique de l'arbre sur un pèse-personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la coupure, J · dω/dt = - (C_sec + f·ω). L'analyse de la courbe de décélération permet d'isoler frottement sec, visqueux et inertie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « recalage de modèle » (model calibration / updating) ?",
+              "options": [
+                "Ajuster les paramètres incertains du modèle de simulation numérique pour que ses prédictions coïncident avec les mesures d'essais",
+                "Forcer artificiellement les résultats expérimentaux à être nuls",
+                "Remplacer l'ordinateur de simulation par un modèle plus puissant",
+                "Changer l'intitulé du cahier des charges en fin de projet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recalage affine les paramètres physiques mal connus (rigidités réelles, amortissements, jeux) pour rendre le modèle fidèle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle méthode mathématique d'optimisation minimise la somme des carrés des écarts entre courbe simulée et courbe mesurée ?",
+              "options": [
+                "La méthode des moindres carrés",
+                "L'algorithme de chiffrement asymétrique RSA",
+                "Le crible d'Ératosthène des nombres premiers",
+                "Le tri fusion récursif de données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les moindres carrés ajustent les paramètres du modèle pour minimiser la distance quadratique globale aux points expérimentaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel risque encourt-on en sur-paramétrant un modèle de comportement sur une mesure bruitée (sur-apprentissage / overfitting) ?",
+              "options": [
+                "Le modèle apprend le bruit aléatoire de l'essai et perd sa capacité à prédire fidèlement d'autres conditions de fonctionnement",
+                "Le solveur de simulation devient instantanément infiniment rapide",
+                "La température du moteur physique chute spontanément",
+                "La tension électrique d'alimentation du banc double subitement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un modèle sur-ajusté colle au bruit d'un essai particulier mais présente un pouvoir prédictif médiocre pour de nouveaux scénarios."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une fois fidèlement recalé par des essais expérimentaux, quel est l'usage principal du modèle numérique ?",
+              "options": [
+                "Tester virtuellement des cas de charge extrêmes sans risque et optimiser les réglages de la commande",
+                "Archiver définitivement le projet sans plus jamais l'utiliser",
+                "Supprimer toute documentation technique du produit fini",
+                "Empêcher les techniciens d'accéder aux notices de maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le jumeau numérique recalé permet d'optimiser l'asservissement, de prédire l'endurance et d'explorer les cas limites en toute sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Analyse des défaillances et validation finale du système",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels documents et éléments formels sont indispensables pour prononcer la validation finale (recette) d'un système ?",
+              "options": [
+                "Le procès-verbal (PV) contradictoire de recette signé consignant les résultats d'essais",
+                "La matrice de conformité démontrant la satisfaction rigoureuse de toutes les exigences du CdCF",
+                "Le plan de table du banquet d'inauguration de l'usine",
+                "L'horoscope prévisionnel des ventes commerciales"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La recette finale exige le PV contradictoire signé et la matrice de conformité prouvant que chaque exigence a été vérifiée avec succès."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « arbre des défaillances » (Fault Tree Analysis / FTA) en sûreté de fonctionnement ?",
+              "options": [
+                "Une méthode déductive partant d'un événement redouté au sommet pour remonter aux causes élémentaires via des portes logiques",
+                "Un inventaire des espèces d'arbres utilisées pour fabriquer les palettes de transport",
+                "Un schéma électrique décrivant le cheminement de la haute tension",
+                "Un graphique de suivi de l'absentéisme des opérateurs de production"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arbre de défaillance décompose un accident (sommet) en combinaisons d'événements élémentaires reliés par des portes ET et OU."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un arbre de défaillance, que signifie une porte logique OU reliant deux événements intermédiaires ?",
+              "options": [
+                "La défaillance supérieure survient dès qu'AU MOINS UNE des deux causes survient",
+                "La défaillance supérieure exige obligatoirement la présence simultanée des deux causes",
+                "La défaillance ne peut jamais se produire dans des conditions réelles",
+                "Les deux causes s'annulent mutuellement sans aucun impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une porte OU représente une vulnérabilité : il suffit qu'un seul événement d'entrée survienne pour que la sortie soit déclenchée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un arbre de défaillance, quelle porte logique requiert la survenue SIMULTANÉE de toutes ses entrées pour activer sa sortie ?",
+              "options": [
+                "Une porte ET (AND gate)",
+                "Une porte OU (OR gate)",
+                "Une porte NON (NOT gate)",
+                "Une porte de retard temporel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La porte ET modélise la protection ou la redondance : l'événement n'apparaît que si toutes les barrières de défense échouent ensemble."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que désigne le concept de « redondance passive » (standby redundancy) pour un organe critique ?",
+              "options": [
+                "Un sous-ensemble de secours en sommeil, activé automatiquement uniquement en cas de panne de l'élément principal",
+                "Deux composants qui fonctionnent toujours ensemble à 100 % de charge",
+                "L'achat de pièces détachées stockées dans un pays étranger",
+                "L'interdiction de réparer une pièce pendant dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En redondance passive (ou secours en veille), l'élément de secours ne s'use pas tant que l'élément principal fonctionne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la différence formelle entre une « anomalie » et une « non-conformité » lors des essais de réception ?",
+              "options": [
+                "Une non-conformité est l'écart avéré par rapport à une exigence spécifiée du cahier des charges, l'anomalie est un comportement inattendu",
+                "Une non-conformité entraîne l'arrestation immédiate de l'ingénieur de test",
+                "Une anomalie est toujours bloquante, une non-conformité est toujours sans importance",
+                "Il n'existe aucune nuance juridique ou technique entre les deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anomalie désigne un fonctionnement anormal suspecté ; la non-conformité est la preuve formelle du non-respect d'une exigence contractuelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles informations contient obligatoirement une fiche de non-conformité ouverte lors d'un essai de validation ?",
+              "options": [
+                "L'exigence violée, la description précise de l'écart constaté, l'analyse causale et le plan d'actions correctives",
+                "La liste des sanctions financières à appliquer aux sous-traitants",
+                "Le devis estimatif d'un produit concurrent de gamme supérieure",
+                "L'attestation d'assurance multirisque de l'atelier d'essai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fiche de non-conformité documente rigoureusement l'écart, recherche les causes racines et prescrit les mesures correctives."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le principe fondamental de la « sécurité positive » (fail-safe) en ingénierie de conception ?",
+              "options": [
+                "Garantir qu'en cas de panne, de rupture ou de coupure d'énergie, le système rejoint spontanément un état de sécurité stable",
+                "Considérer par principe qu'un composant certifié ne tombera jamais en panne",
+                "Augmenter la vitesse d'actionnement en cas de surchauffe",
+                "Verrouiller informatiquement toutes les commandes pour empêcher la maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En sécurité positive, toute défaillance passive (ex: coupure de courant) conduit naturellement le système vers une position sûre (ex: frein serré)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le système de freinage d'un train, quelle disposition illustre le principe de sécurité positive ?",
+              "options": [
+                "La pression pneumatique maintient les freins ouverts : une rupture de conduite d'air entraîne le serrage mécanique immédiat par ressorts",
+                "Le freinage exige une injection continue de courant électrique de forte puissance",
+                "Les freins se desserrent d'eux-mêmes dès que la batterie de bord est déchargée",
+                "Le conducteur doit appuyer sans arrêt sur une pédale pour maintenir les freins serrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de dételage ou de fuite dans la conduite pneumatique, la chute de pression déclenche automatiquement le freinage d'urgence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle décision majeure clôture officiellement la phase de validation de prototypes dans le cycle d'ingénierie système ?",
+              "options": [
+                "La revue de qualification et le franchissement du jalon d'autorisation de mise en production de série",
+                "La destruction définitive de l'ensemble des fichiers de modélisation 3D",
+                "La révocation immédiate de toutes les habilitations électriques du laboratoire",
+                "La publication sans restriction de tous les brevets techniques sur Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La revue de qualification entérine la conformité globale du prototype et autorise le lancement des investissements d'industrialisation en série."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

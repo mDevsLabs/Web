@@ -450,6 +450,55 @@ export type AgentArtifactRef = {
   title: string;
 };
 
+/**
+ * Confort d'affichage du mode Agent, persisté par compte.
+ *
+ * Quatre intentions, du plus technique au plus vivant : la densité de la
+ * timeline d'activité, la période d'historique affichée par défaut, la
+ * notification navigateur en fin de run, et l'affichage du plan par défaut.
+ * Les valeurs par défaut préservent exactement le comportement actuel :
+ * sans réglage, tout reste comme avant.
+ */
+export type AgentPreferences = {
+  /** Période d'activité proposée à l'ouverture (7 ou 30 jours). */
+  activityDays: 7 | 30;
+  /** Notification navigateur (onglet en arrière-plan) en fin de run. */
+  notifyBrowser: boolean;
+  /** Afficher le plan de tâches par défaut dans le composer. */
+  showPlan: boolean;
+  /** Densité de la timeline : « compact » masque les détails techniques. */
+  timelineDensity: "compact" | "detailed";
+};
+
+export const AGENT_PREFERENCES_DEFAULTS: AgentPreferences = {
+  activityDays: 30,
+  notifyBrowser: false,
+  showPlan: false,
+  timelineDensity: "detailed",
+};
+
+/** Normalise une préférence lue en base : toute valeur illisible retombe. */
+export function normaliserPreferences(valeur: unknown): AgentPreferences {
+  const base: AgentPreferences = { ...AGENT_PREFERENCES_DEFAULTS };
+  if (!valeur || typeof valeur !== "object") {
+    return base;
+  }
+  const raw = valeur as Record<string, unknown>;
+  if (raw.activityDays === 7 || raw.activityDays === 30) {
+    base.activityDays = raw.activityDays;
+  }
+  if (typeof raw.notifyBrowser === "boolean") {
+    base.notifyBrowser = raw.notifyBrowser;
+  }
+  if (typeof raw.showPlan === "boolean") {
+    base.showPlan = raw.showPlan;
+  }
+  if (raw.timelineDensity === "compact" || raw.timelineDensity === "detailed") {
+    base.timelineDensity = raw.timelineDensity;
+  }
+  return base;
+}
+
 export type AgentSettings = {
   autonomy: AgentAutonomy;
   // Écran chargé à chaque arrivée sur la page d'accueil. « Agent » n'est
@@ -458,6 +507,7 @@ export type AgentSettings = {
   defaultModel: string | null;
   defaultProjectId: string | null;
   enabledCategories: ToolCategory[] | null;
+  preferences: AgentPreferences;
   reasoningLevel: ReasoningLevel | null;
   toolPolicies: Record<string, ToolPermission>;
   updatedAt?: Date | null;
@@ -469,6 +519,7 @@ export const AGENT_SETTINGS_DEFAULTS: AgentSettings = {
   defaultModel: null,
   defaultProjectId: null,
   enabledCategories: null,
+  preferences: { ...AGENT_PREFERENCES_DEFAULTS },
   reasoningLevel: "medium",
   toolPolicies: {},
 };

@@ -78,7 +78,7 @@ const NETWORK_RULES: Record<
 export async function executeCreativeTool(
   toolName: string,
   args: Record<string, any>,
-  uid: number,
+  _uid: number,
   sql: any,
   callLlm: CreativeLlmCaller
 ): Promise<any> {

@@ -12,7 +12,6 @@ import {
   SlidersHorizontalIcon,
 } from "@mdevs/icons";
 import Link from "next/link";
-import React from "react";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
 import {
@@ -207,7 +206,7 @@ export function LibraryHeader({
           <Popover>
             <PopoverTrigger asChild>
               <button
-                aria-label="Filtres avancés"
+                aria-label="Filtres avancés de la bibliothèque"
                 className={`relative inline-flex size-9 cursor-pointer items-center justify-center rounded-full transition-colors hover:bg-muted hover:text-foreground ${
                   hasAdvancedFilters
                     ? "text-foreground"
@@ -233,6 +232,7 @@ export function LibraryHeader({
                       const Icon = CATEGORY_ICONS[cat];
                       return (
                         <button
+                          aria-pressed={extraCategory === cat}
                           className="chip"
                           data-active={extraCategory === cat}
                           key={cat}
@@ -255,6 +255,7 @@ export function LibraryHeader({
                   <div className="flex flex-wrap gap-1.5">
                     {(Object.keys(PERIOD_LABELS) as Period[]).map((key) => (
                       <button
+                        aria-pressed={period === key}
                         className="chip"
                         data-active={period === key}
                         key={key}
@@ -332,6 +333,7 @@ export function LibraryHeader({
       >
         {TABS.map((tab) => (
           <button
+            aria-pressed={activeTab === tab.id}
             className="chip px-3.5 py-1.5 text-xs"
             data-active={activeTab === tab.id}
             key={tab.id}

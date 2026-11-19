@@ -239,7 +239,7 @@ export function ToolPicker({
   outils,
   valeur,
   onChanger,
-  outilsCompte,
+  outilsCompte: _outilsCompte,
 }: {
   /** Catalogue `{ id, label, description, ecritCompte }`. */
   outils: {

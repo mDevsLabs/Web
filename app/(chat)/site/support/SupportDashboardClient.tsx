@@ -18,7 +18,6 @@ import {
 } from "@/app/(chat)/site/actions/support";
 import {
   isAdminUser,
-  type SupportPriority,
   type SupportTicket,
 } from "@/app/(chat)/site/actions/support-utils";
 import { useAuth } from "@/components/site/auth-provider";

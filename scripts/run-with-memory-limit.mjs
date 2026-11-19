@@ -21,7 +21,7 @@
 //
 // Usage : node scripts/run-with-memory-limit.mjs <budgetMo> <commande> [args…]
 
-import { spawn, spawnSync } from "node:child_process";
+import { spawn } from "node:child_process";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";

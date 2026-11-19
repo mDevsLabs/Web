@@ -5,6 +5,13 @@ import { neon } from "@neondatabase/serverless";
 import { articleBoutique, type ShopKind } from "../lib/quizzly/shop.ts";
 import { runNewsletterStudio, sendEmail } from "./admin-email.ts";
 import { runFormManager } from "./admin-forms.ts";
+import {
+  generateMaintenanceAccessCode,
+  runMaintenanceManager,
+} from "./admin-maintenance.ts";
+
+export { generateMaintenanceAccessCode, runMaintenanceManager };
+
 import { createConflictResolver, runModelManager } from "./admin-models.ts";
 import { loadLocalEnv } from "./cli-env.ts";
 import { updateModels } from "./updateModels.ts";
@@ -2097,6 +2104,15 @@ export async function runAdminCli() {
     const ok = await crediterQuizzly(cible, gems, xp);
     process.exit(ok ? 0 : 1);
   }
+  if (args.includes("--maintenance") || args.includes("--maint")) {
+    const rl = readline.createInterface({ input, output });
+    try {
+      await runMaintenanceManager(sql, rl);
+    } finally {
+      rl.close();
+    }
+    process.exit(0);
+  }
 
   // ─────────────────────────────────────────────
   // Console interactive principale
@@ -2173,6 +2189,11 @@ export async function runAdminCli() {
       `  ${c.brightYellow}[14]${c.reset} 💎 Créditer des gemmes et de l'XP (Quizzly)                     ${c.dim}(raccourci: 'credit')${c.reset}`
     );
 
+    console.log(`\n${c.bold}🛠️  INFRASTRUCTURE & SÉCURITÉ :${c.reset}`);
+    console.log(
+      `  ${c.brightRed}[15]${c.reset} 🚨 Lancer une période de maintenance (Site & APIs verrouillés) ${c.dim}(raccourci: 'maint')${c.reset}`
+    );
+
     console.log(`\n${c.bold}🚪 NAVIGATION :${c.reset}`);
     console.log(
       `  ${c.white}[0]${c.reset}  🚪 Quitter la console d'administration                           ${c.dim}(raccourci: 'q', 'exit')${c.reset}`
@@ -2180,7 +2201,7 @@ export async function runAdminCli() {
 
     const rawChoice = (
       await rl.question(
-        `\n ${c.brightYellow}👉 Votre choix [0-14] ou raccourci : ${c.reset}`
+        `\n ${c.brightYellow}👉 Votre choix [0-15] ou raccourci : ${c.reset}`
       )
     ).trim();
     const choice = rawChoice.toLowerCase();
@@ -2321,6 +2342,21 @@ export async function runAdminCli() {
       } catch (error) {
         console.error(
           "❌ Erreur crédit Quizzly :",
+          error instanceof Error ? error.message : error
+        );
+      }
+      await waitEnter(rl);
+    } else if (
+      choice === "15" ||
+      choice === "maint" ||
+      choice === "maintenance" ||
+      choice === "lock"
+    ) {
+      try {
+        await runMaintenanceManager(sql, rl);
+      } catch (error) {
+        console.error(
+          "❌ Erreur gestionnaire de maintenance :",
           error instanceof Error ? error.message : error
         );
       }

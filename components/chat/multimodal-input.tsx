@@ -73,7 +73,6 @@ import { useComposerTriggers } from "@/hooks/use-composer-triggers";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
 import { chatModels } from "@/lib/ai/models";
-import type { ToolId } from "@/lib/ai/tools/config";
 import { asArray, jsonArray, jsonObject } from "@/lib/api/client-fetch";
 import { memoryLimitForTier } from "@/lib/auth/plan";
 import { markInFlightChat } from "@/lib/chat/in-flight";
@@ -339,11 +338,13 @@ function PureMultimodalInput({
   }, [supportsTools, pendingTools.length, clearPendingTools]);
 
   const {
+    dismissUploadFailure,
     fileInputRef,
     uploadQueue,
     handleFileChange,
     handleCloudAttachments,
     resetUploadedBytes,
+    uploadFailures,
   } = useChatAttachments({
     attachments,
     hasStrictCaps,
@@ -917,7 +918,9 @@ function PureMultimodalInput({
         data-onboarding="chat-input"
         onSubmit={handlePromptSubmit}
       >
-        {(attachments.length > 0 || uploadQueue.length > 0) && (
+        {(attachments.length > 0 ||
+          uploadQueue.length > 0 ||
+          uploadFailures.length > 0) && (
           <div
             className="flex w-full self-start flex-row gap-2 overflow-x-auto px-4 pt-3 no-scrollbar"
             data-testid="attachments-preview"
@@ -940,6 +943,17 @@ function PureMultimodalInput({
                 }}
                 isUploading={true}
                 key={filename}
+              />
+            ))}
+
+            {/* Échecs d'envoi : le fichier reste visible avec sa cause
+                (issue #47) — jamais retiré comme s'il l'avait été exprès. */}
+            {uploadFailures.map((failure) => (
+              <PreviewAttachment
+                attachment={{ contentType: "", name: failure.name, url: "" }}
+                errorMessage={failure.message}
+                key={`echec-${failure.name}`}
+                onRemove={() => dismissUploadFailure(failure.name)}
               />
             ))}
           </div>

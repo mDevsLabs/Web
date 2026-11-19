@@ -11,7 +11,7 @@ import { extractToken, getDb, verifyToken } from "./config.ts";
 import type { RegisterMultiFn } from "./vibe-common.ts";
 
 export function registerDMNotificationRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 5. NOTIFICATIONS

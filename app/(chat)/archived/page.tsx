@@ -15,6 +15,7 @@ import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { revalidateChatHistories } from "@/hooks/revalidate-chat-histories";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import { fetcher } from "@/lib/utils";
 
@@ -72,14 +73,23 @@ export default function ArchivedPage() {
       ) {
         return;
       }
+      if (typeof document !== "undefined") {
+        document.body.style.pointerEvents = "";
+      }
       setLoadingId(id);
-      const res = await fetch(`/api/chat?id=${id}`, { method: "DELETE" });
-      setLoadingId(null);
-      if (res.ok) {
-        toast.success("Supprimée");
-        mutate();
-      } else {
+      try {
+        const res = await fetch(`/api/chat?id=${id}`, { method: "DELETE" });
+        if (res.ok) {
+          toast.success("Supprimée");
+          mutate();
+          await revalidateChatHistories();
+        } else {
+          toast.error("Erreur suppression");
+        }
+      } catch {
         toast.error("Erreur suppression");
+      } finally {
+        setLoadingId(null);
       }
     },
     [mutate]

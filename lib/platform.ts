@@ -8,6 +8,8 @@ declare global {
     Capacitor?: {
       getPlatform?: () => string;
       isNativePlatform?: () => boolean;
+      Plugins?: Record<string, unknown>;
+      registerPlugin?: (name: string) => unknown;
     };
     maiDesktop?: MaiDesktopBridge;
   }

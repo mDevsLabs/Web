@@ -28,10 +28,12 @@ export interface WorkspaceSidebarProps {
   mobile: boolean;
   navCollapsed: boolean;
   newConversation: () => Promise<void>;
+  onRetrySearch?: () => void;
   openPage: (space: string, page?: string) => void;
   ouvrirReglages: () => void;
   pageId?: string;
   refresh: () => Promise<void>;
+  searchError?: string | null;
   /**
    * Les résultats de la recherche, déjà filtrés par le serveur.
    *
@@ -130,6 +132,8 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
   chooseWakie,
   openPage,
   searchResults,
+  searchError,
+  onRetrySearch,
   setDialog,
   refresh,
   pageId,
@@ -318,7 +322,22 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
                   ))}
                 </div>
               ))}
-              {resultatsParSurface.length === 0 && <p>Aucun résultat.</p>}
+              {searchError ? (
+                <div className="wakies-search-error p-2 text-xs text-destructive">
+                  <p>{searchError}</p>
+                  {onRetrySearch && (
+                    <button
+                      className="mt-1 text-xs text-primary underline cursor-pointer"
+                      onClick={onRetrySearch}
+                      type="button"
+                    >
+                      Réessayer
+                    </button>
+                  )}
+                </div>
+              ) : resultatsParSurface.length === 0 ? (
+                <p>Aucun résultat.</p>
+              ) : null}
             </section>
           )}
         </div>

@@ -1,4 +1,3 @@
-import { head } from "@vercel/blob";
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiSessionToken } from "@/lib/auth/session";

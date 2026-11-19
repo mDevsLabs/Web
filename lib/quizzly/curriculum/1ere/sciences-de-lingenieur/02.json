@@ -1,0 +1,2618 @@
+{
+  "id": "1ere-sciences-de-lingenieur-02",
+  "year": "1ere",
+  "subject": "sciences-de-lingenieur",
+  "order": 2,
+  "title": "Modélisation cinématique et statique",
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Liaisons et mouvements",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Degrés de liberté et repérage spatial",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté possède un solide libre dans l'espace à trois dimensions ?",
+              "options": ["3", "4", "6", "12"],
+              "correctAnswers": [2],
+              "explanation": "Dans l'espace à trois dimensions, un solide indéformable libre dispose de 6 degrés de liberté : 3 translations et 3 rotations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les mouvements élémentaires constitutifs des degrés de liberté ?",
+              "options": [
+                "3 translations et 3 rotations",
+                "2 translations et 4 rotations",
+                "6 translations pures",
+                "6 rotations pures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 6 degrés de liberté correspondent à 3 translations indépendantes (Tx, Ty, Tz) et 3 rotations indépendantes (Rx, Ry, Rz)."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles notations désignent usuellement les translations le long des trois axes orthogonaux ?",
+              "options": ["Tx", "Ty", "Tz", "Ox"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Tx, Ty et Tz désignent respectivement les translations le long des axes x, y et z. Ox désigne l'axe lui-même."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel terme qualifie un repère composé de trois axes mutuellement perpendiculaires orientés selon la règle de la main droite ?",
+              "options": [
+                "Repère orthonormé direct",
+                "Repère cartésien indirect",
+                "Repère oblique polaire",
+                "Repère affine non normé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un repère orthonormé direct est constitué de trois axes orthogonaux, unitaires et orientés selon la règle de la main droite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que représente un degré de liaison entre deux solides en contact ?",
+              "options": [
+                "Un mouvement relatif interdit",
+                "Un mouvement relatif autorisé",
+                "Une force motrice appliquée",
+                "Un jeu mécanique indésirable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un degré de liaison correspond à un mouvement relatif bloqué ou supprimé par la mise en contact des deux solides."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle relation relie le nombre de degrés de liberté (Nc) et le nombre de degrés de liaison (Ns) pour une liaison dans l'espace ?",
+              "options": [
+                "Nc + Ns = 6",
+                "Nc × Ns = 6",
+                "Ns - Nc = 3",
+                "Nc + Ns = 12"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l'espace, la somme des degrés de liberté relatifs (Nc) et des degrés de liaison (Ns) est toujours égale à 6."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de coordonnées sont nécessaires pour définir la position d'un point dans un repère spatial ?",
+              "options": ["1", "2", "3", "6"],
+              "correctAnswers": [2],
+              "explanation": "Trois coordonnées cartésiennes (x, y, z) suffisent pour situer un point géométrique dans l'espace 3D."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien d'angles d'Euler permettent d'orienter complètement un solide par rapport à un repère ?",
+              "options": ["1", "2", "3", "6"],
+              "correctAnswers": [2],
+              "explanation": "Les trois angles d'Euler (précession, nutation, rotation propre) permettent de repérer l'orientation angulaire d'un solide."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Quels paramètres cinématiques sont nuls pour un solide immobile dans le repère de référence ?",
+              "options": [
+                "Vitesse de translation de l'origine",
+                "Vitesse angulaire de rotation",
+                "Masse totale du solide",
+                "Volume du solide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour un solide immobile, la vitesse linéaire de ses points et son vecteur vitesse de rotation sont nuls ; sa masse et son volume sont constants non nuls."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le plan (2D), combien de degrés de liberté possède un solide libre ?",
+              "options": ["2", "3", "4", "6"],
+              "correctAnswers": [1],
+              "explanation": "Dans un plan (O, x, y), un solide libre possède 3 degrés de liberté : 2 translations (Tx, Ty) et 1 rotation (Rz)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Liaisons mécaniques élémentaires (partie 1)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté autorise une liaison encastrement (ou liaison fixe) ?",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [0],
+              "explanation": "La liaison encastrement bloque la totalité des mouvements relatifs entre les deux pièces : 0 degré de liberté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mouvement relatif est autorisé par une liaison pivot d'axe (O, x) ?",
+              "options": [
+                "Une rotation Rx",
+                "Une translation Tx",
+                "Une translation et une rotation autour de x",
+                "Une rotation Ry"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison pivot d'axe (O, x) n'autorise qu'un seul degré de liberté : la rotation relative autour de l'axe x (Rx)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mouvement relatif est autorisé par une liaison glissière d'axe x ?",
+              "options": [
+                "Une translation Tx",
+                "Une rotation Rx",
+                "Une translation Ty",
+                "Une rotation Rz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison glissière d'axe x n'autorise qu'un seul degré de liberté : la translation rectiligne le long de l'axe x (Tx)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles liaisons mécaniques ne possèdent qu'un seul degré de liberté (Nc = 1) ?",
+              "options": [
+                "Liaison pivot",
+                "Liaison glissière",
+                "Liaison hélicoïdale",
+                "Liaison rotule"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le pivot (1 rotation), la glissière (1 translation) et l'hélicoïdale (1 mouvement hélicoïdal couplé) ont chacun Nc = 1. La rotule en a 3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de degrés de liaison impose une liaison pivot dans l'espace ?",
+              "options": ["1", "3", "5", "6"],
+              "correctAnswers": [2],
+              "explanation": "La liaison pivot ayant 1 degré de liberté, elle impose 6 - 1 = 5 degrés de liaison (mouvements bloqués)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle association de surfaces géométriques permet de réaliser une liaison glissière ?",
+              "options": [
+                "Deux plans parallèles et un épaulement",
+                "Un contact sphère-plan",
+                "Deux cylindres de révolution coaxiaux",
+                "Deux sphères concentriques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison glissière peut être réalisée par prismes, queue d'aronde ou association de surfaces planes empêchant les rotations."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel composant mécanique standardisé est couramment employé pour guider une liaison pivot ?",
+              "options": [
+                "Un roulement à billes",
+                "Un ressort de traction",
+                "Une courroie crantée",
+                "Une clavette parallèle fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les roulements à billes ou à rouleaux permettent le guidage en rotation précis avec un frottement réduit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une liaison glissière d'axe (O, x), quels mouvements de translation sont interdits ?",
+              "options": [
+                "Ty et Tz",
+                "Tx et Ty",
+                "Tx uniquement",
+                "Tz uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque Tx est le mouvement autorisé, les translations selon les axes perpendiculaires y et z (Ty et Tz) sont bloquées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une liaison encastrement qui peut être démontée sans détruire les pièces ?",
+              "options": [
+                "Liaison démontable",
+                "Liaison permanente",
+                "Liaison élastique",
+                "Liaison déformable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison encastrement par vis, boulon ou goupille est dite démontable car elle préserve l'intégrité des pièces."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel procédé d'assemblage crée une liaison encastrement permanente ?",
+              "options": [
+                "Le soudage",
+                "L'assemblage par vis",
+                "L'écrou papillon",
+                "Le circlip monté dans une gorge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soudage fusionne la matière des pièces, créant un assemblage indémontable sans destruction."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Liaisons mécaniques élémentaires (partie 2)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la particularité cinématique de la liaison hélicoïdale d'axe x ?",
+              "options": [
+                "La translation Tx et la rotation Rx sont conjuguées par le pas",
+                "La translation Tx et la rotation Rx sont indépendantes",
+                "Elle autorise deux rotations indépendantes",
+                "Elle supprime tous les mouvements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une liaison hélicoïdale, le déplacement rectiligne est proportionnel à l'angle de rotation via la relation x = (p / 2π) × θ."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté indépendants possède une liaison pivot glissant d'axe x ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1],
+              "explanation": "La liaison pivot glissant possède 2 degrés de liberté indépendants : la translation Tx et la rotation Rx."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels mouvements autorise une liaison appui plan de normale z ?",
+              "options": [
+                "Translations Tx, Ty et rotation Rz",
+                "Translations Tx, Tz et rotation Ry",
+                "Translations Ty, Tz et rotation Rx",
+                "Translations Tx, Ty, Tz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un appui de normale z autorise les mouvements dans le plan (x, y) : deux translations Tx, Ty et la rotation Rz."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels mouvements sont bloqués par une liaison appui plan de normale z ?",
+              "options": [
+                "Translation Tz",
+                "Rotation Rx",
+                "Rotation Ry",
+                "Rotation Rz"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'appui plan de normale z interdit le décollement/pénétration (Tz) ainsi que les basculements autour de x et de y (Rx, Ry)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de degrés de liaison supprime une liaison appui plan ?",
+              "options": ["1", "2", "3", "5"],
+              "correctAnswers": [2],
+              "explanation": "L'appui plan possède 3 degrés de liberté, donc il supprime 6 - 3 = 3 degrés de liaison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel contact géométrique élémentaire engendre une liaison pivot glissant ?",
+              "options": [
+                "Un contact cylindrique de révolution",
+                "Un contact plan sur plan",
+                "Un contact sphère sur plan",
+                "Un contact cône sur cône"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contact entre deux cylindres de révolution de même rayon forme naturellement une liaison pivot glissant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle grandeur relie l'avance axiale au nombre de tours dans une liaison vis-écrou ?",
+              "options": [
+                "Le pas de l'hélice",
+                "Le module de la dent",
+                "Le rayon de courbure",
+                "L'entraxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pas de vis correspond à la distance axiale parcourue lors d'une rotation complète d'un tour (2π radians)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de degrés de liaison impose une liaison pivot glissant dans l'espace ?",
+              "options": ["2", "4", "5", "6"],
+              "correctAnswers": [1],
+              "explanation": "Ayant 2 degrés de liberté (1 translation et 1 rotation), elle impose 6 - 2 = 4 degrés de liaison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un système cric ou étau, quelle liaison transforme la rotation d'une manivelle en translation de serrage ?",
+              "options": [
+                "Hélicoïdale",
+                "Rotule",
+                "Linéaire annulaire",
+                "Ponctuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système vis-écrou met en jeu une liaison hélicoïdale qui transforme une rotation d'entrée en translation axiale de serrage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel système mécanique illustre typiquement une liaison pivot glissant ?",
+              "options": [
+                "Un piston dans une chemise cylindrique sans butée axiale",
+                "Une roue de vélo sur son axe",
+                "Une porte battante avec gonds",
+                "Un écrou serré sur un goujon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un piston libre de coulisser et de tourner dans un cylindre sans obstacle constitue un pivot glissant."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Liaisons mécaniques élémentaires (partie 3)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté possède une liaison rotule (ou sphérique) ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [2],
+              "explanation": "Une liaison rotule de centre O autorise les 3 rotations de l'espace (Rx, Ry, Rz) et bloque toutes les translations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels mouvements autorise une liaison linéaire annulaire (ou sphère-cylindre) d'axe x ?",
+              "options": [
+                "La translation Tx et les 3 rotations",
+                "La translation Tx et la rotation Rx uniquement",
+                "Les 3 translations et 1 rotation",
+                "2 translations et 2 rotations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison linéaire annulaire autorise le glissement le long de l'axe (Tx) ainsi que toutes les rotations autour du centre de la sphère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de degrés de liberté possède une liaison ponctuelle (ou sphère-plan) de normale z ?",
+              "options": ["1", "3", "5", "6"],
+              "correctAnswers": [2],
+              "explanation": "La liaison ponctuelle n'interdit qu'un seul mouvement (la translation normale Tz), elle possède donc 5 degrés de liberté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels mouvements autorise une liaison linéaire rectiligne de ligne de contact x et normale z ?",
+              "options": [
+                "Tx, Ty, Rx, Rz",
+                "Tx, Tz, Ry, Rz",
+                "Ty, Tz, Rx, Ry",
+                "Tx, Ty, Tz, Rx"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette liaison (contact cylindre-plan) autorise les translations Tx et Ty ainsi que les rotations Rx et Rz (4 degrés de liberté)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels degrés de liberté sont autorisés par une liaison rotule à doigt (rotule avec orientation axiale verrouillée) ?",
+              "options": [
+                "Rotation Rx",
+                "Rotation Ry",
+                "Rotation Rz",
+                "Translation Tx"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La rotule à doigt supprime une rotation parmi les trois par rapport à une rotule standard, laissant 2 rotations libres et aucune translation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de degrés de liaison supprime une liaison ponctuelle ?",
+              "options": ["1", "2", "4", "5"],
+              "correctAnswers": [0],
+              "explanation": "La liaison ponctuelle bloque un seul mouvement (la translation selon la normale de contact), soit Ns = 1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel exemple de la vie courante illustre parfaitement une liaison rotule ?",
+              "options": [
+                "L'articulation de l'épaule humaine",
+                "Une glissière de tiroir",
+                "L'axe d'une roue de chariot",
+                "Un écrou sur une tige filetée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'articulation gléno-humérale de l'épaule est une articulation sphérique permettant l'orientation dans toutes les directions angulaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel contact géométrique engendre une liaison linéaire annulaire ?",
+              "options": [
+                "Une sphère dans un cylindre de même diamètre",
+                "Un cylindre sur un plan",
+                "Un plan sur un plan",
+                "Deux cônes emboîtés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contact entre une sphère et un alésage cylindrique de même diamètre nominal définit la liaison sphère-cylindre (linéaire annulaire)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de degrés de liaison impose une liaison rotule dans l'espace ?",
+              "options": ["1", "2", "3", "5"],
+              "correctAnswers": [2],
+              "explanation": "La rotule autorise 3 rotations et bloque les 3 translations, imposant donc 3 degrés de liaison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une liaison ponctuelle de normale z, quel mouvement relatif est strictement bloqué ?",
+              "options": [
+                "La translation Tz",
+                "La translation Tx",
+                "La rotation Rz",
+                "La rotation Rx"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contact ponctuel de normale z interdit la translation selon z (maintien du contact sans pénétration)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Schématisation cinématique et symboles normalisés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le but principal d'un schéma cinématique minimal ?",
+              "options": [
+                "Représenter les mouvements relatifs sans détails de formes réelles",
+                "Calculer le coût de fabrication des pièces",
+                "Préciser les tolérances géométriques d'usinage",
+                "Définir la composition chimique des matériaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma cinématique donne une modélisation simplifiée du mécanisme mettant en évidence les liaisons et mouvements relatifs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une classe d'équivalence cinématique (CEC) ?",
+              "options": [
+                "L'ensemble des pièces solidaires sans mouvement relatif entre elles",
+                "L'ensemble des pièces mobiles d'un même mécanisme",
+                "Les pièces fabriquées dans le même matériau",
+                "Les pièces montées avec du jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une classe d'équivalence regroupe toutes les pièces complètement liées entre elles (encastrées) pour une phase de fonctionnement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment représente-t-on conventionnellement chaque classe d'équivalence sur un schéma cinématique colorié ?",
+              "options": [
+                "Chaque classe d'équivalence a une couleur distincte",
+                "Toutes les pièces mobiles sont en rouge",
+                "Seuls les roulements sont coloriés",
+                "Chaque vis a sa propre couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribuer une couleur unique à chaque classe d'équivalence facilite la visualisation des ensembles indéformables en mouvement."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles pièces ne font généralement pas partie d'une classe d'équivalence cinématique indéformable ?",
+              "options": [
+                "Les ressorts hélicoïdaux",
+                "Les courroies souples",
+                "Les joints d'étanchéité déformables",
+                "Les arbres de transmission rigides"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les composants déformables (ressorts, courroies, joints souples) changent de géométrie et ne sont pas considérés comme solides indéformables."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur un schéma cinématique normalisé en vue de face, comment est symbolisée une liaison pivot vue dans l'axe ?",
+              "options": [
+                "Deux cercles concentriques avec une croix ou un point",
+                "Un rectangle barré d'une diagonale",
+                "Deux triangles opposés par le sommet",
+                "Un losange plein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l'axe de rotation, le symbole normalisé de la liaison pivot est représenté par deux cercles concentriques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel symbole représente une liaison glissière en projection axiale ?",
+              "options": [
+                "Un rectangle coulissant sur un axe ou dans un profil",
+                "Une sphère logée dans une demi-sphère",
+                "Deux cylindres tangents",
+                "Un cercle entouré de crochets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glissière est symbolisée par deux éléments prismatiques emboîtés coulissant l'un par rapport à l'autre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi exclut-on les vis de fixation et rondelles lors de la définition des classes d'équivalence ?",
+              "options": [
+                "Elles font partie de la classe d'équivalence des pièces qu'elles assemblent",
+                "Elles n'ont aucune utilité mécanique",
+                "Elles sont considérées comme des fluides",
+                "Leur masse est toujours négligée en cinématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléments de fixation rendent solidaires les pièces : ils sont donc intégrés à la même classe d'équivalence."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de classes d'équivalence composent un mécanisme à ciseaux simple (deux branches articulées par un rivet central) ?",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [0],
+              "explanation": "Les deux branches forment chacune une classe d'équivalence, le rivet étant solidaire de l'une des branches ou constituant l'axe pivot."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quoi sert le repère orthonormé attaché au bâti sur un schéma cinématique ?",
+              "options": [
+                "À définir le repère galiléen ou de référence pour étudier les mouvements",
+                "À indiquer la température de fonctionnement",
+                "À positionner le centre de gravité de la machine",
+                "À mesurer la tension électrique du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le repère attaché au bâti permet de paramétrer les coordonnées, angles et vitesses par rapport à la référence fixe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le symbole d'une liaison hélicoïdale, quel détail graphique la distingue d'une liaison pivot glissant ?",
+              "options": [
+                "Un trait hélicoïdal ou un pas symbolisé sur le cylindre",
+                "Une double flèche orthogonale",
+                "Un point central noir",
+                "Une hachure croisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le symbole normalisé comporte un filet d'hélice rappelant le couplage cinématique entre rotation et translation."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Graphes de structure et chaînes cinématiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans un graphe des liaisons (ou graphe de structure), que représentent les sommets (ou nœuds) ?",
+              "options": [
+                "Les classes d'équivalence cinématique",
+                "Les liaisons mécaniques",
+                "Les efforts extérieurs",
+                "Les vitesses instantanées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sommets du graphe représentent les solides indéformables (classes d'équivalence cinématique)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que représentent les arêtes reliant les sommets dans un graphe de structure ?",
+              "options": [
+                "Les liaisons mécaniques entre solides",
+                "Les pièces d'usure",
+                "Les frottements internes",
+                "Les capteurs de position"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque arête relie deux solides et modélise la liaison mécanique qui existe entre eux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une chaîne cinématique dans laquelle il n'existe aucune boucle fermée ?",
+              "options": [
+                "Une chaîne cinématique ouverte",
+                "Une chaîne fermée",
+                "Un mécanisme hyperstatique",
+                "Un treillis isostatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une chaîne ouverte relie les solides de proche en proche sans former de cycle (ex: bras de robot manipulateur sériel)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel système est un exemple classique de chaîne cinématique fermée à quatre barres ?",
+              "options": [
+                "Le système bielle-manivelle",
+                "Le bras d'une grue télescopique seule",
+                "Une broche de perceuse sans retour",
+                "Un câble pendant dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mécanisme bielle-manivelle forme une chaîne fermée composée du bâti, du vilebrequin, de la bielle et du piston."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles informations figurent obligatoirement sur l'arête d'un graphe de structure complet ?",
+              "options": [
+                "Le nom de la liaison",
+                "Le centre géométrique ou l'axe de la liaison",
+                "La couleur de peinture des pièces",
+                "Le prix d'achat du mécanisme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une arête précise le type de liaison mécanique et ses éléments géométriques caractéristiques (centre, axe, normale)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de cycles indépendants comporte une chaîne cinématique ouverte de N solides ?",
+              "options": ["0", "1", "N - 1", "N"],
+              "correctAnswers": [0],
+              "explanation": "Par définition, une chaîne ouverte ne comporte aucun cycle (nombre de boucles indépendantes = 0)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la formule du nombre de cycles fermés (nombre cyclomatique γ) d'un graphe à L liaisons et S solides ?",
+              "options": [
+                "γ = L - S + 1",
+                "γ = L + S - 1",
+                "γ = L - S",
+                "γ = S - L + 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre cyclomatique d'un graphe connexe vaut γ = A - S + 1 (où A est le nombre d'arêtes ou liaisons L, et S le nombre de sommets)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet d'écrire chaque boucle fermée d'une chaîne cinématique ?",
+              "options": [
+                "Une relation de fermeture géométrique ou cinématique",
+                "Une équation de rentabilité",
+                "Une loi d'usure des roulements",
+                "Un bilan d'émissions thermiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque boucle fermée permet d'écrire une relation vectorielle de fermeture géométrique (somme des vecteurs = 0) ou cinématique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un mécanisme dont la chaîne cinématique comporte des branches en parallèle ?",
+              "options": [
+                "Une chaîne cinématique arborescente ou complexe",
+                "Une chaîne ponctuelle simple",
+                "Un mécanisme monofilaire",
+                "Une chaîne discontinue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une chaîne cinématique fermée ou arborescente comporte plusieurs boucles et chemins alternatifs entre les solides."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de liaisons comporte un mécanisme fermé à 4 solides sans liaison redondante ?",
+              "options": ["4", "3", "5", "6"],
+              "correctAnswers": [0],
+              "explanation": "Pour fermer une boucle de 4 solides (quadrilatère articulé), il faut exactement 4 liaisons (L = S pour un cycle unique γ = 4 - 4 + 1 = 1)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Trajectoires et nature des mouvements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la définition de la trajectoire d'un point matériel dans un repère donné ?",
+              "options": [
+                "L'ensemble des positions successives occupées par ce point au cours du temps",
+                "La vitesse maximale atteinte par le point",
+                "L'énergie cinétique accumulée par le solide",
+                "La droite reliant le départ et l'arrivée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trajectoire est le lieu géométrique continu des positions occupées par le point mobile au cours du temps dans le repère choisi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un mouvement de translation d'un solide, quelle propriété caractérise les trajectoires de tous ses points ?",
+              "options": [
+                "Elles sont toutes superposables par translation géométrique",
+                "Elles sont des cercles de rayons différents",
+                "Elles convergent toutes vers un même centre",
+                "Elles sont obligatoirement des droites parallèles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une translation (rectiligne ou curviligne), tous les points décrivent des trajectoires identiques superposables dans le temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la trajectoire d'un point situé hors de l'axe dans un solide en rotation autour d'un axe fixe ?",
+              "options": [
+                "Un cercle centré sur l'axe et situé dans un plan perpendiculaire à l'axe",
+                "Une droite parallèle à l'axe",
+                "Une ellipse inclinée",
+                "Une parabole ascendante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout point d'un solide en rotation autour d'un axe fixe décrit un cercle centré sur cet axe, dans un plan orthogonal à l'axe."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels types de trajectoires un point d'un solide peut-il décrire lors d'un mouvement plan général ?",
+              "options": [
+                "Un segment de droite",
+                "Un arc de cercle",
+                "Une courbe cycloïdale ou bielle",
+                "Un point fixe sans dimension dans l'espace 3D"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Selon la cinématique du solide, les trajectoires peuvent être rectilignes, circulaires ou curvilignes complexes (courbes de bielle, cycloïdes)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la nature du mouvement d'une cabine de grande roue restant toujours verticale ?",
+              "options": [
+                "Une translation circulaire",
+                "Une rotation continue",
+                "Un mouvement hélicoïdal",
+                "Un repos absolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque la cabine garde une orientation fixe dans l'espace tout en décrivant un cercle, son mouvement est une translation circulaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mouvement d'un solide dont tous les segments restent parallèles à leur position initiale ?",
+              "options": [
+                "Un mouvement de translation",
+                "Un mouvement de rotation",
+                "Un mouvement de précession",
+                "Un mouvement d'oscillation angulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La définition cinématique de la translation est la conservation du parallélisme de tout vecteur reliant deux points du solide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un mouvement de rotation uniforme à vitesse angulaire ω constante, comment varie l'angle θ(t) ?",
+              "options": [
+                "θ(t) = ω · t + θ0",
+                "θ(t) = 1/2 · ω · t²",
+                "θ(t) = ω / t",
+                "θ(t) = constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une vitesse angulaire constante, l'angle de rotation est une fonction affine du temps : θ(t) = ω·t + θ0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que valent les vitesses de deux points distincts A et B d'un solide en translation à un instant donné ?",
+              "options": [
+                "V(A) = V(B) en norme, direction et sens",
+                "V(A) > V(B) proportionnellement à la distance AB",
+                "V(A) est perpendiculaire à V(B)",
+                "V(A) = -V(B)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En translation, tous les points du solide possèdent rigoureusement le même vecteur vitesse à chaque instant : V(A) = V(B)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle courbe décrit un point situé sur la circonférence d'une roue roulant sans glisser sur une route plane ?",
+              "options": [
+                "Une cycloïde",
+                "Une hélice circulaire",
+                "Une hyperbole",
+                "Une ellipse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trajectoire d'un point d'un cercle qui roule sans glisser sur une ligne droite est une cycloïde."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quel cas la trajectoire d'un point dépend-elle du repère d'observation choisi ?",
+              "options": [
+                "Dans tous les cas (la trajectoire est relative au repère)",
+                "Uniquement en mécanique relativiste",
+                "Seulement si le solide est déformable",
+                "Jamais, la trajectoire est absolue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La notion de trajectoire est toujours relative au référentiel d'étude dans lequel le mouvement est observé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Vecteurs vitesse et accélération",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment obtient-on le vecteur vitesse d'un point M à partir de son vecteur position OM(t) ?",
+              "options": [
+                "Par dérivation par rapport au temps : V = d(OM)/dt",
+                "Par intégration temporelle : V = ∫ OM dt",
+                "Par produit vectoriel avec la masse",
+                "Par division par l'accélération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vecteur vitesse instantanée est la dérivée temporelle du vecteur position dans le repère considéré : V = d(OM)/dt."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale (SI) de la vitesse ?",
+              "options": [
+                "Mètre par seconde (m/s)",
+                "Kilomètre par heure (km/h)",
+                "Radian par seconde (rad/s)",
+                "Mètre par seconde carrée (m/s²)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le Système International d'unités, la vitesse linéaire s'exprime en mètres par seconde (m/s ou m·s⁻¹)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale (SI) de la vitesse angulaire (ou pulsation) ?",
+              "options": [
+                "Radian par seconde (rad/s)",
+                "Tour par minute (tr/min)",
+                "Degré par seconde (°/s)",
+                "Hertz (Hz)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité légale de vitesse de rotation angulaire dans le Système International est le radian par seconde (rad/s)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles composantes constituent l'accélération d'un point dans le repère de Frenet lors d'un mouvement curviligne plan ?",
+              "options": [
+                "Accélération tangentielle at = dv/dt",
+                "Accélération normale an = v² / R",
+                "Accélération gravitationnelle g",
+                "Accélération angulaire d²θ/dt² purement vectorielle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans la base de Frenet, l'accélération se décompose en une composante tangentielle at (variation de la norme) et une normale an (changement de direction)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour un point situé à un rayon R tournant à la vitesse angulaire ω autour d'un axe fixe, quelle est la norme de sa vitesse linéaire v ?",
+              "options": [
+                "v = R · ω",
+                "v = R / ω",
+                "v = ω / R",
+                "v = 1/2 · R · ω²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse linéaire d'un point en rotation circulaire est proportionnelle à sa distance à l'axe : v = R · ω."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la direction du vecteur vitesse linéaire en un point d'une trajectoire courbe ?",
+              "options": [
+                "Tangente à la trajectoire au point considéré",
+                "Normale à la trajectoire orientée vers le centre",
+                "Dirigée vers l'origine du repère",
+                "Toujours horizontale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vecteur vitesse instantanée d'un point est systématiquement tangent à sa trajectoire et orienté dans le sens du mouvement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le vecteur accélération à partir du vecteur vitesse ?",
+              "options": [
+                "Par dérivation par rapport au temps : a = dV/dt",
+                "Par intégration du vecteur vitesse",
+                "Par multiplication de V par le temps t",
+                "Par division de V par le rayon de courbure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accélération instantanée est la dérivée temporelle du vecteur vitesse : a(t) = dV(t)/dt = d²OM/dt²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de l'accélération tangentielle dans un mouvement circulaire uniforme ?",
+              "options": ["0 m/s²", "v² / R", "R · ω²", "9,81 m/s²"],
+              "correctAnswers": [0],
+              "explanation": "Puisque la norme de la vitesse v est constante, sa dérivée temporelle at = dv/dt est nulle. Seule l'accélération normale an subsiste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un mouvement rectiligne uniformément accéléré d'accélération a0, quelle est l'expression de la position x(t) (avec x0=0 et v0=0) ?",
+              "options": [
+                "x(t) = 1/2 · a0 · t²",
+                "x(t) = a0 · t",
+                "x(t) = a0 · t²",
+                "x(t) = 1/3 · a0 · t³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intégration de v(t) = a0·t donne la loi horaire quadratique classique x(t) = 1/2·a0·t²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle formule permet de convertir une vitesse de rotation N exprimée en tr/min en une vitesse angulaire ω en rad/s ?",
+              "options": [
+                "ω = (2π · N) / 60",
+                "ω = (60 · N) / 2π",
+                "ω = N / 60",
+                "ω = 2π · N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tour valant 2π radians et une minute valant 60 secondes, la formule de conversion est ω = (2π × N) / 60 ≈ N / 9,55."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Loi de composition des vitesses et torseur cinématique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la relation de Varignon pour le champ des vecteurs vitesse d'un solide indéformable S par rapport à un repère R ?",
+              "options": [
+                "V(B, S/R) = V(A, S/R) + BA ∧ Ω(S/R)",
+                "V(B, S/R) = V(A, S/R) + Ω(S/R) ∧ AB",
+                "V(B, S/R) = V(A, S/R) + AB · Ω(S/R)",
+                "V(B, S/R) = V(A, S/R) - Ω(S/R) / AB"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La relation fondamentale du champ des vecteurs vitesse (équiprojectivité) s'écrit : V(B) = V(A) + Ω ∧ AB."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les deux éléments de réduction d'un torseur cinématique {V(S/R)} exprimé en un point A ?",
+              "options": [
+                "Le vecteur rotation Ω(S/R) et le vecteur vitesse V(A, S/R)",
+                "La force F et le moment résultant M",
+                "La masse m et la vitesse linéaire V",
+                "L'accélération a et l'énergie E"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un torseur cinématique se réduit en un point A à son vecteur rotation résultant Ω(S/R) et au moment qui est la vitesse du point A, V(A, S/R)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la loi de composition des vitesses en un point M pour trois solides ou repères 2, 1 et 0 ?",
+              "options": [
+                "V(M, 2/0) = V(M, 2/1) + V(M, 1/0)",
+                "V(M, 2/0) = V(M, 2/1) - V(M, 1/0)",
+                "V(M, 2/0) = V(M, 2/1) ∧ V(M, 1/0)",
+                "V(M, 2/0) = V(M, 1/0) / V(M, 2/1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La composition des mouvements impose que la vitesse absolue est la somme de la vitesse relative et de la vitesse d'entraînement : V(2/0) = V(2/1) + V(1/0)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés caractérisent le champ des vecteurs vitesse d'un solide indéformable ?",
+              "options": [
+                "Il s'agit d'un champ antisymétrique (torseur)",
+                "Il est équiprojectif : V(A)·AB = V(B)·AB",
+                "Les vitesses sont toujours toutes colinéaires",
+                "La vitesse est nulle en tout point du solide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le champ des vitesses d'un solide indéformable est équiprojectif, ce qui équivaut mathématiquement à la structure d'un torseur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le Centre Instantané de Rotation (CIR) dans un mouvement plan sur plan (S/R) ?",
+              "options": [
+                "Le point du plan mobile dont la vitesse instantanée par rapport à R est nulle",
+                "Le centre de gravité du solide",
+                "L'axe moteur du système",
+                "Le point où l'accélération est maximale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CIR (noté I) est le point géométrique unique à un instant t où la vitesse relative V(I, S/R) est nulle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment sont orientés les vecteurs vitesse des points d'un solide par rapport aux segments les reliant au CIR ?",
+              "options": [
+                "Perpendiculaires aux segments reliant chaque point au CIR",
+                "Parallèles aux segments reliant chaque point au CIR",
+                "Dirigés vers le CIR",
+                "Opposés au CIR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque V(M) = V(I) + Ω ∧ IM et V(I) = 0, on a V(M) = Ω ∧ IM, le vecteur vitesse est donc perpendiculaire au segment [IM]."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la composition des vecteurs rotation pour trois solides en mouvement relatif (3, 2 et 1) ?",
+              "options": [
+                "Ω(3/1) = Ω(3/2) + Ω(2/1)",
+                "Ω(3/1) = Ω(3/2) ∧ Ω(2/1)",
+                "Ω(3/1) = Ω(3/2) - Ω(2/1)",
+                "Ω(3/1) = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vecteurs rotation résultants s'additionnent vectoriellement : Ω(3/1) = Ω(3/2) + Ω(2/1)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle condition cinématique traduit le roulement sans glissement d'un solide 1 sur un solide 2 au point de contact I ?",
+              "options": [
+                "V(I, 1/2) = 0 (vitesse de glissement nulle)",
+                "Ω(1/2) = 0 (vitesse angulaire nulle)",
+                "V(I, 1/2) est colinéaire à la normale",
+                "L'accélération relative est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roulement sans glissement impose l'annulation du vecteur vitesse de glissement relatif au point de contact : V(I, 1/2) = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la norme de la vitesse d'un point M distant de d du CIR d'un solide en rotation à la vitesse angulaire ω ?",
+              "options": [
+                "v = d · ω",
+                "v = d / ω",
+                "v = ω / d",
+                "v = 1/2 · d · ω²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autour du CIR, le solide effectue une rotation pure instantanée, donc v = ||IM|| × ||Ω|| = d · ω."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un torseur cinématique exprimé au centre d'une liaison pivot d'axe z, que vaut la vitesse V(O, 1/0) ?",
+              "options": [
+                "0 (vecteur nul)",
+                "Une vitesse axiale selon z",
+                "Une vitesse radiale selon x",
+                "Une vitesse infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une liaison pivot de centre O, le point O est fixe par rapport aux deux solides : son vecteur vitesse linéaire est nul."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Transmission et transformation de mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rapport de transmission r d'un engrenage droit à deux roues dentées de nombres de dents Z1 (menante) et Z2 (menée) ?",
+              "options": [
+                "r = - Z1 / Z2",
+                "r = - Z2 / Z1",
+                "r = Z1 × Z2",
+                "r = Z1 + Z2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport de transmission cinématique est r = ω2/ω1 = - Z1 / Z2 (le signe négatif indiquant l'inversion du sens de rotation en contact extérieur)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que provoque le contact extérieur entre deux roues cylindriques dentées ?",
+              "options": [
+                "Une inversion du sens de rotation entre les deux arbres",
+                "Une conservation du même sens de rotation",
+                "Une transformation en translation",
+                "Un blocage automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux roues dentées en engrenage extérieur tournent en sens opposés (inversion du sens de rotation)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la condition géométrique indispensable pour que deux roues dentées puissent engrener ensemble ?",
+              "options": [
+                "Elles doivent avoir le même module m",
+                "Elles doivent avoir le même nombre de dents",
+                "Elles doivent avoir le même diamètre primitif",
+                "Elles doivent être en acier inoxydable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour engrener correctement, deux roues doivent obligatoirement posséder le même module normalisé (m = p / π)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes permettent de transformer un mouvement de rotation continue en un mouvement de translation ?",
+              "options": [
+                "Système pignon-crémaillère",
+                "Système vis-écrou",
+                "Système bielle-manivelle",
+                "Engrenage conique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le pignon-crémaillère, la vis-écrou et la bielle-manivelle transforment la rotation en translation. L'engrenage conique transmet une rotation entre axes concourants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un réducteur de vitesse, comment évolue le couple disponible sur l'arbre de sortie par rapport à l'arbre d'entrée (en négligeant les pertes) ?",
+              "options": [
+                "Il augmente dans la même proportion que la réduction de vitesse",
+                "Il diminue proportionnellement à la vitesse",
+                "Il reste rigoureusement identique",
+                "Il devient nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À puissance constante (P = C · ω), si la vitesse de rotation est divisée par un facteur k, le couple mécanique est multiplié par k."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel composant mécanique permet une transmission de puissance par adhérence ou obstacle entre deux arbres distants ?",
+              "options": [
+                "Un système poulies-courroie",
+                "Une liaison rotule",
+                "Un embrayage à disques fixes",
+                "Un coussinet autolubrifiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les transmissions poulies-courroie (lisse ou crantée) permettent de transmettre le mouvement entre deux arbres éloignés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un train d'engrenages simple à n contacts extérieurs, quelle formule donne le rapport de transmission global ?",
+              "options": [
+                "r = (-1)^n × (produit des Z menantes) / (produit des Z menées)",
+                "r = (produit des Z menées) / (produit des Z menantes)",
+                "r = n × (Z1 / Z2)",
+                "r = (-1)^n × (Z menées / Z menantes)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport d'un train simple est le produit des dents menantes divisé par le produit des dents menées, multiplié par (-1)^n."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un système bielle-manivelle de rayon de manivelle R, quelle est la course totale C effectuée par le piston ?",
+              "options": ["C = 2 · R", "C = R", "C = π · R", "C = 4 · R"],
+              "correctAnswers": [0],
+              "explanation": "Le piston oscille entre le point mort bas et le point mort haut, parcourant une distance égale au diamètre du cercle décrit par la manivelle : C = 2·R."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la fonction d'une transmission par roue et vis sans fin ?",
+              "options": [
+                "Obtenir un grand rapport de réduction avec des axes orthogonaux",
+                "Augmenter la vitesse de rotation par un facteur 100",
+                "Permettre le désalignement angulaire de deux arbres coaxiaux",
+                "Séparer thermiquement deux moteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système roue et vis sans fin permet d'atteindre de très grands rapports de réduction (ex: 1/50) sous un encombrement réduit avec des axes perpendiculaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel terme qualifie une transmission irréversible par roue et vis sans fin ?",
+              "options": [
+                "La roue ne peut pas entraîner la vis sans fin",
+                "La vis sans fin ne peut pas tourner",
+                "Le rendement est supérieur à 1",
+                "Le sens de rotation change spontanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'irréversibilité signifie que l'application d'un couple sur la roue ne peut pas faire tourner la vis motrice, assurant une fonction anti-retour."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Équilibre et actions mécaniques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Notions de force et moment en un point",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les quatre caractéristiques d'une action mécanique modélisée par une force ponctuelle ?",
+              "options": [
+                "Point d'application, droite d'action, sens et norme",
+                "Longueur, masse, durée et température",
+                "Masse, volume, vitesse et accélération",
+                "Position, couleur, pression et fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une force est entièrement définie par son point d'application, sa ligne d'action (direction), son sens et son intensité (norme)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale (SI) de l'intensité d'une force ?",
+              "options": ["Newton (N)", "Pascal (Pa)", "Joule (J)", "Watt (W)"],
+              "correctAnswers": [0],
+              "explanation": "Dans le Système International d'unités, la force s'exprime en newtons (N)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale (SI) du moment d'une force ?",
+              "options": [
+                "Newton-mètre (N·m)",
+                "Newton par mètre (N/m)",
+                "Joule par seconde (J/s)",
+                "Kilogramme-mètre (kg·m)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moment d'une force est le produit d'une force par une distance, il s'exprime en newton-mètres (N·m)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on vectoriellement le moment en un point A d'une force F appliquée au point B ?",
+              "options": [
+                "M(A, F) = AB ∧ F",
+                "M(A, F) = BA ∧ F",
+                "M(A, F) = F ∧ AB",
+                "M(A, F) = AB · F"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition du moment vectoriel, le moment d'une force F appliquée en B par rapport au point A est M(A) = AB ∧ F."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quels cas le moment d'une force F non nulle par rapport à un point A est-il nul ?",
+              "options": [
+                "La force est appliquée directement au point A",
+                "La droite d'action de la force passe par le point A",
+                "La force est perpendiculaire à la droite reliant A au point d'application",
+                "La force est unitaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le moment s'annule si le bras de levier est nul, c'est-à-dire si le point A appartient à la droite d'action de la force (AB colinéaire à F ou A = B)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « bras de levier » d'une force par rapport à un point O ?",
+              "options": [
+                "La distance perpendiculaire entre O et la droite d'action de la force",
+                "La longueur totale de la pièce mécanique",
+                "La distance de O à l'origine du repère",
+                "Le rayon du cercle d'inertie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bras de levier d est la distance orthogonale mesurée entre le point de calcul et la droite support de la force : ||M|| = F · d."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « couple de forces » mécanique ?",
+              "options": [
+                "Deux forces de même norme, de droites parallèles distinctes et de sens opposés",
+                "Deux forces identiques appliquées au même point",
+                "Une force et une vitesse associées",
+                "Une liaison encastrement bilatérale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un couple est constitué de deux forces opposées de lignes d'action parallèles distantes de d ; sa résultante est nulle et son moment est constant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la particularité fondamentale du moment d'un couple de forces ?",
+              "options": [
+                "Il est indépendant du point de l'espace où on le calcule",
+                "Il est toujours nul",
+                "Il dépend de la masse du solide",
+                "Il varie avec le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque la somme des forces du couple est nulle, le moment résultant est identique en tout point de l'espace (moment pur)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment varie l'intensité du moment d'une force si on double la longueur du bras de levier en gardant la même force ?",
+              "options": [
+                "Elle est multipliée par 2",
+                "Elle est divisée par 2",
+                "Elle est multipliée par 4",
+                "Elle ne change pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moment est proportionnel au bras de levier (M = F · d) : doubler la distance double le moment créé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel théorème permet d'affirmer que le moment d'une somme de forces concourantes est égal à la somme de leurs moments ?",
+              "options": [
+                "Le théorème de Varignon",
+                "Le principe d'Archimède",
+                "Le théorème de Pythagore",
+                "La loi d'Ohm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le théorème de Varignon énonce la distributivité du calcul du moment : M(A, ΣF) = Σ M(A, F)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Modélisation par torseur statique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les deux vecteurs qui constituent les éléments de réduction d'un torseur d'action mécanique {T(1->2)} en un point A ?",
+              "options": [
+                "La résultante R(1->2) et le moment résultant M(A, 1->2)",
+                "La vitesse V et l'accélération a",
+                "La masse m et le poids P",
+                "La pression p et la surface S"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un torseur statique d'action mécanique se compose en un point A d'une résultante R (somme des forces) et d'un moment M(A)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se transforme le moment d'un torseur statique lors d'un changement de point de réduction de A vers B ?",
+              "options": [
+                "M(B) = M(A) + BA ∧ R",
+                "M(B) = M(A) + R ∧ BA",
+                "M(B) = M(A) + AB ∧ R",
+                "M(B) = M(A) · BA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule de transport des moments pour un torseur s'écrit M(B) = M(A) + BA ∧ R."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle composante d'un torseur statique est invariante lors d'un changement de point de réduction ?",
+              "options": [
+                "La résultante R",
+                "Le moment résultant M",
+                "Les coordonnées du point",
+                "Le bras de levier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résultante vectorielle R d'un torseur est indépendante du point de réduction choisi : elle est identique en tout point."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles formes particulières un torseur mécanique peut-il adopter ?",
+              "options": [
+                "Un glisseur (moment nul en au moins un point)",
+                "Un couple (résultante nulle et moment non nul)",
+                "Un torseur nul (résultante et moment nuls)",
+                "Un tenseur d'ordre 4"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un glisseur possède un moment nul le long de son axe central. Un couple possède une résultante nulle. Un torseur nul a tous ses éléments nuls."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « comoment » (ou produit comoment) de deux torseurs {T1} et {T2} ?",
+              "options": [
+                "La somme R1 · M2(A) + R2 · M1(A)",
+                "Le produit vectoriel R1 ∧ R2",
+                "Le produit des normes ||R1|| × ||R2||",
+                "La division des moments M1 / M2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le produit comoment entre deux torseurs est un scalaire invariant égal à R1·M2(A) + R2·M1(A) en tout point A."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la condition nécessaire et suffisante pour qu'un torseur soit un glisseur ?",
+              "options": [
+                "Son invariant scalaire (R · M) est nul et sa résultante est non nulle",
+                "Sa résultante R est nulle",
+                "Son moment M est infini",
+                "Ses composantes sont impaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un torseur non nul est un glisseur si et seulement si son produit scalaire R · M(A) est nul (résultante et moment orthogonaux)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de composantes scalaires comporte l'écriture matricielle d'un torseur dans une base cartésienne (3D) ?",
+              "options": [
+                "6 (3 pour la résultante et 3 pour le moment)",
+                "3",
+                "9",
+                "12"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un torseur s'écrit sous forme de 6 composantes scalaires : (X, Y, Z) pour la résultante et (L, M, N) pour le moment."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans l'écriture d'un torseur {T} = {X L / Y M / Z N} au point A, que représentent X, Y et Z ?",
+              "options": [
+                "Les composantes de la résultante de force selon x, y et z",
+                "Les coordonnées spatiales du point A",
+                "Les moments de torsion purs",
+                "Les accélérations linéaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les trois composantes de la première colonne (X, Y, Z) représentent les projections de la force résultante sur les axes du repère."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans l'écriture d'un torseur {T} = {X L / Y M / Z N} au point A, que représentent L, M et N ?",
+              "options": [
+                "Les composantes du moment résultant au point A selon x, y et z",
+                "Les dimensions géométriques du solide",
+                "Les coefficients de frottement",
+                "Les vitesses angulaires relatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les trois composantes de la seconde colonne (L, M, N) désignent les projections du moment vectoriel au point A sur les axes x, y et z."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment s'effectue la somme de deux torseurs exprimés au même point A ?",
+              "options": [
+                "En additionnant terme à terme leurs résultantes et leurs moments au point A",
+                "En multipliant leurs composantes",
+                "En calculant le déterminant de la matrice",
+                "La somme de deux torseurs n'est pas définie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espace des torseurs est un espace vectoriel : au même point A, les résultantes s'ajoutent et les moments s'ajoutent terme à terme."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Principe Fondamental de la Statique (PFS)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'énoncé du Principe Fondamental de la Statique pour un solide indéformable en équilibre dans un repère galiléen ?",
+              "options": [
+                "Le torseur des actions mécaniques extérieures appliquées au solide est nul",
+                "La somme des vitesses de tous les points est nulle",
+                "L'énergie mécanique totale est maximale",
+                "La résultante des forces est égale à la masse fois l'accélération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PFS stipule que pour un solide à l'équilibre, le torseur des actions mécaniques extérieures est le torseur nul : {T(ext -> S)} = {0}."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En projection dans l'espace à trois dimensions, combien d'équations scalaires indépendantes fournit le PFS ?",
+              "options": ["6 (3 de forces et 3 de moments)", "2", "3", "12"],
+              "correctAnswers": [0],
+              "explanation": "Le PFS fournit 6 équations scalaires : Σ Fx = 0, Σ Fy = 0, Σ Fz = 0, Σ Mx = 0, Σ My = 0, Σ Mz = 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un problème plan (2D), combien d'équations scalaires indépendantes fournit le PFS ?",
+              "options": ["3 (2 de forces et 1 de moment)", "1", "2", "6"],
+              "correctAnswers": [0],
+              "explanation": "Dans le plan (O, x, y), le PFS se réduit à 3 équations : Σ Fx = 0, Σ Fy = 0 et Σ Mz = 0."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles sont les conditions nécessaires pour appliquer rigoureusement le PFS à un système ?",
+              "options": [
+                "Le système doit être à l'équilibre (ou en mouvement rectiligne uniforme) par rapport à un repère galiléen",
+                "Tous les efforts extérieurs au système isolé doivent être recensés",
+                "Toutes les pièces du système doivent être en mouvement rapide",
+                "Le système doit obligatoirement être sans masse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le PFS exige l'isolement strict du système, le bilan exhaustif des actions extérieures et un référentiel galiléen d'étude."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la première étape indispensable avant d'écrire les équations du PFS ?",
+              "options": [
+                "Définir la frontière d'isolement du système matériel étudié",
+                "Choisir un logiciel de simulation 3D",
+                "Dessiner le plan de fabrication",
+                "Appliquer immédiatement une force aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'isolement du système fixe sans ambiguïté les frontières pour distinguer les actions intérieures (négligées) des actions extérieures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les actions mécaniques intérieures à un système isolé n'apparaissent-elles pas dans le bilan du PFS ?",
+              "options": [
+                "D'après le principe des actions réciproques, leur somme deux à deux est nulle",
+                "Elles sont d'intensité infiniment faible",
+                "Elles n'existent pas dans les solides réels",
+                "Elles sont absorbées par la chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon la 3e loi de Newton (action-réaction), les actions mutuelles entre pièces d'un même ensemble isolé se compensent exactement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avant de faire la somme des moments dans le PFS, quelle opération est obligatoire pour tous les torseurs d'action ?",
+              "options": [
+                "Exprimer tous les moments au même point de réduction",
+                "Diviser chaque moment par le rayon du solide",
+                "Multiplier les moments par la vitesse angulaire",
+                "Inverser le sens des résultantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne peut sommer des torseurs que s'ils sont préalablement exprimés au même point de réduction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel point de réduction choisit-on judicieusement pour simplifier l'écriture de l'équation des moments ?",
+              "options": [
+                "Le point où s'appliquent le plus d'inconnues de liaison",
+                "Le point le plus éloigné du système",
+                "Un point situé hors du mécanisme",
+                "Le centre de la pièce la plus légère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choisir le point d'application de plusieurs inconnues annule leur bras de levier, éliminant ces inconnues de l'équation des moments."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un système mécanique où le nombre d'inconnues de liaison est supérieur au nombre d'équations du PFS ?",
+              "options": [
+                "Hyperstatique",
+                "Isostatique",
+                "Hypostatique",
+                "Cinématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système est hyperstatique lorsque les équations de la statique sont insuffisantes pour déterminer toutes les inconnues de liaison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un problème de statique où le nombre d'inconnues est exactement égal au nombre d'équations scalaires indépendantes ?",
+              "options": [
+                "Isostatique",
+                "Hyperstatique de degré 3",
+                "Instable",
+                "Surabondant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système isostatique admet une solution unique calculable directement par les seules équations du PFS."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Équilibre d'un solide soumis à deux forces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quelle condition nécessaire et suffisante un solide indéformable soumis à deux forces extérieures F1 et F2 est-il à l'équilibre ?",
+              "options": [
+                "Les deux forces ont la même droite d'action, la même norme et des sens opposés",
+                "Les deux forces sont perpendiculaires et de même intensité",
+                "Les deux forces ont la même direction et le même sens",
+                "Leurs points d'application sont obligatoirement confondus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibre sous deux forces exige F1 + F2 = 0 (sens opposés, même norme) et M(A) = 0 (même droite d'action passant par les deux points)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la droite d'action commune des deux forces appliquées en deux points A et B d'un solide à l'équilibre ?",
+              "options": [
+                "La droite passant par les points A et B (droite (AB))",
+                "La médiatrice du segment [AB]",
+                "Une droite perpendiculaire à (AB)",
+                "Une droite quelconque parallèle au sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour annuler le moment en A, la ligne d'action de la force appliquée en B doit impérativement passer par A : c'est la droite (AB)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une bielle articulée par deux liaisons pivot parfaites à ses extrémités A et B (de poids négligé), quelle est la direction de l'effort transmis ?",
+              "options": [
+                "La droite (AB)",
+                "La perpendiculaire à l'axe de la bielle",
+                "La verticale passant par le centre",
+                "Une direction variable imprévisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bielle n'est soumise qu'aux actions de ses deux liaisons d'extrémités : l'action mécanique est obligatoirement dirigée selon l'axe (AB)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels composants industriels sont couramment modélisés comme des solides soumis à deux forces d'extrémités ?",
+              "options": [
+                "Un vérin pneumatique articulé à ses deux bouts",
+                "Une bielle de moteur (en statique)",
+                "Un tirant ou tendeur de câble",
+                "Un bâti fixe de machine-outil"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les vérins articulés, bielles et tirants ne transmettent d'efforts qu'en leurs deux liaisons d'extrémités (direction axiale)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la sollicitation d'un solide soumis à deux forces opposées tendant à l'allonger selon la droite (AB) ?",
+              "options": [
+                "La traction",
+                "La compression",
+                "La torsion",
+                "Le cisaillement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux forces divergentes dirigées selon la ligne joignant leurs points d'application mettent la pièce en traction pure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la sollicitation d'un solide soumis à deux forces opposées tendant à le raccourcir ?",
+              "options": [
+                "La compression",
+                "La flexion",
+                "Le déversement",
+                "La traction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux forces convergentes dirigées selon l'axe joignant les deux points mettent la pièce en compression pure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la force F1 en A a pour norme 250 N, que vaut la norme de la force F2 en B pour un solide à l'équilibre soumis à ces deux seules forces ?",
+              "options": ["250 N", "125 N", "500 N", "0 N"],
+              "correctAnswers": [0],
+              "explanation": "L'équilibre impose F1 + F2 = 0, donc ||F1|| = ||F2|| = 250 N."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un câble idéal tendu entre A et B peut-il être soumis à une force de compression ?",
+              "options": [
+                "Non, un câble ne peut travailler qu'en traction",
+                "Oui, si sa gaine est rigide",
+                "Oui, à condition qu'il soit court",
+                "Oui, s'il est sous tension électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un câble flexible ne résiste pas à la poussée axiale (flambement instantané) : il ne transmet que des efforts de traction."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi peut-on négliger le poids d'une petite bielle mécanique lors de l'étude de l'équilibre d'un mécanisme ?",
+              "options": [
+                "Le poids est souvent négligeable devant les efforts de liaison transmis",
+                "Le poids n'existe pas en mécanique industrielle",
+                "La bielle flotte dans l'air",
+                "Le poids est absorbé par la liaison pivot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les forces de contact dans les mécanismes (souvent des centaines ou milliers de newtons) sont prépondérantes devant la pesanteur de la pièce."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que peut-on conclure sur la somme des moments de deux forces opposées colinéaires en tout point de l'espace ?",
+              "options": [
+                "Elle est rigoureusement nulle en tout point de l'espace",
+                "Elle dépend de la distance à l'origine",
+                "Elle est maximale au milieu du segment",
+                "Elle est infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux forces directement opposées de même droite d'action forment un système dont le moment est nul en n'importe quel point."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Équilibre d'un solide soumis à trois forces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Si un solide indéformable est à l'équilibre sous l'action de trois forces non parallèles, que peut-on affirmer sur leurs droites d'action ?",
+              "options": [
+                "Elles sont coplanaires et concourantes en un même point",
+                "Elles sont gauches dans l'espace",
+                "Elles forment un triangle rectangle",
+                "Elles sont deux à deux orthogonales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour annuler la résultante et le moment, trois forces non parallèles à l'équilibre ont nécessairement leurs lignes d'action concourantes en un point et coplanaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que forme la somme géométrique des trois vecteurs forces (F1 + F2 + F3 = 0) sur un tracé graphique ?",
+              "options": [
+                "Un triangle fermé (le dynamique des forces)",
+                "Un cercle parfait",
+                "Une droite ouverte infinie",
+                "Un carré tronqué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relation F1 + F2 + F3 = 0 se traduit graphiquement par un polygone dynamique fermé à trois côtés (un triangle des forces)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si trois forces extérieures à l'équilibre sont parallèles, quelle propriété vérifient-elles ?",
+              "options": [
+                "Leur somme vectorielle est nulle et la somme de leurs moments en tout point est nulle",
+                "Elles ont nécessairement la même intensité",
+                "Elles sont toutes orientées dans le même sens",
+                "Leur point de concours est situé au centre de gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour trois forces parallèles, la résultante doit être nulle et les bras de levier doivent équilibrer les moments par rapport à n'importe quel axe."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles étapes mènent à la résolution graphique d'un équilibre sous trois forces dont deux droites d'action sont connues ?",
+              "options": [
+                "Trouver le point de concours I des deux droites d'action connues",
+                "Tracer la droite d'action de la 3e force passant par son point d'application et par I",
+                "Construire le triangle fermé des forces à partir de la force entièrement connue",
+                "Tracer un cercle de Mohr des contraintes élastiques"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'intersection des deux droites connues donne I. La 3e droite passe par I. Le triangle des forces permet ensuite de mesurer les deux normes inconnues."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le tracé représentant la chaîne fermée des vecteurs forces mis bout à bout à l'échelle ?",
+              "options": [
+                "Le dynamique des forces",
+                "L'épure de Culmann",
+                "Le diagramme de Bode",
+                "Le schéma cinématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dynamique (ou polygone des forces) est le graphique vectoriel où les forces sont ajoutées bout à bout à une échelle donnée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un triangle de forces rectangle dont l'hypoténuse est F1 = 100 N et l'angle vaut 30°, que vaut la force adjacente ?",
+              "options": [
+                "100 · cos(30°) ≈ 86,6 N",
+                "100 · sin(30°) = 50 N",
+                "100 / cos(30°) ≈ 115,5 N",
+                "200 N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par trigonométrie élémentaire dans le triangle rectangle des forces, le côté adjacent vaut F_adj = 100 × cos(30°) ≈ 86,6 N."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que permet d'affirmer le théorème des trois forces concourantes lors de l'étude d'un levier coudé ?",
+              "options": [
+                "De déterminer graphiquement la direction de la réaction au point d'articulation",
+                "De calculer la vitesse de rotation du levier",
+                "De connaître la limite d'élasticité du métal",
+                "De vérifier l'absence totale de frottement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connaissant la charge et la force motrice, l'intersection de leurs droites donne le point de concours par où passe l'action du pivot."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que vaut la résultante de trois forces concourantes si le polygone des forces ne se referme pas ?",
+              "options": [
+                "Elle n'est pas nulle : le système n'est pas à l'équilibre",
+                "Elle est infinie",
+                "Elle est nulle par compensation thermique",
+                "Elle est égale au périmètre du polygone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le dynamique ne se referme pas, la somme vectorielle des forces n'est pas nulle : le solide ne peut pas être à l'équilibre statique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur une poutre horizontale sur deux appuis A et B chargée au milieu par une force verticale descendante P = 600 N, que valent les réactions verticales en A et B ?",
+              "options": [
+                "300 N chacune, vers le haut",
+                "600 N chacune, vers le haut",
+                "200 N et 400 N",
+                "0 N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par symétrie et équilibre des moments et forces verticales (forces parallèles), la charge de 600 N se répartit équitablement : 300 N sur chaque appui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si deux forces F1 et F2 sont parallèles et de même sens (ex: 200 N et 300 N), que vaut la force F3 maintenant l'équilibre ?",
+              "options": [
+                "500 N en sens inverse",
+                "100 N en sens inverse",
+                "250 N de même sens",
+                "600 N perpendiculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibre des forces impose F1 + F2 + F3 = 0, soit F3 = - (F1 + F2), d'où une norme de 500 N en sens opposé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Actions mécaniques de contact dans les liaisons parfaites",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une liaison mécanique parfaite (ou idéale) au sens de la statique ?",
+              "options": [
+                "Une liaison sans jeu et sans frottement géométrique",
+                "Une liaison incassable sous charge infinie",
+                "Une liaison fabriquée en titane",
+                "Une liaison sans masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison parfaite présente un contact géométrique parfait sans jeu mécanique et sans frottement (adhérence nulle)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle composante d'action mécanique est obligatoirement nulle dans une liaison parfaite ?",
+              "options": [
+                "L'action mécanique associée à chaque degré de liberté autorisé",
+                "La force normale de contact",
+                "Toutes les réactions d'appui",
+                "Le poids de la liaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une liaison parfaite, à tout degré de liberté correspond une composante d'effort transmissible nulle (dualité cinématique/statique)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le torseur d'action mécanique transmissible par une liaison pivot parfaite d'axe (A, x) ?",
+              "options": [
+                "{X 0 / Y M / Z N} au point A (moment Mx nul)",
+                "{0 L / Y M / Z N} au point A",
+                "{X L / Y M / Z N} complet",
+                "{X 0 / 0 0 / 0 0}"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rotation autour de x étant libre (Rx), le moment selon cet axe est nul (L = 0). Les 5 autres composantes sont transmissibles."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels mouvements relatifs sont totalement interdits (degrés de liberté nuls) dans une liaison glissière d'axe x ?",
+              "options": [
+                "Toutes les rotations relatives (Rx, Ry, Rz)",
+                "Les translations transversales (Ty et Tz)",
+                "La translation axiale selon x (Tx)",
+                "Aucun mouvement n'est interdit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans une glissière parfaite d'axe x, seule la translation axiale Tx est libre. Les 3 rotations et les 2 translations transversales sont nulles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le torseur statique d'une liaison rotule parfaite de centre A ?",
+              "options": [
+                "{X 0 / Y 0 / Z 0} au point A (moment résultant entièrement nul)",
+                "{0 L / 0 M / 0 N} au point A",
+                "{X L / Y M / Z N}",
+                "{0 0 / 0 0 / 0 0}"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rotule autorisant les 3 rotations autour de A, le moment en A est nul selon les trois axes : elle ne transmet qu'une force résultante (glisseur)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel effort peut transmettre une liaison appui plan parfait de normale z ?",
+              "options": [
+                "Une force normale Z et deux moments de basculement L et M",
+                "Une force tangentielle X uniquement",
+                "Un moment de rotation pure N uniquement",
+                "Tous les efforts sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appui plan de normale z bloque Tz, Rx et Ry : il transmet donc une force normale Z et les moments L (autour de x) et M (autour de y)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une liaison ponctuelle parfaite au point A de normale z, quelle est la seule composante d'action non nulle ?",
+              "options": [
+                "La force normale Z (action dirigée selon la normale z)",
+                "La force tangentielle X",
+                "Le moment L",
+                "Le moment N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison ponctuelle ne bloque que la translation normale : son action est donc une force pure portée par la normale de contact au point A."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien d'inconnues statiques de liaison comporte une liaison encastrement dans l'espace ?",
+              "options": [
+                "6 (3 composantes de force et 3 de moment)",
+                "0",
+                "1",
+                "3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bloquant les 6 degrés de liberté, la liaison encastrement transmet 3 forces indépendantes (X, Y, Z) et 3 moments (L, M, N)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que le torseur cinématique et le torseur statique d'une liaison parfaite sont « duaux » ?",
+              "options": [
+                "Leur produit comoment (puissance virtuelle) est toujours nul",
+                "Ils ont toujours les mêmes valeurs numériques",
+                "Ils sont tous deux composés de forces",
+                "Ils ont la même unité de mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une liaison parfaite, la puissance développée dans les mouvements autorisés est nulle : là où un mouvement existe, l'effort correspondant est nul."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une liaison pivot glissant parfaite d'axe x, quelles sont les deux composantes nulles dans le torseur d'action ?",
+              "options": [
+                "La force X et le moment L",
+                "La force Y et le moment M",
+                "La force Z et le moment N",
+                "Les moments M et N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mouvements libres étant la translation Tx et la rotation Rx, les composantes d'action associées (effort axial X et couple de torsion L) sont nulles."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Modélisation du frottement et lois de Coulomb",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se décompose l'action de contact R d'un solide 1 sur un solide 2 au point de contact avec frottement ?",
+              "options": [
+                "En une composante normale N et une composante tangentielle T",
+                "En une force centrifuge et une force centripète",
+                "En deux moments orthogonaux sans force",
+                "En une composante thermique et une composante acoustique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action de contact se décompose en un effort normal N (perpendiculaire au plan de contact) et un effort tangentiel T (force de frottement)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle inégalité caractérise l'état d'adhérence (sans glissement) selon la loi de Coulomb ?",
+              "options": [
+                "||T|| ≤ f0 · ||N||",
+                "||T|| > f0 · ||N||",
+                "||T|| = f0 · ||N|| + v",
+                "||N|| = f0 · ||T||"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant qu'il y a adhérence, la force tangentielle T reste inférieure ou égale au produit du coefficient d'adhérence f0 par l'effort normal N."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lorsqu'il y a glissement relatif effectif entre deux pièces, que vaut l'effort tangentiel de frottement T ?",
+              "options": [
+                "||T|| = f · ||N|| avec T opposé à la vitesse de glissement",
+                "||T|| = 0",
+                "||T|| < f · ||N||",
+                "||T|| est proportionnel au carré de la surface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En phase de glissement, la force de frottement atteint sa valeur maximale T = f · N et s'oppose rigoureusement au vecteur vitesse de glissement."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels paramètres influencent directement la valeur du coefficient de frottement f entre deux surfaces solides ?",
+              "options": [
+                "La nature des matériaux en contact",
+                "L'état de surface (rugosité) et la lubrification",
+                "La couleur externe des pièces",
+                "La surface géométrique apparente de contact (selon Coulomb)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le coefficient f dépend des matériaux en présence, de leur rugosité et de la présence d'huile ou graisse, mais est indépendant de la surface apparente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle relation relie l'angle de frottement φ au facteur de frottement f ?",
+              "options": [
+                "tan(φ) = f",
+                "sin(φ) = f",
+                "cos(φ) = f",
+                "φ = 2π · f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition géométrique du cône de frottement, le demi-angle au sommet φ vérifie tan(φ) = ||T|| / ||N|| = f."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où se situe l'action de contact globale R par rapport au cône de frottement lors de l'adhérence ?",
+              "options": [
+                "À l'intérieur ou sur la surface du cône de frottement",
+                "Strictement à l'extérieur du cône",
+                "Sur l'axe perpendiculaire au cône",
+                "À l'infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En condition d'adhérence (équilibre statique sans glissement), la réaction globale R reste confinée à l'intérieur du cône de frottement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le phénomène d'arc-boutement en mécanique ?",
+              "options": [
+                "Le blocage spontané d'un mouvement par adhérence quelle que soit l'intensité de la force motrice",
+                "La rupture brutale d'une pièce sous compression",
+                "L'usure prématurée d'un engrenage",
+                "Le glissement sans effort d'une tige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arc-boutement se produit lorsque la ligne d'action de l'effort moteur coupe la zone de contact à l'intérieur du cône de frottement, provoquant un coincement total."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel système mécanique exploite volontairement le frottement pour fonctionner ?",
+              "options": [
+                "Un frein à disque ou un embrayage",
+                "Un roulement à billes céramique",
+                "Un coussin d'air sustentateur",
+                "Une boîte de vitesses immergée dans l'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les freins et embrayages reposent sur l'adhérence et le frottement de garnitures pour transmettre un couple ou dissiper l'énergie cinétique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour de l'acier sur de l'acier lubrifié, quel ordre de grandeur a le coefficient de frottement f ?",
+              "options": [
+                "Environ 0,05 à 0,15",
+                "Environ 1,5 à 2,5",
+                "Environ 10 à 20",
+                "Exactement 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lubrification réduit fortement le frottement de l'acier, le faisant chuter de ~0,2-0,4 (à sec) à environ 0,05-0,15 (huilé)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du coefficient de frottement f ?",
+              "options": [
+                "Sans dimension (grandeur adimensionnelle)",
+                "Newton (N)",
+                "Newton-mètre (N·m)",
+                "Pascal (Pa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient f est le rapport de deux forces (T / N) : il s'agit donc d'un nombre sans dimension."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Résolution graphique de problèmes de statique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quoi sert l'échelle des forces dans une résolution graphique de statique ?",
+              "options": [
+                "À convertir les longueurs mesurées en millimètres en intensités réelles en newtons",
+                "À déterminer la masse volumique des solides",
+                "À modifier la vitesse d'affichage du logiciel",
+                "À calculer le coefficient de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle des forces (par ex. 1 mm pour 10 N) permet de représenter fidèlement la norme des vecteurs forces sur le papier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur quel dessin applique-t-on le tracé des droites d'action des forces pour trouver leur point de concours ?",
+              "options": [
+                "Sur le schéma mécanique à l'échelle des longueurs",
+                "Sur le dynamique des forces",
+                "Sur le graphe des liaisons",
+                "Sur le schéma électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lignes d'action sont positionnées sur le dessin du mécanisme (à l'échelle géométrique) pour déterminer leur intersection spatiale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment détermine-t-on le sens des vecteurs inconnus sur le dynamique d'un système à l'équilibre ?",
+              "options": [
+                "En parcourant le polygone fermé dans le sens imposé par la force connue",
+                "En orientant tous les vecteurs vers le haut",
+                "Au hasard, le signe étant rectifié à la fin",
+                "En mesurant la distance au centre de gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour que la somme vectorielle soit nulle, les flèches du dynamique fermé doivent se suivre « de la queue à la tête » dans un circuit continu."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels éléments géométriques sont nécessaires pour pouvoir résoudre graphiquement un solide soumis à trois forces ?",
+              "options": [
+                "Une force entièrement connue (direction, sens, norme)",
+                "Une force de direction connue mais de norme inconnue",
+                "Une force dont on ne connaît que le point d'application",
+                "L'âge du mécanisme"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La configuration classique soluble comporte une force entièrement connue, une deuxième de direction connue, et une troisième de point connu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode graphique emploie-t-on pour résoudre l'équilibre d'un solide soumis à quatre forces de droites d'action connues ?",
+              "options": [
+                "La méthode de Culmann (séparation en deux résultantes partielles concourantes)",
+                "Le tracé d'un diagramme de Nyquist",
+                "L'algorithme de Dijkstra",
+                "Le cercle de Mohr"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode de Culmann regroupe les 4 forces en deux systèmes de deux forces sécantes sur une droite commune appelée droite de Culmann."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie un dynamique des forces qui se referme en formant un segment aller-retour sur une même droite ?",
+              "options": [
+                "Les forces appliquées sont toutes colinéaires et s'équilibrent",
+                "Le problème est insoluble graphiquement",
+                "Il y a nécessairement un couple pur",
+                "Le mécanisme est en mouvement d'accélération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque les forces sont toutes portées par la même ligne d'action, le polygone se réduit à un segment de droite fermé (somme algébrique nulle)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une résolution graphique, si une longueur mesurée sur le dynamique est de 45 mm avec une échelle de 1 mm pour 5 N, que vaut la force ?",
+              "options": ["225 N", "9 N", "450 N", "20 N"],
+              "correctAnswers": [0],
+              "explanation": "La norme vaut F = 45 mm × 5 N/mm = 225 N."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la méthode graphique est-elle particulièrement appréciée en ingénierie préliminaire ?",
+              "options": [
+                "Elle donne une visualisation immédiate des efforts et limite les risques d'erreurs de signe",
+                "Elle évite de devoir mesurer les pièces",
+                "Elle fonctionne même sans échelle",
+                "Elle remplace les calculs de résistance des matériaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résolution graphique offre un contrôle visuel direct de l'équilibre et des sens des efforts, réduisant les erreurs de signe algébriques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que peut-on conclure si deux droites d'action de forces sont strictement parallèles dans un problème à trois forces ?",
+              "options": [
+                "La troisième force doit obligatoirement être parallèle aux deux premières",
+                "La troisième force est nulle",
+                "Le solide tourne à l'infini",
+                "Le système est hyperstatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si deux forces sont parallèles, leur point de concours est rejeté à l'infini : la troisième force doit impérativement être parallèle aux deux premières."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle règle géométrique garantit qu'un système de forces concourantes n'exerce aucun moment global au point de concours I ?",
+              "options": [
+                "Le bras de levier de chaque force par rapport au point I est nul",
+                "Le moment est maximal en I",
+                "Les forces s'annulent deux à deux",
+                "Le point I est au repos absolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque toutes les lignes d'action passent par I, la distance de I à chaque force est nulle (d = 0), donc la somme des moments en I est nulle."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Résolution analytique et systèmes d'équations d'équilibre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment projette-t-on une force d'intensité F faisant un angle θ avec l'axe horizontal x dans un repère cartésien ?",
+              "options": [
+                "Fx = F · cos(θ) et Fy = F · sin(θ)",
+                "Fx = F · sin(θ) et Fy = F · cos(θ)",
+                "Fx = F / cos(θ) et Fy = F / sin(θ)",
+                "Fx = F · tan(θ) et Fy = F"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le triangle rectangle formé par les composantes, la projection sur l'axe adjacent est Fx = F·cos(θ) et sur l'opposé Fy = F·sin(θ)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une résolution analytique plane, comment écrit-on l'équation d'équilibre des moments calculés en un point O ?",
+              "options": [
+                "Σ M_O = Σ (x_i · F_yi - y_i · F_xi) = 0",
+                "Σ M_O = Σ (F_xi + F_yi) = 0",
+                "Σ M_O = Σ (x_i · y_i) = 0",
+                "Σ M_O = Σ (F_xi / x_i) = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moment scalaire selon z d'une force F(Fx, Fy) appliquée en M(x, y) par rapport à O(0,0) est la composante en z du produit vectoriel : x·Fy - y·Fx."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si le calcul analytique d'une inconnue de liaison X_A donne un résultat numérique négatif (ex: -120 N), que cela signifie-t-il ?",
+              "options": [
+                "La force réelle est opposée au sens choisi arbitrairement lors du paramétrage initial",
+                "Le calcul est faux et doit être recommencé",
+                "Le solide est en train de se briser",
+                "La liaison n'exerce aucun effort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le signe négatif indique simplement que le vecteur force réel est orienté en sens contraire du sens positif supposé au départ."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles méthodes algébriques permettent de résoudre un système linéaire de trois équations à trois inconnues issu du PFS ?",
+              "options": [
+                "Méthode par substitution progressive",
+                "Méthode du pivot de Gauss",
+                "Règle de Cramer (déterminants)",
+                "Calcul d'une intégrale par parties"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La substitution, le pivot de Gauss et les déterminants de Cramer sont les méthodes standard de résolution des systèmes linéaires de la statique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que représente le degré d'hyperstatisme h d'un mécanisme dont les inconnues de liaison sont N_s et les équations indépendantes E_s ?",
+              "options": [
+                "h = N_s - E_s",
+                "h = N_s + E_s",
+                "h = E_s - N_s",
+                "h = N_s × E_s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le degré d'hyperstatisme h est la différence entre le nombre d'inconnues statiques inconnues (Ns) et le nombre d'équations de la statique indépendantes (Es)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que vaut le degré d'hyperstatisme h d'un système isostatique ?",
+              "options": ["h = 0", "h = 1", "h = 3", "h = 6"],
+              "correctAnswers": [0],
+              "explanation": "Un système isostatique a autant d'équations indépendantes que d'inconnues statiques : h = Ns - Es = 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lorsqu'un mécanisme comporte plusieurs pièces mobiles assemblées, quelle démarche analytique applique-t-on ?",
+              "options": [
+                "On isole successivement plusieurs pièces ou sous-ensembles judicieusement choisis",
+                "On applique le PFS uniquement au mécanisme complet sans démonter",
+                "On calcule uniquement la force du moteur",
+                "On ignore les liaisons intermédiaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isoler des pièces ou sous-ensembles successifs permet de faire apparaître les actions mutuelles internes et de déterminer toutes les inconnues."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle équation permet de trouver directement une inconnue de force verticale sans faire intervenir les forces horizontales ?",
+              "options": [
+                "L'équation de projection sur l'axe vertical : Σ Fy = 0",
+                "L'équation de projection sur l'axe horizontal : Σ Fx = 0",
+                "L'équation d'énergie potentielle",
+                "L'équation de conservation de la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projeter sur l'axe y élimine toutes les composantes purement horizontales (Fx), simplifiant immédiatement le calcul."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une poutre encastrée à son extrémité gauche et chargée à l'extrémité droite par une force verticale F, quel effort maximal subit l'encastrement ?",
+              "options": [
+                "Une force verticale F et un moment de flexion M = F · L",
+                "Uniquement une force verticale F",
+                "Uniquement un couple de torsion",
+                "Aucun effort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'encastrement (à distance L de la charge), la liaison reprend l'effort tranchant vertical F et le moment fléchissant maximal M = F·L."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que permet de vérifier le calcul du déterminant principal non nul du système d'équations de statique ?",
+              "options": [
+                "Que le système admet une solution unique (stabilité et isostatisme)",
+                "Que le matériau ne va pas fondre",
+                "Que le rendement est égal à 100 %",
+                "Que la gravité est bien orientée vers le bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un déterminant principal non nul garantit l'indépendance des équations et l'existence d'une solution unique pour les inconnues de liaison."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Applications industrielles et analyse de mécanismes à l'équilibre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans une clé dynamométrique utilisée pour serrer un boulon de culasse, quelle grandeur physique est contrôlée précisément ?",
+              "options": [
+                "Le couple de serrage (moment d'effort appliqué au boulon)",
+                "La vitesse de rotation de la clé",
+                "La température de l'écrou",
+                "L'allongement plastique du manche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clé dynamométrique mesure et limite le couple de serrage (en N·m) afin de garantir la tension correcte de la vis sans rupture."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel principe mécanique est utilisé dans un cric hydraulique pour soulever une lourde charge avec un faible effort manuel ?",
+              "options": [
+                "La multiplication de la force par le rapport des sections des pistons (principe de Pascal)",
+                "L'effet gyroscopique de la pompe",
+                "L'élasticité d'un ressort spirale",
+                "L'attraction électrostatique de l'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression p = F/S étant uniforme dans le fluide, un petit piston manuel produit une force décuplée sur un piston de levage de grande section."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi les pinces de préhension (sauterelles de bridage) sont-elles conçues pour franchir légèrement un point mort en fin de fermeture ?",
+              "options": [
+                "Pour assurer un verrouillage mécanique spontané irréversible en position fermée",
+                "Pour accélérer le mouvement d'ouverture",
+                "Pour réduire le frottement des axes",
+                "Pour limiter le coût de fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le franchissement du point mort met le mécanisme en arc-boutement géométrique, maintenant la pièce bridée même en cas de coupure d'énergie."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels paramètres dimensionnels d'une grue de chantier déterminent son couple de basculement maximal admissible ?",
+              "options": [
+                "La masse de la charge levée",
+                "La portée horizontale (distance entre le mât et la charge)",
+                "La masse des contrepoids situés sur la contre-flèche",
+                "La couleur du mât peint en jaune"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'équilibre au renversement dépend du moment de la charge (Masse × Portée) compensé par le moment stabilisant des contrepoids."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un système de frein à tambour automobile, quel phénomène peut amplifier la force de freinage sous l'effet de la rotation ?",
+              "options": [
+                "L'auto-serrage de la mâchoire primaire entraînée par le tambour",
+                "L'effet Doppler sonore",
+                "La dilatation thermique des ressorts de rappel",
+                "La supraconductivité des garnitures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rotation entraîne la mâchoire contre le tambour dans le sens du coincement, créant un effet d'auto-serrage augmentant l'effort de friction."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un contrepoids dans un ascenseur de passagers à traction par câble ?",
+              "options": [
+                "Équilibrer la masse de la cabine vide et une partie de la charge utile pour réduire la puissance moteur requise",
+                "Empêcher le câble de rouiller",
+                "Augmenter la vitesse maximale de chute libre",
+                "Supprimer le guidage par rails"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contrepoids compense la masse de la cabine plus 40 à 50 % de la charge nominale, minimisant le couple statique sur la poulie motrice."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un pont roulant d'atelier, quel organe mécanique permet de multiplier l'effort de levage du câble métallique ?",
+              "options": [
+                "Un système de moufle et palan à poulies",
+                "Un variateur de fréquence électronique",
+                "Un accouplement élastique",
+                "Une crémaillère de guidage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouflage à plusieurs brins de câble divise la tension dans chaque brin par le nombre de brins porteurs, multipliant la capacité de levage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les structures de ponts métalliques et de grues sont-elles assemblées sous forme de treillis triangulés ?",
+              "options": [
+                "Le triangle est une figure géométrique indéformable assurant la rigidité avec des barres travaillant en traction/compression pure",
+                "Le triangle utilise plus de métal pour être plus lourd",
+                "Les triangles captent mieux le vent",
+                "C'est une obligation purement esthétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La triangulation assure l'isostatisme et la rigidité géométrique intrinsèque, les éléments travaillant quasi exclusivement en traction ou compression."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un étau d'usinage, quel avantage apporte l'utilisation d'une vis de serrage à filet trapézoïdal à faible pas ?",
+              "options": [
+                "Une grande force de serrage pour un faible couple manuel et l'irréversibilité du serrage",
+                "Une ouverture instantanée en un dixième de tour",
+                "L'absence totale de contact entre filet et écrou",
+                "La diminution du poids de l'étau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le faible pas offre un fort avantage mécanique (multiplicateur d'effort) et garantit le non-desserrage spontané de la pièce sous les vibrations d'usinage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle condition de statique doit impérativement respecter un robot manipulateur industriel pour ne pas basculer lors du déplacement rapide d'une charge lourde ?",
+              "options": [
+                "Le centre de gravité global du robot avec sa charge projeté au sol doit rester à l'intérieur du polygone de sustentation",
+                "Le robot doit avoir un nombre impair d'articulations",
+                "La charge doit être en plastique",
+                "Le bras doit rester parfaitement vertical en permanence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour garantir la stabilité statique sans basculement, la projection verticale du centre de gravité (ou la résultante gravito-inertielle) doit rester dans le polygone d'appui."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

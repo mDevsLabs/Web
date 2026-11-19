@@ -25,10 +25,7 @@ import {
   MAI_SEARCH_SAFETY_LEVELS,
   MAI_SEARCH_SOURCE_KEYS,
 } from "@/lib/search/sources";
-import {
-  normalizeThemePreference,
-  THEME_PREFERENCES,
-} from "@/lib/theme/preference";
+import { normalizeThemePreference } from "@/lib/theme/preference";
 
 // La limite de customInstructions dépend du forfait : le schéma est donc
 // construit par requête. Avant, `z.string().max(4000)` était figé ici comme

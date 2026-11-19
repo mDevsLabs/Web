@@ -3,6 +3,7 @@ import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Suspense } from "react";
 import { AppDialogHost } from "@/components/common/app-dialog-host";
 import { PlatformBridge } from "@/components/common/platform-bridge";
+import { SuiteCommandBarHost } from "@/components/common/suite-command-bar-host";
 import { ThemePreferenceSync } from "@/components/common/theme-preference-sync";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -103,7 +104,7 @@ export default function RootLayout({
     >
       <head>
         <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: "Required"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: "Script inline bloquant indispensable pour synchroniser la theme-color et la classe de thème avant le premier rendu du DOM, éliminant tout clignotement ou FOUC (Flash of Unstyled Content)."
           dangerouslySetInnerHTML={{
             __html: THEME_COLOR_SCRIPT,
           }}
@@ -125,6 +126,9 @@ export default function RootLayout({
             <ThemePreferenceSync />
             {children}
             <AppDialogHost />
+            <Suspense fallback={null}>
+              <SuiteCommandBarHost />
+            </Suspense>
             <Toaster
               position="top-center"
               theme="system"

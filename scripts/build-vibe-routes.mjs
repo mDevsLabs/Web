@@ -22,7 +22,7 @@
  */
 
 import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 
 const RACINE = resolve(import.meta.dirname, "..");
 const BASE = resolve(RACINE, "app/(chat)/vibe");

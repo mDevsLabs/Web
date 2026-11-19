@@ -21,7 +21,6 @@ import {
   type OptionSelectorItem,
 } from "@/components/settings/option-selector";
 import {
-  ImageSizeOptionSelector,
   mapVoicesForModel,
   useVoicePresets,
   VoiceOptionSelector,
@@ -62,7 +61,6 @@ import {
 import {
   exceedsCustomInstructionsProductLimit,
   getCustomInstructionsEffectiveMax,
-  getTierCustomInstructionsMax,
   getTierLimits,
 } from "@/lib/plans/tier-limits";
 import { useEconomy } from "@/lib/resources/economy";
@@ -141,10 +139,10 @@ export function PreferencesTab() {
   const [defaultAudioVoice, setDefaultAudioVoice] = useState<string>("");
   const [defaultAudioSpeed, setDefaultAudioSpeed] = useState<number>(1.0);
 
-  const [defaultAgentId, setDefaultAgentId] = useState<string>("none");
+  const [_defaultAgentId, setDefaultAgentId] = useState<string>("none");
   const { favorite: favoriteApp, setFavorite: setFavoriteApp } =
     useFavoriteApp();
-  const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
+  const [_showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
   const [dictationLanguage, setDictationLanguage] = useState(
     AUTO_DICTATION_LANGUAGE
   );
@@ -177,7 +175,7 @@ export function PreferencesTab() {
     fetcher,
     { dedupingInterval: 60_000 }
   );
-  const imageModels: SharedModel[] =
+  const _imageModels: SharedModel[] =
     imageModelsData?.data || imageModelsData?.models || [];
 
   const { data: audioModelsData } = useSWR(
@@ -435,7 +433,7 @@ export function PreferencesTab() {
     }
   }, [customTopP, savePreference]);
 
-  const handleCreationModeChange = useCallback(
+  const _handleCreationModeChange = useCallback(
     (mode: CreationMode) => {
       const prev = defaultCreationMode;
       setDefaultCreationMode(mode);
@@ -447,7 +445,7 @@ export function PreferencesTab() {
     [defaultCreationMode, savePreference]
   );
 
-  const handleImageModelChange = useCallback(
+  const _handleImageModelChange = useCallback(
     (model: string) => {
       const prev = defaultImageModel;
       setDefaultImageModel(model);
@@ -459,7 +457,7 @@ export function PreferencesTab() {
     [defaultImageModel, savePreference]
   );
 
-  const handleImageSizeChange = useCallback(
+  const _handleImageSizeChange = useCallback(
     (size: string) => {
       const prev = defaultImageSize;
       setDefaultImageSize(size);

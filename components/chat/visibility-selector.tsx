@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
+import type { VisibilityType } from "@/lib/chat/visibility";
 import { cn } from "@/lib/utils";
 import {
   CheckCircleFillIcon,
@@ -24,7 +25,7 @@ import {
   LockIcon,
 } from "./icons";
 
-export type VisibilityType = "private" | "public";
+export type { VisibilityType } from "@/lib/chat/visibility";
 
 const visibilities: Array<{
   id: VisibilityType;

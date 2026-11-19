@@ -13,6 +13,9 @@ Le SDK officiel Python pour l'écosystème **mDevsLabs** fournit un wrapper mode
 
 ## Installation
 
+> [!NOTE]
+> **Publication en cours** : Le package Python `mdevslabs-python` est actuellement en cours de finalisation et de publication prochaine sur PyPI. En attendant sa disponibilité publique sur le registre officiel, vous pouvez utiliser directement l'API REST HTTP ou cloner le dépôt source pour une installation locale via `pip install -e .`.
+
 ```bash
 pip install mdevslabs-python
 ```

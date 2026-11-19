@@ -15,7 +15,7 @@ import {
   findWakie,
   finishTask,
   listMessages,
-  listUsersWithWakies,
+  listUsersWithDueTasks,
   taskConversation,
 } from "@/lib/wakies/queries";
 
@@ -70,7 +70,9 @@ async function handleTick(request: Request): Promise<Response> {
   // claim, et non à la fabrication de la réponse.
   const workerId = `cron-${randomUUID().slice(0, 8)}`;
 
-  const comptes = await listUsersWithWakies();
+  // Découverte ciblée : seuls les comptes ayant des tâches réellement dues
+  // ou en file sont interrogés, évitant d'itérer sur toute la base d'utilisateurs.
+  const comptes = await listUsersWithDueTasks();
   const resumes: { taskId: string; userId: string }[] = [];
   const echecs: { taskId: string; message: string; userId: string }[] = [];
   // Finalisations refusées parce que le bail avait changé de porteur : le message

@@ -455,7 +455,7 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
   try {
-    await connection`ALTER TABLE "Notification" ADD CONSTRAINT "Notification_type_check" CHECK ("type" IN ('ai_response','project_created','mcp_created','mcp_access_request','news','planning_task_completed','quota_warning','agent_run_finished','agent_run_failed','agent_approval_required','agent_user_input_required','project_member_joined','vibe_like','vibe_repost','vibe_reply','vibe_mention','vibe_quote','vibe_follow','vibe_dm','vibe_ai_digest','vibe_system','wakies_reply'))`;
+    await connection`ALTER TABLE "Notification" ADD CONSTRAINT "Notification_type_check" CHECK ("type" IN ('ai_response','project_created','mcp_created','mcp_access_request','news','planning_task_completed','quota_warning','agent_run_finished','agent_run_failed','agent_approval_required','agent_user_input_required','project_member_joined','vibe_like','vibe_repost','vibe_reply','vibe_mention','vibe_quote','vibe_follow','vibe_dm','vibe_ai_digest','vibe_system','wakies_reply','quizzly_reminder','quizzly_league','quizzly_gift','quizzly_streak'))`;
   } catch (error) {
     noteIgnoredStep(error);
   }
@@ -1020,6 +1020,11 @@ const runMigrate = async () => {
   }
   try {
     await connection`CREATE INDEX IF NOT EXISTS "BlacklineSettings_userId_idx" ON "BlacklineSettings" ("userId")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "MaintenanceWindow" ADD COLUMN IF NOT EXISTS "accessCode" varchar(100) DEFAULT '' NOT NULL`;
   } catch (error) {
     noteIgnoredStep(error);
   }

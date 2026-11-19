@@ -159,7 +159,7 @@ export default function TermsPage() {
                     Compte Free (Gratuit)
                   </span>
                   <span className="text-slate-600 mt-1 block">
-                    1 000 requêtes / mois. Les appels à l&apos;API{" "}
+                    500 requêtes / semaine. Les appels à l&apos;API{" "}
                     <code className="bg-slate-100 px-1 rounded font-mono text-[11px]">
                       /v1/chat/completions
                     </code>{" "}
@@ -174,8 +174,8 @@ export default function TermsPage() {
                   </span>
                   <span className="text-slate-600 mt-1 block">
                     Accès complet à tous les modèles (locaux mAI et modèles
-                    Cloud partenaires) dans la limite des quotas alloués (5 000,
-                    25 000 et 100 000 requêtes/mois). Débits prioritaires et
+                    Cloud partenaires) dans la limite des quotas alloués (1 500,
+                    3 000 et 7 500 requêtes/semaine). Débits prioritaires et
                     bande passante dédiée.
                   </span>
                 </div>

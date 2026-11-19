@@ -2,15 +2,83 @@ import { type NextRequest, NextResponse } from "next/server";
 import { API_ERROR_STATUS } from "./lib/api/error-codes";
 import { DEFAULT_MESSAGES_FR } from "./lib/api/error-messages";
 import { isLiveSessionToken } from "./lib/auth/token-liveness";
-import { MAI_SESSION_COOKIE } from "./lib/constants";
+import {
+  MAI_MAINTENANCE_BYPASS_COOKIE,
+  MAI_SESSION_COOKIE,
+} from "./lib/constants";
+import { isMaintenanceBypassValid } from "./lib/maintenance/maintenance-bypass";
+import {
+  estExempteDeMaintenance,
+  MESSAGE_MAINTENANCE_API,
+} from "./lib/maintenance/maintenance-policy";
+import { getActiveMaintenance } from "./lib/maintenance/maintenance-service";
 import { estRouteApiAutonome } from "./lib/security/proxy-policy";
 import { estPagePartageWakie } from "./lib/wakies/shared/sharing";
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   if (pathname.startsWith("/ping")) {
     return new Response("pong", { status: 200 });
+  }
+
+  // ─────────────────────────────────────────────
+  // 🔒 VÉRIFICATION DE LA PÉRIODE DE MAINTENANCE
+  // ─────────────────────────────────────────────
+  const isMaintenancePage =
+    pathname === "/maintenance" ||
+    (base !== "" && pathname === `${base}/maintenance`);
+
+  const activeMaintenance = await getActiveMaintenance();
+
+  if (activeMaintenance) {
+    const bypassToken = request.cookies.get(
+      MAI_MAINTENANCE_BYPASS_COOKIE
+    )?.value;
+    const isBypassed = isMaintenanceBypassValid(
+      bypassToken,
+      activeMaintenance.id,
+      activeMaintenance.accessCode
+    );
+
+    // Si la maintenance est active, non bypassée et que la route n'est pas exemptée :
+    if (!isBypassed && !estExempteDeMaintenance(pathname, base)) {
+      if (pathname.startsWith("/api/")) {
+        const retryAfterSeconds = Math.max(
+          0,
+          Math.ceil(
+            (new Date(activeMaintenance.endAt).getTime() - Date.now()) / 1000
+          )
+        );
+        return NextResponse.json(
+          {
+            code: "service_unavailable",
+            maintenance: {
+              description: activeMaintenance.description,
+              endAt: activeMaintenance.endAt,
+              name: activeMaintenance.name,
+              startAt: activeMaintenance.startAt,
+            },
+            message: MESSAGE_MAINTENANCE_API,
+            status: 503,
+          },
+          {
+            headers: {
+              "Retry-After": String(retryAfterSeconds),
+            },
+            status: 503,
+          }
+        );
+      }
+
+      // Toute tentative de navigation vers n'importe quelle URL est redirigée vers /maintenance
+      return NextResponse.redirect(new URL(`${base}/maintenance`, request.url));
+    }
+  } else if (isMaintenancePage) {
+    // Si aucune maintenance n'est en cours et que l'utilisateur tente d'aller sur /maintenance,
+    // on le redirige vers l'accueil.
+    return NextResponse.redirect(new URL(`${base}/`, request.url));
   }
 
   // BotID (Vercel) : le script de vérification du SDK client est servi sous ce
@@ -121,7 +189,6 @@ export async function proxy(request: NextRequest) {
   // 401 les API, au lieu de laisser entrer dans une application où plus rien
   // ne fonctionne et d'où l'on ne peut pas sortir.
   const token = isLiveSessionToken(rawToken) ? rawToken : null;
-  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const isApiRoute = pathname.startsWith("/api/");
 
   // 1. Utilisateur non authentifié tentant d'accéder à une route privée
@@ -169,6 +236,6 @@ export const config = {
     "/api/:path*",
     "/login",
     "/register",
-    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+    "/((?!_next/static|_next/image|favicon\\.ico|favicon\\.png|logo\\.png|preview\\.png|sitemap\\.xml|robots\\.txt|models/|blackline/|images/|icons/|demo-assets/|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|mp3|mp4|webm|woff2?|ttf|eot)$).*)",
   ],
 };

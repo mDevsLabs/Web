@@ -9,19 +9,18 @@
  */
 
 import type { Hono } from "npm:hono@4";
-import { extractToken, getDb, verifyToken } from "./config.ts";
+import { extractToken, verifyToken } from "./config.ts";
 import type { RegisterMultiFn } from "./vibe-common.ts";
 import { MAIAgentFleet } from "./vibe-mai-fleet.ts";
 import {
   getToolDeclarations,
-  invalidateUserToolsCache,
   loadUserEnabledTools,
   MAI_CATALOG_VERSION,
   MAI_TOOLS_CATALOG,
 } from "./vibe-tools.ts";
 
 export function registerVibeMAISettingsRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 2. mAI QUOTAS

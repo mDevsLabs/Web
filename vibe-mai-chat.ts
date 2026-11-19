@@ -280,7 +280,7 @@ async function blocPersonnalisationCompte(
 }
 
 export function registerVibeMAIChatRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // 1. mAI CHAT & TOOL EXECUTION
@@ -596,6 +596,15 @@ export function registerVibeMAIChatRoutes(
 
       let reply = `Bonjour @${username}! Je suis mAI. Comment puis-je vous aider?`;
       let providerResponded = false;
+      // Déclarés à la portée du handler : la branche « outil » (else if) atteint
+      // elle aussi le décompte des tokens, et une déclaration locale à la branche
+      // fournisseur levait un ReferenceError à l'exécution.
+      let capturedUsage: {
+        completion_tokens?: number;
+        prompt_tokens?: number;
+        total_tokens?: number;
+      } | null = null;
+      let capturedReasoning = "";
 
       let toolResult: any = null;
       if (toolToRun) {
@@ -726,8 +735,6 @@ export function registerVibeMAIChatRoutes(
             : "") +
           personnalisation;
 
-        let capturedUsage: any = null;
-        let capturedReasoning = "";
         if (openRouterApiKey) {
           for (const candidate of modelsToTry) {
             try {

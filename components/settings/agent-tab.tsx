@@ -392,6 +392,147 @@ export function AgentTab() {
       </Section>
 
       <Section
+        description="Confort d'affichage du mode Agent, mémorisé pour votre compte. Ces réglages ne changent rien aux droits de l'Agent : ils orientent seulement ce que vous voyez."
+        icon={SparklesIcon}
+        title="Confort d'affichage"
+      >
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <span className="text-xs font-semibold">
+              Densité de l'historique
+            </span>
+            <OptionSelector
+              items={[
+                {
+                  description:
+                    "Masque les totaux par état et les tokens par run : le journal reste lisible.",
+                  id: "compact",
+                  label: "Compacte",
+                },
+                {
+                  description:
+                    "Affiche les totaux et les tokens de chaque exécution.",
+                  id: "detailed",
+                  label: "Détaillée",
+                },
+              ]}
+              onChange={(id) =>
+                update(
+                  {
+                    preferences: {
+                      timelineDensity: id as "compact" | "detailed",
+                    },
+                  },
+                  () =>
+                    update({
+                      preferences: {
+                        timelineDensity: settings.preferences.timelineDensity,
+                      },
+                    })
+                )
+              }
+              value={settings.preferences.timelineDensity}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <span className="text-xs font-semibold">
+              Mois par défaut dans l'historique
+            </span>
+            <OptionSelector
+              items={[
+                {
+                  description: "Les 7 derniers jours.",
+                  id: "7",
+                  label: "7 jours",
+                },
+                {
+                  description: "Les 30 derniers jours.",
+                  id: "30",
+                  label: "30 jours",
+                },
+              ]}
+              onChange={(id) =>
+                update(
+                  { preferences: { activityDays: Number(id) as 7 | 30 } },
+                  () =>
+                    update({
+                      preferences: {
+                        activityDays: settings.preferences.activityDays,
+                      },
+                    })
+                )
+              }
+              value={String(settings.preferences.activityDays)}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <span className="text-xs font-semibold">Plan de tâches</span>
+            <OptionSelector
+              items={[
+                {
+                  description:
+                    "Le plan n'apparaît que lorsque vous demandez « Tâches ».",
+                  id: "off",
+                  label: "Sur demande",
+                },
+                {
+                  description:
+                    "Le plan s'affiche dès le début de chaque run, sans action.",
+                  id: "on",
+                  label: "Dès l'ouverture",
+                },
+              ]}
+              onChange={(id) =>
+                update({ preferences: { showPlan: id === "on" } }, () =>
+                  update({
+                    preferences: { showPlan: settings.preferences.showPlan },
+                  })
+                )
+              }
+              value={settings.preferences.showPlan ? "on" : "off"}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <span className="text-xs font-semibold">
+              Notification navigateur en fin de run
+            </span>
+            <OptionSelector
+              items={[
+                {
+                  description: "Aucune notification, même hors onglet.",
+                  id: "off",
+                  label: "Désactivée",
+                },
+                {
+                  description:
+                    "Avertit quand le run se termine, même onglet en arrière-plan.",
+                  id: "on",
+                  label: "Activée",
+                },
+              ]}
+              onChange={(id) => {
+                if (
+                  id === "on" &&
+                  typeof Notification !== "undefined" &&
+                  Notification.permission === "default"
+                ) {
+                  void Notification.requestPermission();
+                }
+                update({ preferences: { notifyBrowser: id === "on" } }, () =>
+                  update({
+                    preferences: {
+                      notifyBrowser: settings.preferences.notifyBrowser,
+                    },
+                  })
+                );
+              }}
+              value={settings.preferences.notifyBrowser ? "on" : "off"}
+            />
+          </div>
+        </div>
+      </Section>
+
+      <Section
         description="Ce que votre compte peut réellement utiliser. Une pastille verte signale une fonction active, une pastille grise une fonction indisponible — pour votre forfait, ou parce qu'elle est éteinte côté serveur. Ces pastilles sont une lecture, pas un réglage : pour choisir ce qu'Agent peut employer, utilisez « Outils » ci-dessus."
         icon={SparklesIcon}
         title="Disponibilité"
@@ -434,7 +575,10 @@ export function AgentTab() {
               icon={ActivityIcon}
               title="Activité Agent"
             >
-              <AgentActivityPanel />
+              <AgentActivityPanel
+                defaultDays={settings.preferences.activityDays}
+                densite={settings.preferences.timelineDensity}
+              />
             </Section>
           ) : null}
           {flags["agent.scheduleHistory"] ? (

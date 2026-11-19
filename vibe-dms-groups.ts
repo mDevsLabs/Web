@@ -17,7 +17,7 @@ import {
 } from "./vibe-dms-core.ts";
 
 export function registerDMGroupRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // ═════════════════════════════════════════════════════════════

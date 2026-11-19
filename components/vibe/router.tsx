@@ -43,46 +43,13 @@ import NextLink from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
 
-/**
- * Racine de Vibe dans l'application hôte. Toute conversion de chemin passe par
- * cette constante — jamais une chaîne en dur dispersée dans les pages.
- */
-export const VIBE_BASE_PATH = "/vibe";
+import {
+  stripVibeBasePath,
+  toVibePath,
+  VIBE_BASE_PATH,
+} from "@/lib/vibe/routes";
 
-/**
- * Convertit un chemin Vibe (« relatif ») en URL absolue (« /vibe/... »).
- *
- * Les chemins déjà préfixés par `/vibe` sont renvoyés tels quels : un composant
- * peut donc passer indifféremment les deux formes sans double préfixe.
- *
- * La racine se réduit à `/vibe`, jamais `/vibe/` : les deux répondent, mais le
- * second déclenche une redirection de Next et laisse une entrée d'historique en
- * trop dans une application qui navigue beaucoup.
- */
-export function toVibePath(to: string): string {
-  if (!to) {
-    return VIBE_BASE_PATH;
-  }
-  // URL absolue ou protocole externe : on ne touche à rien (mailto:, https:).
-  if (/^[a-z][a-z0-9+.-]*:/i.test(to) || to.startsWith("//")) {
-    return to;
-  }
-  const [chemin, reste] = splitOnce(to, "?");
-  const [base, hash] = splitOnce(reste ?? "", "#");
-  const suffixe = (base ? `?${base}` : "") + (hash ? `#${hash}` : "");
-
-  if (chemin === VIBE_BASE_PATH || chemin === `${VIBE_BASE_PATH}/`) {
-    return `${VIBE_BASE_PATH}${suffixe}`;
-  }
-  if (chemin.startsWith(`${VIBE_BASE_PATH}/`)) {
-    return `${chemin}${suffixe}`;
-  }
-  const normalise = chemin.startsWith("/") ? chemin : `/${chemin}`;
-  // `/` est la racine de Vibe : `/vibe/` serait une redirection pour rien.
-  const absolu =
-    normalise === "/" ? VIBE_BASE_PATH : `${VIBE_BASE_PATH}${normalise}`;
-  return `${absolu}${suffixe}`;
-}
+export { stripVibeBasePath, toVibePath, VIBE_BASE_PATH };
 
 /**
  * Base publique de l'hôte (mode démo sous `/demo`), posée par `env` dans
@@ -124,7 +91,7 @@ export function toVibeHref(to: string): string {
 }
 
 /** Isole chemin / query / hash sans regex coûteuse : Vibe construit ces chaînes à la main. */
-function splitOnce(
+function _splitOnce(
   value: string,
   separateur: string
 ): [string, string | undefined] {
@@ -132,22 +99,6 @@ function splitOnce(
   return i === -1
     ? [value, undefined]
     : [value.slice(0, i), value.slice(i + 1)];
-}
-
-/**
- * Retrait du préfixe `/vibe` : les composants Vibe comparent des chemins
- * relatifs (`/`, `/explore`, `/@marie`). `/vibe` et `/vibe/` se réduisent
- * tous deux à `/`, sinon `location.pathname === '/'` échouerait sur la racine
- * de Vibe — le cas le plus fréquent de l'application.
- */
-export function stripVibeBasePath(pathname: string): string {
-  if (pathname === VIBE_BASE_PATH) {
-    return "/";
-  }
-  if (pathname.startsWith(`${VIBE_BASE_PATH}/`)) {
-    return pathname.slice(VIBE_BASE_PATH.length);
-  }
-  return pathname;
 }
 
 /** Objet `location` au format react-router, reconstruit depuis l'App Router. */

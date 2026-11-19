@@ -1,16 +1,19 @@
 /**
- * Client HTTP pour le backend mAI (Val Town).
- * Base : https://mai.val.run
+ * Client HTTP des appels d'authentification et de compte du Site.
+ *
+ * DEPUIS L'ISSUE #10 : ces appels passent par le relais BFF
+ * (`/api/site/backend/**`, route `app/(chat)/api/site/backend/[...path]`), qui
+ * lit le cookie httpOnly `mai_session_token` et pose lui-même l'en-tête
+ * `Authorization`. Le jeton de session ne transite plus par le renderer :
+ * aucune fonction de ce module ne prend ni ne renvoie de jeton.
  */
 
-export const MAI_API_BASE =
-  process.env.MAI_API_URL?.replace(/\/$/, "") || "https://mai.val.run";
+export const SITE_BACKEND_BASE = "/api/site/backend";
 
 export type MaiAuthResponse = {
   success: boolean;
   status?: string; // "verification_required"
   email?: string;
-  token?: string;
   tier?: string;
   error?: string;
 };
@@ -61,7 +64,6 @@ export {
 export type MaiVerifyCodeResponse = {
   success: boolean;
   tier?: string;
-  token?: string;
   error?: string;
 };
 
@@ -88,19 +90,16 @@ function errorMessage(data: Record<string, unknown>, fallback: string): string {
   return fallback;
 }
 
-async function request<T>(
-  path: string,
-  options: RequestInit & { token?: string } = {}
-): Promise<T> {
-  const { token, headers: extraHeaders, ...rest } = options;
+async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
+  const { headers: extraHeaders, ...rest } = options;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...(extraHeaders as Record<string, string> | undefined),
   };
-  if (token) headers.Authorization = `Bearer ${token}`;
 
-  const res = await fetch(`${MAI_API_BASE}${path}`, {
+  const res = await fetch(`${SITE_BACKEND_BASE}${path}`, {
     ...rest,
+    credentials: "same-origin",
     headers,
   });
 
@@ -170,19 +169,18 @@ export async function resendVerificationCode(params: {
   });
 }
 
-export async function getUsage(token: string): Promise<MaiUsage> {
-  return request<MaiUsage>("/usage", {
-    method: "GET",
-    token,
-  });
+/** Déconnexion : le relais efface le cookie httpOnly côté serveur. */
+export async function logout(): Promise<{ success: boolean }> {
+  return request<{ success: boolean }>("/logout", { method: "POST" });
 }
 
-export async function getCloudStorage(
-  token: string
-): Promise<MaiCloudStorageUsage> {
+export async function getUsage(): Promise<MaiUsage> {
+  return request<MaiUsage>("/usage", { method: "GET" });
+}
+
+export async function getCloudStorage(): Promise<MaiCloudStorageUsage> {
   const data = await request<MaiCloudStorageUsage>("/cloud/storage", {
     method: "GET",
-    token,
   });
 
   // Limites canoniques depuis lib/tiers.ts (Free 10GiB, Plus 20GiB, Pro 40GiB, Max 60GiB)
@@ -205,29 +203,22 @@ export async function getCloudStorage(
   };
 }
 
-export async function verifyCode(
-  token: string,
-  code: string
-): Promise<MaiVerifyCodeResponse> {
+export async function verifyCode(code: string): Promise<MaiVerifyCodeResponse> {
   return request<MaiVerifyCodeResponse>("/verify-code", {
     body: JSON.stringify({ code }),
     method: "POST",
-    token,
   });
 }
 
-export async function updateProfile(
-  token: string,
-  params: {
-    username?: string;
-    email?: string;
-    phone?: string;
-    password?: string;
-    currentPassword?: string;
-    newsletter?: boolean;
-    notify_limits?: boolean;
-  }
-): Promise<{
+export async function updateProfile(params: {
+  username?: string;
+  email?: string;
+  phone?: string;
+  password?: string;
+  currentPassword?: string;
+  newsletter?: boolean;
+  notify_limits?: boolean;
+}): Promise<{
   success: boolean;
   username?: string;
   tier?: string;
@@ -240,34 +231,29 @@ export async function updateProfile(
   return request("/update-profile", {
     body: JSON.stringify(params),
     method: "POST",
-    token,
   });
 }
 
 export async function uploadAvatar(
-  token: string,
   file: File
 ): Promise<{ success: boolean; avatarUrl?: string; error?: string }> {
   const formData = new FormData();
   formData.append("avatar", file);
 
-  const res = await fetch(`${MAI_API_BASE}/upload-avatar`, {
+  const res = await fetch(`${SITE_BACKEND_BASE}/upload-avatar`, {
     body: formData,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    credentials: "same-origin",
     method: "POST",
   });
 
-  try {
-    const data = await res.json();
-    if (!res.ok) {
-      throw new Error(data.error || "Erreur HTTP " + res.status);
-    }
-    return data;
-  } catch (err: any) {
-    throw new MaiApiError(err.message, res.status);
+  const data = await parseJsonSafe(res);
+  if (!res.ok) {
+    throw new MaiApiError(
+      errorMessage(data, `Erreur HTTP ${res.status}`),
+      res.status
+    );
   }
+  return data as { success: boolean; avatarUrl?: string; error?: string };
 }
 
 export type MaiAudioUsage = {
@@ -280,9 +266,6 @@ export type MaiAudioUsage = {
   weeklyLimit: number;
 };
 
-export async function getAudioUsage(token: string): Promise<MaiAudioUsage> {
-  return request<MaiAudioUsage>("/v1/audio/usage", {
-    method: "GET",
-    token,
-  });
+export async function getAudioUsage(): Promise<MaiAudioUsage> {
+  return request<MaiAudioUsage>("/v1/audio/usage", { method: "GET" });
 }

@@ -6,10 +6,7 @@ import {
   MCP_TEMPLATE_LIST,
 } from "@/lib/mcp-templates/catalog";
 import { mcpLogoSrc } from "@/lib/mcp-templates/logo";
-import {
-  SKILL_TEMPLATE_IDS,
-  SKILL_TEMPLATE_LIST,
-} from "@/lib/skill-templates/catalog";
+import { SKILL_TEMPLATE_IDS } from "@/lib/skill-templates/catalog";
 
 // Inventaire des vrais logos MCP : chaque identifiant du catalogue doit avoir
 // un asset réel dans public/plugins/<id>.svg (source Simple Icons, licence CC0).

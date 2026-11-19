@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { toast } from "sonner";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { planAttachmentBatch } from "@/lib/chat/attachment-budget";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
@@ -24,6 +25,13 @@ export interface UseChatAttachmentsOptions {
   setAttachments: Dispatch<SetStateAction<Attachment[]>>;
   textareaRef?: RefObject<HTMLTextAreaElement | null>;
 }
+
+export type UploadFailure = {
+  /** Message d'erreur explicite, en français (jamais un refus silencieux). */
+  message: string;
+  /** Nom du fichier dont l'envoi a échoué. */
+  name: string;
+};
 
 export function useChatAttachments({
   attachments,
@@ -42,6 +50,10 @@ export function useChatAttachments({
   const reservedFilesRef = useRef(0);
   const reservedBytesRef = useRef(0);
   const [uploadQueue, setUploadQueue] = useState<string[]>([]);
+  // Échecs d'envoi VISIBLES : un fichier dont l'envoi échoue ne doit pas
+  // disparaître comme s'il avait été retiré volontairement (issue #47). Il
+  // reste affiché avec son message d'erreur jusqu'au retrait explicite.
+  const [uploadFailures, setUploadFailures] = useState<UploadFailure[]>([]);
 
   // Handoff Cloud -> Chat via sessionStorage
   useEffect(() => {
@@ -89,6 +101,14 @@ export function useChatAttachments({
       const formData = new FormData();
       formData.append("file", file);
 
+      const recordFailure = (message: string) => {
+        toast.error(message);
+        setUploadFailures((current) => [
+          ...current.filter((entry) => entry.name !== file.name),
+          { message, name: file.name },
+        ]);
+      };
+
       try {
         const response = await fetch(apiEndpoints.fileUpload(), {
           body: formData,
@@ -107,10 +127,15 @@ export function useChatAttachments({
             url,
           };
         }
-        const { error } = await response.json();
-        toast.error(error || "Échec de l'envoi du fichier");
+        // L'enveloppe d'erreur unifiée porte `message` (et parfois `error`) :
+        // lire le bon champ, sinon l'utilisateur ne voit jamais la cause
+        // explicite renvoyée par le serveur (stockage absent, quota…).
+        const payload = await response.json().catch(() => null);
+        recordFailure(
+          extractApiErrorMessage(payload) || "Échec de l'envoi du fichier"
+        );
       } catch {
-        toast.error(
+        recordFailure(
           "Impossible de téléverser le fichier, veuillez réessayer !"
         );
       }
@@ -347,6 +372,14 @@ export function useChatAttachments({
     [attachments, setAttachments]
   );
 
+  // Retrait explicite d'un échec d'envoi : seul l'utilisateur décide de
+  // masquer un fichier dont l'envoi a échoué.
+  const dismissUploadFailure = useCallback((name: string) => {
+    setUploadFailures((current) =>
+      current.filter((entry) => entry.name !== name)
+    );
+  }, []);
+
   const resetUploadedBytes = useCallback(() => {
     uploadedBytesRef.current = 0;
     uploadedFileSizesRef.current.clear();
@@ -356,11 +389,13 @@ export function useChatAttachments({
   }, []);
 
   return {
+    dismissUploadFailure,
     fileInputRef,
     handleCloudAttachments,
     handleFileChange,
     removeAttachment,
     resetUploadedBytes,
+    uploadFailures,
     uploadQueue,
   };
 }

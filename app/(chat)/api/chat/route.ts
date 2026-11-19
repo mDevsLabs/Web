@@ -126,6 +126,7 @@ export async function POST(request: Request) {
       agentId: (body as any).agentId ?? null,
       customInstructions: body.customInstructions,
       enabledTools: body.enabledTools,
+      ghostHistory: body.ghostHistory ?? null,
       id: body.id,
       isGhostMode: body.isGhostMode ?? false,
       message: (body.message as any) ?? null,
@@ -141,6 +142,7 @@ export async function POST(request: Request) {
       skillParams: body.skillParams,
       tags: body.tags,
       temperatureOverride: body.temperatureOverride,
+      truncateAfterMessageId: body.truncateAfterMessageId ?? null,
     });
 
     // 2 bis. Compteur d'usage des commandes personnalisées.
@@ -361,7 +363,10 @@ export async function POST(request: Request) {
       );
       return error.toResponse();
     }
-    console.error("Unhandled error in chat API:", error);
+    console.error(
+      `[chat-api] rejected guard=unhandled chatId=${requestBody?.id ?? "inconnu"} errorName=${(error as Error)?.name ?? "Error"}`,
+      error
+    );
     return new ChatbotError("offline:chat").toResponse();
   }
 }
@@ -378,17 +383,28 @@ export async function DELETE(request: Request) {
   if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const { user: maiUser, userId } = session;
+  const { userId, user } = session;
 
   const chat = await getChatById({ id });
   if (!chat) {
-    return new ChatbotError("not_found:chat").toResponse();
+    // Idempotence : si la conversation a déjà été supprimée, renvoyer 200
+    return Response.json({ id, success: true }, { status: 200 });
   }
 
-  if (!chatOwnerMatches({ chatUserId: chat.userId, userId })) {
+  const isOwner =
+    chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: user.email,
+      userId,
+      username: (user as { username?: string | null }).username ?? null,
+    }) ||
+    (user.email && chat.userId === user.email) ||
+    (user.id && chat.userId === user.id);
+
+  if (!isOwner) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 
   const deletedChat = await deleteChatById({ id });
-  return Response.json(deletedChat, { status: 200 });
+  return Response.json(deletedChat ?? { id, success: true }, { status: 200 });
 }

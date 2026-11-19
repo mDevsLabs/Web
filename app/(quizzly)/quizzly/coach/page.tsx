@@ -22,6 +22,9 @@ export default async function CoachPage({
     conversation?: string | string[];
     question?: string | string[];
     quiz?: string | string[];
+    sheet?: string | string[];
+    subject?: string | string[];
+    title?: string | string[];
   }>;
 }) {
   const params = await searchParams;
@@ -30,6 +33,9 @@ export default async function CoachPage({
       conversationId={lireParam(params.conversation)}
       questionId={lireParam(params.question)}
       quizId={lireParam(params.quiz)}
+      sheetId={lireParam(params.sheet)}
+      sheetSubject={lireParam(params.subject)}
+      sheetTitle={lireParam(params.title)}
     />
   );
 }

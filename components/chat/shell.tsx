@@ -43,7 +43,7 @@ export function ChatShell() {
   const router = useRouter();
   const isChatRoute = pathname === "/" || pathname?.startsWith("/chat");
   const { mode, setMode } = useAgentMode();
-  const { flags, isError: isFlagsError, tier: flagsTier } = useAgentFlags();
+  const { flags, tier: flagsTier } = useAgentFlags();
   // Tier indépendant de /api/agent/flags : useSettings est déjà chargé par le
   // compositeur (quota). Un échec de l'un des deux canaux ne doit plus forcer
   // un retour silencieux à Chat pour un abonné payant — le serveur arbitre.

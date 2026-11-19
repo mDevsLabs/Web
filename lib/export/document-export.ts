@@ -149,32 +149,74 @@ function buildInlineRuns(
 
   const walk = (
     tokens: Token[],
-    style: {
+    initialStyle: {
       bold?: boolean;
       italic?: boolean;
       strike?: boolean;
       code?: boolean;
     }
   ) => {
-    // Lien courant : le href capturé à link_open est rappelé à link_close.
+    let currentBold = Boolean(initialStyle.bold);
+    let currentItalic = Boolean(initialStyle.italic);
+    let currentStrike = Boolean(initialStyle.strike);
+    const currentCode = Boolean(initialStyle.code);
     let openHref: string | null = null;
+
     for (const token of tokens) {
+      if (token.type === "strong_open") {
+        currentBold = true;
+        continue;
+      }
+      if (token.type === "strong_close") {
+        currentBold = false;
+        continue;
+      }
+      if (token.type === "em_open") {
+        currentItalic = true;
+        continue;
+      }
+      if (token.type === "em_close") {
+        currentItalic = false;
+        continue;
+      }
+      if (token.type === "s_open") {
+        currentStrike = true;
+        continue;
+      }
+      if (token.type === "s_close") {
+        currentStrike = false;
+        continue;
+      }
+      if (token.type === "link_open" && token.attrs) {
+        const attr = token.attrs.find(([k]) => k === "href");
+        openHref = typeof attr?.[1] === "string" ? attr[1] : "";
+        currentItalic = true;
+        continue;
+      }
+      if (token.type === "link_close") {
+        currentItalic = Boolean(initialStyle.italic);
+        if (openHref) {
+          runs.push({ text: ` (${openHref})` });
+          openHref = null;
+        }
+        continue;
+      }
       if (token.type === "text" && token.content) {
         for (const segment of takePageMarkSegments(token.content, marks)) {
           if (!segment.text) {
             continue;
           }
           const run: Record<string, unknown> = { text: segment.text };
-          if (style.bold) {
+          if (currentBold) {
             run.bold = true;
           }
-          if (style.italic) {
+          if (currentItalic) {
             run.italics = true;
           }
-          if (style.strike) {
+          if (currentStrike) {
             run.strike = true;
           }
-          if (style.code) {
+          if (currentCode) {
             run.font = DOCX_STYLES.codeFont;
             run.shading = { fill: DOCX_STYLES.codeBackground };
           } else if (segment.font) {
@@ -209,30 +251,12 @@ function buildInlineRuns(
         runs.push({ break: 1, text: "" });
         continue;
       }
-      if (token.type === "link_open" && token.attrs) {
-        const attr = token.attrs.find(([k]) => k === "href");
-        openHref = typeof attr?.[1] === "string" ? attr[1] : "";
-        continue;
-      }
-      if (token.type === "link_close") {
-        // Dégradation propre : l'URL est rappelée entre parenthèses après le
-        // texte du lien (pas de champ hyperlink Word fragile).
-        if (openHref) {
-          runs.push({ text: ` (${openHref})` });
-          openHref = null;
-        }
-        continue;
-      }
       if (token.children) {
         walk(token.children, {
-          ...style,
-          bold: style.bold || token.type === "strong_open",
-          code: style.code || token.type === "code_inline",
-          italic:
-            style.italic ||
-            token.type === "em_open" ||
-            token.type === "link_open",
-          strike: style.strike || token.type === "s_open",
+          bold: currentBold,
+          code: currentCode,
+          italic: currentItalic,
+          strike: currentStrike,
         });
       }
     }
@@ -527,6 +551,8 @@ type InlineRun = {
   font: PageFont | null;
   text: string;
   tone: PageMarkAttrs["tone"];
+  bold?: boolean;
+  italic?: boolean;
 };
 
 type ExportBlock =
@@ -550,33 +576,67 @@ function inlineRuns(
     return [];
   }
   const runs: InlineRun[] = [];
+  let isBold = false;
+  let isItalic = false;
+
   const push = (next: InlineRun) => {
     if (!next.text) {
       return;
     }
     const last = runs.at(-1);
-    if (last && last.font === next.font && last.tone === next.tone) {
+    if (
+      last &&
+      last.font === next.font &&
+      last.tone === next.tone &&
+      last.bold === next.bold &&
+      last.italic === next.italic
+    ) {
       last.text += next.text;
       return;
     }
     runs.push(next);
   };
+
   for (const token of children) {
+    if (token.type === "strong_open") {
+      isBold = true;
+      continue;
+    }
+    if (token.type === "strong_close") {
+      isBold = false;
+      continue;
+    }
+    if (token.type === "em_open") {
+      isItalic = true;
+      continue;
+    }
+    if (token.type === "em_close") {
+      isItalic = false;
+      continue;
+    }
     if (token.type === "code_inline") {
       const top = marks.at(-1);
       push({
+        bold: isBold,
         font: top?.font ?? null,
+        italic: isItalic,
         text: token.content,
         tone: top?.tone ?? null,
       });
     } else if (token.type === "text") {
       for (const segment of takePageMarkSegments(token.content, marks)) {
-        push(segment);
+        push({
+          ...segment,
+          bold: isBold,
+          italic: isItalic,
+        });
       }
     } else if (token.type === "softbreak" || token.type === "hardbreak") {
       const top = marks.at(-1);
       push({
+        bold: isBold,
         font: top?.font ?? null,
+        italic: isItalic,
         text: "\n",
         tone: top?.tone ?? null,
       });
@@ -585,14 +645,20 @@ function inlineRuns(
       if (alt) {
         const top = marks.at(-1);
         push({
+          bold: isBold,
           font: top?.font ?? null,
+          italic: isItalic,
           text: alt,
           tone: top?.tone ?? null,
         });
       }
     } else if (token.children) {
       for (const run of inlineRuns(token.children, marks)) {
-        push(run);
+        push({
+          ...run,
+          bold: isBold || run.bold,
+          italic: isItalic || run.italic,
+        });
       }
     }
   }
@@ -756,6 +822,26 @@ export function markdownToText(markdown: string): string {
 function pdfSafe(value: string): string {
   let out = "";
   for (const char of value) {
+    if (char === "œ") {
+      out += "oe";
+      continue;
+    }
+    if (char === "Œ") {
+      out += "OE";
+      continue;
+    }
+    if (char === "æ") {
+      out += "ae";
+      continue;
+    }
+    if (char === "Æ") {
+      out += "AE";
+      continue;
+    }
+    if (char === "«" || char === "»") {
+      out += '"';
+      continue;
+    }
     const code = char.codePointAt(0) ?? 0;
     if (code === 0x20_18 || code === 0x20_19) {
       out += "'";
@@ -817,9 +903,14 @@ function writePdfRuns(
     return;
   }
   visible.forEach((run, index) => {
+    const effectiveWeight: "bold" | "italic" | "regular" = run.bold
+      ? "bold"
+      : run.italic
+        ? "italic"
+        : weight;
     doc
       .fillColor(run.tone ? `#${PAGE_TONE_HEX[run.tone]}` : "#1A1A1A")
-      .font(pdfFontName(run.font, weight))
+      .font(pdfFontName(run.font, effectiveWeight))
       .fontSize(size)
       .text(pdfSafe(run.text), {
         continued: index < visible.length - 1,

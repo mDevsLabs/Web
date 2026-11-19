@@ -1,19 +1,42 @@
 import { contextBridge, ipcRenderer } from "electron";
 import type { IpcRendererEvent } from "electron";
 
+export interface AboutInfo {
+  version: string;
+  appName: string;
+  channel: string;
+  electronVersion: string;
+  nodeVersion: string;
+  chromiumVersion: string;
+  platform: string;
+  arch: string;
+}
+
+/** Résultat du contrôle de mise à jour — jamais l'URL du binaire (issue #28). */
+export interface AboutUpdateResult {
+  hasUpdate: boolean;
+  currentVersion: string;
+  latestVersion?: string;
+  releaseName?: string;
+  releaseNotes?: string;
+  publishedAt?: string;
+  fileName?: string;
+  fileSize?: number;
+  updateId?: string;
+  error?: string;
+}
+
+export interface AboutDownloadResult {
+  success: boolean;
+  filePath?: string;
+  error?: string;
+}
+
 export interface AboutBridge {
-  getInfo: () => Promise<{
-    version: string;
-    appName: string;
-    channel: string;
-    electronVersion: string;
-    nodeVersion: string;
-    chromiumVersion: string;
-    platform: string;
-    arch: string;
-  }>;
-  checkUpdates: () => Promise<any>;
-  downloadUpdate: (downloadUrl: string, fileName: string) => Promise<any>;
+  getInfo: () => Promise<AboutInfo>;
+  checkUpdates: () => Promise<AboutUpdateResult>;
+  /** Le renderer ne transmet qu'un identifiant opaque, jamais une URL. */
+  downloadUpdate: (updateId: string) => Promise<AboutDownloadResult>;
   openInstaller: (filePath: string) => Promise<boolean>;
   openExternal: (url: string) => Promise<void>;
   onDownloadProgress: (
@@ -24,8 +47,8 @@ export interface AboutBridge {
 const bridge: AboutBridge = {
   getInfo: () => ipcRenderer.invoke("about:get-info"),
   checkUpdates: () => ipcRenderer.invoke("about:check-updates"),
-  downloadUpdate: (downloadUrl: string, fileName: string) =>
-    ipcRenderer.invoke("about:download-update", { downloadUrl, fileName }),
+  downloadUpdate: (updateId: string) =>
+    ipcRenderer.invoke("about:download-update", { updateId }),
   openInstaller: (filePath: string) => ipcRenderer.invoke("about:open-installer", filePath),
   openExternal: (url: string) => ipcRenderer.invoke("about:open-external", url),
   onDownloadProgress: (callback) => {

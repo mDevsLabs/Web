@@ -71,6 +71,7 @@ export async function GET(_req: NextRequest) {
 
     const token = authHeader ? authHeader.replace(/^Bearer\s+/i, "") : null;
     const result = await upstreamJson<{ data?: any[] }>({
+      next: { revalidate: 60, tags: ["speech-models"] },
       path: "/v1/models/speech",
       token,
     });
@@ -108,11 +109,18 @@ export async function GET(_req: NextRequest) {
       });
     }
 
-    return NextResponse.json({
-      data: models,
-      models,
-      object: "list",
-    });
+    return NextResponse.json(
+      {
+        data: models,
+        models,
+        object: "list",
+      },
+      {
+        headers: {
+          "Cache-Control": "private, max-age=60, stale-while-revalidate=120",
+        },
+      }
+    );
   } catch (error) {
     console.error("Erreur API models/speech:", error);
     return NextResponse.json(

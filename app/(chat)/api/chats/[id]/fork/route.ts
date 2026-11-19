@@ -27,7 +27,7 @@ export async function POST(
   if (!session) {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
-  const { user, userId } = session;
+  const { userId } = session;
 
   const body = await request.json().catch(() => ({}));
   const bodySchema = z.object({

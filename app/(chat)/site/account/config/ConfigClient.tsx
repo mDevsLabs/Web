@@ -44,7 +44,6 @@ export default function ConfigClient() {
     setModelsRetry,
     setSelectedKeyRef,
     setSelectedModel,
-    token,
     userKeys,
   } = useConfigCatalog();
 
@@ -70,7 +69,7 @@ export default function ConfigClient() {
   };
 
   const handleVerifyConnection = async () => {
-    if (!token) {
+    if (!isAuthenticated) {
       toast.error("Connectez-vous pour utiliser une clé API.");
       return;
     }
@@ -105,7 +104,6 @@ export default function ConfigClient() {
         }),
         credentials: "include",
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         method: "POST",

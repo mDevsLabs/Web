@@ -244,7 +244,7 @@ export default function NewTicketClient() {
         <div className="border-b border-slate-100 p-6 sm:p-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h1 className="flex items-center gap-3 text-2xl font-black tracking-tight text-slate-900">
+              <h2 className="flex items-center gap-3 text-2xl font-black tracking-tight text-slate-900">
                 {isBug ? (
                   <>
                     <Bug aria-hidden="true" className="h-7 w-7 text-red-500" />{" "}
@@ -259,7 +259,7 @@ export default function NewTicketClient() {
                     Créer une nouvelle demande
                   </>
                 )}
-              </h1>
+              </h2>
               <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-500 sm:text-sm">
                 Un e-mail sera transmis à l&apos;équipe mAI. Vous pourrez suivre
                 la demande et échanger directement avec elle.

@@ -21,7 +21,7 @@ export default function ToolsClient({
   const [activeTab, setActiveTab] = useState<ToolsTab>(initialTab);
   const [searchQuery, setSearchQuery] = useState("");
   // Le portail des boutons d'action n'existe qu'après montage (côté client).
-  const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
+  const [_actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
@@ -77,7 +77,10 @@ export default function ToolsClient({
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-full flex-1 px-3 pt-4 pb-10 sm:px-6">
+      <section
+        aria-label="Contenu des outils"
+        className="mx-auto w-full max-w-full flex-1 px-3 pt-4 pb-10 sm:px-6"
+      >
         {activeTab === "plugins" ? (
           <PluginsPanel searchQuery={searchQuery} />
         ) : null}
@@ -85,7 +88,7 @@ export default function ToolsClient({
         {activeTab === "skills" ? (
           <SkillsPanel searchQuery={searchQuery} />
         ) : null}
-      </main>
+      </section>
     </div>
   );
 }

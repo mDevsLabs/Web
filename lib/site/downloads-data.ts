@@ -251,3 +251,14 @@ export const LOCAL_MODELS: LocalModel[] = [
     ollamaCommand: "ollama run mDevsLabs/mAI-1-Light",
   },
 ];
+
+export const PLATFORM_DEVICE_ICONS: Record<
+  string,
+  { src: string; alt: string }
+> = {
+  Android: { alt: "Android", src: "/site/devices/google.png" },
+  iOS: { alt: "iOS", src: "/site/devices/apple.png" },
+  Linux: { alt: "Linux", src: "/site/devices/linux.png" },
+  macOS: { alt: "macOS", src: "/site/devices/apple.png" },
+  Windows: { alt: "Windows", src: "/site/devices/microsoft.png" },
+};

@@ -1,4 +1,3 @@
-import type { IconProps } from "@mdevs/icons";
 import {
   BrainIcon,
   FolderIcon,

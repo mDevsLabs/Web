@@ -90,7 +90,7 @@ function aqiLevelFor(value: number | undefined): AirQualityLevel | undefined {
   return EUROPEAN_AQI_LEVELS.find((candidate) => value <= candidate.max);
 }
 
-function describeEuropeanAqi(value: number | undefined): string | undefined {
+function _describeEuropeanAqi(value: number | undefined): string | undefined {
   return aqiLevelFor(value)?.label;
 }
 

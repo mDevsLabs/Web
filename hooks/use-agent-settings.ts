@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import type { AgentFlags } from "@/lib/agent/flags";
 import type {
+  AgentPreferences,
   AgentSettings,
   ToolCategory,
   ToolPermission,
@@ -39,6 +40,7 @@ export type AgentSettingsPatch = {
   defaultModel?: string | null;
   defaultProjectId?: string | null;
   enabledCategories?: ToolCategory[] | null;
+  preferences?: Partial<AgentPreferences>;
   reasoningLevel?: ReasoningLevel;
   toolPolicies?: Record<string, ToolPermission>;
 };
@@ -72,7 +74,17 @@ export function useAgentSettings() {
             current
               ? {
                   ...current,
-                  settings: { ...current.settings, ...(patch as object) },
+                  settings: {
+                    ...current.settings,
+                    ...(patch as object),
+                    // Les préférences sont fusionnées (patch partiel), pas remplacées.
+                    preferences: patch.preferences
+                      ? {
+                          ...current.settings.preferences,
+                          ...patch.preferences,
+                        }
+                      : current.settings.preferences,
+                  },
                 }
               : current,
           { revalidate: true }

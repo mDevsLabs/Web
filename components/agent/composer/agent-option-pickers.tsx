@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  BrainIcon,
-  CheckIcon,
-  FolderIcon,
-  GaugeIcon,
-  WrenchIcon,
-} from "@mdevs/icons";
+import { CheckIcon, FolderIcon, WrenchIcon } from "@mdevs/icons";
 import { useState } from "react";
 import {
   Popover,
@@ -22,17 +16,7 @@ import {
   type AgentToolFamily,
   TOOL_CATEGORY_TO_FAMILY,
 } from "@/lib/agent/tools/selector/families";
-import {
-  AGENT_AUTONOMY_DESCRIPTIONS,
-  AGENT_AUTONOMY_LABELS,
-  type AgentAutonomy,
-  type ToolCategory,
-} from "@/lib/agent/types";
-import {
-  REASONING_LEVEL_DESCRIPTIONS,
-  REASONING_LEVEL_LABELS,
-  type ReasoningLevel,
-} from "@/lib/ai/registry/reasoning";
+import type { ToolCategory } from "@/lib/agent/types";
 import { cn } from "@/lib/utils";
 
 const FAMILY_TO_CATEGORY = Object.fromEntries(

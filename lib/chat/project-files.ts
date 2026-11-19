@@ -80,7 +80,7 @@ function isTextLike(contentType: string, fileName: string): boolean {
 export function decideProjectFileInjection(
   file: ProjectFileLike,
   caps: Pick<ModelCapabilities, "file" | "image">,
-  budget: InjectionBudget = DEFAULT_INJECTION_BUDGET
+  _budget: InjectionBudget = DEFAULT_INJECTION_BUDGET
 ): FileInjectionDecision {
   const hasExtractedText =
     file.extractionStatus === "ready" &&

@@ -5,7 +5,6 @@ import { dbReady, getDb } from "@/lib/db/queries";
 import {
   wakiesConversation,
   wakiesMemory,
-  wakiesMessage,
   wakiesPage,
   wakiesSpace,
   wakiesTask,

@@ -1,0 +1,2683 @@
+{
+  "id": "3e-emc-02",
+  "year": "3e",
+  "subject": "emc",
+  "title": "La citoyenneté démocratique",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Voter et participer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le droit de vote et les conditions pour voter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À partir de quel âge un citoyen français acquiert-il le droit de vote ?",
+              "options": ["16 ans", "18 ans", "21 ans", "25 ans"],
+              "correctAnswers": [1],
+              "explanation": "En France, la majorité civile et électorale est fixée à 18 ans depuis la loi du 5 juillet 1974."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle condition de nationalité est exigée pour voter à l'élection présidentielle française ?",
+              "options": [
+                "Posséder la nationalité française",
+                "Résider en France depuis au moins 5 ans",
+                "Être ressortissant de l'Union européenne",
+                "Avoir un parent de nationalité française"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les élections nationales (présidentielle, législatives), il est indispensable de posséder la nationalité française."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur quel registre officiel un citoyen doit-il être inscrit pour pouvoir glisser son bulletin dans l'urne ?",
+              "options": [
+                "Le registre du commerce",
+                "La liste électorale de sa commune",
+                "Le casier judiciaire national",
+                "Le livret de famille communal"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'inscription sur la liste électorale de la commune de résidence est obligatoire pour pouvoir participer aux scrutins."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle démarche civique effectuée à 16 ans permet l'inscription automatique sur les listes électorales à 18 ans ?",
+              "options": [
+                "L'adhésion à un parti politique",
+                "La demande de permis de conduire",
+                "Le recensement citoyen obligatoire",
+                "Le passage de l'ASSR 2 au collège"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le recensement citoyen en mairie à 16 ans permet l'inscription automatique sur les listes électorales à la majorité."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conditions sont indispensables pour être électeur en France lors des élections nationales ?",
+              "options": [
+                "Avoir la nationalité française",
+                "Avoir atteint l'âge de 18 ans",
+                "Être propriétaire d'un bien immobilier",
+                "Jouir de ses droits civils et politiques"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Il faut être majeur, de nationalité française et ne pas avoir été privé de ses droits civiques par un tribunal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « jouir de ses droits civils et politiques » ?",
+              "options": [
+                "Payer obligatoirement l'impôt sur le revenu",
+                "Ne pas avoir été condamné à une peine privative du droit de vote",
+                "Avoir obligatoirement exercé un mandat municipal",
+                "Posséder un diplôme de l'enseignement supérieur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un juge peut suspendre le droit de vote d'un citoyen en cas de condamnation pénale pour faute grave ou délit majeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle démarche doit accomplir un citoyen majeur lorsqu'il déménage dans une nouvelle ville ?",
+              "options": [
+                "S'inscrire sur la liste électorale de sa nouvelle commune",
+                "Faire une demande écrite au président de la République",
+                "Payer une taxe de réinscription civique",
+                "Attendre trois ans avant de pouvoir voter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de déménagement, le citoyen doit déclarer son changement d'adresse pour voter dans sa nouvelle commune."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel document personnel envoyé par la mairie atteste de l'inscription sur la liste électorale ?",
+              "options": [
+                "Le passeport biométrique",
+                "L'extrait d'acte de naissance",
+                "La carte électorale",
+                "Le livret militaire"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La carte électorale mentionne le bureau de vote et le numéro d'inscription de l'électeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on voter sans présenter sa carte électorale dans un bureau de vote ?",
+              "options": [
+                "Non, c'est formellement interdit par la loi",
+                "Oui, si l'on présente une pièce d'identité officielle et que l'on est inscrit",
+                "Oui, mais uniquement sur décision d'un commissaire de police",
+                "Non, sauf si deux témoins signent une décharge"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La pièce d'identité est obligatoire dans les communes de plus de 1 000 habitants ; la carte électorale est conseillée mais non exigée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel principe électoral garantit que chaque électeur dispose exactement du même poids politique ?",
+              "options": [
+                "Le suffrage censitaire",
+                "Le principe « un citoyen, une voix »",
+                "Le droit de double vote pour les notables",
+                "Le suffrage capacitaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le suffrage universel repose sur l'égalité absolue de tous les citoyens : chaque électeur dispose d'une seule voix."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'histoire de la conquête du suffrage en France",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelait-on le suffrage qui réservait le droit de vote aux citoyens payant un impôt minimal ?",
+              "options": [
+                "Le suffrage censitaire",
+                "Le suffrage universel",
+                "Le suffrage paritaire",
+                "Le suffrage corporatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffrage censitaire liait le droit de vote au paiement d'un impôt direct appelé le cens sous la monarchie constitutionnelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En quelle année le suffrage universel masculin a-t-il été proclamé en France ?",
+              "options": ["1789", "1848", "1870", "1914"],
+              "correctAnswers": [1],
+              "explanation": "La Deuxième République a institué le suffrage universel masculin par le décret du 5 mars 1848."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel régime politique a instauré le suffrage universel masculin en 1848 ?",
+              "options": [
+                "Le Premier Empire",
+                "La Deuxième République",
+                "La Troisième République",
+                "La monarchie de Juillet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le gouvernement provisoire de la Deuxième République abolit le cens électoral en 1848."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quelle année les femmes ont-elles enfin obtenu le droit de vote et d'éligibilité en France ?",
+              "options": ["1918", "1936", "1944", "1968"],
+              "correctAnswers": [2],
+              "explanation": "L'ordonnance du 21 avril 1944 signée par Charles de Gaulle à Alger accorde le droit de vote aux femmes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles étapes majeures ont marqué l'élargissement du suffrage en France ?",
+              "options": [
+                "L'adoption du suffrage universel masculin en 1848",
+                "Le droit de vote accordé aux femmes en 1944",
+                "L'instauration définitive du vote obligatoire sous la Ve République",
+                "L'abaissement de la majorité électorale à 18 ans en 1974"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le vote n'a jamais été rendu obligatoire en France, contrairement aux trois autres étapes majeures d'émancipation démocratique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qui dirigeait le gouvernement provisoire qui a accordé le droit de vote aux femmes en 1944 ?",
+              "options": [
+                "Jean Moulin",
+                "Le général Charles de Gaulle",
+                "Léon Blum",
+                "Philippe Pétain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le général de Gaulle présidait le Gouvernement provisoire de la République française lors de la signature de l'ordonnance de 1944."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel président de la République a fait abaisser l'âge de la majorité de 21 à 18 ans en 1974 ?",
+              "options": [
+                "Georges Pompidou",
+                "Valéry Giscard d'Estaing",
+                "François Mitterrand",
+                "Jacques Chirac"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Valéry Giscard d'Estaing a fait adopter cette réforme moderne dès le début de son septennat en 1974."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel était l'âge requis pour voter en France avant la réforme de 1974 ?",
+              "options": ["19 ans", "20 ans", "21 ans", "25 ans"],
+              "correctAnswers": [2],
+              "explanation": "Avant juillet 1974, la majorité civile et le droit de vote étaient fixés à 21 ans accomplis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En quelle année les femmes françaises ont-elles voté pour la première fois ?",
+              "options": [
+                "En 1945, lors des élections municipales",
+                "En 1944, lors d'un plébiscite",
+                "En 1958, lors du référendum constitutionnel",
+                "En 1965, lors de la présidentielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Françaises ont voté pour la toute première fois le 29 avril 1945 lors des élections municipales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi disait-on que le suffrage universel était incomplet entre 1848 et 1944 ?",
+              "options": [
+                "Parce que les jeunes de 25 ans ne votaient pas",
+                "Parce que la moitié de la population adulte, les femmes, en était exclue",
+                "Parce que les paysans n'avaient pas de carte d'identité",
+                "Parce que seuls les officiers militaires pouvaient voter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tant que les femmes n'avaient pas le droit de vote, le suffrage ne pouvait pas être qualifié de véritablement universel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le déroulement d'une élection démocratique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quoi sert obligatoirement l'isoloir dans un bureau de vote ?",
+              "options": [
+                "À vérifier l'adresse de l'électeur",
+                "À garantir le secret absolu du choix de l'électeur",
+                "À compter le nombre d'enveloppes distribuées",
+                "À faire signer la liste d'émargement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'isoloir protège l'électeur des pressions et préserve la confidentialité totale de son vote."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi l'urne électorale est-elle obligatoirement transparente en France ?",
+              "options": [
+                "Pour vérifier qu'elle est vide au début du vote et éviter les fraudes",
+                "Pour permettre aux électeurs de voir la couleur des enveloppes",
+                "Pour capter la lumière du bureau de vote",
+                "Pour distinguer les votes blancs des autres bulletins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transparence de l'urne permet de s'assurer qu'aucun bulletin n'a été inséré avant l'ouverture du scrutin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase rituelle prononce le président du bureau après l'introduction de l'enveloppe dans l'urne ?",
+              "options": [
+                "« Bulletin accepté ! »",
+                "« A voté ! »",
+                "« Voix enregistrée ! »",
+                "« Mission accomplie ! »"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La formule solennelle « A voté ! » signale publiquement que le geste citoyen a été accompli avec succès."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que doit obligatoirement faire l'électeur après avoir glissé son enveloppe dans l'urne ?",
+              "options": [
+                "Rendre sa carte d'identité aux assesseurs",
+                "Signer la liste d'émargement en face de son nom",
+                "Déclarer son vote à voix haute",
+                "Sortir immédiatement de la commune"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'émargement manuscrit atteste que le citoyen a exercé son droit de vote pour ce tour de scrutin."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles règles garantissent la sincérité et la sécurité d'une élection démocratique ?",
+              "options": [
+                "Le passage obligatoire dans l'isoloir",
+                "Le dépouillement public des bulletins à la clôture",
+                "L'obligation de voter publiquement à main levée",
+                "La présence de scrutateurs et d'assesseurs bénévoles"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le secret du vote dans l'isoloir et la transparence du dépouillement public sont des piliers de la démocratie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le comptage des voix à la fin du scrutin électoral ?",
+              "options": [
+                "L'investiture",
+                "Le dépouillement",
+                "Le plébiscite",
+                "L'amendement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le dépouillement consiste à ouvrir les urnes, vérifier les enveloppes et compter les suffrages exprimés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qui a le droit d'assister au dépouillement des votes dans un bureau électoral ?",
+              "options": [
+                "Tous les citoyens et électeurs qui le souhaitent",
+                "Seuls les candidats et leurs équipes de campagne",
+                "Uniquement les forces de l'ordre et les magistrats",
+                "Exclusivement les journalistes titulaires d'une carte de presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dépouillement est public : tout citoyen peut y assister calmement pour contrôler la régularité des opérations."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel cas un bulletin de vote est-il déclaré nul lors du dépouillement ?",
+              "options": [
+                "S'il comporte des annotations manuscrites, des ratures ou des dessins",
+                "S'il a été plié soigneusement en quatre dans l'enveloppe",
+                "S'il provient d'un électeur votant pour la première fois",
+                "S'il a été déposé dans l'urne avant midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un bulletin raturé, déchiré ou portant un signe distinctif est considéré comme nul pour préserver l'anonymat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un vote blanc lors d'une élection démocratique ?",
+              "options": [
+                "Une enveloppe vide ou contenant une feuille blanche sans inscription",
+                "Un bulletin portant le nom d'un candidat non officiel",
+                "Une absence physique de l'électeur dans le bureau",
+                "Un bulletin avec un slogan humoristique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vote blanc indique que l'électeur a accompli son devoir mais ne souhaite choisir aucun des candidats proposés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui compose traditionnellement le bureau de vote le jour d'une élection ?",
+              "options": [
+                "Un président, au moins deux assesseurs et un secrétaire",
+                "Uniquement le maire et le préfet du département",
+                "Quatre policiers assermentés par la préfecture",
+                "Trois juges du tribunal de proximité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bureau de vote est composé d'un président (souvent le maire ou un adjoint), d'assesseurs et d'un secrétaire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les différents modes de scrutin en France",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le mode de scrutin utilisé pour élire le président de la République française ?",
+              "options": [
+                "Le scrutin de liste proportionnel à un tour",
+                "Le scrutin majoritaire uninominal à deux tours",
+                "Le tirage au sort parmi les parlementaires",
+                "Le scrutin plurinominal indirect"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le président est élu au scrutin majoritaire uninominal à deux tours au suffrage universel direct."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « suffrage direct » ?",
+              "options": [
+                "Les électeurs votent directement pour désigner leurs représentants",
+                "Les citoyens élisent des délégués qui choisissent les représentants",
+                "Le vote se fait uniquement par Internet en temps réel",
+                "Le candidat élu est nommé directement par décret ministériel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au suffrage direct, les citoyens désignent directement eux-mêmes l'élu sans passer par un collège intermédiaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle assemblée nationale française est élue au suffrage universel indirect ?",
+              "options": [
+                "L'Assemblée nationale",
+                "Le Sénat",
+                "Le Parlement européen",
+                "Le Conseil régional"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les sénateurs sont élus par un collège de grands électeurs composé principalement d'élus locaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qui constitue l'immense majorité des « grands électeurs » qui élisent les sénateurs ?",
+              "options": [
+                "Les délégués des conseils municipaux (maires et conseillers)",
+                "Les chefs d'entreprises privées de plus de 50 salariés",
+                "Les préfets et sous-préfets de région",
+                "Les magistrats de la Cour de cassation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Environ 95 % des grands électeurs sénatoriaux sont des représentants des conseils municipaux."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles élections se déroulent au suffrage universel direct en France ?",
+              "options": [
+                "L'élection présidentielle",
+                "Les élections législatives",
+                "Les élections sénatoriales",
+                "Les élections municipales"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les sénatoriales sont indirectes ; les municipales, législatives et la présidentielle sont directes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le principe fondamental d'un scrutin majoritaire ?",
+              "options": [
+                "Le candidat ayant réuni le plus de voix remporte l'élection ou le siège",
+                "Chaque liste reçoit un nombre de sièges proportionnel à ses voix",
+                "Tous les partis obtiennent automatiquement le même nombre d'élus",
+                "Les sièges sont attribués par tirage au sort public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au scrutin majoritaire, le candidat qui obtient la majorité des suffrages exprimés l'emporte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le grand avantage démocratique du scrutin proportionnel ?",
+              "options": [
+                "Il reflète fidèlement la diversité des courants politiques selon leurs scores",
+                "Il garantit qu'un seul parti détient 100 % des sièges",
+                "Il raccourcit la durée de la campagne électorale à une journée",
+                "Il dispense les partis de rédiger un programme politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proportionnelle accorde à chaque parti un nombre de sièges conforme au pourcentage de voix obtenues."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour quelle élection la France applique-t-elle le scrutin proportionnel à l'échelle nationale ?",
+              "options": [
+                "Les élections européennes",
+                "L'élection présidentielle",
+                "L'élection des députés à l'Assemblée nationale",
+                "L'élection des conseillers départementaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les représentants français au Parlement européen sont élus au scrutin proportionnel de liste à un tour."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la durée du mandat du président de la République française depuis la réforme du quinquennat ?",
+              "options": ["4 ans", "5 ans", "6 ans", "7 ans"],
+              "correctAnswers": [1],
+              "explanation": "Le quinquennat présidentiel de 5 ans a été approuvé par référendum en 2000 et appliqué dès 2002."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de mandats consécutifs un président de la République peut-il exercer au maximum en France ?",
+              "options": [
+                "Un seul mandat",
+                "Deux mandats consécutifs",
+                "Trois mandats consécutifs",
+                "Aucune limitation de mandats"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Depuis la révision constitutionnelle de 2008, nul ne peut exercer plus de deux mandats consécutifs."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'abstention et le civisme électoral",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'abstention lors d'une élection ?",
+              "options": [
+                "Le fait pour un électeur inscrit de ne pas aller voter",
+                "Le fait de glisser un bulletin blanc dans l'urne",
+                "Le fait d'annuler volontairement son bulletin par une rature",
+                "Le fait d'être rayé des listes électorales par la mairie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'abstention désigne le comportement d'un électeur inscrit qui ne prend pas part au vote."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En France, quelle est la nature juridique du vote pour un citoyen ordinaire ?",
+              "options": [
+                "Une obligation légale punie d'une amende en cas d'absence",
+                "Un droit fondamental et un devoir moral et civique",
+                "Une obligation réservée uniquement aux fonctionnaires d'État",
+                "Un service payant remboursé par la sécurité sociale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le vote n'est pas obligatoire juridiquement en France, mais la formule civique rappelle qu'il est un devoir moral."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'une des conséquences majeures d'un taux d'abstention très élevé lors d'une élection ?",
+              "options": [
+                "L'annulation immédiate de la République",
+                "La fragilisation de la légitimité démocratique des élus",
+                "La prolongation automatique des mandats des anciens élus",
+                "L'obligation pour l'armée de diriger les communes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Si trop de citoyens s'abstiennent, les élus représentent une fraction restreinte de la population."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le dispositif permettant à un électeur absent de confier son vote à un proche ?",
+              "options": [
+                "Le vote par procuration",
+                "Le vote par délégation obligatoire",
+                "Le vote par correspondance postale",
+                "Le suffrage par intérim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La procuration permet à un mandataire de voter au nom du mandant absent le jour du scrutin."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels facteurs peuvent expliquer le désintérêt électoral de certains citoyens ?",
+              "options": [
+                "Le sentiment que les responsables politiques ne résolvent pas leurs problèmes",
+                "Le manque d'information claire sur le rôle des institutions",
+                "L'interdiction de voter si l'on ne possède pas de diplôme",
+                "La difficulté à percevoir les différences entre les programmes proposés"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le diplôme n'a aucun impact sur le droit de vote ; les causes d'abstention sont souvent politiques ou sociales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle différence fondamentale existe-t-il entre un abstentionniste et un votant blanc ?",
+              "options": [
+                "Le votant blanc se déplace pour exprimer son refus de choisir, pas l'abstentionniste",
+                "L'abstentionniste paie une amende de 135 euros, pas le votant blanc",
+                "Le votant blanc voit son vote attribué au candidat en tête",
+                "L'abstentionniste n'est jamais inscrit sur les listes électorales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vote blanc est un acte de participation civique qui marque le refus des offres électorales en présence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Depuis la loi de 2014 en France, comment sont traités les votes blancs lors du décompte officiel ?",
+              "options": [
+                "Ils sont comptés séparément mais exclus des suffrages exprimés",
+                "Ils sont attribués au candidat le plus jeune de l'élection",
+                "Ils sont transformés d'office en votes pour le vainqueur",
+                "Ils sont immédiatement brûlés sans être mentionnés au procès-verbal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bulletins blancs sont décomptés et annexés au procès-verbal, mais ne comptent pas dans le calcul des pourcentages."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle règle s'applique au mandataire qui reçoit une procuration de vote en France ?",
+              "options": [
+                "Il ne peut détenir qu'une seule procuration établie en France",
+                "Il doit obligatoirement avoir plus de 50 ans et être retraité",
+                "Il doit obligatoirement appartenir à la même famille que le mandant",
+                "Il doit voter en présence d'un huissier de justice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un citoyen ne peut porter qu'une seule procuration établie sur le territoire national (ou deux si l'une vient de l'étranger)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où un citoyen peut-il faire vérifier son identité pour faire valider une procuration de vote ?",
+              "options": [
+                "Dans un commissariat de police, une gendarmerie ou un tribunal",
+                "Dans un bureau de poste ou une banque mutualiste",
+                "Auprès du siège de campagne de son candidat favori",
+                "Uniquement à l'ambassade de France à l'étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les autorités de police, de gendarmerie et les tribunaux judiciaires sont habilités à enregistrer les procurations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase célèbre est traditionnellement inscrite sur les cartes électorales en France ?",
+              "options": [
+                "« Voter est un droit, c'est aussi un devoir civique »",
+                "« La patrie commande, le citoyen obéit »",
+                "« Tout bulletin de vote apporte la victoire »",
+                "« L'État garantit le résultat de chaque élection »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette devise rappelle la double nature du vote : une liberté fondamentale conquise de haute lutte et un engagement civique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les partis politiques et le pluralisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Selon l'article 4 de la Constitution de 1958, quel rôle fondamental jouent les partis politiques ?",
+              "options": [
+                "Ils concourent à l'expression du suffrage",
+                "Ils nomment souverainement les préfets et magistrats",
+                "Ils contrôlent les médias publics et privés",
+                "Ils rédigent seuls les arrêtés municipaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les partis et groupements politiques présentent des candidats et des projets pour animer le débat électoral."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le principe démocratique du « pluralisme politique » ?",
+              "options": [
+                "L'existence libre et l'expression de plusieurs partis aux idées variées",
+                "L'obligation de voter pour au moins trois partis différents",
+                "L'interdiction des partis d'opposition lors des crises",
+                "La domination totale d'un parti unique au pouvoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pluralisme garantit la compétition libre et pacifique entre plusieurs visions politiques de la société."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle obligation majeure la Constitution impose-t-elle à tous les partis politiques en France ?",
+              "options": [
+                "Ils doivent respecter les principes de la souveraineté nationale et de la démocratie",
+                "Ils doivent obligatoirement obtenir 10 % des voix à chaque élection",
+                "Ils doivent avoir leur siège à l'Assemblée nationale",
+                "Ils doivent être dirigés par un ancien Premier ministre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 4 exige des partis qu'ils respectent les règles républicaines et l'ordre démocratique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le texte détaillant les propositions et réformes voulues par un parti politique ?",
+              "options": [
+                "Le programme électoral",
+                "La circulaire préfectorale",
+                "Le décret d'application",
+                "Le rescrit fiscal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme électoral expose les solutions envisagées par un parti sur l'économie, l'école, la santé, etc."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les fonctions essentielles exercées par les partis politiques dans une démocratie ?",
+              "options": [
+                "Sélectionner des candidats pour les différentes élections",
+                "Animer le débat d'idées et former l'opinion citoyenne",
+                "Prononcer des sanctions judiciaires contre les opposants",
+                "Structurer l'opposition et proposer des alternances au pouvoir"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les partis n'ont aucun pouvoir judiciaire ; ils sélectionnent les candidats, débattent et proposent des projets de société."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel clivage traditionnel né sous la Révolution française structure historiquement le débat politique ?",
+              "options": [
+                "Le clivage gauche / droite",
+                "Le clivage mer / montagne",
+                "Le clivage public / militaire",
+                "Le clivage jeunesse / séniors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 1789, les partisans du veto royal se sont assis à droite du président de l'Assemblée, les opposants à gauche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment les partis politiques sont-ils principalement financés en France pour éviter la corruption ?",
+              "options": [
+                "Par des aides publiques encadrées par la loi et des cotisations d'adhérents",
+                "Par des financements secrets d'entreprises multinationales",
+                "Par des crédits accordés directement par la Banque mondiale",
+                "Par des tombolas organisées dans les écoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dons des entreprises sont interdits et l'État verse une aide publique proportionnelle aux résultats électoraux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle commission indépendante contrôle scrupuleusement les dépenses électorales des candidats ?",
+              "options": [
+                "La CNCCFP (Commission nationale des comptes de campagne)",
+                "La Cour de justice de la République",
+                "Le Conseil supérieur de la magistrature",
+                "Le Défenseur des droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CNCCFP veille au respect des plafonds de dépenses et à la transparence des financements électoraux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel dispositif légal encourage l'égal accès des femmes et des hommes aux mandats politiques ?",
+              "options": [
+                "Les lois sur la parité politique",
+                "Le suffrage censitaire féminin",
+                "La nomination directe par décret",
+                "Le tirage au sort paritaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lois sur la parité obligent les partis à présenter un nombre égal d'hommes et de femmes sous peine de pénalités financières."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quel type de régime politique les partis d'opposition sont-ils interdits et pourchassés ?",
+              "options": [
+                "Dans un régime autoritaire ou une dictature",
+                "Dans une république parlementaire",
+                "Dans une monarchie constitutionnelle",
+                "Dans une démocratie libérale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'existence d'une opposition libre est le premier critère distinguant une démocratie d'un régime dictatorial."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'engagement associatif et la solidarité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle grande loi républicaine régit la liberté d'association en France ?",
+              "options": [
+                "La loi du 1er juillet 1901",
+                "La loi du 9 décembre 1905",
+                "La loi du 29 juillet 1881",
+                "La loi du 10 juillet 1940"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi 1901 garantit la liberté pour des citoyens de s'associer librement sans autorisation préalable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique financière essentielle d'une association loi 1901 ?",
+              "options": [
+                "Elle est obligatoirement à but non lucratif",
+                "Elle doit redistribuer ses bénéfices à ses actionnaires",
+                "Elle ne peut employer aucun salarié rémunéré",
+                "Elle est dispensée de toute comptabilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le but non lucratif signifie que les éventuels bénéfices ne peuvent être partagés entre les membres fondateurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une personne qui s'engage librement pour autrui sans percevoir de salaire ?",
+              "options": [
+                "Un bénévole",
+                "Un fonctionnaire",
+                "Un actionnaire",
+                "Un stagiaire sous convention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bénévole donne de son temps et de ses compétences de manière désintéressée pour l'intérêt général."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de personnes au minimum sont nécessaires pour créer une association loi 1901 ?",
+              "options": [
+                "Au moins deux personnes",
+                "Au moins dix personnes",
+                "Au moins cinquante personnes",
+                "Une seule personne suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il suffit de deux fondateurs pour rédiger des statuts et déclarer une association (sauf en Alsace-Moselle où sept sont exigés)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quels domaines les associations permettent-elles aux citoyens d'agir concrètement ?",
+              "options": [
+                "La solidarité et l'aide aux personnes défavorisées",
+                "La protection de l'environnement et des animaux",
+                "La promulgation des lois au Journal officiel",
+                "La pratique sportive, culturelle et artistique"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La promulgation des lois relève exclusivement du président de la République, pas du secteur associatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle célèbre association humanitaire a été fondée par Coluche en 1985 ?",
+              "options": [
+                "Les Restos du Cœur",
+                "Le Secours Populaire",
+                "Emmaüs",
+                "Médecins du Monde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coluche a lancé les Restos du Cœur pour distribuer des repas chauds et lutter contre la pauvreté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle démarche officielle confère à une association la personnalité juridique pour agir en justice ?",
+              "options": [
+                "La déclaration en préfecture et la publication au Journal officiel",
+                "Une publication sur un réseau social",
+                "La signature d'un pacte devant le maire du village",
+                "L'inscription au registre du commerce et des sociétés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La déclaration en préfecture donne à l'association la capacité juridique d'avoir un compte bancaire et d'agir en justice."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une ONG (Organisation non gouvernementale) ?",
+              "options": [
+                "Une association indépendante des États œuvrant pour l'intérêt public souvent mondial",
+                "Un organe officiel dépendant directement du ministère des Armées",
+                "Une entreprise multinationale cotée en bourse",
+                "Une alliance militaire entre plusieurs pays alliés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ONG (Croix-Rouge, WWF, Amnesty International) agissent au niveau international sans dépendre des gouvernements."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qui a fondé le mouvement Emmaüs en 1949 pour héberger et réinsérer les sans-abri ?",
+              "options": [
+                "L'abbé Pierre",
+                "Coluche",
+                "Le pasteur Martin Luther King",
+                "Jean Valjean"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'abbé Pierre a créé Emmaüs pour apporter un toit et une dignité aux personnes les plus vulnérables."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En quoi le monde associatif constitue-t-il une école de la citoyenneté ?",
+              "options": [
+                "Il apprend à débattre, décider ensemble et agir pour le bien commun",
+                "Il permet de remplacer complètement le système de santé public",
+                "Il autorise les membres à ne plus payer d'impôts",
+                "Il donne le droit de voter deux fois lors des élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fonctionnement démocratique d'une association développe le sens de la responsabilité et la solidarité républicaine."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les syndicats et le dialogue social",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la vocation première d'un syndicat professionnel ?",
+              "options": [
+                "Défendre les droits et intérêts matériels et moraux des travailleurs",
+                "Gérer les hôpitaux et les commissariats de police",
+                "Élire directement le président du Sénat",
+                "Rédiger les sujets des examens scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les syndicats représentent les salariés ou les employeurs pour négocier les conditions de travail et salaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle loi de 1884 a légalisé la création de syndicats professionnels en France ?",
+              "options": [
+                "La loi Waldeck-Rousseau",
+                "La loi Le Chapelier",
+                "La loi Ferry",
+                "La loi Debré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi Waldeck-Rousseau de 1884 a abrogé le délit de coalition et reconnu la liberté syndicale en France."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle liberté fondamentale permet à chacun de choisir d'adhérer ou non au syndicat de son choix ?",
+              "options": [
+                "La liberté syndicale",
+                "Le droit de vote censitaire",
+                "La liberté de culte",
+                "Le monopole de représentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liberté syndicale est un principe constitutionnel garanti par le Préambule de la Constitution de 1946."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel droit constitutionnel permet aux salariés de cesser le travail pour appuyer leurs revendications ?",
+              "options": [
+                "Le droit de grève",
+                "Le droit de veto",
+                "Le droit de tirage",
+                "Le droit de péage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le droit de grève est un droit fondamental reconnu à tous les salariés, sous réserve du respect du cadre légal."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont des moyens d'action légaux utilisés par les organisations syndicales ?",
+              "options": [
+                "La négociation collective avec les employeurs",
+                "L'organisation de manifestations pacifiques et de grèves",
+                "L'assistance de salariés devant le conseil de prud'hommes",
+                "La confiscation armée des biens de l'entreprise"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les syndicats agissent par la négociation, le droit de grève et le soutien juridique, dans le strict respect de la loi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les échanges réguliers entre patrons et syndicats pour négocier des accords ?",
+              "options": [
+                "Le dialogue social",
+                "Le conseil des ministres",
+                "La commission parlementaire",
+                "La plaidoirie d'assises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dialogue social permet d'adapter les règles du travail par la concertation et le compromis entre partenaires sociaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'instance élue représentant les salariés dans les entreprises d'au moins 11 salariés ?",
+              "options": [
+                "Le CSE (Comité social et économique)",
+                "Le Conseil constitutionnel",
+                "La Chambre d'agriculture",
+                "Le Haut conseil de santé publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CSE regroupe les représentants élus du personnel pour porter leurs réclamations et surveiller les conditions de travail."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'accord collectif négocié qui s'applique à tous les salariés d'un secteur d'activité ?",
+              "options": [
+                "La convention collective",
+                "Le règlement militaire",
+                "Le décret d'extradition",
+                "Le code de commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La convention collective complète le Code du travail en offrant souvent des garanties plus avantageuses aux salariés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle juridiction spécialisée tranche les litiges individuels entre un salarié et son employeur ?",
+              "options": [
+                "Le conseil de prud'hommes",
+                "Le tribunal correctionnel",
+                "La cour d'assises",
+                "Le tribunal administratif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le conseil de prud'hommes est composé à parité de juges employeurs et de juges salariés pour régler les conflits du travail."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un employeur a-t-il le droit de licencier un travailleur en raison de son appartenance syndicale ?",
+              "options": [
+                "Non, c'est une discrimination illégale sévèrement punie par la loi",
+                "Oui, l'employeur peut interdire les syndicats dans son entreprise",
+                "Oui, si le salarié a moins de dix ans d'ancienneté",
+                "Oui, à condition de lui verser une prime de départ double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le licenciement pour motif syndical est nul et constitue un délit de discrimination puni par le Code pénal."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "L'engagement des jeunes dans la cité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les deux élèves élus chaque année pour représenter leurs camarades au collège ?",
+              "options": [
+                "Les délégués de classe",
+                "Les préfets de discipline",
+                "Les surveillants généraux",
+                "Les médiateurs académiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les délégués de classe sont les porte-parole élus de leurs pairs lors des conseils de classe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle instance réunit des collégiens élus et des adultes pour améliorer la vie au collège ?",
+              "options": [
+                "Le CVC (Conseil de la vie collégienne)",
+                "Le Conseil de sécurité de l'ONU",
+                "Le conseil d'administration préfectoral",
+                "Le bureau d'orientation universitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CVC permet aux collégiens de proposer des aménagements, des activités et d'améliorer le climat scolaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Au lycée, quelle instance démocratique donne la parole aux élèves sur l'organisation des études et du temps scolaire ?",
+              "options": [
+                "Le CVL (Conseil des délégués pour la vie lycéenne)",
+                "La commission de discipline ministérielle",
+                "Le Conseil économique et social",
+                "L'Inspection générale de l'éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CVL réunit des représentants lycéens élus pour dialoguer avec l'équipe de direction de l'établissement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle structure municipale permet aux enfants et adolescents de réaliser des projets pour leur ville ?",
+              "options": [
+                "Le Conseil municipal des jeunes (CMJ)",
+                "Le tribunal pour enfants",
+                "Le centre des impôts fonciers",
+                "La commission d'armement urbain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CMJ initie les jeunes à la citoyenneté locale en finançant et concrétisant leurs idées pour la commune."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles missions d'intérêt général un jeune volontaire peut-il accomplir lors d'un Service civique ?",
+              "options": [
+                "Aider des personnes âgées isolées ou en situation de handicap",
+                "Sensibiliser les écoliers à la protection de la biodiversité",
+                "Remplacer des militaires sur un champ de bataille étranger",
+                "Participer à des ateliers de soutien scolaire dans un quartier"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le Service civique s'effectue dans des structures civiles (associations, écoles, mairies), jamais dans les combats armés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le Service civique proposé aux jeunes de 16 à 25 ans en France ?",
+              "options": [
+                "Un engagement volontaire indemnisé de 6 à 12 mois au service de l'intérêt général",
+                "Une peine judiciaire infligée par un juge pour mineurs",
+                "Un stage obligatoire pour valider son diplôme du baccalauréat",
+                "Un contrat de travail à durée indéterminée en entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Service civique permet de consacrer plusieurs mois à une cause solidaire tout en recevant une indemnité de l'État."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel dispositif civique propose aux volontaires de 15 à 17 ans un séjour de cohésion et une mission citoyenne ?",
+              "options": [
+                "Le SNU (Service national universel)",
+                "Le service militaire obligatoire de deux ans",
+                "Le concours des jeunes orateurs",
+                "La réserve ministérielle active"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SNU vise à transmettre les valeurs républicaines, favoriser la mixité sociale et l'engagement des jeunes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À partir de quel âge un mineur peut-il créer et diriger une association en France avec l'accord de ses parents ?",
+              "options": ["16 ans", "12 ans", "14 ans", "18 ans uniquement"],
+              "correctAnswers": [0],
+              "explanation": "La loi autorise les mineurs dès 16 ans à accomplir tous les actes d'administration d'une association avec accord parental."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle des éco-délégués élus dans les collèges et lycées ?",
+              "options": [
+                "Sensibiliser aux gestes écoresponsables et monter des projets de développement durable",
+                "Surveiller les retards des élèves le matin à l'entrée",
+                "Noter la propreté des cahiers d'histoire-géographie",
+                "Décider des menus de la cantine scolaire à la place du chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éco-délégués agissent concrètement au quotidien pour le tri, la biodiversité et les économies d'énergie dans l'école."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la participation des élèves aux instances de l'établissement scolaire est-elle essentielle ?",
+              "options": [
+                "Pour faire l'apprentissage direct de la démocratie, du débat argumenté et de la responsabilité",
+                "Pour dispenser les professeurs d'assurer les cours",
+                "Pour supprimer définitivement le conseil de discipline",
+                "Pour choisir soi-même les dates de ses vacances scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participer aux instances scolaires forme les futurs citoyens à l'écoute, au respect d'autrui et à la prise de décision collective."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Médias, réseaux sociaux et esprit critique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle grande loi républicaine a proclamé la liberté de la presse en France ?",
+              "options": [
+                "La loi du 29 juillet 1881",
+                "La Déclaration des droits de 1789",
+                "La Constitution de la Ve République",
+                "La loi de séparation des Églises et de l'État de 1905"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi du 29 juillet 1881 fonde la liberté de la presse et d'édition en supprimant la censure préalable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi une presse libre et indépendante est-elle indispensable à une démocratie ?",
+              "options": [
+                "Elle permet aux citoyens d'être informés pour former librement leur jugement politique",
+                "Elle est chargée de relayer fidèlement les ordres du président",
+                "Elle oblige les électeurs à voter tous de la même façon",
+                "Elle remplace les cours dispensés par l'Éducation nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans liberté d'information et d'enquête journalistique, les citoyens ne peuvent pas contrôler les décisions du pouvoir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une information mensongère créée délibérément pour tromper le public ?",
+              "options": [
+                "Une infox (ou fake news)",
+                "Un éditorial d'opinion",
+                "Un droit de réponse officiel",
+                "Une dépêche d'agence certifiée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'infox est une fausse nouvelle fabriquée pour manipuler l'opinion, propager la haine ou générer des profits financiers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle attitude un citoyen éclairé doit-il adopter face à une information choquante lue sur les réseaux ?",
+              "options": [
+                "Vérifier la date, l'auteur et croiser les sources fiables avant de la relayer",
+                "La transférer immédiatement à tous ses contacts sans attendre",
+                "Considérer qu'une vidéo très partagée est obligatoirement vraie",
+                "Supprimer tous ses comptes sur les réseaux sociaux sur-le-champ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'esprit critique commande de vérifier la source, la date et le contexte d'une information avant d'y adhérer."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels critères permettent de reconnaître un site d'information crédible et professionnel ?",
+              "options": [
+                "L'existence de mentions légales précises et de journalistes identifiés",
+                "La citation claire des sources et des dates de publication des faits",
+                "L'anonymat complet des rédacteurs pour éviter les poursuites",
+                "La distinction rigoureuse entre les faits rapportés et les opinions"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'anonymat total d'un auteur est au contraire un signe d'alerte sur le manque de sérieux et de responsabilité d'un site."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle autorité publique indépendante veille au respect du pluralisme politique à la radio et à la télévision ?",
+              "options": [
+                "L'Arcom (anciennement CSA)",
+                "L'Académie française",
+                "La Cour des comptes",
+                "Le Conseil supérieur de la magistrature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Arcom s'assure du temps de parole équitable accordé aux différentes forces politiques dans les médias audiovisuels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « bulle de filtres » sur les réseaux sociaux ?",
+              "options": [
+                "Un isolement causé par des algorithmes qui ne montrent que des contenus confortant nos opinions",
+                "Un système de sécurité qui bloque les virus informatiques",
+                "Un salon de discussion privé réservé aux seuls journalistes accrédités",
+                "Une loi européenne protégeant les données personnelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les algorithmes enferment l'internaute dans des contenus semblables à ses goûts, limitant son ouverture d'esprit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle limite légale stricte encadre la liberté d'expression en France, y compris sur Internet ?",
+              "options": [
+                "L'interdiction de l'injure, de la diffamation et de l'incitation à la haine raciale",
+                "L'interdiction d'exprimer une critique envers un ministre du gouvernement",
+                "L'interdiction de publier des articles sans autorisation de la police",
+                "L'obligation de soutenir la politique étrangère du pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liberté d'expression s'arrête là où commencent les délits de haine, d'injure publique et de diffamation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le travail de vérification des faits et des chiffres énoncés par les personnalités publiques ?",
+              "options": [
+                "Le fact-checking",
+                "Le sensationnalisme",
+                "Le micro-trottoir",
+                "Le publi-reportage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fact-checking permet aux journalistes de confronter les déclarations politiques à la réalité des chiffres officiels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la semaine éducative annuelle organisée dans les collèges par le CLEMI ?",
+              "options": [
+                "La Semaine de la presse et des médias dans l'école",
+                "Le Festival du cinéma documentaire scolaire",
+                "La Semaine du journalisme d'investigation militaire",
+                "Le Salon de l'imprimerie nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Semaine de la presse aide les élèves à décrypter les médias, comprendre la fabrication de l'information et exercer leur regard critique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "La souveraineté nationale",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le principe de la souveraineté nationale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Selon l'article 3 de la Déclaration des droits de l'homme de 1789, où réside le principe de toute souveraineté ?",
+              "options": [
+                "Essentiellement dans la Nation",
+                "Dans la personne sacrée du roi",
+                "Dans les assemblées provinciales",
+                "Dans la puissance des armées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Révolution française a transféré la souveraineté du roi absolu vers la Nation composée de citoyens libres et égaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le concept de « souveraineté nationale » ?",
+              "options": [
+                "Le pouvoir suprême appartient au peuple formant la Nation, qui l'exerce par ses élus ou par référendum",
+                "Le président de la République possède tous les droits sans contrôle judiciaire",
+                "Les décisions politiques sont prises sous la tutelle d'organisations internationales",
+                "L'armée nationale détient la direction des assemblées politiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La souveraineté nationale affirme que la source de tout pouvoir politique réside dans l'ensemble des citoyens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle formule célèbre définit la République selon l'article 2 de la Constitution de 1958 ?",
+              "options": [
+                "« Gouvernement du peuple, par le peuple et pour le peuple »",
+                "« L'autorité royale au service du bien public »",
+                "« La patrie, la famille et le travail avant tout »",
+                "« La loi du plus fort est toujours la meilleure »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette devise empruntée à Abraham Lincoln exprime l'idéal démocratique républicain où le peuple est souverain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Selon l'article 3 de la Constitution de 1958, par quels moyens la souveraineté nationale s'exerce-t-elle ?",
+              "options": [
+                "Par ses représentants élus et par la voie du référendum",
+                "Par des sondages d'opinion réguliers et des pétitions",
+                "Par des décisions unilatérales des magistrats",
+                "Par les arrêtés des préfets de région"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Constitution prévoit que les citoyens délèguent leur pouvoir à des représentants ou votent directement par référendum."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels principes caractérisent la souveraineté nationale en France ?",
+              "options": [
+                "Aucune section du peuple ni aucun individu ne peut s'en attribuer l'exercice",
+                "Le suffrage est toujours universel, égal et secret",
+                "Le droit de vote est transmis par héritage familial direct",
+                "Elle appartient au peuple qui l'exerce par ses représentants et par référendum"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La souveraineté ne peut être confisquée ni transmise de façon héréditaire : le vote est universel, égal et secret."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la souveraineté nationale s'oppose-t-elle à la monarchie absolue de droit divin ?",
+              "options": [
+                "Car la légitimité vient du peuple et des citoyens, non de Dieu ou de la naissance",
+                "Car elle interdit toute forme de gouvernement et d'administration",
+                "Car elle supprime l'existence de toute armée nationale",
+                "Car elle refuse la rédaction de toute constitution écrite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la monarchie absolue, le roi prétend tenir son autorité de Dieu ; en République, elle découle du consentement des citoyens."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel philosophe des Lumières a théorisé la souveraineté populaire et la « volonté générale » dans 'Du contrat social' ?",
+              "options": [
+                "Jean-Jacques Rousseau",
+                "Voltaire",
+                "René Descartes",
+                "Montesquieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jean-Jacques Rousseau affirme que les lois doivent exprimer la volonté générale pour garantir la liberté de tous."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « corps électoral » dans une république démocratique ?",
+              "options": [
+                "L'ensemble de tous les citoyens qui ont le droit de voter",
+                "L'assemblée des généraux des armées françaises",
+                "La réunion solennelle des députés et des sénateurs",
+                "Le syndicat officiel des employés municipaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le corps électoral réunit tous les citoyens inscrits sur les listes électorales et jouissant de leurs droits civiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel texte juridique suprême organise les pouvoirs publics et garantit la souveraineté en France ?",
+              "options": [
+                "La Constitution de la Ve République",
+                "Le Code civil des Français",
+                "Le Code pénal républicain",
+                "Le Traité de Rome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Constitution est la norme suprême de l'État qui fixe les compétences des pouvoirs et les libertés fondamentales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que risquerait une démocratie si la souveraineté nationale était confisquée par une seule personne ?",
+              "options": [
+                "Le basculement dans la dictature ou le régime autoritaire",
+                "La prospérité économique automatique pour tous",
+                "La disparition des impôts et des taxes",
+                "La fin de tous les litiges juridiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque la souveraineté est captée par un despote ou une oligarchie, les libertés individuelles et collectives disparaissent."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Démocratie directe et démocratie représentative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « démocratie représentative » ?",
+              "options": [
+                "Un système où les citoyens élisent des représentants pour voter les lois en leur nom",
+                "Un régime où chaque citoyen vote quotidiennement chaque loi depuis chez lui",
+                "Un régime politique dirigé par des délégués tirés au sort chaque matin",
+                "Une monarchie où le roi nomme tous les parlementaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la démocratie représentative (ou indirecte), le peuple confie le pouvoir de légiférer à des élus mandatés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « démocratie directe » ?",
+              "options": [
+                "Un système où les citoyens adoptent eux-mêmes les décisions sans passer par des représentants",
+                "Un gouvernement où le Premier ministre décide de tout sans Parlement",
+                "Un État dirigé exclusivement par le chef des forces armées",
+                "Un système où les lois sont rédigées par des magistrats professionnels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En démocratie directe, l'assemblée des citoyens vote directement les lois et décisions publiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle cité de la Grèce antique pratiquait la démocratie directe pour ses citoyens réunis sur l'Ecclésia ?",
+              "options": ["Athènes", "Sparte", "Thèbes", "Corinthe"],
+              "correctAnswers": [0],
+              "explanation": "À Athènes au Ve siècle av. J.-C., les citoyens délibéraient et votaient directement les lois sur la colline de la Pnyx."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Selon l'article 27 de la Constitution française, quelle est la règle concernant le « mandat impératif » ?",
+              "options": [
+                "« Tout mandat impératif est nul » : l'élu représente la Nation tout entière",
+                "Le mandat impératif est obligatoire sous peine de révocation immédiate",
+                "L'élu doit obligatoirement voter selon les consignes de sa famille",
+                "Le mandat impératif ne s'applique qu'aux maires des grandes villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les parlementaires représentent la Nation et conservent leur liberté de vote ; ils ne peuvent recevoir d'ordres obligatoires."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Pourquoi la démocratie représentative a-t-elle été privilégiée dans les grands États modernes ?",
+              "options": [
+                "L'immensité du territoire et le nombre très élevé de citoyens",
+                "La technicité et le volume des lois nécessitant des élus à temps plein",
+                "L'interdiction morale faite aux citoyens de donner leur avis",
+                "La recherche de stabilité et de réflexion approfondie dans les débats"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Réunir des dizaines de millions de citoyens pour voter chaque texte technique serait matériellement irréalisable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qui un député français représente-t-il lorsqu'il vote une loi au Palais Bourbon ?",
+              "options": [
+                "La Nation française tout entière",
+                "Exclusivement les habitants de sa circonscription d'élection",
+                "Uniquement les personnes ayant voté pour lui",
+                "Les membres du bureau de son parti politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien qu'élu dans une circonscription locale, chaque député est le représentant de la Nation souveraine indivisible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel pays européen voisin recourt très fréquemment à des votations de démocratie directe ?",
+              "options": ["La Suisse", "L'Allemagne", "L'Espagne", "L'Italie"],
+              "correctAnswers": [0],
+              "explanation": "La Suisse pratique la démocratie semi-directe : les citoyens votent plusieurs fois par an lors de référendums d'initiative populaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une convention citoyenne tirée au sort (comme la Convention pour le climat en 2020) ?",
+              "options": [
+                "Un groupe de citoyens représentatifs tirés au sort pour débattre et proposer des lois",
+                "Une réunion de diplomates étrangers chargés d'écrire la constitution",
+                "Une audience solennelle des magistrats de la Cour suprême",
+                "Un congrès des directeurs d'hôpitaux et d'écoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tirage au sort de citoyens permet d'associer directement la population à l'élaboration de propositions de réformes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le dispositif municipal qui permet aux habitants de décider de l'utilisation d'une partie du budget ?",
+              "options": [
+                "Le budget participatif",
+                "Le droit de tirage fiscal",
+                "L'emprunt forcé citoyen",
+                "La souscription préfectorale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le budget participatif permet aux citoyens de proposer et de voter des projets concrets pour leur quartier ou ville."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'objectif premier de la démocratie participative locale ?",
+              "options": [
+                "Mieux associer les habitants aux choix de proximité et enrichir la démocratie représentative",
+                "Supprimer définitivement les élections municipales",
+                "Permettre aux habitants de voter leurs propres peines de justice",
+                "Éviter aux maires d'avoir à rendre des comptes publics"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La démocratie participative ne remplace pas les élus mais renforce le dialogue continu entre citoyens et gouvernants."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le référendum sous la Ve République",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un référendum ?",
+              "options": [
+                "Le vote direct par lequel les citoyens répondent par oui ou par non à une question posée",
+                "Un vote interne aux députés pour choisir le président de l'Assemblée",
+                "Un débat télévisé entre deux ministres du gouvernement",
+                "Une pétition lancée sur un réseau social officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le référendum est l'instrument privilégié de démocratie directe prévu par la Constitution pour consulter le peuple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui a le pouvoir constitutionnel de soumettre un projet de loi au référendum selon l'article 11 ?",
+              "options": [
+                "Le président de la République, sur proposition du gouvernement ou du Parlement",
+                "Le président du Sénat de sa propre initiative",
+                "Tout citoyen recueillant dix signatures de maires",
+                "Le Conseil d'État réuni en assemblée générale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seul le président de la République peut décider d'organiser un référendum de l'article 11, sur proposition conforme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En 1962, quel référendum historique a transformé les institutions politiques de la France ?",
+              "options": [
+                "L'élection du président de la République au suffrage universel direct",
+                "L'adoption du quinquennat présidentiel",
+                "L'entrée de la France dans la zone Euro",
+                "La création de la Communauté européenne du charbon et de l'acier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le général de Gaulle a fait adopter par référendum en 1962 l'élection directe du président par tous les Français."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si les électeurs répondent majoritairement « NON » à un référendum législatif ?",
+              "options": [
+                "Le projet de loi est rejeté et ne peut pas entrer en vigueur",
+                "Le président promulgue quand même la loi par ordonnance",
+                "L'Assemblée nationale est automatiquement dissoute",
+                "Une deuxième consultation a lieu le dimanche suivant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verdict du suffrage universel est souverain : si le « non » l'emporte, le texte de loi est définitivement abandonné."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Sur quels objets un référendum peut-il porter selon la Constitution française ?",
+              "options": [
+                "L'organisation des pouvoirs publics (article 11)",
+                "La ratification d'un traité international qui a des incidences institutionnelles",
+                "La révision de la Constitution (article 89)",
+                "La fixation individuelle de la peine d'un accusé devant un tribunal"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les décisions judiciaires relèvent des tribunaux indépendants et ne peuvent jamais faire l'objet d'un référendum."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel président de la République a démissionné en 1969 suite à la victoire du « non » à son référendum ?",
+              "options": [
+                "Charles de Gaulle",
+                "Georges Pompidou",
+                "François Mitterrand",
+                "Valéry Giscard d'Estaing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estimant avoir perdu la confiance du peuple français sur la réforme du Sénat, de Gaulle quitte ses fonctions le lendemain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel traité créant l'Union européenne a été approuvé de justesse par référendum en France en 1992 ?",
+              "options": [
+                "Le traité de Maastricht",
+                "Le traité de Rome",
+                "Le traité de Versailles",
+                "Le traité de Lisbonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le traité de Maastricht instaurant la citoyenneté européenne et la monnaie unique a été approuvé à 51 % de « oui »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel a été le résultat du référendum français de 2005 sur le traité constitutionnel européen ?",
+              "options": [
+                "Le rejet du traité par 54,68 % de votes « non »",
+                "L'adoption du traité à une écrasante majorité de 80 % de « oui »",
+                "L'annulation du vote en raison d'une trop forte abstention",
+                "L'adoption avec un score exact de 50 % des suffrages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le 29 mai 2005, les électeurs français ont rejeté le projet de traité constitutionnel européen."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le Référendum d'initiative partagée (RIP) introduit dans la Constitution en 2008 ?",
+              "options": [
+                "Un référendum soutenu par 1/5e des parlementaires et 1/10e des électeurs inscrits",
+                "Une consultation organisée par tirage au sort tous les dix ans",
+                "Une pétition en ligne atteignant 100 000 signatures citoyennes",
+                "Un vote conjoint entre l'Assemblée française et le Parlement allemand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le RIP (art. 11) associe les parlementaires et le soutien vérifié d'environ 4,8 millions d'électeurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle institution contrôle la régularité des opérations de référendum national et en proclame les résultats ?",
+              "options": [
+                "Le Conseil constitutionnel",
+                "La Cour des comptes",
+                "La Cour de cassation",
+                "Le Conseil d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel surveille le scrutin, examine les réclamations et proclame solennellement les résultats."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le Parlement : l'Assemblée nationale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les représentants élus du peuple qui siègent à l'Assemblée nationale ?",
+              "options": [
+                "Les députés",
+                "Les sénateurs",
+                "Les préfets",
+                "Les conseillers régionaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les députés sont élus au suffrage universel direct pour représenter la Nation à l'Assemblée nationale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel palais parisien prestigieux l'Assemblée nationale siège-t-elle ?",
+              "options": [
+                "Le Palais Bourbon",
+                "Le Palais du Luxembourg",
+                "Le Palais de l'Élysée",
+                "L'Hôtel de Matignon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Palais Bourbon, situé au bord de la Seine à Paris, est le siège historique de l'Assemblée nationale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de députés composent actuellement l'Assemblée nationale en France ?",
+              "options": [
+                "348 députés",
+                "577 députés",
+                "700 députés",
+                "450 députés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'Assemblée nationale réunit 577 députés représentant les départements, les collectivités d'outre-mer et les Français de l'étranger."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour quelle durée légale les députés sont-ils normalement élus lors des élections législatives ?",
+              "options": ["3 ans", "4 ans", "5 ans", "6 ans"],
+              "correctAnswers": [2],
+              "explanation": "Le mandat d'un député dure 5 ans (la législature), sauf en cas de dissolution anticipée par le président."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les deux missions majeures confiées par la Constitution à l'Assemblée nationale ?",
+              "options": [
+                "Voter les lois et le budget de l'État",
+                "Contrôler l'action du gouvernement",
+                "Nommer les évêques et les prêtres",
+                "Juger les auteurs de crimes devant la cour d'assises"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'Assemblée nationale vote les textes de loi, approuve les dépenses de l'État et contrôle le gouvernement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel pouvoir constitutionnel permet au président de la République de renvoyer l'Assemblée nationale devant les électeurs ?",
+              "options": [
+                "Le droit de dissolution (article 12)",
+                "Le droit de grâce présidentielle",
+                "L'état de siège exceptionnel",
+                "Le veto législatif permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 12 autorise le président à dissoudre l'Assemblée pour résoudre une crise politique par de nouvelles élections."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la procédure par laquelle les députés peuvent renverser le gouvernement ?",
+              "options": [
+                "La motion de censure",
+                "La question préjudicielle",
+                "L'état d'urgence",
+                "Le recours pour excès de pouvoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si une motion de censure recueille la majorité absolue des membres de l'Assemblée, le gouvernement doit démissionner."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que doit obligatoirement faire le Premier ministre si l'Assemblée nationale adopte une motion de censure ?",
+              "options": [
+                "Remettre la démission de son gouvernement au président de la République",
+                "Faire arrêter les députés ayant voté contre lui",
+                "Faire rejouer le vote le lendemain matin",
+                "Nommer un nouveau président de l'Assemblée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon l'article 50 de la Constitution, le Premier ministre doit immédiatement présenter la démission de son équipe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les séances publiques hebdomadaires où les députés interrogent directement les ministres ?",
+              "options": [
+                "Les questions au gouvernement (QAG)",
+                "Le conseil des ministres délocalisé",
+                "Les entretiens particuliers de Matignon",
+                "Les assises républicaines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les séances de QAG diffusées en direct permettent aux parlementaires d'interpeller les ministres sur l'actualité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En cas de désaccord irréconciliable avec le Sénat sur une loi, quelle assemblée peut avoir le « dernier mot » ?",
+              "options": [
+                "L'Assemblée nationale, si le gouvernement le lui demande",
+                "Le Sénat, en sa qualité de chambre haute",
+                "La Cour de cassation",
+                "Le Conseil économique, social et environnemental"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Assemblée nationale étant élue au suffrage direct, elle a la prééminence démocratique en cas de désaccord persistant."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le Parlement : le Sénat",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les parlementaires qui siègent au Sénat ?",
+              "options": [
+                "Les sénateurs",
+                "Les députés",
+                "Les pairs de France",
+                "Les tribuns de la République"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sénateurs forment la deuxième chambre du Parlement français, également appelée le Sénat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel palais historique parisien le Sénat français est-il installé ?",
+              "options": [
+                "Le Palais du Luxembourg",
+                "Le Palais Bourbon",
+                "Le Palais de la Cité",
+                "Le Palais Garnier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Sénat siège au Palais du Luxembourg et ses jardins sont ouverts au public dans le 6e arrondissement de Paris."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de sénateurs composent actuellement le Sénat en France ?",
+              "options": [
+                "348 sénateurs",
+                "577 sénateurs",
+                "250 sénateurs",
+                "500 sénateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Sénat compte 348 sénateurs représentant l'ensemble des départements et territoires français."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour quelle durée un sénateur est-il élu, sachant que le Sénat est renouvelé par moitié tous les 3 ans ?",
+              "options": ["4 ans", "5 ans", "6 ans", "9 ans"],
+              "correctAnswers": [2],
+              "explanation": "Depuis la réforme de 2003, les sénateurs ont un mandat de 6 ans, avec renouvellement de la moitié des sièges tous les 3 ans."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les particularités constitutionnelles du Sénat de la Ve République ?",
+              "options": [
+                "Il assure la représentation des collectivités territoriales de la République",
+                "Il est élu au suffrage universel indirect par un collège de grands électeurs",
+                "Il ne peut jamais être dissous par le président de la République",
+                "Il détient seul le pouvoir d'approuver le budget de l'État sans l'Assemblée"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le Sénat représente les territoires, ne peut être dissous et est élu de façon indirecte. Le budget est voté avec l'Assemblée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le président de la République a-t-il le pouvoir de dissoudre le Sénat ?",
+              "options": [
+                "Non, la Constitution interdit la dissolution du Sénat pour assurer la permanence de l'État",
+                "Oui, le président peut dissoudre le Sénat en même temps que l'Assemblée",
+                "Oui, mais seulement après consultation de la Cour européenne",
+                "Oui, si la moitié des sénateurs en fait la demande écrite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Sénat est une institution permanente indissoluble qui garantit la continuité des pouvoirs publics."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qui assure l'intérim de la présidence de la République en cas de vacance ou d'empêchement du chef de l'État ?",
+              "options": [
+                "Le président du Sénat",
+                "Le Premier ministre",
+                "Le président de l'Assemblée nationale",
+                "Le doyen des juges constitutionnels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon l'article 7 de la Constitution, le président du Sénat assume provisoirement les fonctions présidentielles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel président du Sénat a exercé deux fois l'intérim de la présidence de la République (en 1969 et 1974) ?",
+              "options": [
+                "Alain Poher",
+                "Gaston Monnerville",
+                "Christian Poncelet",
+                "Gérard Larcher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alain Poher est devenu président par intérim après le départ de de Gaulle en 1969 et le décès de Pompidou en 1974."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on le régime parlementaire français parce qu'il comprend deux chambres ?",
+              "options": [
+                "Le bicamérisme (ou parlement bicaméral)",
+                "Le monocamérisme",
+                "Le présidentialisme intégral",
+                "Le corporatisme d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bicamérisme permet d'examiner chaque loi sous deux angles différents avant son adoption définitive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour modifier la Constitution, quelle règle spécifique s'impose concernant le vote du Sénat ?",
+              "options": [
+                "Le Sénat et l'Assemblée doivent voter le texte dans les mêmes termes (pas de dernier mot)",
+                "Le Sénat n'est pas consulté sur les révisions constitutionnelles",
+                "L'Assemblée peut imposer sa volonté au Sénat par un deuxième vote",
+                "Le Sénat a un droit de veto sans possibilité de réunion du Congrès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour réviser la Constitution (art. 89), l'accord des deux assemblées en termes identiques est indispensable."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'élaboration et le vote de la loi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre un « projet de loi » et une « proposition de loi » ?",
+              "options": [
+                "Le projet émane du gouvernement, la proposition émane de parlementaires",
+                "Le projet concerne l'armée, la proposition concerne l'économie",
+                "Le projet est facultatif, la proposition est obligatoire",
+                "Le projet est voté par le peuple, la proposition par les juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un texte proposé par le Premier ministre est un projet ; un texte rédigé par un député ou sénateur est une proposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les allers-retours d'un texte de loi entre l'Assemblée nationale et le Sénat ?",
+              "options": [
+                "La navette parlementaire",
+                "La passerelle législative",
+                "Le transit constitutionnel",
+                "La rotation républicaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La navette parlementaire permet aux deux chambres d'amender et de perfectionner le texte jusqu'à un accord commun."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une modification ou un ajout proposé sur un article de loi lors des débats ?",
+              "options": [
+                "Un amendement",
+                "Un compromis d'office",
+                "Un rescrit",
+                "Un visa ministériel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les parlementaires et le gouvernement déposent des amendements pour corriger, enrichir ou supprimer des dispositions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle commission de 7 députés et 7 sénateurs se réunit pour trouver un compromis en cas de blocage ?",
+              "options": [
+                "La commission mixte paritaire (CMP)",
+                "Le comité central d'arbitrage",
+                "La chambre de conciliation budgétaire",
+                "La commission d'investigation républicaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CMP a pour but de rédiger un texte commun acceptable par l'Assemblée nationale et le Sénat."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles étapes sont indispensables pour qu'un texte voté devienne une loi applicable ?",
+              "options": [
+                "Le vote du texte en termes identiques par le Parlement",
+                "La promulgation officielle par le président de la République",
+                "La publication intégrale au Journal officiel (JORF)",
+                "L'approbation préalable par référendum obligatoire de tous les citoyens"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le référendum n'est pas systématique ; la loi votée doit être promulguée et publiée au Journal officiel pour entrer en vigueur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle institution peut être saisie avant la promulgation pour vérifier la conformité de la loi à la Constitution ?",
+              "options": [
+                "Le Conseil constitutionnel",
+                "La Cour des comptes",
+                "La Cour européenne de justice",
+                "Le Conseil d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil constitutionnel vérifie que la loi votée ne porte atteinte à aucun droit ni principe constitutionnel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel acte officiel signé par le chef de l'État ordonne l'exécution de la loi votée par le Parlement ?",
+              "options": [
+                "La promulgation",
+                "L'investiture",
+                "L'amnistie",
+                "La ratification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le président de la République promulgue la loi dans les 15 jours suivant sa transmission par le Parlement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel document officiel accessible à tous la loi doit-elle être publiée pour s'appliquer à tous ?",
+              "options": [
+                "Le Journal officiel de la République française (JORF)",
+                "Le Bulletin officiel de l'Éducation nationale",
+                "La Gazette des communes",
+                "Le Registre des décrets préfectoraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La publication au Journal officiel rend la loi opposable à tous les citoyens et administrations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel adage juridique rappelle qu'un citoyen ne peut pas s'excuser d'ignorer la loi pour échapper à une sanction ?",
+              "options": [
+                "« Nul n'est censé ignorer la loi »",
+                "« Tout ce qui n'est pas interdit est prescrit »",
+                "« La loi est l'expression du plus fort »",
+                "« À chaque citoyen son propre droit »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce principe assure l'égalité devant la justice : nul ne peut prétendre ignorer une règle publiée au Journal officiel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel article constitutionnel permet au Premier ministre d'engager sa responsabilité sur un texte sans vote immédiat ?",
+              "options": [
+                "L'article 49 alinéa 3 (le « 49.3 »)",
+                "L'article 16 sur les pouvoirs de crise",
+                "L'article 89 sur la révision constitutionnelle",
+                "L'article 11 sur le référendum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 49.3 fait adopter le texte sans vote, sauf si une motion de censure est déposée et votée par l'Assemblée."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "La séparation des pouvoirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel philosophe français des Lumières a théorisé la séparation des pouvoirs dans 'De l'esprit des lois' (1748) ?",
+              "options": [
+                "Montesquieu",
+                "Jean-Jacques Rousseau",
+                "Voltaire",
+                "Denis Diderot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montesquieu a démontré que « pour qu'on ne puisse abuser du pouvoir, il faut que, par la disposition des choses, le pouvoir arrête le pouvoir »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les trois pouvoirs fondamentaux distingués dans une démocratie républicaine ?",
+              "options": [
+                "Le pouvoir législatif, le pouvoir exécutif et le pouvoir judiciaire",
+                "Le pouvoir royal, le pouvoir papal et le pouvoir seigneurial",
+                "Le pouvoir patronal, le pouvoir ouvrier et le pouvoir paysan",
+                "Le pouvoir militaire, le pouvoir civil et le pouvoir médiatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faire la loi (législatif), l'exécuter (exécutif) et punir ses infractions (judiciaire) doivent être confiés à des organes distincts."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel pouvoir est chargé de faire appliquer les lois et de diriger l'action publique de l'État ?",
+              "options": [
+                "Le pouvoir exécutif",
+                "Le pouvoir législatif",
+                "Le pouvoir judiciaire",
+                "Le pouvoir constituant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le président de la République et le gouvernement (Premier ministre et ministres) détiennent le pouvoir exécutif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qui détient le pouvoir législatif en France sous la Ve République ?",
+              "options": [
+                "Le Parlement (Assemblée nationale et Sénat)",
+                "Le Conseil des ministres",
+                "La Cour de cassation",
+                "Les préfets de département"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Parlement est le seul pouvoir habilité à débattre, amender et voter les lois de la République."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Pourquoi la séparation des pouvoirs est-elle essentielle pour les libertés individuelles ?",
+              "options": [
+                "Elle empêche la concentration de toute l'autorité entre les mains d'un tyran",
+                "Elle permet aux institutions de se contrôler mutuellement de façon équilibrée",
+                "Elle garantit aux citoyens un recours devant des juges indépendants",
+                "Elle interdit aux citoyens de voter lors des élections nationales"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La séparation des pouvoirs protège les droits fondamentaux en évitant l'arbitraire et la tyrannie d'un pouvoir absolu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que déclare l'article 16 de la Déclaration des droits de l'homme de 1789 au sujet de la séparation des pouvoirs ?",
+              "options": [
+                "« Toute société dans laquelle la garantie des droits n'est pas assurée, ni la séparation des pouvoirs déterminée, n'a point de Constitution »",
+                "« Les pouvoirs doivent être concentrés entre les mains du souverain le plus juste »",
+                "« La séparation des pouvoirs est un obstacle à la rapidité des lois »",
+                "« L'autorité judiciaire doit obéir aveuglément aux ordres du roi »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cet article fondateur érige la séparation des pouvoirs et la protection des droits en conditions indispensables de tout État de droit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle mission incombe au pouvoir judiciaire dans une société démocratique ?",
+              "options": [
+                "Régler les litiges et sanctionner les infractions aux lois en toute indépendance",
+                "Rédiger de nouvelles taxes fiscales pour l'État",
+                "Commander les armées lors des guerres extérieures",
+                "Nommer les députés au Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les magistrats veillent au respect de la règle de droit et protègent les libertés individuelles sans pression politique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle garantie constitutionnelle protège les juges du siège contre les pressions ou mutations arbitraires du gouvernement ?",
+              "options": [
+                "L'inamovibilité des juges du siège",
+                "L'immunité fiscale à vie",
+                "Le droit de grâce individuel",
+                "L'amnistie automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un juge du siège ne peut être déplacé sans son consentement, ce qui garantit sa liberté de jugement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle institution veille à l'indépendance de la justice et gère les nominations des magistrats en France ?",
+              "options": [
+                "Le Conseil supérieur de la magistrature (CSM)",
+                "L'Ordre des avocats au Conseil d'État",
+                "La Grande chancellerie de la Légion d'honneur",
+                "Le Comité de salut public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CSM garantit l'indépendance de l'autorité judiciaire et intervient pour la discipline et la nomination des magistrats."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mécanisme réciproque par lequel les pouvoirs s'équilibrent et se limitent mutuellement ?",
+              "options": [
+                "Les contre-pouvoirs démocratiques (checks and balances)",
+                "La dictature collégiale",
+                "L'amalgame des fonctions régaliennes",
+                "Le centralisme bureaucratique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La démocratie repose sur des contre-pouvoirs : l'Assemblée peut censurer le gouvernement, le président peut dissoudre l'Assemblée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La citoyenneté européenne et la souveraineté partagée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel grand traité fondateur a formellement institué la citoyenneté de l'Union européenne en 1992 ?",
+              "options": [
+                "Le traité de Maastricht",
+                "Le traité de Rome",
+                "Le traité de Paris",
+                "Le traité de Versailles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le traité sur l'Union européenne signé à Maastricht en 1992 crée la citoyenneté de l'UE pour tous les ressortissants des pays membres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui bénéficie automatiquement de la citoyenneté européenne ?",
+              "options": [
+                "Toute personne ayant la nationalité d'un État membre de l'Union européenne",
+                "Toute personne vivant sur le continent européen depuis plus d'un an",
+                "Uniquement les hauts fonctionnaires européens",
+                "Les personnes parlant au moins trois langues officielles de l'UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La citoyenneté européenne découle directement de la possession de la nationalité de l'un des 27 États membres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La citoyenneté européenne remplace-t-elle la nationalité d'origine d'un citoyen ?",
+              "options": [
+                "Non, elle s'y ajoute et la complète sans jamais la supprimer",
+                "Oui, elle supprime la nationalité française dès l'âge de 18 ans",
+                "Oui, les cartes d'identité nationales sont interdites dans l'UE",
+                "Non, mais elle interdit de voter lors des élections présidentielles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La citoyenneté de l'Union s'ajoute à la citoyenneté nationale et enrichit les droits des citoyens sans annuler leur identité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quelles élections un citoyen européen résidant en France sans avoir la nationalité française peut-il participer ?",
+              "options": [
+                "Aux élections municipales et aux élections européennes",
+                "À l'élection présidentielle française",
+                "Aux élections législatives pour élire les députés",
+                "Aux élections sénatoriales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le traité de Maastricht accorde le droit de vote et d'éligibilité aux élections municipales et européennes dans l'État de résidence."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels droits concrets sont garantis par la citoyenneté européenne ?",
+              "options": [
+                "La liberté de circuler, étudier et travailler dans tous les pays membres",
+                "La protection diplomatique par l'ambassade de n'importe quel État membre hors de l'UE",
+                "Le droit de pétition devant le Parlement européen et de saisine du Médiateur",
+                "L'exemption totale de payer des impôts dans son pays de résidence"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les citoyens de l'UE bénéficient de la libre circulation et de droits politiques et consulaires, mais restent soumis à l'impôt."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle institution de l'Union européenne est directement élue au suffrage universel par les citoyens tous les 5 ans ?",
+              "options": [
+                "Le Parlement européen",
+                "La Commission européenne",
+                "Le Conseil européen",
+                "La Cour de justice de l'Union européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les députés européens sont élus au suffrage universel direct par les citoyens des 27 États membres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quelle ville française siège officiellement le Parlement européen pour ses sessions plénières ?",
+              "options": ["Strasbourg", "Bruxelles", "Luxembourg", "Francfort"],
+              "correctAnswers": [0],
+              "explanation": "Le siège officiel du Parlement européen est fixé à Strasbourg, symbole fort de la réconciliation franco-allemande."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'Initiative citoyenne européenne (ICE) ?",
+              "options": [
+                "Un mécanisme permettant à un million de citoyens de demander une proposition de loi à la Commission",
+                "Une pétition en ligne pour dissoudre le Parlement européen",
+                "Un examen linguistique obligatoire pour les collégiens européens",
+                "Un tirage au sort annuel pour devenir commissaire européen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ICE permet à un million de citoyens issus d'au moins 7 pays membres d'inviter la Commission européenne à légiférer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'espace européen au sein duquel les contrôles d'identité aux frontières intérieures ont été supprimés ?",
+              "options": [
+                "L'espace Schengen",
+                "La zone Euro",
+                "La communauté Benelux",
+                "L'alliance atlantique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les accords de Schengen permettent de voyager sans contrôle systématique aux frontières entre les pays participants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel défenseur indépendant peut être saisi par un citoyen européen victime de mauvaise administration d'une institution de l'UE ?",
+              "options": [
+                "Le Médiateur européen",
+                "Le procureur militaire de l'OTAN",
+                "Le gouverneur de la Banque centrale européenne",
+                "Le président du Conseil de l'Europe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Médiateur européen enquête sur les plaintes concernant des dysfonctionnements dans les institutions de l'Union."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "La défense nationale et le citoyen",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qui porte le titre constitutionnel de « chef des armées » selon l'article 15 de la Constitution française ?",
+              "options": [
+                "Le président de la République",
+                "Le Premier ministre",
+                "Le ministre des Armées",
+                "Le chef d'état-major des armées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le président de la République préside les conseils de défense et décide de l'engagement des forces nucléaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En quelle année le service militaire obligatoire a-t-il été suspendu en France au profit d'une armée professionnelle ?",
+              "options": ["1997", "1981", "2005", "2015"],
+              "correctAnswers": [0],
+              "explanation": "Le président Jacques Chirac a décidé en 1997 la professionnalisation des armées et la fin de la conscription obligatoire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle démarche obligatoire chaque jeune Français doit-il accomplir en mairie dans les trois mois suivant son 16e anniversaire ?",
+              "options": [
+                "Le recensement citoyen",
+                "L'inscription au tirage de la réserve",
+                "La visite médicale militaire d'aptitude",
+                "La demande de passeport international"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recensement citoyen à 16 ans permet d'obtenir l'attestation requise pour les examens et d'être convoqué à la JDC."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle journée de formation civique et militaire est obligatoire pour tous les jeunes Français avant 25 ans ?",
+              "options": [
+                "La JDC (Journée Défense et Citoyenneté)",
+                "La semaine commando des volontaires",
+                "La journée de recrutement national",
+                "Le stage obligatoire de tir sportif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La JDC sensibilise les jeunes aux enjeux de défense, aux valeurs civiques et effectue un dépistage de l'illettrisme."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les objectifs fondamentaux de la Journée Défense et Citoyenneté (JDC) ?",
+              "options": [
+                "Présenter les missions des forces armées et de la sécurité nationale",
+                "Effectuer des tests de dépistage des difficultés de lecture",
+                "Recruter de force tous les participants dans les régiments",
+                "Découvrir les métiers de la défense et les formes d'engagement volontaire"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La JDC est une journée d'information et d'évaluation pédagogique sans aucun enrôlement forcé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour quelle démarche officielle le certificat de participation à la JDC est-il indispensable avant 25 ans ?",
+              "options": [
+                "Pour s'inscrire aux examens d'État (baccalauréat, CAP) et au permis de conduire",
+                "Pour ouvrir un compte d'épargne en banque",
+                "Pour obtenir un forfait de téléphonie mobile",
+                "Pour adhérer à une association sportive de quartier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attestation de JDC est obligatoire pour s'inscrire à tout concours ou examen public avant l'âge de 25 ans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les citoyens civils qui s'engagent temporairement aux côtés des militaires d'active ?",
+              "options": [
+                "La réserve opérationnelle",
+                "Le régiment mercenaire",
+                "La légion étrangère d'appoint",
+                "Le corps expéditionnaire auxiliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les réservistes concilient vie professionnelle civile et missions de sécurité et de renfort des armées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'« esprit de défense » enseigné aux élèves dans les programmes scolaires ?",
+              "options": [
+                "La conscience partagée de la nécessité de protéger le pays, ses institutions et ses valeurs",
+                "L'apprentissage obligatoire du tir au fusil d'assaut au collège",
+                "La volonté d'entrer en guerre préventive contre d'autres nations",
+                "L'interdiction absolue de critiquer les décisions militaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'esprit de défense développe le sens civique, la vigilance républicaine et le lien solide entre l'armée et la Nation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelles sont les trois composantes des armées régulières françaises, aux côtés de la Gendarmerie nationale ?",
+              "options": [
+                "L'Armée de terre, la Marine nationale et l'Armée de l'air et de l'espace",
+                "La Garde impériale, la Flotte royale et les Volontaires nationaux",
+                "La Police nationale, la Police municipale et la Douane",
+                "Les Tirailleurs sénégalais, les Dragons et les Zouaves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces trois forces assurent la défense du territoire terrestre, des espaces maritimes et du ciel français."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel grand plan gouvernemental permanent de vigilance et de protection des citoyens est déployé face au terrorisme ?",
+              "options": [
+                "Le plan Vigipirate",
+                "Le plan Marshall",
+                "Le plan Orsec",
+                "Le plan Sécurité 2000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plan Vigipirate mobilise les forces de sécurité et les militaires (opération Sentinelle) pour protéger les lieux publics."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Les symboles et les valeurs de la République souveraine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la devise officielle de la République française inscrite sur le fronton de toutes les mairies ?",
+              "options": [
+                "« Liberté, Égalité, Fraternité »",
+                "« Travail, Famille, Patrie »",
+                "« Force, Honneur, Justice »",
+                "« Unité, Progrès, Solidarité »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritée de la Révolution française, la devise républicaine résume les valeurs fondatrices de notre démocratie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'unique emblème national défini par l'article 2 de la Constitution de la Ve République ?",
+              "options": [
+                "Le drapeau tricolore bleu, blanc, rouge",
+                "Le coq gaulois doré",
+                "Le faisceau de licteur",
+                "La fleur de lys royale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le drapeau tricolore associe les couleurs de la ville de Paris (bleu et rouge) au blanc de la monarchie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'hymne national officiel de la France composé par Rouget de Lisle à Strasbourg en 1792 ?",
+              "options": [
+                "La Marseillaise",
+                "Le Chant des Partisans",
+                "L'Ode à la joie",
+                "Le Temps des cerises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chant de guerre pour l'armée du Rhin, la Marseillaise est devenue l'hymne national officiel sous la Troisième République."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle figure allégorique coiffée d'un bonnet phrygien incarne la République française sur les timbres et bustes ?",
+              "options": [
+                "Marianne",
+                "Jeanne d'Arc",
+                "Sainte Geneviève",
+                "La déesse Athéna"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marianne symbolise la République, la liberté et l'émancipation populaire face à l'oppression."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels symboles officiels représentent la République française dans sa souveraineté ?",
+              "options": [
+                "Le drapeau tricolore bleu, blanc, rouge",
+                "L'hymne national la Marseillaise",
+                "La fête nationale du 14 juillet",
+                "La couronne ornée de pierres précieuses"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La France républicaine rejette les symboles monarchiques comme la couronne et s'identifie au drapeau, à l'hymne et au 14 juillet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quels événements historiques majeurs la fête nationale du 14 juillet commémore-t-elle officiellement ?",
+              "options": [
+                "La prise de la Bastille (1789) et la Fête de la Fédération (1790)",
+                "L'armistice du 11 novembre 1918 et la victoire de 1945",
+                "L'adoption de la Constitution de 1958",
+                "La proclamation de la Première République en 1792"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de 1880 a fixé la fête nationale au 14 juillet en mémoire de la prise de la Bastille et de la réconciliation nationale de 1790."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que symbolisait dans l'Antiquité le bonnet phrygien porté par Marianne sur les représentations républicaines ?",
+              "options": [
+                "L'affranchissement et la liberté recouvrée par les esclaves",
+                "L'appartenance à la royauté et au clergé",
+                "Le courage guerrier des légionnaires romains",
+                "Le respect strict des commandements féodaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la Rome antique, les esclaves libérés coiffaient le bonnet phrygien pour signifier qu'ils étaient désormais des hommes libres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle langue officielle est proclamée par l'article 2 de la Constitution de la Ve République ?",
+              "options": [
+                "« La langue de la République est le français »",
+                "« La République adopte le français et le latin »",
+                "« Le français et l'anglais sont langues nationales conjointes »",
+                "« L'espéranto est la langue diplomatique officielle »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 2 consacre le français comme langue commune d'échange, d'unité et de cohésion républicaine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelles sont les quatre caractéristiques fondamentales de la République selon l'article 1er de la Constitution de 1958 ?",
+              "options": [
+                "Indivisible, laïque, démocratique et sociale",
+                "Monarchique, religieuse, autoritaire et fédérale",
+                "Libérale, corporatiste, souveraine et neutre",
+                "Présidentielle, confessionnelle, centralisée et militaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La France est une République indivisible (un seul peuple), laïque (neutralité religieuse), démocratique (pouvoir au peuple) et sociale (solidarité)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel hymne européen a été adopté par l'Union européenne aux côtés des hymnes nationaux des pays membres ?",
+              "options": [
+                "L'Ode à la joie (extrait de la Neuvième Symphonie de Ludwig van Beethoven)",
+                "Le Chœur des esclaves de Giuseppe Verdi",
+                "La Marche funèbre de Frédéric Chopin",
+                "Le Boléro de Maurice Ravel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans paroles dans sa version officielle, l'Ode à la joie de Beethoven célèbre les valeurs européennes de liberté, paix et solidarité."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

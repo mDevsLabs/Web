@@ -140,29 +140,40 @@ const VIDE: PreparedSkills = {
 export function intersecterFiltres(
   filtres: (Record<string, string[] | null> | null | undefined)[]
 ): Record<string, string[] | null> | null {
-  const parServeur = new Map<string, string[] | null>();
-  for (const filtre of filtres) {
-    if (!filtre) {
-      continue;
+  try {
+    if (!Array.isArray(filtres)) {
+      return null;
     }
-    for (const [serverId, outils] of Object.entries(filtre)) {
-      if (!parServeur.has(serverId)) {
-        parServeur.set(serverId, outils);
+    const parServeur = new Map<string, string[] | null>();
+    for (const filtre of filtres) {
+      if (!filtre || typeof filtre !== "object") {
         continue;
       }
-      const dejaVu = parServeur.get(serverId) ?? null;
-      if (dejaVu === null || outils === null) {
-        // L'un des deux refuse tout : le résultat refuse tout.
-        parServeur.set(serverId, null);
-        continue;
+      for (const [serverId, outils] of Object.entries(filtre)) {
+        if (!parServeur.has(serverId)) {
+          parServeur.set(serverId, Array.isArray(outils) ? outils : null);
+          continue;
+        }
+        const dejaVu = parServeur.get(serverId) ?? null;
+        if (dejaVu === null || outils === null || !Array.isArray(outils)) {
+          // L'un des deux refuse tout : le résultat refuse tout (fail-closed).
+          parServeur.set(serverId, null);
+          continue;
+        }
+        parServeur.set(
+          serverId,
+          dejaVu.filter((outil) => outils.includes(outil))
+        );
       }
-      parServeur.set(
-        serverId,
-        dejaVu.filter((outil) => outils.includes(outil))
-      );
     }
+    return parServeur.size > 0 ? Object.fromEntries(parServeur) : null;
+  } catch (error) {
+    console.error(
+      "[skills:intersecterFiltres] Échec du calcul des filtres (fail-closed) :",
+      error
+    );
+    return null;
   }
-  return parServeur.size > 0 ? Object.fromEntries(parServeur) : null;
 }
 
 /** Prépare UN Skill. Ne lève rien : un identifiant inconnu donne `null`. */
@@ -300,7 +311,7 @@ export async function prepareSkillsContext(params: {
   const ordreInjection = [...skills].sort(
     (a, b) => Number(b.pinned) - Number(a.pinned)
   );
-  const instructionsInjectees: string[] = [];
+  const _instructionsInjectees: string[] = [];
   let injecteCaracteres = 0;
   for (const poste of ordreInjection) {
     if (poste.instructions.length > SKILL_MAX_INSTRUCTIONS) {

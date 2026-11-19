@@ -2,7 +2,6 @@
 
 import {
   AlertCircleIcon,
-  ArrowRightIcon,
   CalendarClockIcon,
   CalendarIcon,
   CheckCircle2Icon,
@@ -16,17 +15,16 @@ import {
   RefreshCwIcon,
   RepeatIcon,
   SearchIcon,
-  SparklesIcon,
   Trash2Icon,
-  WrenchIcon,
   XCircleIcon,
 } from "@mdevs/icons";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { PlanningRemindersPanel } from "@/components/planning/planning-reminders";
 import { ScheduleDialog } from "@/components/planning/schedule-dialog";
 import {
   AlertDialog,
@@ -73,7 +71,6 @@ export function PlanningClient({
   const {
     data: schedules,
     mutate,
-    isValidating,
     error: schedulesError,
   } = useSWR<ScheduledMessage[]>(
     `/api/planning?status=${filterStatus}`,
@@ -84,6 +81,21 @@ export function PlanningClient({
           ? initialSchedules
           : initialSchedules.filter((item) => item.status === filterStatus),
       refreshInterval: 15_000,
+    }
+  );
+
+  // Liste dédiée des exécutions EN ATTENTE : les alertes « avant exécution »
+  // et le compte à rebours ne doivent pas dépendre du filtre d'affichage de
+  // la page. Clé distincte, donc pas de collision avec la liste filtrée.
+  const { data: pendingSchedules } = useSWR<ScheduledMessage[]>(
+    "/api/planning?status=pending",
+    fetcher,
+    {
+      fallbackData: initialSchedules.filter(
+        (item) => item.status === "pending"
+      ),
+      refreshInterval: 60_000,
+      revalidateOnFocus: false,
     }
   );
 
@@ -380,6 +392,12 @@ export function PlanningClient({
 
       {/* Contenu principal */}
       <div className="flex-1 p-6 sm:p-8">
+        {/* Rappels d'appareil + alerte d'exécution */}
+        <PlanningRemindersPanel
+          accountId={userId}
+          schedules={pendingSchedules || []}
+        />
+
         {schedulesError ? (
           <div
             className="surface-muted flex flex-col items-center gap-3 text-center text-destructive"

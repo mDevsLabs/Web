@@ -11,7 +11,6 @@ order: 1
 
 - **Plateformes** : Web, Android, iOS
 - **Dépôt GitHub** : [https://github.com/mDevsLabs/Vibe](https://github.com/mDevsLabs/Vibe)
-- **Page projet** : [/projects/vibe](/projects/vibe)
 
 ---
 

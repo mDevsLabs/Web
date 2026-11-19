@@ -4,7 +4,7 @@ import { isToday, isYesterday, subMonths, subWeeks } from "date-fns";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import useSWRInfinite from "swr/infinite";
 import { SessionRecovery } from "@/components/chat/session-recovery";
@@ -29,6 +29,7 @@ import {
   revalidateChatHistories,
   useChatHistoryReset,
 } from "@/hooks/revalidate-chat-histories";
+import { useActiveChat } from "@/hooks/use-active-chat";
 import { useProjects } from "@/hooks/use-projects";
 import type { Chat } from "@/lib/db/schema";
 import { fetcher } from "@/lib/utils";
@@ -139,9 +140,34 @@ export function SidebarHistory({
   useChatHistoryReset(resetHistoryPage);
 
   const router = useRouter();
+  const { resetChat } = useActiveChat();
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [securityChat, setSecurityChat] = useState<Chat | null>(null);
+
+  // Sécurité anti-gel Radix UI : s'assurer que pointer-events n'est jamais bloqué
+  useEffect(() => {
+    if (!showDeleteDialog && typeof document !== "undefined") {
+      const timer = setTimeout(() => {
+        if (document.body.style.pointerEvents === "none") {
+          document.body.style.pointerEvents = "";
+        }
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [showDeleteDialog]);
+
+  useEffect(
+    () => () => {
+      if (
+        typeof document !== "undefined" &&
+        document.body.style.pointerEvents === "none"
+      ) {
+        document.body.style.pointerEvents = "";
+      }
+    },
+    []
+  );
 
   const allChats = paginatedChatHistories
     ? paginatedChatHistories.flatMap((page) =>
@@ -167,14 +193,38 @@ export function SidebarHistory({
     if (!chatToDelete) {
       return;
     }
-    const isCurrentChat = pathname === `/chat/${chatToDelete}`;
+    const isCurrentChat =
+      pathname === `/chat/${chatToDelete}` ||
+      pathname?.startsWith(`/chat/${chatToDelete}/`);
 
+    // 1. Fermer la boîte de dialogue et libérer immédiatement les événements pointeur
     setShowDeleteDialog(false);
+    setDeleteId(null);
+    if (typeof document !== "undefined") {
+      document.body.style.pointerEvents = "";
+    }
 
+    // 2. Si c'est la discussion active, réinitialiser l'état et naviguer immédiatement
     if (isCurrentChat) {
+      resetChat();
       router.replace("/");
     }
 
+    // 3. Retirer immédiatement la discussion de l'affichage (mise à jour optimiste)
+    mutate(
+      (current) => {
+        if (!current) return current;
+        return current.map((page) => ({
+          ...page,
+          chats: Array.isArray(page?.chats)
+            ? page.chats.filter((c) => c.id !== chatToDelete)
+            : [],
+        }));
+      },
+      { revalidate: false }
+    );
+
+    // 4. Exécuter l'appel réseau
     void (async () => {
       try {
         const res = await fetch(
@@ -183,15 +233,26 @@ export function SidebarHistory({
         );
         if (!res.ok) {
           toast.error("Erreur lors de la suppression");
+          await revalidateChatHistories();
           return;
         }
         toast.success("Discussion supprimée");
         await revalidateChatHistories();
       } catch {
         toast.error("Erreur lors de la suppression");
+        await revalidateChatHistories();
+      } finally {
+        // La fermeture de l'AlertDialog peut laisser le verrou Radix en place
+        // après la navigation: on le relâche quoi qu'il arrive.
+        if (
+          typeof document !== "undefined" &&
+          document.body.style.pointerEvents === "none"
+        ) {
+          document.body.style.pointerEvents = "";
+        }
       }
     })();
-  }, [deleteId, pathname, router]);
+  }, [deleteId, mutate, pathname, resetChat, router]);
 
   const handleShowDeleteDialog = useCallback((chatId: string) => {
     setDeleteId(chatId);
@@ -431,7 +492,18 @@ export function SidebarHistory({
         </SidebarGroupContent>
       </SidebarGroup>
 
-      <AlertDialog onOpenChange={setShowDeleteDialog} open={showDeleteDialog}>
+      <AlertDialog
+        onOpenChange={(open) => {
+          setShowDeleteDialog(open);
+          if (!open) {
+            setDeleteId(null);
+            if (typeof document !== "undefined") {
+              document.body.style.pointerEvents = "";
+            }
+          }
+        }}
+        open={showDeleteDialog}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Supprimer cette discussion ?</AlertDialogTitle>

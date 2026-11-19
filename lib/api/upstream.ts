@@ -62,6 +62,10 @@ export type UpstreamParams = {
    * Forçage du code d'erreur lorsque le backend n'en fournit pas. Utilisé
    * quand la route connaît la nature de l'échec (quotas, conflicts…).
    */
+  /** Options de cache pour fetch (par défaut: "no-store"). */
+  cache?: RequestCache;
+  /** Options Next.js Data Cache (ex: revalidate, tags). */
+  next?: { revalidate?: number | false; tags?: string[] };
   code?: ApiErrorCode;
   /** Message à exposer au client, prioritaire sur celui du backend. */
   message?: string;
@@ -173,10 +177,12 @@ export async function upstreamJson<T = unknown>(
 ): Promise<UpstreamCall<T>> {
   const {
     body,
+    cache = "no-store",
     code,
     headers: extraHeaders,
     message,
     method = "GET",
+    next,
     path,
     query,
     timeoutMs = DEFAULT_TIMEOUT_MS,
@@ -208,9 +214,10 @@ export async function upstreamJson<T = unknown>(
         body === undefined || method === "GET"
           ? undefined
           : JSON.stringify(body),
-      cache: "no-store",
+      cache,
       headers,
       method,
+      ...(next ? { next } : {}),
       signal: AbortSignal.timeout(timeoutMs),
     });
   } catch (error) {

@@ -191,7 +191,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       category: "research",
       color: "#14b8a6",
       description:
-        "Zones de chalandise, temps de trajet et comparaison de lieux via Maps.",
+        "Veille technologique, synthèse d'actualités et recherche de sources indépendantes via Brave Search.",
       icon: { name: "Rss", type: "lucide" },
       id: "brave-tech-watch",
       instructions:

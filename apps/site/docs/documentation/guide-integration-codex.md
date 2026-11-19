@@ -125,7 +125,7 @@ Pour les opérations de génération de code au sein de Codex, il est recommand�
 Du fait de la substitution du fournisseur, Codex consomme désormais le quota du tier mAI associé à la clé API. L'intégrateur doit impérativement :
 
 1. Consulter régulièrement le tableau de bord d'utilisation (`/usage` ou `/v1/usage`) pour suivre la consommation en tokens et en requêtes ;
-2. Configurer le paramètre `maxTokens` de Codex afin de ne pas dépasser les limites journalières de requêtes allouées au tier (500 pour Free, 1 000 pour Plus, 2 000 pour Pro, 5 000 pour Max) ;
+2. Configurer le paramètre `maxTokens` de Codex afin de respecter les limites hebdomadaires de requêtes allouées au tier (500 pour Free, 1 500 pour Plus, 3 000 pour Pro, 7 500 pour Max, réinitialisées le lundi à 00:00 UTC) ;
 3. Activer le mode `stream: false` si la stabilité du flux est prioritaire, ou conserver `stream: true` si la réactivité est requise, en veillant à ce que le middleware mAI supporte pleinement le protocole SSE.
 
 ---

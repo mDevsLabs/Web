@@ -99,7 +99,7 @@ function buildOwnershipCondition(variants: string[]): SQL {
   return sql`("Project"."userId"::text = ANY(${arr}) OR EXISTS (SELECT 1 FROM "ProjectMember" pm WHERE pm."projectId" = "Project"."id" AND pm."userId"::text = ANY(${arr})))`;
 }
 
-function buildMembershipCondition(variants: string[]): SQL {
+function _buildMembershipCondition(variants: string[]): SQL {
   return sql`EXISTS (SELECT 1 FROM "ProjectMember" pm WHERE pm."projectId" = "Project"."id" AND pm."userId"::text = ANY(${buildTextArrayLiteral(variants)}))`;
 }
 

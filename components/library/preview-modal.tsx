@@ -1,5 +1,4 @@
 import { CopyIcon, DownloadIcon, SparklesIcon } from "@mdevs/icons";
-import React from "react";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import { Button } from "@/components/ui/button";
 import {

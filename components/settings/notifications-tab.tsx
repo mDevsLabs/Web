@@ -19,7 +19,7 @@ import {
   VIBE_NOTIFICATION_DEFAULTS,
   type VibeNotificationPreferences,
 } from "@/lib/notifications/vibe-preferences";
-import { cn, fetcher } from "@/lib/utils";
+import { fetcher } from "@/lib/utils";
 import { ApiService } from "@/lib/vibe/services/api";
 
 /**

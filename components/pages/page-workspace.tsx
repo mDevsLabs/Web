@@ -17,7 +17,7 @@ import { AssistantPanel } from "@/components/pages/assistant-panel";
 import { MarkdownEditor } from "@/components/pages/markdown-editor";
 import { useProjects } from "@/hooks/use-projects";
 import { normalizePageFont } from "@/lib/pages/style";
-import { countWords } from "@/lib/pages/text";
+import { countWords, type SelectionAnchor } from "@/lib/pages/text";
 import type {
   PageDetail,
   PageRevisionView,
@@ -63,6 +63,8 @@ export function PageWorkspace({ pageId }: { pageId: string }) {
   const [revision, setRevision] = useState(1);
   const [status, setStatus] = useState<SaveStatus>("saved");
   const [selection, setSelection] = useState("");
+  const [selectionAnchor, setSelectionAnchor] =
+    useState<SelectionAnchor | null>(null);
   const [panelOpen, setPanelOpen] = useState(true);
   const [versionsOpen, setVersionsOpen] = useState(false);
   const [versions, setVersions] = useState<PageRevisionView[]>([]);
@@ -469,7 +471,10 @@ export function PageWorkspace({ pageId }: { pageId: string }) {
             latest.current = { ...latest.current, content: next };
             setContent(next);
           }}
-          onSelection={setSelection}
+          onSelection={(text, anchor) => {
+            setSelection(text);
+            setSelectionAnchor(anchor);
+          }}
           readOnly={!page.canEdit}
           value={content}
         />
@@ -494,6 +499,7 @@ export function PageWorkspace({ pageId }: { pageId: string }) {
               prompt={page.customPrompt ?? ""}
               revision={revision}
               selection={selection}
+              selectionAnchor={selectionAnchor}
             />
           </aside>
         ) : null}

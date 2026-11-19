@@ -10,12 +10,7 @@ import type {
   AgentOccurrenceRecord,
   AgentScheduleRecord,
 } from "@/lib/agent/db-schema";
-import {
-  type AgentFlagKey,
-  type AgentFlags,
-  filterToolsByFlags,
-  getAgentFlags,
-} from "@/lib/agent/flags";
+import { filterToolsByFlags, getAgentFlags } from "@/lib/agent/flags";
 import { createAgentStream } from "@/lib/agent/runtime";
 import { scheduleChatId } from "@/lib/agent/scheduler/chat-id";
 import { loadAgentSettings, toToolCategories } from "@/lib/agent/settings";

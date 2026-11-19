@@ -40,7 +40,14 @@ export async function GET() {
       ),
       user.tier
     );
-    return Response.json({ plugins });
+    return Response.json(
+      { plugins },
+      {
+        headers: {
+          "Cache-Control": "private, max-age=30, stale-while-revalidate=60",
+        },
+      }
+    );
   } catch (error) {
     logError("GET /api/plugins", error);
     return errorResponse("internal_error");

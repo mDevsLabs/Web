@@ -2,10 +2,7 @@ import "server-only";
 
 import { generateObject } from "ai";
 import { recordAgentUsage } from "@/lib/agent/accounting";
-import {
-  type ToolSelectionOutput,
-  toolSelectionOutputSchema,
-} from "@/lib/agent/contracts";
+import { toolSelectionOutputSchema } from "@/lib/agent/contracts";
 import {
   AGENT_FAMILY_LABELS,
   type AgentToolFamily,

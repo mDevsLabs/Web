@@ -19,14 +19,19 @@ import {
 } from "@/lib/db/schema";
 import {
   COHORT_SIZE,
+  clotureLigueParis,
   comparerMembres,
   decouperCohortes,
   type LeagueId,
   ligueOuBronze,
+  liguePrecedente,
+  ligueSuivante,
   type MembreCohorte,
   resoudreCohorte,
+  type SeuilsLigue,
   semaineAvant,
   semaineSuivante,
+  seuilsLigue,
 } from "@/lib/quizzly/leagues";
 import { jourParis, semaineIso } from "@/lib/quizzly/rules";
 
@@ -41,8 +46,16 @@ export type LigneClasse = {
 };
 
 export type CohorteLue = {
+  /** Instant ISO de la clôture (lundi 00:00 Paris suivant). */
+  clotureAt: string;
   league: LeagueId;
   lignes: LigneClasse[];
+  liguePrecedente: LeagueId;
+  ligueSuivante: LeagueId;
+  /** Position de l'appelant dans la cohorte, seuils de montée/relégation. */
+  moi: SeuilsLigue;
+  /** Bouclier actif : la relégation de cette semaine est annulée. */
+  shieldActif: boolean;
   weekKey: string;
   weeklyXp: number;
 };
@@ -263,31 +276,36 @@ export async function lireCohorte(
   if (!siege) {
     return null;
   }
-  const lignes = await db
-    .select({
-      totalXp: quizzlyProfile.xp,
-      userId: quizzlyLeagueSeat.userId,
-      weeklyXp: quizzlyLeagueSeat.weeklyXp,
-    })
-    .from(quizzlyLeagueSeat)
-    .innerJoin(
-      quizzlyProfile,
-      eq(quizzlyProfile.userId, quizzlyLeagueSeat.userId)
-    )
-    .where(eq(quizzlyLeagueSeat.cohortId, siege.cohortId));
-  const league = ligueOuBronze(siege.league);
-  const tries = lignes
-    .map(
-      (ligne): MembreCohorte => ({
-        league,
-        shield: false,
-        totalXp: ligne.totalXp,
-        userId: ligne.userId,
-        weeklyXp: ligne.weeklyXp,
+  const [lignes, profil] = await Promise.all([
+    db
+      .select({
+        totalXp: quizzlyProfile.xp,
+        userId: quizzlyLeagueSeat.userId,
+        weeklyXp: quizzlyLeagueSeat.weeklyXp,
       })
-    )
-    .sort(comparerMembres);
+      .from(quizzlyLeagueSeat)
+      .innerJoin(
+        quizzlyProfile,
+        eq(quizzlyProfile.userId, quizzlyLeagueSeat.userId)
+      )
+      .where(eq(quizzlyLeagueSeat.cohortId, siege.cohortId)),
+    db
+      .select({ leagueShieldWeek: quizzlyProfile.leagueShieldWeek })
+      .from(quizzlyProfile)
+      .where(eq(quizzlyProfile.userId, userId))
+      .limit(1),
+  ]);
+  const league = ligueOuBronze(siege.league);
+  const membres: MembreCohorte[] = lignes.map((ligne) => ({
+    league,
+    shield: ligne.userId === userId && profil[0]?.leagueShieldWeek === weekKey,
+    totalXp: ligne.totalXp,
+    userId: ligne.userId,
+    weeklyXp: ligne.weeklyXp,
+  }));
+  const tries = [...membres].sort(comparerMembres);
   return {
+    clotureAt: clotureLigueParis(weekKey),
     league,
     lignes: tries.map((ligne, index) => ({
       league,
@@ -296,6 +314,10 @@ export async function lireCohorte(
       userId: ligne.userId,
       weeklyXp: ligne.weeklyXp,
     })),
+    liguePrecedente: liguePrecedente(league),
+    ligueSuivante: ligueSuivante(league),
+    moi: seuilsLigue(membres, userId),
+    shieldActif: profil[0]?.leagueShieldWeek === weekKey,
     weekKey,
     weeklyXp: siege.weeklyXp,
   };

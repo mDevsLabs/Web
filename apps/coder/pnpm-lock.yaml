@@ -163,8 +163,8 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       electron:
-        specifier: 44.5.1
-        version: 44.5.1
+        specifier: 44.10.2
+        version: 44.10.2
       electron-builder:
         specifier: ^26.18.0
         version: 26.18.0(electron-builder-squirrel-windows@26.18.0)
@@ -2609,8 +2609,8 @@ packages:
     resolution: {integrity: sha512-bO3y10YikuUwUuDUQRM4KfwNkKhnpVO7IPdbsrejwN9/AABJzzTQ4GeHwyzNSrVO+tEH3/Np255a3sVZpZDjvg==}
     engines: {node: '>=8.0.0'}
 
-  electron@44.5.1:
-    resolution: {integrity: sha512-lx7AYoFIiyvEvgvpyWO9kOC60xtNPpiPZAth6Fmg9NutzpCAMLwpUlaBY2EXfZyIgUdzEmLMj9KvK0Vrokl1yQ==}
+  electron@44.10.2:
+    resolution: {integrity: sha512-Bz+GV+9Xj++3RW95NYfzp5Wgivf61BgWTPBxYTOUETytVB1uLUAOdSM39Dn/V3PGYeGTE6LYeCTR5SCiu3BR2A==}
     engines: {node: '>= 22.12.0'}
     hasBin: true
 
@@ -6936,7 +6936,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  electron@44.5.1:
+  electron@44.10.2:
     dependencies:
       '@electron-internal/extract-zip': 1.0.8
       '@electron/get': 5.1.0
@@ -7263,7 +7263,7 @@ snapshots:
       es6-error: 4.1.1
       matcher: 3.0.0
       roarr: 2.15.4
-      semver: 7.7.4
+      semver: 7.8.6
       serialize-error: 7.0.1
     optional: true
 
@@ -8052,13 +8052,13 @@ snapshots:
 
   node-abi@4.40.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.6
 
   node-addon-api@7.1.1: {}
 
   node-api-version@0.2.1:
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.6
 
   node-domexception@1.0.0: {}
 
@@ -8075,7 +8075,7 @@ snapshots:
       graceful-fs: 4.2.11
       nopt: 9.0.0
       proc-log: 6.1.0
-      semver: 7.7.4
+      semver: 7.8.6
       tar: 7.5.22
       tinyglobby: 0.2.17
       undici: 6.29.1

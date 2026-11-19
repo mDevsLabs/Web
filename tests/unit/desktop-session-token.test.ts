@@ -91,6 +91,13 @@ describe("pickSessionToken", () => {
     );
   });
 
+  it("ignore les anciens cookies lisibles, même porteurs d'un jeton valide (issue #10)", () => {
+    const legacy = jwt({ exp: future, sub: "42" });
+    expect(pickSessionToken([{ name: "mai_token", value: legacy }])).toBeNull();
+    expect(pickSessionToken([{ name: "mai_user", value: legacy }])).toBeNull();
+    expect(pickSessionToken([{ name: "mai_auth", value: legacy }])).toBeNull();
+  });
+
   it("renvoie null sans cookie exploitable", () => {
     expect(pickSessionToken([])).toBeNull();
   });

@@ -1,0 +1,79 @@
+/**
+ * ============================================================================
+ * VIBE — THÈME DE LA VISITE GUIDÉE (lib/vibe/tour.css)
+ * ============================================================================
+ */
+
+.vibe-tour-popover.driver-popover {
+  color: #fafafa;
+  background-color: #09090b !important;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.vibe-tour-popover .driver-popover-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff !important;
+}
+
+.vibe-tour-popover .driver-popover-description {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #a1a1aa !important;
+}
+
+.vibe-tour-popover .driver-popover-progress-text {
+  font-size: 11px;
+  color: #71717a !important;
+}
+
+.vibe-tour-popover .driver-popover-footer-btn,
+.vibe-tour-popover .driver-popover-prev-btn,
+.vibe-tour-popover .driver-popover-next-btn {
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: none;
+  border-radius: 12px;
+}
+
+.vibe-tour-popover .driver-popover-next-btn,
+.vibe-tour-popover .driver-popover-done-btn {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border: none !important;
+}
+
+.vibe-tour-popover .driver-popover-next-btn:hover,
+.vibe-tour-popover .driver-popover-done-btn:hover {
+  background-color: #e4e4e7 !important;
+}
+
+.vibe-tour-popover .driver-popover-prev-btn {
+  color: #fafafa !important;
+  background-color: transparent !important;
+  border: 1px solid #3f3f46 !important;
+}
+
+.vibe-tour-popover .driver-popover-prev-btn:hover,
+.vibe-tour-popover .driver-popover-prev-btn:focus,
+.vibe-tour-popover .driver-popover-prev-btn:active {
+  color: #ffffff !important;
+  background-color: #27272a !important;
+  border-color: #52525b !important;
+}
+
+.vibe-tour-popover .driver-popover-close-btn {
+  top: 14px;
+  right: 14px;
+  color: #a1a1aa !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.vibe-tour-popover .driver-popover-close-btn:hover,
+.vibe-tour-popover .driver-popover-close-btn:focus {
+  color: #ffffff !important;
+  background: transparent !important;
+}

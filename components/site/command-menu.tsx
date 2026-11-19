@@ -2,20 +2,20 @@
 
 import {
   BarChart3Icon as BarChart3,
+  DollarSignIcon as DollarSign,
+  DownloadIcon as Download,
   FileTextIcon as FileText,
-  FolderIcon as Folder,
+  KeyIcon as Key,
   LifeBuoyIcon as LifeBuoy,
   Loader2Icon as Loader2,
   PlusCircleIcon as PlusCircle,
   SearchIcon as Search,
+  SparklesIcon as Sparkles,
 } from "@mdevs/icons";
 import { Command } from "cmdk";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import {
-  toSitePath,
-  useSiteRouter as useRouter,
-} from "@/components/site/router";
+import { useSiteRouter as useRouter } from "@/components/site/router";
 import { useSiteSearch } from "@/components/site/ui/search-bar";
 import type { ChangelogsByProject } from "@/lib/site/changelog";
 import type { NewsArticle } from "@/lib/site/news";
@@ -149,57 +149,55 @@ export function CommandMenu({
                   <>
                     <Command.Group
                       className="text-xs font-semibold text-slate-500 px-2 py-2"
-                      heading="Projets mAI"
+                      heading="Plateforme mAI"
                     >
                       <Command.Item
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
                         onSelect={() =>
-                          runCommand(() => router.push("/projects/web"))
+                          runCommand(() => router.push("/models"))
                         }
-                        value="projet-web"
+                        value="nav-models"
                       >
-                        <Folder className="w-4 h-4 text-purple-500" />
-                        <span>Web - Application d&apos;IA en ligne</span>
+                        <Sparkles className="w-4 h-4 text-purple-500" />
+                        <span>Modèles d&apos;IA &amp; Comparatif</span>
+                      </Command.Item>
+                      <Command.Item
+                        className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
+                        onSelect={() => runCommand(() => router.push("/docs"))}
+                        value="nav-docs"
+                      >
+                        <FileText className="w-4 h-4 text-blue-500" />
+                        <span>Centre de Documentation</span>
                       </Command.Item>
                       <Command.Item
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
                         onSelect={() =>
-                          runCommand(() => router.push("/projects/vibe"))
+                          runCommand(() => router.push("/account/keys"))
                         }
-                        value="projet-vibe"
+                        value="nav-keys"
                       >
-                        <Folder className="w-4 h-4 text-pink-500" />
-                        <span>Vibe - Réseau social avec IA intégrée</span>
+                        <Key className="w-4 h-4 text-amber-500" />
+                        <span>Console Développeur &amp; Clés API</span>
                       </Command.Item>
                       <Command.Item
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
                         onSelect={() =>
-                          runCommand(() => router.push("/projects/coder"))
+                          runCommand(() => router.push("/pricing"))
                         }
-                        value="projet-coder"
+                        value="nav-pricing"
                       >
-                        <Folder className="w-4 h-4 text-purple-500" />
-                        <span>Coder - IDE IA &amp; Agents MCP</span>
+                        <DollarSign className="w-4 h-4 text-emerald-500" />
+                        <span>Grille Tarifaire &amp; Forfaits</span>
                       </Command.Item>
                       <Command.Item
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
                         onSelect={() =>
-                          runCommand(() => router.push("/projects/cli"))
+                          runCommand(() => router.push("/downloads"))
                         }
-                        value="projet-cli"
+                        value="nav-downloads"
                       >
-                        <Folder className="w-4 h-4 text-emerald-500" />
-                        <span>CLI - Discussions &amp; Code Terminal</span>
-                      </Command.Item>
-                      <Command.Item
-                        className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
-                        onSelect={() =>
-                          runCommand(() => router.push("/projects/pulse"))
-                        }
-                        value="projet-pulse"
-                      >
-                        <Folder className="w-4 h-4 text-indigo-500" />
-                        <span>Pulse - Extensions mAI</span>
+                        <Download className="w-4 h-4 text-indigo-500" />
+                        <span>Téléchargements &amp; Applications</span>
                       </Command.Item>
                     </Command.Group>
 

@@ -11,6 +11,7 @@ export async function GET() {
   }
 
   const result = await upstreamJson<{ data?: any[] }>({
+    next: { revalidate: 60, tags: ["images-models"] },
     path: "/v1/models/images",
     token,
   });
@@ -25,5 +26,9 @@ export async function GET() {
       name: normalizeModelDisplayName(m.id, m.name || m.id),
     }));
   }
-  return NextResponse.json(data);
+  return NextResponse.json(data, {
+    headers: {
+      "Cache-Control": "private, max-age=60, stale-while-revalidate=120",
+    },
+  });
 }

@@ -6,5 +6,6 @@ export interface PopoverProps {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
     side?: 'top' | 'right' | 'bottom' | 'left';
+    container?: HTMLElement | null;
 }
-export declare function Popover({ trigger, children, label, side, ...props }: PopoverProps): import("react").JSX.Element;
+export declare function Popover({ trigger, children, label, side, container, ...props }: PopoverProps): import("react").JSX.Element;

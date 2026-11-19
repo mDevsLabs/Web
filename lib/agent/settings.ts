@@ -3,10 +3,10 @@ import "server-only";
 import { AGENT_MODES, type AgentMode } from "@/lib/agent/channel";
 import {
   AGENT_SETTINGS_DEFAULTS,
-  type AgentAutonomy,
+  type AgentPreferences,
   type AgentSettings,
-  isAgentAutonomy,
   isToolPermission,
+  normaliserPreferences,
   type ToolCategory,
   type ToolPermission,
 } from "@/lib/agent/types";
@@ -34,6 +34,7 @@ export type AgentSettingsPatch = {
   defaultModel?: string | null;
   defaultProjectId?: string | null;
   enabledCategories?: ToolCategory[] | null;
+  preferences?: Partial<AgentPreferences>;
   reasoningLevel?: unknown;
   toolPolicies?: Record<string, ToolPermission>;
 };
@@ -73,6 +74,7 @@ export async function loadAgentSettings({
       enabledCategories && enabledCategories.length > 0
         ? enabledCategories
         : null,
+    preferences: normaliserPreferences(row.preferences),
     reasoningLevel:
       row.reasoningLevel === null
         ? null
@@ -109,6 +111,14 @@ export async function saveAgentSettings({
           TOOL_CATEGORIES.includes(category)
         );
 
+  const nextPreferences: AgentPreferences =
+    patch.preferences === undefined
+      ? current.preferences
+      : normaliserPreferences({
+          ...current.preferences,
+          ...patch.preferences,
+        });
+
   await upsertAgentSettingsRow({
     patch: {
       // `autonomy` n'est plus écrit : la valeur effective est imposée par le
@@ -126,6 +136,7 @@ export async function saveAgentSettings({
           ? current.defaultProjectId
           : patch.defaultProjectId,
       enabledCategories: nextEnabledCategories,
+      preferences: nextPreferences,
       reasoningLevel:
         patch.reasoningLevel === undefined
           ? current.reasoningLevel

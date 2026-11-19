@@ -5,9 +5,7 @@ import {
   AwardIcon,
   CheckCircle2Icon,
   ChevronRightIcon,
-  HelpCircleIcon,
   RotateCcwIcon,
-  SparklesIcon,
   TrophyIcon,
   XCircleIcon,
 } from "@mdevs/icons";

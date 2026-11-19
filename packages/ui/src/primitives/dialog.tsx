@@ -13,5 +13,25 @@ export interface DialogProps {
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
     closeLabel?: string;
+    container?: HTMLElement | null;
 }
-export function Dialog({ title, description, trigger, children, footer, closeLabel = 'Fermer', ...props }: DialogProps) { const descriptionId = useId(); return <RDialog.Root {...props}>{trigger && <RDialog.Trigger asChild>{trigger}</RDialog.Trigger>}<RDialog.Portal><PortalScope><RDialog.Overlay className="md-overlay"/><RDialog.Content className="md-glass md-dialog" aria-describedby={description ? descriptionId : undefined}><RDialog.Title>{title}</RDialog.Title>{description && <RDialog.Description id={descriptionId} className="md-muted">{description}</RDialog.Description>}<div>{children}</div>{footer && <footer className="md-card-footer">{footer}</footer>}<RDialog.Close className="md-close" aria-label={closeLabel}>×</RDialog.Close></RDialog.Content></PortalScope></RDialog.Portal></RDialog.Root>; }
+export function Dialog({ title, description, trigger, children, footer, closeLabel = 'Fermer', container, ...props }: DialogProps) {
+    const descriptionId = useId();
+    return (
+        <RDialog.Root {...props}>
+            {trigger && <RDialog.Trigger asChild>{trigger}</RDialog.Trigger>}
+            <RDialog.Portal container={container}>
+                <PortalScope>
+                    <RDialog.Overlay className="md-overlay"/>
+                    <RDialog.Content className="md-glass md-dialog" aria-describedby={description ? descriptionId : undefined}>
+                        <RDialog.Title>{title}</RDialog.Title>
+                        {description && <RDialog.Description id={descriptionId} className="md-muted">{description}</RDialog.Description>}
+                        <div>{children}</div>
+                        {footer && <footer className="md-card-footer">{footer}</footer>}
+                        <RDialog.Close className="md-close" aria-label={closeLabel}>×</RDialog.Close>
+                    </RDialog.Content>
+                </PortalScope>
+            </RDialog.Portal>
+        </RDialog.Root>
+    );
+}

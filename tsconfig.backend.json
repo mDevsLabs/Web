@@ -1,0 +1,47 @@
+{
+  // Pourquoi : le backend Hono de Val Town (graphe d'imports de `main.ts`) est
+  // déployé indépendamment de l'application Next et restait invisible de
+  // `tsc --noEmit` — `tsconfig.json` ne l'incluait ni ne l'excluait. Ce second
+  // projet couvre les modules racine réellement déployés, avec la même
+  // strictesse que l'application (il étend sa configuration), et sans jamais
+  // entrer dans le typecheck Next.
+  //
+  // Choix documentés (issue #16, hors périmètre de correction) :
+  // - `admin.ts` / `scripts/admin.ts` : la copie exécutée est `scripts/admin.ts`
+  //   (script npm `admin`) ; la copie racine est incomplète (`admin-forms.ts`
+  //   absent). Aucune n'entre ici : elles sont hors du graphe `main.ts`, et
+  //   typer la copie exécutée typerait une seconde fois les miroirs `scripts/`
+  //   déjà dupliqués (`updateModels.ts`, `email.ts`, …).
+  // - `cron.ts` : déployé comme val CRON, mais explicitement hors du graphe de
+  //   `main.ts` et donc hors du périmètre de ce projet.
+  // - `scripts/**` : copies de maintenance Deno/Bun du backend, exclues du
+  //   typecheck Next par `tsconfig.json` et non dupliquées ici.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "types": ["node"],
+    "plugins": [],
+    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.backend.tsbuildinfo"
+  },
+  "include": ["*.ts", "types/**/*.d.ts"],
+  "exclude": [
+    "node_modules",
+    "apps",
+    "packages",
+    "scripts",
+    "next-env.d.ts",
+    "next.config.ts",
+    "proxy.ts",
+    "drizzle.config.ts",
+    "playwright.config.ts",
+    "vitest.config.ts",
+    "instrumentation.ts",
+    "instrumentation-client.ts",
+    "admin.ts",
+    "admin-email.ts",
+    "admin-models.ts",
+    "cli-env.ts",
+    "cron.ts"
+  ]
+}

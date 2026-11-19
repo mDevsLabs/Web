@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import {
   ECONOMY_MODE_STORAGE_KEY,
   readEconomyPreference,
-  writeEconomyPreference,
 } from "@/lib/resources/economy";
 
 /**

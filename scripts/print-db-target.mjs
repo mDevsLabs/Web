@@ -13,7 +13,7 @@ import { existsSync, readFileSync } from "node:fs";
 const envFiles =
   process.argv.slice(2).length > 0
     ? process.argv.slice(2)
-    : [".env.local", ".env"];
+    : [".env.local", ".env", ".env.vercel"];
 
 let databaseUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL || "";
 databaseUrl = databaseUrl

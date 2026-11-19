@@ -33,25 +33,17 @@ import {
   XIcon,
   ZapIcon,
 } from "@mdevs/icons";
-import { type ReactNode, useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { BotGlyph } from "@/components/agents/bot-avatar";
-import type { SlashCommandAction } from "@/lib/chat/slash-command-catalog";
 import { AGENT_EXCLUDED_SLASH_ACTIONS } from "@/lib/chat/slash-command-outcomes";
+import type { SlashCommand } from "@/lib/chat/slash-commands-types";
 import type { CustomCommand } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
 export type { SlashCommandAction } from "@/lib/chat/slash-command-catalog";
 
-export type SlashCommand = {
-  name: string;
-  description: string;
-  icon: ReactNode;
-  action: SlashCommandAction;
-  shortcut?: string;
-  aliases?: string[];
-  custom?: CustomCommand;
-};
+export type { SlashCommand };
 
 export const slashCommands: SlashCommand[] = [
   {

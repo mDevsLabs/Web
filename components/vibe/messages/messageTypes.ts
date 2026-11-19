@@ -2,12 +2,6 @@
  * Types et utilitaires partagés pour la messagerie privée Vibe.
  */
 
-import type {
-  DirectMessage,
-  DMConversation,
-  VibeBookPost,
-} from "@/lib/vibe/types/vibe";
-
 export interface AttachedMedia {
   fileName?: string;
   size: number;

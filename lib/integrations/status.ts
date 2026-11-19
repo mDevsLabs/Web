@@ -1,3 +1,4 @@
+import { readEnv } from "@/lib/utils/env";
 import "server-only";
 
 import type { IntegrationConnection } from "@/lib/db/schema";
@@ -57,11 +58,6 @@ export type IntegrationStatus = {
    */
   warnings: string[];
 };
-
-function readEnv(name: string): string | undefined {
-  const value = process.env[name]?.trim();
-  return value ? value : undefined;
-}
 
 /** Variables requises pour qu'un connecteur OAuth puisse seulement démarrer. */
 function missingEnvFor(descriptor: IntegrationDescriptor): string[] {

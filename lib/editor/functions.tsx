@@ -1,21 +1,19 @@
 "use client";
 
 import DOMPurify from "dompurify";
+import MarkdownIt from "markdown-it";
 import { defaultMarkdownSerializer } from "prosemirror-markdown";
 import { DOMParser, type Node } from "prosemirror-model";
 import { Decoration, DecorationSet, type EditorView } from "prosemirror-view";
-import { renderToString } from "react-dom/server";
-
-import { MessageResponse } from "@/components/ai-elements/message";
 
 import { documentSchema } from "./config";
 import type { UISuggestion } from "./suggestions";
 
+const md = new MarkdownIt({ html: true, linkify: true });
+
 export const buildDocumentFromContent = (content: string) => {
   const parser = DOMParser.fromSchema(documentSchema);
-  const stringFromMarkdown = renderToString(
-    <MessageResponse>{content}</MessageResponse>
-  );
+  const stringFromMarkdown = md.render(content);
   // Purifie le HTML issu du markdown LLM avant parsing ProseMirror
   const clean = DOMPurify.sanitize(stringFromMarkdown, {
     FORBID_ATTR: ["onerror", "onload", "onclick", "onmouseover", "onfocus"],

@@ -6,7 +6,7 @@ import { DownloadIcon as Download, ExternalLinkIcon as ExternalLink, CopyIcon as
 import Image from "next/image";
 import { toast } from "react-hot-toast";
 import { PageSearch } from "@/components/ui/search-bar";
-import { PLATFORM_DEVICE_ICONS } from "@/lib/projects-data";
+import { PLATFORM_DEVICE_ICONS } from "@/lib/downloads-data";
 
 interface AppDownload {
   id: string;

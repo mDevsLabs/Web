@@ -6,14 +6,9 @@ import {
   notFound,
   rejectCrossOriginMutation,
   requireWakiesUser,
-  toErrorResponse,
 } from "@/lib/wakies/http";
 import { validateWakiesModel } from "@/lib/wakies/model-access";
-import {
-  deleteConversation,
-  findConversation,
-  updateConversation,
-} from "@/lib/wakies/queries";
+import { deleteConversation, updateConversation } from "@/lib/wakies/queries";
 
 /**
  * PATCH  /api/wakies/conversations/:id — titre, modèle et sélection d'outils.

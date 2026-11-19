@@ -4,5 +4,6 @@ export interface TooltipProps {
     children: ReactNode;
     delayDuration?: number;
     side?: 'top' | 'right' | 'bottom' | 'left';
+    container?: HTMLElement | null;
 }
-export declare function Tooltip({ content, children, delayDuration, side }: TooltipProps): import("react").JSX.Element;
+export declare function Tooltip({ content, children, delayDuration, side, container }: TooltipProps): import("react").JSX.Element;

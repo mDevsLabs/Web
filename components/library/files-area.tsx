@@ -1,5 +1,4 @@
 import { LibraryIcon } from "@mdevs/icons";
-import React from "react";
 import { FileCard } from "./file-card";
 import { FilesTable } from "./files-table";
 import type { CloudFile } from "./library-types";

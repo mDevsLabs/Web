@@ -12,8 +12,14 @@ export const SESSION_COOKIE_NAMES = [
   "mai_session_token",
   "__Secure-mai_session_token",
   "__Host-mai_session_token",
-  "mai_token",
 ] as const;
+
+/**
+ * Cookies lisibles par JavaScript, hérités d'anciennes versions du Web.
+ * Le jeton qu'ils portent n'est plus une session légitime (issue #10) : ils
+ * sont ignorés, même en repli.
+ */
+const LEGACY_READABLE_COOKIES = new Set(["mai_token", "mai_user", "mai_auth"]);
 
 export interface SessionCookie {
   name: string;
@@ -141,8 +147,13 @@ export function pickSessionToken(
   }
 
   // Repli : un cookie de session renommé (déploiement, préfixe) reste
-  // utilisable s'il porte une identité. On préfère les noms évocateurs.
-  const fallback = [...usable].sort((left, right) => {
+  // utilisable s'il porte une identité. On préfère les noms évocateurs, mais
+  // les anciens cookies lisibles sont toujours exclus.
+  const fallback = [...usable]
+    .filter(
+      (cookie) => !LEGACY_READABLE_COOKIES.has(cookie.name.toLowerCase())
+    )
+    .sort((left, right) => {
     const score = (cookie: SessionCookie) =>
       (isLikelySessionName(cookie.name) ? 2 : 0) +
       (cookie.expirationDate ? 1 : 0);

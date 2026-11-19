@@ -1,0 +1,2683 @@
+{
+  "id": "1ere-sciences-de-lingenieur-04",
+  "year": "1ere",
+  "subject": "sciences-de-lingenieur",
+  "title": "Traitement de l'information et capteurs",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Acquisition et signaux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Nature et typologie des grandeurs physiques et signaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types de signaux rencontre-t-on couramment dans une chaîne d'information ?",
+              "options": [
+                "Signal logique ou Tout Ou Rien (TOR)",
+                "Signal analogique continu",
+                "Signal gravitationnel pur",
+                "Signal numérique échantillonné"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les signaux en sciences de l'ingénieur se classent principalement en Tout Ou Rien (TOR), analogiques et numériques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un signal Tout Ou Rien (TOR) ?",
+              "options": [
+                "Un signal qui ne prend que deux valeurs logiques distinctes (0 ou 1)",
+                "Un signal variant continûment dans le temps entre 0 V et 10 V",
+                "Un signal sinusoïdal de fréquence fixe",
+                "Un signal transmis uniquement par onde radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un signal TOR ne possède que deux états stables possibles, souvent associés à 0 V et 5 V ou 0 V et 24 V."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique principale d'un signal analogique ?",
+              "options": [
+                "Il peut prendre une infinité de valeurs dans un intervalle continu",
+                "Il ne prend que des valeurs entières positives",
+                "Il est constitué uniquement d'octets de 8 bits",
+                "Il est insensible aux parasites électromagnétiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un signal analogique varie de façon continue dans le temps et peut prendre une infinité de valeurs dans une plage donnée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un signal numérique ?",
+              "options": [
+                "Un signal discret dans le temps et quantifié en amplitude",
+                "Une onde mécanique se propageant dans l'air",
+                "Une tension continue invariable au cours du temps",
+                "Un signal électrique sans aucune valeur binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un signal numérique est représenté par une suite de valeurs discrètes et quantifiées issues d'un codage binaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parmi ces exemples, lequel correspond à une information Tout Ou Rien (TOR) ?",
+              "options": [
+                "L'état ouvert ou fermé d'un capteur de fin de course mécanique",
+                "La température mesurée dans une pièce en degrés Celsius",
+                "La vitesse angulaire d'un arbre moteur",
+                "La distance mesurée par un télémètre laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La détection de fin de course ne fournit que deux états possibles : contact ouvert ou contact fermé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique est mesurée par un luxmètre ?",
+              "options": [
+                "L'éclairement lumineux en lux",
+                "Le flux magnétique en teslas",
+                "L'intensité sonore en décibels",
+                "La pression atmosphérique en pascals"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le luxmètre mesure l'éclairement lumineux reçu par une surface, dont l'unité est le lux (lx)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fonction de la chaîne d'information est assurée par un capteur ?",
+              "options": ["Acquérir", "Traiter", "Communiquer", "Distribuer"],
+              "correctAnswers": [0],
+              "explanation": "Le capteur réalise la fonction 'Acquérir' en prélevant une grandeur physique pour la transformer en signal exploitable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un transducteur dans un capteur ?",
+              "options": [
+                "Convertir une grandeur physique d'entrée en une grandeur électrique",
+                "Augmenter la tension du réseau électrique",
+                "Refroidir les circuits électroniques internes",
+                "Créer un mouvement mécanique à partir d'un courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transducteur convertit la grandeur physique d'entrée (mesurande) en une grandeur de sortie (souvent électrique)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un signal périodique, comment définit-on la période T ?",
+              "options": [
+                "La plus petite durée au bout de laquelle le signal se reproduit à l'identique",
+                "Le nombre d'oscillations effectuées par seconde",
+                "La valeur maximale atteinte par la tension",
+                "La moyenne arithmétique de la tension sur une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La période T, exprimée en secondes, est la plus petite durée séparant deux états identiques consécutifs du signal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la relation liant la fréquence f et la période T d'un signal périodique ?",
+              "options": [
+                "f = 1 / T",
+                "f = T / 2",
+                "f = 2 * pi * T",
+                "f = T^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fréquence en hertz (Hz) est l'inverse de la période en secondes (s) : f = 1 / T."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les capteurs : principes physiques et typologies",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments caractérisent un capteur passif ?",
+              "options": [
+                "Il nécessite une source d'alimentation externe pour mesurer la variation d'impédance",
+                "Son comportement électrique repose sur la variation d'une résistance, capacité ou inductance",
+                "Il produit directement une tension électrique sans aucun apport d'énergie extérieur",
+                "Il est souvent associé à un circuit de conditionnement comme un pont de mesure"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Un capteur passif voit son impédance (R, L ou C) varier et nécessite une alimentation pour délivrer un signal exploitable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un capteur actif ?",
+              "options": [
+                "Un capteur qui produit directement un signal électrique grâce à un effet physique réversible",
+                "Un capteur qui consomme plus de 100 watts de puissance",
+                "Un capteur qui contient obligatoirement un moteur",
+                "Un capteur qui ne fonctionne que sous haute tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un capteur actif génère une tension ou un courant grâce à un effet physique direct (effet Seebeck, piézoélectricité, photovoltaïque)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel effet physique est utilisé dans un thermocouple pour mesurer la température ?",
+              "options": [
+                "L'effet Seebeck (différence de potentiel créée par un écart de température)",
+                "L'effet Joule (dégagement de chaleur par un courant)",
+                "L'effet Doppler (décalage en fréquence d'une onde)",
+                "L'effet photoélectrique externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet Seebeck fait apparaître une force électromotrice proportionnelle à la différence de température entre deux soudures."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel principe régit le fonctionnement d'une photorésistance (LDR) ?",
+              "options": [
+                "Sa résistance diminue lorsque l'éclairement lumineux augmente",
+                "Sa résistance augmente exponentiellement avec la température",
+                "Elle génère une tension alternative sous rayonnement ultraviolet",
+                "Elle émet de la lumière lorsqu'elle est traversée par un courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une LDR (Light Dependent Resistor) voit sa résistance baisser fortement sous l'effet des photons incidents."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel phénomène physique est exploité par un capteur à effet Hall ?",
+              "options": [
+                "L'apparition d'une tension transverse dans un conducteur soumis à un champ magnétique",
+                "La déformation mécanique d'un barreau de fer doux",
+                "L'émission d'électrons sous rayonnement infrarouge",
+                "La réfraction d'un faisceau laser dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet Hall crée une tension perpendiculaire au courant et au champ magnétique appliqué sur un semi-conducteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le principe physique d'un capteur piézoélectrique ?",
+              "options": [
+                "Une contrainte mécanique appliquée génère des charges électriques en surface",
+                "Un échauffement modifie la constante diélectrique de l'air",
+                "Un courant induit fait tourner un aimant permanent",
+                "Une variation de volume modifie la résistance chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains matériaux cristallins (comme le quartz) produisent des charges électriques proportionnelles à la force mécanique subie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une thermistance CTN (Coefficient de Température Négatif) a pour propriété :",
+              "options": [
+                "Sa résistance électrique diminue quand la température augmente",
+                "Sa résistance électrique augmente quand la température augmente",
+                "Sa résistance reste rigoureusement constante quelle que soit la température",
+                "Elle délivre une intensité proportionnelle à la pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une CTN, l'élévation de température favorise la libération de porteurs de charge, diminuant sa résistance électrique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel capteur de proximité sans contact détecte uniquement les cibles métalliques ?",
+              "options": [
+                "Le capteur inductif",
+                "Le capteur capacitif",
+                "Le capteur optique à barrage",
+                "Le capteur à ultrasons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur inductif crée un champ magnétique haute fréquence perturbé par les courants de Foucault dans les métaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type de matière peut détecter un capteur de proximité capacitif ?",
+              "options": [
+                "Des métaux ainsi que des isolants comme le verre, le plastique ou l'eau",
+                "Uniquement des aimants au néodyme",
+                "Exclusivement des métaux ferreux sous vide",
+                "Uniquement des gaz rares"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur capacitif réagit à tout matériau modifiant la capacité diélectrique de son électrode de détection."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment fonctionne un capteur à ultrasons pour mesurer une distance ?",
+              "options": [
+                "Il mesure le temps de vol de l'onde acoustique émise et réfléchie par la cible",
+                "Il mesure la perte d'intensité du faisceau lumineux",
+                "Il détecte la variation du champ gravitationnel terrestre",
+                "Il mesure la température de l'air ambiant par rayonnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur calcule la distance d = (c * Delta_t) / 2 en chronométrant l'aller-retour de l'onde acoustique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Caractéristiques métrologiques des capteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques métrologiques définissent la qualité globale d'un capteur ?",
+              "options": [
+                "La sensibilité",
+                "La justesse et la fidélité",
+                "La couleur du boîtier extérieur",
+                "L'étendue de mesure"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La sensibilité, la justesse, la fidélité et l'étendue de mesure sont des qualités métrologiques fondamentales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on la sensibilité S d'un capteur ?",
+              "options": [
+                "Le rapport entre la variation du signal de sortie et la variation de la grandeur d'entrée",
+                "La valeur maximale mesurable sans détruire le capteur",
+                "Le temps nécessaire pour atteindre 90 % de la valeur finale",
+                "L'écart entre la valeur mesurée et la moyenne de plusieurs essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sensibilité représente la pente de la courbe d'étalonnage du capteur : S = Delta_s / Delta_m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'étendue de mesure d'un capteur ?",
+              "options": [
+                "La plage de valeurs du mesurande pour laquelle le capteur fonctionne avec la précision garantie",
+                "La distance maximale en mètres entre le capteur et l'ordinateur",
+                "La durée de vie du capteur en années d'utilisation continue",
+                "Le poids maximal supporté par le boîtier du capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étendue de mesure (EM) est l'intervalle entre la valeur minimale et la valeur maximale mesurables avec exactitude."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la fidélité (ou répétabilité) d'un capteur ?",
+              "options": [
+                "L'aptitude à fournir des mesures concordantes pour une même valeur du mesurande",
+                "L'aptitude à donner une mesure rigoureusement égale à la valeur vraie",
+                "La rapidité à s'allumer après une mise sous tension",
+                "L'immunité absolue contre les surtensions du réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fidélité traduit la faible dispersion des mesures répétées dans des conditions identiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la justesse d'un capteur ?",
+              "options": [
+                "L'aptitude à fournir une valeur moyenne très proche de la valeur vraie du mesurande",
+                "L'aptitude à ne jamais consommer de courant électrique",
+                "Le fait de délivrer un signal de sortie strictement numérique",
+                "La capacité à mesurer des grandeurs très élevées sans saturation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La justesse caractérise la faiblesse des erreurs systématiques (ou biais) d'un instrument de mesure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quand qualifie-t-on un capteur de précis ?",
+              "options": [
+                "Lorsqu'il est à la fois fidèle et juste (faible erreur globale de mesure)",
+                "Lorsqu'il fournit une sortie d'une tension supérieure à 24 V",
+                "Lorsqu'il ne nécessite aucun étalonnage initial en laboratoire",
+                "Lorsqu'il réagit instantanément en moins d'une picoseconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La précision associe une grande justesse (faible biais) et une excellente fidélité (faible dispersion)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'hystérésis d'un capteur ?",
+              "options": [
+                "Le phénomène où la valeur de sortie dépend du sens de variation précédent du mesurande",
+                "La dérive thermique de la résistance de contact interne",
+                "La coupure automatique de l'alimentation en cas de surchauffe",
+                "La résistance mesurée entre la carcasse métallique et la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hystérésis correspond à l'écart de mesure observé selon que la grandeur physique augmente ou diminue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne la linéarité d'un capteur ?",
+              "options": [
+                "La constance de sa sensibilité sur l'ensemble de son étendue de mesure",
+                "L'absence totale de câbles de raccordement électrique",
+                "Le fait que son signal de sortie soit uniquement de type binaire",
+                "La résistance mécanique du capteur face aux chocs en ligne droite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un capteur est linéaire si sa courbe d'étalonnage est une droite, traduisant une sensibilité constante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le temps de réponse d'un capteur ?",
+              "options": [
+                "La durée nécessaire pour que la sortie atteigne un pourcentage fixé de sa valeur finale après un échelon",
+                "L'intervalle de temps séparant deux maintenances préventives",
+                "La fréquence d'horloge du microcontrôleur d'acquisition",
+                "Le temps nécessaire pour charger le microprogramme dans la puce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps de réponse (souvent à 90 % ou 95 %) quantifie la rapidité de réaction dynamique du capteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la résolution d'un capteur ?",
+              "options": [
+                "La plus petite variation du mesurande détectable sur le signal de sortie",
+                "Le nombre total de pixels affichés sur l'écran de contrôle",
+                "La tension électrique maximale admissible avant claquage",
+                "La fréquence maximale du courant d'alimentation secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résolution est le plus petit échelon de variation d'entrée perceptible par l'instrument de mesure."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Conditionnement des capteurs et adaptation de signal",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les rôles fondamentaux d'un circuit de conditionnement de capteur ?",
+              "options": [
+                "Adapter l'impédance entre le capteur et l'étage suivant",
+                "Amplifier un signal électrique de faible amplitude",
+                "Remplacer le capteur physique par un actionneur de puissance",
+                "Convertir une variation passive (ex. résistance) en tension"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le conditionneur transforme une grandeur passive en tension, amplifie le signal et adapte l'impédance de sortie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diviseur de tension constitué de R1 et R2 alimenté par Vcc, quelle est la tension V_out aux bornes de R2 ?",
+              "options": [
+                "V_out = Vcc * R2 / (R1 + R2)",
+                "V_out = Vcc * (R1 + R2) / R2",
+                "V_out = Vcc * R1 * R2",
+                "V_out = Vcc * (R1 - R2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule du pont diviseur de tension à vide est V_out = Vcc * R2 / (R1 + R2)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel montage en pont de quatre résistances permet de mesurer de très faibles variations d'impédance ?",
+              "options": [
+                "Le pont de Wheatstone",
+                "Le pont en H de commande de moteur",
+                "Le pont de Graetz à diodes de redressement",
+                "Le diviseur capacitif haute tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pont de Wheatstone mesure avec une grande précision de petites variations relatives de résistance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi utilise-t-on un amplificateur opérationnel (AOP) en montage suiveur de tension ?",
+              "options": [
+                "Pour isoler le capteur et éliminer l'effet de charge grâce à une très haute impédance d'entrée",
+                "Pour multiplier l'amplitude de la tension par un facteur dix mille",
+                "Pour convertir une tension continue en signal sinusoïdal",
+                "Pour abaisser la température du circuit imprimé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le montage suiveur présente une impédance d'entrée quasi infinie et une impédance de sortie quasi nulle, évitant d'atténuer le capteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un montage amplificateur non inverseur à AOP idéal avec résistances R1 (vers masse) et R2 (contre-réaction), le gain vaut :",
+              "options": [
+                "Av = 1 + (R2 / R1)",
+                "Av = - (R2 / R1)",
+                "Av = R1 / (R1 + R2)",
+                "Av = R1 * R2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gain en tension d'un amplificateur non inverseur est toujours supérieur ou égal à 1 et s'exprime par Av = 1 + (R2 / R1)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le gain en tension d'un amplificateur inverseur à AOP idéal avec résistance d'entrée R1 et contre-réaction R2 ?",
+              "options": [
+                "Av = - R2 / R1",
+                "Av = + R2 / R1",
+                "Av = 1 + R1 / R2",
+                "Av = - R1 / R2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour le montage inverseur, la tension de sortie s'écrit V_out = - (R2 / R1) * V_in, soit un gain de - R2 / R1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la tension de saturation d'un amplificateur opérationnel ?",
+              "options": [
+                "La tension maximale ou minimale que la sortie peut délivrer, limitée par les tensions d'alimentation",
+                "La tension provoquant la fusion immédiate du composant",
+                "La tension délivrée uniquement lorsque l'AOP est déconnecté",
+                "La tension de claquage des pistes conductrices"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension de sortie d'un AOP est physiquement bornée par ses tensions d'alimentation (+Vsat et -Vsat)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le principal intérêt d'un amplificateur d'instrumentation ?",
+              "options": [
+                "Il possède un taux de réjection du mode commun (TRMC) très élevé pour éliminer les parasites sur les deux lignes",
+                "Il fonctionne sans aucune source d'alimentation continue",
+                "Il supprime totalement le besoin de capteur de mesure",
+                "Il transforme directement la tension en signal lumineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amplificateur d'instrumentation amplifie la différence entre deux entrées tout en rejetant massivement le bruit commun."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un montage suiveur à AOP idéal, quelle relation lie la tension de sortie V_s à la tension d'entrée V_e ?",
+              "options": [
+                "V_s = V_e",
+                "V_s = - V_e",
+                "V_s = 2 * V_e",
+                "V_s = V_e / 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suiveur a un gain unitaire : la tension de sortie recopie fidèlement la tension d'entrée (V_s = V_e)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que provoque une impédance d'entrée d'étage de mesure trop faible par rapport à la résistance interne du capteur ?",
+              "options": [
+                "Une erreur de mesure par effet de charge due à une chute de tension interne dans le capteur",
+                "Une augmentation exponentielle de la sensibilité du capteur",
+                "Une inversion instantanée du sens de circulation du signal",
+                "Un abaissement de la température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet de charge soutire un courant excessif au capteur, diminuant artificiellement la tension mesurée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Chaîne d'acquisition et filtrage analogique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types de filtres analogiques en fréquence rencontre-t-on couramment en électronique ?",
+              "options": [
+                "Filtre passe-bas",
+                "Filtre passe-haut",
+                "Filtre passe-bande",
+                "Filtre à combustion thermique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les filtres fréquentiels classiques sont les passe-bas, passe-haut, passe-bande et coupe-bande (ou réjecteur)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la fonction principale d'un filtre passe-bas ?",
+              "options": [
+                "Laisser passer les basses fréquences et atténuer les fréquences supérieures à la fréquence de coupure",
+                "Laisser passer uniquement les hautes fréquences",
+                "Atténuer uniformément toutes les fréquences sans distinction",
+                "Augmenter la fréquence du signal incident"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre passe-bas transmet sans atténuation notable les fréquences inférieures à sa fréquence de coupure fc."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un filtre RC passe-bas du premier ordre avec résistance R et condensateur C, la pulsation de coupure vaut :",
+              "options": [
+                "omega_c = 1 / (R * C)",
+                "omega_c = R * C",
+                "omega_c = 2 * pi * R * C",
+                "omega_c = R / C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La constante de temps vaut tau = R * C, d'où la pulsation de coupure à -3 dB : omega_c = 1 / tau = 1 / (R * C)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À la fréquence de coupure fc d'un filtre linéaire du premier ordre, quelle est l'atténuation du gain en tension ?",
+              "options": [
+                "-3 dB (amplitude divisée par racine de 2)",
+                "-20 dB (amplitude divisée par 10)",
+                "0 dB (aucune atténuation)",
+                "-60 dB (amplitude divisée par 1000)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la fréquence de coupure, la puissance est divisée par deux, ce qui correspond à un gain en décibels de -3 dB."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la pente d'atténuation asymptotique d'un filtre passe-bas du premier ordre dans le diagramme de Bode ?",
+              "options": [
+                "-20 dB par décade",
+                "-40 dB par décade",
+                "-6 dB par décade",
+                "-80 dB par décade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ordre d'un filtre analogique apporte une pente asymptotique d'atténuation de -20 dB par décade."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel filtre analogique place-t-on impérativement avant un convertisseur CAN pour éviter le repliement de spectre ?",
+              "options": [
+                "Un filtre anti-repliement (filtre passe-bas)",
+                "Un filtre passe-haut sans fréquence limite",
+                "Un régulateur de tension linéaire de puissance",
+                "Un filtre passe-bande centré sur 50 Hz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre anti-repliement est un passe-bas qui élimine toutes les fréquences du signal supérieures à la moitié de la fréquence d'échantillonnage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un filtre passe-haut est particulièrement adapté pour :",
+              "options": [
+                "Éliminer la composante continue (offset) ou les très basses fréquences d'un signal",
+                "Supprimer les bruits à haute fréquence issus d'une horloge numérique",
+                "Amplifier le courant continu délivré par un panneau solaire",
+                "Créer une onde sinusoïdale à partir d'un niveau fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre passe-haut bloque la composante continue (fréquence nulle) et laisse passer les variations rapides."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment définit-on la bande passante d'un filtre passe-bande ?",
+              "options": [
+                "L'intervalle de fréquences compris entre la fréquence de coupure basse et la fréquence de coupure haute",
+                "La longueur maximale admise pour le câble de transmission",
+                "Le nombre total d'octets transférés par seconde",
+                "La tension maximale applicable en entrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bande passante à -3 dB correspond à la largeur de bande Delta_f = fc_haute - fc_basse transmise sans atténuation majeure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre un filtre passif et un filtre actif ?",
+              "options": [
+                "Le filtre actif intègre des composants amplificateurs alimentés (ex. AOP) et peut fournir du gain",
+                "Le filtre passif nécessite une alimentation électrique externe",
+                "Le filtre passif ne contient aucune résistance",
+                "Le filtre actif ne peut pas filtrer les hautes fréquences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un filtre actif s'appuie sur des composants alimentés (comme des AOP) pour amplifier le signal et éviter les effets de charge."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que représente une décade sur l'axe des fréquences d'un diagramme de Bode ?",
+              "options": [
+                "Une multiplication de la fréquence par un facteur 10 (ex. de 100 Hz à 1 000 Hz)",
+                "Un intervalle régulier de 10 hertz",
+                "Une durée de fonctionnement de dix secondes",
+                "Une division par dix de la tension d'entrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur une échelle logarithmique de Bode, une décade correspond à un rapport de 10 entre deux fréquences."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Échantillonnage et théorème de Shannon-Nyquist",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que stipule le théorème de Shannon-Nyquist pour numériser fidèlement un signal analogique ?",
+              "options": [
+                "La fréquence d'échantillonnage Fe doit être strictement supérieure au double de la fréquence maximale fmax du signal",
+                "Si Fe <= 2 * fmax, un phénomène de repliement de spectre (aliasing) déforme irrémédiablement le signal",
+                "La fréquence d'échantillonnage doit toujours être inférieure à 10 Hz",
+                "Un filtre passe-bas anti-repliement doit limiter le spectre du signal sous Fe / 2"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le critère de Shannon impose Fe > 2 * fmax pour prévenir le repliement spectral (aliasing) lors de l'échantillonnage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si un signal analogique contient des composantes utiles jusqu'à 4 kHz, quelle est la fréquence minimale d'échantillonnage théorique ?",
+              "options": ["8 kHz", "4 kHz", "2 kHz", "16 kHz"],
+              "correctAnswers": [0],
+              "explanation": "Selon Shannon-Nyquist, Fe_min = 2 * fmax = 2 * 4 kHz = 8 kHz."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le repliement de spectre (aliasing) en traitement du signal ?",
+              "options": [
+                "L'apparition de fréquences fantômes indésirables résultant d'un sous-échantillonnage",
+                "L'amplification excessive des basses fréquences par résonance mécanique",
+                "La coupure thermique du convertisseur de données",
+                "Le déphasage pur de 180 degrés sans modification d'amplitude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aliasing fait apparaître dans la bande utile des fréquences fictives issues du repliement des composantes au-delà de Fe / 2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la période d'échantillonnage Te associée à une fréquence Fe = 1 000 Hz ?",
+              "options": ["1 ms (0,001 s)", "1 s", "10 ms", "0,1 ms"],
+              "correctAnswers": [0],
+              "explanation": "La période d'échantillonnage est l'inverse de la fréquence : Te = 1 / Fe = 1 / 1000 = 1 ms."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans le standard du CD audio, pourquoi la fréquence d'échantillonnage a-t-elle été fixée à 44,1 kHz ?",
+              "options": [
+                "Pour couvrir la bande audible humaine (jusqu'à 20 kHz) en prévoyant une marge pour le filtre anti-repliement",
+                "Parce que les enceintes acoustiques s'arrêtent à 44,1 kHz",
+                "Pour limiter la taille du disque optique à 44 millimètres",
+                "Pour s'aligner sur la fréquence du réseau électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oreille humaine perçoit jusqu'à 20 kHz. 44,1 kHz > 2 * 20 kHz = 40 kHz, autorisant la réalisation d'un filtre de coupure réel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel circuit électronique maintient constante la tension analogique pendant la conversion du CAN ?",
+              "options": [
+                "L'échantillonneur-bloqueur (Track and Hold)",
+                "La résistance de rappel au niveau haut",
+                "La diode Zener de régulation de tension",
+                "L'onduleur autonome de secours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échantillonneur-bloqueur fige la tension d'entrée aux bornes d'un condensateur pendant le temps de calcul du CAN."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que subit le spectre d'un signal continu lors de son échantillonnage temporel à la cadence Fe ?",
+              "options": [
+                "Il est périodisé avec une période fréquentielle égale à Fe",
+                "Il est entièrement effacé au-dessus de 0 Hz",
+                "Il se transforme en une raie unique à la fréquence Fe",
+                "Son amplitude maximale est multipliée par l'infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échantillonnage temporel engendre une réplication périodique du spectre du signal initial au pas de Fe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on échantillonne une sinusoïde de 900 Hz avec une fréquence Fe = 1 000 Hz, quelle fréquence apparente observe-t-on ?",
+              "options": [
+                "100 Hz (par repliement |Fe - f|)",
+                "900 Hz",
+                "500 Hz",
+                "1 900 Hz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fréquence se replie autour de Fe / 2 et apparaît à |Fe - f| = |1 000 - 900| = 100 Hz."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que représente la fréquence de Nyquist Fn = Fe / 2 ?",
+              "options": [
+                "La fréquence maximale du signal d'entrée admissible sans repliement de spectre",
+                "La fréquence minimale d'alimentation du circuit électronique",
+                "La fréquence propre de résonance du quartz d'horloge",
+                "La fréquence de coupure du filtre de sortie du haut-parleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fréquence de Nyquist (Fe / 2) est la borne supérieure absolue des fréquences numérisables sans distorsion d'aliasing."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un système d'acquisition numérique, que signifie une cadence de 1 Méch/s (Mégasample/s) ?",
+              "options": [
+                "Le système effectue un million d'échantillons de mesure par seconde",
+                "Le système peut stocker un million de fichiers en mémoire",
+                "La bande passante analogique est obligatoirement de 10 MHz",
+                "Le signal d'entrée oscille à un million de hertz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 Méch/s (ou 1 MS/s) correspond à un million de conversions analogiques-numériques réalisées chaque seconde."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quantification et numérisation (CAN / ADC)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres définissent les performances d'un Convertisseur Analogique-Numérique (CAN) ?",
+              "options": [
+                "La résolution en nombre de bits N",
+                "La plage de tension d'entrée pleine échelle (Vpe)",
+                "La vitesse ou temps de conversion",
+                "La masse volumique du boîtier en résine"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La résolution en bits, la plage de tension pleine échelle et la cadence de conversion sont les caractéristiques clés d'un CAN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le quantum q d'un CAN de résolution N bits avec une plage de tension Vpe ?",
+              "options": [
+                "q = Vpe / (2^N)",
+                "q = Vpe * (2^N)",
+                "q = Vpe / N",
+                "q = (2^N) / Vpe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le quantum q est la plus petite marche de tension détectable : q = Vpe / (2^N)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un CAN 10 bits alimenté entre 0 V et 5 V, combien de niveaux numériques discrets distincts existe-t-il ?",
+              "options": [
+                "1024 niveaux (de 0 à 1023)",
+                "10 niveaux",
+                "256 niveaux",
+                "4096 niveaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur N = 10 bits, le nombre de combinaisons binaires possibles est 2^10 = 1 024 entiers (de 0 à 1023)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le quantum d'un CAN 10 bits ayant une pleine échelle de 5,12 V ?",
+              "options": [
+                "5 mV (car 5,12 V / 1024 = 0,005 V)",
+                "50 mV",
+                "0,5 V",
+                "10 mV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "q = 5,12 V / 1024 = 0,005 V = 5 millivolts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'erreur de quantification d'un CAN idéal ?",
+              "options": [
+                "L'erreur d'arrondi comprise entre -q / 2 et +q / 2 inhérente au passage du continu au discret",
+                "Une erreur d'écriture dans le programme informatique",
+                "Un court-circuit aléatoire entre les broches d'alimentation",
+                "La dérive thermique due à l'effet Joule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La discrétisation continue/discrète engendre une incertitude d'arrondi appelée bruit de quantification, bornée par +/- q/2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle valeur numérique N_num obtient-on pour Vin = 2,5 V sur un CAN 8 bits (0-5 V) ?",
+              "options": [
+                "128 (car 2,5 V / 5 V * 256 = 128)",
+                "64",
+                "255",
+                "512"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2,5 V représente la moitié de la pleine échelle (5 V), soit 0,5 * 256 = 128."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel type d'architecture de CAN est le plus rapide pour la conversion haute fréquence ?",
+              "options": [
+                "Le CAN flash (à comparateurs en parallèle)",
+                "Le CAN à approximations successives (SAR)",
+                "Le CAN à double rampe d'intégration",
+                "Le CAN à potentiomètre motorisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CAN flash compare simultanément la tension d'entrée à 2^N - 1 seuils en un seul cycle d'horloge."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le type de CAN le plus couramment intégré dans les microcontrôleurs standards ?",
+              "options": [
+                "Le CAN à approximations successives (SAR)",
+                "Le CAN flash 32 bits",
+                "Le convertisseur électromécanique à mercure",
+                "Le pont diviseur résonant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CAN SAR offre un remarquable compromis entre faible coût, faible encombrement de silicium et vitesse d'acquisition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si la résolution d'un CAN passe de 8 bits à 12 bits pour une même pleine échelle, par combien le quantum est-il divisé ?",
+              "options": [
+                "Par 16 (car 2^(12-8) = 2^4 = 16)",
+                "Par 4",
+                "Par 8",
+                "Par 32"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque bit supplémentaire divise le pas de mesure par 2. Pour 4 bits de plus, le quantum est divisé par 2^4 = 16."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel paramètre détermine la tension pleine échelle maximale lors d'une conversion sur microcontrôleur ?",
+              "options": [
+                "La tension de référence Vref sélectionnée pour le convertisseur",
+                "La tension de rupture des diodes de protection",
+                "La tension du signal de l'horloge système divisée par dix",
+                "La fréquence d'exécution du compilateur C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vref fixe la tension maximale d'entrée correspondant à la valeur numérique maximale (ex. 1023 sur 10 bits)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Capteurs spécifiques de mouvement et position",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels capteurs permettent de mesurer une position angulaire ou une vitesse de rotation d'axe ?",
+              "options": [
+                "Le codeur rotatif incrémental",
+                "Le codeur optique absolu",
+                "Le potentiomètre rotatif",
+                "La sonde d'humidité capacitive de sol"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les codeurs rotatifs (incrémentaux ou absolus) et les potentiomètres mesurent des grandeurs angulaires de position ou de vitesse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment un codeur incrémental détermine-t-il le sens de rotation de son axe ?",
+              "options": [
+                "Grâce au déphasage électrique de 90 degrés (quadrature) entre les voies A et B",
+                "En analysant la couleur de la diode d'émission",
+                "En modifiant la tension d'alimentation du moteur associé",
+                "En mesurant la force centrifuge avec un peson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le déphasage de pi/2 entre voies A et B permet de déterminer quel signal est en avance, indiquant le sens de rotation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la voie d'index (voie Z ou Top tour) sur un codeur incrémental ?",
+              "options": [
+                "Fournir une unique impulsion par tour servant de référence de prise d'origine",
+                "Couper l'alimentation en cas de survitesse critique",
+                "Mesurer la température interne du disque optique",
+                "Générer une onde sinusoïdale de synchronisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voie Z délivre une impulsion unique par rotation complète pour recaler le comptage absolu après le démarrage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la différence essentielle entre un codeur incrémental et un codeur absolu ?",
+              "options": [
+                "Le codeur absolu délivre la position réelle immédiatement sans prise d'origine même après coupure de courant",
+                "Le codeur absolu ne peut tourner que dans un seul sens de rotation",
+                "Le codeur incrémental ne contient aucun composant électronique",
+                "Le codeur absolu ne fonctionne qu'avec des engrenages hydrauliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le codeur absolu associe un mot binaire unique à chaque secteur angulaire, conservant sa position hors tension."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le code binaire réfléchi (code Gray) est-il utilisé sur les disques des codeurs absolus ?",
+              "options": [
+                "Un seul bit change d'état à chaque incrément, éliminant les états transitoires erronés",
+                "Il permet de doubler la vitesse de rotation maximale de l'arbre",
+                "Il supprime totalement le besoin d'éclairage optique",
+                "Il n'utilise que des valeurs impaires faciles à lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En code Gray, la variation d'un seul bit entre deux positions successives empêche les lectures faussées lors des transitions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique mesure un accéléromètre capacitif MEMS ?",
+              "options": [
+                "L'accélération propre subie par sa masse sismique interne",
+                "La vitesse absolue par rapport aux étoiles lointaines",
+                "La pression atmosphérique locale au niveau de la mer",
+                "La distance focale d'une lentille optique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accéléromètre mesure les accélérations appliquées à sa structure mobile interne, y compris l'accélération de la pesanteur g."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel système associe des accéléromètres et des gyromètres pour suivre l'attitude dans l'espace à 6 degrés de liberté ?",
+              "options": [
+                "Une centrale inertielle (IMU)",
+                "Un tachymètre à courants de Foucault",
+                "Un capteur transformateur différentiel (LVDT)",
+                "Un pont extensométrique de pesée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une centrale inertielle (IMU) fusionne les données d'accéléromètres et de gyromètres 3 axes pour estimer l'orientation spatiale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment fonctionne un capteur potentiométrique de déplacement linéaire ?",
+              "options": [
+                "Un curseur mobile se déplace sur une piste résistive, faisant varier la tension selon un diviseur de tension",
+                "Une bobine en mouvement génère un courant continu sous vide",
+                "Un faisceau laser mesure l'effet Doppler thermique de la pièce",
+                "Une membrane souple compresse un réservoir d'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le curseur solidaire de la pièce mobile prélève une tension directement proportionnelle à sa position le long de la piste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que mesure précisément un gyromètre MEMS ?",
+              "options": [
+                "La vitesse angulaire instantanée de rotation en degrés ou radians par seconde",
+                "L'angle statique absolu par rapport au pôle Nord magnétique",
+                "La vitesse linéaire d'avancement du véhicule en km/h",
+                "La force de frottement exercée sur les roulements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gyromètre mesure une vitesse angulaire autour de ses axes de mesure grâce aux forces de Coriolis sur une structure vibrante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de fronts d'impulsion sont comptés par tour avec un codeur incrémental de 1024 points en décodage quadrature x4 ?",
+              "options": [
+                "4096 fronts par tour (1024 * 4)",
+                "1024 fronts par tour",
+                "256 fronts par tour",
+                "2048 fronts par tour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décodage en quadrature exploite les fronts montants et descendants des voies A et B : 1024 * 4 = 4 096 impulsions comptées."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Capteurs de force, couple, pression et température",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels capteurs sont couramment exploités pour mesurer une température ?",
+              "options": [
+                "La sonde thermo-résistive en platine PT100",
+                "Le thermocouple à effet Seebeck",
+                "La thermistance CTN",
+                "Le tube de Pitot à jauge de pression"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les sondes PT100, les thermocouples et les thermistances sont les technologies standards de mesure de température."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment évolue la résistance d'une jauge de déformation collée sur un barreau métallique soumis à une traction ?",
+              "options": [
+                "Sa résistance électrique augmente proportionnellement à l'allongement relatif",
+                "Sa résistance chute instantanément à zéro ohm",
+                "Sa résistance diminue de moitié sous l'effet du frottement",
+                "Sa résistance reste rigoureusement fixe mais émet de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traction allonge le fil conducteur de la jauge et réduit sa section, ce qui accroît sa résistance (loi de Pouillet)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi monte-t-on quatre jauges de déformation en pont complet de Wheatstone dans un corps d'épreuve de pesée ?",
+              "options": [
+                "Pour quadrupler la sensibilité du signal de mesure et compenser les dilatations thermiques parasites",
+                "Pour diviser par quatre la charge maximale supportée",
+                "Pour permettre une alimentation directe sur le réseau triphasé",
+                "Pour supprimer le besoin d'amplifier le signal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pont complet maximise la sensibilité en combinant traction et compression tout en annulant la dérive en température."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de résistance d'une sonde de platine PT100 à la température de 0 degré Celsius ?",
+              "options": ["100 ohms", "0 ohm", "1000 ohms", "50 ohms"],
+              "correctAnswers": [0],
+              "explanation": "Par définition de la norme internationale, la sonde PT100 présente une résistance nominale de 100 ohms à 0 °C."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment mesure-t-on généralement le couple de torsion appliqué sur un arbre mécanique tournant ?",
+              "options": [
+                "En disposant des jauges de déformation orientées à 45 degrés sur la surface de l'arbre",
+                "En mesurant la couleur de la peinture thermique sur l'arbre",
+                "En comptant le nombre de vis d'assemblage du palier",
+                "En mesurant la tension entre les deux roulements à billes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La torsion d'un arbre génère des contraintes principales de traction et de compression maximales à 45° par rapport à l'axe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le principe d'un capteur de pression piézorésistif à membrane souple ?",
+              "options": [
+                "La déformation mécanique de la membrane sous pression fait varier la résistance de jauges intégrées",
+                "Une étincelle électrique ionise le fluide sous pression",
+                "Une turbine tourne à une fréquence dépendant du volume de gaz",
+                "Un aimant se démagnétise sous l'effet de l'écrasement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression courbe la membrane, générant des contraintes mécaniques détectées par des éléments piézorésistifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle distinction existe-t-il entre pression absolue et pression relative (manométrique) ?",
+              "options": [
+                "La pression relative est mesurée par rapport à la pression atmosphérique locale, l'absolue par rapport au vide zéro",
+                "La pression absolue ne s'applique qu'aux liquides visqueux",
+                "La pression relative est toujours mesurée en kelvins",
+                "La pression absolue ne peut jamais dépasser 1 bar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P_absolue = P_relative + P_atmosphérique. Le zéro manométrique correspond à la pression de l'air ambiant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel capteur de température optique permet de mesurer la température sans aucun contact physique ?",
+              "options": [
+                "Le pyromètre infrarouge",
+                "Le thermocouple chemisé",
+                "La sonde platine PT1000",
+                "Le thermostat bilame"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pyromètre infrarouge mesure l'énergie du rayonnement thermique émis par la surface de l'objet (loi de Planck/Stefan)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel effet parasite perturbe la mesure d'une sonde résistive PT100 lorsqu'elle est raccordée par des câbles longs ?",
+              "options": [
+                "La résistance ohmique des conducteurs de liaison en cuivre s'ajoute à celle de la sonde",
+                "L'attraction électrostatique des nuages",
+                "La liquéfaction spontanée de la gaine plastique",
+                "La dégradation radioactive du fil de platine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance des fils de ligne fausse la mesure ; on utilise un montage 3 ou 4 fils pour compenser cette résistance parasite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel dispositif mécanique transforme la pression interne d'un fluide en déplacement angulaire d'aiguille ?",
+              "options": [
+                "Le tube de Bourdon",
+                "Le pendule de Foucault",
+                "Le gyroscope à toupie",
+                "Le transformateur d'intensité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tube de Bourdon est un tube élastique cintré qui a tendance à se redresser proportionnellement à la pression appliquée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bruit, perturbations et transmission du signal",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles méthodes permettent de protéger un signal analogique de mesure contre les perturbations CEM ?",
+              "options": [
+                "L'emploi de câbles à paires torsadées blindées",
+                "Le raccordement approprié du blindage à la masse de référence",
+                "Le passage des câbles de mesure dans la même goulotte que les câbles de puissance 400 V sans séparation",
+                "Le filtrage passe-bas des entrées de mesure"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le blindage, le torsadage et le filtrage atténuent efficacement les bruits ; mélanger signaux et puissance amplifie les perturbations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la boucle de courant 4-20 mA est-elle largement adoptée en instrumentation industrielle ?",
+              "options": [
+                "Le courant est insensible à la résistance des câbles longs et le niveau 4 mA permet de détecter une coupure de ligne",
+                "Elle ne nécessite aucun câble électrique métallique",
+                "Elle transporte des tensions de plus de 50 000 V sans risque",
+                "Elle remplace intégralement les réseaux informatiques sans fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En boucle de courant, l'intensité reste constante le long de la ligne ; un courant de 0 mA signale un câble rompu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment définit-on le rapport signal sur bruit (RSB ou SNR en anglais) ?",
+              "options": [
+                "Le rapport entre la puissance du signal utile et la puissance du bruit perturbateur (souvent en dB)",
+                "La vitesse de transmission divisée par la tension de claquage",
+                "Le nombre d'octets perdus divisé par le nombre total de bits",
+                "Le délai séparant deux impulsions d'horloge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport signal sur bruit mesure la qualité du signal en quantifiant la prédominance du signal utile sur les parasites."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi torsade-t-on les deux conducteurs d'une ligne de signal différentiel ?",
+              "options": [
+                "Pour égaliser les tensions parasites induites sur chaque fil afin que l'étage différentiel les élimine",
+                "Pour augmenter la résistance mécanique du câble lors de la pose",
+                "Pour éviter que le cuivre ne s'oxyde prématurément",
+                "Pour transformer le courant continu en impulsions carrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le torsadage expose les deux fils aux mêmes variations de champ magnétique ; le récepteur différentiel annule ce bruit commun."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une boucle de masse dans une chaîne électronique ?",
+              "options": [
+                "Un chemin fermé de conducteurs de masse créant une spire sensible à l'induction de courants parasites",
+                "Une masse totalement isolée de tout potentiel électrique",
+                "Un circuit d'amplification de puissance à thyristors",
+                "Un câble de sécurité enroulé autour d'un moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une boucle de masse forme une spire fermée traversée par des flux magnétiques variables, provoquant des tensions parasites néfastes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel composant réalise une isolation galvanique complète entre deux circuits électriques ?",
+              "options": [
+                "L'optocoupleur (photocoupleur)",
+                "La résistance de rappel au niveau bas",
+                "Le potentiomètre à piste cermet",
+                "La diode de roue libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'optocoupleur transmet l'information par voie lumineuse (LED et photorécepteur), sans aucune liaison électrique directe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la terre dans un châssis d'appareil de mesure ?",
+              "options": [
+                "Évacuer les courants de fuite vers le sol pour la sécurité des personnes et fixer une référence de blindage",
+                "Fournir l'énergie nécessaire au fonctionnement des puces",
+                "Augmenter la fréquence de calcul du microprocesseur",
+                "Diminuer la résistance interne des piles de secours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terre protège contre les chocs électriques en cas de défaut d'isolement et sert de drain pour les blindages CEM."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la diaphonie (crosstalk) entre deux câbles conducteurs adjacents ?",
+              "options": [
+                "Le couplage capacitif ou inductif perturbateur transférant de l'énergie d'un signal vers un signal voisin",
+                "La coupure mécanique de deux conducteurs sous vibration",
+                "La synchronisation parfaite de deux horloges à quartz",
+                "L'émission de lumière par effet couronne sur un fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diaphonie résulte des capacités et inductances mutuelles entre conducteurs proches, polluant le signal voisin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la fréquence typique du parasite électromagnétique induit par le secteur électrique en Europe ?",
+              "options": ["50 Hz", "1 000 Hz", "2,4 GHz", "433 MHz"],
+              "correctAnswers": [0],
+              "explanation": "Le réseau électrique alternatif européen à 50 Hz rayonne un champ électromagnétique capté comme un parasite à 50 Hz."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment filtre-t-on efficacement un bruit de haute fréquence superposé à un signal thermique d'évolution lente ?",
+              "options": [
+                "Avec un filtre passe-bas dont la fréquence de coupure est adaptée à la dynamique thermique lente",
+                "Avec un filtre passe-haut de fréquence de coupure élevée",
+                "En remplaçant le capteur thermique par une ampoule",
+                "En supprimant la connexion à la terre du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les variations thermiques étant très lentes (basses fréquences), un filtre passe-bas atténue le bruit haute fréquence sans altérer la mesure."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Algorithmes et microcontrôleurs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Architecture des systèmes programmables et microcontrôleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sous-ensembles fondamentaux constituent l'architecture interne d'un microcontrôleur ?",
+              "options": [
+                "L'unité centrale de traitement (CPU / ALU)",
+                "Les mémoires de programme (FLASH) et de données (RAM)",
+                "Les périphériques d'entrées/sorties (GPIO, timers, CAN)",
+                "Un réservoir sous pression de fluide caloporteur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un microcontrôleur regroupe sur un circuit intégré unique la CPU, la mémoire (FLASH, RAM) et les périphériques d'E/S."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal de la mémoire FLASH dans un microcontrôleur ?",
+              "options": [
+                "Stocker le code exécutable du programme de façon non volatile (conservé hors tension)",
+                "Mémoriser temporairement les variables dynamiques de calcul",
+                "Fournir la tension de référence pour le convertisseur ADC",
+                "Refroidir thermiquement les registres de la CPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mémoire FLASH est non volatile : elle conserve le programme binaire téléversé même en l'absence d'alimentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique fondamentale de la mémoire vive (RAM) ?",
+              "options": [
+                "Elle est volatile et perd son contenu dès que l'alimentation électrique est coupée",
+                "Elle conserve les données gravées pendant plus de cinquante ans hors tension",
+                "Elle ne peut être écrite qu'une seule fois lors de la fabrication",
+                "Elle sert d'antenne pour les liaisons radiofréquences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La RAM stocke temporairement les variables et la pile d'exécution ; son contenu s'efface à la coupure d'alimentation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle de l'oscillateur d'horloge (quartz) relié au microcontrôleur ?",
+              "options": [
+                "Cadencer l'exécution séquentielle des instructions de la CPU à un rythme régulier",
+                "Réguler la température du boîtier plastique en silicium",
+                "Convertir le courant continu en faisceau de lumière cohérente",
+                "Empêcher les surintensités sur les broches d'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'horloge génère un signal périodique indispensable pour synchroniser chaque cycle d'instruction machine de la CPU."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans l'architecture de Von Neumann, contrairement à l'architecture Harvard :",
+              "options": [
+                "Les données et les instructions de programme partagent le même bus et le même espace mémoire",
+                "L'unité arithmétique et logique est entièrement absente",
+                "La mémoire vive ne peut pas stocker d'entiers positifs",
+                "Le microcontrôleur ne possède aucune horloge interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'architecture Von Neumann utilise un bus unique pour le code et les données, tandis qu'Harvard sépare physiquement les deux mémoires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la mission de l'Unité Arithmétique et Logique (ALU) au sein du processeur ?",
+              "options": [
+                "Réaliser les opérations mathématiques (addition, soustraction) et logiques (ET, OU, décalage)",
+                "Contrôler la vitesse de rotation des ventilateurs",
+                "Assurer la liaison sans fil Bluetooth",
+                "Alimenter le rétroéclairage des voyants LED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ALU est le circuit électronique de calcul chargé d'exécuter les opérations arithmétiques et booléennes fondamentales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel registre interne contient l'adresse mémoire de la prochaine instruction à exécuter ?",
+              "options": [
+                "Le compteur de programme (Program Counter ou PC)",
+                "Le registre d'état (Status Register)",
+                "L'accumulateur général de calcul",
+                "Le pointeur de pile de réinitialisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Program Counter (PC) pointe vers l'adresse de l'instruction qui sera chargée au cycle suivant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle différence distingue un microcontrôleur d'un microprocesseur traditionnel ?",
+              "options": [
+                "Le microcontrôleur intègre CPU, mémoires et périphériques sur la même puce, formant un système autonome",
+                "Le microprocesseur ne peut exécuter que du code binaire écrit à la main",
+                "Le microcontrôleur consomme toujours plus d'énergie qu'un processeur de PC",
+                "Le microprocesseur ne dispose d'aucune unité arithmétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un microcontrôleur est un système complet sur puce (SoC) optimisé pour le contrôle direct à faible coût et basse consommation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la mémoire EEPROM présente dans certains microcontrôleurs ?",
+              "options": [
+                "Conserver des paramètres de configuration modifiables par le programme même après extinction",
+                "Stocker la mémoire vidéo d'un écran haute définition",
+                "Générer les signaux MLI pour piloter les moteurs",
+                "Refroidir le régulateur de tension linéaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'EEPROM est une mémoire non volatile réinscriptible octet par octet, idéale pour sauvegarder des réglages ou étalonnages."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rôle du chien de garde (Watchdog) dans un système à microcontrôleur ?",
+              "options": [
+                "Réinitialiser automatiquement le microcontrôleur si le logiciel reste bloqué dans une boucle anormale",
+                "Protéger le circuit imprimé contre les intrusions physiques",
+                "Mesurer la température ambiante du boîtier plastique",
+                "Vérifier la validité de la licence du logiciel compilé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Watchdog est un timer de sécurité qui force un reset matériel s'il n'est pas réarmé régulièrement par le programme opérationnel."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Entrées / Sorties numériques et interfaces (GPIO)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels modes de fonctionnement peuvent être configurés sur une broche GPIO de microcontrôleur ?",
+              "options": [
+                "Entrée numérique haute impédance",
+                "Sortie numérique logique (push-pull)",
+                "Entrée numérique avec résistance de tirage (pull-up)",
+                "Sortie de fluide sous pression hydraulique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les broches GPIO se configurent en entrée (flottante ou avec pull-up/pull-down) ou en sortie push-pull / drain ouvert."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi active-t-on une résistance de tirage vers le haut (pull-up) sur une broche d'entrée reliée à un interrupteur ?",
+              "options": [
+                "Pour fixer un potentiel logique haut (1) stable quand l'interrupteur est ouvert et éviter un état flottant",
+                "Pour augmenter le courant dans la diode LED",
+                "Pour diviser par deux la fréquence de l'horloge",
+                "Pour empêcher le composant de chauffer au soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance de pull-up évite que la broche reste en haute impédance flottante, sensible aux perturbations électromagnétiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel niveau logique est lu par le microcontrôleur lorsqu'un bouton câblé à la masse (GND) est pressé, avec pull-up activée ?",
+              "options": [
+                "Niveau bas (0 logique ou LOW)",
+                "Niveau haut (1 logique ou HIGH)",
+                "Niveau indéterminé oscillant",
+                "Tension négative de -5 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fermeture du contact relie directement la broche à la masse GND (0 V), générant un niveau logique LOW."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel phénomène parasite survient mécaniquement lors de la fermeture d'un bouton-poussoir ?",
+              "options": [
+                "Des rebonds mécaniques créant une suite d'oscillations transitoires rapides",
+                "Une étincelle permanente faisant fondre le cuivre",
+                "L'inversion de polarité de la source d'alimentation",
+                "La perte définitive du programme dans la mémoire FLASH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élasticité des contacts engendre des rebonds (bouncing) durant quelques millisecondes, faussant le comptage d'impulsions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment supprime-t-on efficacement les rebonds mécaniques d'un bouton par logiciel ?",
+              "options": [
+                "En temporisant la lecture de quelques millisecondes après la première détection pour laisser stabiliser le contact",
+                "En augmentant la tension d'alimentation à 48 V",
+                "En supprimant la boucle principale du programme",
+                "En écrivant le code en majuscules uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anti-rebond logiciel attend une durée de stabilisation (ex. 20 à 50 ms) avant de confirmer le nouvel état du bouton."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du courant maximal admissible sur une broche de sortie de microcontrôleur standard (ex. ATmega328P) ?",
+              "options": [
+                "Environ 20 mA à 40 mA",
+                "Environ 10 A à 20 A",
+                "Moins de 1 microampère",
+                "Plus de 100 A"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sortie GPIO standard supporte un courant limité à quelques dizaines de milliampères (typiquement 20 à 40 mA)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi ne peut-on pas brancher directement un moteur électrique de puissance sur une broche GPIO ?",
+              "options": [
+                "Le moteur appelle un courant bien supérieur au maximum de la broche et génère des surtensions inductives destructrices",
+                "Le moteur ne comprend que les instructions en langage assembleur",
+                "La broche de sortie ne peut délivrer que des ondes sinusoïdales",
+                "Le microcontrôleur tournerait sur son support"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un moteur nécessite un organe de puissance (transistor, pont en H) pour lui fournir le courant et isoler la commande."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel composant protège le transistor de commande contre la surtension induite à la coupure d'une bobine de relais ?",
+              "options": [
+                "Une diode de roue libre câblée en parallèle inverse sur la bobine",
+                "Une résistance de shunt de 100 ohms en série",
+                "Un condensateur chimique de forte valeur vers la terre",
+                "Un fusible thermique réarmable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diode de roue libre évacue l'énergie inductive (e = -L di/dt) lorsque le courant est interrompu, protégeant le transistor."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une technologie logique CMOS 3,3 V, quelle tension garantit à coup sûr un niveau logique bas (LOW) en entrée ?",
+              "options": [
+                "Une tension très proche de 0 V, inférieure au seuil VIL max (environ 0,8 V)",
+                "Une tension de 3,3 V",
+                "Une tension supérieure à 4,5 V",
+                "Une tension alternative de 230 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le seuil VIL (Voltage Input Low) définit la tension maximale garantie pour être reconnue comme un 0 logique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi place-t-on obligatoirement une résistance en série avec une diode LED reliée à une sortie GPIO ?",
+              "options": [
+                "Pour limiter le courant traversant la LED et préserver le composant ainsi que la broche de sortie",
+                "Pour convertir la lumière visible en ondes infrarouges",
+                "Pour augmenter la tension de claquage de la LED",
+                "Pour faire clignoter automatiquement la diode sans programme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance série fixe le courant dans la diode LED à une valeur nominale sûre (ex. 10 à 20 mA), évitant la destruction."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Entrées analogiques et CAN intégré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes et configurations accompagnent l'acquisition d'une mesure analogique sur microcontrôleur ?",
+              "options": [
+                "Sélectionner la broche d'entrée sur le multiplexeur analogique",
+                "Définir la tension de référence Vref de conversion",
+                "Lancer la conversion et attendre la fin du cycle (polling ou interruption)",
+                "Changer le fusible de protection de l'alimentation secteur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'acquisition CAN requiert le choix de la voie sur le multiplexeur, la tension Vref et la synchronisation de fin de conversion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur une carte Arduino Uno (CAN 10 bits, Vref = 5 V), quelle valeur entière retourne analogRead() pour une entrée de 2,5 V ?",
+              "options": ["Environ 511 ou 512", "1023", "255", "128"],
+              "correctAnswers": [0],
+              "explanation": "2,5 V représente la moitié de l'échelle 5 V : (2,5 / 5) * 1023 donne environ 511 ou 512."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que retourne la fonction analogRead() sur un convertisseur 10 bits lorsque la broche est reliée au 0 V (GND) ?",
+              "options": ["0", "1023", "512", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Une tension nulle correspond au premier palier de quantification, soit la valeur binaire 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que risque-t-il d'arriver si l'on applique 7 V sur une broche d'entrée analogique d'un microcontrôleur alimenté en 5 V ?",
+              "options": [
+                "La mesure sature au maximum (1023) et les diodes de protection internes peuvent être détruites par surintensité",
+                "Le microcontrôleur inverse automatiquement le sens du courant",
+                "La valeur lue devient immédiatement négative",
+                "Le programme est effacé de la mémoire FLASH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute tension supérieure à VCC fait saturer la mesure et risque d'endommager les circuits d'entrée par surtension."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le rôle du multiplexeur analogique placé à l'entrée du CAN d'un microcontrôleur ?",
+              "options": [
+                "Aiguiller tour à tour plusieurs broches d'entrées vers un unique convertisseur CAN interne",
+                "Augmenter l'amplitude de la tension par un facteur dix",
+                "Bloquer toutes les tensions inférieures à 1 volt",
+                "Générer plusieurs signaux MLI simultanés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le multiplexeur permet de partager un seul convertisseur CAN entre plusieurs broches d'entrée analogiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la lecture d'une entrée analogique non connectée (flottante) renvoie-t-elle des valeurs aléatoires ?",
+              "options": [
+                "La très haute impédance d'entrée capte le bruit électromagnétique ambiant et les charges résiduelles du condensateur interne",
+                "Le processeur exécute une fonction aléatoire par défaut",
+                "La mémoire RAM est défectueuse",
+                "La résistance interne du silicium devient négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans potentiel imposé, la capacité d'échantillonnage de l'ADC capte le bruit environnant et les charges électrostatiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la tension mesurée U à partir du résultat brut N (0-1023) d'un CAN 10 bits avec Vref = 5,0 V ?",
+              "options": [
+                "U = N * (5.0 / 1023.0)",
+                "U = N / 5.0",
+                "U = 1023.0 / (N * 5.0)",
+                "U = N * 1023.0 / 5.0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension vaut U = N * quantum = N * (Vref / 1023.0) en volts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt d'utiliser une tension de référence Vref interne régulée plutôt que l'alimentation Vcc de la carte ?",
+              "options": [
+                "La précision de mesure reste constante même si la tension de la batterie diminue lors de sa décharge",
+                "La résolution en bits du convertisseur est automatiquement doublée",
+                "Le microcontrôleur consomme deux fois moins de courant",
+                "La fréquence d'horloge de l'oscillateur est augmentée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une référence interne stable garantit une échelle de mesure rigoureuse indépendante des fluctuations de l'alimentation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de l'impédance de sortie recommandée pour une source analogique raccordée à l'ADC d'un microcontrôleur ?",
+              "options": [
+                "Inférieure à 10 kOhm pour permettre une charge rapide du condensateur d'échantillonnage",
+                "Supérieure à 100 Mégaohms",
+                "Exactement égale à 50 ohms sans tolérance",
+                "Nulle et obligatoirement supraconductrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une impédance de source modérée (< 10 kOhm) assure le chargement complet de la capacité interne d'échantillonnage dans le temps alloué."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que permet la technique du suréchantillonnage (oversampling) associé au filtrage numérique en acquisition ?",
+              "options": [
+                "Améliorer la résolution effective du convertisseur et réduire le bruit en moyennant plusieurs mesures successives",
+                "Augmenter la vitesse d'horloge du microprocesseur",
+                "Économiser de l'espace dans la mémoire FLASH",
+                "Supprimer le besoin de convertisseur numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En présence d'un léger bruit, moyenner 4^n échantillons permet d'augmenter la résolution apparente de n bits."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Modulation de Largeur d'Impulsion - MLI / PWM",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs fondamentales caractérisent un signal à Modulation de Largeur d'Impulsion (MLI / PWM) ?",
+              "options": [
+                "La période de découpage T (ou sa fréquence de hachage)",
+                "Le rapport cyclique (fraction de période au niveau haut)",
+                "L'amplitude des niveaux de tension logique (0 et Vcc)",
+                "L'adresse de sous-réseau Ethernet"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un signal MLI est défini par sa fréquence de découpage, son amplitude de tension et son rapport cyclique alpha = Th / T."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on le rapport cyclique alpha d'un signal rectangulaire de période T avec durée d'état haut Th ?",
+              "options": [
+                "alpha = Th / T (souvent exprimé en pourcentage entre 0 % et 100 %)",
+                "alpha = T / Th",
+                "alpha = Th * T",
+                "alpha = T - Th"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport cyclique est la part de la période passée à l'état actif : alpha = Th / T."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la valeur moyenne d'un signal MLI d'amplitude 5 V ayant un rapport cyclique de 40 % ?",
+              "options": [
+                "2,0 V (car 5 V * 0,40 = 2,0 V)",
+                "2,5 V",
+                "4,0 V",
+                "1,0 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur moyenne d'un créneau périodique vaut <V> = alpha * Vmax = 0,4 * 5 V = 2,0 V."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur une sortie analogWrite() codée sur 8 bits (0 à 255), quelle valeur correspond à un rapport cyclique de 50 % ?",
+              "options": ["127 ou 128", "50", "512", "255"],
+              "correctAnswers": [0],
+              "explanation": "La moitié de la pleine échelle 255 est 127,5, arrondie à 127 ou 128 pour obtenir 50 % de rapport cyclique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la MLI est-elle privilégiée par rapport à une résistance série pour moduler la vitesse d'un moteur ?",
+              "options": [
+                "Le transistor fonctionnant en interrupteur (bloqué/saturé) dissipe très peu d'énergie en chaleur, assurant un excellent rendement",
+                "Le moteur ne peut pas fonctionner avec du courant continu pur",
+                "La résistance série fait tourner le moteur deux fois plus vite",
+                "La MLI supprime totalement les frottements mécaniques des roulements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En commutation, le produit courant x tension dans le transistor est presque nul, offrant un rendement énergétique proche de 100 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment extrait-on la tension moyenne continue d'un signal MLI pour créer une sortie analogique filtrée ?",
+              "options": [
+                "En intégrant un filtre passe-bas RC dont la fréquence de coupure est très inférieure à la fréquence de découpage MLI",
+                "En plaçant un transformateur abaisseur de tension",
+                "En branchant une diode Zener en série",
+                "En inversant la masse et l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre passe-bas élimine les harmoniques de hachage haute fréquence et ne conserve que la composante continue moyenne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel périphérique matériel du microcontrôleur produit le signal MLI de façon autonome sans solliciter la CPU ?",
+              "options": [
+                "Un timer matériel associé à un registre de comparaison (Compare Match)",
+                "L'oscillateur basse fréquence de veille",
+                "Le circuit de réinitialisation matérielle",
+                "L'Unité Arithmétique et Logique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le timer compte les cycles d'horloge et bascule la broche dès qu'il atteint la valeur du registre de consigne MLI."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle consigne de commande reçoit un servomoteur de modélisme par signal PWM standard à 50 Hz ?",
+              "options": [
+                "Une impulsion de durée comprise entre 1 ms et 2 ms répétée toutes les 20 ms pour coder l'angle de consigne",
+                "Une tension continue proportionnelle variant entre 0 et 24 V",
+                "Un train d'impulsions codé en binaire à 1 MHz",
+                "Une onde sinusoïdale de fréquence proportionnelle à l'angle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le servomoteur utilise la largeur de l'impulsion (1 ms = -90°, 1,5 ms = 0°, 2 ms = +90°) pour asservir sa position angulaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi choisit-on souvent une fréquence de découpage MLI supérieure à 20 kHz pour piloter un moteur ?",
+              "options": [
+                "Pour rendre les vibrations mécaniques des bobinages inaudibles à l'oreille humaine (ultrasons)",
+                "Pour diviser par deux le courant appelé par le moteur",
+                "Pour que le moteur tourne à 20 000 tours par minute",
+                "Pour supprimer le besoin d'alimentation en courant continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà de 20 kHz, les vibrations magnétostrictives des bobines sortent du spectre audible humain, éliminant tout sifflement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut la tension moyenne aux bornes d'une charge alimentée en 12 V hachée avec un rapport cyclique de 75 % ?",
+              "options": ["9 V (car 12 V * 0,75 = 9 V)", "6 V", "3 V", "12 V"],
+              "correctAnswers": [0],
+              "explanation": "U_moy = alpha * U_alim = 0,75 * 12 V = 9 V."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Algorithmique appliquée : structures de contrôle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les trois structures de contrôle algorithmiques fondamentales ?",
+              "options": [
+                "La structure séquentielle (suite linéaire d'instructions)",
+                "La structure conditionnelle ou alternative (IF / ELSE)",
+                "La structure itérative ou répétitive (boucles WHILE / FOR)",
+                "La décomposition spectrale de Fourier"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le théorème de Böhm-Jacopini démontre que tout algorithme repose sur la séquence, la sélection et l'itération."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un organigramme (flowchart), quel symbole normalisé représente un test conditionnel ?",
+              "options": [
+                "Un losange",
+                "Un rectangle à coins vifs",
+                "Un cercle ou ovale",
+                "Un parallélogramme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le losange représente un embranchement décisionnel avec deux ou plusieurs sorties selon la condition évaluée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la particularité d'une boucle 'TANT QUE' (while) par rapport à une boucle 'RÉPÉTER... TANT QUE' (do... while) ?",
+              "options": [
+                "Le test de condition est évalué avant la première exécution : le corps de boucle peut ne jamais s'exécuter",
+                "Elle s'exécute obligatoirement au moins une fois",
+                "Elle ne peut contenir qu'une seule instruction de calcul",
+                "Elle ne peut pas être interrompue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle while teste sa condition dès l'entrée : si la condition est fausse au départ, elle n'est jamais exécutée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de fois le corps de la boucle 'for (int i = 0; i < 4; i++)' sera-t-il exécuté ?",
+              "options": [
+                "4 fois (pour i = 0, 1, 2 et 3)",
+                "3 fois",
+                "5 fois",
+                "Une infinité de fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variable i prend successivement les valeurs 0, 1, 2, 3, soit 4 itérations au total."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que provoque l'instruction 'break' rencontrée au sein d'une boucle itérative ?",
+              "options": [
+                "Elle interrompt immédiatement la boucle et poursuit l'exécution à l'instruction qui la suit",
+                "Elle redémarre la boucle depuis sa première instruction",
+                "Elle réinitialise complètement le microcontrôleur",
+                "Elle efface la variable de comptage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'break' provoque la sortie immédiate et anticipée de la boucle ou de la structure switch englobante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En langage C, quel symbole représente l'opérateur logique 'ET' ?",
+              "options": ["&&", "||", "&", "AND"],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur logique ET est représenté par '&&' en C (à distinguer de l'opérateur bit à bit '&')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle expression booléenne teste correctement si la variable val est comprise strictement entre 5 et 15 ?",
+              "options": [
+                "(val > 5) && (val < 15)",
+                "(val > 5) || (val < 15)",
+                "5 < val < 15",
+                "(val >= 5) && (val <= 15)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En programmation, il est impératif d'associer deux comparaisons explicites avec l'opérateur logique ET : (val > 5) && (val < 15)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une boucle infinie involontaire dans un programme informatique ?",
+              "options": [
+                "Une boucle dont la condition de sortie ne devient jamais vraie, figeant le déroulement du reste du programme",
+                "Une routine d'initialisation exécutée une seule fois au démarrage",
+                "Un calcul exécuté très rapidement par l'ALU",
+                "Une structure réservée à l'affichage sur écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la variable de condition n'est jamais modifiée, la condition reste vraie indéfiniment, bloquant le système."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle instruction est particulièrement optimisée pour aiguiller un traitement selon différentes valeurs entières constantes ?",
+              "options": [
+                "switch / case",
+                "Une imbrication de vingt boucles for",
+                "Une variable statique globale",
+                "Un appel récursif infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'instruction 'switch(variable) { case VALEUR: ... }' structure lisiblement les choix multiples selon des valeurs discrètes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que réalise l'opérateur de négation '!' placé devant une variable booléenne en C ?",
+              "options": [
+                "Il inverse sa valeur logique (true devient false et inversement)",
+                "Il met la variable à zéro systématiquement",
+                "Il calcule la racine carrée de la variable",
+                "Il convertit le booléen en chaîne de caractères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur '!' (NON logique) inverse l'état de vérité de l'expression qui le suit."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Fonctions, variables et types de données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types de données standards sont couramment employés en C pour systèmes embarqués ?",
+              "options": [
+                "uint8_t ou unsigned char (entier non signé sur 8 bits)",
+                "int16_t ou int (entier signé sur 16 bits)",
+                "float (nombre décimal à virgule flottante)",
+                "signal_hertzien (type radiofréquence matériel)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les types standards définissent précisément la taille mémoire et le format (entiers signés/non signés, flottants)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la plage de valeurs d'un entier non signé sur 8 bits (uint8_t) ?",
+              "options": [
+                "De 0 à 255",
+                "De -128 à +127",
+                "De 0 à 65535",
+                "De 0 à 1023"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un octet non signé (8 bits) code 2^8 = 256 valeurs distinctes, de 0 à 255 inclus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien d'octets en mémoire occupe un entier de type uint16_t ?",
+              "options": [
+                "2 octets (16 bits)",
+                "1 octet (8 bits)",
+                "4 octets (32 bits)",
+                "8 octets (64 bits)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "uint16_t désigne explicitement un entier non signé codé sur 16 bits, soit exactement 2 octets."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une variable globale en programmation C ?",
+              "options": [
+                "Une variable déclarée en dehors de toute fonction, accessible par l'ensemble des fonctions du fichier",
+                "Une variable qui ne peut être lue que sur le réseau Internet",
+                "Une variable dont la valeur ne peut jamais être modifiée",
+                "Une constante stockée sur une clé USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une variable globale a une portée qui s'étend à l'ensemble du fichier source et reste en mémoire durant toute l'exécution."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie le mot-clé 'const' placé devant la déclaration d'une variable (ex. const float SEUIL = 2.5;) ?",
+              "options": [
+                "La variable est en lecture seule et ne peut pas être modifiée après son initialisation",
+                "La variable est effacée de la mémoire toutes les secondes",
+                "La variable est obligatoirement un nombre négatif",
+                "La variable est transmise par onde radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'const' garantit l'immuabilité de la variable, permettant au compilateur de la placer en mémoire FLASH non volatile."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un tableau (array) en langage C ?",
+              "options": [
+                "Une structure contiguë en mémoire regroupant des éléments de même type repérés par un indice de 0 à N-1",
+                "Une matrice de diodes affichée sur l'écran de contrôle",
+                "Une variable qui ne contient que du texte imprimable",
+                "Un dessin vectoriel représentant un organigramme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tableau regroupe plusieurs variables du même type consécutives en mémoire, accessibles par leur indice débutant à 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal d'une fonction dans un programme ?",
+              "options": [
+                "Modulariser et réutiliser un bloc d'instructions réalisant une opération déterminée",
+                "Augmenter artificiellement le nombre de lignes du fichier source",
+                "Forcer le microcontrôleur à redémarrer immédiatement",
+                "Afficher systématiquement du texte dans la console"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fonctions découpent le code en sous-programmes réutilisables, améliorant lisibilité, maintenance et fiabilité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le type de retour 'void' pour une fonction (ex. void activerMoteur();) ?",
+              "options": [
+                "La fonction exécute des actions mais ne renvoie aucune valeur de retour",
+                "La fonction ne contient aucune instruction",
+                "La fonction efface la mémoire RAM à chaque appel",
+                "La fonction boucle indéfiniment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'void' indique que la fonction produit un traitement sans retourner de résultat au sous-programme appelant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se produit-il lors d'un débordement arithmétique (overflow) sur un entier uint8_t valant 255 auquel on ajoute 1 ?",
+              "options": [
+                "La valeur repasse à 0 (arithmétique modulaire sur 8 bits)",
+                "Le microcontrôleur déclenche une alarme incendie",
+                "La valeur reste bloquée à 255 sans jamais changer",
+                "La variable prend la valeur -1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En arithmétique non signée 8 bits, 255 + 1 = 256 = 0x100 ; seul l'octet inférieur est conservé, donnant 0."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi évite-t-on les calculs en virgule flottante (float) sur les microcontrôleurs 8 bits dépourvus de FPU ?",
+              "options": [
+                "Parce que leur émulation logicielle consomme énormément de temps de calcul CPU et d'espace mémoire",
+                "Parce que les microcontrôleurs ne savent pas manipuler de points décimaux",
+                "Parce que les flottants détruisent les registres de l'ALU",
+                "Parce que le compilateur C interdit formellement leur déclaration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans coprocesseur de calcul flottant matériel (FPU), les calculs flottants sont émulés, ralentissant fortement le système."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Gestion du temps, temporisations et timers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels inconvénients majeurs présente l'usage de fonctions d'attente bloquantes comme delay() ?",
+              "options": [
+                "Le processeur est totalement immobilisé et ne peut plus traiter les entrées du système",
+                "La détection de signaux rapides ou d'urgences de sécurité est compromise",
+                "Elle empêche d'exécuter d'autres tâches logicielles en parallèle",
+                "Elle fait fondre le quartz d'horloge du microcontrôleur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "delay() fige le flux séquentiel du processeur, rendant le système aveugle et insensible aux événements extérieurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction permet de connaître le temps écoulé depuis le démarrage sans bloquer le programme sur Arduino ?",
+              "options": ["millis()", "delay()", "sleep()", "wait_ms()"],
+              "correctAnswers": [0],
+              "explanation": "millis() renvoie le nombre de millisecondes écoulées depuis la mise sous tension sans interrompre l'exécution."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour exécuter une action périodique toutes les 200 ms sans blocage, quelle méthode utilise-t-on avec millis() ?",
+              "options": [
+                "Vérifier si (millis() - tempsPrecedent >= 200) et actualiser tempsPrecedent à chaque validation",
+                "Insérer l'instruction delay(200) dans la boucle loop",
+                "Couper l'alimentation de la carte pendant 200 ms",
+                "Ralentir la fréquence du quartz de la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette méthode non bloquante mesure le temps écoulé par rapport à un horodatage précédent sans bloquer la boucle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la variable stockant la valeur de millis() doit-elle être du type 'unsigned long' ?",
+              "options": [
+                "Pour éviter un dépassement prématuré et permettre un comptage continu sur environ 49,7 jours",
+                "Parce que la fonction renvoie une chaîne de caractères",
+                "Parce que les entiers simples ne fonctionnent pas avec les timers",
+                "Pour doubler la vitesse de rotation du processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un entier non signé 32 bits (unsigned long) peut compter jusqu'à 2^32 - 1 millisecondes (environ 49,7 jours) sans boucler."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un prédiviseur d'horloge (prescaler) associé à un timer matériel ?",
+              "options": [
+                "Diviser la fréquence d'horloge principale pour cadencer le timer à un rythme plus lent adapté au besoin",
+                "Multiplier la tension d'alimentation du microcontrôleur",
+                "Filtrer les bruits parasites sur les broches analogiques",
+                "Inverser les niveaux logiques de sortie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prescaler divise l'horloge système (ex. par 8, 64, 256 ou 1024) pour étendre la durée maximale de comptage du timer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la capacité de comptage maximale d'un timer matériel 8 bits par rapport à un timer 16 bits ?",
+              "options": [
+                "Le timer 8 bits compte de 0 à 255, tandis que le 16 bits compte de 0 à 65535",
+                "Le timer 8 bits compte deux fois plus vite",
+                "Le timer 16 bits ne peut compter que des durées négatives",
+                "Ils possèdent tous les deux la même capacité de comptage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur 8 bits le timer déborde à 256 pas (2^8), tandis qu'un timer 16 bits atteint 65 536 pas (2^16)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsque le compteur d'un timer matériel atteint sa valeur maximale et repasse à zéro ?",
+              "options": [
+                "Un drapeau de dépassement (Timer Overflow Flag) est levé et peut déclencher une interruption",
+                "Le microcontrôleur s'éteint définitivement",
+                "La mémoire FLASH est remise aux paramètres d'usine",
+                "L'oscillateur à quartz cesse d'osciller"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dépassement (overflow) signale la fin d'un cycle de comptage et peut exécuter automatiquement une routine ISR associée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mode d'un timer qui le réinitialise dès qu'il atteint la valeur d'un registre de consigne ?",
+              "options": [
+                "Le mode CTC (Clear Timer on Compare Match)",
+                "Le mode veille profonde (Sleep Mode)",
+                "Le mode de redémarrage à chaud (Warm Reset)",
+                "Le mode d'acquisition analogique directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En mode CTC, le compteur est remis à zéro dès l'égalité avec le registre de comparaison, permettant une périodicité exacte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la période d'un cycle d'horloge pour un microcontrôleur cadencé à 16 MHz ?",
+              "options": [
+                "62,5 nanosecondes (car T = 1 / 16 MHz)",
+                "1 microseconde",
+                "16 millisecondes",
+                "62,5 picosecondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "T = 1 / (16 * 10^6 Hz) = 6,25 * 10^-8 s = 62,5 ns."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les boucles d'attente vides (ex. for(int i=0; i<1000; i++);) sont-elles déconseillées ?",
+              "options": [
+                "Leur durée varie selon les optimisations du compilateur et la fréquence, et elles monopolisent inutilement la CPU",
+                "Elles sont interdites par les directives CEM",
+                "Elles détruisent le bus de communication SPI",
+                "Elles effacent automatiquement les variables globales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compilateur peut supprimer les boucles vides lors de l'optimisation, et leur durée est dépendante de la puce utilisée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Interruptions matérielles et gestion des événements prioritaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels avantages procurent les interruptions matérielles par rapport à une scrutation périodique (polling) ?",
+              "options": [
+                "Une réactivité quasi-instantanée lors de l'apparition d'un événement externe",
+                "Une libération de temps de calcul CPU qui n'a plus à surveiller en continu une broche",
+                "La capacité de réveiller le microcontrôleur d'un mode de veille basse consommation",
+                "La suppression totale du besoin d'énergie électrique pour le système"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les interruptions garantissent une réaction immédiate, déchargent le processeur et permettent le réveil depuis un mode veille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment réagit le processeur lorsqu'une interruption matérielle validée se produit ?",
+              "options": [
+                "Il suspend son exécution, sauvegarde le contexte, exécute l'ISR dédiée, puis reprend le programme principal",
+                "Il redémarre complètement le programme depuis la première ligne",
+                "Il efface définitivement le programme de la mémoire FLASH",
+                "Il force toutes les sorties numériques à l'état bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microcontrôleur met en pause sa tâche courante, traite la routine prioritaire, puis reprend exactement son exécution."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une routine de service d'interruption (ISR - Interrupt Service Routine) ?",
+              "options": [
+                "Une fonction courte exécutée automatiquement lors du déclenchement de l'interruption associée",
+                "Une notice technique remise à l'opérateur de maintenance",
+                "Un programme antivirus résidant en mémoire morte",
+                "Une interface utilisateur sur écran tactile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ISR est la fonction logicielle spécifique exécutée lors de l'activation de l'interruption."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi une fonction ISR doit-elle être conçue pour être la plus brève possible ?",
+              "options": [
+                "Pour ne pas bloquer les autres interruptions et maintenir la réactivité de l'ensemble du système",
+                "Parce que la mémoire FLASH ne peut enregistrer que dix lignes de code",
+                "Pour éviter que le régulateur d'alimentation ne surchauffe",
+                "Parce qu'une ISR ne peut pas exécuter d'additions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les interruptions étant souvent masquées pendant une ISR, prolonger son exécution dégrade la réactivité du système."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi l'utilisation de fonctions comme delay() est-elle formellement proscrite au sein d'une ISR ?",
+              "options": [
+                "delay() s'appuie sur les interruptions de timer qui sont alors désactivées, provoquant un blocage définitif",
+                "La broche d'alimentation de la carte se déconnecte",
+                "Le compilateur refuse de produire le code machine",
+                "Les registres de calcul perdent leur étalonnage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque les interruptions sont suspendues dans une ISR, les fonctions de temporisation basées sur les timers ne progressent plus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel qualificateur doit obligatoirement précéder une variable modifiée dans une ISR et lue dans le programme principal ?",
+              "options": ["volatile", "static", "register", "extern"],
+              "correctAnswers": [0],
+              "explanation": "Le mot-clé 'volatile' informe le compilateur que la variable peut changer à tout instant, empêchant une optimisation erronée en registre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels modes de détection d'interruption sur broche GPIO externe existent couramment (ex. attachInterrupt) ?",
+              "options": [
+                "RISING (front montant), FALLING (front descendant), CHANGE (tout front) et LOW (niveau bas)",
+                "Uniquement la détection d'ondes radio 433 MHz",
+                "La variation de température ambiante de 5 degrés",
+                "La détection de niveau de batterie faible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les interruptions externes se configurent sur les transitions logiques (fronts montants, descendants, tout changement) ou niveau bas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le vecteur d'interruption dans l'architecture d'un microcontrôleur ?",
+              "options": [
+                "Une table d'adresses en mémoire pointant vers les routines ISR de chaque source d'interruption",
+                "Une flèche indiquant le sens de passage du courant",
+                "La vitesse de traitement de l'interruption en mégahertz",
+                "Un registre de configuration de la liaison série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La table des vecteurs d'interruption associe chaque interruption matérielle à l'adresse mémoire de sa routine de service."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment protège-t-on la lecture d'une variable multi-octets partagée avec une ISR contre les lectures partielles corrompues ?",
+              "options": [
+                "En désactivant temporairement les interruptions pendant la lecture (section critique atomique)",
+                "En multipliant la variable par zéro avant toute lecture",
+                "En installant un condensateur de découplage sur l'entrée",
+                "En augmentant la tension d'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désactiver les interruptions durant la copie d'une variable multi-octets garantit une lecture atomique sans interruption concurrente."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parmi ces cas d'usage, lequel justifie prioritairement l'emploi d'une interruption matérielle ?",
+              "options": [
+                "La détection immédiate d'un bouton d'arrêt d'urgence ou le comptage d'un codeur incrémental rapide",
+                "La lecture d'un capteur de température ambiante une fois par heure",
+                "Le relevé d'humidité d'un pot de fleurs chaque matin",
+                "L'affichage de l'heure sur un écran LCD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les signaux critiques de sécurité et les impulsions à haute fréquence nécessitent la capture instantanée offerte par les interruptions."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Liaisons séries et bus de communication",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels bus de communication série sont nativement intégrés dans la grande majorité des microcontrôleurs ?",
+              "options": [
+                "UART / USART (liaison série asynchrone point à point)",
+                "I2C (bus série bifilaire maître/esclave)",
+                "SPI (bus série synchrone à haute vitesse)",
+                "Bus pneumatique à tiroirs d'air"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'UART, l'I2C et le SPI constituent le trio classique des bus de communication série embarqués."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles lignes de signaux utilise une liaison série asynchrone UART pour une communication bidirectionnelle ?",
+              "options": [
+                "TX (transmission de données) et RX (réception de données)",
+                "SDA (données) et SCL (horloge)",
+                "MOSI et MISO",
+                "VCC et GND sans aucun signal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'UART croise la broche TX (émission) d'un équipement avec la broche RX (réception) de son vis-à-vis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la liaison série UART est-elle dite asynchrone ?",
+              "options": [
+                "Aucun signal d'horloge n'est transmis : les deux équipements doivent être configurés à la même vitesse de transmission",
+                "Les messages ne peuvent être envoyés que le week-end",
+                "Les données ne circulent que dans un seul sens à la fois",
+                "Elle utilise exclusivement des signaux lumineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de ligne d'horloge partagée, émetteur et récepteur doivent s'accorder sur un débit identique (ex. 9600 ou 115200 bauds)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de conducteurs de signaux utilise le bus série I2C pour dialoguer avec plusieurs périphériques ?",
+              "options": [
+                "2 lignes : SDA (données série) et SCL (horloge série)",
+                "4 lignes de données indépendantes",
+                "1 ligne unique sans masse",
+                "8 lignes de données en parallèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bus I2C fonctionne avec deux lignes partagées : SDA (Serial Data) et SCL (Serial Clock)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment le maître sélectionne-t-il un esclave précis sur un bus I2C regroupant plusieurs capteurs ?",
+              "options": [
+                "En transmettant au début de chaque trame l'adresse binaire unique sur 7 bits de l'esclave ciblé",
+                "En appliquant une surtension de 24 V sur la ligne SCL",
+                "En faisant vibrer électromagnétiquement le capteur",
+                "En coupant l'alimentation de tous les autres esclaves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque équipement I2C possède une adresse matérielle sur 7 bits ; seul l'esclave adressé répond à la trame du maître."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel type de résistances est indispensable sur les lignes SDA et SCL d'un bus I2C ?",
+              "options": [
+                "Des résistances de rappel au niveau haut (pull-up), les sorties étant à collecteur (ou drain) ouvert",
+                "Des résistances de tirage vers la masse (pull-down)",
+                "Des résistances de chauffage thermique",
+                "Aucune résistance n'est admise sur le bus I2C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les broches I2C étant en drain ouvert, les résistances de pull-up assurent le niveau haut de repos."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles sont les quatre lignes de signaux caractéristiques du bus SPI ?",
+              "options": [
+                "MOSI (Master Out), MISO (Master In), SCK (Horloge) et CS/SS (Sélection d'esclave)",
+                "TX, RX, CTS et RTS",
+                "SDA, SCL, INT et RESET",
+                "D+, D-, VBUS et GND"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bus SPI comprend MOSI, MISO, l'horloge SCK et une ligne Chip Select (CS) dédiée par périphérique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le principal point fort du bus SPI par rapport au bus I2C ?",
+              "options": [
+                "Une vitesse de transmission nettement supérieure pouvant atteindre plusieurs dizaines de MHz en full-duplex",
+                "L'utilisation d'un nombre de fils inférieur quel que soit le nombre d'esclaves",
+                "Une portée de communication sans fil sur plusieurs kilomètres",
+                "L'absence totale de consommation d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le protocole SPI synchrone autorise des débits très élevés en duplex intégral, idéal pour mémoires FLASH ou afficheurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment le maître active-t-il un périphérique esclave donné sur un bus SPI ?",
+              "options": [
+                "En faisant passer au niveau logique bas (0) la ligne Chip Select (CS) dédiée à cet esclave",
+                "En envoyant une commande vocale par microphone",
+                "En modifiant la fréquence de l'horloge SCK",
+                "En inversant la polarité d'alimentation du capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ligne Chip Select (active à l'état bas) sélectionne matériellement le circuit esclave concerné par l'échange."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel bus de communication série différentiel est la référence pour les environnements automobiles et industriels sévères ?",
+              "options": [
+                "Le bus CAN (Controller Area Network)",
+                "La liaison USB 2.0 standard",
+                "Le port parallèle Centronics",
+                "Le câble péritélévision blindé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bus CAN utilise deux lignes différentielles (CAN_H et CAN_L) pour garantir une très haute immunité aux parasites sévères."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Machines à états et modélisation comportementale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels constituants fondamentaux définissent une machine à états finis (FSM) ?",
+              "options": [
+                "Un ensemble fini d'états stables (dont un état initial)",
+                "Des transitions orientées entre les états",
+                "Des événements et conditions de garde déclenchant les transitions",
+                "Un circuit d'évacuation d'air chaud"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une machine à états se caractérise par ses états finis, ses transitions déclenchées par des événements et ses actions associées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le langage de modélisation SysML, quel diagramme représente la dynamique des états d'un système ?",
+              "options": [
+                "Le diagramme d'états (State Machine Diagram - STM)",
+                "Le diagramme de cas d'utilisation (Use Case)",
+                "Le diagramme de définition de bloc (BDD)",
+                "Le diagramme d'exigences (Requirement Diagram)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diagramme d'états SysML (STM) modélise les transitions comportementales entre les états d'un système."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une condition de garde sur une transition de machine à états ?",
+              "options": [
+                "Une expression booléenne [garde] qui doit être vraie pour autoriser le franchissement de la transition",
+                "Une barrière physique de protection autour du mécanisme",
+                "Un mot de passe saisi par l'opérateur",
+                "Une temporisation obligatoirement supérieure à une minute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La garde est une condition logique qui filtre le franchissement de la transition vers le nouvel état."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle structure de programmation en C est traditionnellement utilisée pour coder une machine à états ?",
+              "options": [
+                "Un type énuméré (enum) pour définir les états et une structure switch(etatCourant) dans la boucle principale",
+                "Une unique instruction IF sans boucle",
+                "Un tableau de mille entiers consécutifs",
+                "Une suite d'instructions d'attente delay()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'association d'un 'enum' pour nommer les états et d'un 'switch' pour aiguiller les traitements garantit clarté et rigueur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un modèle Grafcet, à quelle condition une transition est-elle validée et franchissable ?",
+              "options": [
+                "Toutes les étapes immédiatement amont sont actives ET la réceptivité associée est vraie",
+                "Le système est sous tension depuis plus de 24 heures",
+                "L'opérateur a appuyé sur toutes les touches du pupitre",
+                "Toutes les sorties de l'automate sont à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le franchissement d'une transition dans un Grafcet exige l'activité des étapes précédentes et la validation de la réceptivité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel effet immédiat produit le franchissement d'une transition dans un Grafcet ?",
+              "options": [
+                "La désactivation simultanée des étapes amont et l'activation des étapes aval",
+                "L'activation de toutes les étapes de l'ensemble du Grafcet",
+                "La réinitialisation complète de l'automate à l'étape 0",
+                "La mise hors tension de toutes les sorties"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le franchissement désactive les étapes immédiatement précédentes et active les étapes immédiatement suivantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment identifie-t-on graphiquement une étape initiale dans un Grafcet ?",
+              "options": [
+                "Elle est matérialisée par un carré à double encadrement",
+                "Elle est représentée par un cercle barré d'une croix",
+                "Elle est dessinée avec un triangle rouge",
+                "Elle ne porte aucun numéro d'étape"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le double carré identifie sans ambiguïté les étapes actives au repos dès l'initialisation du Grafcet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le bénéfice majeur d'une modélisation par machine à états pour un programme embarqué ?",
+              "options": [
+                "Garantir un comportement déterministe et maîtrisé en évitant les états incohérents ou imprévus",
+                "Augmenter la taille du code compilé en mémoire",
+                "Rendre le code source indéchiffrable pour la maintenance",
+                "Supprimer le besoin d'horloge pour le microcontrôleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La machine à états garantit un fonctionnement prévisible, déterministe et facilite la maintenance ainsi que le débogage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une machine à états de type Moore, de quoi dépendent exclusivement les sorties générées ?",
+              "options": [
+                "Uniquement de l'état présent du système",
+                "Des entrées instantanées sans tenir compte de l'état",
+                "De la température de la puce de silicium",
+                "Du nombre d'instructions exécutées depuis le boot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le modèle de Moore, les sorties sont déterminées uniquement par l'état courant, ce qui assure une grande stabilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la réceptivité temporelle normalisée '5s / X2' dans un Grafcet ?",
+              "options": [
+                "La réceptivité devient vraie lorsque l'étape X2 est active depuis 5 secondes",
+                "L'étape X2 reste désactivée pendant 5 secondes",
+                "Le système attend 5 minutes avant de lancer le moteur",
+                "Le vérin avance à une vitesse de 5 centimètres par seconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La notation 't / Xi / d' désigne une temporisation active t secondes après l'activation de l'étape Xi."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

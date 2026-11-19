@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { ProjectIcon } from "@/components/chat/project-icon";
 import { Button } from "@/components/ui/button";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 

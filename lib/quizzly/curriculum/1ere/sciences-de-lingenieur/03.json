@@ -1,0 +1,2528 @@
+{
+  "id": "1ere-sciences-de-lingenieur-03",
+  "year": "1ere",
+  "subject": "sciences-de-lingenieur",
+  "title": "Énergie et puissance des actionneurs",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Moteurs et convertisseurs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Moteurs à courant continu (MCC) — Principes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les deux éléments principaux constitutifs d'un moteur à courant continu ?",
+              "options": [
+                "L'inducteur (stator)",
+                "L'induit (rotor)",
+                "La bobine de Tesla",
+                "Le compresseur à vis"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le stator crée le champ magnétique inducteur et le rotor porte l'induit où circulent les courants créant le couple moteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la relation liant la force électromotrice E à la vitesse de rotation angulaire Ω d'une MCC à flux constant ?",
+              "options": ["E = k · Ω", "E = k / Ω", "E = k · Ω²", "E = k · I"],
+              "correctAnswers": [0],
+              "explanation": "La fem induite E est proportionnelle à la vitesse angulaire Ω (avec E en V, Ω en rad/s et k la constante de fem en V·s/rad)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique est directement proportionnelle au courant d'induit I dans une MCC à flux constant ?",
+              "options": [
+                "Le couple électromagnétique C_em",
+                "La vitesse de rotation",
+                "La résistance d'induit",
+                "La tension d'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le couple électromagnétique vérifie C_em = k · I, où k est la constante de couple (en N·m/A)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle du système balais-collecteur dans une machine à courant continu classique ?",
+              "options": [
+                "Inverser le sens du courant dans les spires du rotor lors de la rotation",
+                "Augmenter la résistance interne",
+                "Mesurer la vitesse de rotation",
+                "Filtrer la tension d'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le collecteur associé aux balais assure la commutation mécanique du courant pour maintenir un couple toujours dans le même sens."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans le système international, quelle est l'unité de la vitesse angulaire Ω ?",
+              "options": [
+                "Radian par seconde (rad/s)",
+                "Tours par minute (tr/min)",
+                "Degré par seconde (°/s)",
+                "Hertz (Hz)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité légale du SI est le rad/s. Pour convertir N (tr/min) en Ω (rad/s), on utilise Ω = 2π·N / 60."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment convertit-on une vitesse de rotation N exprimée en tr/min en vitesse angulaire Ω en rad/s ?",
+              "options": [
+                "Ω = 2π × N / 60",
+                "Ω = 60 × N / (2π)",
+                "Ω = π × N / 180",
+                "Ω = N / 60"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tour correspond à 2π radians et une minute à 60 secondes, d'où Ω = 2π × N / 60."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si une MCC a une constante k = 0,2 V·s/rad et tourne à 100 rad/s, quelle est sa force électromotrice E ?",
+              "options": ["20 V", "2 V", "500 V", "0,002 V"],
+              "correctAnswers": [0],
+              "explanation": "E = k × Ω = 0,2 × 100 = 20 V."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une MCC a une constante k = 0,15 N·m/A et que le courant d'induit vaut 4 A, quel est le couple électromagnétique ?",
+              "options": ["0,6 N·m", "0,15 N·m", "26,6 N·m", "1,5 N·m"],
+              "correctAnswers": [0],
+              "explanation": "C_em = k × I = 0,15 × 4 = 0,6 N·m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si on inverse la polarité de la tension d'alimentation aux bornes d'un moteur à courant continu à aimants permanents ?",
+              "options": [
+                "Le sens de rotation du moteur s'inverse",
+                "Le moteur s'arrête définitivement",
+                "La vitesse double",
+                "Le moteur passe en court-circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inverser la tension U inverse le courant I, donc le couple électromagnétique, ce qui inverse le sens de rotation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le principal inconvénient de l'ensemble balais-collecteur dans une MCC ?",
+              "options": [
+                "L'usure mécanique et la production d'étincelles",
+                "L'impossibilité de faire varier la vitesse",
+                "Le rendement énergétique nul",
+                "Le coût de bobinage infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les frottements des balais génèrent une usure mécanique, des poussières conductrices et des parasites électromagnétiques."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "MCC — Équations électriques et mécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les deux équations fondamentales qui régissent le fonctionnement électromécanique d'une MCC en régime permanent ?",
+              "options": [
+                "U = E + R·I",
+                "C_em = k·I",
+                "U = R / I",
+                "C_em = J·(dΩ/dt)²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La loi des mailles donne U = E + R·I et la loi électromécanique donne C_em = k·I (avec E = k·Ω)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À l'arrêt (Ω = 0 rad/s), quelle est la valeur de la force électromotrice E d'une MCC ?",
+              "options": [
+                "0 V",
+                "Égale à la tension d'alimentation U",
+                "Infinie",
+                "R × I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque E = k·Ω et que Ω = 0, la force électromotrice est nulle à l'arrêt."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que vaut le courant de démarrage I_dém d'une MCC branchée directement sous la tension U avec une résistance d'induit R ?",
+              "options": [
+                "I_dém = U / R",
+                "I_dém = 0 A",
+                "I_dém = U × R",
+                "I_dém = (U - E) / R"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au démarrage Ω = 0 donc E = 0, l'équation U = E + R·I devient U = R·I_dém, soit I_dém = U/R."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi le courant de démarrage d'une MCC est-il particulièrement élevé sans dispositif de limitation ?",
+              "options": [
+                "Parce que la fem E est nulle et que la résistance d'induit R est très faible",
+                "Parce que le flux magnétique s'annule",
+                "Parce que la tension s'effondre",
+                "Parce que la vitesse est maximale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résistance R est faible (quelques ohms ou dixièmes d'ohm) et E = 0, donc U/R peut atteindre plusieurs fois le courant nominal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En régime permanent à vitesse constante, que vaut le couple électromagnétique C_em par rapport au couple résistant C_r ?",
+              "options": ["C_em = C_r", "C_em > C_r", "C_em < C_r", "C_em = 0"],
+              "correctAnswers": [0],
+              "explanation": "Le principe fondamental de la dynamique en rotation impose C_em - C_r = J·(dΩ/dt) = 0 à vitesse constante, donc C_em = C_r."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un moteur alimenté sous 24 V possède une résistance R = 2 Ω. Si à vide le courant vaut 1 A, que vaut la fem E à vide ?",
+              "options": ["22 V", "24 V", "2 V", "26 V"],
+              "correctAnswers": [0],
+              "explanation": "E = U - R·I = 24 - (2 × 1) = 24 - 2 = 22 V."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment évolue la vitesse d'une MCC alimentée sous tension constante lorsque le couple résistant augmente ?",
+              "options": [
+                "La vitesse diminue légèrement",
+                "La vitesse augmente fortement",
+                "La vitesse reste strictement constante",
+                "La vitesse s'annule instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une hausse du couple résistant augmente I (car C=k·I), ce qui augmente la chute R·I et fait baisser E (donc la vitesse Ω)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que représente le terme R·I² dans le bilan d'un moteur électrique ?",
+              "options": [
+                "Les pertes par effet Joule dans le bobinage",
+                "La puissance mécanique utile",
+                "L'énergie cinétique stockée",
+                "Les pertes par frottement visqueux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "R·I² correspond à la puissance dissipée sous forme de chaleur dans la résistance des conducteurs par effet Joule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode simple permet de réduire le fort courant d'appel au démarrage d'une MCC ?",
+              "options": [
+                "Démarrer sous tension réduite puis l'augmenter progressivement",
+                "Augmenter la tension d'alimentation",
+                "Diminuer la résistance d'induit",
+                "Supprimer la charge mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimenter le moteur avec une rampe de tension (par exemple via un hacheur) limite le courant à des valeurs admissibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si une MCC a une résistance R = 1,5 Ω et est soumise à U = 12 V, quel est son courant rotor bloqué ?",
+              "options": ["8 A", "18 A", "12 A", "0,125 A"],
+              "correctAnswers": [0],
+              "explanation": "Rotor bloqué, Ω = 0 donc E = 0. I_bloc = U / R = 12 / 1,5 = 8 A."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Hacheurs et modulation de largeur d'impulsion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres fondamentaux caractérisent un signal à Modulation de Largeur d'Impulsion (MLI ou PWM) ?",
+              "options": [
+                "La période (ou fréquence) du signal",
+                "Le rapport cyclique",
+                "L'amplitude de phase triphasée",
+                "L'angle de déclenchement thyristor"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un signal MLI est défini par sa fréquence de commutation f = 1/T et son rapport cyclique α = t_on / T."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment est défini le rapport cyclique α d'un signal périodique de période T passant au niveau haut pendant la durée t_on ?",
+              "options": [
+                "α = t_on / T",
+                "α = T / t_on",
+                "α = t_on × T",
+                "α = 1 - t_on"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport cyclique est la fraction de période pendant laquelle l'interrupteur est fermé : α = t_on / T (sans dimension, 0 ≤ α ≤ 1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la tension moyenne <U> délivrée par un hacheur abaisseur idéal alimenté par une tension continue V_alim avec un rapport cyclique α ?",
+              "options": [
+                "<U> = α × V_alim",
+                "<U> = V_alim / α",
+                "<U> = (1 - α) × V_alim",
+                "<U> = V_alim² × α"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur moyenne est l'aire sous la courbe divisée par T : <U> = (V_alim × t_on) / T = α × V_alim."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si un hacheur est alimenté sous 24 V et que le rapport cyclique est de 75 % (α = 0,75), quelle est la tension moyenne aux bornes de la charge ?",
+              "options": ["18 V", "12 V", "24 V", "6 V"],
+              "correctAnswers": [0],
+              "explanation": "<U> = α × V_alim = 0,75 × 24 = 18 V."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le composant semi-conducteur de puissance couramment utilisé comme interrupteur commandé dans les hacheurs basse tension ?",
+              "options": [
+                "Le transistor MOSFET",
+                "La diode de redressement",
+                "Le condensateur électrolytique",
+                "La résistance de puissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transistor MOSFET de puissance offre une excellente rapidité de commutation et de faibles pertes en basse tension continue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la diode de roue libre connectée en parallèle inverse sur une charge inductive comme un moteur ?",
+              "options": [
+                "Assurer la continuité du courant dans la bobine lors de l'ouverture de l'interrupteur",
+                "Augmenter la tension d'alimentation",
+                "Inverser le sens de rotation",
+                "Mesurer la vitesse du rotor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une inductance s'oppose aux variations de courant ; la diode de roue libre évite les surtensions destructrices en offrant un chemin au courant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la fréquence d'un hacheur est de 20 kHz, quelle est la durée de sa période T ?",
+              "options": ["50 µs", "20 ms", "5 ms", "0,5 µs"],
+              "correctAnswers": [0],
+              "explanation": "T = 1 / f = 1 / 20 000 s = 0,00005 s = 50 µs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi choisit-on fréquemment une fréquence de hachage supérieure à 20 kHz pour piloter un moteur ?",
+              "options": [
+                "Pour être au-delà du seuil d'audibilité humaine et supprimer le sifflement",
+                "Pour réduire la tension d'alimentation",
+                "Pour éviter l'échauffement par frottement mécanique",
+                "Pour inverser automatiquement le sens de marche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oreille humaine n'entend pas les sons au-delà de 20 kHz, ce qui élimine les nuisances acoustiques générées par le découpage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'effet de l'inductance d'induit L d'un moteur sur la forme du courant haché ?",
+              "options": [
+                "Elle lisse le courant et réduit son ondulation",
+                "Elle bloque complètement le passage du courant continu",
+                "Elle annule le couple électromagnétique",
+                "Elle amplifie l'ondulation de tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inductance agit comme un filtre passe-bas pour le courant, réduisant l'ondulation ΔI autour de la valeur moyenne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de la tension moyenne aux bornes de la charge si le rapport cyclique α vaut 0 ?",
+              "options": ["0 V", "La moitié de V_alim", "V_alim", "-V_alim"],
+              "correctAnswers": [0],
+              "explanation": "Lorsque α = 0, l'interrupteur reste toujours ouvert, donc la tension moyenne est nulle : <U> = 0 × V_alim = 0 V."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Pont en H et réversibilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages majeurs offerts par une structure en pont en H pour piloter un moteur à courant continu ?",
+              "options": [
+                "Permettre la rotation dans les deux sens",
+                "Permettre le freinage électrique avec récupération d'énergie",
+                "Augmenter la tension de batterie par résonance",
+                "Supprimer le besoin de champ magnétique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un pont en H permet d'appliquer une tension positive ou négative (deux sens de rotation) et de gérer le freinage dans les 4 quadrants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'interrupteurs électroniques commandés composent un pont en H classique ?",
+              "options": ["4", "2", "6", "8"],
+              "correctAnswers": [0],
+              "explanation": "Le pont en H comporte 4 interrupteurs disposés en deux demi-ponts formant la lettre 'H' avec la charge au centre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se produit-il si les deux interrupteurs d'un même bras vertical (demi-pont) sont fermés simultanément ?",
+              "options": [
+                "Un court-circuit franc de l'alimentation (phénomène de conduction croisée)",
+                "Le moteur tourne à vitesse double",
+                "Le moteur freine en douceur",
+                "La tension moyenne est divisée par deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fermer les deux interrupteurs d'un même bras relie directement le pôle positif au pôle négatif, provoquant un court-circuit destructeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour faire tourner le moteur dans le sens direct avec les interrupteurs S1 (haut gauche), S2 (bas gauche), S3 (haut droit) et S4 (bas droit), quels interrupteurs active-t-on ?",
+              "options": ["S1 et S4", "S1 et S2", "S3 et S4", "S2 et S3"],
+              "correctAnswers": [0],
+              "explanation": "Le courant passe de l'alimentation à travers S1, traverse le moteur de gauche à droite, puis rejoint la masse via S4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie le fonctionnement d'un actionneur dans le quadrant 1 du plan (Couple, Vitesse) ?",
+              "options": [
+                "Fonctionnement en moteur dans le sens direct (C > 0 et Ω > 0)",
+                "Fonctionnement en frein dans le sens direct (C < 0 et Ω > 0)",
+                "Fonctionnement en moteur dans le sens inverse (C < 0 et Ω < 0)",
+                "Fonctionnement à l'arrêt complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le quadrant 1, C et Ω sont de même signe positif, la puissance mécanique fournie P = C·Ω est positive : le système est moteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel quadrant du plan (Couple, Vitesse) se trouve un moteur qui tourne dans le sens direct (Ω > 0) tout en exerçant un couple de freinage (C < 0) ?",
+              "options": [
+                "Quadrant 2",
+                "Quadrant 1",
+                "Quadrant 3",
+                "Quadrant 4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le quadrant 2, Ω > 0 et C < 0 : la puissance P = C·Ω est négative, le moteur fonctionne en générateur/frein."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le temps mort (dead time) dans la commande d'un pont en H ?",
+              "options": [
+                "Le délai de sécurité entre l'ouverture d'un interrupteur et la fermeture de son homologue sur le même bras",
+                "Le temps nécessaire au démarrage du moteur",
+                "La durée d'un cycle complet de rotation",
+                "Le temps de réponse thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps mort garantit qu'un interrupteur est complètement éteint avant d'allumer le second pour éviter tout court-circuit de bras."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment réalise-t-on un freinage rhéostatique passif à l'aide des interrupteurs d'un pont en H ?",
+              "options": [
+                "En fermant simultanément les deux interrupteurs du bas (ou du haut) pour court-circuiter l'induit",
+                "En ouvrant tous les interrupteurs",
+                "En alimentant le pont sous tension inverse maximale",
+                "En débranchant la charge mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Court-circuiter l'induit dissipe l'énergie cinétique dans la résistance interne du moteur par effet Joule sous forme de couple résistant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que permet le freinage par récupération dans un véhicule électrique piloté par pont en H ?",
+              "options": [
+                "Renvoyer l'énergie cinétique du véhicule vers la batterie pour la recharger",
+                "Brûler l'énergie excédentaire dans un rhéostat",
+                "Bloquer les roues mécaniquement par friction",
+                "Augmenter l'autonomie en déchargeant la batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moteur fonctionnant en génératrice renvoie du courant vers la batterie à travers les diodes de roue libre du pont, rechargeant la batterie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En modulation bipolaire dans un pont en H, si le rapport cyclique α vaut 0,5, que vaut la tension moyenne aux bornes de la charge ?",
+              "options": ["0 V", "V_alim", "-V_alim", "0,5 × V_alim"],
+              "correctAnswers": [0],
+              "explanation": "En commande bipolaire, <U> = (2α - 1) × V_alim. Pour α = 0,5, <U> = 0 V : le moteur est à l'arrêt."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Moteurs brushless et synchrones autopilotés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les caractéristiques structurelles fondamentales d'un moteur sans balais (brushless BLDC) ?",
+              "options": [
+                "Un rotor muni d'aimants permanents",
+                "Un stator comportant des bobinages polyphasés",
+                "Un collecteur mécanique à lames de cuivre",
+                "Des balais en graphite frottant sur l'arbre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le moteur brushless 'retourne' la structure classique : les bobines sont fixes au stator et les aimants tournent au rotor, supprimant les balais."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment est assurée la commutation des courants dans les phases d'un moteur brushless ?",
+              "options": [
+                "Électroniquement à l'aide d'un onduleur piloté selon la position du rotor",
+                "Mécaniquement par des balais en contact avec le collecteur",
+                "Par réaction chimique dans l'induit",
+                "Par induction électrostatique naturelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un onduleur de puissance commute le courant dans les bobines au bon moment grâce à la connaissance précise de la position du rotor."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de capteur est couramment intégré dans le stator d'un moteur brushless pour détecter la position des pôles magnétiques du rotor ?",
+              "options": [
+                "Des capteurs à effet Hall",
+                "Des jauges de déformation piézorésistives",
+                "Des thermocouples de type K",
+                "Des capteurs à ultrasons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois capteurs à effet Hall espacés de 120° électriques détectent le champ magnétique des aimants rotoriques et informent l'électronique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le principal avantage d'un moteur brushless par rapport à un moteur à courant continu avec balais ?",
+              "options": [
+                "Une durée de vie accrue, moins d'entretien et un meilleur rendement",
+                "Un coût de fabrication extrêmement faible sans électronique",
+                "Une alimentation directe sur pile sans convertisseur",
+                "L'absence totale de champ magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de contacts frottants élimine l'usure, permet des vitesses plus élevées et améliore nettement la fiabilité et le rendement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que désigne le terme 'autopilotage' pour une machine synchrone ?",
+              "options": [
+                "L'asservissement de la fréquence des courants statoriques sur la vitesse et la position réelle du rotor",
+                "Le guidage autonome d'un robot sans capteur",
+                "Le pilotage par intelligence artificielle embarquée",
+                "La rotation spontanée sans apport d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autopilotage garantit que le champ statorique tourne rigoureusement à la même vitesse que le rotor, évitant tout risque de décrochage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien d'interrupteurs électroniques (transistors) comporte l'onduleur triphasé standard utilisé pour piloter un moteur brushless ?",
+              "options": ["6", "4", "2", "8"],
+              "correctAnswers": [0],
+              "explanation": "L'onduleur triphasé comporte trois bras de deux transistors chacun, soit 6 interrupteurs au total pour commuter les trois phases."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme classique de la force contre-électromotrice d'un moteur brushless de type BLDC par rapport à un moteur synchrone PMSM ?",
+              "options": [
+                "Trapézoïdale pour le BLDC et sinusoïdale pour le PMSM",
+                "Carrée pour les deux",
+                "Triangulaire pour le BLDC et constante pour le PMSM",
+                "Exponentielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les moteurs BLDC sont conçus pour avoir une fem trapézoïdale (commande en créneaux 120°), tandis que les PMSM ont une fem sinusoïdale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la commande sans capteur (sensorless) pour un moteur brushless ?",
+              "options": [
+                "La position du rotor est estimée à partir de la mesure de la force contre-électromotrice induite",
+                "Le moteur tourne au hasard sans contrôle",
+                "Le moteur est commandé par liaison satellite",
+                "Le rotor est guidé mécaniquement par un engrenage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En mesurant la fem dans la phase non alimentée, le microcontrôleur déduit la position du rotor sans recourir à des capteurs physiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un drone quadrirotor moderne, pourquoi utilise-t-on quasi exclusivement des moteurs brushless ?",
+              "options": [
+                "Pour leur rapport puissance/masse très élevé et leur grande fiabilité",
+                "Pour pouvoir les brancher directement sur une prise 230 V",
+                "Parce qu'ils ne nécessitent aucune carte de contrôle",
+                "Parce qu'ils sont plus lourds et stabilisent l'appareil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur densité de puissance exceptionnelle et leur haute vitesse de rotation sont idéales pour l'entraînement direct des hélices de drones."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que désigne la constante de vitesse 'Kv' indiquée sur les moteurs brushless de modélisme ?",
+              "options": [
+                "Le nombre de tours par minute par volt appliqué à vide (tr/min/V)",
+                "Le coefficient de viscosité de l'huile",
+                "La tension de claquage maximale en kilovolts",
+                "Le couple maximal en kilo-volts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Kv (en tr/min/V) indique la vitesse de rotation atteinte à vide pour chaque volt de tension d'alimentation continue."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Moteurs pas à pas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages caractéristiques d'un moteur pas à pas utilisé dans un système mécatronique ?",
+              "options": [
+                "Un positionnement angulaire précis sans boucle de retour (en boucle ouverte)",
+                "Un couple de maintien important à l'arrêt",
+                "Une vitesse de rotation infinie sans échauffement",
+                "Une absence totale de bobinage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le moteur pas à pas tourne d'un angle fixé à chaque impulsion sans capteur de position et offre un fort couple à l'arrêt."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle grandeur commande directement le nombre de pas effectués par un moteur pas à pas ?",
+              "options": [
+                "Le nombre d'impulsions électriques envoyées",
+                "La valeur continue de la tension",
+                "La température du bobinage",
+                "La résistance du câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque impulsion de commande fait tourner le rotor d'un pas mécanique bien déterminé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle grandeur fixe la vitesse de rotation d'un moteur pas à pas ?",
+              "options": [
+                "La fréquence des impulsions de commande",
+                "La tension de la batterie",
+                "Le courant de repos",
+                "La masse du rotor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus la fréquence des impulsions (en pas par seconde) est élevée, plus le moteur tourne vite : N = (f / N_pas) × 60."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si un moteur pas à pas possède 200 pas par tour, quel est son angle de pas élémentaire ?",
+              "options": ["1,8°", "3,6°", "0,9°", "7,2°"],
+              "correctAnswers": [0],
+              "explanation": "L'angle de pas vaut 360° / 200 = 1,8° par pas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le risque majeur d'un moteur pas à pas fonctionnant en boucle ouverte sous une charge excessive ou à trop forte accélération ?",
+              "options": [
+                "La perte de pas (décrochage)",
+                "L'inversion spontanée du sens du temps",
+                "L'explosion de l'arbre",
+                "La fusion des aimants sans surchauffe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le couple résistant dépasse le couple dynamique du moteur, le rotor n'arrive pas à suivre le champ tournant et saute des pas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En mode de commande en 'demi-pas', que devient le nombre de positions angulaires par tour par rapport au mode pas entier ?",
+              "options": [
+                "Il est multiplié par deux",
+                "Il est divisé par deux",
+                "Il reste identique",
+                "Il est multiplié par quatre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En alternant l'excitation d'une seule phase puis de deux phases simultanément, on divise le pas par 2 et on double la résolution."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle technique de commande permet de subdiviser chaque pas en 16, 32 ou 256 micropas pour fluidifier le mouvement ?",
+              "options": [
+                "La commande en micropas (microstepping) par modulation des courants de phase",
+                "L'ajout d'une boîte de vitesses manuelle",
+                "La diminution de la fréquence à zéro",
+                "L'utilisation d'une tension continue pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le micropas alimente les phases avec des courants de forme quasi-sinusoïdale déphasés, garantissant un mouvement continu sans vibrations."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quelle application courante trouve-t-on massivement des moteurs pas à pas ?",
+              "options": [
+                "Les imprimantes 3D et scanners numériques",
+                "La traction de trains à grande vitesse",
+                "Les ventilateurs d'ordinateurs",
+                "Les compresseurs frigorifiques industriels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les imprimantes 3D utilisent des moteurs pas à pas (souvent 1,8° NEMA 17) pour positionner la buse d'extrusion de façon précise et économique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le 'couple de maintien' (holding torque) d'un moteur pas à pas ?",
+              "options": [
+                "Le couple maximal que le moteur peut opposer à l'arrêt avec les bobines alimentées sans tourner",
+                "Le couple fourni à vitesse maximale",
+                "Le couple de frottement à vide",
+                "Le couple résistant de la charge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le couple résistant que le moteur peut encaisser à l'arrêt sous son courant nominal sans quitter sa position d'équilibre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle différence fondamentale existe-t-il entre un moteur pas à pas unipolaire et bipolaire ?",
+              "options": [
+                "Le moteur unipolaire possède un point milieu sur ses enroulements, le bipolaire nécessite un pont en H pour inverser le courant",
+                "Le bipolaire ne possède pas d'aimant",
+                "L'unipolaire fonctionne uniquement en courant alternatif",
+                "Le bipolaire n'a qu'une seule bobine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bobinage bipolaire utilise l'intégralité du cuivre et requiert deux ponts en H pour inverser les flux, offrant plus de couple à encombrement égal."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Actionneurs pneumatiques — Vérins et distributeurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments constituent typiquement une installation pneumatique industrielle ?",
+              "options": [
+                "Un compresseur d'air",
+                "Des vérins pneumatiques et distributeurs",
+                "Un rotor à aimants néodyme",
+                "Un onduleur triphasé MLI"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une chaîne pneumatique comprend la génération (compresseur), le traitement (FRL), la distribution (distributeurs) et l'actionnement (vérins)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la formule théorique de la force F exercée par un piston de vérin de section utile S soumis à une pression relative p ?",
+              "options": [
+                "F = p × S",
+                "F = p / S",
+                "F = S / p",
+                "F = 0,5 × p × S²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La définition de la pression donne p = F/S, d'où la force F = p × S (avec p en Pa, S en m² et F en N)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle unité du Système International mesure la pression ?",
+              "options": [
+                "Le pascal (Pa)",
+                "Le bar",
+                "Le joule (J)",
+                "Le newton (N)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pascal (1 Pa = 1 N/m²) est l'unité légale du SI. En industrie, on utilise couramment le bar (1 bar = 100 000 Pa = 10⁵ Pa)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À combien de pascals correspond une pression industrielle de 6 bars ?",
+              "options": [
+                "600 000 Pa (6 × 10⁵ Pa)",
+                "60 000 Pa",
+                "6 000 Pa",
+                "6 000 000 Pa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 bar = 10⁵ Pa = 100 kPa, donc 6 bars = 600 000 Pa."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle différence principale distingue un vérin simple effet (VSE) d'un vérin double effet (VDE) ?",
+              "options": [
+                "Le VSE ne produit d'effort pneumatique que dans un seul sens (retour par ressort)",
+                "Le VSE possède deux pistons opposés",
+                "Le VDE ne fonctionne qu'avec de l'huile",
+                "Le VDE ne peut pas s'arrêter en course"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un vérin simple effet applique une force pneumatique à l'aller et rentre grâce à un ressort mécanique interne ou une force extérieure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la désignation d'un distributeur pneumatique '5/2' ?",
+              "options": [
+                "5 orifices et 2 positions de commutation",
+                "5 positions et 2 orifices",
+                "5 bars de pression pour 2 secondes de course",
+                "5 vérins pour 2 électrovannes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier chiffre indique le nombre d'orifices de raccordement (5) et le second le nombre de positions de tiroir (2)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la section utile lors de la rentrée de tige d'un vérin double effet classique est-elle inférieure à celle de la sortie ?",
+              "options": [
+                "À cause de la présence de la tige qui réduit la surface utile du piston côté avant",
+                "À cause de la baisse de pression dans le compresseur",
+                "Parce que le ressort freine le mouvement",
+                "Parce que le piston rétrécit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Côté tige, la surface soumise à la pression vaut S_utile = S_piston - S_tige, donc l'effort de rentrée est inférieur à l'effort de sortie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un vérin possède un piston de diamètre D = 50 mm (rayon r = 25 mm = 0,025 m). Quelle est la section du piston ?",
+              "options": [
+                "Environ 1,96 × 10⁻³ m² (19,6 cm²)",
+                "50 × 10⁻³ m²",
+                "0,025 m²",
+                "7,85 × 10⁻³ m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S = π × r² = π × (0,025)² ≈ 3,1416 × 0,000625 ≈ 1,963 × 10⁻³ m²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si ce vérin de section S = 1,96 × 10⁻³ m² est alimenté sous une pression de 5 bars (500 000 Pa), quelle force théorique développe-t-il ?",
+              "options": ["Environ 980 N", "196 N", "500 N", "5 000 N"],
+              "correctAnswers": [0],
+              "explanation": "F = p × S = 500 000 × 1,963 × 10⁻³ ≈ 981 N."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le principal inconvénient de l'air comprimé pour le contrôle précis de position intermédiaire ?",
+              "options": [
+                "La compressibilité du gaz qui provoque un effet ressort",
+                "La toxicité de l'air ambiant",
+                "La vitesse de déplacement trop lente",
+                "La masse excessive des vérins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air étant compressible, toute variation de charge entraîne une variation de position, rendant le positionnement précis délicat sans asservissement complexe."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Actionneurs hydrauliques et puissance fluidique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les deux atouts majeurs de l'énergie hydraulique par rapport à l'énergie pneumatique ?",
+              "options": [
+                "La capacité à développer des forces considérables sous un volume réduit",
+                "L'incompressibilité du fluide permettant un positionnement très rigide et précis",
+                "L'absence totale de tuyauterie",
+                "La légèreté de l'air utilisé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'huile utilisée est quasi incompressible et travaille sous très haute pression (jusqu'à 350 bars), générant d'immenses efforts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la puissance hydraulique P_h délivrée par une pompe fournissant un débit volumique Q sous une pression p ?",
+              "options": [
+                "P_h = p × Q",
+                "P_h = p / Q",
+                "P_h = 0,5 × p × Q²",
+                "P_h = p × S"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance hydraulique vaut le produit de la pression par le débit : P = p × Q (avec p en Pa, Q en m³/s et P en W)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la formule P = p × Q, quelles sont les unités légales du Système International pour p, Q et P ?",
+              "options": [
+                "p en Pa, Q en m³/s, P en W",
+                "p en bar, Q en L/min, P en kW",
+                "p en N, Q en m/s, P en J",
+                "p en kg, Q en m³, P en W"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les unités SI cohérentes sont le pascal (Pa), le mètre cube par seconde (m³/s) et le watt (W)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment convertit-on un débit volumique de 60 L/min en unités du Système International (m³/s) ?",
+              "options": [
+                "0,001 m³/s (10⁻³ m³/s)",
+                "1 m³/s",
+                "0,06 m³/s",
+                "60 m³/s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "60 L/min = 60 × 10⁻³ m³ / 60 s = 0,001 m³/s = 10⁻³ m³/s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une pompe hydraulique délivre un débit de 10⁻³ m³/s sous une pression de 200 bars (2 × 10⁷ Pa). Quelle est la puissance hydraulique produite ?",
+              "options": ["20 kW (20 000 W)", "2 kW", "200 W", "200 kW"],
+              "correctAnswers": [0],
+              "explanation": "P = p × Q = (2 × 10⁷ Pa) × (10⁻³ m³/s) = 20 000 W = 20 kW."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel composant hydraulique limite la pression maximale dans le circuit pour protéger les équipements contre les surpressions destructrices ?",
+              "options": [
+                "Le limiteur de pression (clapet de décharge)",
+                "Le clapet anti-retour",
+                "Le régulateur de débit",
+                "Le filtre à huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le limiteur de pression s'ouvre dès que la pression de consigne est atteinte, renvoyant le fluide excédentaire vers le réservoir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la vitesse v de déplacement de la tige d'un vérin hydraulique alimenté par un débit Q avec une section de piston S ?",
+              "options": ["v = Q / S", "v = Q × S", "v = S / Q", "v = p × Q"],
+              "correctAnswers": [0],
+              "explanation": "Le débit volumique s'écrit Q = S × v, donc la vitesse vaut v = Q / S (avec Q en m³/s, S en m² et v en m/s)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel type d'engin l'actionnement hydraulique est-il indispensable et universellement utilisé ?",
+              "options": [
+                "Les pelleteuses et engins de travaux publics",
+                "Les smartphones et tablettes tactiles",
+                "Les micro-drones de course",
+                "Les montres à quartz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pelleteuses nécessitent des forces colossales pour creuser la roche, ce que seule l'hydraulique haute pression procure de façon compacte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un accumulateur oléopneumatique dans un circuit hydraulique ?",
+              "options": [
+                "Stocker de l'énergie sous pression pour amortir les chocs ou fournir un débit de pointe",
+                "Refroidir l'huile en évaporant l'eau",
+                "Filtrer les particules métalliques",
+                "Remplacer la pompe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une poche d'azote comprimée accumule l'huile sous pression pour restituer rapidement un appoint d'énergie ou filtrer les à-coups."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'un des risques majeurs propres aux installations hydrauliques industrielles ?",
+              "options": [
+                "Les fuites d'huile sous très haute pression et le risque d'incendie ou de blessure par injection cutanée",
+                "L'électrocution par le fluide",
+                "L'implosion par manque d'air",
+                "Le gel instantané de l'air ambiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un jet d'huile à haute pression peut traverser la peau et les fuites d'huile chaude représentent un risque d'inflammabilité sérieux."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Convertisseurs d'énergie statiques et pilotage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces convertisseurs statiques d'énergie électrique, lesquels modifient la nature continue ou alternative de l'énergie ?",
+              "options": [
+                "Le redresseur (AC vers DC)",
+                "L'onduleur (DC vers AC)",
+                "Le hacheur (DC vers DC)",
+                "Le transformateur (AC vers AC)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le redresseur transforme l'alternatif en continu et l'onduleur transforme le continu en alternatif. Les deux autres conservent la nature du courant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la fonction principale d'un hacheur ?",
+              "options": [
+                "Convertir une tension continue fixe en une tension continue réglable (DC/DC)",
+                "Transformer une tension alternative en continue",
+                "Transformer une tension continue en alternative",
+                "Convertir la fréquence d'un réseau alternatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hacheur est un convertisseur DC/DC qui abaisse ou élève une tension continue à l'aide d'interrupteurs électroniques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la fonction principale d'un onduleur autonome de tension ?",
+              "options": [
+                "Convertir une tension continue en une tension alternative de fréquence et d'amplitude réglables (DC/AC)",
+                "Recharger une batterie sur le réseau 230 V",
+                "Limiter le courant continu",
+                "Convertir du triphasé en monophasé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'onduleur permet d'alimenter des moteurs alternatifs (asynchrones ou synchrones) à partir d'une source continue comme une batterie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel convertisseur permet de recharger la batterie d'un véhicule électrique à partir d'une prise domestique 230 V alternatif ?",
+              "options": [
+                "Un redresseur (associé à un hacheur)",
+                "Un onduleur seul",
+                "Un transformateur sans diode",
+                "Un alternateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chargeur embarqué redresse la tension alternative du secteur en tension continue régulée pour charger les cellules de la batterie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel composant passif est indispensable à la sortie d'un convertisseur statique pour lisser la tension ou le courant ?",
+              "options": [
+                "Un filtre LC (inductance et condensateur)",
+                "Une résistance shunt de mesure",
+                "Un fusible rapide",
+                "Un transistor bipolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une bobine lisse le courant et un condensateur lisse la tension pour réduire les ondulations résiduelles du découpage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les convertisseurs statiques fonctionnent-ils en régime de commutation plutôt qu'en régime linéaire ?",
+              "options": [
+                "Pour maximiser le rendement énergétique en minimisant les pertes par effet Joule dans les semi-conducteurs",
+                "Pour générer des signaux audio",
+                "Pour simplifier la géométrie mécanique",
+                "Pour réduire la vitesse de rotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état bloqué I = 0 (P = 0) et à l'état saturé U ≈ 0 (P ≈ 0). Les pertes internes sont minimes, d'où un rendement proche de 95-98 %."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un variateur de vitesse industriel pour moteur asynchrone ?",
+              "options": [
+                "Contrôler la vitesse et le couple en faisant varier la fréquence et l'amplitude de l'onde de tension (loi U/f)",
+                "Changer le nombre de pôles magnétiques de la machine",
+                "Modifier mécaniquement le diamètre de l'arbre",
+                "Refroidir les bobinages par ventilation forcée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En ajustant la fréquence f, le variateur contrôle la vitesse synchrone N_s = f/p, tout en maintenant le flux constant avec le rapport U/f."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet la modulation de largeur d'impulsion sinusoïdale (MLIS ou SPWM) dans un onduleur triphasé ?",
+              "options": [
+                "Reconstituer un courant quasi sinusoïdal dans les enroulements du moteur",
+                "Supprimer le besoin d'alimentation continue",
+                "Doubler la puissance de la batterie",
+                "Annuler tout champ magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En comparant une onde porteuse haute fréquence à une modulante sinusoïdale, la MLI synthétise une onde moyenne parfaitement sinusoïdale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la fonction d'un convertisseur élévateur de tension (Boost) ?",
+              "options": [
+                "Produire en sortie une tension continue supérieure à la tension continue d'entrée",
+                "Abaisser la tension continue",
+                "Inverser le sens du temps",
+                "Transformer du triphasé en continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le convertisseur Boost emmagasine de l'énergie dans une inductance pour la restituer à un potentiel plus élevé que l'entrée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi place-t-on un dissipateur thermique (radiateur) sur les composants de puissance des convertisseurs statiques ?",
+              "options": [
+                "Pour évacuer la chaleur produite par les pertes par conduction et commutation des semi-conducteurs",
+                "Pour capter l'énergie solaire",
+                "Pour isoler électriquement le boîtier",
+                "Pour alourdir le boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même avec un rendement de 95 %, un convertisseur de 10 kW dégage 500 W de pertes calorifiques qu'il faut dissiper pour éviter la destruction des puces."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Servomoteurs et asservissements de position",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments constituent un servomoteur de modélisme standard utilisé en robotique ?",
+              "options": [
+                "Un petit moteur électrique avec réducteur à engrenages",
+                "Un capteur de position angulaire (potentiomètre) et une carte électronique d'asservissement",
+                "Une pompe hydraulique haute pression",
+                "Un compresseur d'air comprimé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un servomoteur intègre dans un boîtier compact le moteur, les pignons réducteurs, le potentiomètre de recopie et le circuit d'asservissement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le signal de commande standard envoyé à un servomoteur analogique de modélisme ?",
+              "options": [
+                "Un train d'impulsions périodique (période typique de 20 ms) dont la largeur varie de 1 ms à 2 ms",
+                "Une tension continue pure entre 0 et 230 V",
+                "Un signal sinusoïdal à 50 Hz",
+                "Un signal tout-ou-rien 24 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'angle de l'arbre est codé par la durée de l'impulsion : typiquement 1 ms pour 0°, 1,5 ms pour 90° (neutre) et 2 ms pour 180°."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la fonction de la boucle de rétroaction (feedback) dans un servomoteur asservi en position ?",
+              "options": [
+                "Comparer la position réelle mesurée à la consigne demandée pour annuler l'erreur",
+                "Inverser le sens de rotation en cas d'obstacle",
+                "Alimenter le moteur sans source extérieure",
+                "Supprimer le jeu mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle fermée calcule l'écart ε = consigne - mesure et applique une tension corrective au moteur jusqu'à ce que l'erreur s'annule."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si une force extérieure tente d'écarter le palonnier d'un servomoteur asservi de sa position de consigne ?",
+              "options": [
+                "L'électronique détecte l'écart et alimente le moteur pour générer un couple résistant s'opposant au déplacement",
+                "Le servomoteur coupe son alimentation",
+                "Le servomoteur tourne en continu à pleine vitesse",
+                "Le capteur de position se dérègle définitivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dès que l'écart apparaît, le correcteur réagit immédiatement en appliquant un couple antagoniste pour maintenir la consigne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel rôle joue le réducteur mécanique à engrenages placé entre le moteur et l'axe de sortie du servomoteur ?",
+              "options": [
+                "Réduire la vitesse de rotation et multiplier le couple disponible sur l'arbre de sortie",
+                "Augmenter la vitesse et réduire le couple",
+                "Filtrer la tension électrique",
+                "Inverser la phase électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réducteur de rapport r < 1 diminue la vitesse (Ω_sortie = r × Ω_moteur) et augmente le couple (C_sortie ≈ C_moteur / r)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la plage de rotation typique d'un servomoteur standard de modélisme ?",
+              "options": [
+                "Environ 180° (ou de 0° à 270°)",
+                "Plusieurs milliers de tours libres",
+                "Strictement 360° sans arrêt",
+                "10° au maximum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les servomoteurs angulaires standards sont limités mécaniquement par une butée et la course du potentiomètre à environ 180°."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne un servomoteur à rotation continue ?",
+              "options": [
+                "Un servomoteur modifié pour contrôler la vitesse et le sens de rotation plutôt qu'un angle fixe",
+                "Un moteur pas à pas sans électronique",
+                "Un vérin pneumatique sans tige",
+                "Un alternateur de bicyclette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En remplaçant le potentiomètre par des résistances fixes, l'impulsion commande la vitesse et le sens au lieu de l'angle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un servomoteur industriel haut de gamme (brushless servo), quel capteur remplace avantageusement le potentiomètre à piste résistive ?",
+              "options": [
+                "Un codeur optique ou magnétique rotatif absolu",
+                "Une résistance CTN",
+                "Un pressostat à membrane",
+                "Un débitmètre à flotteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les codeurs numériques rotatifs offrent une résolution de plusieurs dizaines de milliers de points par tour sans aucune usure mécanique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si la consigne envoyée à un servomoteur est une impulsion de 1,5 ms toutes les 20 ms, quelle est la position prise par le palonnier ?",
+              "options": [
+                "La position centrale neutre (milieu de course, typiquement 90°)",
+                "La butée minimale (0°)",
+                "La butée maximale (180°)",
+                "Une rotation continue à pleine vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1,5 ms est la durée standard de neutre qui correspond au centre de la plage de débattement angulaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le principal facteur limitant de la rapidité de réponse d'un servomoteur soumis à un échelon de consigne ?",
+              "options": [
+                "L'inertie mécanique du rotor et du réducteur ainsi que la saturation en tension du moteur",
+                "La vitesse de la lumière dans les fils",
+                "La fréquence du quartz de l'horloge",
+                "La compressibilité de l'air ambiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inertie des masses en mouvement limite l'accélération angulaire dΩ/dt = C/J, et la tension maximale limite la vitesse de pointe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Rendement et bilans",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Définition de la puissance et unités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles unités permettent d'exprimer une quantité d'énergie ?",
+              "options": [
+                "Le joule (J)",
+                "Le kilowattheure (kWh)",
+                "Le watt (W)",
+                "Le newton (N)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le joule est l'unité légale du SI et le kilowattheure est une unité pratique (1 kWh = 3 600 000 J = 3,6 MJ). Le watt est une unité de puissance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la relation fondamentale reliant la puissance moyenne P, l'énergie échangée E et la durée de fonctionnement Δt ?",
+              "options": [
+                "P = E / Δt",
+                "P = E × Δt",
+                "P = Δt / E",
+                "P = 0,5 × E × Δt²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance mesure le débit d'énergie par unité de temps : P = E / Δt (avec P en W, E en J et Δt en s)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la puissance dans le Système International ?",
+              "options": [
+                "Le watt (W)",
+                "Le joule (J)",
+                "L'ampère (A)",
+                "Le volt (V)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le watt (1 W = 1 J/s) est l'unité légale du SI de la puissance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de joules représente une énergie de 1 kilowattheure (1 kWh) ?",
+              "options": [
+                "3 600 000 J (3,6 MJ)",
+                "1 000 J",
+                "3 600 J",
+                "60 000 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 kWh = 1 000 W × 3 600 s = 3 600 000 J = 3,6 MJ."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un moteur consomme une énergie de 18 000 J pendant une durée de 60 secondes. Quelle est sa puissance moyenne ?",
+              "options": ["300 W", "1 080 kW", "180 W", "3 000 W"],
+              "correctAnswers": [0],
+              "explanation": "P = E / Δt = 18 000 / 60 = 300 W."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si un appareil de puissance 2 000 W (2 kW) fonctionne pendant 3 heures, quelle énergie consomme-t-il en kWh ?",
+              "options": ["6 kWh", "0,66 kWh", "6 000 kWh", "1,5 kWh"],
+              "correctAnswers": [0],
+              "explanation": "E = P × t = 2 kW × 3 h = 6 kWh."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quelle grandeur mécanique équivaut 1 watt en unités de base du Système International ?",
+              "options": [
+                "1 kg·m²·s⁻³ (ou 1 N·m/s)",
+                "1 kg·m·s⁻²",
+                "1 kg·m²·s⁻²",
+                "1 N/s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 W = 1 J/s = 1 (N·m)/s = 1 (kg·m·s⁻² · m)/s = 1 kg·m²·s⁻³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel appareil de mesure permet d'évaluer directement la puissance électrique active consommée par un récepteur ?",
+              "options": [
+                "Le wattmètre",
+                "Le voltmètre seul",
+                "L'ampèremètre seul",
+                "L'ohmmètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le wattmètre mesure simultanément la tension instantanée et le courant instantané pour calculer la puissance active moyenne P = <u(t)·i(t)>."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une batterie stocke 72 000 J d'énergie. Si un moteur absorbe une puissance constante de 40 W, combien de temps fonctionnera-t-il théoriquement ?",
+              "options": [
+                "1 800 secondes (30 minutes)",
+                "2 880 secondes",
+                "450 secondes",
+                "72 heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Δt = E / P = 72 000 / 40 = 1 800 s = 30 minutes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut 1 mégawatt (1 MW) exprimé en watts ?",
+              "options": [
+                "1 000 000 W (10⁶ W)",
+                "1 000 W",
+                "100 000 W",
+                "1 000 000 000 W"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe méga (M) correspond à un facteur d'un million, soit 10⁶ W."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Puissance mécanique en translation et rotation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les deux expressions correctes de la puissance mécanique instantanée selon le type de mouvement ?",
+              "options": [
+                "P = F × v (en translation rectiligne)",
+                "P = C × Ω (en rotation autour d'un axe fixe)",
+                "P = F / v (en translation)",
+                "P = C / Ω (en rotation)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En translation P = F·v (avec F en N et v en m/s) et en rotation P = C·Ω (avec C en N·m et Ω en rad/s)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les unités légales du Système International pour le couple C et la vitesse angulaire Ω ?",
+              "options": [
+                "C en newton-mètre (N·m) et Ω en radian par seconde (rad/s)",
+                "C en joule (J) et Ω en tour par minute (tr/min)",
+                "C en newton (N) et Ω en rad/s",
+                "C en N·m et Ω en Hertz (Hz)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le couple s'exprime en N·m et la vitesse angulaire en rad/s, leur produit C·Ω donne des watts (W)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un vérin pousse une charge avec un effort constant F = 4 000 N à la vitesse constante v = 0,2 m/s. Quelle est la puissance mécanique fournie ?",
+              "options": ["800 W", "20 000 W", "2 000 W", "80 W"],
+              "correctAnswers": [0],
+              "explanation": "P = F × v = 4 000 N × 0,2 m/s = 800 W."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un moteur électrique délivre un couple utile C = 15 N·m à une vitesse angulaire Ω = 200 rad/s. Quelle est sa puissance mécanique utile ?",
+              "options": ["3 000 W (3 kW)", "13,3 W", "300 W", "1 500 W"],
+              "correctAnswers": [0],
+              "explanation": "P = C × Ω = 15 × 200 = 3 000 W = 3 kW."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un treuil soulève une charge de masse m = 100 kg à la vitesse constante v = 0,5 m/s (avec g = 9,81 m/s²). Quel effort de traction F exerce-t-il ?",
+              "options": ["981 N", "100 N", "490,5 N", "98,1 N"],
+              "correctAnswers": [0],
+              "explanation": "À vitesse constante, l'effort équilibre le poids : F = m × g = 100 × 9,81 = 981 N."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la puissance mécanique développée par ce treuil soulevant les 100 kg à 0,5 m/s ?",
+              "options": ["490,5 W", "981 W", "200 W", "1 962 W"],
+              "correctAnswers": [0],
+              "explanation": "P = F × v = 981 N × 0,5 m/s = 490,5 W."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un moteur tourne à N = 1 500 tr/min. Quelle est sa vitesse angulaire Ω approchée ?",
+              "options": [
+                "Environ 157 rad/s",
+                "1 500 rad/s",
+                "25 rad/s",
+                "314 rad/s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ω = 2π × N / 60 = 2 × 3,1416 × 1 500 / 60 = 50π ≈ 157,08 rad/s."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si ce moteur tournant à 157 rad/s développe une puissance de 1 570 W, que vaut son couple moteur ?",
+              "options": ["10 N·m", "100 N·m", "1 N·m", "15,7 N·m"],
+              "correctAnswers": [0],
+              "explanation": "C = P / Ω = 1 570 / 157 = 10 N·m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux réducteurs transmettent la même puissance : le réducteur B tourne deux fois plus vite que le réducteur A. Que peut-on dire de son couple ?",
+              "options": [
+                "Le couple de B est deux fois plus faible que celui de A",
+                "Le couple de B est deux fois plus élevé",
+                "Les couples sont égaux",
+                "Le couple de B est quatre fois plus élevé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À puissance égale (P = C × Ω = constante), si la vitesse double, le couple est divisé par deux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut la puissance mécanique développée par une force F perpendiculaire au vecteur vitesse v d'un solide en mouvement ?",
+              "options": ["0 W", "F × v", "-F × v", "0,5 × F × v"],
+              "correctAnswers": [0],
+              "explanation": "La puissance est le produit scalaire P = F · v. Si la force est perpendiculaire à la vitesse, leur produit scalaire est nul."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Puissance électrique en continu et alternatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En régime alternatif sinusoïdal monophasé, quelles grandeurs définissent la puissance active P consommée par un récepteur ?",
+              "options": [
+                "La tension efficace U et le courant efficace I",
+                "Le facteur de puissance cos(φ)",
+                "La résistance de terre",
+                "La fréquence au carré"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La puissance active vaut P = U × I × cos(φ), où U et I sont les valeurs efficaces et cos(φ) le facteur de puissance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la puissance électrique continue P_elec absorbée par un récepteur sous la tension continue U traversé par le courant I ?",
+              "options": [
+                "P_elec = U × I",
+                "P_elec = U / I",
+                "P_elec = I / U",
+                "P_elec = U² × I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En courant continu, la puissance électrique absorbée est simplement le produit P = U × I (avec U en V, I en A et P en W)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un actionneur électrique est alimenté sous 48 V continu et consomme un courant de 5 A. Quelle puissance électrique absorbe-t-il ?",
+              "options": ["240 W", "9,6 W", "480 W", "2 304 W"],
+              "correctAnswers": [0],
+              "explanation": "P = U × I = 48 × 5 = 240 W."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que représente l'angle φ dans l'expression du facteur de puissance cos(φ) en courant alternatif ?",
+              "options": [
+                "Le déphasage angulaire entre la tension et le courant",
+                "L'angle de rotation du moteur",
+                "L'angle d'inclinaison du châssis",
+                "La température en degrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "φ est le déphasage temporel exprimé en angle entre la sinusoïde de tension u(t) et la sinusoïde de courant i(t)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la puissance apparente S d'une installation électrique alternative (calculée par S = U × I) ?",
+              "options": [
+                "Le voltampère (VA)",
+                "Le watt (W)",
+                "Le voltampère réactif (var)",
+                "Le joule (J)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour distinguer les puissances, la puissance active s'exprime en W, la puissance apparente en VA et la puissance réactive en var."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la puissance active P en régime triphasé équilibré en fonction de la tension composée U et du courant de ligne I ?",
+              "options": [
+                "P = √3 × U × I × cos(φ)",
+                "P = 3 × U × I × cos(φ)",
+                "P = U × I × cos(φ)",
+                "P = √2 × U × I × cos(φ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En triphasé équilibré, la puissance active totale s'écrit P = √3 × U × I × cos(φ)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un moteur monophasé alimenté sous U = 230 V absorbe un courant I = 4 A avec un facteur de puissance cos(φ) = 0,8. Quelle est sa puissance active ?",
+              "options": ["736 W", "920 W", "1 150 W", "588 W"],
+              "correctAnswers": [0],
+              "explanation": "P = U × I × cos(φ) = 230 × 4 × 0,8 = 920 × 0,8 = 736 W."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les distributeurs d'énergie imposent-ils aux industriels d'avoir un facteur de puissance cos(φ) proche de 1 ?",
+              "options": [
+                "Pour minimiser le courant en ligne I à puissance active égale et limiter les pertes par effet Joule dans les lignes",
+                "Pour augmenter la fréquence du réseau",
+                "Pour faire tourner les compteurs plus vite",
+                "Pour réduire la tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À puissance active égale, un cos(φ) faible exige un courant I = P/(U·cosφ) plus grand, ce qui surchauffe les câbles et transformateurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut la puissance réactive Q d'un circuit purement résistif (pour lequel le courant et la tension sont en phase, φ = 0) ?",
+              "options": [
+                "0 var",
+                "Égale à la puissance active",
+                "Infinie",
+                "U × I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Q = U × I × sin(φ). Si φ = 0, sin(0) = 0, donc la puissance réactive est nulle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une résistance pure R traversée par un courant efficace I, comment s'exprime la puissance active consommée par effet Joule ?",
+              "options": [
+                "P = R × I²",
+                "P = R / I²",
+                "P = R × I",
+                "P = U / R²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la loi d'Ohm U = R·I, la puissance s'écrit P = U·I = (R·I)·I = R·I²."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Notion de rendement énergétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations relatives au rendement énergétique η d'un convertisseur réel sont toujours vraies ?",
+              "options": [
+                "Le rendement η est le rapport entre la puissance utile et la puissance absorbée (η = P_utile / P_absorbée)",
+                "Le rendement d'un système réel est toujours strictement inférieur à 1 (ou 100 %)",
+                "Le rendement peut dépasser 100 % dans les machines performantes",
+                "Le rendement s'exprime obligatoirement en newtons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le principe de conservation de l'énergie et le second principe de la thermodynamique imposent η = P_utile / P_abs < 1 en raison des pertes inévitables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'écrit l'équation du bilan de puissance entre puissance absorbée P_abs, puissance utile P_u et pertes P_pertes ?",
+              "options": [
+                "P_absorbée = P_utile + P_pertes",
+                "P_utile = P_absorbée + P_pertes",
+                "P_pertes = P_absorbée + P_utile",
+                "P_absorbée = P_utile × P_pertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie ne se crée ni ne se détruit : toute la puissance qui entre (absorbée) ressort sous forme utile ou sous forme de pertes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un moteur électrique absorbe une puissance électrique de 1 000 W et restitue une puissance mécanique de 850 W sur son arbre. Quel est son rendement ?",
+              "options": [
+                "0,85 (soit 85 %)",
+                "1,17 (soit 117 %)",
+                "0,15 (soit 15 %)",
+                "0,70 (soit 70 %)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "η = P_u / P_abs = 850 / 1 000 = 0,85 = 85 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans l'exemple précédent (P_abs = 1 000 W, P_u = 850 W), quelle est la valeur totale de la puissance dissipée en pertes ?",
+              "options": ["150 W", "850 W", "1 850 W", "0 W"],
+              "correctAnswers": [0],
+              "explanation": "P_pertes = P_abs - P_u = 1 000 - 850 = 150 W."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un réducteur mécanique a un rendement η = 0,90. Si le moteur lui fournit une puissance de 500 W en entrée, quelle puissance est disponible en sortie ?",
+              "options": ["450 W", "555 W", "50 W", "400 W"],
+              "correctAnswers": [0],
+              "explanation": "P_u = η × P_abs = 0,90 × 500 = 450 W."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un vérin doit fournir une puissance utile de 1 600 W pour déplacer une charge. Sachant que son rendement global est de 80 % (η = 0,8), quelle puissance doit-on lui fournir ?",
+              "options": ["2 000 W", "1 280 W", "1 600 W", "2 500 W"],
+              "correctAnswers": [0],
+              "explanation": "P_abs = P_u / η = 1 600 / 0,8 = 2 000 W."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du rendement η ?",
+              "options": [
+                "Sans dimension (grandeur adimensionnelle, souvent notée en %)",
+                "Le watt (W)",
+                "Le joule (J)",
+                "Le newton-mètre (N·m)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement est le quotient de deux puissances (W/W), c'est donc un nombre sans dimension, compris entre 0 et 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi le rendement d'une machine thermique dépasse-t-il rarement 35 à 40 % ?",
+              "options": [
+                "En raison de la limite théorique imposée par le cycle de Carnot et des pertes calorifiques à l'échappement",
+                "À cause des frottements de l'air sur la carrosserie",
+                "Parce que l'essence ne contient pas assez d'énergie",
+                "À cause du manque d'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le deuxième principe de la thermodynamique (cycle de Carnot) limite intrinsèquement la conversion de chaleur en travail mécanique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que devient la quasi-totalité de la puissance perdue (P_pertes) dans un actionneur mécatronique ?",
+              "options": [
+                "Elle est dissipée dans l'environnement sous forme d'énergie thermique (chaleur)",
+                "Elle est transformée en masse supplémentaire",
+                "Elle disparaît de l'univers",
+                "Elle est convertie en énergie nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes (frottements, effet Joule, pertes fer) finissent inévitablement dégradées sous forme d'énergie thermique réchauffant l'actionneur et l'air ambiant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rendement d'un système qui absorbe 200 W et dissipe 40 W sous forme de pertes ?",
+              "options": [
+                "0,80 (soit 80 %)",
+                "0,20 (soit 20 %)",
+                "0,60 (soit 60 %)",
+                "0,90 (soit 90 %)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P_u = P_abs - P_pertes = 200 - 40 = 160 W. D'où η = 160 / 200 = 0,80 = 80 %."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Pertes d'énergie dans les convertisseurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les deux catégories majeures de pertes d'origine électromagnétique dans un moteur électrique ?",
+              "options": [
+                "Les pertes par effet Joule dans les conducteurs (cuivre)",
+                "Les pertes ferromagnétiques dans le circuit magnétique (fer)",
+                "Les pertes par combustion interne",
+                "Les pertes par évaporation d'eau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les pertes électriques proviennent de la résistance des enroulements (effet Joule) et des phénomènes d'aimantation du fer (hystérésis et Foucault)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels phénomènes physiques constituent les 'pertes fer' dans les tôles magnétiques d'une machine électrique ?",
+              "options": [
+                "L'hystérésis magnétique et les courants de Foucault",
+                "Les frottements aérodynamiques",
+                "L'oxydation superficielle du fer",
+                "L'effet Seebeck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes fer regroupent l'énergie dissipée par retournement des domaines magnétiques (hystérésis) et par courants induits parasites (courants de Foucault)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment réduit-on efficacement les pertes par courants de Foucault dans les circuits magnétiques des moteurs et transformateurs ?",
+              "options": [
+                "En feuilletant le circuit magnétique avec des tôles isolées les unes des autres",
+                "En augmentant l'épaisseur du bloc de fer massif",
+                "En utilisant du cuivre à la place du fer",
+                "En peignant la carcasse en noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le feuilletage en fines tôles isolées empêche la circulation de grandes boucles de courants de Foucault, réduisant fortement les pertes Joule associées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si le courant traversant les bobinages d'un moteur est multiplié par 2, par quel facteur les pertes par effet Joule (P_j = R·I²) sont-elles multipliées ?",
+              "options": [
+                "Par 4",
+                "Par 2",
+                "Par 8",
+                "Elles restent identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P_j = R × I². Si le courant double : (2I)² = 4I², les pertes Joule sont quadruplées !"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que regroupent les 'pertes mécaniques' dans un moteur électrique tournant ?",
+              "options": [
+                "Les frottements dans les paliers/roulements et la résistance aérodynamique de ventilation",
+                "L'effet Joule dans les fils",
+                "La résistance du câble secteur",
+                "Les harmoniques du réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes mécaniques sont causées par le frottement des billes de roulement et le brassage de l'air par le ventilateur solidaire de l'arbre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un convertisseur statique à semi-conducteurs (onduleur ou hacheur), quelles sont les deux causes principales de pertes ?",
+              "options": [
+                "Les pertes par conduction et les pertes par commutation",
+                "Les frottements des électrons sur la carte",
+                "Les frottements aérodynamiques",
+                "L'évaporation du silicium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les semi-conducteurs ont une résistance résiduelle à l'état passant (conduction) et dissipent de l'énergie lors des transitions ouverture/fermeture (commutation)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les pertes par commutation dans un hacheur augmentent-elles de façon proportionnelle à la fréquence de découpage ?",
+              "options": [
+                "Parce que l'énergie perdue à chaque transition On/Off est répétée davantage de fois par seconde",
+                "Parce que la tension d'entrée augmente avec la fréquence",
+                "Parce que le cuivre chauffe par induction",
+                "Parce que le moteur tourne plus vite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P_comm = E_comm × f. Si la fréquence f augmente, le nombre d'événements de commutation par seconde augmente, ce qui accroît les pertes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du ventilateur fixé sur l'arbre de la plupart des moteurs électriques industriels ?",
+              "options": [
+                "Évacuer la chaleur générée par les pertes internes vers l'extérieur pour maintenir la température sous le seuil critique",
+                "Créer une force de propulsion",
+                "Accélérer la rotation du rotor",
+                "Mesurer le flux d'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refroidissement forcé évite la dégradation des isolants thermiques des bobinages causée par l'accumulation des pertes Joule et fer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour un moteur électrique si les pertes thermiques ne sont pas suffisamment évacuées ?",
+              "options": [
+                "La température augmente jusqu'à détruire les isolants des enroulements (court-circuit interne)",
+                "Le moteur produit plus de puissance",
+                "La résistance d'induit s'annule complètement",
+                "La vitesse devient infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échauffement excessif détruit le vernis isolant des fils de cuivre, provoquant un court-circuit entre spires et la destruction du moteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un moteur électrique a une résistance de bobinage R = 0,5 Ω et fonctionne avec un courant permanent I = 10 A. Quelles sont ses pertes Joule ?",
+              "options": ["50 W", "5 W", "100 W", "25 W"],
+              "correctAnswers": [0],
+              "explanation": "P_j = R × I² = 0,5 × 10² = 0,5 × 100 = 50 W."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Pertes mécaniques et rendements des transmissions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels organes de transmission de puissance mécanique introduisent typiquement des pertes par frottement ?",
+              "options": [
+                "Les engrenages (droits, hélicoïdaux ou coniques)",
+                "Les systèmes vis-écrou",
+                "Les conducteurs en cuivre parfait",
+                "Les liaisons sans contact magnétique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le glissement et le roulement entre les dents d'engrenages ou entre le filet de la vis et de l'écrou dissipent de l'énergie par frottement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du rendement d'un train d'engrenages cylindriques à denture droite de bonne qualité ?",
+              "options": [
+                "95 % à 98 % (0,95 à 0,98)",
+                "50 % à 60 %",
+                "10 % à 20 %",
+                "Exactement 100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les engrenages cylindriques bien lubrifiés ont un excellent rendement unitaire, de l'ordre de 97 à 98 % par étage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de système vis-écrou possède un rendement très élevé (supérieur à 90 %) grâce au remplacement du frottement de glissement par du roulement ?",
+              "options": [
+                "La vis à billes",
+                "La vis trapézoïdale classique à filet bronze",
+                "La vis métrique standard à frottement sec",
+                "La vis à bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les billes en acier circulant entre la vis et l'écrou substituent un roulement à très faible frottement au glissement de la vis classique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'inconvénient majeur en termes de rendement d'un réducteur à roue et vis sans fin irréversible ?",
+              "options": [
+                "Un rendement faible (souvent compris entre 30 % et 60 %) dû au glissement important des filets",
+                "Un encombrement énorme pour les faibles réductions",
+                "L'impossibilité de transmettre du couple",
+                "Une vitesse de sortie trop élevée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glissement hélicoïdal continu génère un frottement important qui dégrade le rendement, mais procure en contrepartie une irréversibilité utile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie l'irréversibilité d'une transmission mécanique (comme une vis sans fin ou un réducteur irréversible) ?",
+              "options": [
+                "La charge ne peut pas entraîner le moteur : le mouvement n'est possible que de l'entrée vers la sortie",
+                "Le système ne peut tourner que dans le sens des aiguilles d'une montre",
+                "Le mécanisme casse si on coupe le courant",
+                "Le rendement est de 100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'irréversibilité statique bloque la charge à l'arrêt sans avoir besoin d'un frein mécanique supplémentaire (sécurité des monte-charges)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel élément mécanique permet de guider en rotation un arbre tout en réduisant considérablement les pertes par frottement par rapport à un palier lisse ?",
+              "options": [
+                "Un roulement à billes ou à rouleaux",
+                "Un presse-étoupe serré",
+                "Un frein à disque",
+                "Une goupille élastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roulement remplace le frottement de glissement par un contact de roulement, divisant le coefficient de frottement par dix ou cent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du lubrifiant (huile ou graisse) dans un réducteur mécanique ?",
+              "options": [
+                "Réduire le coefficient de frottement, limiter l'usure et évacuer la chaleur",
+                "Empêcher les pignons de tourner",
+                "Rendre le réducteur conducteur d'électricité",
+                "Augmenter la masse du réducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le film lubrifiant sépare les surfaces métalliques, diminue les pertes par frottement, évacue les calories et protège contre l'oxydation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un réducteur mécanique possède deux étages d'engrenages montés en série. Le premier étage a un rendement de 0,96 et le second de 0,95. Quel est son rendement global ?",
+              "options": ["0,912 (soit 91,2 %)", "1,91", "0,01", "0,955"],
+              "correctAnswers": [0],
+              "explanation": "η_global = η_1 × η_2 = 0,96 × 0,95 = 0,912 = 91,2 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le frottement qui s'oppose au déplacement avec une force proportionnelle à la vitesse de déplacement (F_f = f_v × v) ?",
+              "options": [
+                "Le frottement visqueux (associé au fluide lubrifiant)",
+                "Le frottement sec de Coulomb",
+                "Le frottement statique d'adhérence",
+                "Le frottement d'impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le frottement visqueux est causé par le cisaillement du film de fluide lubrifiant et croît proportionnellement avec la vitesse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une transmission par courroie crantée, pourquoi le rendement est-il généralement supérieur à celui d'une courroie trapézoïdale ?",
+              "options": [
+                "Parce qu'il n'y a pas de glissement entre les crans de la courroie et les poulies dentées",
+                "Parce que la courroie est en métal lourd",
+                "Parce que la courroie trapézoïdale tourne trop vite",
+                "Parce que la courroie crantée chauffe l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'engrènement positif des dents élimine le glissement inhérent aux courroies lisses, assurant un rendement élevé (souvent 98 %)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Rendement global d'une chaîne d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels composants successifs trouve-t-on typiquement dans la chaîne d'énergie d'un robot mobile sur roues ?",
+              "options": [
+                "Une batterie (stockage) et un hacheur (modulation)",
+                "Un moteur électrique et un réducteur mécanique (adaptation)",
+                "Un capteur ultrasonique de mesure",
+                "Un microcontrôleur de traitement logiciel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La chaîne d'énergie comprend : stockage (batterie), modulation (hacheur), conversion (moteur) et transmission (réducteur et roues)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le rendement global η_global d'une chaîne de transmission composée de plusieurs éléments en série ayant pour rendements respectifs η1, η2, η3 ?",
+              "options": [
+                "η_global = η1 × η2 × η3",
+                "η_global = η1 + η2 + η3",
+                "η_global = (η1 + η2 + η3) / 3",
+                "η_global = 1 - (η1 × η2 × η3)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour des sous-systèmes disposés en série, les rendements se multiplient : η_global = P_s/P_e = (P1/Pe) × (P2/P1) × (P3/P2) = η1 × η2 × η3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une chaîne d'énergie comprend un variateur (η1 = 0,95), un moteur (η2 = 0,80) et un réducteur (η3 = 0,90). Quel est le rendement global de la chaîne ?",
+              "options": ["0,684 (soit 68,4 %)", "2,65", "0,883", "0,720"],
+              "correctAnswers": [0],
+              "explanation": "η_global = 0,95 × 0,80 × 0,90 = 0,76 × 0,90 = 0,684 = 68,4 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si cette chaîne de rendement global 68,4 % absorbe une puissance électrique de 2 000 W sur le réseau, quelle puissance mécanique utile délivre-t-elle ?",
+              "options": ["1 368 W", "2 923 W", "684 W", "1 800 W"],
+              "correctAnswers": [0],
+              "explanation": "P_utile = η_global × P_abs = 0,684 × 2 000 = 1 368 W."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la puissance totale dissipée sous forme de pertes dans cette même chaîne (P_abs = 2 000 W, P_u = 1 368 W) ?",
+              "options": ["632 W", "1 368 W", "316 W", "68,4 W"],
+              "correctAnswers": [0],
+              "explanation": "P_pertes = P_abs - P_utile = 2 000 - 1 368 = 632 W."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l'un des composants d'une chaîne d'énergie a un très mauvais rendement (par exemple η = 0,20), quelle est la conséquence sur le rendement global ?",
+              "options": [
+                "Le rendement global sera nécessairement inférieur à 0,20 (20 %)",
+                "Le rendement global sera compensé et augmentera",
+                "Le rendement global sera la moyenne des rendements",
+                "Il n'y aura aucun impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque les rendements sont des facteurs inférieurs à 1, le produit global est toujours inférieur ou égal au plus faible des rendements de la chaîne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour améliorer l'efficacité énergétique globale d'un système mécatronique, sur quel composant est-il prioritaire d'agir ?",
+              "options": [
+                "Sur le composant dont le rendement est le plus médiocre et qui génère le plus de pertes absolues",
+                "Sur le composant qui a déjà 99 % de rendement",
+                "Sur les voyants lumineux du panneau de commande",
+                "Sur la peinture du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est en optimisant l'élément le moins efficace (le maillon faible) que le gain global sur la consommation d'énergie sera le plus significatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une chaîne de levage fournit 1 000 W utiles. Son rendement global est de 50 % (η = 0,5). Quelle est la puissance absorbée à l'entrée ?",
+              "options": ["2 000 W", "500 W", "1 500 W", "1 000 W"],
+              "correctAnswers": [0],
+              "explanation": "P_abs = P_u / η_global = 1 000 / 0,5 = 2 000 W."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un véhicule électrique, la batterie délivre 50 kW, l'onduleur a un rendement de 96 % et le moteur de 90 %. Quelle puissance mécanique sort du moteur ?",
+              "options": ["43,2 kW", "48 kW", "45 kW", "50 kW"],
+              "correctAnswers": [0],
+              "explanation": "P_moteur = 50 kW × 0,96 × 0,90 = 48 × 0,90 = 43,2 kW."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi ne peut-on jamais additionner les rendements des composants d'une chaîne d'énergie ?",
+              "options": [
+                "Parce que le rendement est un rapport multiplicatif en cascade ; son addition conduirait à un résultat supérieur à 1",
+                "Parce que les unités sont incompatibles",
+                "Parce que l'énergie n'est pas une grandeur physique",
+                "Parce que la loi des mailles l'interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque étage transmet une fraction de la puissance issue du précédent : P_s = P_e × η1 × η2... L'additionner n'a aucun sens physique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Bilan de puissance d'un système mécatronique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments figurent sur un diagramme de flux énergétique (ou diagramme de Sankey) représentant le bilan de puissance d'un système ?",
+              "options": [
+                "La flèche entrante représentant la puissance absorbée",
+                "Les flèches dérivées représentant les diverses puissances perdues",
+                "Le code source du programme informatique",
+                "L'adresse IP de la passerelle réseau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le diagramme de Sankey visualise les flux d'énergie : la largeur des branches est proportionnelle aux puissances absorbées, utiles et dissipées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diagramme de Sankey, que représente la largeur d'une flèche de flux ?",
+              "options": [
+                "L'intensité du flux de puissance ou d'énergie",
+                "La vitesse de rotation",
+                "La tension électrique en volts",
+                "La température en kelvins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La largeur de chaque ruban ou flèche est rigoureusement proportionnelle au débit de puissance (en W ou kW) associé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un moteur absorbe 4 000 W électrique. Le bilan montre : pertes Joule = 300 W, pertes fer = 150 W, pertes mécaniques = 150 W. Quelle est la puissance utile ?",
+              "options": ["3 400 W", "3 700 W", "4 600 W", "2 800 W"],
+              "correctAnswers": [0],
+              "explanation": "P_u = P_abs - Σ P_pertes = 4 000 - (300 + 150 + 150) = 4 000 - 600 = 3 400 W."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rendement du moteur de la question précédente (P_abs = 4 000 W, P_u = 3 400 W) ?",
+              "options": [
+                "85 % (0,85)",
+                "90 % (0,90)",
+                "75 % (0,75)",
+                "80 % (0,80)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "η = 3 400 / 4 000 = 34 / 40 = 0,85 = 85 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que stipule le premier principe de la thermodynamique appliqué au bilan énergétique d'un système en régime permanent ?",
+              "options": [
+                "La puissance totale entrante est égale à la somme des puissances sortantes (utiles et dissipées)",
+                "L'énergie créée dépasse toujours l'énergie détruite",
+                "La température du système reste à 0 K",
+                "La puissance absorbée est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En régime permanent (sans accumulation d'énergie interne), l'énergie totale se conserve : P_entrante = P_sortante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un vérin hydraulique, que devient la puissance volumique perdue par laminage du fluide à travers un étranglement ou une fuite interne ?",
+              "options": [
+                "Elle est convertie en chaleur qui échauffe l'huile du circuit",
+                "Elle est renvoyée sous forme de travail mécanique",
+                "Elle est absorbée par la batterie",
+                "Elle s'évapore sous forme de vapeur d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perte de charge par laminage transforme l'énergie hydraulique en agitation thermique, réchauffant l'huile du réservoir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment mesure-t-on expérimentalement la puissance mécanique utile d'un moteur sur un banc d'essai didactique ?",
+              "options": [
+                "À l'aide d'un frein dynamométrique mesurant simultanément le couple de charge et la vitesse de rotation",
+                "À l'aide d'un simple thermomètre",
+                "En mesurant la résistance avec un ohmmètre",
+                "En pesant le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le frein dynamométrique applique un couple mesuré C par une jauge et la vitesse Ω par un tachymètre, puis calcule P = C × Ω."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur un véhicule électrique, que représente la puissance dissipée par résistance aérodynamique à vitesse stabilisée ?",
+              "options": [
+                "P_aéro = 0,5 × ρ × S × Cx × v³",
+                "P_aéro = m × g × v",
+                "P_aéro = R × I²",
+                "P_aéro = C × Ω²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traînée aérodynamique F_x vaut 0,5·ρ·S·Cx·v², donc la puissance P = F_x · v varie avec le cube de la vitesse (v³)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la puissance nécessaire pour vaincre la résistance de l'air est-elle huit fois plus grande lorsque la vitesse d'un véhicule double ?",
+              "options": [
+                "Parce que la puissance aérodynamique est proportionnelle au cube de la vitesse (v³)",
+                "Parce que la masse du véhicule double",
+                "Parce que le rendement du moteur est divisé par huit",
+                "Parce que l'air devient huit fois plus dense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P_aéro est proportionnelle à v³. Si v est multipliée par 2, v³ est multipliée par 2³ = 8 !"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un bilan énergétique complet, pourquoi prend-on également en compte la puissance consommée par les auxiliaires (éclairage, calculateurs) ?",
+              "options": [
+                "Parce qu'ils prélèvent de l'énergie sur la source principale et réduisent l'énergie disponible pour la mission utile",
+                "Parce qu'ils tournent à la même vitesse que le moteur",
+                "Parce qu'ils augmentent la tension de batterie",
+                "Parce que leur rendement est infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La consommation des servitudes grève le bilan total et doit être déduite de la réserve d'énergie pour calculer l'autonomie réelle."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Dimensionnement d'un actionneur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres mécaniques essentiels sont nécessaires pour choisir et dimensionner un moteur électrique d'entraînement ?",
+              "options": [
+                "Le couple maximal et le couple nominal requis par la charge",
+                "La vitesse de rotation nominale requise",
+                "La couleur du capot de protection",
+                "Le numéro de série du fabricant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le moteur doit satisfaire deux critères clés : fournir le couple nécessaire à chaque instant et atteindre la vitesse requise."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lors de la phase d'accélération d'un système mécanique en rotation d'inertie équivalente J, que vaut le couple dynamique moteur C_m nécessaire ?",
+              "options": [
+                "C_m = C_résistant + J × (dΩ/dt)",
+                "C_m = C_résistant - J × (dΩ/dt)",
+                "C_m = J / (dΩ/dt)",
+                "C_m = C_résistant / J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après le principe fondamental de la dynamique : C_m - C_r = J × (dΩ/dt), soit C_m = C_r + J × α (où α est l'accélération angulaire)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une charge nécessite un couple résistant de 20 N·m à 10 rad/s. Le réducteur a un rapport r = 1/5 et un rendement de 100 %. Quelle doit être la vitesse du moteur ?",
+              "options": ["50 rad/s", "2 rad/s", "10 rad/s", "25 rad/s"],
+              "correctAnswers": [0],
+              "explanation": "Ω_charge = r × Ω_moteur => Ω_moteur = Ω_charge / r = 10 / (1/5) = 50 rad/s."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans l'exemple précédent (C_charge = 20 N·m, r = 1/5, η = 1), quel couple le moteur doit-il fournir en régime permanent ?",
+              "options": ["4 N·m", "100 N·m", "20 N·m", "1 N·m"],
+              "correctAnswers": [0],
+              "explanation": "Sans pertes, P_moteur = P_charge => C_moteur × Ω_moteur = C_charge × Ω_charge => C_moteur = C_charge × r = 20 × (1/5) = 4 N·m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si le réducteur a un rendement réel η = 0,80 au lieu de 1, quel couple le moteur doit-il fournir pour vaincre les 20 N·m de la charge ?",
+              "options": ["5 N·m", "4 N·m", "3,2 N·m", "16 N·m"],
+              "correctAnswers": [0],
+              "explanation": "En tenant compte du rendement : C_moteur = (C_charge × r) / η = (20 × 0,2) / 0,80 = 4 / 0,80 = 5 N·m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi applique-t-on généralement un coefficient de sécurité (de 1,2 à 1,5) lors du choix de la puissance d'un moteur électrique ?",
+              "options": [
+                "Pour pallier les imprécisions de modélisation, les frottements imprévus et les variations d'alimentation",
+                "Pour faire tourner le moteur au-delà de sa vitesse de destruction",
+                "Pour doubler la consommation électrique",
+                "Pour annuler l'effet Joule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une marge de sécurité évite le risque de calage ou de surchauffe en cas de point dur mécanique ou de sous-tension du réseau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le 'couple thermique équivalent' (ou couple efficace C_eff) lors d'un cycle de fonctionnement intermittent ?",
+              "options": [
+                "Le couple constant produisant le même échauffement par effet Joule que le cycle réel",
+                "Le couple maximal instantané",
+                "Le couple de démarrage",
+                "Le couple à froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échauffement dépendant de I² (donc de C²), C_eff = √[(1/T) × ∫ C(t)² dt] permet de dimensionner le moteur thermiquement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour choisir la section d'un vérin hydraulique, que divise-t-on par la pression de service maximale disponible ?",
+              "options": [
+                "La force maximale requise (S = F_max / p)",
+                "La vitesse de translation",
+                "La longueur de la course",
+                "La masse totale du châssis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme F = p × S, pour garantir l'effort maximal sous la pression p, la section minimale requise est S = F_max / p."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si un vérin doit soulever une charge de 30 000 N sous une pression de 150 bars (1,5 × 10⁷ Pa), quelle section minimale doit-il avoir ?",
+              "options": [
+                "0,002 m² (20 cm²)",
+                "0,02 m²",
+                "0,0002 m²",
+                "0,5 m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S = F / p = 30 000 / 15 000 000 = 0,002 m² = 20 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le risque de choisir un moteur très largement surdimensionné par rapport aux besoins réels ?",
+              "options": [
+                "Un coût accru, une masse et un encombrement excessifs, et un fonctionnement à faible charge avec un rendement médiocre",
+                "Un blocage automatique du système",
+                "Une vitesse de rotation qui tend vers zéro",
+                "Une destruction instantanée de la batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surdimensionner augmente le prix, la masse et le moment d'inertie, tout en faisant travailler le moteur dans une zone de mauvais rendement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Autonomie et stockage d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles unités sont couramment employées sur les fiches techniques pour quantifier la capacité d'une batterie d'accumulateurs ?",
+              "options": [
+                "L'ampère-heure (Ah) ou milliampère-heure (mAh)",
+                "Le wattheure (Wh) ou kilowattheure (kWh)",
+                "L'ohm (Ω)",
+                "Le volt par mètre (V/m)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La capacité en charge s'exprime en Ah (ou mAh) et la capacité en énergie s'exprime en Wh (ou kWh), produit de la charge par la tension."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la relation liant l'énergie stockée E_stock (en Wh), la capacité en charge Q_bat (en Ah) et la tension nominale U_nom (en V) d'une batterie ?",
+              "options": [
+                "E_stock = U_nom × Q_bat",
+                "E_stock = U_nom / Q_bat",
+                "E_stock = Q_bat / U_nom",
+                "E_stock = U_nom² × Q_bat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie est le produit de la puissance par le temps : E = P × t = (U × I) × t = U × (I × t) = U × Q_bat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une batterie de drone a une tension nominale de 14,8 V et une capacité de 5 Ah (5 000 mAh). Quelle est l'énergie stockée ?",
+              "options": ["74 Wh", "2,96 Wh", "740 Wh", "0,33 Wh"],
+              "correctAnswers": [0],
+              "explanation": "E = U × Q = 14,8 V × 5 Ah = 74 Wh."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de joules représente une énergie de 74 Wh ?",
+              "options": [
+                "266 400 J (environ 266 kJ)",
+                "74 000 J",
+                "4 440 J",
+                "18 500 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 Wh = 3 600 J. Donc 74 Wh = 74 × 3 600 J = 266 400 J."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un robot autonome consomme une puissance moyenne continue de 25 W. Sa batterie contient une énergie utile de 100 Wh. Quelle est son autonomie théorique ?",
+              "options": ["4 heures", "2,5 heures", "25 heures", "0,25 heure"],
+              "correctAnswers": [0],
+              "explanation": "t = E / P = 100 Wh / 25 W = 4 heures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la 'profondeur de décharge' (DoD pour Depth of Discharge) d'une batterie ?",
+              "options": [
+                "Le pourcentage de la capacité nominale qui a été extrait de la batterie par rapport à sa capacité totale",
+                "La profondeur physique de la batterie sous l'eau",
+                "L'épaisseur des électrodes en millimètres",
+                "La température minimale de décharge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La profondeur de décharge mesure la fraction consommée (ex: 80 % de DoD signifie qu'il reste 20 % de charge résiduelle)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi évite-t-on de décharger une batterie Lithium-Ion à 100 % (décharge profonde) ?",
+              "options": [
+                "Pour ne pas endommager irrémédiablement la structure chimique des cellules et préserver le nombre de cycles de vie",
+                "Parce que la tension devient dangereusement trop élevée",
+                "Pour éviter qu'elle ne prenne trop de poids",
+                "Parce que le chargeur ne la reconnaîtrait plus du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une décharge sous le seuil critique (environ 2,5 V à 3,0 V par cellule) provoque une dégradation irréversible de l'anode et réduit la durée de vie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne le taux de décharge '1C' pour une batterie de capacité 3 Ah ?",
+              "options": [
+                "Un courant de décharge de 3 A qui vide la batterie en 1 heure",
+                "Un courant de 1 A",
+                "Une charge à 100 °C",
+                "Une tension de 1 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient C normalise le courant par rapport à la capacité : 1C pour 3 Ah équivaut à un courant de 3 A débité pendant 1 h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un circuit de gestion de batterie (BMS pour Battery Management System) ?",
+              "options": [
+                "Surveiller la tension des cellules, la température, équilibrer les charges et protéger contre les surcharges",
+                "Transformer le courant continu en 230 V alternatif",
+                "Faire tourner le moteur directement sans onduleur",
+                "Augmenter la capacité chimique de base"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le BMS est le cerveau de sécurité d'un pack lithium : il équilibre les cellules et coupe le circuit en cas de condition critique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel type de technologie de batterie possède actuellement la meilleure densité d'énergie massique (Wh/kg) parmi les technologies grand public ?",
+              "options": [
+                "Lithium-Ion / Lithium-Polymère (LiPo)",
+                "Plomb-acide (batteries de démarrage classiques)",
+                "Nickel-Cadmium (Ni-Cd)",
+                "Piles salines zinc-carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chimies Lithium offrent entre 150 et 250 Wh/kg, contre seulement 30 à 40 Wh/kg pour le plomb, ce qui les rend idéales pour l'embarqué."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

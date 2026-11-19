@@ -36,19 +36,42 @@ function mapCatalogModels(rawList: unknown): ChatModel[] {
   });
 }
 
+type CachedCatalog = {
+  expiresAt: number;
+  models: ChatModel[];
+};
+const CATALOG_CACHE = new Map<string, CachedCatalog>();
+const CATALOG_CACHE_TTL_MS = 60_000;
+
 async function readCatalogModels(params: {
   headers: Record<string, string>;
   token: string | null;
 }): Promise<ChatModel[] | null> {
+  const cacheKey = `${params.token || "anonymous"}:${params.headers["x-user-id"] || "none"}`;
+  const cached = CATALOG_CACHE.get(cacheKey);
+  const now = Date.now();
+  if (cached && now < cached.expiresAt) {
+    return cached.models;
+  }
+
   const result = await upstreamJson<{ data?: unknown }>({
     headers: params.headers,
+    next: { revalidate: 60, tags: ["catalog-models"] },
     path: "/v1/models",
     token: params.token,
   });
   if (!result.ok) {
+    if (cached) {
+      return cached.models;
+    }
     return null;
   }
-  return mapCatalogModels(result.data.data || []);
+  const mapped = mapCatalogModels(result.data.data || []);
+  CATALOG_CACHE.set(cacheKey, {
+    expiresAt: now + CATALOG_CACHE_TTL_MS,
+    models: mapped,
+  });
+  return mapped;
 }
 
 export async function fetchUserModels(): Promise<ChatModel[]> {

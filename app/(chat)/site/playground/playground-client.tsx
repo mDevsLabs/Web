@@ -46,10 +46,7 @@ import {
   SITE_MODEL_CATALOG_ENDPOINTS,
 } from "@/lib/ai/model-catalog";
 import { groupModelsByProvider } from "@/lib/ai/model-selector/order";
-import {
-  PROVIDER_NAMES,
-  resolveProviderKey,
-} from "@/lib/ai/model-selector/provider";
+import { PROVIDER_NAMES } from "@/lib/ai/model-selector/provider";
 import type { SharedModel } from "@/lib/ai/model-selector/types";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { cn } from "@/lib/utils";
@@ -73,7 +70,7 @@ const fetcher = async (url: string) => {
 };
 
 export function PlaygroundClient() {
-  const { isAuthenticated, token } = useAuth();
+  const { isAuthenticated } = useAuth();
   const [mode, setMode] = useState<PlaygroundMode>("chat");
   const [selectedModels, setSelectedModels] = useState<
     Record<PlaygroundMode, string>
@@ -153,7 +150,7 @@ export function PlaygroundClient() {
       toast.error("Saisissez un prompt.");
       return;
     }
-    if (!token) {
+    if (!isAuthenticated) {
       toast.error("Connectez-vous pour exécuter une requête.");
       return;
     }
@@ -200,7 +197,6 @@ export function PlaygroundClient() {
         }),
         credentials: "include",
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -259,7 +255,7 @@ export function PlaygroundClient() {
     } finally {
       setIsRunning(false);
     }
-  }, [mode, prompt, selectedModels, token]);
+  }, [isAuthenticated, mode, prompt, selectedModels]);
 
   return (
     <div className="space-y-8">

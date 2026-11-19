@@ -1,9 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { resolveAuthorizationHeader } from "@/lib/site/session-bearer";
 
 // GET /api/v1/projects
 export async function GET(req: NextRequest) {
   try {
-    const authHeader = req.headers.get("authorization") || "";
+    const authHeader = await resolveAuthorizationHeader(req);
     const res = await fetch("https://mai.val.run/v1/projects", {
       headers: { Authorization: authHeader },
     });
@@ -37,7 +38,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const authHeader = req.headers.get("authorization") || "";
+    const authHeader = await resolveAuthorizationHeader(req);
     const res = await fetch("https://mai.val.run/v1/projects", {
       body: JSON.stringify(body),
       headers: {

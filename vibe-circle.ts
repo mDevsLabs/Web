@@ -67,7 +67,7 @@ export async function getOrCreateUserCircle(
 }
 
 export function registerVibeCircleRoutes(
-  app: Hono,
+  _app: Hono,
   registerMulti: RegisterMultiFn
 ) {
   // Mon cercle (liste de membres & métadonnées du cercle en base)

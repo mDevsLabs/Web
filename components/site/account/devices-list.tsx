@@ -37,7 +37,7 @@ type Device = {
 };
 
 export function DevicesList() {
-  const { token, logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -49,15 +49,11 @@ export function DevicesList() {
 
   const fetchDevices = useCallback(
     async (silent = false) => {
-      if (!token) return;
+      if (!isAuthenticated) return;
       if (!silent) setLoading(true);
       setIsRefreshing(true);
       try {
-        const res = await fetch(SITE_API_ROUTES.devices, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await fetch(SITE_API_ROUTES.devices);
         if (res.ok) {
           const data = await res.json();
           setDevices(data.devices || []);
@@ -72,7 +68,7 @@ export function DevicesList() {
         setIsRefreshing(false);
       }
     },
-    [token]
+    [isAuthenticated]
   );
 
   const [showBlocked, setShowBlocked] = useState(false);
@@ -88,7 +84,6 @@ export function DevicesList() {
       const res = await fetch(SITE_API_ROUTES.device(id), {
         body: JSON.stringify({ device_name: editName.trim() }),
         headers: {
-          Authorization: `Bearer ${token || ""}`,
           "Content-Type": "application/json",
         },
         method: "PUT",
@@ -115,9 +110,6 @@ export function DevicesList() {
     setActionLoading(`delete-${device.id}`);
     try {
       const res = await fetch(SITE_API_ROUTES.device(device.id), {
-        headers: {
-          Authorization: `Bearer ${token || ""}`,
-        },
         method: "DELETE",
       });
       if (res.ok) {
@@ -142,9 +134,6 @@ export function DevicesList() {
     setActionLoading("disconnect-others");
     try {
       const res = await fetch(SITE_API_ROUTES.devicesOthers, {
-        headers: {
-          Authorization: `Bearer ${token || ""}`,
-        },
         method: "DELETE",
       });
       if (res.ok) {
@@ -187,7 +176,6 @@ export function DevicesList() {
       const res = await fetch(SITE_API_ROUTES.device(device.id), {
         body: JSON.stringify({ is_blocked: newStatus }),
         headers: {
-          Authorization: `Bearer ${token || ""}`,
           "Content-Type": "application/json",
         },
         method: "PUT",

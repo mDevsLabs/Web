@@ -22,10 +22,7 @@ import { SmartphoneIcon as Smartphone } from "@mdevs/icons";
 import type React from "react";
 import { useState } from "react";
 import { InstallAppHint } from "@/components/vibe/common/InstallAppHint";
-import {
-  getAnimationsEnabled,
-  setAnimationsEnabled,
-} from "@/lib/vibe/services/animationPrefs";
+import { setAnimationsEnabled } from "@/lib/vibe/services/animationPrefs";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
 

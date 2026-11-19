@@ -1,87 +1,29 @@
 /**
- * Persistance de la session mAI (localStorage + Cookies sécurisés).
+ * Nettoyage du stockage de session hérité (issue #10).
+ *
+ * Avant le passage par le cookie httpOnly, le jeton de session était copié
+ * dans `localStorage` (`mai_auth`) et dans des cookies lisibles par JavaScript
+ * (`mai_user`, `mai_token`), pour 30 jours. À chaque visite, ces traces sont
+ * effacées : un script exécuté dans l'origine ne doit plus rien pouvoir lire.
+ * La session réelle vit uniquement dans le cookie httpOnly
+ * `mai_session_token`, posé et lu côté serveur.
  */
 
-export type MaiSession = {
-  token: string;
-  email?: string;
-  username?: string;
-  tier?: string;
-};
+const LEGACY_LOCAL_KEYS = ["mai_auth"] as const;
+const LEGACY_COOKIES = ["mai_user", "mai_token"] as const;
 
-export const MAI_AUTH_KEY = "mai_auth";
-
-function getCookie(name: string): string | null {
-  if (typeof document === "undefined") return null;
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2)
-    return decodeURIComponent(parts.pop()!.split(";").shift()!);
-  return null;
-}
-
-function setCookie(name: string, value: string, days = 30) {
-  if (typeof document === "undefined") return;
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
-}
-
-function deleteCookie(name: string) {
-  if (typeof document === "undefined") return;
-  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax`;
-}
-
-export function getSession(): MaiSession | null {
-  if (typeof window === "undefined") return null;
+export function purgeLegacyAuthStorage(): void {
+  if (typeof window === "undefined") return;
   try {
-    // 1. Essayer depuis localStorage
-    const raw = localStorage.getItem(MAI_AUTH_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw) as MaiSession;
-      if (parsed?.token && typeof parsed.token === "string") return parsed;
+    for (const key of LEGACY_LOCAL_KEYS) {
+      localStorage.removeItem(key);
     }
-
-    // 2. Sinon essayer depuis les cookies du navigateur
-    const cookieUser = getCookie("mai_user") || getCookie("mai_session_token");
-    if (cookieUser) {
-      const parsed = JSON.parse(cookieUser) as MaiSession;
-      if (parsed?.token) {
-        localStorage.setItem(MAI_AUTH_KEY, JSON.stringify(parsed));
-        return parsed;
-      }
-    }
-    return null;
   } catch {
-    return null;
+    // localStorage inaccessible (mode privé, quota) : rien à nettoyer.
   }
-}
-
-export function setSession(session: MaiSession): void {
-  if (typeof window === "undefined") return;
-  const str = JSON.stringify(session);
-  localStorage.setItem(MAI_AUTH_KEY, str);
-  setCookie("mai_user", str, 30);
-  setCookie("mai_token", session.token, 30);
-}
-
-export function clearSession(): void {
-  if (typeof window === "undefined") return;
-  localStorage.removeItem(MAI_AUTH_KEY);
-  deleteCookie("mai_user");
-  deleteCookie("mai_token");
-}
-
-export function updateSession(
-  partial: Partial<Omit<MaiSession, "token">> & { token?: string }
-): MaiSession | null {
-  const current = getSession();
-  if (!current && !partial.token) return null;
-  const next: MaiSession = {
-    email: partial.email ?? current?.email,
-    tier: partial.tier ?? current?.tier,
-    token: partial.token || current!.token,
-    username: partial.username ?? current?.username,
-  };
-  setSession(next);
-  return next;
+  if (typeof document === "undefined") return;
+  for (const name of LEGACY_COOKIES) {
+    // Expiration dans le passé : le cookie lisible est effacé.
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax`;
+  }
 }

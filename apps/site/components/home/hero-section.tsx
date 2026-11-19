@@ -38,7 +38,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
           className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mb-8 font-normal leading-relaxed px-4"
         >
-          Découvrez la suite mAI (Web, Pulse, CLI, Coder), nos modèles d&apos;IA de pointe et notre API unifiée haute performance.
+          Découvrez la plateforme unifiée mAI, nos modèles d&apos;IA de pointe, notre moteur d&apos;agents autonomes et notre API souveraine haute performance.
         </motion.p>
 
         {/* Boutons d'Action */}
@@ -48,16 +48,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-4 sm:px-0 mb-10"
         >
-          <Link href="/projects" className="w-full sm:w-auto">
-            <motion.button
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.96 }}
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl md:rounded-full bg-gradient-to-r from-purple-600 via-blue-600 to-slate-900 text-white font-bold flex items-center justify-center gap-2.5 shadow-[0_10px_30px_rgba(147,51,234,0.3)] hover:shadow-[0_15px_35px_rgba(147,51,234,0.4)] transition-all"
-            >
-              Explorer les Projets
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
-          </Link>
+          
 
           <Link href="/models" className="w-full sm:w-auto">
             <motion.button

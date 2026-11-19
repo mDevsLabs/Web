@@ -1353,9 +1353,10 @@ export function detectTool(
     const raw = cleanMsg.replace(/^[/@]adapter\s*:?\s*/i, "").trim();
     const words = raw.split(/\s+/);
     const known = ["x", "twitter", "instagram", "insta", "linkedin"];
-    const network = known.includes(words[0]?.toLowerCase())
+    const chosen = known.includes(words[0]?.toLowerCase())
       ? words.shift()
-      : "x";
+      : undefined;
+    const network = chosen ?? "x";
     const text = words.join(" ").trim();
     if (!text) return null;
     return {

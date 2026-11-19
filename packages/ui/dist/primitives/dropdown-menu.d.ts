@@ -11,5 +11,6 @@ export interface DropdownMenuProps {
     trigger: ReactNode;
     items: readonly DropdownMenuItem[];
     label: string;
+    container?: HTMLElement | null;
 }
-export declare function DropdownMenu({ trigger, items, label }: DropdownMenuProps): import("react").JSX.Element;
+export declare function DropdownMenu({ trigger, items, label, container }: DropdownMenuProps): import("react").JSX.Element;

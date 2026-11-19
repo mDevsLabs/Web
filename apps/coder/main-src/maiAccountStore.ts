@@ -524,21 +524,23 @@ export async function checkMaiQuotaAvailable(
     localUsage &&
     typeof localUsage.limit === "number" &&
     localUsage.limit > 0 &&
-    typeof localUsage.tokensUsed === "number" &&
-    localUsage.tokensUsed >= localUsage.limit
+    typeof localUsage.tokensUsed === "number"
   ) {
-    const resetStr = localUsage.resetAt
-      ? new Date(localUsage.resetAt).toLocaleDateString("fr-FR", {
-          day: "numeric",
-          month: "long",
-          weekday: "long",
-        })
-      : "prochainement";
-    return {
-      available: false,
-      message: `Votre quota hebdomadaire mAI est épuisé (${localUsage.tokensUsed.toLocaleString("fr-FR")} / ${localUsage.limit.toLocaleString("fr-FR")} tokens). Réinitialisation : ${resetStr}.`,
-      usage: localUsage,
-    };
+    if (localUsage.tokensUsed >= localUsage.limit) {
+      const resetStr = localUsage.resetAt
+        ? new Date(localUsage.resetAt).toLocaleDateString("fr-FR", {
+            day: "numeric",
+            month: "long",
+            weekday: "long",
+          })
+        : "prochainement";
+      return {
+        available: false,
+        message: `Votre quota hebdomadaire mAI est épuisé (${localUsage.tokensUsed.toLocaleString("fr-FR")} / ${localUsage.limit.toLocaleString("fr-FR")} tokens). Réinitialisation : ${resetStr}.`,
+        usage: localUsage,
+      };
+    }
+    return { available: true, usage: localUsage };
   }
 
   // 2. Vérification fraîche auprès de l'API /usage (timeout 10s).

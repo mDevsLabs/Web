@@ -1,47 +1,13 @@
 import "server-only";
-import {
-  and,
-  asc,
-  desc,
-  eq,
-  gt,
-  ilike,
-  inArray,
-  isNull,
-  lt,
-  lte,
-  ne,
-  or,
-  sql,
-} from "drizzle-orm";
+import { and, asc, desc, eq, lt, lte, or, sql } from "drizzle-orm";
 import { dbReady, getDb } from "@/lib/db/queries";
 import {
-  wakiesCall,
-  wakiesCapture,
-  wakiesChatTurn,
-  wakiesConversation,
-  wakiesFriend,
-  wakiesMemory,
-  wakiesMessage,
-  wakiesMessageReaction,
-  wakiesNotification,
-  wakiesPage,
-  wakiesPageConversation,
-  wakiesPageReview,
-  wakiesSettings,
-  wakiesSpace,
   wakiesTask,
   wakiesTaskConversation,
   wakiesTaskEvent,
   wakiesTaskRun,
   wakiesWakie,
-  wakiesWakieImage,
-  wakiesWakieProfile,
-  wakiesWakieSpace,
 } from "@/lib/db/schema";
-import type { PageSettings } from "@/lib/wakies/pages";
-import { preserveGoalMarker } from "@/lib/wakies/shared/goals";
-import { apercuMessage } from "@/lib/wakies/shared/messages";
 import {
   prochaineExecution,
   STATUT_TACHE,
@@ -51,20 +17,7 @@ import {
 } from "@/lib/wakies/task-lease";
 import { findConversation } from "./conversations";
 import { ensureSettings } from "./settings";
-import type {
-  SetupStatus,
-  WakieCallRow,
-  WakieConversationRow,
-  WakieMemoryRow,
-  WakiePageRow,
-  WakieRow,
-  WakieSettingsRow,
-  WakieSpaceRow,
-  WakieTaskEventRow,
-  WakieTaskRow,
-  WakieTaskRunRow,
-  WakieWithSpaces,
-} from "./types";
+import type { WakieTaskRow } from "./types";
 
 // ─── Tâches planifiées ──────────────────────────────────────────────────────
 
@@ -415,6 +368,33 @@ export async function listUsersWithWakies(): Promise<string[]> {
   const lignes = await getDb()
     .selectDistinct({ userId: wakiesWakie.userId })
     .from(wakiesWakie);
+  return lignes.map((ligne) => ligne.userId);
+}
+
+/**
+ * Découvre UNIQUEMENT les comptes ayant des tâches dues ou en file.
+ * Évite le scan séquentiel de tous les comptes lors des ticks cron.
+ */
+export async function listUsersWithDueTasks(): Promise<string[]> {
+  await dbReady();
+  const maintenant = new Date();
+  const isDueCondition = or(
+    eq(wakiesTask.status, STATUT_TACHE.file),
+    and(
+      eq(wakiesTask.status, STATUT_TACHE.complete),
+      lte(wakiesTask.nextRunAt, maintenant)
+    ),
+    and(
+      eq(wakiesTask.status, STATUT_TACHE.enCours),
+      lt(wakiesTask.leaseUntil, maintenant)
+    )
+  );
+
+  const lignes = await getDb()
+    .selectDistinct({ userId: wakiesTask.userId })
+    .from(wakiesTask)
+    .where(isDueCondition);
+
   return lignes.map((ligne) => ligne.userId);
 }
 

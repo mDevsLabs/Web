@@ -13,7 +13,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useActiveChat } from "@/hooks/use-active-chat";
+import { useOptionalActiveChat } from "@/hooks/use-active-chat";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import type { AppKey } from "@/lib/apps/catalog";
 import { appKeyFromPath } from "@/lib/apps/catalog";
@@ -64,15 +64,10 @@ export function AppSwitcherMenu({
     verifiedAuthentication ??
     (siteAuth?.isAuthenticated ? true : undefined);
 
-  let resetChat: (() => void) | undefined;
-  try {
-    // Peut être appelé hors du DataStreamProvider/ActiveChatProvider (ex: sur /site)
-    // donc repli sécurisé
-    const activeChat = useActiveChat();
-    resetChat = activeChat.resetChat;
-  } catch {
-    resetChat = undefined;
-  }
+  // Peut être appelé hors du DataStreamProvider/ActiveChatProvider (ex: sur /site)
+  // donc repli sécurisé via le hook optionnel
+  const activeChat = useOptionalActiveChat();
+  const resetChat = activeChat?.resetChat;
 
   const handleAppSelect = useCallback(
     (key: AppKey, path: string) => {

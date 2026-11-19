@@ -8,7 +8,6 @@ import {
   getUserMcpPrefs,
   updateMcpServer,
 } from "@/lib/db/queries";
-import { ChatbotError } from "@/lib/errors";
 import { fetchMcpTools, validateMcpConfig } from "@/lib/mcp/client";
 import { toMcpServerDto, toMcpServerDtoList } from "@/lib/mcp/dto";
 import { isEncryptionConfigured } from "@/lib/mcp/encryption";

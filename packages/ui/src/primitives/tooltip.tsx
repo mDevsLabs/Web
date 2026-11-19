@@ -8,6 +8,23 @@ export interface TooltipProps {
     children: ReactNode;
     delayDuration?: number;
     side?: 'top' | 'right' | 'bottom' | 'left';
+    container?: HTMLElement | null;
 }
 // Seule la flèche reçoit un remplissage ; les icônes du contenu gardent leur contour.
-export function Tooltip({ content, children, delayDuration = 350, side = 'top' }: TooltipProps) { return <RTooltip.Provider delayDuration={delayDuration}><RTooltip.Root><RTooltip.Trigger asChild>{children}</RTooltip.Trigger><RTooltip.Portal><PortalScope><RTooltip.Content className="md-tooltip" side={side} sideOffset={8}>{content}<RTooltip.Arrow className="md-tooltip-arrow" /></RTooltip.Content></PortalScope></RTooltip.Portal></RTooltip.Root></RTooltip.Provider>; }
+export function Tooltip({ content, children, delayDuration = 350, side = 'top', container }: TooltipProps) {
+    return (
+        <RTooltip.Provider delayDuration={delayDuration}>
+            <RTooltip.Root>
+                <RTooltip.Trigger asChild>{children}</RTooltip.Trigger>
+                <RTooltip.Portal container={container}>
+                    <PortalScope>
+                        <RTooltip.Content className="md-tooltip" side={side} sideOffset={8}>
+                            {content}
+                            <RTooltip.Arrow className="md-tooltip-arrow" />
+                        </RTooltip.Content>
+                    </PortalScope>
+                </RTooltip.Portal>
+            </RTooltip.Root>
+        </RTooltip.Provider>
+    );
+}

@@ -1,5 +1,6 @@
 import bcrypt from "npm:bcryptjs";
 import type { Hono } from "npm:hono@4";
+import { checkPasswordPolicy } from "./auth-password-policy.ts";
 import { decideResend, normalizeResendAction } from "./auth-resend-policy.ts";
 import {
   BCRYPT_ROUNDS,
@@ -40,6 +41,13 @@ export function registerAuthRoutes(app: Hono) {
         const { email, username, password } = await c.req.json();
         if (!email || !username || !password) {
           return c.json({ error: "Champs manquants." }, 400);
+        }
+
+        // Politique partagée avec le parcours Next (auth-password-policy.ts) :
+        // refusée AVANT l'envoi de l'OTP, et à nouveau dans /verify-register.
+        const passwordError = checkPasswordPolicy(password);
+        if (passwordError) {
+          return c.json({ error: passwordError }, 400);
         }
 
         const cleanEmail = String(email).trim().toLowerCase();
@@ -96,6 +104,13 @@ export function registerAuthRoutes(app: Hono) {
         const { email, username, password, code } = await c.req.json();
         if (!email || !username || !password || !code) {
           return c.json({ error: "Champs manquants." }, 400);
+        }
+
+        // Second contrôle : le payload de cette étape est indépendant de
+        // celui de /register et peut avoir été fabriqué à part.
+        const passwordError = checkPasswordPolicy(password);
+        if (passwordError) {
+          return c.json({ error: passwordError }, 400);
         }
 
         const cleanEmail = String(email).trim().toLowerCase();
@@ -921,11 +936,11 @@ export function registerAuthRoutes(app: Hono) {
       }
 
       if (password?.trim()) {
-        if (password.length < 6) {
-          return c.json(
-            { error: "Le mot de passe doit contenir au moins 6 caractères." },
-            400
-          );
+        // Même politique que la création de compte : le minimum de 6
+        // caractères historique est conservé, la borne maximale s'ajoute.
+        const passwordError = checkPasswordPolicy(password);
+        if (passwordError) {
+          return c.json({ error: passwordError }, 400);
         }
         const hash = await bcrypt.hash(password, BCRYPT_ROUNDS);
         await sql`UPDATE users SET password_hash = ${hash} WHERE id::text = ${userId}::text`;

@@ -81,7 +81,7 @@ function isBlockedIpv4(ip: string): string | null {
   return null;
 }
 
-function isBlockedIpv6(ip: string): string | null {
+function _isBlockedIpv6(ip: string): string | null {
   const lower = ip.toLowerCase();
   const bare = lower.replace(/^\[|\]$/g, "");
   // Loopback, unspecified, link-local fe80::/10, et tout IPv4 encapsulé.

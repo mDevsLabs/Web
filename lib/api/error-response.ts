@@ -138,6 +138,41 @@ export function logError(context: string, error: unknown): void {
   console.error(`[mAI] ${context}:`, error);
 }
 
+// Journalisation d'information serveur.
+//
+// Niveaux (env `MAI_LOG_LEVEL`) : « silent » (rien), « error » (erreurs
+// seules), « info » (tout). Sans variable, le niveau est « info » hors
+// production et « error » en production : les traces d'information (envois
+// d'e-mails, par exemple) peuvent donc être coupées en production sans
+// toucher au code.
+export type ServerLogLevel = "silent" | "error" | "info";
+
+function currentLogLevel(): ServerLogLevel {
+  const raw = (process.env.MAI_LOG_LEVEL ?? "").toLowerCase().trim();
+  if (raw === "silent" || raw === "error" || raw === "info") {
+    return raw;
+  }
+  return process.env.NODE_ENV === "production" ? "error" : "info";
+}
+
+export function logInfo(context: string, detail?: unknown): void {
+  if (currentLogLevel() !== "info") return;
+  if (detail === undefined) {
+    console.info(`[mAI] ${context}`);
+    return;
+  }
+  console.info(`[mAI] ${context}:`, detail);
+}
+
+export function logWarn(context: string, detail?: unknown): void {
+  if (currentLogLevel() === "silent") return;
+  if (detail === undefined) {
+    console.warn(`[mAI] ${context}`);
+    return;
+  }
+  console.warn(`[mAI] ${context}:`, detail);
+}
+
 // Convertit n'importe quelle erreur en réponse unifiée, sans jamais exposer
 // de détail interne au client (log serveur uniquement).
 export function toErrorResponse(

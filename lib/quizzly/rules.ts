@@ -250,6 +250,63 @@ export function avancerSerie(
 }
 
 /**
+ * Vérifie si la série courante est toujours vivante ou si elle a expiré
+ * (aucun quiz fait hier et aucun gel de série pour couvrir l'absence).
+ * Si elle a expiré, streakCount retombe à 0.
+ */
+export function verifierExpirationSerie(
+  etat: StreakState,
+  aujourdhui: string
+): { etat: StreakState; expiree: boolean } {
+  if (!etat.streakLastDay || etat.streakCount <= 0) {
+    return {
+      etat: { ...etat, streakCount: 0 },
+      expiree: false,
+    };
+  }
+  if (etat.streakLastDay >= aujourdhui) {
+    return { etat, expiree: false };
+  }
+  const ecart = joursEntre(etat.streakLastDay, aujourdhui);
+  // ecart === 1 : joué hier, encore la journée d'aujourd'hui pour continuer
+  if (ecart === 1) {
+    return { etat, expiree: false };
+  }
+  // Jours manqués = ecart - 1. S'ils sont couverts par des gels, la série est préservée.
+  const joursManques = ecart - 1;
+  if (joursManques <= etat.streakFreezes) {
+    return { etat, expiree: false };
+  }
+  return {
+    etat: {
+      streakCount: 0,
+      streakFreezes: etat.streakFreezes,
+      streakLastDay: etat.streakLastDay,
+    },
+    expiree: true,
+  };
+}
+
+/**
+ * Détermine si un jour civil AAAA-MM-JJ est validé dans la série active.
+ * Pour 1 jour de série, seul le dernier jour joué est validé.
+ */
+export function estJourSerieValide(
+  dateJour: string,
+  streakCount: number,
+  streakLastDay: string | null | undefined
+): boolean {
+  if (streakCount <= 0 || !streakLastDay) {
+    return false;
+  }
+  if (dateJour > streakLastDay) {
+    return false;
+  }
+  const ecart = joursEntre(dateJour, streakLastDay);
+  return ecart >= 0 && ecart < streakCount;
+}
+
+/**
  * Toute tentative terminée compte pour le jour, quel que soit le score.
  * Un second quiz le même jour ne rajoute pas un jour : `avancerSerie`
  * laisse l'état en place quand le jour est déjà compté.

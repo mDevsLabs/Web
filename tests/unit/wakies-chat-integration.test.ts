@@ -53,10 +53,12 @@ vi.mock("@/lib/wakies/queries", () => ({
   updateWakie: vi.fn(async () => {}),
 }));
 vi.mock("@/lib/db/queries", () => ({
+  countMemories: async () => 0,
   getUserMcpPrefs: async () => ({ globalKillSwitch: false }),
   // Préférences de modèle: absentes dans ce banc, la route retombe sur le
   // défaut produit — c'est exactement ce que vérifie le test.
   getUserModelPreferences: async () => null,
+  getUserPreferences: async () => null,
   recordTokenUsage: mocks.usage,
 }));
 vi.mock("@/lib/ai/providers", () => ({ getLanguageModel: mocks.model }));

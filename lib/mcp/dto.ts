@@ -1,3 +1,4 @@
+import { asRecordOrEmpty as asRecord } from "@/lib/utils/records";
 // DTO de sortie des serveurs et journaux MCP.
 //
 // Règle unique : aucune valeur secrète ne sort de la base ou d'un message
@@ -62,13 +63,6 @@ export type McpLogDto = {
   toolName: string;
   userId: string;
 };
-
-function asRecord(value: unknown): Record<string, unknown> {
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    return {};
-  }
-  return value as Record<string, unknown>;
-}
 
 function safeString(value: unknown, fallback = ""): string {
   return typeof value === "string" ? redactMcpText(value, 2000) : fallback;

@@ -1,0 +1,53 @@
+name: Audit PR — mAI Optimizer, TypeScript, Lint & Build
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  pr-audit:
+    name: Audit Qualité & Performance PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+
+      # Blackline est un jeu Vite AUTONOME: il n'est pas membre du workspace
+      # pnpm (pnpm-workspace.yaml liste `packages: []`), il a son propre
+      # package-lock.json et ses propres node_modules. `pnpm build` lance
+      # `scripts/build-blackline.mjs`, qui exige ces dépendances.
+      - name: Installer les dépendances de Blackline
+        run: npm ci --prefix apps/blackline
+
+      - name: Audit de performance mAI Optimizer
+        run: pnpm run optimizer:check
+
+      - name: Lint du code (ultracite / Biome)
+        run: pnpm run check
+
+      - name: Vérification TypeScript
+        run: pnpm run typecheck
+
+      - name: Vérification du build Next.js
+        run: pnpm run build

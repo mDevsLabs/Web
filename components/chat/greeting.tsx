@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AgentIcon } from "@/components/agents/agent-icon";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { useSettings } from "@/hooks/use-settings";
@@ -18,8 +18,10 @@ export const Greeting = () => {
     dedupingInterval: 30_000,
     revalidateOnFocus: false,
   });
-  const starterPrompts: string[] = (activeAgent as any)?.starterPrompts || [];
-  const welcomeMessage: string = (activeAgent as any)?.welcomeMessage || "";
+  const starterPrompts: string[] =
+    (activeAgent as { starterPrompts?: string[] } | null)?.starterPrompts || [];
+  const welcomeMessage: string =
+    (activeAgent as { welcomeMessage?: string } | null)?.welcomeMessage || "";
   const visiblePrompts = starterPrompts.filter(Boolean).slice(0, 4);
 
   const username: string | null =
@@ -27,9 +29,13 @@ export const Greeting = () => {
     settingsData?.user?.email?.split("@")[0]?.trim() ||
     null;
 
-  const [randomIndex] = useState(() =>
-    Math.floor(Math.random() * GREETINGS_WITH_USERNAME.length)
-  );
+  // Initialisation déterministe au SSR (index 0) pour éviter tout hydration mismatch,
+  // puis randomisation côté client après le montage.
+  const [randomIndex, setRandomIndex] = useState(0);
+
+  useEffect(() => {
+    setRandomIndex(Math.floor(Math.random() * GREETINGS_WITH_USERNAME.length));
+  }, []);
 
   const personalizedGreeting = useMemo(() => {
     if (activeAgent) {

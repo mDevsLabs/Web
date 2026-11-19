@@ -204,7 +204,9 @@ export function getTierRequestLimit(tier?: string | null): number {
  */
 export async function getUserQuotaBoost(
   sql: any,
-  userId: string | null | undefined,
+  // Identifiant Vibe (entier) ou compte mAI (chaîne) : la comparaison SQL
+  // caste en texte, les deux natures d'identifiant sont acceptées.
+  userId: string | number | null | undefined,
   quotaType: "mai" | "api" | "images" | "audio"
 ): Promise<number> {
   if (!sql || !userId) return 0;

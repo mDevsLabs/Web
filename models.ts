@@ -24,7 +24,6 @@ import {
   getModelCatalog,
   isFreeModelId,
   isPublicChatModel,
-  isPublicImageModel,
   ModelAccessError,
   requireChatModel,
   type SqlClient,
@@ -552,12 +551,15 @@ export function registerModelRoutes(
         return [
           {
             ...m,
+            fournisseur: effective.fournisseur,
             maxContext: effective.maxContext,
             maxOutput: effective.maxOutput,
+            provider: effective.provider,
             reasoning: m.reasoning?.supported_efforts?.length
               ? m.reasoning
               : (effective.reasoning ?? m.reasoning),
             supported_parameters: effective.supported_parameters,
+            type: effective.type,
           },
         ];
       });

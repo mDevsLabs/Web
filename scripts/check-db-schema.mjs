@@ -119,10 +119,14 @@ const REQUIRED_TABLES = [
   // Migration 0082 : catalogue persistant de la boutique. Sans cette table,
   // les articles ajoutés par `scripts/admin.ts` ne sont jamais lus.
   "QuizzlyShopItem",
+  // Migration 0085 : fenêtres de maintenance et verrouillage du site.
+  "MaintenanceWindow",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  // Migration 0086 : code d'accès / bypass de maintenance.
+  { column: "accessCode", table: "MaintenanceWindow" },
   // Migration 0072 : le verrou de révision et le rattachement projet sont
   // relus à chaque enregistrement.
   { column: "projectId", table: "Page" },
@@ -241,6 +245,9 @@ const REQUIRED_COLUMNS = [
   // décomposition du quota (les tokens de réflexion sont un sous-ensemble des
   // tokens de sortie : ils sont comptés, mais gardés à part).
   { column: "defaultMode", table: "AgentSettings" },
+  // Migration 0084 : les préférences de confort (densité, période, alertes)
+  // sont lues à chaque ouverture de l'onglet Agent des paramètres.
+  { column: "preferences", table: "AgentSettings" },
   { column: "reasoningTokens", table: "UsageEvent" },
   // Migration 0033 : la page Statistiques est la première lecture de
   // `UsageEvent`. Sans ce lien, ses filtres « projet » et « mode » ne sont pas

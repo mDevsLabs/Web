@@ -159,7 +159,7 @@ Comme dans le cas de Codex, Claude Code consomme le quota du tier associé à la
 
 1. **Surveillance des requêtes** : Interroger régulièrement `https://mai-devs.vercel.app/api/v1/usage` pour obtenir le nombre de requêtes et de tokens consommés ;
 2. **Contrôle du streaming** : Si Claude Code requiert un flux continu de réponses, s'assurer que le proxy LiteLLM transmet correctement les événements `data: ` du protocole SSE vers le client Claude ;
-3. **Respect des limites de tier** : Ne pas dépasser 500 requêtes quotidiennes (Free), 1 000 (Plus), 2 000 (Pro) ou 5 000 (Max). Un dépassement entraîne une réponse d'erreur `429` et la suspension temporaire du service ;
+3. **Respect des limites de tier** : Ne pas dépasser les limites hebdomadaires de requêtes allouées à votre forfait (500 requêtes/semaine pour Free, 1 500 pour Plus, 3 000 pour Pro, 7 500 pour Max, réinitialisées chaque lundi à 00:00 UTC). Un dépassement entraîne une réponse d'erreur `429` ;
 4. **Journalisation des usages** : Activer le module `log-usage` si le proxy le permet, afin de conserver un audit des traversées d'API sans exposer le contenu des prompts.
 
 ---

@@ -1,3 +1,4 @@
+/* @mdevs/ui — Liquid Glass Design System */
 /* Inter 4.1, Copyright The Inter Project Authors, SIL OFL 1.1; see LICENSE-INTER.txt. */
 @font-face {
   font-family: 'Inter';
@@ -365,6 +366,8 @@
   }
 }
 
+
+/* Extensions */
 /* This file is a durable source concatenated into styles.css at build time. */
 @layer mdevs {
   .md-dialog > *, .md-drawer > * {min-width: 0;}
@@ -500,3 +503,4 @@
     .md-bento-grid [data-span="2"] {grid-column: auto;}
   }
 }
+

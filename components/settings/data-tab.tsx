@@ -94,7 +94,7 @@ export function DataTab() {
     : Array.isArray(audioData?.audio)
       ? audioData.audio.length
       : 0;
-  const generationCount = imageCount + audioCount;
+  const _generationCount = imageCount + audioCount;
 
   // ── Actions ──────────────────────────────────────────────────────────────
   const [busy, setBusy] = useState<null | "export" | "memory" | "generations">(

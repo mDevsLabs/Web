@@ -130,11 +130,20 @@ export function ModelPickerDropdown({
     width: 460 + OPTIONS_PANEL_W,
   });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // `hoveredId` reste la source du panneau d'options (survol) ; la liste
+  // surligne `activeIndex`, qui suit le clavier autant que la souris.
   /** 点击「编辑」后展开右栏，并锁定为该条模型展示说明 */
   const [optsOpen, setOptsOpen] = useState(false);
   const [optsModelId, setOptsModelId] = useState<string | null>(null);
   const [rendered, setRendered] = useState(open);
   const [search, setSearch] = useState("");
+  /**
+   * Ligne survolée OU atteinte au clavier.
+   *
+   * Le pointeur et les flèches écrivent le même état : deux index distincts
+   * donneraient deux surlignages concurrents dans la même liste.
+   */
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const panelModelId = optsOpen ? (optsModelId ?? selectedId) : selectedId;
   const thinkingLevel = getThinkingLevel(panelModelId);
@@ -181,6 +190,98 @@ export function ModelPickerDropdown({
       return haystack.includes(query);
     });
   }, [items, query]);
+
+  /**
+   * Position du surlignage.
+   *
+   * Elle suit le MODÈLE SÉLECTIONNÉ à l'ouverture : avec vingt modèles, ouvrir
+   * le sélecteur sans voir lequel est actif oblige à relire toute la liste.
+   * Elle se replie sur 0 quand la sélection est filtrée hors de la liste.
+   */
+  const selectedIndex = useMemo(
+    () => filteredItems.findIndex((item) => item.id === selectedId),
+    [filteredItems, selectedId]
+  );
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    setActiveIndex(selectedIndex >= 0 ? selectedIndex : filteredItems.length > 0 ? 0 : -1);
+    // La recherche est remise à zéro à l'ouverture : le surlignage doit
+    // repartir de la sélection, pas du dernier filtre utilisé.
+  }, [open, selectedIndex, filteredItems.length]);
+
+  // La liste défile toute seule jusqu'à la ligne surlignée : au clavier, rien
+  // ne sert de surligner une ligne hors de la zone visible.
+  useEffect(() => {
+    if (!open || activeIndex < 0) {
+      return;
+    }
+    const el = menuRef.current?.querySelector<HTMLElement>(
+      `[data-model-index="${activeIndex}"]`
+    );
+    if (el && typeof el.scrollIntoView === "function") {
+      el.scrollIntoView({ block: "nearest" });
+    }
+  }, [activeIndex, open]);
+
+  /**
+   * Navigation clavier de la liste.
+   *
+   * Le focus RESTE dans le champ de recherche : c'est la disposition de tous
+   * les sélecteurs de la barre de commande, et déplacer le focus sur chaque
+   * ligne ferait perdre la frappe. Les flèches déplacent le surlignage,
+   * Entrée choisit, Échap referme l'encart d'options avant le sélecteur.
+   */
+  const onRootKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Escape") {
+      if (optsOpen) {
+        // Échap ferme d'abord le panneau latéral : sinon, corriger un réglage
+        // de réflexion fermerait tout le sélecteur.
+        event.preventDefault();
+        event.stopPropagation();
+        setOptsOpen(false);
+        setOptsModelId(null);
+      }
+      return;
+    }
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      if (filteredItems.length === 0) {
+        return;
+      }
+      event.preventDefault();
+      setActiveIndex((prev) => {
+        const from = prev < 0 ? (event.key === "ArrowDown" ? -1 : 0) : prev;
+        const next =
+          event.key === "ArrowDown" ? from + 1 : from - 1;
+        if (next < 0) {
+          return filteredItems.length - 1;
+        }
+        if (next >= filteredItems.length) {
+          return 0;
+        }
+        return next;
+      });
+      return;
+    }
+    if (event.key === "Home" || event.key === "End") {
+      if (filteredItems.length === 0) {
+        return;
+      }
+      event.preventDefault();
+      setActiveIndex(event.key === "Home" ? 0 : filteredItems.length - 1);
+      return;
+    }
+    if (event.key === "Enter" && !optsOpen) {
+      const target = filteredItems[activeIndex] ?? filteredItems[selectedIndex];
+      if (target) {
+        event.preventDefault();
+        void onSelectModel(target.id);
+        onClose();
+      }
+    }
+  };
 
   const computeLayout = useCallback(() => {
     const el = anchorRef.current;
@@ -286,6 +387,7 @@ export function ModelPickerDropdown({
   const node = (
     <div
       className={`ref-model-dd ref-model-dd--split ${optsOpen ? "ref-model-dd--opts-open" : ""} ${menuLayout.placement === "above" ? "ref-model-dd--above" : ""} ${open ? "" : "is-closing"}`}
+      onKeyDown={onRootKeyDown}
       ref={menuRef}
       role="presentation"
       style={{
@@ -318,18 +420,11 @@ export function ModelPickerDropdown({
               aria-label={t("modelPicker.searchPlaceholder")}
               autoFocus
               className="ref-model-dd-search"
-              onChange={(event) => setSearch(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === "ArrowDown") {
-                  event.preventDefault();
-                  menuRef.current
-                    ?.querySelector<HTMLElement>(".ref-model-dd-row")
-                    ?.focus();
-                } else if (event.key === "Enter" && filteredItems.length === 1) {
-                  event.preventDefault();
-                  void onSelectModel(filteredItems[0]!.id);
-                  onClose();
-                }
+              onChange={(event) => {
+                setSearch(event.target.value);
+                // Le surlignage repart du premier résultat : conserver
+                // l'index précédent désignerait une ligne qui a pu disparaître.
+                setActiveIndex(0);
               }}
               placeholder={t("modelPicker.searchPlaceholder")}
               spellCheck={false}
@@ -338,6 +433,11 @@ export function ModelPickerDropdown({
             />
           </div>
           <div
+            aria-activedescendant={
+              activeIndex >= 0
+                ? `ref-model-dd-option-${activeIndex}`
+                : undefined
+            }
             aria-label={t("modelPicker.selectAria")}
             className="ref-model-dd-inner"
             role="listbox"
@@ -356,12 +456,16 @@ export function ModelPickerDropdown({
                 </p>
               </div>
             ) : null}
-            {filteredItems.map((m) => {
+            {filteredItems.map((m, index) => {
               const isSel = selectedId === m.id;
+              const isActive = index === activeIndex;
+              const thinking = getThinkingLevel(m.id);
               return (
                 <div
                   aria-selected={isSel}
-                  className={`ref-model-dd-row ${isSel ? "is-selected" : ""}`}
+                  className={`ref-model-dd-row ${isSel ? "is-selected" : ""} ${isActive ? "is-active" : ""}`}
+                  data-model-index={index}
+                  id={`ref-model-dd-option-${index}`}
                   key={m.id}
                   onClick={() => {
                     void onSelectModel(m.id);
@@ -374,9 +478,12 @@ export function ModelPickerDropdown({
                       onClose();
                     }
                   }}
-                  onMouseEnter={() => setHoveredId(m.id)}
+                  onMouseEnter={() => {
+                    setHoveredId(m.id);
+                    setActiveIndex(index);
+                  }}
                   role="option"
-                  tabIndex={0}
+                  tabIndex={-1}
                 >
                   <span aria-hidden className="ref-model-dd-globe">
                     <IconGlobe />
@@ -400,6 +507,12 @@ export function ModelPickerDropdown({
                     ) : null}
                   </span>
                   <div className="ref-model-dd-trailing">
+                    <span
+                      className={`ref-model-dd-tag ref-model-dd-tag--think ref-model-dd-tag--think-${thinking}`}
+                      title={t("thinking.badgeTitle")}
+                    >
+                      {t(`thinking.badge.${thinking}`)}
+                    </span>
                     <button
                       className="ref-model-dd-edit"
                       onClick={(e) => {

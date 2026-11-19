@@ -1,9 +1,45 @@
 "use client";
 
+/**
+ * ============================================================================
+ * CRÉATION D'UNE PLANIFICATION — trois étapes, un aperçu permanent
+ * ============================================================================
+ *
+ * POURQUOI UN ASSISTANT
+ *
+ * Le formulaire précédent présentait onze champs à la suite dans une colonne
+ * défilante : titre, date, prompt, agent, modèle, mode de discussion,
+ * répétition, fuseau, jour du mois, fichiers, outils, consignes. Rien n'y
+ * indiquait par quoi commencer, et l'aperçu des prochaines exécutions — la
+ * seule information qui permet de se relire — arrivait en bas.
+ *
+ * La création est donc découpée selon la seule question que se pose
+ * réellement l'utilisateur, dans l'ordre :
+ *
+ *   1. QUOI  — ce que l'IA doit produire (titre, consigne, modèle, agent) ;
+ *   2. QUAND — l'instant (langage naturel, date, répétition, aperçu) ;
+ *   3. COMMENT — les options d'exécution (fil, fichiers, outils, consignes).
+ *
+ * L'APERÇU EST PERMANENT
+ *
+ * Une bande de synthèse reste visible sous les étapes : elle reformule en une
+ * phrase ce qui va être créé. C'est ce qui manquait le plus — un formulaire
+ * long ne se relit pas, il se soumet.
+ *
+ * CE QUI N'A PAS CHANGÉ
+ *
+ * Le contrat serveur est identique : mêmes champs, mêmes noms, même validation
+ * (le serveur tranche). Les champs calendaires (`hour`, `minute`, `timezone`,
+ * `dayOfMonth`, `monthlyPolicy`) continuent de n'être envoyés que pour une
+ * récurrence — le serveur recalcule l'UTC depuis l'heure murale.
+ */
+
 import {
   BlocksIcon,
   CalendarIcon,
   CheckCircle2Icon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
   CircleSlashIcon,
   ClockIcon,
   CloudIcon,
@@ -12,8 +48,6 @@ import {
   RepeatIcon,
   SparklesIcon,
   WandSparklesIcon,
-  WrenchIcon,
-  XCircleIcon,
   XIcon,
 } from "@mdevs/icons";
 import { useEffect, useMemo, useState } from "react";
@@ -26,8 +60,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -36,6 +68,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
+import { parseNaturalDate } from "@/lib/planning/natural-date";
 import {
   buildScheduleFromRecord,
   computeUpcomingOccurrences,
@@ -58,12 +91,77 @@ const TOOL_MODE_ICONS = {
   plugins: BlocksIcon,
 } as const;
 
+/** Les trois étapes de la création. L'ordre est celui des questions. */
+const STEPS = [
+  { id: "quoi", label: "Quoi" },
+  { id: "quand", label: "Quand" },
+  { id: "comment", label: "Options" },
+] as const;
+
+type StepId = (typeof STEPS)[number]["id"];
+
+/**
+ * Modèles de départ : ils remplissent le titre, la consigne et la répétition.
+ * Ce sont des points de départ, pas des prescriptions — tout reste modifiable.
+ */
+const TEMPLATES: Array<{
+  id: string;
+  label: string;
+  title: string;
+  prompt: string;
+  recurrence: "none" | "daily" | "weekly" | "monthly";
+  icon: typeof SparklesIcon;
+}> = [
+  {
+    icon: SparklesIcon,
+    id: "veille",
+    label: "Veille du matin",
+    prompt:
+      "Génère un résumé complet des actualités technologiques et IA d'aujourd'hui, avec les sources.",
+    recurrence: "daily",
+    title: "Veille IA du matin",
+  },
+  {
+    icon: MessagesSquareIcon,
+    id: "recap",
+    label: "Récap de projet",
+    prompt:
+      "Résume les décisions prises cette semaine et liste les prochaines étapes concrètes.",
+    recurrence: "weekly",
+    title: "Récap hebdomadaire du projet",
+  },
+  {
+    icon: ClockIcon,
+    id: "relance",
+    label: "Relance d'une tâche",
+    prompt:
+      "Vérifie l'état de la tâche en cours et rappelle ce qu'il reste à faire.",
+    recurrence: "none",
+    title: "Relance de la tâche",
+  },
+  {
+    icon: RepeatIcon,
+    id: "bilan",
+    label: "Bilan mensuel",
+    prompt:
+      "Dresse le bilan du mois : ce qui a été livré, ce qui a glissé, et ce qu'il faut ajuster.",
+    recurrence: "monthly",
+    title: "Bilan mensuel",
+  },
+];
+
 interface ScheduleDialogProps {
   agents: Agent[];
   initialData?: ScheduledMessage | null;
   isOpen: boolean;
   onClose: () => void;
   onSuccess: () => void;
+}
+
+/** « YYYY-MM-DDTHH:mm » en heure locale, format attendu par `datetime-local`. */
+function toLocalInput(date: Date): string {
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
 export function ScheduleDialog({
@@ -73,9 +171,11 @@ export function ScheduleDialog({
   onClose,
   onSuccess,
 }: ScheduleDialogProps) {
+  const [step, setStep] = useState<StepId>("quoi");
   const [title, setTitle] = useState("Envoi planifié");
   const [prompt, setPrompt] = useState("");
   const [scheduledAt, setScheduledAt] = useState("");
+  const [naturalWhen, setNaturalWhen] = useState("");
   const [selectedAgentId, setSelectedAgentId] = useState<string | null>(null);
   const [selectedModel, setSelectedModel] = useState(DEFAULT_CHAT_MODEL);
   const [createMode, setCreateMode] = useState<"new_chat" | "existing_chat">(
@@ -111,16 +211,12 @@ export function ScheduleDialog({
     if (initialData) {
       setTitle(initialData.title);
       setPrompt(initialData.prompt);
-      const d = new Date(initialData.scheduledAt);
-      // format to datetime-local (YYYY-MM-DDTHH:mm)
-      const pad = (n: number) => n.toString().padStart(2, "0");
-      const localIso = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-      setScheduledAt(localIso);
+      setScheduledAt(toLocalInput(new Date(initialData.scheduledAt)));
       setSelectedAgentId(initialData.agentId ?? null);
       setSelectedModel(initialData.modelId || DEFAULT_CHAT_MODEL);
-      setCreateMode((initialData.createMode as any) || "new_chat");
+      setCreateMode((initialData.createMode as "new_chat") || "new_chat");
       setSelectedChatId(initialData.chatId || "");
-      setRecurrence((initialData.recurrence as any) || "none");
+      setRecurrence((initialData.recurrence as "none") || "none");
       setTimezone(
         (initialData as { timezone?: string | null }).timezone ||
           Intl.DateTimeFormat().resolvedOptions().timeZone ||
@@ -149,9 +245,7 @@ export function ScheduleDialog({
         "Génère un résumé complet des actualités technologiques et IA d'aujourd'hui."
       );
       const inOneHour = new Date(Date.now() + 60 * 60 * 1000);
-      const pad = (n: number) => n.toString().padStart(2, "0");
-      const localIso = `${inOneHour.getFullYear()}-${pad(inOneHour.getMonth() + 1)}-${pad(inOneHour.getDate())}T${pad(inOneHour.getHours())}:${pad(inOneHour.getMinutes())}`;
-      setScheduledAt(localIso);
+      setScheduledAt(toLocalInput(inOneHour));
       setSelectedAgentId(null);
       setSelectedModel(DEFAULT_CHAT_MODEL);
       setCreateMode("new_chat");
@@ -160,12 +254,16 @@ export function ScheduleDialog({
       setTimezone(
         Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Paris"
       );
-      setDayOfMonth(new Date(Date.now() + 60 * 60 * 1000).getDate());
+      setDayOfMonth(inOneHour.getDate());
       setMonthlyPolicy("clamp");
       setToolMode(DEFAULT_SCHEDULE_TOOL_MODE);
       setCloudFileUrls([]);
       setCustomInstructions("");
     }
+    // Une ouverture repart de la première question : arriver sur « Options »
+    // sans avoir rien saisi désoriente plus qu'il n'aide.
+    setStep("quoi");
+    setNaturalWhen("");
   }, [initialData]);
 
   // Liste des discussions pour le mode "Continuer un fil existant"
@@ -177,6 +275,11 @@ export function ScheduleDialog({
     {
       revalidateOnFocus: false,
     }
+  );
+
+  const natural = useMemo(
+    () => (naturalWhen.trim() ? parseNaturalDate(naturalWhen) : null),
+    [naturalWhen]
   );
 
   // Aperçu des dix prochaines exécutions : le même moteur que l'exécuteur
@@ -208,26 +311,69 @@ export function ScheduleDialog({
   const availableTimezones = useMemo(() => listIANATimezones(), []);
 
   const setPresetTime = (minutesFromNow: number) => {
-    const d = new Date(Date.now() + minutesFromNow * 60 * 1000);
-    const pad = (n: number) => n.toString().padStart(2, "0");
     setScheduledAt(
-      `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`
+      toLocalInput(new Date(Date.now() + minutesFromNow * 60_000))
     );
+    setNaturalWhen("");
+  };
+
+  /** Applique la saisie en langage naturel quand elle est comprise. */
+  const applyNaturalWhen = (value: string) => {
+    setNaturalWhen(value);
+    const guess = value.trim() ? parseNaturalDate(value) : null;
+    if (guess) {
+      setScheduledAt(toLocalInput(guess.at));
+    }
+  };
+
+  const applyTemplate = (template: (typeof TEMPLATES)[number]) => {
+    setTitle(template.title);
+    setPrompt(template.prompt);
+    setRecurrence(template.recurrence);
+    toast.success(`Modèle « ${template.label}» appliqué.`);
+  };
+
+  const stepIndex = STEPS.findIndex((entry) => entry.id === step);
+
+  /** Valide l'étape courante ; renvoie true si l'on peut avancer. */
+  const validateStep = (id: StepId): boolean => {
+    if (id === "quoi" && !prompt.trim()) {
+      toast.error("Décrivez ce que l'IA doit produire.");
+      return false;
+    }
+    if (id === "quand" && !scheduledAt) {
+      toast.error("Choisissez une date et une heure.");
+      return false;
+    }
+    if (id === "comment" && createMode === "existing_chat" && !selectedChatId) {
+      // Le fil est choisi À CETTE ÉTAPE : la validation doit y rester, sinon
+      // l'utilisateur est renvoyé sur « Quand» pour un champ qui n'y est pas.
+      toast.error("Sélectionnez la discussion à continuer.");
+      return false;
+    }
+    return true;
+  };
+
+  const goNext = () => {
+    if (!validateStep(step)) {
+      return;
+    }
+    const next = STEPS[Math.min(STEPS.length - 1, stepIndex + 1)];
+    setStep(next.id);
+  };
+
+  const goPrevious = () => {
+    const previous = STEPS[Math.max(0, stepIndex - 1)];
+    setStep(previous.id);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!prompt.trim()) {
-      toast.error("Veuillez saisir le message à envoyer.");
-      return;
-    }
-    if (!scheduledAt) {
-      toast.error("Veuillez définir une date et heure d'exécution.");
-      return;
-    }
-    if (createMode === "existing_chat" && !selectedChatId) {
-      toast.error("Veuillez sélectionner la discussion à continuer.");
-      return;
+    for (const entry of STEPS) {
+      if (!validateStep(entry.id)) {
+        setStep(entry.id);
+        return;
+      }
     }
 
     const scheduledDate = new Date(scheduledAt);
@@ -298,491 +444,635 @@ export function ScheduleDialog({
     }
   };
 
+  const agentName =
+    agents.find((agent) => agent.id === selectedAgentId)?.name ?? null;
+  const recurrenceLabel =
+    recurrence === "none"
+      ? "une seule fois"
+      : recurrence === "daily"
+        ? "chaque jour"
+        : recurrence === "weekly"
+          ? "chaque semaine"
+          : "chaque mois";
+
   return (
     <Dialog onOpenChange={(open) => !open && onClose()} open={isOpen}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-[620px]">
-        <DialogHeader>
-          <div className="flex items-center gap-2">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <CalendarIcon className="size-4" />
-            </span>
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-[640px]">
+        <div className="flex items-center gap-2">
+          <span className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <CalendarIcon className="size-4" />
+          </span>
+          <div>
             <DialogTitle>
               {initialData
                 ? "Modifier la planification"
                 : "Nouvelle planification"}
             </DialogTitle>
+            <DialogDescription className="text-xs">
+              Trois questions : quoi, quand, et avec quels outils.
+            </DialogDescription>
           </div>
-          <DialogDescription>
-            Définissez la date, l'heure et les paramètres de votre message
-            automatique à l'IA.
-          </DialogDescription>
-        </DialogHeader>
+        </div>
 
-        <form className="space-y-4 pt-2" onSubmit={handleSubmit}>
-          <div>
-            <Label className="text-xs font-semibold text-muted-foreground">
-              Titre du rappel
-            </Label>
-            <Input
-              className="mt-1"
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Ex: Veille IA du matin"
-              value={title}
-            />
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between">
-              <Label className="text-xs font-semibold text-muted-foreground">
-                Date & Heure d'exécution
-              </Label>
-              <div className="flex items-center gap-1">
-                <button
-                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
-                  onClick={() => setPresetTime(60)}
-                  type="button"
-                >
-                  +1h
-                </button>
-                <button
-                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
-                  onClick={() => setPresetTime(60 * 12)}
-                  type="button"
-                >
-                  +12h
-                </button>
-                <button
-                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
-                  onClick={() => setPresetTime(60 * 24)}
-                  type="button"
-                >
-                  Demain
-                </button>
-              </div>
-            </div>
-            <Input
-              className="mt-1 font-mono text-sm"
-              onChange={(e) => setScheduledAt(e.target.value)}
-              required
-              type="datetime-local"
-              value={scheduledAt}
-            />
-          </div>
-
-          <div>
-            <Label className="text-xs font-semibold text-muted-foreground">
-              Message / Prompt à envoyer à l'IA
-            </Label>
-            <Textarea
-              className="mt-1 min-h-[90px] text-sm"
-              onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Que voulez-vous demander à l'IA à cette date ?"
-              required
-              value={prompt}
-            />
-          </div>
-
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <div>
-              <Label className="text-xs font-semibold text-muted-foreground">
-                Agent associé (optionnel)
-              </Label>
-              <select
-                className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
-                onChange={(e) => {
-                  const agId = e.target.value || null;
-                  setSelectedAgentId(agId);
-                  if (agId) {
-                    const ag = agents.find((a) => a.id === agId);
-                    if (ag?.defaultModelId) {
-                      setSelectedModel(ag.defaultModelId);
-                    }
+        {/* Fil des étapes — l'étape courante se reconnaît à `data-active`. */}
+        <nav
+          aria-label="Étapes de création"
+          className="mt-4 flex items-center gap-1.5"
+        >
+          {STEPS.map((entry, index) => {
+            const active = entry.id === step;
+            const done = index < stepIndex;
+            return (
+              <button
+                aria-current={active ? "step" : undefined}
+                className={cn(
+                  "chip flex-1 justify-center gap-2 py-1.5 text-xs",
+                  done && "text-success"
+                )}
+                data-active={active ? "true" : undefined}
+                key={entry.id}
+                onClick={() => {
+                  // Revenir en arrière est toujours permis ; avancer exige de
+                  // valider ce qui précède.
+                  if (index < stepIndex) {
+                    setStep(entry.id);
+                  } else if (index === stepIndex + 1 && validateStep(step)) {
+                    setStep(entry.id);
                   }
                 }}
-                value={selectedAgentId || ""}
+                type="button"
               >
-                <option value="">Aucun (mAI Standard)</option>
-                {agents.map((ag) => (
-                  <option key={ag.id} value={ag.id}>
-                    {ag.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+                <span className="font-mono text-[10px] opacity-70">
+                  {done ? <CheckCircle2Icon className="size-3" /> : index + 1}
+                </span>
+                {entry.label}
+              </button>
+            );
+          })}
+        </nav>
 
-            <div>
-              <Label className="text-xs font-semibold text-muted-foreground">
-                Modèle de langage
-              </Label>
-              <div className="mt-1">
-                <ModelSelectorCompact
-                  fallbackModels={FALLBACK_MODELS}
-                  modal
-                  onModelChange={setSelectedModel}
-                  placeholder="Modèle de langage"
-                  selectedModelId={selectedModel}
-                  source="chat"
-                  variant="block"
+        <form className="space-y-4 pt-3" onSubmit={handleSubmit}>
+          {step === "quoi" && (
+            <div className="space-y-4">
+              {!initialData && (
+                <div className="flex flex-wrap gap-1.5">
+                  {TEMPLATES.map((template) => (
+                    <button
+                      className="chip gap-1.5"
+                      key={template.id}
+                      onClick={() => applyTemplate(template)}
+                      type="button"
+                    >
+                      <template.icon className="size-3" />
+                      {template.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <div>
+                <Label className="text-xs font-semibold text-muted-foreground">
+                  Titre
+                </Label>
+                <Input
+                  className="mt-1"
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Ex. : Veille IA du matin"
+                  value={title}
                 />
               </div>
-            </div>
-          </div>
 
-          <div>
-            <Label className="text-xs font-semibold text-muted-foreground">
-              Mode de discussion
-            </Label>
-            <div className="mt-1 flex gap-2">
-              <button
-                className={cn(
-                  "flex-1 rounded-lg border px-3 py-2 text-left text-xs transition cursor-pointer",
-                  createMode === "new_chat"
-                    ? "border-primary bg-primary/10 text-primary font-medium"
-                    : "border-border/60 text-muted-foreground hover:bg-muted/50"
-                )}
-                onClick={() => setCreateMode("new_chat")}
-                type="button"
-              >
-                <div className="font-semibold">Nouvelle discussion</div>
-                <div className="text-[11px] opacity-80">
-                  Crée une discussion dédiée pour cette exécution
+              <div>
+                <div className="flex items-center justify-between">
+                  <Label className="text-xs font-semibold text-muted-foreground">
+                    Consigne envoyée à l'IA
+                  </Label>
+                  <span className="font-mono text-[10px] text-muted-foreground">
+                    {prompt.trim().length} car.
+                  </span>
                 </div>
-              </button>
-              <button
-                className={cn(
-                  "flex-1 rounded-lg border px-3 py-2 text-left text-xs transition cursor-pointer",
-                  createMode === "existing_chat"
-                    ? "border-primary bg-primary/10 text-primary font-medium"
-                    : "border-border/60 text-muted-foreground hover:bg-muted/50"
-                )}
-                onClick={() => setCreateMode("existing_chat")}
-                type="button"
-              >
-                <div className="font-semibold">Continuer un fil existant</div>
-                <div className="text-[11px] opacity-80">
-                  Ajoute les réponses dans la discussion sélectionnée
-                </div>
-              </button>
-            </div>
-            {createMode === "existing_chat" && (
-              <div className="mt-2">
-                <select
-                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
-                  onChange={(e) => setSelectedChatId(e.target.value)}
+                <Textarea
+                  className="mt-1 min-h-[110px] text-sm"
+                  onChange={(e) => setPrompt(e.target.value)}
+                  placeholder="Que voulez-vous demander à l'IA à cette date ?"
                   required
-                  value={selectedChatId}
-                >
-                  <option value="">
-                    {availableChats
-                      ? "Sélectionnez une discussion..."
-                      : "Chargement des discussions..."}
-                  </option>
-                  {(availableChats || []).map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.title || "Sans titre"}
-                    </option>
+                  value={prompt}
+                />
+              </div>
+
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div>
+                  <Label className="text-xs font-semibold text-muted-foreground">
+                    Agent (optionnel)
+                  </Label>
+                  <select
+                    className="field-input mt-1 text-sm"
+                    onChange={(e) => {
+                      const agId = e.target.value || null;
+                      setSelectedAgentId(agId);
+                      if (agId) {
+                        const ag = agents.find((a) => a.id === agId);
+                        if (ag?.defaultModelId) {
+                          setSelectedModel(ag.defaultModelId);
+                        }
+                      }
+                    }}
+                    value={selectedAgentId || ""}
+                  >
+                    <option value="">Aucun (mAI Standard)</option>
+                    {agents.map((ag) => (
+                      <option key={ag.id} value={ag.id}>
+                        {ag.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <Label className="text-xs font-semibold text-muted-foreground">
+                    Modèle
+                  </Label>
+                  <div className="mt-1">
+                    <ModelSelectorCompact
+                      fallbackModels={FALLBACK_MODELS}
+                      modal
+                      onModelChange={setSelectedModel}
+                      placeholder="Modèle de langage"
+                      selectedModelId={selectedModel}
+                      source="chat"
+                      variant="block"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {step === "quand" && (
+            <div className="space-y-4">
+              <div>
+                <Label className="text-xs font-semibold text-muted-foreground">
+                  En une phrase
+                </Label>
+                <div className="mt-1 flex items-center gap-2">
+                  <Input
+                    className="font-mono text-sm"
+                    onChange={(e) => applyNaturalWhen(e.target.value)}
+                    placeholder="demain 9h · dans 2 heures · lundi prochain 8h"
+                    value={naturalWhen}
+                  />
+                  <span
+                    className={cn(
+                      "shrink-0 text-[11px]",
+                      natural ? "text-success" : "text-muted-foreground"
+                    )}
+                  >
+                    {natural ? natural.label : "—"}
+                  </span>
+                </div>
+                <div className="mt-1.5 flex flex-wrap gap-1.5">
+                  {[
+                    { label: "Dans 1 h", minutes: 60 },
+                    { label: "Ce soir", minutes: 60 * 8 },
+                    { label: "Demain 8h", minutes: 60 * 18 },
+                    { label: "Dans 3 jours", minutes: 60 * 24 * 3 },
+                  ].map((preset) => (
+                    <button
+                      className="chip"
+                      key={preset.label}
+                      onClick={() => setPresetTime(preset.minutes)}
+                      type="button"
+                    >
+                      {preset.label}
+                    </button>
                   ))}
-                </select>
-                {availableChats && availableChats.length === 0 && (
-                  <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground">
-                    <MessagesSquareIcon className="size-3" />
-                    Aucune discussion existante. Créez-en une d'abord ou
-                    choisissez « Nouvelle discussion ».
-                  </p>
+                </div>
+              </div>
+
+              <div>
+                <Label className="text-xs font-semibold text-muted-foreground">
+                  Date & heure d'exécution
+                </Label>
+                <Input
+                  className="mt-1 font-mono text-sm"
+                  onChange={(e) => {
+                    setScheduledAt(e.target.value);
+                    setNaturalWhen("");
+                  }}
+                  required
+                  type="datetime-local"
+                  value={scheduledAt}
+                />
+              </div>
+
+              <div>
+                <Label className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                  <RepeatIcon className="size-3.5" />
+                  Répétition
+                </Label>
+                <div className="mt-1 grid grid-cols-4 gap-1.5">
+                  {(
+                    [
+                      { id: "none", label: "Une fois" },
+                      { id: "daily", label: "Quotidien" },
+                      { id: "weekly", label: "Hebdo" },
+                      { id: "monthly", label: "Mensuel" },
+                    ] as const
+                  ).map((r) => (
+                    <button
+                      className="chip justify-center py-1.5"
+                      data-active={recurrence === r.id ? "true" : undefined}
+                      key={r.id}
+                      onClick={() => setRecurrence(r.id)}
+                      type="button"
+                    >
+                      {r.label}
+                    </button>
+                  ))}
+                </div>
+                {recurrence !== "none" && (
+                  <>
+                    <p className="mt-1.5 text-[11px] text-muted-foreground">
+                      Réexécution automatique {recurrenceLabel}, à la même heure
+                      : une notification vous prévient à chaque fois.
+                    </p>
+
+                    {/* Fuseau IANA explicite + réglages mensuels */}
+                    <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      <div>
+                        <Label className="text-xs font-semibold text-muted-foreground">
+                          Fuseau horaire
+                        </Label>
+                        <select
+                          className="field-input mt-1 text-sm"
+                          onChange={(e) => setTimezone(e.target.value)}
+                          value={timezone}
+                        >
+                          {availableTimezones.map((tz) => (
+                            <option key={tz} value={tz}>
+                              {tz}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      {recurrence === "monthly" && (
+                        <div>
+                          <Label className="text-xs font-semibold text-muted-foreground">
+                            Jour du mois (1–31)
+                          </Label>
+                          <Input
+                            className="mt-1"
+                            max={31}
+                            min={1}
+                            onChange={(e) => {
+                              const v = Number.parseInt(e.target.value, 10);
+                              if (!Number.isNaN(v)) {
+                                setDayOfMonth(Math.min(31, Math.max(1, v)));
+                              }
+                            }}
+                            type="number"
+                            value={dayOfMonth}
+                          />
+                        </div>
+                      )}
+                    </div>
+                    {recurrence === "monthly" && (
+                      <div className="mt-2">
+                        <Label className="text-xs font-semibold text-muted-foreground">
+                          Si le jour n'existe pas (ex. 31 en février)
+                        </Label>
+                        <div className="mt-1 grid grid-cols-3 gap-1.5">
+                          {(
+                            [
+                              {
+                                hint: "31 janv. → 28 févr.",
+                                id: "clamp",
+                                label: "Dernier jour",
+                              },
+                              {
+                                hint: "pas d'exécution en février",
+                                id: "skip",
+                                label: "Sauter",
+                              },
+                              {
+                                hint: "31 janv. → 3 mars",
+                                id: "report",
+                                label: "Reporter",
+                              },
+                            ] as const
+                          ).map((p) => (
+                            <button
+                              className="chip flex-col items-center gap-0.5 py-1.5 text-center"
+                              data-active={
+                                monthlyPolicy === p.id ? "true" : undefined
+                              }
+                              key={p.id}
+                              onClick={() => setMonthlyPolicy(p.id)}
+                              type="button"
+                            >
+                              <span>{p.label}</span>
+                              <span className="text-[10px] opacity-75">
+                                {p.hint}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Aperçu des dix prochaines exécutions */}
+                    {upcoming.length > 0 && (
+                      <div className="surface-muted mt-3">
+                        <div className="flex items-center gap-1.5">
+                          <ClockIcon className="size-3.5 text-muted-foreground" />
+                          <span className="text-xs font-semibold text-foreground">
+                            Dix prochaines exécutions
+                          </span>
+                        </div>
+                        <ol className="mt-2 space-y-1">
+                          {upcoming.map((at, i) => (
+                            <li
+                              className="flex items-baseline justify-between gap-2 text-[11px]"
+                              key={at.toISOString()}
+                            >
+                              <span className="w-6 shrink-0 text-muted-foreground">
+                                #{i + 1}
+                              </span>
+                              <span className="font-mono text-foreground">
+                                {formatInZone(timezone, at)}
+                              </span>
+                              <span className="font-mono text-[10px] text-muted-foreground">
+                                {at
+                                  .toISOString()
+                                  .slice(0, 16)
+                                  .replace("T", " ")}{" "}
+                                UTC
+                              </span>
+                            </li>
+                          ))}
+                        </ol>
+                        <p className="mt-1.5 text-[10px] text-muted-foreground">
+                          Heures affichées dans le fuseau {timezone}, avec la
+                          conversion UTC correspondante.
+                        </p>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
-            )}
-          </div>
-
-          <div>
-            <Label className="text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
-              <RepeatIcon className="size-3.5" />
-              Répétition
-            </Label>
-            <div className="mt-1 grid grid-cols-4 gap-1.5">
-              {(
-                [
-                  { id: "none", label: "Une fois" },
-                  { id: "daily", label: "Quotidien" },
-                  { id: "weekly", label: "Hebdo" },
-                  { id: "monthly", label: "Mensuel" },
-                ] as const
-              ).map((r) => (
-                <button
-                  className={cn(
-                    "rounded-lg border px-2 py-1.5 text-[11px] font-medium transition cursor-pointer",
-                    recurrence === r.id
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border/60 text-muted-foreground hover:bg-muted/50"
-                  )}
-                  key={r.id}
-                  onClick={() => setRecurrence(r.id)}
-                  type="button"
-                >
-                  {r.label}
-                </button>
-              ))}
             </div>
-            {recurrence !== "none" && (
-              <>
-                <p className="mt-1.5 text-[11px] text-muted-foreground">
-                  Le message sera réexécuté automatiquement{" "}
-                  {recurrence === "daily"
-                    ? "chaque jour"
-                    : recurrence === "weekly"
-                      ? "chaque semaine"
-                      : "chaque mois"}{" "}
-                  à la même heure, et une notification vous informera à chaque
-                  exécution.
-                </p>
+          )}
 
-                {/* Fuseau IANA explicite + réglages mensuels */}
-                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  <div>
-                    <Label className="text-xs font-semibold text-muted-foreground">
-                      Fuseau horaire
-                    </Label>
+          {step === "comment" && (
+            <div className="space-y-4">
+              <div>
+                <Label className="text-xs font-semibold text-muted-foreground">
+                  Destination
+                </Label>
+                <div className="mt-1 flex gap-2">
+                  <button
+                    className="chip flex-1 flex-col items-start gap-0.5 rounded-lg px-3 py-2 text-left normal-case"
+                    data-active={createMode === "new_chat" ? "true" : undefined}
+                    onClick={() => setCreateMode("new_chat")}
+                    type="button"
+                  >
+                    <span className="text-xs font-semibold">
+                      Nouvelle discussion
+                    </span>
+                    <span className="text-[11px] opacity-80">
+                      Une discussion dédiée par exécution
+                    </span>
+                  </button>
+                  <button
+                    className="chip flex-1 flex-col items-start gap-0.5 rounded-lg px-3 py-2 text-left normal-case"
+                    data-active={
+                      createMode === "existing_chat" ? "true" : undefined
+                    }
+                    onClick={() => setCreateMode("existing_chat")}
+                    type="button"
+                  >
+                    <span className="text-xs font-semibold">
+                      Continuer un fil
+                    </span>
+                    <span className="text-[11px] opacity-80">
+                      Les réponses s'ajoutent au fil choisi
+                    </span>
+                  </button>
+                </div>
+                {createMode === "existing_chat" && (
+                  <div className="mt-2">
                     <select
-                      className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
-                      onChange={(e) => setTimezone(e.target.value)}
-                      value={timezone}
+                      className="field-input text-sm"
+                      onChange={(e) => setSelectedChatId(e.target.value)}
+                      required
+                      value={selectedChatId}
                     >
-                      {availableTimezones.map((tz) => (
-                        <option key={tz} value={tz}>
-                          {tz}
+                      <option value="">
+                        {availableChats
+                          ? "Sélectionnez une discussion..."
+                          : "Chargement des discussions..."}
+                      </option>
+                      {(availableChats || []).map((c) => (
+                        <option key={c.id} value={c.id}>
+                          {c.title || "Sans titre"}
                         </option>
                       ))}
                     </select>
+                    {availableChats && availableChats.length === 0 && (
+                      <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground">
+                        <MessagesSquareIcon className="size-3" />
+                        Aucune discussion existante. Créez-en une d'abord ou
+                        choisissez « Nouvelle discussion ».
+                      </p>
+                    )}
                   </div>
-                  {recurrence === "monthly" && (
-                    <div>
-                      <Label className="text-xs font-semibold text-muted-foreground">
-                        Jour du mois (1–31)
-                      </Label>
-                      <Input
-                        className="mt-1"
-                        max={31}
-                        min={1}
-                        onChange={(e) => {
-                          const v = Number.parseInt(e.target.value, 10);
-                          if (!Number.isNaN(v)) {
-                            setDayOfMonth(Math.min(31, Math.max(1, v)));
-                          }
-                        }}
-                        type="number"
-                        value={dayOfMonth}
-                      />
-                    </div>
-                  )}
-                </div>
-                {recurrence === "monthly" && (
-                  <div className="mt-2">
-                    <Label className="text-xs font-semibold text-muted-foreground">
-                      Si le jour n'existe pas (ex. 31 en février)
-                    </Label>
-                    <div className="mt-1 grid grid-cols-3 gap-1.5">
-                      {(
-                        [
-                          {
-                            hint: "31 janv. → 28 févr.",
-                            id: "clamp",
-                            label: "Dernier jour",
-                          },
-                          {
-                            hint: "pas d'exécution en février",
-                            id: "skip",
-                            label: "Sauter",
-                          },
-                          {
-                            hint: "31 janv. → 3 mars",
-                            id: "report",
-                            label: "Reporter",
-                          },
-                        ] as const
-                      ).map((p) => (
-                        <button
-                          className={cn(
-                            "rounded-lg border px-2 py-1.5 text-center text-[11px] font-medium transition cursor-pointer",
-                            monthlyPolicy === p.id
-                              ? "border-primary bg-primary/10 text-primary"
-                              : "border-border/60 text-muted-foreground hover:bg-muted/50"
+                )}
+              </div>
+
+              <div>
+                <Label className="text-xs font-semibold text-muted-foreground">
+                  Outils disponibles pour l'exécution
+                </Label>
+                <div className="mt-1.5 grid gap-2 sm:grid-cols-3">
+                  {SCHEDULE_TOOL_MODES.map((mode) => {
+                    const meta = SCHEDULE_TOOL_MODE_META[mode];
+                    const Icon = TOOL_MODE_ICONS[mode];
+                    const active = toolMode === mode;
+                    return (
+                      <button
+                        aria-pressed={active}
+                        className={cn(
+                          "flex flex-col items-start gap-1.5 rounded-xl border p-2.5 text-left transition",
+                          active
+                            ? "border-primary bg-primary/10"
+                            : "border-border/60 bg-background hover:bg-muted/50"
+                        )}
+                        key={mode}
+                        onClick={() => setToolMode(mode)}
+                        type="button"
+                      >
+                        <span className="flex w-full items-center gap-1.5">
+                          <Icon
+                            className={cn(
+                              "size-3.5 shrink-0",
+                              active ? "text-primary" : "text-muted-foreground"
+                            )}
+                          />
+                          <span
+                            className={cn(
+                              "text-xs font-semibold",
+                              active ? "text-primary" : "text-foreground"
+                            )}
+                          >
+                            {meta.label}
+                          </span>
+                          {active && (
+                            <CheckCircle2Icon className="ml-auto size-3.5 text-primary" />
                           )}
-                          key={p.id}
-                          onClick={() => setMonthlyPolicy(p.id)}
+                        </span>
+                        <span className="text-[11px] leading-snug text-muted-foreground">
+                          {meta.description}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between">
+                  <Label className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                    <CloudIcon className="size-3.5" />
+                    Fichiers de la bibliothèque
+                  </Label>
+                  <span className="text-[11px] text-muted-foreground">
+                    {cloudFileUrls.length}/10
+                  </span>
+                </div>
+                <Button
+                  className="mt-1 h-8 w-full border border-dashed border-border/60 bg-muted/40 text-[12px] text-muted-foreground hover:bg-muted/70"
+                  disabled={cloudFileUrls.length >= 10}
+                  onClick={() => setIsCloudPickerOpen(true)}
+                  type="button"
+                  variant="ghost"
+                >
+                  <CloudIcon className="mr-1.5 size-3.5" />
+                  Depuis la bibliothèque
+                </Button>
+                {cloudFileUrls.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 pt-1.5">
+                    {cloudFileUrls.map((url, i) => (
+                      <span
+                        className="inline-flex max-w-[240px] items-center gap-1.5 rounded-full border border-border/40 bg-muted px-2.5 py-1 text-[11px]"
+                        key={url}
+                      >
+                        <CloudIcon className="size-2.5 shrink-0 text-muted-foreground" />
+                        <span className="truncate">
+                          {cloudFileNames[url] || url.split("/").pop() || url}
+                        </span>
+                        <button
+                          className="cursor-pointer rounded-full p-0.5 hover:bg-muted-foreground/20"
+                          onClick={() => {
+                            setCloudFileUrls((prev) =>
+                              prev.filter((_, idx) => idx !== i)
+                            );
+                            setCloudFileNames((prev) => {
+                              const copy = { ...prev };
+                              delete copy[url];
+                              return copy;
+                            });
+                          }}
                           type="button"
                         >
-                          <div>{p.label}</div>
-                          <div className="text-[10px] opacity-75">{p.hint}</div>
+                          <XIcon className="size-3" />
                         </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Aperçu des dix prochaines exécutions */}
-                {upcoming.length > 0 && (
-                  <div className="mt-3 rounded-xl border border-border/60 bg-muted/40 p-3">
-                    <div className="flex items-center gap-1.5">
-                      <ClockIcon className="size-3.5 text-muted-foreground" />
-                      <span className="text-xs font-semibold text-foreground">
-                        Dix prochaines exécutions
                       </span>
-                    </div>
-                    <ol className="mt-2 space-y-1">
-                      {upcoming.map((at, i) => (
-                        <li
-                          className="flex items-baseline justify-between gap-2 text-[11px]"
-                          key={at.toISOString()}
-                        >
-                          <span className="w-6 shrink-0 text-muted-foreground">
-                            #{i + 1}
-                          </span>
-                          <span className="font-mono text-foreground">
-                            {formatInZone(timezone, at)}
-                          </span>
-                          <span className="font-mono text-[10px] text-muted-foreground">
-                            {at.toISOString().slice(0, 16).replace("T", " ")}{" "}
-                            UTC
-                          </span>
-                        </li>
-                      ))}
-                    </ol>
-                    <p className="mt-1.5 text-[10px] text-muted-foreground">
-                      Heures affichées dans le fuseau {timezone}, avec la
-                      conversion UTC correspondante.
-                    </p>
+                    ))}
                   </div>
                 )}
-              </>
-            )}
-          </div>
-
-          {/* Section Fichiers Cloud / Bibliothèque */}
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label className="text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
-                <CloudIcon className="size-3.5" />
-                Fichiers de la bibliothèque (optionnel)
-              </Label>
-              <span className="text-[11px] text-muted-foreground">
-                {cloudFileUrls.length}/10
-              </span>
-            </div>
-            <Button
-              className="w-full h-8 text-[12px] border border-dashed border-border/60 bg-muted/40 hover:bg-muted/70 text-muted-foreground cursor-pointer"
-              disabled={cloudFileUrls.length >= 10}
-              onClick={() => setIsCloudPickerOpen(true)}
-              type="button"
-              variant="ghost"
-            >
-              <CloudIcon className="size-3.5 mr-1.5" />
-              Depuis la bibliothèque
-            </Button>
-            {cloudFileUrls.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 pt-0.5">
-                {cloudFileUrls.map((url, i) => (
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] border border-border/40 max-w-[240px]"
-                    key={i}
-                  >
-                    <CloudIcon className="size-2.5 text-muted-foreground shrink-0" />
-                    <span className="truncate">
-                      {cloudFileNames[url] || url.split("/").pop() || url}
-                    </span>
-                    <button
-                      className="rounded-full p-0.5 hover:bg-muted-foreground/20 cursor-pointer"
-                      onClick={() => {
-                        setCloudFileUrls((prev) =>
-                          prev.filter((_, idx) => idx !== i)
-                        );
-                        setCloudFileNames((prev) => {
-                          const copy = { ...prev };
-                          delete copy[url];
-                          return copy;
-                        });
-                      }}
-                      type="button"
-                    >
-                      <XIcon className="size-3" />
-                    </button>
-                  </span>
-                ))}
               </div>
-            )}
-          </div>
 
-          <div>
-            <Label className="text-xs font-semibold text-muted-foreground">
-              Outils disponibles pour l'exécution
-            </Label>
-            <div className="mt-1.5 grid gap-2 sm:grid-cols-3">
-              {SCHEDULE_TOOL_MODES.map((mode) => {
-                const meta = SCHEDULE_TOOL_MODE_META[mode];
-                const Icon = TOOL_MODE_ICONS[mode];
-                const active = toolMode === mode;
-                return (
-                  <button
-                    aria-pressed={active}
-                    className={cn(
-                      "flex flex-col items-start gap-1.5 rounded-xl border p-2.5 text-left transition cursor-pointer",
-                      active
-                        ? "border-primary bg-primary/10"
-                        : "border-border/60 bg-background hover:bg-muted/50"
-                    )}
-                    key={mode}
-                    onClick={() => setToolMode(mode)}
-                    type="button"
-                  >
-                    <span className="flex w-full items-center gap-1.5">
-                      <Icon
-                        className={cn(
-                          "size-3.5 shrink-0",
-                          active ? "text-primary" : "text-muted-foreground"
-                        )}
-                      />
-                      <span
-                        className={cn(
-                          "text-xs font-semibold",
-                          active ? "text-primary" : "text-foreground"
-                        )}
-                      >
-                        {meta.label}
-                      </span>
-                      {active && (
-                        <CheckCircle2Icon className="ml-auto size-3.5 text-primary" />
-                      )}
-                    </span>
-                    <span className="text-[11px] leading-snug text-muted-foreground">
-                      {meta.description}
-                    </span>
-                  </button>
-                );
-              })}
+              <div>
+                <Label className="text-xs font-semibold text-muted-foreground">
+                  Consignes personnalisées (optionnel)
+                </Label>
+                <Input
+                  className="mt-1 text-sm"
+                  onChange={(e) => setCustomInstructions(e.target.value)}
+                  placeholder="Ex. : réponds en trois puces, sans préambule."
+                  value={customInstructions}
+                />
+              </div>
             </div>
+          )}
+
+          {/* Bande de synthèse : ce qui va être créé, en une phrase. */}
+          <div className="surface-muted flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
+            <span className="font-medium text-foreground">
+              {title.trim() || "Sans titre"}
+            </span>
+            <span className="flex items-center gap-1">
+              <CalendarIcon className="size-3" />
+              {scheduledAt
+                ? new Date(scheduledAt).toLocaleString("fr-FR", {
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    month: "short",
+                  })
+                : "date à définir"}
+            </span>
+            <span className="flex items-center gap-1">
+              <RepeatIcon className="size-3" />
+              {recurrenceLabel}
+            </span>
+            <span className="flex items-center gap-1">
+              <SparklesIcon className="size-3" />
+              {agentName ?? "mAI Standard"}
+            </span>
           </div>
 
-          <DialogFooter className="pt-2">
+          <div className="flex items-center justify-between gap-2 pt-1">
             <Button
-              disabled={isSubmitting}
-              onClick={onClose}
+              disabled={stepIndex === 0 || isSubmitting}
+              onClick={goPrevious}
               type="button"
               variant="outline"
             >
-              Annuler
+              <ChevronLeftIcon className="mr-1 size-4" />
+              Précédent
             </Button>
-            <Button disabled={isSubmitting} type="submit">
-              {isSubmitting ? (
-                <>
-                  <Loader2Icon className="mr-2 size-4 animate-spin" />
-                  Enregistrement...
-                </>
-              ) : initialData ? (
-                "Sauvegarder"
+
+            <div className="flex items-center gap-2">
+              <Button
+                disabled={isSubmitting}
+                onClick={onClose}
+                type="button"
+                variant="ghost"
+              >
+                Annuler
+              </Button>
+              {step === "comment" ? (
+                <Button disabled={isSubmitting} type="submit">
+                  {isSubmitting ? (
+                    <>
+                      <Loader2Icon className="mr-2 size-4 animate-spin" />
+                      Enregistrement...
+                    </>
+                  ) : initialData ? (
+                    "Sauvegarder"
+                  ) : (
+                    "Planifier l'envoi"
+                  )}
+                </Button>
               ) : (
-                "Planifier l'envoi"
+                <Button onClick={goNext} type="button">
+                  Suivant
+                  <ChevronRightIcon className="ml-1 size-4" />
+                </Button>
               )}
-            </Button>
-          </DialogFooter>
+            </div>
+          </div>
         </form>
 
         {/* Dialog cloud picker */}
