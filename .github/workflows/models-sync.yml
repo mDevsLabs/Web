@@ -1,0 +1,38 @@
+name: "Synchronisation des Modèles IA (OpenRouter & Partenaires)"
+
+on:
+  schedule:
+    # Synchronisation toutes les 12h (00:00 et 12:00 UTC)
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Forcer la mise à jour complète"
+        required: false
+        default: true
+        type: boolean
+
+concurrency:
+  group: models-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-models:
+    name: "Sync OpenRouter Models"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: "Récupération du code"
+        uses: actions/checkout@v4
+
+      - name: "Configuration de Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: "Exécution de la synchronisation des modèles"
+        run: npx --yes tsx scripts/updateModels.ts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}

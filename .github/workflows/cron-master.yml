@@ -1,0 +1,38 @@
+name: "CRON Master (Ordonnanceur Groupé)"
+
+on:
+  schedule:
+    # Exécution cadencée groupée (toutes les 10 min pour préserver le quota GitHub Actions)
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      tick:
+        description: "Tick spécifique à exécuter (all, agent, planning, wakies, vibe, notifications, quizzly)"
+        required: false
+        default: "all"
+        type: string
+
+concurrency:
+  group: cron-master
+  cancel-in-progress: false
+
+jobs:
+  run-ticks:
+    name: "Exécution des Ticks"
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+
+    steps:
+      - name: "Récupération du dépôt"
+        uses: actions/checkout@v4
+
+      - name: "Configuration de Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: "Exécution des ticks CRON"
+        run: node scripts/cron/run-tick.mjs "${{ inputs.tick || 'all' }}"
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}

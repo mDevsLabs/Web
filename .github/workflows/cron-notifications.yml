@@ -1,0 +1,35 @@
+name: "CRON Notifications (Réplication Vibe & Wakies)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Motif de l'exécution manuelle"
+        required: false
+        default: "Déclenchement manuel opérateur"
+        type: string
+
+concurrency:
+  group: cron-notifications
+  cancel-in-progress: false
+
+jobs:
+  run-notifications-tick:
+    name: "Tick Notifications"
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+
+    steps:
+      - name: "Récupération du code"
+        uses: actions/checkout@v4
+
+      - name: "Configuration de Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: "Exécution du tick Notifications"
+        run: node scripts/cron/run-tick.mjs notifications
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
