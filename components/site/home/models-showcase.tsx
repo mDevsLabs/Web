@@ -19,8 +19,8 @@ import { modelsData } from "@/lib/site/models-data";
 export function ModelsShowcase() {
   const [copiedTag, setCopiedTag] = useState<string | null>(null);
 
-  // Série mise en avant : la nouvelle génération cloud mAI-2
-  const flagshipModels = modelsData.filter((m) => m.cloud);
+  // Série mise en avant : la nouvelle génération cloud mAI-2.5
+  const flagshipModels = modelsData.filter((m) => m.id.startsWith("mai-2.5"));
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -40,27 +40,27 @@ export function ModelsShowcase() {
         <div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black italic tracking-tighter uppercase text-slate-900">
             Série{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-indigo-500 to-teal-500">
-              mAI-2
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-amber-500 to-cyan-500">
+              mAI-2.5
             </span>
           </h2>
           <p className="text-slate-500 text-sm sm:text-base font-light mt-1 max-w-xl">
             La nouvelle génération de mAI, exécutée dans le cloud via l&apos;API
-            mAI : contexte jusqu&apos;à 1 million de tokens, texte + images,
-            pour tous les forfaits.
+            mAI : raisonnement approfondi, codage d&apos;élite et computer use
+            avec 1M de tokens.
           </p>
         </div>
 
         <Link
-          className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/60 backdrop-blur-md border border-slate-200 hover:border-sky-300 text-slate-900 text-sm font-bold transition-all shadow-sm w-fit"
+          className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/60 backdrop-blur-md border border-slate-200 hover:border-purple-300 text-slate-900 text-sm font-bold transition-all shadow-sm w-fit"
           href="/models"
         >
           Voir tous les modèles ({modelsData.length})
-          <ArrowRight className="w-4 h-4 text-sky-600 group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform" />
         </Link>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {flagshipModels.map((model, index) => (
           <motion.div
             className="group relative bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-3xl p-6 hover:border-sky-400/60 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl flex flex-col justify-between overflow-hidden"

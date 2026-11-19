@@ -14,6 +14,9 @@
 export const MAI_IDENTITY_PROMPTS: Record<string, string> = {
   "mai-2": "You are mAI-2, developed by mAI.",
   "mai-2-mini": "You are mAI-2 Mini, developed by mAI.",
+  "mai-2.5-apex": "You are mAI-2.5 Apex, developed by mAI.",
+  "mai-2.5-omni": "You are mAI-2.5 Omni, developed by mAI.",
+  "mai-2.5-opal": "You are mAI-2.5 Opal, developed by mAI.",
 };
 
 /** Forme du corps de requete, i.e. l'API traversee par le handler. */
@@ -54,6 +57,24 @@ export const MAI_MODEL_TRAITS: Record<string, MaiModelTraits> = {
     defaultReasoningEffort: "high",
     inputModalities: ["text", "image"],
     maxOutputTokens: 128_000,
+    reasoningEfforts: ["max", "high", "low"],
+  },
+  "mai-2.5-apex": {
+    defaultReasoningEffort: "high",
+    inputModalities: ["text", "image", "file"],
+    maxOutputTokens: 256_000,
+    reasoningEfforts: ["max", "high", "low"],
+  },
+  "mai-2.5-omni": {
+    defaultReasoningEffort: "high",
+    inputModalities: ["text", "image"],
+    maxOutputTokens: 128_000,
+    reasoningEfforts: ["max", "high", "low"],
+  },
+  "mai-2.5-opal": {
+    defaultReasoningEffort: "high",
+    inputModalities: ["text", "image", "file"],
+    maxOutputTokens: 384_000,
     reasoningEfforts: ["max", "high", "low"],
   },
 };

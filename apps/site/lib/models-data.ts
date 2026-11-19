@@ -36,6 +36,52 @@ export type ModelInfo = {
 };
 
 export const modelsData: Omit<ModelInfo, 'readmeContent'>[] = [
+  // ─── Série mAI-2.5 (nouvelle génération cloud) ────────────────────────────
+  {
+    id: 'mai-2.5-opal',
+    name: 'mAI-2.5-Opal',
+    tagline: 'Le fleuron de l\'intelligence cognitive, du code et du computer use.',
+    badge: 'Cloud • Texte + images • 1M',
+    vision: true,
+    context: '1M',
+    releaseDate: '19/11/2026',
+    bannerImage: '/mai-2.5-opal/mAI-2.5-Opal.png',
+    squareImage: '/mai-2.5-opal/icon.png',
+    cloud: true,
+    apiAlias: 'mai-2.5-opal',
+    backingModel: 'openai/gpt-6.1-sol',
+    maxOutput: '384K',
+  },
+  {
+    id: 'mai-2.5-apex',
+    name: 'mAI-2.5-Apex',
+    tagline: 'Rigueur analytique absolue et haute performance pour missions critiques.',
+    badge: 'Cloud • Texte + images • 1M',
+    vision: true,
+    context: '1M',
+    releaseDate: '19/11/2026',
+    bannerImage: '/mai-2.5-apex/mAI-2.5-Apex.png',
+    squareImage: '/mai-2.5-apex/icon.png',
+    cloud: true,
+    apiAlias: 'mai-2.5-apex',
+    backingModel: 'openai/gpt-6.1-terra',
+    maxOutput: '256K',
+  },
+  {
+    id: 'mai-2.5-omni',
+    name: 'mAI-2.5-Omni',
+    tagline: 'Polyvalence quotidienne, vitesse d\'exécution et automatisation de bureau.',
+    badge: 'Cloud • Texte + images • 1M',
+    vision: true,
+    context: '1M',
+    releaseDate: '19/11/2026',
+    bannerImage: '/mai-2.5-omni/mAI-2.5-Omni.png',
+    squareImage: '/mai-2.5-omni/icon.png',
+    cloud: true,
+    apiAlias: 'mai-2.5-omni',
+    backingModel: 'openai/gpt-6-luna',
+    maxOutput: '128K',
+  },
   // ─── Série mAI-2 (génération cloud) ────────────────────────────────────────
   {
     id: 'mai-2',

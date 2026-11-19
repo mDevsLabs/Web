@@ -18,6 +18,15 @@ export const navLinks: NavItem[] = [
     subitems: [
       { href: "/models", name: "Tous les modèles" },
       {
+        href: "/models#mai-2.5",
+        name: "mAI-2.5",
+        subitems: [
+          { href: "/models/mai-2.5-opal", name: "mAI-2.5-Opal" },
+          { href: "/models/mai-2.5-apex", name: "mAI-2.5-Apex" },
+          { href: "/models/mai-2.5-omni", name: "mAI-2.5-Omni" },
+        ],
+      },
+      {
         href: "/models#mai-2",
         name: "mAI-2",
         subitems: [

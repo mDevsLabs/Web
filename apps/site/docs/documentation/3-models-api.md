@@ -43,15 +43,24 @@ GET https://mai.val.run/v1/models
 
 ---
 
-## 2. Catalogue des Modèles Souverains mAI (Locaux)
+## 2. Catalogue des Modèles Souverains mAI (Cloud & Locaux)
 
-Renvoie les spécifications complètes de la famille des modèles propriétaires **mAI** (conçus pour l'exécution locale via Ollama / GGUF ou inférence hébergée).
+Renvoie les spécifications complètes de la famille des modèles propriétaires **mAI** (modèles cloud mAI-2.5 et mAI-2, et modèles d'exécution locale mAI-1.5 via Ollama / GGUF).
 
 ```http
 GET https://mai.val.run/v1/models/mai
 ```
 
-### Modèles Principaux de la Gamme
+### Modèles Principaux de la Gamme mAI-2.5 (Cloud)
+- **`mai-2.5-opal`** (Fleuron 1M) : Le sommet de la performance cognitive, ingénierie logicielle avancée et utilisation autonome de l'ordinateur.
+- **`mai-2.5-apex`** (Rigueur & Performance 1M) : Modèle d'élite pour l'audit de code, les mathématiques et la sécurité vérifiable.
+- **`mai-2.5-omni`** (Polyvalence 1M) : Modèle agile ultra-rapide pour toutes les tâches du quotidien.
+
+### Modèles de la Gamme mAI-2 (Cloud)
+- **`mai-2`** (Flagship 1M) : Modèle polyvalent haute performance, contexte 1 million de tokens.
+- **`mai-2-mini`** (Équilibré 1M) : Version légère et accessible pour le quotidien.
+
+### Modèles Locaux mAI-1.5 (Open-weights)
 - **`mai-1.5-light`** (4B Multimodal) : Fenêtre de 262k tokens, vision native, thinking et appels d'outils.
 - **`mai-1.5-apex`** (9B Raisonnement) : Modèle d'élite pour la programmation et l'analyse logique avancée.
 - **`mai-1.5-opal`** (27B Expert) : L'équilibre parfait entre vélocité et puissance cognitive pour entreprises.

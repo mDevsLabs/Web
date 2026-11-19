@@ -529,7 +529,7 @@ export function HomeWidgetsGrid() {
             <div className="space-y-2.5 text-xs">
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-between">
                 <span className="text-slate-600 font-medium">Version Active</span>
-                <span className="font-bold text-slate-900 font-mono">v0.9.4 Stable</span>
+                <span className="font-bold text-slate-900 font-mono">v0.9.5 Stable</span>
               </div>
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-between">
                 <span className="text-slate-600 font-medium">Licence Logicielle</span>
@@ -537,7 +537,7 @@ export function HomeWidgetsGrid() {
               </div>
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-between">
                 <span className="text-slate-600 font-medium">Design System</span>
-                <span className="font-bold text-purple-600 font-mono">@mdevs/ui 0.9.4</span>
+                <span className="font-bold text-purple-600 font-mono">@mdevs/ui 0.9.5</span>
               </div>
             </div>
           </div>

@@ -17,17 +17,32 @@ import {
 
 const MAI_2 = "You are mAI-2, developed by mAI.";
 const MAI_2_MINI = "You are mAI-2 Mini, developed by mAI.";
+const MAI_25_OPAL = "You are mAI-2.5 Opal, developed by mAI.";
+const MAI_25_APEX = "You are mAI-2.5 Apex, developed by mAI.";
+const MAI_25_OMNI = "You are mAI-2.5 Omni, developed by mAI.";
 
 describe("mAI identity prompt", () => {
   it("names the model actually requested", () => {
     expect(resolveMaiIdentityPrompt("mai-2")).toBe(MAI_2);
     expect(resolveMaiIdentityPrompt("mai-2-mini")).toBe(MAI_2_MINI);
+    expect(resolveMaiIdentityPrompt("mai-2.5-opal")).toBe(MAI_25_OPAL);
+    expect(resolveMaiIdentityPrompt("mai-2.5-apex")).toBe(MAI_25_APEX);
+    expect(resolveMaiIdentityPrompt("mai-2.5-omni")).toBe(MAI_25_OMNI);
   });
 
   it("normalizes the alias the way the routing layer does", () => {
     expect(resolveMaiIdentityPrompt("MAI-2")).toBe(MAI_2);
     expect(resolveMaiIdentityPrompt("  mAI-2-Mini  ")).toBe(MAI_2_MINI);
     expect(resolveMaiIdentityPrompt("mdevslabs/mai-2-mini")).toBe(MAI_2_MINI);
+    expect(resolveMaiIdentityPrompt("mdevslabs/mai-2.5-opal")).toBe(
+      MAI_25_OPAL
+    );
+    expect(resolveMaiIdentityPrompt("mdevslabs/mai-2.5-apex")).toBe(
+      MAI_25_APEX
+    );
+    expect(resolveMaiIdentityPrompt("mdevslabs/mai-2.5-omni")).toBe(
+      MAI_25_OMNI
+    );
   });
 
   it("stays silent for every other model", () => {
