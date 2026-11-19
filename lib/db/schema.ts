@@ -3316,3 +3316,23 @@ export const maintenanceWindow = pgTable(
 );
 
 export type MaintenanceWindow = InferSelectModel<typeof maintenanceWindow>;
+
+// ─────────────────────────────────────────────
+// Codes de vérification OTP (Migration Val Town SQLite -> Neon PostgreSQL)
+// ─────────────────────────────────────────────
+export const verificationCodes = pgTable(
+  "verification_codes",
+  {
+    action: text("action").notNull(),
+    attempts: integer("attempts").notNull().default(0),
+    code: text("code").notNull(),
+    email: text("email").notNull(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  },
+  (table) => ({
+    emailIdx: index("verification_codes_email_idx").on(table.email),
+    pk: primaryKey({ columns: [table.email, table.action] }),
+  })
+);
+
+export type VerificationCode = InferSelectModel<typeof verificationCodes>;

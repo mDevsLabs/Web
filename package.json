@@ -1,6 +1,6 @@
 {
   "name": "@mdevs/web",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "private": true,
   "scripts": {
     "admin": "bun run scripts/admin.ts",
@@ -37,7 +37,7 @@
     "typecheck:backend": "tsc -p tsconfig.backend.json"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,jsonc,css}": "node node_modules/@biomejs/biome/bin/biome check --write --files-ignore-from-unknown=true"
+    "*.{ts,tsx,js,jsx,json,jsonc,css}": "node node_modules/@biomejs/biome/bin/biome check --write --files-ignore-unknown=true"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.98",

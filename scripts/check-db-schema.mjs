@@ -121,6 +121,8 @@ const REQUIRED_TABLES = [
   "QuizzlyShopItem",
   // Migration 0085 : fenêtres de maintenance et verrouillage du site.
   "MaintenanceWindow",
+  // Migration 0087 : codes de vérification OTP (migration Val Town SQLite vers Neon).
+  "verification_codes",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.

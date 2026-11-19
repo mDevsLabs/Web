@@ -1,17 +1,24 @@
 "use server";
 
+import { headers } from "next/headers";
 // Schéma de mot de passe PARTAGÉ avec le backend Hono (auth.ts) : les deux
 // parcours appliquent les mêmes bornes et ne peuvent pas diverger.
 import { checkPasswordPolicy } from "@/auth-password-policy";
-import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { ApiErrorCode } from "@/lib/api/error-codes";
 import { DEFAULT_MESSAGES_FR } from "@/lib/api/error-messages";
 import {
   type AuthGuardFailure,
+  getClientIp,
   guardAuthAction,
 } from "@/lib/auth/actions-guard";
+import {
+  loginUser,
+  registerUser,
+  resendVerificationCodeUser,
+  verifyLoginUser,
+  verifyRegisterUser,
+} from "@/lib/auth/server-auth";
 import { removeMaiSessionToken, setMaiSessionToken } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 
 export type AuthResponse = {
   success: boolean;
@@ -83,31 +90,25 @@ export async function loginAction(formData: FormData): Promise<AuthResponse> {
   }
 
   try {
-    const res = await fetch(`${MAI_API_URL}/login`, {
-      body: JSON.stringify({ identifier, password }),
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-    });
-
-    const data = await res.json();
-    if (!res.ok || data.error) {
+    const result = await loginUser({ identifier, password });
+    if (!result.success) {
       return {
-        code: "invalid_credentials",
-        error: extractApiErrorMessage(data) || "Identifiants invalides.",
+        code: (result.code as ApiErrorCode) || "invalid_credentials",
+        error: result.error || "Identifiants invalides.",
         success: false,
       };
     }
 
     return {
-      email: data.email || identifier,
-      status: data.status || "verification_required",
+      email: result.email || identifier,
+      status: result.status || "verification_required",
       success: true,
     };
   } catch (err) {
     console.error("Erreur loginAction:", err);
     return {
       code: "service_unavailable",
-      error: "Impossible de joindre le serveur d'authentification.",
+      error: "Impossible d'effectuer la connexion.",
       success: false,
     };
   }
@@ -138,41 +139,30 @@ export async function verifyLoginAction(
   }
 
   try {
-    // 1ère tentative avec email exact
-    const res = await fetch(`${MAI_API_URL}/verify-login`, {
-      body: JSON.stringify({ code: cleanCode, email: cleanEmail }),
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
+    const ip = await getClientIp();
+    const headerStore = await headers();
+    const userAgent = headerStore.get("user-agent") || "";
+
+    const result = await verifyLoginUser({
+      code: cleanCode,
+      email: cleanEmail,
+      ip,
+      userAgent,
     });
 
-    const data = await res.json();
-    if (res.ok && data.token) {
-      await setMaiSessionToken(data.token);
-      return { success: true, tier: data.tier };
+    if (!result.success) {
+      return {
+        code: (result.code as ApiErrorCode) || "invalid_credentials",
+        error: result.error || "Code invalide ou expiré.",
+        success: false,
+      };
     }
 
-    // 2ème tentative en minuscules si différent
-    if (cleanEmail !== cleanEmail.toLowerCase()) {
-      const lowerRes = await fetch(`${MAI_API_URL}/verify-login`, {
-        body: JSON.stringify({
-          code: cleanCode,
-          email: cleanEmail.toLowerCase(),
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      const lowerData = await lowerRes.json();
-      if (lowerRes.ok && lowerData.token) {
-        await setMaiSessionToken(lowerData.token);
-        return { success: true, tier: lowerData.tier };
-      }
+    if (result.token) {
+      await setMaiSessionToken(result.token);
     }
 
-    return {
-      code: "invalid_credentials",
-      error: extractApiErrorMessage(data) || "Code invalide ou expiré.",
-      success: false,
-    };
+    return { success: true, tier: result.tier };
   } catch (err) {
     console.error("Erreur verifyLoginAction:", err);
     return {
@@ -227,31 +217,25 @@ export async function registerAction(
   }
 
   try {
-    const res = await fetch(`${MAI_API_URL}/register`, {
-      body: JSON.stringify({ email, password, username }),
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-    });
-
-    const data = await res.json();
-    if (!res.ok || data.error) {
+    const result = await registerUser({ email, password, username });
+    if (!result.success) {
       return {
-        code: "invalid_request",
-        error: extractApiErrorMessage(data) || "Erreur lors de l'inscription.",
+        code: (result.code as ApiErrorCode) || "invalid_request",
+        error: result.error || "Erreur lors de l'inscription.",
         success: false,
       };
     }
 
     return {
       email,
-      status: data.status || "verification_required",
+      status: result.status || "verification_required",
       success: true,
     };
   } catch (err) {
     console.error("Erreur registerAction:", err);
     return {
       code: "service_unavailable",
-      error: "Impossible de joindre le serveur d'authentification.",
+      error: "Impossible d'effectuer l'inscription.",
       success: false,
     };
   }
@@ -292,23 +276,31 @@ export async function verifyRegisterAction(
   }
 
   try {
-    const res = await fetch(`${MAI_API_URL}/verify-register`, {
-      body: JSON.stringify({ code: code.trim(), email, password, username }),
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
+    const ip = await getClientIp();
+    const headerStore = await headers();
+    const userAgent = headerStore.get("user-agent") || "";
+
+    const result = await verifyRegisterUser({
+      code: code.trim(),
+      email,
+      ip,
+      password,
+      userAgent,
+      username,
     });
 
-    const data = await res.json();
-    if (!res.ok || !data.token) {
+    if (!result.success) {
       return {
-        code: "invalid_credentials",
-        error: extractApiErrorMessage(data) || "Code invalide ou expiré.",
+        code: (result.code as ApiErrorCode) || "invalid_credentials",
+        error: result.error || "Code invalide ou expiré.",
         success: false,
       };
     }
 
-    await setMaiSessionToken(data.token);
-    return { success: true, tier: data.tier };
+    if (result.token) {
+      await setMaiSessionToken(result.token);
+    }
+    return { success: true, tier: result.tier };
   } catch (err) {
     console.error("Erreur verifyRegisterAction:", err);
     return {
@@ -333,17 +325,11 @@ export async function resendCodeAction(
   }
 
   try {
-    const res = await fetch(`${MAI_API_URL}/resend-code`, {
-      body: JSON.stringify({ action, email }),
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-    });
-
-    const data = await res.json();
-    if (!res.ok || data.error) {
+    const result = await resendVerificationCodeUser({ action, email });
+    if (!result.success) {
       return {
-        code: "invalid_request",
-        error: extractApiErrorMessage(data) || "Erreur lors du renvoi du code.",
+        code: (result.code as ApiErrorCode) || "invalid_request",
+        error: result.error || "Erreur lors du renvoi du code.",
         success: false,
       };
     }
