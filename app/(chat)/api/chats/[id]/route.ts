@@ -3,6 +3,7 @@ import { chatOwnerMatches } from "@/lib/agent/channel";
 import { requireUser } from "@/lib/auth/require-user";
 import { getChatLockState, isChatUnlockedForUser } from "@/lib/chat/security";
 import {
+  deleteChatById,
   getChatById,
   updateChatArchivedById,
   updateChatCustomInstructionsById,
@@ -210,5 +211,52 @@ export async function PATCH(
     }
     console.error("PATCH chat error:", error);
     return new ChatbotError("bad_request:database").toResponse();
+  }
+}
+
+export async function DELETE(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params;
+    if (!id) {
+      return new ChatbotError("bad_request:api").toResponse();
+    }
+
+    const session = await requireUser();
+    if (!session) {
+      return new ChatbotError("unauthorized:chat").toResponse();
+    }
+    const { userId, user } = session;
+
+    const chat = await getChatById({ id });
+    if (!chat) {
+      // Idempotence : si la conversation a déjà été supprimée, renvoyer 200
+      return Response.json({ id, success: true }, { status: 200 });
+    }
+
+    const isOwner =
+      chatOwnerMatches({
+        chatUserId: chat.userId,
+        email: user.email,
+        userId,
+        username: (user as { username?: string | null }).username ?? null,
+      }) ||
+      (user.email && chat.userId === user.email) ||
+      (user.id && chat.userId === user.id);
+
+    if (!isOwner) {
+      return new ChatbotError("forbidden:chat").toResponse();
+    }
+
+    const deletedChat = await deleteChatById({ id });
+    return Response.json(deletedChat ?? { id, success: true }, { status: 200 });
+  } catch (error) {
+    if (error instanceof ChatbotError) {
+      return error.toResponse();
+    }
+    console.error("DELETE chat error:", error);
+    return new ChatbotError("offline:chat").toResponse();
   }
 }

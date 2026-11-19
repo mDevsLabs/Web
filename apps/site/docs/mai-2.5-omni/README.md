@@ -10,7 +10,7 @@ mAI-2.5-Omni est la déclinaison polyvalente, fluide et ultra-réactive de la g�
 | Sortie maximale déclarée | 128 000 tokens |
 | Entrée image & vision | Oui (Multimodal natif) |
 | Entrée documents & fichiers | Oui |
-| Licence indiquée | MIT |
+| Licence indiquée | Propriétaire |
 | Date de sortie indiquée | 19 novembre 2026 |
 
 ## Avancées technologiques majeures

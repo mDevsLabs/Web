@@ -21,7 +21,7 @@ order: 2
 - **Raisonnement vérifiable (Thinking)** : Démonstrations logiques étape par étape, élimination stricte des hallucinations déductives.
 - **Utilisation de l'ordinateur (Computer Use)** : Exécution de commandes shell vérifiées, contrôle d'outils d'audit et manipulation rigoureuse de l'environnement système.
 - **Date d'annonce officielle** : 19/11/2026.
-- **Licence** : MIT.
+- **Licence** : Propriétaire.
 
 ---
 

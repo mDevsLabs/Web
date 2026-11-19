@@ -17,10 +17,14 @@ import type { VisibilityType } from "@/lib/chat/visibility";
 import { ChatbotError } from "@/lib/errors";
 import {
   agent,
+  agentRun,
+  agentUserInputRequest,
   chat,
   chatSecurity,
   type DBMessage,
+  documentProposal,
   message,
+  scheduledMessage,
   stream,
   vote,
 } from "../schema";
@@ -76,16 +80,38 @@ export async function saveChat({
 export async function deleteChatById({ id }: { id: string }) {
   try {
     const db = await dbReady();
-    await db.delete(chatSecurity).where(eq(chatSecurity.chatId, id));
-    await db.delete(vote).where(eq(vote.chatId, id));
-    await db.delete(message).where(eq(message.chatId, id));
-    await db.delete(stream).where(eq(stream.chatId, id));
-    const [chatsDeleted] = await db
-      .delete(chat)
-      .where(eq(chat.id, id))
-      .returning();
-    return chatsDeleted ?? null;
+    return await db.transaction(async (tx) => {
+      await tx.delete(chatSecurity).where(eq(chatSecurity.chatId, id));
+      await tx.delete(vote).where(eq(vote.chatId, id));
+      await tx.delete(message).where(eq(message.chatId, id));
+      await tx.delete(stream).where(eq(stream.chatId, id));
+      await tx
+        .delete(agentUserInputRequest)
+        .where(eq(agentUserInputRequest.chatId, id));
+      await tx.delete(agentRun).where(eq(agentRun.chatId, id));
+      await tx
+        .update(scheduledMessage)
+        .set({ chatId: null })
+        .where(eq(scheduledMessage.chatId, id));
+      await tx
+        .update(scheduledMessage)
+        .set({ resultChatId: null })
+        .where(eq(scheduledMessage.resultChatId, id));
+      await tx
+        .update(documentProposal)
+        .set({ chatId: null })
+        .where(eq(documentProposal.chatId, id));
+      const [chatsDeleted] = await tx
+        .delete(chat)
+        .where(eq(chat.id, id))
+        .returning();
+      return chatsDeleted ?? null;
+    });
   } catch (error) {
+    console.error(
+      `[deleteChatById] Échec de suppression de la discussion ${id}:`,
+      error
+    );
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
@@ -103,17 +129,37 @@ export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
     }
 
     const chatIds = userChats.map((c) => c.id);
-    await db.delete(chatSecurity).where(inArray(chatSecurity.chatId, chatIds));
-    await db.delete(vote).where(inArray(vote.chatId, chatIds));
-    await db.delete(message).where(inArray(message.chatId, chatIds));
-    await db.delete(stream).where(inArray(stream.chatId, chatIds));
+    return await db.transaction(async (tx) => {
+      await tx
+        .delete(chatSecurity)
+        .where(inArray(chatSecurity.chatId, chatIds));
+      await tx.delete(vote).where(inArray(vote.chatId, chatIds));
+      await tx.delete(message).where(inArray(message.chatId, chatIds));
+      await tx.delete(stream).where(inArray(stream.chatId, chatIds));
+      await tx
+        .delete(agentUserInputRequest)
+        .where(inArray(agentUserInputRequest.chatId, chatIds));
+      await tx.delete(agentRun).where(inArray(agentRun.chatId, chatIds));
+      await tx
+        .update(scheduledMessage)
+        .set({ chatId: null })
+        .where(inArray(scheduledMessage.chatId, chatIds));
+      await tx
+        .update(scheduledMessage)
+        .set({ resultChatId: null })
+        .where(inArray(scheduledMessage.resultChatId, chatIds));
+      await tx
+        .update(documentProposal)
+        .set({ chatId: null })
+        .where(inArray(documentProposal.chatId, chatIds));
 
-    const deletedChats = await db
-      .delete(chat)
-      .where(sql`${chat.userId}::text = ${userId}::text`)
-      .returning();
+      const deletedChats = await tx
+        .delete(chat)
+        .where(sql`${chat.userId}::text = ${userId}::text`)
+        .returning();
 
-    return { deletedCount: deletedChats.length };
+      return { deletedCount: deletedChats.length };
+    });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -455,11 +501,33 @@ export async function bulkUpdateChats({
   }
   const where = and(inArray(chat.id, chatIds), chatUserFilter(userId, email));
   if (action === "delete") {
-    await db.delete(vote).where(inArray(vote.chatId, chatIds));
-    await db.delete(message).where(inArray(message.chatId, chatIds));
-    await db.delete(stream).where(inArray(stream.chatId, chatIds));
-    const deleted = await db.delete(chat).where(where).returning();
-    return { updated: deleted.length };
+    return await db.transaction(async (tx) => {
+      await tx
+        .delete(chatSecurity)
+        .where(inArray(chatSecurity.chatId, chatIds));
+      await tx.delete(vote).where(inArray(vote.chatId, chatIds));
+      await tx.delete(message).where(inArray(message.chatId, chatIds));
+      await tx.delete(stream).where(inArray(stream.chatId, chatIds));
+      await tx
+        .delete(agentUserInputRequest)
+        .where(inArray(agentUserInputRequest.chatId, chatIds));
+      await tx.delete(agentRun).where(inArray(agentRun.chatId, chatIds));
+      await tx
+        .update(scheduledMessage)
+        .set({ chatId: null })
+        .where(inArray(scheduledMessage.chatId, chatIds));
+      await tx
+        .update(scheduledMessage)
+        .set({ resultChatId: null })
+        .where(inArray(scheduledMessage.resultChatId, chatIds));
+      await tx
+        .update(documentProposal)
+        .set({ chatId: null })
+        .where(inArray(documentProposal.chatId, chatIds));
+
+      const deleted = await tx.delete(chat).where(where).returning();
+      return { updated: deleted.length };
+    });
   }
   if (action === "move") {
     if (projectId) {

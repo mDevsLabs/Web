@@ -39,6 +39,7 @@ import { revalidateChatHistories } from "@/hooks/revalidate-chat-histories";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
 import { confirmInApp, promptInApp } from "@/lib/ui/app-dialog";
+import { forceUnlockDOMSchedule } from "@/lib/ui/unlock-dom";
 import { cn, fetcher } from "@/lib/utils";
 import { NotificationBell } from "./notification-bell";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
@@ -283,32 +284,42 @@ function PureChatHeader({
   }, [chatId, isPinned, mutate]);
 
   const handleDelete = useCallback(async () => {
-    if (
-      !(await confirmWithFallback(
-        "Supprimer définitivement cette conversation ?"
-      ))
-    ) {
-      return;
-    }
     // Libération défensive immédiate des pointeurs
     if (typeof document !== "undefined") {
       document.body.style.pointerEvents = "";
     }
+    forceUnlockDOMSchedule();
+
+    const confirmed = await confirmWithFallback(
+      "Supprimer définitivement cette conversation ?"
+    );
+    if (!confirmed) {
+      forceUnlockDOMSchedule();
+      return;
+    }
+
+    // Réinitialiser immédiatement l'état du chat actif
+    resetChat();
+
     try {
-      resetChat();
-      router.replace("/");
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatId}`,
-        { method: "DELETE" }
+        { keepalive: true, method: "DELETE" }
       );
       if (!res.ok) {
         throw new Error();
       }
       toast.success("Conversation supprimée");
+      router.replace("/");
       await revalidateChatHistories();
     } catch {
       toast.error("Erreur suppression");
       await revalidateChatHistories();
+    } finally {
+      if (typeof document !== "undefined") {
+        document.body.style.pointerEvents = "";
+      }
+      forceUnlockDOMSchedule();
     }
   }, [chatId, resetChat, router]);
 
@@ -354,7 +365,7 @@ function PureChatHeader({
 
       {/* Options de conversation — à côté du VisibilitySelector (haut à gauche) */}
       {!isHome && !isReadonly && (
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
             <Button
               aria-label="Options de conversation"
@@ -438,7 +449,10 @@ function PureChatHeader({
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="text-destructive focus:text-destructive"
-              onClick={handleDelete}
+              onClick={(e) => {
+                e.preventDefault();
+                handleDelete();
+              }}
             >
               <TrashIcon className="size-4" />
               <span>Supprimer</span>

@@ -10,7 +10,7 @@ mAI-2.5-Opal est le fleuron de la génération mAI-2.5, conçu comme un modèle 
 | Sortie maximale déclarée | 384 000 tokens |
 | Entrée image & vision | Oui (Multimodal natif) |
 | Entrée documents & fichiers | Oui |
-| Licence indiquée | MIT |
+| Licence indiquée | Propriétaire |
 | Date de sortie indiquée | 19 novembre 2026 |
 
 ## Avancées technologiques majeures

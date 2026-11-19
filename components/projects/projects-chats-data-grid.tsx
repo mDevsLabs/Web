@@ -18,6 +18,7 @@ import {
   renderCheckbox,
   SelectColumn,
 } from "react-data-grid";
+import { toast } from "sonner";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,6 +29,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { forceUnlockDOMSchedule } from "@/lib/ui/unlock-dom";
 /** Vue minimale d'une discussion, telle que consommée par `/api/history`. */
 export type ChatGridRow = {
   createdAt: string | Date;
@@ -233,16 +235,31 @@ export function ProjectsChatsDataGrid({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="text-destructive"
-                  onClick={async () => {
+                  onClick={async (e) => {
+                    e.preventDefault();
                     if (
                       !confirm(
                         "Supprimer cette discussion ? Cette action est irréversible."
                       )
                     ) {
+                      forceUnlockDOMSchedule();
                       return;
                     }
-                    await fetch(`/api/chat/${row.id}`, { method: "DELETE" });
-                    mutateChats();
+                    try {
+                      const res = await fetch(`/api/chat?id=${row.id}`, {
+                        keepalive: true,
+                        method: "DELETE",
+                      });
+                      if (!res.ok) {
+                        throw new Error();
+                      }
+                      toast.success("Discussion supprimée");
+                      mutateChats();
+                    } catch {
+                      toast.error("Erreur lors de la suppression");
+                    } finally {
+                      forceUnlockDOMSchedule();
+                    }
                   }}
                 >
                   <Trash2Icon className="size-3.5 mr-2" /> Supprimer

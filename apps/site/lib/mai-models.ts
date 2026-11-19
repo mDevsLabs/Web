@@ -50,9 +50,9 @@ export const maiModelsList: MAIModelDetail[] = [
     cloud: true,
     contextWindow: 1_000_000,
     description:
-      "Fleuron de la génération mAI-2.5, servi dans le cloud via l'API mAI : raisonnement d'élite, ingénierie logicielle avancée et utilisation autonome de l'ordinateur avec un contexte de 1 million de tokens.",
+      "Fleuron de la génération mAI-2.5, servi dans le cloud souverain sur la plateforme mAI : raisonnement d'élite, ingénierie logicielle avancée et utilisation autonome de l'ordinateur avec un contexte de 1 million de tokens.",
     id: "mai-2.5-opal",
-    license: "MIT",
+    license: "Propriétaire",
     maxOutputTokens: 384_000,
     multimodal: true,
     name: "mAI-2.5-Opal",
@@ -77,7 +77,7 @@ export const maiModelsList: MAIModelDetail[] = [
     description:
       "Modèle d'élite alliant rigueur analytique absolue et très hautes performances pour l'audit de code, les mathématiques complexes et la sécurité vérifiable dans le cloud.",
     id: "mai-2.5-apex",
-    license: "MIT",
+    license: "Propriétaire",
     maxOutputTokens: 256_000,
     multimodal: true,
     name: "mAI-2.5-Apex",
@@ -102,7 +102,7 @@ export const maiModelsList: MAIModelDetail[] = [
     description:
       "Modèle agile, réactif et polyvalent de la génération mAI-2.5, pensé pour les tâches du quotidien, la vitesse et l'automatisation de bureau dans le cloud.",
     id: "mai-2.5-omni",
-    license: "MIT",
+    license: "Propriétaire",
     maxOutputTokens: 128_000,
     multimodal: true,
     name: "mAI-2.5-Omni",

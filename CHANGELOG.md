@@ -1,5 +1,19 @@
 # Notes de version
 
+## 0.9.5
+
+### Nouveautés
+
+* **Aucune nouveauté** : aucune nouveauté dans cette version.
+
+### Améliorations
+
+* **Migrations des services de Val Town** : migrations des services de Val Town.
+
+### Corrections
+
+* **Correction de bugs et optimisations** : correction de bugs et optimisations.
+
 ## 0.9.4
 
 ### Nouveautés

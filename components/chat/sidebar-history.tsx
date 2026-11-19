@@ -32,6 +32,7 @@ import {
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { useProjects } from "@/hooks/use-projects";
 import type { Chat } from "@/lib/db/schema";
+import { forceUnlockDOM, forceUnlockDOMSchedule } from "@/lib/ui/unlock-dom";
 import { fetcher } from "@/lib/utils";
 import { LoaderIcon } from "./icons";
 import { SecureConversationDialog } from "./secure-conversation-dialog";
@@ -145,15 +146,16 @@ export function SidebarHistory({
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [securityChat, setSecurityChat] = useState<Chat | null>(null);
 
-  // Sécurité anti-gel Radix UI : s'assurer que pointer-events n'est jamais bloqué
+  // Sécurité anti-gel Radix UI : s'assurer que pointer-events et le DOM ne restent jamais bloqués
   useEffect(() => {
-    if (!showDeleteDialog && typeof document !== "undefined") {
-      const timer = setTimeout(() => {
-        if (document.body.style.pointerEvents === "none") {
-          document.body.style.pointerEvents = "";
-        }
-      }, 50);
-      return () => clearTimeout(timer);
+    if (!showDeleteDialog) {
+      if (
+        typeof document !== "undefined" &&
+        document.body.style.pointerEvents === "none"
+      ) {
+        document.body.style.pointerEvents = "";
+      }
+      forceUnlockDOMSchedule();
     }
   }, [showDeleteDialog]);
 
@@ -165,6 +167,7 @@ export function SidebarHistory({
       ) {
         document.body.style.pointerEvents = "";
       }
+      forceUnlockDOM();
     },
     []
   );
@@ -203,11 +206,11 @@ export function SidebarHistory({
     if (typeof document !== "undefined") {
       document.body.style.pointerEvents = "";
     }
+    forceUnlockDOMSchedule();
 
-    // 2. Si c'est la discussion active, réinitialiser l'état et naviguer immédiatement
+    // 2. Si c'est la discussion active, réinitialiser l'état immédiatement
     if (isCurrentChat) {
       resetChat();
-      router.replace("/");
     }
 
     // 3. Retirer immédiatement la discussion de l'affichage (mise à jour optimiste)
@@ -224,12 +227,12 @@ export function SidebarHistory({
       { revalidate: false }
     );
 
-    // 4. Exécuter l'appel réseau
+    // 4. Exécuter l'appel réseau avec keepalive: true pour garantir son acheminement
     void (async () => {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatToDelete}`,
-          { method: "DELETE" }
+          { keepalive: true, method: "DELETE" }
         );
         if (!res.ok) {
           toast.error("Erreur lors de la suppression");
@@ -237,6 +240,9 @@ export function SidebarHistory({
           return;
         }
         toast.success("Discussion supprimée");
+        if (isCurrentChat) {
+          router.replace("/");
+        }
         await revalidateChatHistories();
       } catch {
         toast.error("Erreur lors de la suppression");
@@ -250,6 +256,7 @@ export function SidebarHistory({
         ) {
           document.body.style.pointerEvents = "";
         }
+        forceUnlockDOMSchedule();
       }
     })();
   }, [deleteId, mutate, pathname, resetChat, router]);
@@ -500,6 +507,7 @@ export function SidebarHistory({
             if (typeof document !== "undefined") {
               document.body.style.pointerEvents = "";
             }
+            forceUnlockDOMSchedule();
           }
         }}
         open={showDeleteDialog}
@@ -513,10 +521,19 @@ export function SidebarHistory({
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Annuler</AlertDialogCancel>
+            <AlertDialogCancel
+              onClick={() => {
+                forceUnlockDOMSchedule();
+              }}
+            >
+              Annuler
+            </AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              onClick={handleDelete}
+              onClick={(e) => {
+                e.preventDefault();
+                handleDelete();
+              }}
             >
               Supprimer
             </AlertDialogAction>

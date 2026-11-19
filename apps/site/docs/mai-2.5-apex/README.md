@@ -10,7 +10,7 @@ mAI-2.5-Apex est le modèle de la série mAI-2.5 dédié aux tâches alliant une
 | Sortie maximale déclarée | 256 000 tokens |
 | Entrée image & vision | Oui (Multimodal natif) |
 | Entrée documents & fichiers | Oui |
-| Licence indiquée | MIT |
+| Licence indiquée | Propriétaire |
 | Date de sortie indiquée | 19 novembre 2026 |
 
 ## Avancées technologiques majeures

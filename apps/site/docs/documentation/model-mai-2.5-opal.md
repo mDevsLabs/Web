@@ -22,7 +22,7 @@ order: 1
 - **Raisonnement (Thinking)** : Décomposition autonome de problèmes complexes, avec niveaux d'effort configurables (`low`, `high`, `max`).
 - **Utilisation de l'ordinateur (Computer Use)** : Interfaçage natif avec OS, shell, web, function calling et agents logiciels.
 - **Date d'annonce officielle** : 19/11/2026.
-- **Licence** : MIT.
+- **Licence** : Propriétaire.
 
 ---
 

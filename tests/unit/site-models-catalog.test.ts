@@ -40,6 +40,7 @@ describe("catalogue des modèles mAI-2.5", () => {
       expect(apiEntry?.capabilities.reasoning).toBe(true);
       expect(apiEntry?.capabilities.coding).toBe(true);
       expect(apiEntry?.backingModel).toBe(expectedBacking[id]);
+      expect(apiEntry?.license).toBe("Propriétaire");
     }
   });
 
@@ -67,6 +68,8 @@ describe("catalogue des modèles mAI-2.5", () => {
       expect(content).toContain("Raisonnement");
       expect(content).toContain("Codage");
       expect(content).toContain(`Utilisation de l'ordinateur`);
+      expect(content).toContain("| Licence indiquée | Propriétaire |");
+      expect(content).not.toContain("MIT");
     }
   });
 

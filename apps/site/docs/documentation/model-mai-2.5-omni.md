@@ -21,7 +21,7 @@ order: 3
 - **Raisonnement réactif (Thinking)** : Traitement analytique pragmatique et direct pour une latence minimale.
 - **Utilisation fluide de l'ordinateur (Computer Use)** : Automatisation bureautique, navigation web, saisie et organisation de fichiers.
 - **Date d'annonce officielle** : 19/11/2026.
-- **Licence** : MIT.
+- **Licence** : Propriétaire.
 
 ---
 

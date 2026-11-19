@@ -372,39 +372,53 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get("id");
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
 
-  if (!id) {
-    return new ChatbotError("bad_request:api").toResponse();
+    if (!id) {
+      return new ChatbotError("bad_request:api").toResponse();
+    }
+
+    const session = await requireUser();
+    if (!session) {
+      return new ChatbotError("unauthorized:chat").toResponse();
+    }
+    const { userId, user } = session;
+
+    const chat = await getChatById({ id });
+    if (!chat) {
+      // Idempotence : si la conversation a déjà été supprimée, renvoyer 200
+      return Response.json({ id, success: true }, { status: 200 });
+    }
+
+    const isOwner =
+      chatOwnerMatches({
+        chatUserId: chat.userId,
+        email: user.email,
+        userId,
+        username: (user as { username?: string | null }).username ?? null,
+      }) ||
+      (user.email && chat.userId === user.email) ||
+      (user.id && chat.userId === user.id);
+
+    if (!isOwner) {
+      console.warn(
+        `[chat-api] DELETE refusé : l'utilisateur ${userId} (${user.email}) n'est pas propriétaire de la discussion ${id} (propriétaire: ${chat.userId})`
+      );
+      return new ChatbotError("forbidden:chat").toResponse();
+    }
+
+    const deletedChat = await deleteChatById({ id });
+    return Response.json(deletedChat ?? { id, success: true }, { status: 200 });
+  } catch (error) {
+    if (error instanceof ChatbotError) {
+      console.error(
+        `[chat-api] DELETE error code=${error.type}:${error.surface} message="${error.message}"`
+      );
+      return error.toResponse();
+    }
+    console.error("[chat-api] DELETE unexpected error:", error);
+    return new ChatbotError("offline:chat").toResponse();
   }
-
-  const session = await requireUser();
-  if (!session) {
-    return new ChatbotError("unauthorized:chat").toResponse();
-  }
-  const { userId, user } = session;
-
-  const chat = await getChatById({ id });
-  if (!chat) {
-    // Idempotence : si la conversation a déjà été supprimée, renvoyer 200
-    return Response.json({ id, success: true }, { status: 200 });
-  }
-
-  const isOwner =
-    chatOwnerMatches({
-      chatUserId: chat.userId,
-      email: user.email,
-      userId,
-      username: (user as { username?: string | null }).username ?? null,
-    }) ||
-    (user.email && chat.userId === user.email) ||
-    (user.id && chat.userId === user.id);
-
-  if (!isOwner) {
-    return new ChatbotError("forbidden:chat").toResponse();
-  }
-
-  const deletedChat = await deleteChatById({ id });
-  return Response.json(deletedChat ?? { id, success: true }, { status: 200 });
 }
