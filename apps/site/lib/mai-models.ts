@@ -127,19 +127,19 @@ export const maiModelsList: MAIModelDetail[] = [
     description:
       "Modèle phare de la génération mAI-2, servi dans le cloud via l'API mAI : raisonnement, codage, création et vitesse, avec un contexte pouvant atteindre 1 million de tokens et une prise en charge native du texte et des images.",
     id: "mai-2",
-    license: "MIT",
+    license: "Propriétaire",
     maxOutputTokens: 384_000,
     multimodal: true,
     name: "mAI-2",
     releaseDate: "2026-10-25",
     status: "active",
-    tagline: "Our flagship model, for the best price.",
+    tagline: "Notre modèle phare, au meilleur prix.",
     version: "2.0.0",
     vision: true,
   },
   {
     apiAlias: "mai-2-mini",
-    backingModel: "z-ai/glm-5.3-flash",
+    backingModel: "minimax/minimax-m3",
     capabilities: {
       coding: true,
       functionCalling: true,
@@ -152,7 +152,7 @@ export const maiModelsList: MAIModelDetail[] = [
     description:
       "Modèle équilibré de la génération mAI-2 : une expérience plus légère et accessible qui conserve les fondations essentielles de la génération — raisonnement, codage et multimodalité texte + images — dans le cloud via l'API mAI.",
     id: "mai-2-mini",
-    license: "MIT",
+    license: "Propriétaire",
     maxOutputTokens: 128_000,
     multimodal: true,
     name: "mAI-2-Mini",

@@ -49,7 +49,7 @@ function getOpenRouterApiKey(userCustomKey?: string | null): string {
 // ─────────────────────────────────────────────
 // Alias cloud mAI-2 & mAI-2.5 -> backends OpenRouter (cachés aux utilisateurs).
 // mAI-2        -> DeepSeek V4.1 Flash (1M ctx)
-// mAI-2-Mini   -> GLM 5.3 Flash (1M ctx)
+// mAI-2-Mini   -> MiniMax M3 (1M ctx)
 // mAI-2.5-Opal -> OpenAI GPT-6.1 Sol (1M ctx)
 // mAI-2.5-Apex -> OpenAI GPT-6.1 Terra (1M ctx)
 // mAI-2.5-Omni -> OpenAI GPT-6 Luna (1M ctx)
@@ -57,7 +57,7 @@ function getOpenRouterApiKey(userCustomKey?: string | null): string {
 // ─────────────────────────────────────────────
 const MAI_CLOUD_ALIASES: Record<string, string> = {
   "mai-2": "deepseek/deepseek-v4.1-flash",
-  "mai-2-mini": "z-ai/glm-5.3-flash",
+  "mai-2-mini": "minimax/minimax-m3",
   "mai-2.5-apex": "openai/gpt-6.1-terra",
   "mai-2.5-omni": "openai/gpt-6-luna",
   "mai-2.5-opal": "openai/gpt-6.1-sol",

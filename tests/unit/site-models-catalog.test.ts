@@ -126,3 +126,49 @@ describe("catalogue des modèles mAI-2.5", () => {
     expect(md).toContain("Tableau comparatif");
   });
 });
+
+describe("catalogue des modèles mAI-2 (mai-2, mai-2-mini)", () => {
+  const modelIds = ["mai-2", "mai-2-mini"] as const;
+
+  it("publie les deux modèles dans modelsData avec le bon backingModel", () => {
+    const expectedBacking: Record<string, string> = {
+      "mai-2": "deepseek/deepseek-v4.1-flash",
+      "mai-2-mini": "minimax/minimax-m3",
+    };
+    for (const id of modelIds) {
+      const card = modelsData.find((m) => m.id === id);
+      expect(card).toBeDefined();
+      expect(card?.cloud).toBe(true);
+      expect(card?.apiAlias).toBe(id);
+      expect(card?.backingModel).toBe(expectedBacking[id]);
+    }
+  });
+
+  it("déclare les deux modèles dans maiModelsList avec les backends et licence Propriétaire", () => {
+    const expectedBacking: Record<string, string> = {
+      "mai-2": "deepseek/deepseek-v4.1-flash",
+      "mai-2-mini": "minimax/minimax-m3",
+    };
+    for (const id of modelIds) {
+      const apiEntry = maiModelsList.find((m) => m.id === id);
+      expect(apiEntry).toBeDefined();
+      expect(apiEntry?.cloud).toBe(true);
+      expect(apiEntry?.contextWindow).toBe(1_000_000);
+      expect(apiEntry?.backingModel).toBe(expectedBacking[id]);
+      expect(apiEntry?.license).toBe("Propriétaire");
+    }
+  });
+
+  it("dispose des fichiers README.md avec licence Propriétaire et sans mention MIT", () => {
+    const root = process.cwd();
+    for (const id of modelIds) {
+      const readmePath = join(root, "apps", "site", "docs", id, "README.md");
+      expect(existsSync(readmePath)).toBe(true);
+      const content = readFileSync(readmePath, "utf8");
+      expect(content).toContain("# mAI-2");
+      expect(content).toContain("## Benchmarks");
+      expect(content).toContain("| Licence indiquée | Propriétaire |");
+      expect(content).not.toContain("MIT");
+    }
+  });
+});
