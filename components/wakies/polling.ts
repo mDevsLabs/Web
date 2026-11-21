@@ -15,7 +15,10 @@ export const WAKIES_POLL_HIDDEN_MS = 60_000;
 
 /** `refreshInterval` SWR : rapide si l'onglet est visible, lent sinon. */
 export function wakiesAlertPollInterval(): number {
-  if (typeof document !== "undefined" && document.visibilityState !== "visible") {
+  if (
+    typeof document !== "undefined" &&
+    document.visibilityState !== "visible"
+  ) {
     return WAKIES_POLL_HIDDEN_MS;
   }
   return WAKIES_POLL_MS;

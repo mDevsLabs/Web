@@ -69,9 +69,7 @@ export const webSearch = tool({
     const count = Math.min(Math.max(input.count ?? 5, 1), 10);
     const language = input.language || "fr";
 
-    const tryPrimary = async (): Promise<SearchResult[] | null> => {
-      return null;
-    };
+    const tryPrimary = async (): Promise<SearchResult[] | null> => null;
 
     const tryDuckDuckGo = async (): Promise<SearchResult[]> => {
       try {

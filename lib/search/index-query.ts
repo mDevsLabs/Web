@@ -4,7 +4,6 @@ import { and, desc, eq, ilike, inArray, or, type SQL, sql } from "drizzle-orm";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { isPaidTier } from "@/lib/auth/plan";
-import { getMaiSessionToken } from "@/lib/auth/session";
 import { getDb } from "@/lib/db/queries";
 import { getUserCloudFiles } from "@/lib/db/queries/storage";
 import {
@@ -1042,9 +1041,7 @@ const modelSource: SourceResolver = {
       title: model.name,
     });
 
-    const [textModels] = await Promise.all([
-      fetchUserModels().catch(() => []),
-    ]);
+    const [textModels] = await Promise.all([fetchUserModels().catch(() => [])]);
 
     const hits: SearchHit[] = [
       ...textModels

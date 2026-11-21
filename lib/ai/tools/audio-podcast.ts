@@ -105,7 +105,6 @@ export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
         };
       }
 
-
       const voices = await pickVoices(token);
       const hostVoice = voices.host;
       const expertVoice = voices.expert;

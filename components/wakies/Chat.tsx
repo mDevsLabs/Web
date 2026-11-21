@@ -46,7 +46,6 @@ import {
   useSyncExternalStore,
 } from "react";
 import useSWR from "swr";
-import { WAKIES_POLL_MS } from "@/components/wakies/polling";
 import { demandesValidation } from "@/components/wakies/ApprovalCard";
 import { api } from "@/components/wakies/api";
 import {
@@ -65,6 +64,7 @@ import {
   contextualMessage,
   type PageContext,
 } from "@/components/wakies/page-context";
+import { WAKIES_POLL_MS } from "@/components/wakies/polling";
 import { ReglagesDuFil } from "@/components/wakies/ReglagesDuFil";
 import { WakieChatComposer } from "@/components/wakies/WakieChatComposer";
 import { resolveWakieModelId } from "@/lib/wakies/model";

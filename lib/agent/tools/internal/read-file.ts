@@ -46,16 +46,6 @@ const readFileInputSchema = z
     message: "Fournissez soit 'fileId' (bibliothèque), soit 'url'.",
   });
 
-type CloudFilePayload = {
-  files?: Array<{
-    filename?: string;
-    id?: string;
-    mime_type?: string;
-    original_name?: string;
-    url?: string;
-  }>;
-};
-
 // Résout un fichier de la bibliothèque cloud en URL lisible côté serveur via Neon.
 async function resolveLibraryFile(params: {
   fileId: string;
@@ -71,7 +61,9 @@ async function resolveLibraryFile(params: {
   try {
     const files = await getUserCloudFiles(params.userId, 200);
     const file = files.find(
-      (candidate) => String(candidate.id ?? "") === params.fileId || candidate.filename === params.fileId
+      (candidate) =>
+        String(candidate.id ?? "") === params.fileId ||
+        candidate.filename === params.fileId
     );
     if (!file?.url) {
       return {

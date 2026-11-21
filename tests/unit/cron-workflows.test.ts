@@ -48,7 +48,7 @@ describe("CRON & Workflows GitHub Actions", () => {
 
   it("cron-master.yml appelle les six ticks avec le bon verbe", () => {
     const content = readFileSync(join(workflowsDir, "cron-master.yml"), "utf8");
-    const attendus: Array<[string, "GET" | "POST"]> = [
+    const attendus: [string, "GET" | "POST"][] = [
       ["agent", "POST"],
       ["planning", "POST"],
       ["wakies", "POST"],

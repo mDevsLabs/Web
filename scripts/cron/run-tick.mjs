@@ -26,7 +26,11 @@ import process from "node:process";
 
 const TICKS = {
   agent: { budgetMs: 285_000, method: "POST", path: "/api/cron/agent" },
-  notifications: { budgetMs: 120_000, method: "POST", path: "/api/cron/notifications" },
+  notifications: {
+    budgetMs: 120_000,
+    method: "POST",
+    path: "/api/cron/notifications",
+  },
   planning: { budgetMs: 290_000, method: "POST", path: "/api/cron/planning" },
   quizzly: { budgetMs: 60_000, method: "POST", path: "/api/cron/quizzly" },
   vibe: { budgetMs: 60_000, method: "GET", path: "/api/cron/vibe" },
@@ -41,7 +45,9 @@ function getConfig() {
     const missing = [];
     if (!base) missing.push("APP_URL");
     if (!secret) missing.push("CRON_SECRET");
-    console.error(`::error::Variables d'environnement manquantes : ${missing.join(", ")}`);
+    console.error(
+      `::error::Variables d'environnement manquantes : ${missing.join(", ")}`
+    );
     process.exit(1);
   }
 
@@ -56,11 +62,15 @@ async function verifyTarget(base) {
       signal: AbortSignal.timeout(15_000),
     });
     if (res.status === 404) {
-      console.error(`::error::La cible ${base} ne répond pas sur /api/app-version (404). Vérifiez APP_URL.`);
+      console.error(
+        `::error::La cible ${base} ne répond pas sur /api/app-version (404). Vérifiez APP_URL.`
+      );
       process.exit(1);
     }
   } catch (err) {
-    console.warn(`[cron-runner] Précontrôle non concluant sur ${url} : ${err.message}. Poursuite des ticks.`);
+    console.warn(
+      `[cron-runner] Précontrôle non concluant sur ${url} : ${err.message}. Poursuite des ticks.`
+    );
   }
 }
 
@@ -90,15 +100,27 @@ async function executeTick(name, tick, config) {
     const body = (await response.text().catch(() => "")).slice(0, 300);
 
     if (response.ok) {
-      console.log(`[cron] ✓ "${name}" -> HTTP ${response.status} (${durationMs} ms) ${body}`);
+      console.log(
+        `[cron] ✓ "${name}" -> HTTP ${response.status} (${durationMs} ms) ${body}`
+      );
       return { durationMs, name, ok: true, status: response.status };
     }
 
-    console.error(`[cron] ✗ "${name}" -> HTTP ${response.status} (${durationMs} ms) ${body}`);
-    return { durationMs, error: `HTTP ${response.status}`, name, ok: false, status: response.status };
+    console.error(
+      `[cron] ✗ "${name}" -> HTTP ${response.status} (${durationMs} ms) ${body}`
+    );
+    return {
+      durationMs,
+      error: `HTTP ${response.status}`,
+      name,
+      ok: false,
+      status: response.status,
+    };
   } catch (err) {
     const durationMs = Date.now() - startedAt;
-    console.error(`[cron] ✗ "${name}" -> Erreur (${durationMs} ms) : ${err.message}`);
+    console.error(
+      `[cron] ✗ "${name}" -> Erreur (${durationMs} ms) : ${err.message}`
+    );
     return { durationMs, error: err.message, name, ok: false };
   }
 }
@@ -117,9 +139,13 @@ async function main() {
     const results = await Promise.all(promises);
     const failed = results.filter((r) => !r.ok);
 
-    console.log(`\n[cron-runner] Bilan : ${results.length - failed.length}/${results.length} ticks réussis.`);
+    console.log(
+      `\n[cron-runner] Bilan : ${results.length - failed.length}/${results.length} ticks réussis.`
+    );
     if (failed.length > 0) {
-      console.error(`::error::${failed.length} tick(s) ont échoué : ${failed.map((f) => f.name).join(", ")}`);
+      console.error(
+        `::error::${failed.length} tick(s) ont échoué : ${failed.map((f) => f.name).join(", ")}`
+      );
       process.exit(1);
     }
   } else if (TICKS[target]) {
@@ -129,7 +155,9 @@ async function main() {
       process.exit(1);
     }
   } else {
-    console.error(`::error::Cible inconnue "${target}". Cibles valides : all, ${Object.keys(TICKS).join(", ")}`);
+    console.error(
+      `::error::Cible inconnue "${target}". Cibles valides : all, ${Object.keys(TICKS).join(", ")}`
+    );
     process.exit(1);
   }
 }

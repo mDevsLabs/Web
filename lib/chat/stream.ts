@@ -218,7 +218,6 @@ export function createChatStream(params: ChatStreamParams) {
             dataStream,
             email: ctx.userEmail,
             isGhostMode: ctx.isGhostMode,
-            sessionToken: ctx.sessionToken,
             usage: usage as any,
             usageEventKey,
             userId: ctx.userId,
@@ -325,7 +324,6 @@ async function handleTokenAccounting(params: {
   chatModel: string;
   email: string;
   isGhostMode: boolean;
-  sessionToken: string;
   usageEventKey: string;
   userId: string;
 }): Promise<void> {
@@ -338,7 +336,6 @@ async function handleTokenAccounting(params: {
     chatModel,
     email,
     isGhostMode,
-    sessionToken,
     usageEventKey,
     userId,
   } = params;

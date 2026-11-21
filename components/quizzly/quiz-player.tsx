@@ -30,10 +30,7 @@ import {
   Quizzy,
   type QuizzyPose,
 } from "@/components/quizzly/quizzy";
-import {
-  coeursAffiches,
-  useResumeQuizzly,
-} from "@/components/quizzly/shell";
+import { coeursAffiches, useResumeQuizzly } from "@/components/quizzly/shell";
 import { FormulaireSignalement } from "@/components/quizzly/signalement";
 import { PASS_CORRECT } from "@/lib/quizzly/rules";
 import type { PublicQuiz } from "@/lib/quizzly/schema";
@@ -366,8 +363,8 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
               <div className="text-5xl font-black text-slate-900 dark:text-white">
                 <CompteurAnime valeur={bilan.correctCount} />
                 <span className="text-2xl font-bold text-slate-400">
-           /{bilan.totalCount}
-  </span>
+                  /{bilan.totalCount}
+                </span>
               </div>
               <p className="mt-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
                 {bilan.passed
@@ -408,10 +405,10 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                     );
                     return (
                       <li
-   className="fade-up"
-   key={ligne.questionId}
-          style={{ animationDelay: `${300 + rang * 70}ms` }}
-        >
+                        className="fade-up"
+                        key={ligne.questionId}
+                        style={{ animationDelay: `${300 + rang * 70}ms` }}
+                      >
                         <Link
                           className="flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50/60 px-3 py-2 text-xs font-semibold text-blue-800 hover:bg-blue-100 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-300"
                           href={`/quizzly/coach?quiz=${encodeURIComponent(quiz.id)}&question=${encodeURIComponent(ligne.questionId)}`}
@@ -509,7 +506,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
           playCorrectSound();
         } else {
           playIncorrectSound();
-   if (dejaCommite) {
+          if (dejaCommite) {
             return;
           }
           const toutesReponses = quiz.questions
@@ -557,11 +554,11 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
       if (precharge && !(precharge instanceof Promise)) {
         // Bouton bloqué pendant le débit du cœur : sinon « Continuer »
         // pouvait passer avant la détection du game over.
- setEnvoi(true);
+        setEnvoi(true);
         try {
-   await synchroniserReponse(precharge);
+          await synchroniserReponse(precharge);
         } finally {
-   setEnvoi(false);
+          setEnvoi(false);
         }
         return;
       }
@@ -721,108 +718,110 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         <motion.div
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -32 }}
-   initial={{ opacity: 0, x: 32 }}
+          initial={{ opacity: 0, x: 32 }}
           key={question.id}
           transition={{ duration: 0.22, ease: "easeOut" }}
         >
-      <Rangee pose={pose}>
-        <div
-          className={cn(
-            "surface-quizzly-card flex flex-col gap-4 p-5 sm:p-6 transition-all",
-            revelation?.correct &&
-              "border-emerald-300 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/20",
-            revelation &&
-              !revelation.correct &&
-              "border-rose-300 bg-rose-50/50 q-shake dark:border-rose-800 dark:bg-rose-950/20"
-          )}
-          key={`${question.id}-${revelation ? "vu" : "choix"}`}
-        >
-          <h2 className="text-base font-bold text-slate-900 sm:text-lg dark:text-white">
-            {question.question}
-          </h2>
+          <Rangee pose={pose}>
+            <div
+              className={cn(
+                "surface-quizzly-card flex flex-col gap-4 p-5 sm:p-6 transition-all",
+                revelation?.correct &&
+                  "border-emerald-300 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/20",
+                revelation &&
+                  !revelation.correct &&
+                  "border-rose-300 bg-rose-50/50 q-shake dark:border-rose-800 dark:bg-rose-950/20"
+              )}
+              key={`${question.id}-${revelation ? "vu" : "choix"}`}
+            >
+              <h2 className="text-base font-bold text-slate-900 sm:text-lg dark:text-white">
+                {question.question}
+              </h2>
 
-          <div className="flex flex-col gap-2.5">
-            {question.options.map((option, position) => {
-              const actif = selection.includes(position);
-              const attendue = revelation?.expectedIndexes.includes(position);
-              const donnee = revelation?.givenIndexes.includes(position);
+              <div className="flex flex-col gap-2.5">
+                {question.options.map((option, position) => {
+                  const actif = selection.includes(position);
+                  const attendue =
+                    revelation?.expectedIndexes.includes(position);
+                  const donnee = revelation?.givenIndexes.includes(position);
 
-              return (
-                <button
-                  aria-pressed={actif}
-                  className={cn(
-                    "flex min-h-14 items-center gap-3 rounded-2xl border p-3.5 text-left text-sm font-semibold transition-all cursor-pointer touch-manipulation active:scale-[0.99] sm:text-sm",
-      !revelation && "fade-up",
-                    !revelation &&
-                      !actif &&
-                      "border-slate-200/90 bg-white/90 text-slate-800 hover:border-blue-400 hover:bg-blue-50/60 shadow-xs dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800",
-                    !revelation &&
-                      actif &&
-                      "border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-500/20 scale-[1.01]",
-                    attendue &&
-                      "q-correct-pop border-emerald-500 bg-emerald-100/80 text-emerald-900 ring-2 ring-emerald-500/30 dark:bg-emerald-950 dark:text-emerald-200",
-                    donnee &&
-                      !attendue &&
-                      "border-rose-500 bg-rose-100/80 text-rose-900 ring-2 ring-rose-500/30 dark:bg-rose-950 dark:text-rose-200"
-                  )}
-                  disabled={Boolean(revelation)}
-                  key={`${question.id}-${position}`}
-    style={{ animationDelay: `${position * 60}ms` }}
-                  onClick={() => basculer(position)}
-                  type="button"
-                >
-                  <span
+                  return (
+                    <button
+                      aria-pressed={actif}
+                      className={cn(
+                        "flex min-h-14 items-center gap-3 rounded-2xl border p-3.5 text-left text-sm font-semibold transition-all cursor-pointer touch-manipulation active:scale-[0.99] sm:text-sm",
+                        !revelation && "fade-up",
+                        !revelation &&
+                          !actif &&
+                          "border-slate-200/90 bg-white/90 text-slate-800 hover:border-blue-400 hover:bg-blue-50/60 shadow-xs dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800",
+                        !revelation &&
+                          actif &&
+                          "border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-500/20 scale-[1.01]",
+                        attendue &&
+                          "q-correct-pop border-emerald-500 bg-emerald-100/80 text-emerald-900 ring-2 ring-emerald-500/30 dark:bg-emerald-950 dark:text-emerald-200",
+                        donnee &&
+                          !attendue &&
+                          "border-rose-500 bg-rose-100/80 text-rose-900 ring-2 ring-rose-500/30 dark:bg-rose-950 dark:text-rose-200"
+                      )}
+                      disabled={Boolean(revelation)}
+                      key={`${question.id}-${position}`}
+                      onClick={() => basculer(position)}
+                      style={{ animationDelay: `${position * 60}ms` }}
+                      type="button"
+                    >
+                      <span
+                        className={cn(
+                          "flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-all",
+                          !revelation &&
+                            !actif &&
+                            "border border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300",
+                          !revelation &&
+                            actif &&
+                            "bg-white text-blue-600 font-black",
+                          attendue && "bg-emerald-600 text-white font-black",
+                          donnee &&
+                            !attendue &&
+                            "bg-rose-600 text-white font-black"
+                        )}
+                      >
+                        {attendue ? (
+                          <CheckIcon className="size-4 stroke-[3]" />
+                        ) : donnee && !attendue ? (
+                          <XIcon className="size-4 stroke-[3]" />
+                        ) : (
+                          (LETTRES[position] ?? position + 1)
+                        )}
+                      </span>
+                      <span className="flex-1">{option}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <AnimatePresence>
+                {revelation && (
+                  <motion.div
+                    animate={{ height: "auto", opacity: 1 }}
                     className={cn(
-                      "flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-all",
-                      !revelation &&
-                        !actif &&
-                        "border border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300",
-                      !revelation &&
-                        actif &&
-                        "bg-white text-blue-600 font-black",
-                      attendue && "bg-emerald-600 text-white font-black",
-                      donnee && !attendue && "bg-rose-600 text-white font-black"
+                      "overflow-hidden rounded-2xl p-3.5 text-xs font-medium",
+                      revelation.correct
+                        ? "bg-emerald-100/70 text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200"
+                        : "bg-rose-100/70 text-rose-900 dark:bg-rose-950/50 dark:text-rose-200"
                     )}
+                    exit={{ height: 0, opacity: 0 }}
+                    initial={{ height: 0, opacity: 0 }}
                   >
-                    {attendue ? (
-                      <CheckIcon className="size-4 stroke-[3]" />
-                    ) : donnee && !attendue ? (
-                      <XIcon className="size-4 stroke-[3]" />
-                    ) : (
-                      (LETTRES[position] ?? position + 1)
-                    )}
-                  </span>
-                  <span className="flex-1">{option}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <AnimatePresence>
-            {revelation && (
-              <motion.div
-                animate={{ height: "auto", opacity: 1 }}
-                className={cn(
-                  "overflow-hidden rounded-2xl p-3.5 text-xs font-medium",
-                  revelation.correct
-                    ? "bg-emerald-100/70 text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200"
-                    : "bg-rose-100/70 text-rose-900 dark:bg-rose-950/50 dark:text-rose-200"
+                    <p className="font-bold mb-1">
+                      {revelation.correct
+                        ? "Excellente réponse ! 👏"
+                        : "Pas tout à fait… 💡"}
+                    </p>
+                    <p>{revelation.explanation}</p>
+                  </motion.div>
                 )}
-                exit={{ height: 0, opacity: 0 }}
-                initial={{ height: 0, opacity: 0 }}
-              >
-                <p className="font-bold mb-1">
-                  {revelation.correct
-                    ? "Excellente réponse ! 👏"
-                    : "Pas tout à fait… 💡"}
-                </p>
-                <p>{revelation.explanation}</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </Rangee>
-
+              </AnimatePresence>
+            </div>
+          </Rangee>
         </motion.div>
       </AnimatePresence>
 
@@ -844,9 +843,9 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
             (!revelation && selection.length === 0) || envoi
               ? "cursor-not-allowed bg-slate-300 text-slate-500 opacity-60 dark:bg-slate-800 dark:text-slate-400"
               : cn(
-           "cursor-pointer bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95",
-           revelation && "q-pulse-blue"
-         )
+                  "cursor-pointer bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95",
+                  revelation && "q-pulse-blue"
+                )
           )}
           disabled={(!revelation && selection.length === 0) || envoi}
           onClick={() => {

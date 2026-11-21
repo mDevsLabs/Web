@@ -204,10 +204,14 @@ describe("restrictions des plans (Free vs Plus, Pro, Max) sur mAI-2 et mAI-2.5",
   });
 
   it("autorise les modèles :free et mAI gratuits (mai-2, mai-2-mini, mai-2.5-omni) pour un compte Free", async () => {
-    const mockModel = { id: "google/gemini-2.5-flash:free", isActive: true, is_available: true, provider: "google", type: "chat" };
-    const fakeSql = ((query: any) => {
-      return Promise.resolve([mockModel]);
-    }) as any;
+    const mockModel = {
+      id: "google/gemini-2.5-flash:free",
+      is_available: true,
+      isActive: true,
+      provider: "google",
+      type: "chat",
+    };
+    const fakeSql = (() => Promise.resolve([mockModel])) as any;
 
     // :free est autorisé et ne lance pas d'erreur d'accès
     try {
@@ -220,7 +224,12 @@ describe("restrictions des plans (Free vs Plus, Pro, Max) sur mAI-2 et mAI-2.5",
 
     // mai-2.5-omni n'échoue pas au contrôle 403 de plan
     try {
-      await requireChatModel(fakeSql, "mai-2.5-omni", false, "openai/gpt-6-luna");
+      await requireChatModel(
+        fakeSql,
+        "mai-2.5-omni",
+        false,
+        "openai/gpt-6-luna"
+      );
     } catch (e) {
       if (e instanceof ModelAccessError) {
         expect(e.status).not.toBe(403);

@@ -532,7 +532,9 @@ export function registerModelRoutes(
         const paid = isPaidTier(c.get("userPlan"));
         const allModels = catalog.models
           .filter((m) => m.isActive && m.is_available)
-          .filter((m) => paid || isFreeModelId(m.id) || isFreeMaiCloudModel(m.id))
+          .filter(
+            (m) => paid || isFreeModelId(m.id) || isFreeMaiCloudModel(m.id)
+          )
           .map(effectiveModel);
         return c.json({ data: allModels, object: "list" });
       }
@@ -553,29 +555,29 @@ export function registerModelRoutes(
       )
         .filter((m) => paid || isFreeMaiCloudModel(m.id))
         .flatMap((m) => {
-        // Si le modèle est déjà présent directement en BDD sous cet id, privilégier la BDD
-        const directFromDb = catalog.byId.get(m.id);
-        if (directFromDb && isPublicChatModel(directFromDb)) {
-          return [effectiveModel(directFromDb)];
-        }
-        const backend = catalog.byId.get(resolveMaiCloudBackend(m.id)!);
-        if (!backend || !isPublicChatModel(backend)) return [];
-        const effective = effectiveModel(backend);
-        return [
-          {
-            ...m,
-            fournisseur: effective.fournisseur,
-            maxContext: effective.maxContext,
-            maxOutput: effective.maxOutput,
-            provider: effective.provider,
-            reasoning: m.reasoning?.supported_efforts?.length
-              ? m.reasoning
-              : (effective.reasoning ?? m.reasoning),
-            supported_parameters: effective.supported_parameters,
-            type: effective.type,
-          },
-        ];
-      });
+          // Si le modèle est déjà présent directement en BDD sous cet id, privilégier la BDD
+          const directFromDb = catalog.byId.get(m.id);
+          if (directFromDb && isPublicChatModel(directFromDb)) {
+            return [effectiveModel(directFromDb)];
+          }
+          const backend = catalog.byId.get(resolveMaiCloudBackend(m.id)!);
+          if (!backend || !isPublicChatModel(backend)) return [];
+          const effective = effectiveModel(backend);
+          return [
+            {
+              ...m,
+              fournisseur: effective.fournisseur,
+              maxContext: effective.maxContext,
+              maxOutput: effective.maxOutput,
+              provider: effective.provider,
+              reasoning: m.reasoning?.supported_efforts?.length
+                ? m.reasoning
+                : (effective.reasoning ?? m.reasoning),
+              supported_parameters: effective.supported_parameters,
+              type: effective.type,
+            },
+          ];
+        });
       const seenIds = new Set<string>();
       const deduped: any[] = [];
       // On privilégie strictement la base de données :

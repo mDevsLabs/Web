@@ -53,8 +53,8 @@ describe("Cron — registre des ticks hôte", () => {
       );
       // Le chargeur du registre importe bien ce verbe, pas l'autre.
       expect(lire("lib/cron/ticks.ts")).toMatch(
- new RegExp(
-   `import\\("@/app/api/cron/${nom}/route"\\)\\)\\.${methode}\\b`
+        new RegExp(
+          `import\\("@/app/api/cron/${nom}/route"\\)\\)\\.${methode}\\b`
         )
       );
     }
@@ -81,7 +81,9 @@ describe("Cron — table cron_ticks", () => {
     expect(sql).toMatch(/CREATE TABLE IF NOT EXISTS\s+"?cron_ticks"?/i);
     expect(sql).not.toMatch(/\bDROP\b/i);
 
-    const journal = JSON.parse(lire("lib/db/migrations/meta/_journal.json")) as {
+    const journal = JSON.parse(
+      lire("lib/db/migrations/meta/_journal.json")
+    ) as {
       entries: Array<{ tag: string }>;
     };
     expect(journal.entries.some((e) => e.tag === "0089_cron_ticks")).toBe(true);
