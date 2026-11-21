@@ -717,7 +717,6 @@ export type UserTotp = InferSelectModel<typeof userTotp>;
 export const weeklySpeechUsage = pgTable(
   "weekly_speech_usage",
   {
-    id: serial("id").primaryKey().notNull(),
     requestsCount: integer("requests_count").notNull().default(0),
     tokensUsed: bigint("tokens_used", { mode: "number" }).notNull().default(0),
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
@@ -725,6 +724,7 @@ export const weeklySpeechUsage = pgTable(
     weekStart: date("week_start").notNull(),
   },
   (table) => ({
+    pk: primaryKey({ columns: [table.userId, table.weekStart] }),
     userIdIdx: index("weekly_speech_usage_user_id_idx").on(table.userId),
     userWeekUnique: uniqueIndex("weekly_speech_usage_user_week_idx").on(
       table.userId,
@@ -745,7 +745,7 @@ export const mprojectsSpeechGenerations = pgTable(
     audioUrl: text("audio_url"),
     characterCount: integer("character_count").notNull().default(0),
     createdAt: timestamp("created_at").notNull().defaultNow(),
-    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    id: serial("id").primaryKey().notNull(),
     inputText: text("input_text").notNull(),
     model: text("model").notNull().default("deepgram/flux-tts:free"),
     pinned: boolean("pinned").notNull().default(false),
@@ -813,7 +813,7 @@ export const mprojectsApiKeys = pgTable(
   {
     apiKey: text("api_key").notNull(),
     createdAt: timestamp("created_at").defaultNow(),
-    id: serial("id").primaryKey(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
     isActive: boolean("is_active").default(true),
     keyName: text("key_name"),
     lastUsedAt: timestamp("last_used_at"),

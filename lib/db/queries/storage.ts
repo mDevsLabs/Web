@@ -1,7 +1,7 @@
 import "server-only";
 
 import { getTierStorageBytes } from "@/lib/plans/tier-limits";
-import { getRawClient } from "./connection";
+import { dbReady, getRawClient } from "./connection";
 
 export interface CloudFileInfo {
   filename: string;
@@ -29,6 +29,7 @@ export async function getUserCloudStorage(
   userId: string,
   userTier = "Free"
 ): Promise<CloudStorageStats> {
+  await dbReady().catch(() => null);
   const sql = getRawClient();
   if (!sql) {
     const bytesLimit = getTierStorageBytes(userTier);
@@ -102,6 +103,7 @@ export async function getUserCloudFiles(
   userId: string,
   limit = 200
 ): Promise<CloudFileInfo[]> {
+  await dbReady().catch(() => null);
   const sql = getRawClient();
   if (!sql) return [];
 
@@ -134,6 +136,7 @@ export async function renameUserCloudFile(
   userId: string,
   newName: string
 ): Promise<boolean> {
+  await dbReady().catch(() => null);
   const sql = getRawClient();
   if (!sql) return false;
 
@@ -164,6 +167,7 @@ export async function deleteUserCloudFile(
   fileId: string,
   userId: string
 ): Promise<{ success: boolean; error?: string; notFound?: boolean }> {
+  await dbReady().catch(() => null);
   const sql = getRawClient();
   if (!sql) {
     return { error: "Base de données non disponible", success: false };

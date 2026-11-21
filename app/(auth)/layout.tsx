@@ -1,7 +1,7 @@
 import { ArrowLeftIcon } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
-import { Preview } from "@/components/chat/preview";
+import { AuthShowcaseVideo } from "@/components/auth/auth-showcase-video";
 
 export default function AuthLayout({
   children,
@@ -51,7 +51,7 @@ export default function AuthLayout({
           <span>• Intelligence Artificielle & APIs</span>
         </div>
         <div className="flex-1 pt-4">
-          <Preview />
+          <AuthShowcaseVideo />
         </div>
       </div>
     </div>

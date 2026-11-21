@@ -176,12 +176,12 @@ export async function loginUser(params: {
       email: string;
       id: string;
       is_blocked?: boolean;
-      password?: string;
+      password_hash?: string | null;
       tier?: string;
       username: string;
     }[]
   >`
-    SELECT id::text, email, username, password, tier, is_blocked
+    SELECT id::text, email, username, password_hash, tier, is_blocked
     FROM users
     WHERE LOWER(email) = ${cleanIdentifier} OR LOWER(username) = ${cleanIdentifier}
     LIMIT 1
@@ -204,7 +204,10 @@ export async function loginUser(params: {
     };
   }
 
-  const validPassword = await bcrypt.compare(password, user.password || "");
+  // Compte sans mot de passe local (hash NULL) : refus propre, sans bcrypt.
+  const validPassword = user.password_hash
+    ? await bcrypt.compare(password, user.password_hash)
+    : false;
   if (!validPassword) {
     return {
       code: "invalid_credentials",
@@ -471,8 +474,8 @@ export async function verifyRegisterUser(params: {
 
   const hashedPassword = await bcrypt.hash(password, 10);
   const inserted = await sql<{ id: string }[]>`
-    INSERT INTO users (email, username, password, tier, created_at, updated_at)
-    VALUES (${cleanEmail}, ${cleanUsername}, ${hashedPassword}, 'Free', NOW(), NOW())
+    INSERT INTO users (email, username, password_hash, tier, created_at)
+    VALUES (${cleanEmail}, ${cleanUsername}, ${hashedPassword}, 'Free', NOW())
     RETURNING id::text
   `;
 

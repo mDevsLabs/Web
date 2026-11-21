@@ -31,7 +31,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [targetEmail, setTargetEmail] = useState("");
   const [otpCode, setOtpCode] = useState("");
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(true);
   const [returnTo, setReturnTo] = useState("/");
   // Une destination explicite (redirectUrl/next) prime sur le menu favori :
   // on ne redirige vers l'application préférée QUE pour une entrée neutre.

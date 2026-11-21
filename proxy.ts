@@ -172,7 +172,6 @@ export async function proxy(request: NextRequest) {
     pathname === "/favicon.ico" ||
     pathname === "/favicon.png" ||
     pathname === "/logo.png" ||
-    pathname === "/preview.png" ||
     pathname.startsWith("/images/") ||
     pathname.startsWith("/icons/") ||
     pathname.startsWith("/demo-assets/") ||

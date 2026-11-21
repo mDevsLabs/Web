@@ -7,8 +7,10 @@ import {
   getSpeechGenerations,
 } from "@/lib/db/queries/generations";
 
-const UUID_PATTERN =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+// `mprojects_speech_generations.id` est un entier auto-incrémenté en base Neon
+// (serial), ou un UUID selon les environnements : les deux formats sont admis.
+const AUDIO_ID_PATTERN =
+  /^(?:\d+|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
 
 export async function GET(req: NextRequest) {
   const token = await getMaiSessionToken();
@@ -71,7 +73,7 @@ export async function DELETE(req: NextRequest) {
     });
   }
 
-  if (id && !UUID_PATTERN.test(id)) {
+  if (id && !AUDIO_ID_PATTERN.test(id)) {
     return errorResponse("invalid_request", {
       message: "L'identifiant de l'audio est invalide.",
     });

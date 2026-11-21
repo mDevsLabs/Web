@@ -42,6 +42,7 @@ function toPublicSpeech({
     audio_url: row.audioUrl,
     character_count: row.characterCount,
     created_at: row.createdAt?.toISOString(),
+    id: String(row.id),
     input_text: row.inputText,
     tokens_count: row.tokensCount,
     user_id: row.userId,
@@ -321,7 +322,7 @@ export async function recordSpeechGeneration(params: {
 
 export async function deleteSpeechGeneration(params: {
   userId: string;
-  id?: string | null;
+  id?: number | string | null;
   purgeAll?: boolean;
 }) {
   const db = await dbReady();
@@ -340,7 +341,7 @@ export async function deleteSpeechGeneration(params: {
     .delete(mprojectsSpeechGenerations)
     .where(
       and(
-        eq(mprojectsSpeechGenerations.id, params.id),
+        sql`${mprojectsSpeechGenerations.id}::text = ${String(params.id)}`,
         eq(mprojectsSpeechGenerations.userId, params.userId)
       )
     );

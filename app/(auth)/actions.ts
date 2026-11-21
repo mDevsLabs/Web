@@ -56,6 +56,19 @@ function guardFailureToResponse(failure: AuthGuardFailure): AuthResponse {
   };
 }
 
+// Une panne du garde (rate-limit, BotID) ne doit pas faire remonter une
+// exception brute au client : on répond par un échec propre et journalisé.
+async function safeGuard(
+  params: Parameters<typeof guardAuthAction>[0]
+): Promise<AuthGuardFailure | null> {
+  try {
+    return await guardAuthAction(params);
+  } catch (err) {
+    console.error("Erreur guardAuthAction:", err);
+    return { code: "service_unavailable" };
+  }
+}
+
 // 1. Demande de connexion (Envoi de l'OTP)
 export async function loginAction(formData: FormData): Promise<AuthResponse> {
   const identifier = String(
@@ -81,7 +94,7 @@ export async function loginAction(formData: FormData): Promise<AuthResponse> {
     };
   }
 
-  const guardFailure = await guardAuthAction({
+  const guardFailure = await safeGuard({
     action: "login",
     identifier,
   });
@@ -130,7 +143,7 @@ export async function verifyLoginAction(
     };
   }
 
-  const guardFailure = await guardAuthAction({
+  const guardFailure = await safeGuard({
     action: "verify_login",
     identifier: cleanEmail,
   });
@@ -208,7 +221,7 @@ export async function registerAction(
     };
   }
 
-  const guardFailure = await guardAuthAction({
+  const guardFailure = await safeGuard({
     action: "register",
     identifier: email,
   });
@@ -267,7 +280,7 @@ export async function verifyRegisterAction(
     };
   }
 
-  const guardFailure = await guardAuthAction({
+  const guardFailure = await safeGuard({
     action: "verify_register",
     identifier: email,
   });
@@ -316,7 +329,7 @@ export async function resendCodeAction(
   email: string,
   action: "login" | "register" | "verify_new_email" | "delete_account"
 ): Promise<AuthResponse> {
-  const guardFailure = await guardAuthAction({
+  const guardFailure = await safeGuard({
     action: "resend_code",
     identifier: email,
   });

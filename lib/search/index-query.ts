@@ -950,7 +950,7 @@ const audioSource: SourceResolver = {
       capped: rows.length === ctx.limit,
       hits: rows.map((row) => ({
         href: "/audio",
-        id: row.id,
+        id: String(row.id),
         meta: toDate(row.createdAt),
         source: "audio" as const,
         subtitle: [row.model, row.voice].filter(Boolean).join(" · "),
@@ -1394,12 +1394,20 @@ const vibeSource: SourceResolver = {
 
     try {
       const searchTerm = terms[0]?.like || "%";
+      // `posts` ne porte que `author_id` : le pseudo vient de `users`. L'ancienne
+      // requête lisait une colonne `author_username` inexistante (42703, avalé
+      // par le catch) et la source Vibe renvoyait toujours zéro résultat. Seules
+      // les publications publiques et publiées sont cherchables : la recherche
+      // d'un compte ne doit jamais exposer le contenu privé d'un autre.
       const rows = await sql`
-        SELECT id, content, author_username, created_at,
-               count(*) OVER () as total_count
-        FROM posts
-        WHERE content ILIKE ${searchTerm}
-        ORDER BY created_at DESC
+        SELECT p.id, p.content, u.username AS author_username, p.created_at,
+               count(*) OVER () AS total_count
+        FROM posts p
+        LEFT JOIN users u ON u.id = p.author_id
+        WHERE p.content ILIKE ${searchTerm}
+          AND p.visibility::text = 'public'
+          AND p.status = 'published'
+        ORDER BY p.created_at DESC
         LIMIT ${ctx.limit}
         OFFSET ${ctx.offset}
       `;

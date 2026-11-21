@@ -123,10 +123,21 @@ const REQUIRED_TABLES = [
   "MaintenanceWindow",
   // Migration 0087 : codes de vérification OTP (migration Val Town SQLite vers Neon).
   "verification_codes",
+  // Tables d'authentification et de sessions Neon.
+  "users",
+  "connected_devices",
+  "token_blacklist",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  // Table `users` : garde contre le drift `password` vs `password_hash`.
+  { column: "id", table: "users" },
+  { column: "email", table: "users" },
+  { column: "username", table: "users" },
+  { column: "password_hash", table: "users" },
+  { column: "tier", table: "users" },
+  { column: "is_blocked", table: "users" },
   // Migration 0086 : code d'accès / bypass de maintenance.
   { column: "accessCode", table: "MaintenanceWindow" },
   // Migration 0072 : le verrou de révision et le rattachement projet sont
