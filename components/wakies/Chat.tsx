@@ -46,6 +46,7 @@ import {
   useSyncExternalStore,
 } from "react";
 import useSWR from "swr";
+import { WAKIES_POLL_MS } from "@/components/wakies/polling";
 import { demandesValidation } from "@/components/wakies/ApprovalCard";
 import { api } from "@/components/wakies/api";
 import {
@@ -452,7 +453,11 @@ function WakieChat({
       }
       return response;
     },
-    { refreshInterval: 5000, revalidateOnFocus: true, revalidateOnMount: true }
+    {
+      refreshInterval: WAKIES_POLL_MS,
+      revalidateOnFocus: true,
+      revalidateOnMount: true,
+    }
   );
 
   /**
@@ -648,7 +653,7 @@ function WakieChat({
     void rechargerSocial();
   }, [rechargerSocial, messages.length]);
   useSWR(["wakies-social", thread.id], rechargerSocial, {
-    refreshInterval: 5000,
+    refreshInterval: WAKIES_POLL_MS,
   });
 
   const basculerEpingle = useCallback(

@@ -66,7 +66,7 @@ export const FALLBACK_MODELS: ChatModel[] = [
     description:
       "Fleuron de la génération mAI-2.5 : raisonnement approfondi, ingénierie logicielle et computer use",
     id: "mai-2.5-opal",
-    isFree: true,
+    isFree: false,
     maxContext: 1_000_000,
     maxOutput: 384_000,
     name: "mAI-2.5-Opal",
@@ -100,7 +100,7 @@ export const FALLBACK_MODELS: ChatModel[] = [
     description:
       "Modèle cloud d'élite mAI-2.5 : rigueur analytique absolue, audit de code et mathématiques",
     id: "mai-2.5-apex",
-    isFree: true,
+    isFree: false,
     maxContext: 1_000_000,
     maxOutput: 256_000,
     name: "mAI-2.5-Apex",

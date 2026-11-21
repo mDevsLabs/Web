@@ -2,12 +2,14 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
+import { FALLBACK_MODELS } from "@/lib/ai/models";
 import { maiModelsList } from "@/lib/site/mai-models";
 import { modelsData } from "@/lib/site/models-data";
 import {
   resolveMaiIdentityPrompt,
   resolveMaiModelTraits,
 } from "@/mai-identity";
+import { ModelAccessError, requireChatModel } from "@/openrouter-models";
 
 describe("catalogue des modèles mAI-2.5", () => {
   const modelIds = ["mai-2.5-opal", "mai-2.5-apex", "mai-2.5-omni"] as const;
@@ -169,6 +171,60 @@ describe("catalogue des modèles mAI-2 (mai-2, mai-2-mini)", () => {
       expect(content).toContain("## Benchmarks");
       expect(content).toContain("| Licence indiquée | Propriétaire |");
       expect(content).not.toContain("MIT");
+    }
+  });
+});
+
+describe("restrictions des plans (Free vs Plus, Pro, Max) sur mAI-2 et mAI-2.5", () => {
+  it("attribue isFree: true à mAI-2, mAI-2-Mini et mAI-2.5-Omni, et isFree: false à Opal et Apex", () => {
+    const opal = FALLBACK_MODELS.find((m) => m.id === "mai-2.5-opal");
+    const apex = FALLBACK_MODELS.find((m) => m.id === "mai-2.5-apex");
+    const omni = FALLBACK_MODELS.find((m) => m.id === "mai-2.5-omni");
+    const mai2 = FALLBACK_MODELS.find((m) => m.id === "mai-2");
+    const mai2Mini = FALLBACK_MODELS.find((m) => m.id === "mai-2-mini");
+
+    expect(omni?.isFree).toBe(true);
+    expect(mai2?.isFree).toBe(true);
+    expect(mai2Mini?.isFree).toBe(true);
+
+    expect(opal?.isFree).toBe(false);
+    expect(apex?.isFree).toBe(false);
+  });
+
+  it("bloque mAI-2.5-Opal et Apex pour un compte Free dans requireChatModel", async () => {
+    const fakeSql = (() => Promise.resolve([])) as any;
+
+    await expect(
+      requireChatModel(fakeSql, "mai-2.5-opal", false, "openai/gpt-6.1-sol")
+    ).rejects.toThrow(ModelAccessError);
+
+    await expect(
+      requireChatModel(fakeSql, "mai-2.5-apex", false, "openai/gpt-6.1-terra")
+    ).rejects.toThrow(ModelAccessError);
+  });
+
+  it("autorise les modèles :free et mAI gratuits (mai-2, mai-2-mini, mai-2.5-omni) pour un compte Free", async () => {
+    const mockModel = { id: "google/gemini-2.5-flash:free", isActive: true, is_available: true, provider: "google", type: "chat" };
+    const fakeSql = ((query: any) => {
+      return Promise.resolve([mockModel]);
+    }) as any;
+
+    // :free est autorisé et ne lance pas d'erreur d'accès
+    try {
+      await requireChatModel(fakeSql, "google/gemini-2.5-flash:free", false);
+    } catch (e) {
+      if (e instanceof ModelAccessError) {
+        expect(e.status).not.toBe(403);
+      }
+    }
+
+    // mai-2.5-omni n'échoue pas au contrôle 403 de plan
+    try {
+      await requireChatModel(fakeSql, "mai-2.5-omni", false, "openai/gpt-6-luna");
+    } catch (e) {
+      if (e instanceof ModelAccessError) {
+        expect(e.status).not.toBe(403);
+      }
     }
   });
 });

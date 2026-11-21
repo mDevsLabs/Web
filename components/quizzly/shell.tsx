@@ -16,7 +16,7 @@ import {
   UserIcon,
   XIcon,
 } from "@mdevs/icons";
-import { motion } from "framer-motion";
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { ComponentType, ReactNode } from "react";
@@ -80,7 +80,11 @@ export function useResumeQuizzly() {
   });
 }
 
-function coeursAffiches(resume: ResumeClient, maintenant: number): number {
+/** Cœurs régénérés côté affichage : le serveur reste l'autorité. */
+export function coeursAffiches(
+  resume: Pick<ResumeClient, "hearts" | "heartsUpdatedAt">,
+  maintenant: number
+): number {
   if (resume.hearts >= HEARTS_MAX) {
     return HEARTS_MAX;
   }
@@ -259,6 +263,21 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
   }, [data]);
 
   const coeurs = data ? coeursAffiches(data, maintenant) : 0;
+
+  // Petit « battement » du cœur quand un cœur est perdu.
+  const coeursVus = useRef<number | null>(null);
+  const [coeurPerdu, setCoeurPerdu] = useState(0);
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+    const precedent = coeursVus.current;
+    coeursVus.current = coeurs;
+    if (precedent !== null && coeurs < precedent) {
+      setCoeurPerdu((valeur) => valeur + 1);
+    }
+  }, [coeurs, data]);
+
   const aQuizzyVisible =
     pathname === "/quizzly" ||
     pathname.startsWith("/quizzly/quiz") ||
@@ -266,6 +285,7 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
     pathname.startsWith("/quizzly/parcours");
 
   return (
+    <MotionConfig reducedMotion="user">
     <div
       className={cn(
         "quizzly-root flex h-dvh overflow-hidden text-foreground",
@@ -306,16 +326,21 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
               <span className="text-xs text-muted-foreground">Niveau</span>
             )}
           </div>
-          {niveauMonte && data ? (
+          <AnimatePresence>{niveauMonte && data ? (
             <motion.p
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-full bg-q-level px-3 py-1 text-xs font-semibold text-q-on"
-              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+       exit={{ opacity: 0, scale: 0.9, y: -6 }}
+       key="niveau-monte"
+       transition={{ damping: 14, stiffness: 320, type: "spring" }}
+              className="flex items-center gap-1 rounded-full bg-q-level px-3 py-1 text-xs font-semibold text-q-on shadow-md"
+              initial={{ opacity: 0, scale: 0.6, y: 8 }}
             >
-              Niveau {data.niveau}
+              <SparklesIcon className="size-3.5" />
+Niveau {data.niveau} !
             </motion.p>
           ) : null}
-          <div className="ml-auto flex items-center gap-3 text-xs font-semibold">
+          </AnimatePresence>
+   <div className="ml-auto flex items-center gap-3 text-xs font-semibold">
             <button
               className="flex items-center gap-1.5 rounded-full border border-q-level/30 bg-q-level/10 px-2.5 py-1 text-xs font-medium text-foreground transition-all hover:bg-q-level/20 cursor-pointer"
               onClick={() =>
@@ -347,10 +372,11 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
             </span>
             <span className="inline-flex items-center gap-1">
               <HeartIcon
+  key={`coeur-${coeurPerdu}`}
                 className={cn(
                   "size-4",
                   coeurs > 0 ? "text-q-heart" : "text-muted-foreground",
-                  coeurs === 1 && "q-float"
+                  coeurPerdu > 0 ? "q-heart-lost" : coeurs === 1 && "q-float"
                 )}
               />
               {data ? coeurs : "–"}
@@ -434,5 +460,6 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
         </div>
       ) : null}
     </div>
+    </MotionConfig>
   );
 }

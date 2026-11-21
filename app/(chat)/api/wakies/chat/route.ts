@@ -34,7 +34,7 @@ import {
 import { loadMcpContext } from "@/lib/chat/mcp";
 import { buildMemoryContext } from "@/lib/chat/memory";
 import { createChatTools } from "@/lib/chat/tools";
-import { MAI_API_URL, MAI_UPGRADE_URL } from "@/lib/constants";
+import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { getUserMcpPrefs, recordTokenUsage } from "@/lib/db/queries";
 import { getUserPreferences } from "@/lib/db/queries/users";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
@@ -892,37 +892,6 @@ export async function POST(request: Request) {
                 "[wakies-chat] Échec du décompte local:",
                 erreurEcriture
               );
-            }
-
-            // Notification du compteur côté API mAI, comme `/api/chat` : la base
-            // Next n'est pas la seule à tenir le quota du compte.
-            try {
-              const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
-                body: JSON.stringify({
-                  idempotencyKey: usageEventKey,
-                  inputTokens,
-                  isGhostMode: false,
-                  model: modelId,
-                  outputTokens,
-                  reasoningTokens,
-                  tokensUsed: totalTokens,
-                }),
-                headers: {
-                  Authorization: `Bearer ${auth.sessionToken}`,
-                  "Content-Type": "application/json",
-                },
-                method: "POST",
-                signal: AbortSignal.timeout(10_000),
-              });
-              if (!logRes.ok) {
-                console.error(
-                  "[wakies-chat][API log-usage] Status:",
-                  logRes.status,
-                  await logRes.text()
-                );
-              }
-            } catch (logErr) {
-              console.error("[wakies-chat] Erreur décompte log-usage:", logErr);
             }
 
             // Overlay de session pour le compteur du client : la valeur serveur

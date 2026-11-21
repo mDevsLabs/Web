@@ -16,7 +16,6 @@ import { webSearch } from "@/lib/ai/tools/web-search";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { buildMemoryContext, joinMemoryBlocks } from "@/lib/chat/memory";
-import { MAI_API_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries/chats";
 import { updateSearchQuerySummary } from "@/lib/db/queries/search-history";
 import { getUserPreferences } from "@/lib/db/queries/users";
@@ -287,42 +286,7 @@ N'utilise aucune connaissance extérieure aux extraits.`;
         const totalTokens =
           usage?.totalTokens ?? inputTokens + outputTokens + reasoningTokens;
 
-        // 1. Journalisation obligatoire dans l'endpoint API mAI /log-usage
-        try {
-          const logPayload = {
-            inputTokens,
-            isGhostMode: false,
-            model: modelId,
-            outputTokens,
-            reasoningTokens,
-            tokensUsed: totalTokens,
-          };
-
-          const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
-            body: JSON.stringify(logPayload),
-            headers: {
-              ...(sessionToken
-                ? { Authorization: `Bearer ${sessionToken}` }
-                : {}),
-              "Content-Type": "application/json",
-            },
-            method: "POST",
-          });
-
-          if (!logRes.ok) {
-            console.warn(
-              "[mAI-Search-Summary] Notification /log-usage statut HTTP:",
-              logRes.status
-            );
-          }
-        } catch (logErr) {
-          console.error(
-            "[mAI-Search-Summary] Erreur lors de l'enregistrement dans /log-usage:",
-            logErr
-          );
-        }
-
-        // 2. Enregistrement local en base de données si utilisateur connecté
+        // Enregistrement direct en base de données si utilisateur connecté
         if (session?.userId && totalTokens > 0) {
           try {
             await recordTokenUsage({

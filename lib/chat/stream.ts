@@ -31,7 +31,7 @@ import {
   chatModelToolParams,
   hasArtifactChatTool,
 } from "@/lib/chat/tool-policy";
-import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
+import { isProductionEnvironment } from "@/lib/constants";
 import {
   createNotification,
   createStreamId,
@@ -372,37 +372,6 @@ async function handleTokenAccounting(params: {
       userEmail: email,
       userId,
     });
-
-    // 2. Notification de l'endpoint API mAI log-usage
-    try {
-      const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
-        body: JSON.stringify({
-          inputTokens,
-          isGhostMode,
-          model: chatModel,
-          outputTokens,
-          reasoningTokens,
-          tokensUsed: totalTokens,
-        }),
-        headers: {
-          Authorization: `Bearer ${sessionToken}`,
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
-
-      if (!logRes.ok) {
-        const errText = await logRes.text();
-        console.error(
-          "[API log-usage] Status:",
-          logRes.status,
-          "Response:",
-          errText
-        );
-      }
-    } catch (logErr) {
-      console.error("Erreur décompte log-usage:", logErr);
-    }
 
     // 3. Diffusion en direct au client via le flux
     try {

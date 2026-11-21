@@ -1,8 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
-import { upstreamJson } from "@/lib/api/upstream";
-import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { getUserApiKey } from "@/lib/db/api-keys";
+import { getMaiUser } from "@/lib/auth/session";
 
 // Voix Flux par défaut collées par l'API amont à tous les modèles sans voix
 // déclarées : elles ne sont valides que pour la famille flux/deepgram.
@@ -15,99 +13,43 @@ const FLUX_FALLBACK_VOICES = [
   "flux-orion-en",
 ];
 
-const FALLBACK_SPEECH_MODELS = [
+const DEFAULT_SPEECH_MODELS = [
   {
     description:
       "Modèle de synthèse vocale (TTS) ultra-rapide et haute fidélité par Deepgram.",
     id: "deepgram/flux-tts:free",
+    isFree: true,
     name: "Deepgram: Flux TTS",
-    voices: [
-      "flux-alexis-en",
-      "flux-michael-en",
-      "flux-stacy-en",
-      "flux-sam-en",
-      "flux-asteria-en",
-      "flux-orion-en",
-    ],
+    voices: FLUX_FALLBACK_VOICES,
+  },
+  {
+    description: "Modèle de synthèse vocale standard par OpenAI.",
+    id: "openai/tts-1",
+    isFree: false,
+    name: "OpenAI: TTS-1",
+    voices: ["alloy", "echo", "fable", "onyx", "nova", "shimmer"],
+  },
+  {
+    description: "Modèle de synthèse vocale haute fidélité par OpenAI.",
+    id: "openai/tts-1-hd",
+    isFree: false,
+    name: "OpenAI: TTS-1 HD",
+    voices: ["alloy", "echo", "fable", "onyx", "nova", "shimmer"],
   },
 ];
-
-function resolveModelVoices(modelId: string, declaredVoices: unknown) {
-  const id = (modelId || "").toLowerCase();
-  const isFluxFamily = id.includes("flux") || id.includes("deepgram");
-  const declared = Array.isArray(declaredVoices) ? declaredVoices : [];
-  if (declared.length === 0) {
-    return isFluxFamily ? FLUX_FALLBACK_VOICES : undefined;
-  }
-  if (
-    !isFluxFamily &&
-    declared.length === FLUX_FALLBACK_VOICES.length &&
-    [...declared].sort().join(",") ===
-      [...FLUX_FALLBACK_VOICES].sort().join(",")
-  ) {
-    return;
-  }
-  return declared;
-}
 
 export async function GET(_req: NextRequest) {
   try {
     const user = await getMaiUser();
-    let authHeader = "";
+    const isPaid = user?.tier && user.tier.toLowerCase() !== "free";
 
-    if (user?.id) {
-      const apiKey = await getUserApiKey(user.id);
-      if (apiKey) {
-        authHeader = `Bearer ${apiKey}`;
-      }
-    }
-
-    if (!authHeader) {
-      const token = await getMaiSessionToken();
-      if (token) {
-        authHeader = `Bearer ${token}`;
-      }
-    }
-
-    const token = authHeader ? authHeader.replace(/^Bearer\s+/i, "") : null;
-    const result = await upstreamJson<{ data?: any[] }>({
-      next: { revalidate: 60, tags: ["speech-models"] },
-      path: "/v1/models/speech",
-      token,
-    });
-
-    if (!result.ok) {
-      return NextResponse.json({
-        data: FALLBACK_SPEECH_MODELS,
-        models: FALLBACK_SPEECH_MODELS,
-        object: "list",
-      });
-    }
-
-    const rawList = result.data.data || [];
-    // Noms normalisés (préfixe fournisseur retiré, suffixe (Free)) et voix
-    // filtrées : seules les voix propres au modèle sont exposées.
-    const models = rawList.map((m: any) => ({
+    const models = DEFAULT_SPEECH_MODELS.filter((m) => {
+      if (!isPaid) return m.isFree;
+      return true;
+    }).map((m) => ({
       ...m,
-      isFree:
-        typeof m.isFree === "boolean"
-          ? m.isFree
-          : String(m.id || "").endsWith(":free"),
-      name: normalizeModelDisplayName(m.id, m.name || m.id),
-      voices: resolveModelVoices(m.id, m.voices),
+      name: normalizeModelDisplayName(m.id, m.name),
     }));
-
-    // Un catalogue vide n'est pas un catalogue : la base peut n'avoir aucun
-    // modèle accessible au forfait courant, ou l'amont peut avoir filtré trop
-    // strictement. On garde au moins le modèle de repli pour que l'interface
-    // ne présente pas un sélecteur vide.
-    if (models.length === 0) {
-      return NextResponse.json({
-        data: FALLBACK_SPEECH_MODELS,
-        models: FALLBACK_SPEECH_MODELS,
-        object: "list",
-      });
-    }
 
     return NextResponse.json(
       {
@@ -125,8 +67,8 @@ export async function GET(_req: NextRequest) {
     console.error("Erreur API models/speech:", error);
     return NextResponse.json(
       {
-        data: FALLBACK_SPEECH_MODELS,
-        models: FALLBACK_SPEECH_MODELS,
+        data: DEFAULT_SPEECH_MODELS,
+        models: DEFAULT_SPEECH_MODELS,
         object: "list",
       },
       { status: 200 }

@@ -1,9 +1,18 @@
 name: "CRON Master (Ordonnanceur Groupé)"
 
+# Dépôt public : les minutes GitHub Actions sont illimitées, mais GitHub ne
+# garantit pas la ponctualité des `schedule` (retards de plusieurs minutes aux
+# heures de pointe, voire ticks sautés). Ce workflow est donc un filet régulier,
+# pas l'unique ordonnanceur :
+#   - Vercel Cron (plan Hobby, 1 passage/jour) appelle `/api/cron/daily` ;
+#   - les ticks paresseux (table Neon `cron_ticks`, bail atomique) se déclenchent
+#     à la sollicitation de la cloche de notifications.
+# Les trois sources partagent le même bail : aucune occurrence n'est exécutée
+# deux fois. Le job n'a besoin ni du dépôt ni de Node : un simple `curl`.
+
 on:
   schedule:
-    # Exécution cadencée groupée (toutes les 10 min pour préserver le quota GitHub Actions)
-    - cron: "*/10 * * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
     inputs:
       tick:
@@ -16,6 +25,8 @@ concurrency:
   group: cron-master
   cancel-in-progress: false
 
+permissions: {}
+
 jobs:
   run-ticks:
     name: "Exécution des Ticks"
@@ -23,16 +34,68 @@ jobs:
     timeout-minutes: 6
 
     steps:
-      - name: "Récupération du dépôt"
-        uses: actions/checkout@v4
-
-      - name: "Configuration de Node.js"
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: "Exécution des ticks CRON"
-        run: node scripts/cron/run-tick.mjs "${{ inputs.tick || 'all' }}"
+      - name: "Appel des ticks CRON"
+        shell: bash
         env:
           APP_URL: ${{ secrets.APP_URL }}
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          TICK: ${{ inputs.tick || 'all' }}
+        run: |
+          set -uo pipefail
+
+          if [ -z "${APP_URL:-}" ] || [ -z "${CRON_SECRET:-}" ]; then
+            echo "::error::Les secrets APP_URL et CRON_SECRET sont requis."
+            exit 1
+          fi
+
+          BASE="${APP_URL%/}"
+          case "$BASE" in
+            https://*) ;;
+            *) echo "::error::APP_URL doit commencer par https://"; exit 1 ;;
+          esac
+
+          case "$TICK" in
+            all|agent|planning|wakies|vibe|notifications|quizzly) ;;
+            *) echo "::error::Tick inconnu : $TICK"; exit 1 ;;
+          esac
+
+          # Le secret passe par un fichier de configuration curl (jamais en argument
+          # de ligne de commande, jamais dans l'URL).
+          HDR="$RUNNER_TEMP/cron-auth.conf"
+          umask 077
+          printf 'header = "Authorization: Bearer %s"\n' "$CRON_SECRET" > "$HDR"
+          trap 'rm -f "$HDR"' EXIT
+
+          run_tick() {
+            local name="$1" method="$2" max="$3" code
+            code=$(curl -sS -o /dev/null -w '%{http_code}' \
+              -X "$method" --max-time "$max" -K "$HDR" \
+              "$BASE/api/cron/$name") || code="000"
+            echo "tick=$name methode=$method statut=$code"
+            case "$code" in
+              2*) return 0 ;;
+              *) echo "::error::Tick $name en échec (HTTP $code)"; return 1 ;;
+            esac
+          }
+
+          pids=()
+          launch() {
+            if [ "$TICK" = "all" ] || [ "$TICK" = "$1" ]; then
+              run_tick "$1" "$2" "$3" &
+              pids+=("$!")
+            fi
+          }
+
+          # nom, verbe HTTP, budget en secondes (aligné sur maxDuration de la route)
+          launch agent         POST 285
+          launch planning      POST 290
+          launch wakies        POST 290
+          launch vibe          GET   60
+          launch notifications POST 120
+          launch quizzly       POST  60
+
+          failed=0
+          for pid in "${pids[@]}"; do
+            wait "$pid" || failed=1
+          done
+          exit "$failed"

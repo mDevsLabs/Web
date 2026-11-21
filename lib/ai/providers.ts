@@ -1,8 +1,21 @@
 import { createOpenAI } from "@ai-sdk/openai";
-import { MAI_API_URL } from "../constants";
 import { titleModel } from "./models";
 import type { ReasoningDetailsSink } from "./reasoning-details";
 import { filterModelsForTier } from "./registry/tiers";
+
+// Alias cloud mAI -> modèles backing OpenRouter réels
+const MAI_BACKING_MODELS: Record<string, string> = {
+  "mai-2": "deepseek/deepseek-v4.1-flash",
+  "mai-2-mini": "minimax/minimax-m3",
+  "mai-2.5-apex": "openai/gpt-6.1-terra",
+  "mai-2.5-omni": "openai/gpt-6-luna",
+  "mai-2.5-opal": "openai/gpt-6.1-sol",
+  "mdevslabs/mai-2": "deepseek/deepseek-v4.1-flash",
+  "mdevslabs/mai-2-mini": "minimax/minimax-m3",
+  "mdevslabs/mai-2.5-apex": "openai/gpt-6.1-terra",
+  "mdevslabs/mai-2.5-omni": "openai/gpt-6-luna",
+  "mdevslabs/mai-2.5-opal": "openai/gpt-6.1-sol",
+};
 
 // Résout un identifiant de modèle utilitaire (titres, résumés, planification)
 // vers un modèle réellement accessible au forfait de l'utilisateur. Sans cela,
@@ -48,21 +61,20 @@ export function getLanguageModel(
   }
 ) {
   const effectiveKey =
-    options?.apiKey || options?.sessionToken || process.env.MAI_API_KEY;
+    process.env.OPENROUTER_API_KEY ||
+    (options?.apiKey?.startsWith("sk-or-") ? options.apiKey : "") ||
+    options?.apiKey ||
+    options?.sessionToken ||
+    process.env.MAI_API_KEY;
 
-  // Aucun repli sur une chaîne littérale partagée. Un identifiant statique
-  // « par défaut » est inoffensif tant que le backend le refuse, mais il
-  // transforme une configuration absente en tentative d'appel authentifiée : il
-  // suffit qu'un jour le backend l'accepte pour obtenir des appels modèle
-  // non facturés. Une configuration manquante doit échouer franchement.
   if (!effectiveKey) {
     throw new Error(
-      "Aucun identifiant d'API disponible : session absente et MAI_API_KEY non défini."
+      "Aucun identifiant d'API disponible : OPENROUTER_API_KEY, session ou clé API absente."
     );
   }
 
   const headers: Record<string, string> = {
-    "HTTP-Referer": "https://mai.val.run",
+    "HTTP-Referer": "https://mai.mdevs.fr",
     "X-Title": "mAI Web",
   };
 
@@ -70,15 +82,18 @@ export function getLanguageModel(
     headers["x-user-id"] = options.userId;
   }
 
-  const maiBaseUrl = MAI_API_URL.endsWith("/v1")
-    ? MAI_API_URL
-    : `${MAI_API_URL.replace(/\/+$/, "")}/v1`;
+  // Redirection directe vers OpenRouter API v1 (sans passer par Val Town)
+  const openRouterBaseUrl =
+    process.env.OPENROUTER_BASE_URL?.replace(/\/+$/, "") ||
+    "https://openrouter.ai/api/v1";
 
   const reasoningSink = options?.reasoningSink;
+  const targetModelId =
+    MAI_BACKING_MODELS[modelId.toLowerCase().trim()] || modelId;
 
   const maiClient = createOpenAI({
     apiKey: effectiveKey,
-    baseURL: maiBaseUrl,
+    baseURL: openRouterBaseUrl,
     fetch: async (url, init) => {
       let urlStr = url.toString();
       if (
@@ -89,15 +104,13 @@ export function getLanguageModel(
       }
       const response = await fetch(urlStr, init);
       // Le provider ignore les blocs de raisonnement : c'est le dernier point
-      // où le flux passe intact, donc le seul endroit où les capturer. Sans
-      // collecteur, la réponse est renvoyée telle quelle — un `tee()` inutile
-      // coûterait de la mémoire sur chaque appel.
+      // où le flux passe intact, donc le seul endroit où les capturer.
       return reasoningSink ? reasoningSink.attach(response) : response;
     },
     headers,
   });
 
-  return maiClient.chat(modelId);
+  return maiClient.chat(targetModelId);
 }
 
 export function getTitleModel(options?: {

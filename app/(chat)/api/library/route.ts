@@ -1,8 +1,13 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { upstreamForm, upstreamJson } from "@/lib/api/upstream";
+import { upstreamForm } from "@/lib/api/upstream";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { getTierStorageBytes } from "@/lib/plans/tier-limits";
+import {
+  deleteUserCloudFile,
+  getUserCloudFiles,
+  getUserCloudStorage,
+  renameUserCloudFile,
+} from "@/lib/db/queries/storage";
 
 // Aligné sur `app/(chat)/api/files/upload/route.ts`.
 const MAX_LIBRARY_FILE_SIZE = 50 * 1024 * 1024;
@@ -14,46 +19,18 @@ export async function GET() {
   }
 
   try {
-    const [user, storage, files] = await Promise.all([
-      getMaiUser(token),
-      upstreamJson<Record<string, any>>({
-        path: "/cloud/storage",
-        token,
-      }),
-      upstreamJson<{ files?: any[] }>({ path: "/cloud/files", token }),
+    const user = await getMaiUser(token);
+    if (!user?.id) {
+      return errorResponse("auth_required", { message: "Non authentifié." });
+    }
+    const [storage, files] = await Promise.all([
+      getUserCloudStorage(user.id, user.tier),
+      getUserCloudFiles(user.id),
     ]);
 
-    // Une lecture en échec ne doit pas vider la page : le quota de stockage se
-    // lit dans le forfait, donc l'onglet reste utilisable et affiche « aucun
-    // fichier » si seul le catalogue est injoignable.
-    const storageData = storage.ok ? storage.data : null;
-    const filesData = files.ok ? files.data : { files: [] };
-
-    const userTier = (user?.tier || storageData?.tier || "Free").trim();
-    const exactLimit = Number(
-      storageData?.bytes_limit || getTierStorageBytes(userTier)
-    );
-
-    const bytesUsed = Number(storageData?.bytes_used || 0);
-    const percentUsed =
-      exactLimit > 0
-        ? Math.min(100, Math.round((bytesUsed / exactLimit) * 10_000) / 100)
-        : 0;
-
-    const finalStorage = {
-      bytes_limit: exactLimit,
-      bytes_used: bytesUsed,
-      files_count: Number(
-        storageData?.files_count || (filesData?.files?.length ?? 0)
-      ),
-      over_limit: bytesUsed >= exactLimit,
-      percent_used: percentUsed,
-      tier: userTier,
-    };
-
     return NextResponse.json({
-      files: filesData.files || [],
-      storage: finalStorage,
+      files,
+      storage,
     });
   } catch (error) {
     logError("Erreur API Library GET", error);
@@ -88,19 +65,13 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const [user, storage] = await Promise.all([
-      getMaiUser(token),
-      upstreamJson<Record<string, any>>({
-        path: "/cloud/storage",
-        token,
-      }),
-    ]);
-    const storageData = storage.ok ? storage.data : null;
-    const userTier = (user?.tier || storageData?.tier || "Free").trim();
-    const bytesLimit = Number(
-      storageData?.bytes_limit || getTierStorageBytes(userTier)
-    );
-    const bytesUsed = Number(storageData?.bytes_used || 0);
+    const user = await getMaiUser(token);
+    if (!user?.id) {
+      return errorResponse("auth_required", { message: "Non authentifié." });
+    }
+    const storageData = await getUserCloudStorage(user.id, user.tier);
+    const bytesLimit = storageData.bytes_limit;
+    const bytesUsed = storageData.bytes_used;
     if (bytesLimit > 0 && bytesUsed + file.size > bytesLimit) {
       return errorResponse("quota_exceeded", {
         message: "Le quota de la Bibliothèque est atteint.",
@@ -148,17 +119,17 @@ export async function DELETE(req: NextRequest) {
   }
 
   try {
-    const result = await upstreamJson({
-      method: "DELETE",
-      path: `/cloud/files/${fileId}`,
-      token,
-    });
-    if (!result.ok) {
-      return NextResponse.json(result.payload, {
-        status: result.payload.status,
+    const user = await getMaiUser(token);
+    if (!user?.id) {
+      return errorResponse("auth_required", { message: "Non authentifié." });
+    }
+    const result = await deleteUserCloudFile(fileId, user.id);
+    if (!result.success) {
+      return errorResponse(result.notFound ? "not_found" : "internal_error", {
+        message: result.error || "Erreur lors de la suppression.",
       });
     }
-    return NextResponse.json(result.data);
+    return NextResponse.json({ success: true });
   } catch (error) {
     logError("Erreur API Library DELETE", error);
     return errorResponse("internal_error", {
@@ -184,26 +155,18 @@ export async function PATCH(req: NextRequest) {
       });
     }
 
-    const result = await upstreamJson({
-      body: { name },
-      method: "PATCH",
-      path: `/cloud/files/${id}`,
-      token,
-    });
-    if (!result.ok) {
-      // Le nom n'a pas été modifié : le dire explicitement évite que
-      // l'interface montre un optimistic update que rien n'a confirmé.
-      return NextResponse.json(
-        {
-          ...result.payload,
-          message: result.payload.message.includes("joignable")
-            ? "Le service de fichiers est indisponible. Le nom n'a pas été modifié."
-            : result.payload.message,
-        },
-        { status: result.payload.status }
-      );
+    const user = await getMaiUser(token);
+    if (!user?.id) {
+      return errorResponse("auth_required", { message: "Non authentifié." });
     }
-    return NextResponse.json(result.data);
+    const ok = await renameUserCloudFile(id, user.id, name);
+    if (!ok) {
+      // Aucune ligne modifiée : le fichier n'existe pas pour ce compte.
+      return errorResponse("not_found", {
+        message: "Fichier introuvable. Le nom n'a pas été modifié.",
+      });
+    }
+    return NextResponse.json({ success: true });
   } catch (error) {
     logError("Erreur API Library PATCH", error);
     return errorResponse("internal_error", {

@@ -10,7 +10,12 @@ import {
   XIcon,
   ZapIcon,
 } from "@mdevs/icons";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  animate as animer,
+  motion,
+  useReducedMotion,
+} from "framer-motion";
 import Link from "next/link";
 import {
   type ReactNode,
@@ -25,7 +30,10 @@ import {
   Quizzy,
   type QuizzyPose,
 } from "@/components/quizzly/quizzy";
-import { useResumeQuizzly } from "@/components/quizzly/shell";
+import {
+  coeursAffiches,
+  useResumeQuizzly,
+} from "@/components/quizzly/shell";
 import { FormulaireSignalement } from "@/components/quizzly/signalement";
 import { PASS_CORRECT } from "@/lib/quizzly/rules";
 import type { PublicQuiz } from "@/lib/quizzly/schema";
@@ -37,6 +45,7 @@ import {
   playIncorrectSound,
   setSoundEnabled,
 } from "@/lib/quizzly/sound-effects";
+import { useEconomy } from "@/lib/resources/economy";
 import { cn } from "@/lib/utils";
 
 type Correction = {
@@ -100,6 +109,28 @@ function Rangee({
       </div>
     </div>
   );
+}
+
+/** Score qui défile de 0 à sa valeur (coupé en économie / mouvement réduit). */
+function CompteurAnime({ valeur }: { valeur: number }) {
+  const { isEconomy } = useEconomy();
+  const reduit = useReducedMotion();
+  const [affiche, setAffiche] = useState(0);
+
+  useEffect(() => {
+    if (isEconomy || reduit) {
+      setAffiche(valeur);
+      return;
+    }
+    const controle = animer(0, valeur, {
+      duration: 0.9,
+      ease: "easeOut",
+      onUpdate: (courant) => setAffiche(Math.round(courant)),
+    });
+    return () => controle.stop();
+  }, [valeur, isEconomy, reduit]);
+
+  return <span className="tabular-nums">{affiche}</span>;
 }
 
 export function QuizPlayer({ quizId }: { quizId: string }) {
@@ -248,7 +279,15 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
   }
 
   // Écran plus de cœurs
-  if (((resume.data?.hearts ?? 0) <= 0 && !revelation && !bilan) || gameOver) {
+  // Cœurs RÉGÉNÉRÉS (pas la valeur brute stockée), et jamais sans données :
+  // un résumé en erreur ne doit pas afficher « plus de cœurs » à tort.
+  const coeursDispo = resume.data
+    ? coeursAffiches(resume.data, Date.now())
+    : null;
+  if (
+    (coeursDispo !== null && coeursDispo <= 0 && !revelation && !bilan) ||
+    gameOver
+  ) {
     return (
       <section className="mx-auto max-w-xl p-6">
         <Rangee pose="hearts">
@@ -303,7 +342,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         <ConfettisBonneReponse actif={bilan.passed} />
 
         <Rangee pose={poseDuScore(bilan)} taille="score">
-          <div className="surface-quizzly-card relative overflow-hidden flex flex-col gap-5 p-6 sm:p-8">
+          <div className="surface-quizzly-card fade-up relative overflow-hidden flex flex-col gap-5 p-6 sm:p-8">
             <div className="flex items-center justify-between">
               <span
                 className={cn(
@@ -316,7 +355,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                 {bilan.passed ? "Quiz Validé ! 🎉" : "À reprendre"}
               </span>
 
-              <div className="flex items-center gap-1.5 text-sm font-bold text-amber-500">
+              <div className="q-pop flex items-center gap-1.5 text-sm font-bold text-amber-500">
                 <ZapIcon className="size-4" />
                 <span>+{bilan.xpAwarded} XP</span>
               </div>
@@ -325,8 +364,10 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
             {/* Gros score circulaire */}
             <div className="flex flex-col items-center justify-center py-2 text-center">
               <div className="text-5xl font-black text-slate-900 dark:text-white">
-                {bilan.correctCount}
-                <span className="text-2xl font-bold text-slate-400">/10</span>
+                <CompteurAnime valeur={bilan.correctCount} />
+                <span className="text-2xl font-bold text-slate-400">
+           /{bilan.totalCount}
+  </span>
               </div>
               <p className="mt-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
                 {bilan.passed
@@ -361,12 +402,16 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                   Erreurs à revoir :
                 </span>
                 <ul className="flex flex-col gap-2">
-                  {fautes.map((ligne) => {
+                  {fautes.map((ligne, rang) => {
                     const question = quiz.questions.find(
                       (entree) => entree.id === ligne.questionId
                     );
                     return (
-                      <li key={ligne.questionId}>
+                      <li
+   className="fade-up"
+   key={ligne.questionId}
+          style={{ animationDelay: `${300 + rang * 70}ms` }}
+        >
                         <Link
                           className="flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50/60 px-3 py-2 text-xs font-semibold text-blue-800 hover:bg-blue-100 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-300"
                           href={`/quizzly/coach?quiz=${encodeURIComponent(quiz.id)}&question=${encodeURIComponent(ligne.questionId)}`}
@@ -452,12 +497,21 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
       const cle = `${question.id}:${selection.slice().sort().join(",")}`;
       const precharge = correctionsCacheRef.current.get(cle);
 
-      const synchroniserReponse = async (reponseCorr: Correction) => {
+      // `dejaCommite` : la réponse vient déjà du POST qui a débité le cœur.
+      // Sans ce drapeau, une réponse fausse était postée deux fois
+      // (double perte de cœur) quand la pré-correction avait échoué.
+      const synchroniserReponse = async (
+        reponseCorr: Correction,
+        dejaCommite = false
+      ) => {
         setRevelation(reponseCorr);
         if (reponseCorr.correct) {
           playCorrectSound();
         } else {
           playIncorrectSound();
+   if (dejaCommite) {
+            return;
+          }
           const toutesReponses = quiz.questions
             .slice(0, index + 1)
             .map((entree) => ({
@@ -501,7 +555,14 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
       };
 
       if (precharge && !(precharge instanceof Promise)) {
-        await synchroniserReponse(precharge);
+        // Bouton bloqué pendant le débit du cœur : sinon « Continuer »
+        // pouvait passer avant la détection du game over.
+ setEnvoi(true);
+        try {
+   await synchroniserReponse(precharge);
+        } finally {
+   setEnvoi(false);
+        }
         return;
       }
 
@@ -531,7 +592,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
             selectedIndexes: selection,
           }
         );
-        await synchroniserReponse(directe);
+        await synchroniserReponse(directe, true);
         if (typeof directe.hearts === "number") {
           await resume.mutate();
         }
@@ -656,6 +717,14 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         )}
       </div>
 
+      <AnimatePresence initial={false} mode="wait">
+        <motion.div
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -32 }}
+   initial={{ opacity: 0, x: 32 }}
+          key={question.id}
+          transition={{ duration: 0.22, ease: "easeOut" }}
+        >
       <Rangee pose={pose}>
         <div
           className={cn(
@@ -683,6 +752,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                   aria-pressed={actif}
                   className={cn(
                     "flex min-h-14 items-center gap-3 rounded-2xl border p-3.5 text-left text-sm font-semibold transition-all cursor-pointer touch-manipulation active:scale-[0.99] sm:text-sm",
+      !revelation && "fade-up",
                     !revelation &&
                       !actif &&
                       "border-slate-200/90 bg-white/90 text-slate-800 hover:border-blue-400 hover:bg-blue-50/60 shadow-xs dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800",
@@ -690,13 +760,14 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                       actif &&
                       "border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-500/20 scale-[1.01]",
                     attendue &&
-                      "border-emerald-500 bg-emerald-100/80 text-emerald-900 ring-2 ring-emerald-500/30 dark:bg-emerald-950 dark:text-emerald-200",
+                      "q-correct-pop border-emerald-500 bg-emerald-100/80 text-emerald-900 ring-2 ring-emerald-500/30 dark:bg-emerald-950 dark:text-emerald-200",
                     donnee &&
                       !attendue &&
                       "border-rose-500 bg-rose-100/80 text-rose-900 ring-2 ring-rose-500/30 dark:bg-rose-950 dark:text-rose-200"
                   )}
                   disabled={Boolean(revelation)}
-                  key={option}
+                  key={`${question.id}-${position}`}
+    style={{ animationDelay: `${position * 60}ms` }}
                   onClick={() => basculer(position)}
                   type="button"
                 >
@@ -732,7 +803,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
               <motion.div
                 animate={{ height: "auto", opacity: 1 }}
                 className={cn(
-                  "rounded-2xl p-3.5 text-xs font-medium",
+                  "overflow-hidden rounded-2xl p-3.5 text-xs font-medium",
                   revelation.correct
                     ? "bg-emerald-100/70 text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200"
                     : "bg-rose-100/70 text-rose-900 dark:bg-rose-950/50 dark:text-rose-200"
@@ -752,6 +823,9 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         </div>
       </Rangee>
 
+        </motion.div>
+      </AnimatePresence>
+
       {erreur && (
         <p className="text-xs font-semibold text-destructive">{erreur}</p>
       )}
@@ -769,7 +843,10 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
             "min-h-12 rounded-full px-7 py-3 text-sm font-bold text-white transition-all shadow-md touch-manipulation",
             (!revelation && selection.length === 0) || envoi
               ? "cursor-not-allowed bg-slate-300 text-slate-500 opacity-60 dark:bg-slate-800 dark:text-slate-400"
-              : "cursor-pointer bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95"
+              : cn(
+           "cursor-pointer bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95",
+           revelation && "q-pulse-blue"
+         )
           )}
           disabled={(!revelation && selection.length === 0) || envoi}
           onClick={() => {

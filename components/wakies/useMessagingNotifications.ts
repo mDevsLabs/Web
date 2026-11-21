@@ -19,6 +19,7 @@
  */
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import useSWR from "swr";
+import { wakiesAlertPollInterval } from "@/components/wakies/polling";
 import { alerterUneFois } from "@/lib/wakies/client/notifications";
 import { api } from "./api";
 
@@ -65,7 +66,8 @@ export function useMessagingNotifications(activeConversationId?: string) {
       return releve;
     },
     {
-      refreshInterval: 5000,
+      // Onglet masqué : relève conservée (alertes du navigateur) mais lente.
+      refreshInterval: wakiesAlertPollInterval,
       refreshWhenHidden: true,
       revalidateOnFocus: true,
     }

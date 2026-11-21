@@ -1,6 +1,5 @@
 import "server-only";
 
-import { upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
@@ -54,24 +53,24 @@ async function readCatalogModels(params: {
     return cached.models;
   }
 
-  const result = await upstreamJson<{ data?: unknown }>({
-    headers: params.headers,
-    next: { revalidate: 60, tags: ["catalog-models"] },
-    path: "/v1/models",
-    token: params.token,
-  });
-  if (!result.ok) {
-    if (cached) {
-      return cached.models;
+  try {
+    const res = await fetch("https://openrouter.ai/api/v1/models", {
+      next: { revalidate: 300 },
+    });
+    if (res.ok) {
+      const json = await res.json();
+      const rawList = Array.isArray(json.data) ? json.data : [];
+      // Combiner les modèles souverains mAI avec le catalogue OpenRouter
+      const mapped = mapCatalogModels([...FALLBACK_MODELS, ...rawList]);
+      CATALOG_CACHE.set(cacheKey, {
+        expiresAt: now + CATALOG_CACHE_TTL_MS,
+        models: mapped,
+      });
+      return mapped;
     }
-    return null;
-  }
-  const mapped = mapCatalogModels(result.data.data || []);
-  CATALOG_CACHE.set(cacheKey, {
-    expiresAt: now + CATALOG_CACHE_TTL_MS,
-    models: mapped,
-  });
-  return mapped;
+  } catch {}
+
+  return FALLBACK_MODELS;
 }
 
 export async function fetchUserModels(): Promise<ChatModel[]> {

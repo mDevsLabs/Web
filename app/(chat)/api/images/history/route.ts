@@ -1,11 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server";
-import {
-  errorResponse,
-  logError,
-  normalizeUpstreamError,
-} from "@/lib/api/error-response";
+import { errorResponse, logError } from "@/lib/api/error-response";
+import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
+import {
+  deleteImageGeneration,
+  getImageGenerations,
+  updateImageGeneration,
+} from "@/lib/db/queries/generations";
 import { formatImageSrc } from "@/lib/utils";
 
 // `page` et `limit` partaient tels quels dans la requête amont, sans être
@@ -31,28 +32,23 @@ export async function GET(req: NextRequest) {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
+  const auth = await requireUser(token);
+  if (!auth) {
+    return errorResponse("auth_required", { message: "Non authentifié." });
+  }
+  const { userId } = auth;
+
   const { searchParams } = req.nextUrl;
   const page = readPositiveInt(searchParams.get("page"), 1, 10_000);
   const limit = readPositiveInt(searchParams.get("limit"), 20, 100);
 
   try {
-    const res = await fetch(
-      `${MAI_API_URL}/v1/images/history?page=${page}&limit=${limit}`,
-      {
-        cache: "no-store",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const { items: rawItems, total } = await getImageGenerations({
+      limit,
+      page,
+      userId,
+    });
 
-    const data = await res.json();
-    if (!res.ok) {
-      const payload = normalizeUpstreamError(data, res.status);
-      return NextResponse.json(payload, { status: payload.status });
-    }
-
-    const rawItems = data.data || data.images || [];
     const items = rawItems.map((item: any) => ({
       ...item,
       image_url: formatImageSrc(item.image_url),
@@ -62,7 +58,7 @@ export async function GET(req: NextRequest) {
       data: items,
       images: items,
       success: true,
-      total: data.total || items.length,
+      total,
     });
   } catch (error) {
     logError("Erreur API images/history", error);
@@ -78,10 +74,14 @@ export async function DELETE(req: NextRequest) {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
+  const auth = await requireUser(token);
+  if (!auth) {
+    return errorResponse("auth_required", { message: "Non authentifié." });
+  }
+  const { userId } = auth;
+
   const { searchParams } = req.nextUrl;
   const id = searchParams.get("id");
-  // `?all=1` : purge de tout l'historique (onglet Données). Le drapeau est
-  // explicite — un appel sans `id` ne doit jamais se transformer en purge.
   const purgeAll = searchParams.get("all") === "1";
 
   if (!id && !purgeAll) {
@@ -90,7 +90,6 @@ export async function DELETE(req: NextRequest) {
     });
   }
 
-  // Même raison que sur PATCH : `id` entre dans un chemin de requête amont.
   if (id && !UUID_PATTERN.test(id)) {
     return errorResponse("invalid_request", {
       message: "L'identifiant de l'image est invalide.",
@@ -98,23 +97,13 @@ export async function DELETE(req: NextRequest) {
   }
 
   try {
-    const res = await fetch(
-      `${MAI_API_URL}/v1/images/history${purgeAll ? "?all=1" : `/${id}`}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        method: "DELETE",
-      }
-    );
+    const res = await deleteImageGeneration({
+      id,
+      purgeAll,
+      userId,
+    });
 
-    const data = await res.json();
-    if (!res.ok) {
-      const payload = normalizeUpstreamError(data, res.status);
-      return NextResponse.json(payload, { status: payload.status });
-    }
-
-    return NextResponse.json(data);
+    return NextResponse.json({ success: res.success });
   } catch (error) {
     logError("Erreur suppression image", error);
     return errorResponse("internal_error", {
@@ -129,10 +118,16 @@ export async function PATCH(req: NextRequest) {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
+  const auth = await requireUser(token);
+  if (!auth) {
+    return errorResponse("auth_required", { message: "Non authentifié." });
+  }
+  const { userId } = auth;
+
   const { searchParams } = req.nextUrl;
   const id = searchParams.get("id");
   const body = (await req.json().catch(() => ({}))) as Record<string, unknown>;
-  const targetId = id || body.id;
+  const targetId = (id || body.id) as string;
 
   if (!targetId) {
     return errorResponse("invalid_request", {
@@ -140,9 +135,6 @@ export async function PATCH(req: NextRequest) {
     });
   }
 
-  // `targetId` était interpolé dans le chemin de la requête amont sans être
-  // validé : un `../` ou un `?` suffisait à changer la requête émise. On n'en
-  // garde que la forme que le backend sait traiter — un uuid.
   if (typeof targetId !== "string" || !UUID_PATTERN.test(targetId)) {
     return errorResponse("invalid_request", {
       message: "L'identifiant de l'image est invalide.",
@@ -150,22 +142,20 @@ export async function PATCH(req: NextRequest) {
   }
 
   try {
-    const res = await fetch(`${MAI_API_URL}/v1/images/history/${targetId}`, {
-      body: JSON.stringify(body),
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      method: "PATCH",
+    const updated = await updateImageGeneration({
+      id: targetId,
+      pinned: typeof body.pinned === "boolean" ? body.pinned : undefined,
+      title: typeof body.title === "string" ? body.title : undefined,
+      userId,
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-      const payload = normalizeUpstreamError(data, res.status);
-      return NextResponse.json(payload, { status: payload.status });
+    if (!updated) {
+      return errorResponse("not_found", {
+        message: "Image introuvable.",
+      });
     }
 
-    return NextResponse.json(data);
+    return NextResponse.json({ image: updated, success: true });
   } catch (error) {
     logError("Erreur mise à jour image", error);
     return errorResponse("internal_error", {

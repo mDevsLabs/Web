@@ -37,7 +37,24 @@ Les fonctions de réparation dynamique au runtime (`ensureTableTypes`, `ensureCo
 
 ---
 
-## 3. Commandes de gestion
+## 4. Modules de requêtes serveur dédiés (Neon direct)
+
+Dans le cadre du décommissionnement de Val Town, les opérations critiques sont exécutées directement sur Neon via Drizzle :
+
+- **Générations d'images & audio** : `lib/db/queries/generations.ts`
+  - Table `mprojects_image_generations` : enregistrement, pagination, suppression et épinglage des générations d'images.
+  - Table `mprojects_speech_generations` : enregistrement, pagination et suppression des synthèses vocales.
+  - Calcul direct des quotas journaliers (`countTodayImageGenerations`).
+- **Stockage Cloud & Fichiers** : `lib/db/queries/storage.ts`
+  - Tables `cloud_storage_usage` & `cloud_files` : lecture des quotas d'espace par utilisateur et forfait (`bytes_limit`, `bytes_used`), listing paginé des fichiers, renommage et suppression directe en base avec transactions atomiques.
+- **Authentification & OTP** : `lib/auth/verification.ts` & `lib/auth/server-auth.ts`
+  - Tables `verification_codes`, `token_blacklist` : émission et validation des codes de vérification OTP, mise à jour sécurisée des profils et avatars utilisateur.
+- **Moteur d'usage en %** : `lib/plans/usage-engine.ts`
+  - Comptabilisation et agrégation directe des métriques d'utilisation en pourcentage par forfait (Free: 100, Plus: 200, Pro: 400, Max: 1 000 unités), réinitialisé de manière hebdomadaire (lundi à 00:00 UTC).
+
+---
+
+## 5. Commandes de gestion
 
 ```bash
 # Générer une nouvelle migration à partir des changements dans schema.ts

@@ -3,6 +3,10 @@
 > Périmètre: **le graphe d'imports transitif complet de `main.ts`**, c'est-à-dire
 > 64 fichiers / 34 145 lignes / 659 déclarations de routes relevées dans `API_INVENTORY.json`. Base URL: `https://mai.val.run`.
 >
+> ⚠️ **Phase de décommissionnement Val Town (2026-2027)** :
+> L'ensemble des routes Next.js (`app/(chat)/api/**`) a été migré pour s'exécuter directement sur PostgreSQL Neon (Drizzle ORM) et auprès des fournisseurs IA externes (OpenRouter pour LLM et Speech, CometAPI pour Images).
+> La dépendance `MAI_API_URL` est supprimée de Next.js. Ce document est conservé comme référence d'architecture pour le décommissionnement final des modules de la racine.
+>
 > Ce document décrit le **backend Hono (Val Town)**, pas l'application Next.js.
 > Pour le BFF Next et l'Agent, voir `AGENTS.md`, `docs/1-web/AGENT_ENGINE.md` et
 > `docs/1-web/AI_AGENTS_API.md`.

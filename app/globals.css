@@ -402,6 +402,66 @@
   animation: q-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@keyframes q-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15%,
+  45% {
+    transform: rotate(14deg);
+  }
+  30%,
+  60% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes q-heart-lost {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.45);
+    filter: drop-shadow(0 0 6px var(--q-heart));
+  }
+  55% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes q-correct-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* `animate-wiggle` était utilisé sans keyframe : il ne faisait rien. */
+@utility animate-wiggle {
+  transform-origin: 70% 70%;
+  animation: q-wiggle 1.8s ease-in-out 0.4s 2;
+}
+
+@utility q-heart-lost {
+  animation: q-heart-lost 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility q-correct-pop {
+  animation: q-correct-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @utility q-pulse-blue {
   animation: q-pulse-blue 2s infinite;
 }
@@ -425,7 +485,10 @@
   .quizzly-root .q-float,
   .quizzly-root .q-shake,
   .quizzly-root .q-pop,
-  .quizzly-root .q-pulse-blue {
+  .quizzly-root .q-pulse-blue,
+  .quizzly-root .q-heart-lost,
+  .quizzly-root .q-correct-pop,
+  .quizzly-root .animate-wiggle {
     animation: none;
   }
 }

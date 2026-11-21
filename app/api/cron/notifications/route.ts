@@ -39,7 +39,7 @@ import {
   replicateWakiesNotifications,
 } from "@/lib/notifications/replication";
 import { verifyCronAuth } from "@/lib/security/timing";
-import { listUsersWithWakies } from "@/lib/wakies/queries";
+import { listUsersWithPendingWakiesNotifications } from "@/lib/wakies/queries";
 
 export const maxDuration = 120;
 
@@ -94,7 +94,9 @@ export async function POST(request: Request) {
 
   // ── Wakies ────────────────────────────────────────────────────────────
   try {
-    const comptes = await listUsersWithWakies();
+    // Découverte ciblée (une requête) : seuls les comptes ayant des alertes
+    // non répliquées sont traités, pas toute la base Wakies.
+    const comptes = await listUsersWithPendingWakiesNotifications();
     for (let i = 0; i < comptes.length; i += CHUNK_SIZE) {
       const chunk = comptes.slice(i, i + CHUNK_SIZE);
       await Promise.all(

@@ -4,7 +4,7 @@
 
 ### Nouveautés
 
-* **Aucune nouveauté** : aucune nouveauté dans cette version.
+* **Quizzly : primaire** : Quizzly s'ouvre aux classes de CE1, CE2, CM1 et CM2, avec leurs propres matières et chapitres. 🧒📚
 
 ### Améliorations
 

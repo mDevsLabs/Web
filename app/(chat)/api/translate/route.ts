@@ -6,7 +6,6 @@ import {
   logError,
   zodIssuesMessage,
 } from "@/lib/api/error-response";
-import { upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { recordTokenUsage } from "@/lib/db/queries";
 import {
@@ -99,42 +98,46 @@ export async function POST(request: Request) {
   }
 
   try {
-    // ── Moteur nominal : DeepL via Val Town ────────────────────────────────
-    const upstream = await upstreamJson<{
-      cached?: boolean;
-      detected_language?: string;
-      provider?: string;
-      same_language?: boolean;
-      target_lang?: string;
-      translation?: string;
-    }>({
-      body: { target_lang: targetLang, text },
-      method: "POST",
-      path: "/v1/mai/translate",
-      token: sessionToken,
-    });
-
-    if (upstream.ok) {
-      const data = upstream.data;
-      if (data?.translation) {
-        const result: TranslateResult = {
-          cached: Boolean(data.cached),
-          detectedLanguage: data.detected_language ?? "",
-          provider: data.provider ?? "deepl",
-          sameLanguage: Boolean(data.same_language),
-          targetLang: data.target_lang ?? targetLang,
-          translation: data.translation,
-        };
-        return Response.json(result, { status: 200 });
+    // ── Moteur nominal : DeepL direct si clé configurée ────────────────────
+    const deeplKey = process.env.DEEPL_API_KEY;
+    if (deeplKey) {
+      try {
+        const deeplHost = deeplKey.endsWith(":fx")
+          ? "https://api-free.deepl.com"
+          : "https://api.deepl.com";
+        const res = await fetch(`${deeplHost}/v2/translate`, {
+          body: JSON.stringify({
+            target_lang: targetLang.toUpperCase(),
+            text: [text],
+          }),
+          headers: {
+            Authorization: `DeepL-Auth-Key ${deeplKey}`,
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
+        if (res.ok) {
+          const data = (await res.json()) as any;
+          const translation = data.translations?.[0]?.text;
+          const detectedLanguage =
+            data.translations?.[0]?.detected_source_language?.toLowerCase() ||
+            "";
+          if (translation) {
+            const result: TranslateResult = {
+              cached: false,
+              detectedLanguage,
+              provider: "deepl",
+              sameLanguage:
+                detectedLanguage.toUpperCase() === targetLang.toUpperCase(),
+              targetLang,
+              translation,
+            };
+            return Response.json(result, { status: 200 });
+          }
+        }
+      } catch {
+        // Fallback vers l'IA
       }
-      // 200 sans texte : on ne fait pas confiance à la réponse, on tente le repli.
-    } else if (upstream.payload.status !== 503) {
-      // 503 = DeepL indisponible, et seul cas où le repli a du sens.
-      // 400 (entrée refusée), 401 (session expirée), 429 (débit atteint) sont
-      // remontés tels quels : les traduire en « réessayez » masquerait la cause.
-      return Response.json(upstream.payload, {
-        status: upstream.payload.status,
-      });
     }
 
     // ── Repli mAI ─────────────────────────────────────────────────────────
@@ -174,24 +177,6 @@ export async function POST(request: Request) {
         // quota sera rattrapé par la consommation du message d'origine.
         logError("Échec d'enregistrement de l'usage (traduction)", error);
       });
-
-      try {
-        await upstreamJson({
-          body: {
-            inputTokens: usage.inputTokens ?? 0,
-            isGhostMode: false,
-            model: "translation-fallback",
-            outputTokens: usage.outputTokens ?? 0,
-            tokensUsed: totalTokens,
-          },
-          method: "POST",
-          path: "/log-usage",
-          timeoutMs: 3000,
-          token: sessionToken,
-        });
-      } catch {
-        // La journalisation distante est best-effort, le débit local est déjà posé.
-      }
     }
 
     const result: TranslateResult = {

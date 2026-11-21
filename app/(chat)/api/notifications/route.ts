@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
+import { maybeRunLazyCronTicks } from "@/lib/cron/lazy";
 import {
   broadcastNewsNotification,
   createNotification,
@@ -15,6 +16,10 @@ import {
   NOTIFICATION_TYPES,
   type NotificationType,
 } from "@/lib/notifications/types";
+
+// `after()` exécute les ticks CRON paresseux (lib/cron/lazy.ts) dans le budget
+// de cette invocation : le plus long (Agent/Wakies) peut durer ~290 s.
+export const maxDuration = 300;
 
 const notificationSchema = z.object({
   body: z.string().max(500).nullish(),
@@ -68,6 +73,10 @@ export async function GET(request: Request) {
     userId,
   });
   const unreadCount = await getUnreadNotificationCount(userId, origins);
+  // Ordonnancement paresseux, APRÈS la réponse : l'utilisateur n'attend rien.
+  // Throttlé en mémoire et protégé par un bail Neon (rien n'est fait si aucun
+  // tick n'est dû).
+  after(() => maybeRunLazyCronTicks());
   return NextResponse.json({ notifications, unreadCount });
 }
 

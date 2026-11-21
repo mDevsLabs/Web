@@ -31,12 +31,36 @@ describe("CRON & Workflows GitHub Actions", () => {
     }
   });
 
-  it("cron-master.yml orchestre l'ensemble des ticks groupés", () => {
+  it("cron-master.yml orchestre l'ensemble des ticks groupés via curl", () => {
     const content = readFileSync(join(workflowsDir, "cron-master.yml"), "utf8");
-    expect(content).toContain("scripts/cron/run-tick.mjs");
+    expect(content).toContain("curl");
+    expect(content).toContain("/api/cron/");
+    expect(content).toContain('cron: "*/30 * * * *"');
     expect(content).toContain("CRON_SECRET");
     expect(content).toContain("APP_URL");
     expect(content).toContain("schedule");
+    // Le job n'a besoin ni du dépôt ni de Node : pas de checkout ni de setup.
+    expect(content).not.toContain("actions/checkout");
+    expect(content).not.toContain("actions/setup-node");
+    // Le secret ne transite jamais par l'URL.
+    expect(content).not.toMatch(/\?[^\s"]*secret=/i);
+  });
+
+  it("cron-master.yml appelle les six ticks avec le bon verbe", () => {
+    const content = readFileSync(join(workflowsDir, "cron-master.yml"), "utf8");
+    const attendus: Array<[string, "GET" | "POST"]> = [
+      ["agent", "POST"],
+      ["planning", "POST"],
+      ["wakies", "POST"],
+      ["vibe", "GET"],
+      ["notifications", "POST"],
+      ["quizzly", "POST"],
+    ];
+    for (const [tick, verbe] of attendus) {
+      expect(content, `${tick} ${verbe}`).toMatch(
+        new RegExp(`launch\\s+${tick}\\s+${verbe}\\s+\\d+`)
+      );
+    }
   });
 
   it("models-sync.yml déclenche la synchronisation toutes les 12h", () => {

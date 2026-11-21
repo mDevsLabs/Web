@@ -75,6 +75,11 @@ function resolveMaiCloudBackend(model?: string | null): string | null {
   return MAI_CLOUD_ALIASES[normalizeMaiAliasId(model)] || null;
 }
 
+function isFreeMaiCloudModel(model?: string | null): boolean {
+  const m = normalizeMaiAliasId(model);
+  return m === "mai-2" || m === "mai-2-mini" || m === "mai-2.5-omni";
+}
+
 function buildMaiCloudPublicModels(nowSec: number) {
   const defs = maiModelsList.filter(
     (m) => resolveMaiCloudBackend(m.id) !== null
@@ -527,7 +532,7 @@ export function registerModelRoutes(
         const paid = isPaidTier(c.get("userPlan"));
         const allModels = catalog.models
           .filter((m) => m.isActive && m.is_available)
-          .filter((m) => paid || isFreeModelId(m.id))
+          .filter((m) => paid || isFreeModelId(m.id) || isFreeMaiCloudModel(m.id))
           .map(effectiveModel);
         return c.json({ data: allModels, object: "list" });
       }
@@ -545,7 +550,9 @@ export function registerModelRoutes(
       if (lagunaIdx > 0) filtered.unshift(...filtered.splice(lagunaIdx, 1));
       const cloudModels = buildMaiCloudPublicModels(
         Math.floor(Date.now() / 1000)
-      ).flatMap((m) => {
+      )
+        .filter((m) => paid || isFreeMaiCloudModel(m.id))
+        .flatMap((m) => {
         // Si le modèle est déjà présent directement en BDD sous cet id, privilégier la BDD
         const directFromDb = catalog.byId.get(m.id);
         if (directFromDb && isPublicChatModel(directFromDb)) {
@@ -841,18 +848,19 @@ export function registerModelRoutes(
 
       const isFreePlan = !isPaidTier(userPlan);
       const isFreeModel = isFreeModelId(String(modelRequested || ""));
-      const isMaiCloudAlias = maiCloudBackend !== null;
+      const isFreeCloud = isFreeMaiCloudModel(modelRequested);
 
       // Bloquer avec 403 les requêtes pour les modèles payants avec une clé ou JWT free
-      // Exception : alias cloud mAI-2 disponibles pour tous les plans.
-      if (isFreePlan && !isFreeModel && !isMaiCloudAlias) {
+      // Exception : alias cloud mAI gratuits (mAI-2, mAI-2-Mini, mAI-2.5-Omni) disponibles pour tous les plans.
+      // mAI-2.5 Opal et Apex nécessitent un forfait payant (Plus, Pro ou Max).
+      if (isFreePlan && !isFreeModel && !isFreeCloud) {
         return c.json(
           {
             error: {
               code: "model_access_denied",
               message: `Le modèle '${
                 modelRequested || "inconnu"
-              }' nécessite un forfait payant (Plus, Pro ou Max). Votre forfait actuel (${userPlan}) autorise uniquement les modèles gratuits dont l'ID contient ':free' (ex: 'meta-llama/llama-3.3-70b-instruct:free', 'deepseek/deepseek-r1:free').`,
+              }' nécessite un forfait payant (Plus, Pro ou Max). Votre forfait actuel (${userPlan}) autorise uniquement les modèles gratuits mAI (mAI-2, mAI-2-Mini, mAI-2.5-Omni) et ceux dont l'ID contient ':free'.`,
               param: "model",
               type: "permission_error",
             },
@@ -990,18 +998,19 @@ export function registerModelRoutes(
 
       const isFreePlan = !isPaidTier(userPlan);
       const isFreeModel = isFreeModelId(String(modelRequested || ""));
-      const isMaiCloudAlias = maiCloudBackend !== null;
+      const isFreeCloud = isFreeMaiCloudModel(modelRequested);
 
       // Bloquer avec 403 les requêtes pour les modèles payants avec une clé ou JWT free
-      // Exception : alias cloud mAI-2 disponibles pour tous les plans.
-      if (isFreePlan && !isFreeModel && !isMaiCloudAlias) {
+      // Exception : alias cloud mAI gratuits (mAI-2, mAI-2-Mini, mAI-2.5-Omni) disponibles pour tous les plans.
+      // mAI-2.5 Opal et Apex nécessitent un forfait payant (Plus, Pro, Max).
+      if (isFreePlan && !isFreeModel && !isFreeCloud) {
         return c.json(
           {
             error: {
               code: 403,
               message: `Le modèle '${
                 modelRequested || "inconnu"
-              }' nécessite un forfait payant (Plus, Pro ou Max). Votre forfait actuel (${userPlan}) autorise uniquement les modèles gratuits contenant ':free' dans leur identifiant (ex: 'google/gemini-2.5-flash:free').`,
+              }' nécessite un forfait payant (Plus, Pro ou Max). Votre forfait actuel (${userPlan}) autorise uniquement les modèles gratuits mAI (mAI-2, mAI-2-Mini, mAI-2.5-Omni) et ceux dont l'ID contient ':free'.`,
               status: "PERMISSION_DENIED",
             },
           },

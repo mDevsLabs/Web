@@ -353,7 +353,7 @@ export async function registerUser(params: {
     };
   }
 
-  if (!/^[a-z0-9_]{2,30}$/.test(cleanUsername)) {
+  if (!PROFILE_USERNAME_PATTERN.test(cleanUsername)) {
     return {
       code: "invalid_username",
       error:
@@ -593,4 +593,274 @@ export async function resendVerificationCodeUser(params: {
 
   await sendVerificationEmail(cleanEmail, regen.code, normalizedAction);
   return { success: true };
+}
+
+const PROFILE_USERNAME_PATTERN = /^[a-z0-9_]{2,30}$/;
+const PROFILE_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const LEADING_AT_PATTERN = /^@/;
+const NEW_EMAIL_ACTION = "verify_new_email";
+
+/**
+ * Met à jour le profil de l'utilisateur directement dans Neon.
+ *
+ * Toutes les validations passent AVANT la moindre écriture, puis un seul
+ * UPDATE est émis : une validation tardive en échec ne laisse plus un profil
+ * à moitié modifié. Un changement d'e-mail n'est jamais appliqué ici : il passe
+ * par un code envoyé à la nouvelle adresse (cf. `confirmUserEmailChange`).
+ */
+export async function updateUserProfile(params: {
+  userId: string;
+  body: {
+    username?: string;
+    email?: string;
+    phone?: string;
+    password?: string;
+    currentPassword?: string;
+    newsletter?: boolean;
+    notify_limits?: boolean;
+    auto_logout_minutes?: number;
+  };
+}): Promise<AuthActionResult> {
+  await dbReady();
+  const sql = getRawClient();
+  if (!sql) return { error: "Base de données indisponible.", success: false };
+
+  const {
+    username,
+    email,
+    phone,
+    password,
+    currentPassword,
+    newsletter,
+    notify_limits: notifyLimits,
+    auto_logout_minutes: autoLogoutMinutes,
+  } = params.body;
+
+  if (!currentPassword) {
+    return {
+      error:
+        "Le mot de passe actuel est obligatoire pour modifier vos informations.",
+      success: false,
+    };
+  }
+
+  const currentUser = await sql<
+    { email: string | null; password_hash: string | null }[]
+  >`
+    SELECT email, password_hash FROM users WHERE id::text = ${params.userId}::text LIMIT 1
+  `;
+  if (currentUser.length === 0) {
+    return { error: "Utilisateur introuvable.", success: false };
+  }
+
+  // Un compte sans mot de passe local (hash NULL) faisait planter bcrypt.
+  const storedHash = currentUser[0].password_hash;
+  const passMatch = storedHash
+    ? await bcrypt.compare(currentPassword, storedHash)
+    : false;
+  if (!passMatch) {
+    return { error: "Le mot de passe actuel est incorrect.", success: false };
+  }
+
+  // Valeurs validées, écrites en une seule fois en fin de fonction.
+  let cleanUsername: string | null = null;
+  let pendingEmail: string | null = null;
+  let newHash: string | null = null;
+  const phoneProvided = phone !== undefined;
+  const cleanPhone = phone?.trim() || null;
+  if (cleanPhone && cleanPhone.length > 50) {
+    return { error: "Numéro de téléphone invalide.", success: false };
+  }
+
+  if (username?.trim()) {
+    cleanUsername = username
+      .trim()
+      .toLowerCase()
+      .replace(LEADING_AT_PATTERN, "");
+    if (!PROFILE_USERNAME_PATTERN.test(cleanUsername)) {
+      return {
+        error:
+          "Le nom d'utilisateur doit comporter entre 2 et 30 caractères (lettres minuscules, chiffres, _).",
+        success: false,
+      };
+    }
+    const existing = await sql`
+      SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} AND id::text != ${params.userId}::text LIMIT 1
+    `;
+    if (existing.length > 0) {
+      return {
+        error: "Ce nom d'utilisateur est déjà pris par un autre compte.",
+        success: false,
+      };
+    }
+  }
+
+  if (email?.trim()) {
+    const cleanEmail = email.trim().toLowerCase();
+    const existing = await sql`
+      SELECT id FROM users WHERE LOWER(email) = ${cleanEmail} AND id::text != ${params.userId}::text LIMIT 1
+    `;
+    if (existing.length > 0) {
+      return {
+        error: "Cette adresse email est déjà utilisée par un autre compte.",
+        success: false,
+      };
+    }
+    // Jamais appliqué ici : la nouvelle adresse doit d'abord être vérifiée.
+    const currentEmail = (currentUser[0].email || "").trim().toLowerCase();
+    if (cleanEmail !== currentEmail) {
+      if (cleanEmail.length > 320 || !PROFILE_EMAIL_PATTERN.test(cleanEmail)) {
+        return { error: "Adresse email invalide.", success: false };
+      }
+      pendingEmail = cleanEmail;
+    }
+  }
+
+  if (phone !== undefined) {
+    if (cleanPhone) {
+      const existing = await sql`
+ SELECT id FROM users WHERE phone = ${cleanPhone} AND id::text != ${params.userId}::text LIMIT 1
+      `;
+      if (existing.length > 0) {
+        return {
+          error: "Ce numéro de téléphone est déjà utilisé par un autre compte.",
+          success: false,
+        };
+      }
+    }
+  }
+
+  if (password?.trim()) {
+    const policyError = checkPasswordPolicy(password);
+    if (policyError) {
+      return {
+        error: policyError,
+        success: false,
+      };
+    }
+    newHash = await bcrypt.hash(password, 10);
+  }
+
+  await sql`
+    UPDATE users SET
+      username = COALESCE(${cleanUsername}::text, username),
+      phone = CASE WHEN ${phoneProvided}::boolean THEN ${cleanPhone}::varchar ELSE phone END,
+      newsletter = COALESCE(${newsletter ?? null}::boolean, newsletter),
+      notify_limits = COALESCE(${notifyLimits ?? null}::boolean, notify_limits),
+      password_hash = COALESCE(${newHash}::text, password_hash)
+    WHERE id::text = ${params.userId}::text
+  `;
+
+  if (autoLogoutMinutes !== undefined) {
+    // Colonne absente du DDL de réparation : écriture tolérante, isolée du
+    // reste pour qu'un schéma ancien ne fasse pas échouer tout le profil.
+    await sql`
+      UPDATE users SET auto_logout_minutes = ${autoLogoutMinutes} WHERE id::text = ${params.userId}::text
+    `.catch((err: unknown) => {
+      console.warn(
+        "[auth] auto_logout_minutes non enregistré:",
+        err instanceof Error ? err.message : err
+      );
+    });
+  }
+
+  if (pendingEmail) {
+    try {
+      const code = await generateVerificationCode(
+        pendingEmail,
+        NEW_EMAIL_ACTION
+      );
+      await sendVerificationEmail(pendingEmail, code, NEW_EMAIL_ACTION);
+    } catch (err) {
+      console.warn(
+        "[auth] envoi du code de changement d'e-mail impossible:",
+        err instanceof Error ? err.message : err
+      );
+      return {
+        error:
+          "Profil enregistré, mais le code de vérification de la nouvelle adresse n'a pas pu être envoyé. Réessayez.",
+        success: false,
+      };
+    }
+    return {
+      email: pendingEmail,
+      status: "email_verification_required",
+      success: true,
+    };
+  }
+
+  return { success: true };
+}
+
+/**
+ * Applique un changement d'e-mail une fois validé le code reçu sur la nouvelle
+ * adresse. Le code est consommé de façon atomique, puis l'unicité est
+ * recontrôlée : l'adresse a pu être prise entre la demande et la confirmation.
+ */
+export async function confirmUserEmailChange(params: {
+  code: string;
+  email: string;
+  userId: string;
+}): Promise<AuthActionResult> {
+  await dbReady();
+  const sql = getRawClient();
+  if (!sql) {
+    return { error: "Base de données indisponible.", success: false };
+  }
+
+  const cleanEmail = params.email.trim().toLowerCase();
+  if (!(cleanEmail && PROFILE_EMAIL_PATTERN.test(cleanEmail))) {
+    return { error: "Adresse email invalide.", success: false };
+  }
+
+  const accepted = await verifyVerificationCode(
+    cleanEmail,
+    params.code,
+    NEW_EMAIL_ACTION
+  );
+  if (!accepted) {
+    return {
+      code: "invalid_code",
+      error: "Code de vérification invalide ou expiré.",
+      success: false,
+    };
+  }
+
+  const existing = await sql`
+    SELECT id FROM users WHERE LOWER(email) = ${cleanEmail} AND id::text != ${params.userId}::text LIMIT 1
+  `;
+  if (existing.length > 0) {
+    return {
+      error: "Cette adresse email est déjà utilisée par un autre compte.",
+      success: false,
+    };
+  }
+
+  const updated = await sql<{ id: string }[]>`
+    UPDATE users SET email = ${cleanEmail} WHERE id::text = ${params.userId}::text RETURNING id::text AS id
+  `;
+  if (updated.length === 0) {
+    return { error: "Utilisateur introuvable.", success: false };
+  }
+
+  return { email: cleanEmail, success: true };
+}
+
+/**
+ * Définit l'URL de l'avatar d'un utilisateur dans Neon.
+ */
+export async function setUserAvatar(
+  userId: string,
+  avatarUrl: string
+): Promise<boolean> {
+  await dbReady();
+  const sql = getRawClient();
+  if (!sql) return false;
+
+  try {
+    await sql`UPDATE users SET avatar_url = ${avatarUrl} WHERE id::text = ${userId}::text`;
+    return true;
+  } catch {
+    return false;
+  }
 }

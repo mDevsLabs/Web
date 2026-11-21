@@ -1,7 +1,6 @@
 import { tool, type UIMessageStreamWriter } from "ai";
 import type { Session } from "next-auth";
 import { z } from "zod";
-import { MAI_API_URL } from "@/lib/constants";
 import type { ChatMessage } from "@/lib/types";
 
 type AudioPodcastProps = {
@@ -32,23 +31,22 @@ async function synthesizeSegment(params: {
   text: string;
   speed?: number;
 }): Promise<{ audio_url?: string; error?: string }> {
-  const { token, userId, voice, text, speed } = params;
+  const { voice, text, speed } = params;
   try {
-    const res = await fetch(`${MAI_API_URL}/v1/audio/speech`, {
+    const openRouterApiKey = process.env.OPENROUTER_API_KEY || "";
+    const res = await fetch("https://openrouter.ai/api/v1/audio/speech", {
       body: JSON.stringify({
-        format: "json",
         input: text,
         model: "deepgram/flux-tts:free",
         response_format: "mp3",
-        return_json: true,
         speed: speed ?? 1.0,
         voice,
       }),
       headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${openRouterApiKey}`,
         "Content-Type": "application/json",
-        "x-user-id": userId,
+        "HTTP-Referer": "https://mai.mdevs.fr",
+        "X-Title": "mAI Speech",
       },
       method: "POST",
     });
@@ -86,38 +84,9 @@ async function synthesizeSegment(params: {
 
 // Choisit deux voix distinctes disponibles ; repli sur les voix par défaut.
 async function pickVoices(
-  token: string
+  _token: string
 ): Promise<{ expert: string; host: string }> {
-  const defaults = { expert: "flux-jeanne-fr", host: "flux-alexis-en" };
-  try {
-    const res = await fetch(`${MAI_API_URL}/v1/audio/voices`, {
-      cache: "no-store",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (!res.ok) {
-      return defaults;
-    }
-    const data = await res.json();
-    const voices: Array<{ name?: string; id?: string }> =
-      data?.voices ?? data?.data ?? data ?? [];
-    const names = voices
-      .map((v) => v?.name ?? v?.id)
-      .filter((n): n is string => Boolean(n));
-    if (names.length === 0) {
-      return defaults;
-    }
-    const host =
-      names.find((n) => n.toLowerCase().includes("alexis")) ?? names[0];
-    const expert =
-      names.find((n) => n.toLowerCase().includes("jeanne")) ??
-      names.find((n) => n !== host) ??
-      host;
-    return { expert, host };
-  } catch (voicesErr) {
-    // Repli volontaire : liste des voix indisponible → voix par défaut.
-    console.warn("Liste des voix podcast indisponible:", voicesErr);
-    return defaults;
-  }
+  return { expert: "flux-jeanne-fr", host: "flux-alexis-en" };
 }
 
 export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
@@ -136,34 +105,6 @@ export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
         };
       }
 
-      // Quota hebdomadaire Speech
-      try {
-        const usageRes = await fetch(`${MAI_API_URL}/v1/audio/usage`, {
-          cache: "no-store",
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        if (usageRes.ok) {
-          const usageData = await usageRes.json();
-          const weeklyLimit = Number(usageData.weeklyLimit ?? 0);
-          const tokensUsed = Number(usageData.tokensUsed ?? 0);
-          const totalChars = segments.reduce(
-            (acc, s) => acc + s.text.length,
-            0
-          );
-          const estimated = Math.max(1, Math.ceil(totalChars / 3.5));
-          if (weeklyLimit > 0 && tokensUsed + estimated > weeklyLimit) {
-            return {
-              error: `Quota Speech hebdomadaire insuffisant pour ce podcast (${tokensUsed}/${weeklyLimit} tokens, ~${estimated} requis).`,
-              limit: weeklyLimit,
-              used: tokensUsed,
-            };
-          }
-        }
-      } catch (quotaErr) {
-        // Repli volontaire : vérification amont indisponible — le backend
-        // appliquera son propre quota à la synthèse.
-        console.warn("Vérification quota podcast impossible:", quotaErr);
-      }
 
       const voices = await pickVoices(token);
       const hostVoice = voices.host;

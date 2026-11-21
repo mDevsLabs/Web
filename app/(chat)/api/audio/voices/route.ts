@@ -1,16 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { upstreamJson } from "@/lib/api/upstream";
-import { getMaiSessionToken } from "@/lib/auth/session";
 
 export async function GET(_req: NextRequest) {
-  const token = await getMaiSessionToken();
-  const result = await upstreamJson({ path: "/v1/audio/voices", token });
-
-  if (result.ok) {
-    return NextResponse.json(result.data);
-  }
-
-  // Voix par défaut
   return NextResponse.json({
     data: [
       {

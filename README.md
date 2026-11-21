@@ -14,7 +14,7 @@ Version : **0.9.5**.
 | --- | --- | --- |
 | Application Web | Next 16 (App Router), React 19, Full-stack | `app/`, `components/`, `lib/`, `hooks/` — `pnpm build` |
 | Base de données | PostgreSQL Neon & Drizzle ORM | Persistance directe, Auth OTP (`verification_codes`), sessions |
-| Ordonnanceur | GitHub Actions (`cron-master.yml`) | Réveille les 6 ticks `app/api/cron/**` en parallèle avec protection de quota |
+| Ordonnanceur | GitHub Actions (`cron-master.yml`, 30 min), Vercel Cron (`/api/cron/daily`) et ticks paresseux Neon (`cron_ticks`) | Réveillent les 6 ticks `app/api/cron/**` avec un bail commun (aucun doublon) |
 | Fournisseurs IA | OpenRouter, Comet API | Appels directs, modèles mAI-2.5 (Opal, Apex, Omni) routés vers GPT |
 | API mAI (historique) | Backend Hono (Val Town) | En cours de décommissionnement complet (extinction 2026/2027) |
 | Vibe · Wakies · Site · Blackline | Sources autonomes portées dans l'hôte | `apps/vibe/`, `apps/wakies/`, `apps/site/`, `apps/blackline/` |

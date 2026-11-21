@@ -34,7 +34,7 @@ Conséquences pratiques:
 
 - **Persistance directe sur Neon** : Toutes les écritures et lectures critiques (utilisateurs, OTP, messages, fils de discussion, projets) s'exécutent directement sur PostgreSQL Neon via Drizzle avec transactions sécurisées.
 - **Modèles mAI-2.5** : Les alias souverains `mai-2.5-opal`, `mai-2.5-apex` et `mai-2.5-omni` sont routés vers les backends OpenRouter GPT (`openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`) avec le prompt d'identité souverain injecté via `mai-identity.ts`.
-- **GitHub Actions comme ordonnanceur unique** : `cron-master.yml` exécute en parallèle les 6 ticks (`/api/cron/agent`, `/api/cron/planning`, `/api/cron/wakies`, `/api/cron/vibe`, `/api/cron/notifications`, `/api/cron/quizzly`) toutes les 10 minutes, optimisé pour préserver le quota gratuit de minutes GitHub Actions.
+- **Ordonnancement des 6 ticks cron** (`/api/cron/agent`, `/api/cron/planning`, `/api/cron/wakies`, `/api/cron/vibe`, `/api/cron/notifications`, `/api/cron/quizzly`) : trois déclencheurs partagent le même bail atomique (table Neon `cron_ticks`, registre `lib/cron/ticks.ts`), donc aucune occurrence n'est exécutée deux fois. (1) GitHub Actions `cron-master.yml`, un simple `curl` en parallèle toutes les 30 minutes (dépôt public : minutes illimitées, mais `schedule` non ponctuel). (2) Vercel Cron `/api/cron/daily` (plan Hobby : 1 passage/jour max, usage non commercial). (3) Ticks paresseux déclenchés par la cloche de notifications (`lib/cron/lazy.ts`, désactivables avec `CRON_LAZY_TICKS=off`). Le val Val Town `cron.ts` est un déclencheur optionnel à désactiver pour éviter les doublons.
 - **Remplacement des tokens par un usage en %** : Le comptage brut de tokens par message est remplacé par une jauge en pourcentage par forfait avec réinitialisation le lundi à 00:00 UTC. Le blocage de quota de requêtes publiques mAI est levé.
 - Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 64
   fichiers du graphe d'imports transitif de `main.ts`).
@@ -328,7 +328,7 @@ par `origin` (`mai` | `vibe` | `wakies`).
 |---|---|
 | `origin` déduit du `type` | `lib/notifications/types.ts` fait autorité; la base, le schéma Drizzle et la liste TypeScript doivent être **alignés** |
 | La réplication est **idempotente** | Index unique partiel `(origin, sourceId)`; un rejeu de tick ne duplique rien |
-| Le tick est le seul réplicateur | `app/api/cron/notifications`, appelé par `cron.ts` — **ne pas créer un second ordonnanceur** |
+| Le tick est le seul réplicateur | `app/api/cron/notifications`, planifié via le bail `cron_ticks` (GitHub Actions, Vercel, ticks paresseux) — **ne pas créer un second réplicateur ni un ordonnanceur hors de ce bail** |
 | Le tick ne lit que les sources | Vibe et Wakies sont lus en lecture seule; l'écriture va dans la table de l'hôte |
 | Le « lu» se **propage** à la source | Marquer lu dans la cloche mAI écrit aussi dans Vibe / Wakies, sinon la page d'origine afficherait encore le point non lu |
 | Le gate `enabled` ne s'applique qu'à `origin = "mai"` | Une notification Vibe a déjà été décidée par sa source; la rejuger la ferait disparaître |
@@ -481,8 +481,9 @@ seulement des fichiers:
   — il n'existe pas de quota séparé.
 - **Web**: l'outil `webSearch` de l'hôte, donc `/v1/web/search`.
 - **Tâches planifiées**: plus de `setInterval`; tick par
-  `app/api/cron/wakies`, appelé toutes les 5 min par le val CRON Val Town
-  `cron.ts` (`CRON_SECRET`), bail transactionnel.
+  `app/api/cron/wakies`, visé toutes les 5 min par les ticks paresseux
+  (`cron_ticks`) et relancé par `cron-master.yml` (30 min) et Vercel
+  (`/api/cron/daily`), `CRON_SECRET`, bail transactionnel.
 
 Cinq règles à ne pas contourner:
 

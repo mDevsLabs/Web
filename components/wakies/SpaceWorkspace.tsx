@@ -59,10 +59,16 @@ export function SpaceWorkspace({
       }
     };
     void load();
-    const timer = setInterval(() => void load(), 3000);
+    // Relève lente et seulement onglet visible ; relue au retour sur l'onglet.
+    const reload = () => {
+      if (document.visibilityState === "visible") void load();
+    };
+    const timer = setInterval(reload, 15_000);
+    document.addEventListener("visibilitychange", reload);
     return () => {
       active = false;
       clearInterval(timer);
+      document.removeEventListener("visibilitychange", reload);
     };
   }, [space.id, reloadKey]);
   const page = pages.find((item) => item.id === pageId);

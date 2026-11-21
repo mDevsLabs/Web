@@ -3336,3 +3336,23 @@ export const verificationCodes = pgTable(
 );
 
 export type VerificationCode = InferSelectModel<typeof verificationCodes>;
+
+// ─────────────────────────────────────────────
+// Ticks CRON « paresseux » (bail atomique, sans ordonnanceur externe)
+// ─────────────────────────────────────────────
+// Une ligne par tick (agent, planning, wakies, vibe, notifications, quizzly).
+// `nextRunAt` = prochaine échéance ; `leaseUntil` = bail posé par l'instance
+// qui exécute le tick (un seul porteur à la fois, repris à l'expiration).
+// Voir lib/cron/lazy.ts.
+export const cronTicks = pgTable("cron_ticks", {
+  lastError: text("last_error"),
+  lastFinishedAt: timestamp("last_finished_at", { withTimezone: true }),
+  lastStartedAt: timestamp("last_started_at", { withTimezone: true }),
+  leaseUntil: timestamp("lease_until", { withTimezone: true }),
+  name: text("name").primaryKey(),
+  nextRunAt: timestamp("next_run_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type CronTickRow = InferSelectModel<typeof cronTicks>;

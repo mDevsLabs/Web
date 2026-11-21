@@ -81,14 +81,18 @@ describe("Cron — le val appelle bien des routes qui l'écoutent", () => {
   );
 
   it("n'est doublement déclenché par aucun workflow résiduel", () => {
-    // Deux ordonnanceurs ne cassent rien (chaque route réserve atomiquement son
-    // occurrence), mais ils paient deux fois le même tick et rendent la lecture
-    // des journaux impossible. Le val est l'unique planificateur.
+    // Plusieurs déclencheurs ne cassent rien (chaque route réserve atomiquement
+    // son occurrence, et les ticks partagent le bail `cron_ticks`), mais un
+    // workflow qui appelle les routes en plus de l'ordonnanceur prévu paie deux
+    // fois le même tick. Politique : `cron-master.yml` est le seul workflow
+    // autorisé à appeler `/api/cron/` ; le val `cron.ts` doit être désactivé
+    // côté Val Town tant que GitHub Actions et les ticks paresseux sont actifs.
     const dossiers = [".github/workflows"];
+    const autorises = new Set(["cron-master.yml"]);
     const residuels: string[] = [];
     for (const dossier of dossiers) {
       for (const fichier of readdirSync(resolve(ROOT, dossier))) {
-        if (!/\.ya?ml$/i.test(fichier)) {
+        if (!/\.ya?ml$/i.test(fichier) || autorises.has(fichier)) {
           continue;
         }
         const chemin = resolve(ROOT, dossier, fichier);

@@ -589,11 +589,16 @@ export async function requireChatModel(
       "Un identifiant de modèle valide est requis."
     );
   }
-  if (!paid && !aliasBackend && !isFreeModelId(requested)) {
+  const isFreeMaiCloud =
+    requested === "mai-2" ||
+    requested === "mai-2-mini" ||
+    requested === "mai-2.5-omni";
+
+  if (!paid && !isFreeMaiCloud && !isFreeModelId(requested)) {
     throw new ModelAccessError(
       403,
       "model_access_denied",
-      "Le forfait Free autorise uniquement les modèles :free et les alias mAI cloud."
+      "Le forfait Free autorise uniquement les modèles :free et les modèles mAI gratuits (mAI-2, mAI-2-Mini, mAI-2.5-Omni). Les modèles mAI-2.5 Opal et Apex nécessitent un forfait Plus, Pro ou Max."
     );
   }
   const catalog = await getModelCatalog(sql);

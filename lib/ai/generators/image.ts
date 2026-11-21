@@ -1,7 +1,13 @@
 import "server-only";
 
-import { MAI_API_URL } from "@/lib/constants";
+import { logError } from "@/lib/api/error-response";
+import { getMaiUser } from "@/lib/auth/session";
 import { getUserPreferences } from "@/lib/db/queries";
+import {
+  countTodayImageGenerations,
+  recordImageGeneration,
+} from "@/lib/db/queries/generations";
+import { getTierImageDailyLimit } from "@/lib/plans/tier-limits";
 import { formatImageSrc } from "@/lib/utils";
 
 // Cœur de génération d'image, extrait de l'outil du Chat
@@ -28,6 +34,9 @@ export type ImageGenerationResult = {
 };
 
 type MaiSessionTokenGetter = () => Promise<string | null>;
+
+const IMAGE_UPSTREAM_TIMEOUT_MS = 120_000;
+const IMAGE_GENERIC_ERROR = "Erreur de génération d'image.";
 
 export async function generateImageViaMai(params: {
   onImage?: (imageUrl: string) => void;
@@ -70,37 +79,30 @@ export async function generateImageViaMai(params: {
       }
     }
 
-    // Vérification préalable du quota journalier disponible
+    // Quota journalier du forfait (même source que la route
+    // /api/images/generations), vérifié avant l'appel payant. Forfait
+    // illisible : limites Free, les plus strictes.
+    const user = await getMaiUser(token).catch(() => null);
+    const dailyLimit = getTierImageDailyLimit(user?.tier);
     try {
-      const usageRes = await fetch(`${MAI_API_URL}/v1/images/usage`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (usageRes.ok) {
-        const usageData = (await usageRes.json()) as {
-          dailyLimit?: number;
-          remaining?: number;
-          usedToday?: number;
+      const usedToday = await countTodayImageGenerations(params.userId);
+      if (dailyLimit > 0 && usedToday >= dailyLimit) {
+        return {
+          error: `Votre quota journalier de génération d'images est épuisé (${usedToday}/${dailyLimit} images). Réinitialisation à minuit UTC.`,
+          limit: dailyLimit,
+          used: usedToday,
         };
-        const dailyLimit = Number(usageData.dailyLimit ?? 0);
-        const usedToday = Number(usageData.usedToday ?? 0);
-        const remaining = Number(usageData.remaining ?? dailyLimit - usedToday);
-        if (dailyLimit > 0 && (usedToday >= dailyLimit || remaining <= 0)) {
-          return {
-            error: `Votre quota journalier de génération d'images est épuisé (${usedToday}/${dailyLimit} images). Réinitialisation à minuit UTC.`,
-            limit: dailyLimit,
-            used: usedToday,
-          };
-        }
       }
     } catch (quotaError) {
-      console.warn(
-        "Avertissement vérification quota génération image:",
-        quotaError
-      );
+      logError("Vérification du quota de génération d'image", quotaError);
     }
 
-    const res = await fetch(`${MAI_API_URL}/v1/images/generations`, {
+    const cometApiKey = process.env.COMET_API_KEY;
+    if (!cometApiKey) {
+      return { error: "Génération d'image indisponible pour le moment." };
+    }
+
+    const res = await fetch("https://api.cometapi.com/v1/images/generations", {
       body: JSON.stringify({
         height: targetHeight,
         model: targetModel,
@@ -109,32 +111,43 @@ export async function generateImageViaMai(params: {
         width: targetWidth,
       }),
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${cometApiKey}`,
         "Content-Type": "application/json",
-        "x-user-id": params.userId,
       },
       method: "POST",
+      signal: AbortSignal.timeout(IMAGE_UPSTREAM_TIMEOUT_MS),
     });
+    // Le détail de l'erreur amont reste dans les journaux : il n'est jamais
+    // relayé tel quel au modèle ni à l'utilisateur.
+    if (!res.ok) {
+      logError("Erreur amont génération d'image", { status: res.status });
+      return { error: IMAGE_GENERIC_ERROR };
+    }
     const data = (await res.json().catch(() => ({}))) as {
       data?: Array<{ b64_json?: string; url?: string }>;
-      error?: { message?: string } | string;
       image_url?: string;
-      quota?: unknown;
     };
-    if (!res.ok) {
-      return {
-        error:
-          (typeof data?.error === "string"
-            ? data.error
-            : data?.error?.message || "") || "Erreur génération image",
-      };
-    }
     const rawUrl =
       data?.data?.[0]?.url || data?.data?.[0]?.b64_json || data?.image_url;
     if (!rawUrl) {
       return { error: "Aucune image retournée" };
     }
     const imageUrl = formatImageSrc(rawUrl);
+
+    // Persistance directe dans la table Neon mprojects_image_generations
+    try {
+      await recordImageGeneration({
+        height: targetHeight,
+        imageUrl,
+        model: targetModel,
+        negativePrompt,
+        prompt,
+        userId: params.userId,
+        width: targetWidth,
+      });
+    } catch (dbErr) {
+      logError("Erreur enregistrement image en base", dbErr);
+    }
 
     params.onImage?.(imageUrl);
 
@@ -145,11 +158,7 @@ export async function generateImageViaMai(params: {
       width: targetWidth,
     };
   } catch (error) {
-    return {
-      error:
-        error instanceof Error && error.message
-          ? error.message
-          : "Erreur génération image",
-    };
+    logError("Erreur de génération d'image", error);
+    return { error: IMAGE_GENERIC_ERROR };
   }
 }

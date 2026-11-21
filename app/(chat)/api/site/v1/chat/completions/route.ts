@@ -59,16 +59,24 @@ export async function POST(req: NextRequest) {
     const isFreePlan = !isPaidPlan;
     const modelName = (body.model || "").toLowerCase().trim();
 
-    // Les alias cloud de la génération mAI-2 sont ouverts à tous les forfaits
-    // (le quota hebdomadaire de tokens s'applique côté API mAI).
-    const isMaiCloudAlias = modelName === "mai-2" || modelName === "mai-2-mini";
+    // Modèles cloud souverains de la famille mAI (mAI-2 et mAI-2.5) :
+    // mAI-2, mAI-2-Mini et mAI-2.5-Omni sont ouverts au forfait Free.
+    // mAI-2.5-Opal et mAI-2.5-Apex sont réservés aux forfaits payants (Plus, Pro, Max).
+    const isFreeMaiModel =
+      modelName === "mai-2" ||
+      modelName === "mai-2-mini" ||
+      modelName === "mai-2.5-omni";
+    const isMaiCloudAlias =
+      isFreeMaiModel ||
+      modelName === "mai-2.5-opal" ||
+      modelName === "mai-2.5-apex";
 
-    if (isFreePlan && !modelName.includes("free") && !isMaiCloudAlias) {
+    if (isFreePlan && !modelName.includes("free") && !isFreeMaiModel) {
       return NextResponse.json<OpenAIErrorResponse>(
         {
           error: {
             code: "model_access_denied",
-            message: `Le modèle '${body.model}' nécessite un forfait payant (Plus, Pro ou Max). Votre forfait actuel (${auth.plan}) autorise uniquement les modèles contenant 'free'.`,
+            message: `Le modèle '${body.model}' nécessite un forfait payant (Plus, Pro ou Max). Votre forfait actuel (${auth.plan}) autorise uniquement les modèles gratuits (:free, mAI-2, mAI-2 Mini, mAI-2.5 Omni).`,
             param: "model",
             type: "permission_error",
           },

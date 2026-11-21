@@ -1,6 +1,5 @@
 import { tool } from "ai";
 import { z } from "zod";
-import { MAI_API_URL } from "@/lib/constants";
 import { normalizeMaiSearchLanguage } from "@/lib/search/sources";
 import { searchWikipediaWithSummaries } from "@/lib/search/wikipedia";
 
@@ -71,23 +70,7 @@ export const webSearch = tool({
     const language = input.language || "fr";
 
     const tryPrimary = async (): Promise<SearchResult[] | null> => {
-      try {
-        const res = await fetch(
-          `${MAI_API_URL}/v1/web/search?q=${encodeURIComponent(query)}&count=${count}&language=${encodeURIComponent(language)}`,
-          {
-            headers: { Accept: "application/json" },
-            signal: AbortSignal.timeout(6000),
-          }
-        );
-        if (!res.ok) {
-          return null;
-        }
-        const data = await res.json();
-        const results = normalizeResults(data, count);
-        return results.length > 0 ? results : null;
-      } catch {
-        return null;
-      }
+      return null;
     };
 
     const tryDuckDuckGo = async (): Promise<SearchResult[]> => {

@@ -16,6 +16,7 @@ import { MemoriesScreen } from "@/components/wakies/MemoriesScreen";
 import { MonProfilCard } from "@/components/wakies/MonProfilCard";
 import { Onboarding } from "@/components/wakies/Onboarding";
 import { openPageLink } from "@/components/wakies/page-navigation";
+import { WAKIES_POLL_MS } from "@/components/wakies/polling";
 import { ResultPane } from "@/components/wakies/ResultPane";
 import { SpaceWorkspace } from "@/components/wakies/SpaceWorkspace";
 import { TasksActivityScreen } from "@/components/wakies/TasksActivityScreen";
@@ -366,7 +367,7 @@ function WakiesWorkspaceContent({
             e instanceof Error ? e.message : "Impossible de joindre le serveur."
           );
       },
-      refreshInterval: 5000,
+      refreshInterval: WAKIES_POLL_MS,
       revalidateOnFocus: true,
     }
   );
