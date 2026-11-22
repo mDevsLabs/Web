@@ -23,7 +23,10 @@ export async function generateVerificationCode(
   const code = Math.floor(min + randomValue * range)
     .toString()
     .padStart(length, "0");
-  const expiresAt = new Date(Date.now() + 10 * 60_000);
+  // Le client `postgres` partagé avec Drizzle a ses sérialiseurs de `Date`
+  // modifiés : passer une instance `Date` brute dans un gabarit SQL lève
+  // `ERR_INVALID_ARG_TYPE`. On passe toujours une chaîne ISO + cast explicite.
+  const expiresAtIso = new Date(Date.now() + 10 * 60_000).toISOString();
 
   await dbReady();
   const sql = getRawClient();
@@ -32,7 +35,7 @@ export async function generateVerificationCode(
   const cleanEmail = email.trim().toLowerCase();
   await sql`
     INSERT INTO verification_codes (email, action, code, expires_at, attempts)
-    VALUES (${cleanEmail}, ${action}, ${code}, ${expiresAt}, 0)
+    VALUES (${cleanEmail}, ${action}, ${code}, ${expiresAtIso}::timestamptz, 0)
     ON CONFLICT (email, action)
     DO UPDATE SET
       code = EXCLUDED.code,
@@ -82,10 +85,11 @@ export async function regenerateVerificationCode(
     .toString()
     .padStart(length, "0");
   const expiresAt = new Date(Date.now() + 10 * 60_000);
+  const expiresAtIso = expiresAt.toISOString();
 
   const updated = await sql<{ email: string }[]>`
     UPDATE verification_codes
-    SET code = ${code}, expires_at = ${expiresAt}
+    SET code = ${code}, expires_at = ${expiresAtIso}::timestamptz
     WHERE email = ${cleanEmail} AND action = ${action} AND attempts = ${attempts}
     RETURNING email
   `;
@@ -108,7 +112,7 @@ export async function verifyVerificationCode(
 
   const cleanEmail = email.trim().toLowerCase();
   const normalizedCode = String(code).trim();
-  const now = new Date();
+  const nowIso = new Date().toISOString();
 
   // Consommation atomique si code valide et non expiré
   const accepted = await sql<{ email: string }[]>`
@@ -116,7 +120,7 @@ export async function verifyVerificationCode(
     WHERE email = ${cleanEmail}
       AND code = ${normalizedCode}
       AND action = ${action}
-      AND expires_at >= ${now}
+      AND expires_at >= ${nowIso}::timestamptz
       AND attempts < ${MAX_VERIFICATION_ATTEMPTS}
     RETURNING email
   `;
@@ -132,7 +136,7 @@ export async function verifyVerificationCode(
     WHERE email = ${cleanEmail}
       AND action = ${action}
       AND code != ${normalizedCode}
-      AND expires_at >= ${now}
+      AND expires_at >= ${nowIso}::timestamptz
       AND attempts < ${MAX_VERIFICATION_ATTEMPTS}
     RETURNING attempts
   `;
@@ -150,7 +154,7 @@ export async function verifyVerificationCode(
       DELETE FROM verification_codes
       WHERE email = ${cleanEmail}
         AND action = ${action}
-        AND (expires_at < ${now} OR attempts >= ${MAX_VERIFICATION_ATTEMPTS})
+        AND (expires_at < ${nowIso}::timestamptz OR attempts >= ${MAX_VERIFICATION_ATTEMPTS})
     `;
   }
 
