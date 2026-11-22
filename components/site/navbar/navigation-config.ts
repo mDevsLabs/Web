@@ -62,34 +62,12 @@ export const navLinks: NavItem[] = [
       },
     ],
   },
-  {
-    href: "/account/keys",
-    name: "API",
-    subitems: [
-      {
-        href: "/account/models",
-        name: "Modèles",
-        subitems: [
-          { href: "/account/models", name: "Modèles Texte" },
-          { href: "/account/models/images", name: "Modèles Images" },
-          { href: "/account/models/audio", name: "Modèles Audio" },
-          { href: "/account/models/mai", name: "Modèles mAI" },
-        ],
-      },
-      { href: "/playground", name: "Terrain de jeu" },
-      { href: "/account/keys", name: "Clés API" },
-      { href: "/account/requests", name: "Requêtes" },
-      { href: "/account/usage", name: "Usage" },
-      { href: "/account/config", name: "Configuration" },
-    ],
-  },
   { href: "/pricing", name: "Tarifs" },
   {
     href: "/support",
     name: "Plus",
     subitems: [
       { href: "/support", name: "Assistance" },
-      { href: "/docs", name: "Documentation" },
       { href: "/downloads", name: "Téléchargements" },
     ],
   },

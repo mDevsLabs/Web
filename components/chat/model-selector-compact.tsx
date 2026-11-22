@@ -40,7 +40,7 @@ import {
 } from "@/lib/ai/model-catalog";
 import {
   groupModelsByProvider,
-  isMai2Model,
+  isRecommendedModel,
 } from "@/lib/ai/model-selector/order";
 // Forme minimale acceptée par le sélecteur : ChatModel (chat), SpeechModel
 // (audio, provider optionnel) et ImageModel (images, qui expose owned_by) sont
@@ -62,7 +62,11 @@ import type {
   ModelSelectorSource,
   SharedModel,
 } from "@/lib/ai/model-selector/types";
-import { DEFAULT_CHAT_MODEL, type ModelCapabilities } from "@/lib/ai/models";
+import {
+  DEFAULT_CHAT_MODEL,
+  isBatchModelId,
+  type ModelCapabilities,
+} from "@/lib/ai/models";
 import {
   REASONING_LEVEL_DESCRIPTIONS,
   REASONING_LEVEL_LABELS,
@@ -183,7 +187,7 @@ function ModelDetailsPanel({
                 Gratuit
               </span>
             ) : null}
-            {isMai2Model(model) ? <RecommendedBadge /> : null}
+            {isRecommendedModel(model) ? <RecommendedBadge /> : null}
           </div>
           <span className="text-[11px] text-muted-foreground mt-0.5">
             Fournisseur : {providerLabel}
@@ -344,7 +348,7 @@ function SharedModelSelectorOption({
               Gratuit
             </span>
           ) : null}
-          {isMai2Model(model) ? <RecommendedBadge /> : null}
+          {isRecommendedModel(model) ? <RecommendedBadge /> : null}
         </div>
         <div className="ml-auto flex items-center shrink-0">
           {/* Bouton d'expansion sur mobile */}
@@ -501,7 +505,7 @@ function PureModelSelectorCompact({
     const seen = new Set<string>();
     const res: SharedModel[] = [];
     for (const m of rawModels) {
-      if (m?.id && !seen.has(m.id)) {
+      if (m?.id && !isBatchModelId(m.id) && !seen.has(m.id)) {
         seen.add(m.id);
         res.push(m);
       }
@@ -509,12 +513,17 @@ function PureModelSelectorCompact({
     return res;
   }, [rawModels]);
 
-  const matchedModel = models.find((m) => m.id === selectedModelId);
-  const isResolvingModel = Boolean(selectedModelId && !matchedModel);
+  const isLegacyBatchSelection = isBatchModelId(selectedModelId);
+  const matchedModel = isLegacyBatchSelection
+    ? undefined
+    : models.find((m) => m.id === selectedModelId);
+  const isResolvingModel = Boolean(
+    selectedModelId && !isLegacyBatchSelection && !matchedModel
+  );
 
   const selectedModel =
     matchedModel ??
-    (!selectedModelId && fallbackToFirst
+    ((!selectedModelId || isLegacyBatchSelection) && fallbackToFirst
       ? (models.find((m) => m.id === DEFAULT_CHAT_MODEL) ?? models[0])
       : undefined);
   const provider = selectedModel ? resolveProviderKey(selectedModel) : null;

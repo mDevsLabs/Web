@@ -14,7 +14,7 @@ Développée pour les environnements de développement, l'extension **mAI pour V
 - **Installation directe** : Décompressez l'archive et placez le dossier dans `.vscode/extensions`.
 
 - **Télécharger l'extension VS Code** : [mAI-VSCode.zip](https://upload.fs.fr/ObQWvEwYTk.zip)
-- **Consulter le guide d'installation VS Code** : [Documentation VS Code](/docs?doc=guide-extension-vscode)
+- **Présentation du projet Pulse** : [Page Pulse](/projects/pulse)
 
 ---
 
@@ -28,7 +28,7 @@ L'extension mAI pour navigateur web permet d'analyser, synthétiser et extraire 
 - **Déploiement simple** : Activez le mode développeur dans la page de gestion des extensions de votre navigateur et chargez l'archive décompressée.
 
 - **Télécharger l'extension Navigateur** : [mAI-Web.zip](https://upload.fs.fr/Zn7FIHWR6M.zip)
-- **Consulter le guide d'installation Navigateur** : [Documentation Navigateur](/docs?doc=guide-extension-navigateur)
+- **Toutes les applications mAI** : [Téléchargements](/downloads)
 
 ---
 

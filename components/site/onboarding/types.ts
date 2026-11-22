@@ -14,7 +14,7 @@ export type StepDef = {
   renderBody?: (ctx: StepContext) => ReactNode;
   ctaLabel?: string;
   ctaHref?: string;
-  ctaAction?: "next" | "complete" | "goKeys" | "goModels" | "custom";
+  ctaAction?: "next" | "complete" | "goAccount" | "goModels" | "custom";
 };
 
 export type StepContext = {

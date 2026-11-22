@@ -1,17 +1,18 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { errorResponse } from "@/lib/api/error-response";
 import { getUserImageUsageForUser } from "@/lib/site/image-usage";
-import { authenticateOpenAIRequest } from "@/lib/site/openai-auth";
+import { authenticateSession } from "@/lib/site/session-auth";
 
 export async function GET(req: NextRequest) {
-  const auth = await authenticateOpenAIRequest(req);
-  if (!auth.valid) {
-    return auth.response;
+  const session = await authenticateSession(req);
+  if (!session.ok) {
+    return errorResponse("auth_required", {
+      message: "Authentification requise.",
+      status: 401,
+    });
   }
 
-  // Identité réelle du propriétaire de la clé (jamais le libellé de forfait ni un en-tête client)
-  const userId = auth.ownerId || auth.apiKeyId || "dev_user";
-  const result = await getUserImageUsageForUser(userId);
+  const result = await getUserImageUsageForUser(session.identity.userId);
 
   if (!result.success) {
     return errorResponse("internal_error", {

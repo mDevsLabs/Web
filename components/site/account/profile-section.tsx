@@ -299,7 +299,7 @@ export function ProfileSection({
               {
                 checked: notifyLimits,
                 description:
-                  "Recevoir un e-mail lorsque mes quotas API sont proches d'être atteints.",
+                  "Recevoir un e-mail lorsque mes quotas mAI sont proches d'être atteints.",
                 id: "notifyLimits",
                 setChecked: setNotifyLimits,
                 title: "M'avertir des limites de quota",

@@ -17,7 +17,7 @@ export function OnboardingOverlay({
   onPrev,
   onSkip,
   onComplete,
-  onGoKeys,
+  onGoAccount,
   onGoModels,
 }: {
   open: boolean;
@@ -29,7 +29,7 @@ export function OnboardingOverlay({
   onPrev: () => void;
   onSkip: () => void;
   onComplete: () => void;
-  onGoKeys: () => void;
+  onGoAccount: () => void;
   onGoModels: () => void;
 }) {
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -119,7 +119,7 @@ export function OnboardingOverlay({
                 context={context}
                 key={`${flow}-${step.id}`}
                 onComplete={onComplete}
-                onGoKeys={onGoKeys}
+                onGoAccount={onGoAccount}
                 onGoModels={onGoModels}
                 onNext={onNext}
                 onPrev={onPrev}

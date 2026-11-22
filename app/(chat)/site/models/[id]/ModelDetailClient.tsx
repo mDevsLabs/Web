@@ -10,7 +10,6 @@ import {
   DownloadIcon as Download,
   EyeIcon as Eye,
   EyeOffIcon as EyeOff,
-  KeyRoundIcon as KeyRound,
   LayersIcon as Layers,
   Share2Icon as Share2,
   SparklesIcon as Sparkles,
@@ -43,28 +42,6 @@ export function ModelDetailClient({ model }: { model: ModelInfo }) {
   const hfCommand = model.huggingFaceTag
     ? `hf download ${model.huggingFaceTag}`
     : "";
-
-  const curlCommand = `curl https://mai.val.run/v1/chat/completions \\
-  -H "Authorization: Bearer $MAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "model": "${model.apiAlias}",
-    "messages": [{ "role": "user", "content": "Bonjour mAI" }]
-  }'`;
-
-  const pythonSnippet = `from openai import OpenAI
-import os
-
-client = OpenAI(
-    base_url="https://mai.val.run/v1",
-    api_key=os.environ["MAI_API_KEY"],
-)
-
-response = client.chat.completions.create(
-    model="${model.apiAlias}",
-    messages=[{"role": "user", "content": "Bonjour mAI"}],
-)
-print(response.choices[0].message.content)`;
 
   const integrations: AppIntegration[] = model.ollamaTag
     ? [
@@ -206,8 +183,8 @@ print(response.choices[0].message.content)`;
               </p>
               {isCloud && (
                 <p className="text-slate-500 text-xs mt-1.5">
-                  Sortie prévue le {model.releaseDate} · Exécution cloud via
-                  l&apos;API mAI
+                  Sortie le {model.releaseDate} · Exécution cloud sur la
+                  plateforme mAI
                 </p>
               )}
             </div>
@@ -257,7 +234,7 @@ print(response.choices[0].message.content)`;
               {isCloud ? "Exécution" : "Paramètres"}
             </div>
             <span className="text-xl font-black text-slate-900">
-              {isCloud ? "Cloud (API mAI)" : model.parameters}
+              {isCloud ? "Cloud mAI" : model.parameters}
             </span>
           </div>
 
@@ -305,71 +282,41 @@ print(response.choices[0].message.content)`;
         />
       )}
 
-      {/* ─── Modèles cloud : utilisation via l'API mAI ─────────────────────── */}
+      {/* ─── Modèles cloud : utilisation sur la plateforme mAI ────────────── */}
       {isCloud && (
         <div className="bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white rounded-3xl p-6 md:p-8 shadow-xl relative overflow-hidden border border-slate-800">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 rounded-xl bg-blue-500/20 text-blue-400 border border-blue-500/30">
-              <Terminal className="w-5 h-5" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold">
-                Utilisation via l&apos;API mAI
-              </h2>
-              <p className="text-xs text-slate-400">
-                API compatible OpenAI — aucune installation locale requise.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2 bg-slate-900/90 border border-slate-700/80 rounded-2xl p-4 font-mono text-sm shadow-inner">
-              <div className="flex items-center justify-between">
-                <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider">
-                  cURL
-                </span>
-                {renderCopyButton(
-                  curlCommand,
-                  "curl",
-                  "Commande cURL",
-                  "bg-blue-600 hover:bg-blue-500 text-white"
-                )}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="p-3 rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/30">
+                <Cloud className="w-5 h-5" />
               </div>
-              <pre className="text-blue-300 font-bold overflow-x-auto whitespace-pre">
-                {curlCommand}
-              </pre>
-            </div>
-
-            <div className="flex flex-col gap-2 bg-slate-900/90 border border-slate-700/80 rounded-2xl p-4 font-mono text-sm shadow-inner">
-              <div className="flex items-center justify-between">
-                <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider">
-                  Python · SDK OpenAI
-                </span>
-                {renderCopyButton(
-                  pythonSnippet,
-                  "python",
-                  "Extrait Python",
-                  "bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700"
-                )}
+              <div>
+                <h2 className="text-xl font-bold">
+                  Disponible sur la plateforme mAI
+                </h2>
+                <p className="text-xs text-slate-400">
+                  Utilisable directement dans mAI Web, le mode Agent et nos
+                  applications dédiées — aucune installation locale requise.
+                </p>
               </div>
-              <pre className="text-emerald-300 font-bold overflow-x-auto whitespace-pre">
-                {pythonSnippet}
-              </pre>
             </div>
-          </div>
 
-          <div className="mt-5 flex flex-wrap items-center gap-3 text-xs text-slate-400">
-            <span>
-              Créez votre clé API depuis votre compte, puis remplacez
-              $MAI_API_KEY.
-            </span>
-            <Link
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold transition-all"
-              href="/account/keys"
-            >
-              <KeyRound className="w-3.5 h-3.5" />
-              Gérer mes clés API
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs transition-all"
+                href="/"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                Ouvrir mAI Web
+              </a>
+              <Link
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs transition-all"
+                href="/downloads"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Applications &amp; CLI
+              </Link>
+            </div>
           </div>
         </div>
       )}

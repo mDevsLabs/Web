@@ -45,9 +45,9 @@ export function ModelsShowcase() {
             </span>
           </h2>
           <p className="text-slate-500 text-sm sm:text-base font-light mt-1 max-w-xl">
-            La nouvelle génération de mAI, exécutée dans le cloud via l&apos;API
-            mAI : raisonnement approfondi, codage d&apos;élite et computer use
-            avec 1M de tokens.
+            La nouvelle génération de mAI, disponible dans le cloud sur la
+            plateforme mAI : raisonnement approfondi, codage d&apos;élite et
+            computer use avec 1M de tokens.
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export function ModelsShowcase() {
                   )}
                 </div>
                 <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-700 border border-sky-500/20">
-                  <Cloud className="w-3 h-3" /> Cloud · API mAI
+                  <Cloud className="w-3 h-3" /> Cloud mAI
                 </span>
               </div>
 
@@ -122,7 +122,7 @@ export function ModelsShowcase() {
             </div>
 
             <div className="space-y-3 pt-4 border-t border-slate-200/60">
-              {/* Commande d'appel : Ollama en local, alias API en cloud */}
+              {/* Identifiant plateforme en cloud ou commande Ollama en local */}
               <div className="flex items-center justify-between bg-slate-900 text-slate-200 p-2.5 rounded-2xl text-xs font-mono">
                 <div className="flex items-center gap-2 truncate pr-2">
                   {model.cloud ? (
@@ -131,30 +131,25 @@ export function ModelsShowcase() {
                     <Terminal className="w-3.5 h-3.5 text-purple-400 shrink-0" />
                   )}
                   <span className="truncate text-slate-300 select-all">
-                    {model.cloud
-                      ? `model: "${model.apiAlias}"`
-                      : `ollama run ${model.ollamaTag}`}
+                    {model.cloud ? model.id : `ollama run ${model.ollamaTag}`}
                   </span>
                 </div>
                 <motion.button
                   className="p-1.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-colors shrink-0"
                   onClick={() =>
                     handleCopy(
-                      model.cloud
-                        ? model.apiAlias || model.id
-                        : model.ollamaTag || model.id
+                      model.cloud ? model.id : model.ollamaTag || model.id
                     )
                   }
                   title={
                     model.cloud
-                      ? "Copier l'identifiant API"
+                      ? "Copier l'identifiant du modèle"
                       : "Copier la commande Ollama"
                   }
                   whileTap={{ scale: 0.9 }}
                 >
-                  {(model.cloud
-                    ? model.apiAlias || model.id
-                    : model.ollamaTag || model.id) === copiedTag ? (
+                  {(model.cloud ? model.id : model.ollamaTag || model.id) ===
+                  copiedTag ? (
                     <Check className="w-3.5 h-3.5 text-emerald-400" />
                   ) : (
                     <Copy className="w-3.5 h-3.5" />

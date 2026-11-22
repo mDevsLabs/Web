@@ -108,12 +108,12 @@ describe("Sécurité — Isolation Proxy et contrôle d'accès", () => {
     for (const prefixe of [
       '"/api/cron/',
       '"/api/site/v1/',
-      '"/api/site/v1beta/',
       '"/api/site/github/',
       '"/api/skills/share/',
     ]) {
       expect(politique).toContain(prefixe);
     }
+    expect(politique).not.toContain('"/api/site/v1beta/');
   });
 });
 

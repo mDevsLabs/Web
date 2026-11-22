@@ -162,3 +162,44 @@ export function getAllowedStatusTransitions(
     "archived",
   ];
 }
+
+export interface SupportDashboardStats {
+  archived: number;
+  avgResolutionHours: number | null;
+  closed: number;
+  inProgress: number;
+  open: number;
+  reopened: number;
+  resolutionRate: number | null;
+  resolved: number;
+  total: number;
+  totalWithArchived: number;
+  waiting: number;
+}
+
+export interface SupportDashboardResult {
+  activeCount: number;
+  activeTickets: SupportTicket[];
+  authenticated: boolean;
+  error?: string;
+  historyTickets: SupportTicket[];
+  isAdmin: boolean;
+  stats: SupportDashboardStats | null;
+  success: boolean;
+}
+
+export interface SupportTicketsListResult {
+  error?: string;
+  isAdmin?: boolean;
+  success: boolean;
+  tickets: SupportTicket[];
+}
+
+export interface SupportTicketDetailsResult {
+  attachments?: SupportAttachment[];
+  error?: string;
+  isAdmin?: boolean;
+  messages?: SupportMessage[];
+  success: boolean;
+  ticket?: SupportTicket;
+}

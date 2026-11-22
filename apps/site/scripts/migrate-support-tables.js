@@ -177,6 +177,26 @@ async function main() {
   } catch (e) {
     console.error(" Erreur migration v2:", e.message);
   }
+
+  const perfIndexes = [
+    `CREATE INDEX IF NOT EXISTS idx_support_tickets_user_email ON support_tickets(user_email);`,
+    `CREATE INDEX IF NOT EXISTS idx_support_tickets_archived_updated_at ON support_tickets(is_archived, updated_at DESC);`,
+    `CREATE INDEX IF NOT EXISTS idx_support_tickets_user_id_updated_at ON support_tickets(user_id, updated_at DESC);`,
+    `CREATE INDEX IF NOT EXISTS idx_support_tickets_user_email_updated_at ON support_tickets(user_email, updated_at DESC);`,
+    `CREATE INDEX IF NOT EXISTS idx_support_messages_ticket_id_created_at ON support_ticket_messages(ticket_id, created_at ASC);`,
+    `CREATE INDEX IF NOT EXISTS idx_support_attachments_ticket_id_created_at ON support_ticket_attachments(ticket_id, created_at ASC);`,
+  ];
+
+  for (const idxSql of perfIndexes) {
+    try {
+      await sql.query(idxSql, []);
+    } catch (ie) {
+      const msg = ie instanceof Error ? ie.message : String(ie);
+      if (!msg.includes("does not exist") && !msg.includes("already exists")) {
+        throw ie;
+      }
+    }
+  }
 }
 
 main().catch((err) => {

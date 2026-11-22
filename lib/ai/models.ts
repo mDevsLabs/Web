@@ -68,7 +68,7 @@ export const FALLBACK_MODELS: ChatModel[] = [
     id: "mai-2.5-opal",
     isFree: false,
     maxContext: 1_000_000,
-    maxOutput: 384_000,
+    maxOutput: 128_000,
     name: "mAI-2.5-Opal",
     provider: "mdevslabs",
     reasoning: {
@@ -102,7 +102,7 @@ export const FALLBACK_MODELS: ChatModel[] = [
     id: "mai-2.5-apex",
     isFree: false,
     maxContext: 1_000_000,
-    maxOutput: 256_000,
+    maxOutput: 128_000,
     name: "mAI-2.5-Apex",
     provider: "mdevslabs",
     reasoning: {
@@ -246,15 +246,39 @@ export const FALLBACK_MODELS: ChatModel[] = [
   },
   {
     architecture: {
-      input_modalities: ["text"],
-      modality: "text->text",
+      input_modalities: ["text", "image"],
+      modality: "text+image->text",
       output_modalities: ["text"],
     },
-    description: "Modèle de texte Poolside compatible avec les outils Agent",
-    id: "poolside/laguna-xs-2.1:free",
+    description: "Modèle rapide et polyvalent Gemma 4 de Google (Gratuit)",
+    id: "google/gemma-4-26b-a4b-it:free",
     isFree: true,
-    name: "Laguna XS 2.1",
-    provider: "poolside",
+    maxContext: 262_144,
+    maxOutput: 32_768,
+    name: "Gemma 4 26B",
+    provider: "google",
+    supported_parameters: [
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "tools",
+      "tool_choice",
+      "response_format",
+    ],
+  },
+  {
+    architecture: {
+      input_modalities: ["text", "image"],
+      modality: "text+image->text",
+      output_modalities: ["text"],
+    },
+    description: "Modèle dense haute qualité Gemma 4 31B de Google (Gratuit)",
+    id: "google/gemma-4-31b-it:free",
+    isFree: true,
+    maxContext: 262_144,
+    maxOutput: 32_768,
+    name: "Gemma 4 31B",
+    provider: "google",
     supported_parameters: [
       "temperature",
       "top_p",
@@ -270,16 +294,19 @@ export const FALLBACK_MODELS: ChatModel[] = [
       modality: "text->text",
       output_modalities: ["text"],
     },
-    description: "Modèle open-source de pointe par Meta",
-    id: "meta-llama/llama-3.3-70b-instruct:free",
+    description: "Modèle rapide à long contexte de NVIDIA (Gratuit)",
+    id: "nvidia/nemotron-3.5-lightning:free",
     isFree: true,
-    name: "Llama 3.3 70B",
-    provider: "meta-llama",
+    maxContext: 1_000_000,
+    maxOutput: 65_536,
+    name: "Nemotron 3.5 Lightning",
+    provider: "nvidia",
     supported_parameters: [
       "temperature",
       "top_p",
       "max_tokens",
       "tools",
+      "tool_choice",
       "response_format",
     ],
   },
@@ -289,43 +316,45 @@ export const FALLBACK_MODELS: ChatModel[] = [
       modality: "text->text",
       output_modalities: ["text"],
     },
-    description: "Modèle de raisonnement avancé DeepSeek",
-    id: "deepseek/deepseek-r1:free",
+    description: "Modèle de raisonnement avancé Nemotron 3 Ultra (Gratuit)",
+    id: "nvidia/nemotron-3-ultra-550b-a55b:free",
     isFree: true,
-    name: "DeepSeek R1",
-    provider: "deepseek",
+    maxContext: 1_000_000,
+    maxOutput: 65_536,
+    name: "Nemotron 3 Ultra",
+    provider: "nvidia",
     supported_parameters: [
       "temperature",
       "top_p",
       "max_tokens",
       "stream",
-      "thinking",
-      "reasoning",
-    ],
-  },
-  {
-    architecture: {
-      input_modalities: ["text"],
-      modality: "text->text",
-      output_modalities: ["text"],
-    },
-    description: "Spécialisé pour le code et le développement",
-    id: "qwen/qwen-2.5-coder-32b-instruct:free",
-    isFree: true,
-    name: "Qwen 2.5 Coder 32B",
-    provider: "qwen",
-    supported_parameters: [
-      "temperature",
-      "top_p",
-      "max_tokens",
-      "stop",
       "tools",
+      "reasoning",
     ],
   },
 ];
 
 export const chatModels = FALLBACK_MODELS;
 export const allowedModelIds = new Set(FALLBACK_MODELS.map((m) => m.id));
+
+/**
+ * Identifie les variantes « batch » (traitement différé asynchrone) d'un
+ * catalogue fournisseur, reconnaissables au suffixe ou segment `:batch`.
+ */
+export function isBatchModelId(modelId: string | null | undefined): boolean {
+  return (
+    typeof modelId === "string" && modelId.toLowerCase().includes(":batch")
+  );
+}
+
+/**
+ * Exclut les modèles `:batch` d'une liste de modèles, sans muter l'entrée.
+ */
+export function excludeBatchModels<T extends { id: string }>(
+  models: readonly T[]
+): T[] {
+  return models.filter((model) => !isBatchModelId(model.id));
+}
 
 // Nom affichable : retire le préfixe fournisseur ("Poolside: Laguna xs 2.1" ->
 // "Laguna xs 2.1") et suffixe "(Free)" dérivé de l'id uniquement (idempotent).

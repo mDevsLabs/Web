@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ActivityIcon as Activity,
   ChevronDownIcon as ChevronDown,
   CloudIcon as Cloud,
   GaugeIcon as Gauge,
@@ -88,16 +87,6 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                 >
                   <Gauge className="w-4 h-4 text-purple-600" />
                   Usage mAI
-                </Link>
-                <Link
-                  className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5"
-                  href="/account#usage-api"
-                  onClick={() =>
-                    handleAccountAnchorClick(pathname, "usage-api")
-                  }
-                >
-                  <Activity className="w-4 h-4 text-purple-600" />
-                  Usage API
                 </Link>
                 <Link
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5"

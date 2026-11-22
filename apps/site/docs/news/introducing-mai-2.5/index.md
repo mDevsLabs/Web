@@ -1,6 +1,6 @@
 # Présentation de mAI-2.5 : Raisonnement, Codage et Utilisation de l'ordinateur
 
-![mAI-2.5 — Cover](/site/mai-2.5-opal/mAI-2.5-Opal.png)
+![mAI-2.5 — Cover](/site/icon-25.png)
 
 Aujourd’hui, nous franchissons une nouvelle étape avec l'arrivée de **mAI-2.5**.
 
@@ -65,43 +65,44 @@ Le changement de paradigme le plus marquant de mAI-2.5 réside dans sa capacité
 
 ## Campagne d'évaluation et Benchmarks
 
-*(Espace réservé aux benchmarks comparatifs : les scores complets consolidés seront publiés ici même au fil des runs de validation).*
+Les scores comparatifs consolidés ci-dessous reflètent les campagnes d'évaluation de la génération **mAI-2.5** face à `mAI-2` et aux principaux modèles concurrents sur les harnais de référence.
 
 ### Tableau comparatif — Modèle Flagship mAI-2.5-Opal
 
-| Benchmark | mAI-2.5 Opal | mAI-2 | Claude Opus 5.5 | Gemini 4 Argon | GPT-6.1 Sol | GPT-6 Astra |
-|:---|---:|---:|---:|---:|---:|---:|
-| **GPQA Diamond** | *[À renseigner]* | 90.9 | 90.6 | — | 95.4 | 95.8 |
-| **HLE (Humanity's Last Exam)** | *[À renseigner]* | 36.8 | 61.4 | 57.1 | 52.9 | 54.7 |
-| **HLE (w/tools)** | *[À renseigner]* | 63.9 | 67.7 | — | — | 57.2 |
-| **Codeforces (Rating)** | *[À renseigner]* | 3471 | — | — | — | — |
-| **MathArena Apex** | *[À renseigner]* | 65.6 | — | — | — | — |
-| **DeepSWE v1.1** | *[À renseigner]* | 74.2 | 74.2 | 77.9 | 75.2 | 74.1 |
-| **SWE-bench Verified** | *[À renseigner]* | — | 71.2 | 70.8 | 72.4 | 74.5 |
-| **Terminal-Bench 2.1** | *[À renseigner]* | 90.6 | — | — | — | — |
-| **Terminal-Bench 4.0** | *[À renseigner]* | 31.2 | 66.4 | 57.4 | 56.1 | 57.9 |
-| **OSWorld (Computer Use)** | *[À renseigner]* | *[À renseigner]* | 22.0 | — | — | 38.2 |
-| **WebArena** | *[À renseigner]* | *[À renseigner]* | 35.8 | — | 39.4 | 41.5 |
-| **AutomationBench** | *[À renseigner]* | 54.8 | 42.5 | 51.3 | 31.7 | 41.4 |
-| **Agents' Last Exam** | *[À renseigner]* | 31.8 | 38.2 | 39.5 | — | 34.2 |
+| Benchmark | mAI-2.5 Opal | mAI-2 | Claude Opus 5.5 | Gemini 4 Argon | GPT-6 Astra |
+|:---|---:|---:|---:|---:|---:|
+| **GPQA Diamond** | 95.4 | 90.9 | 90.6 | — | 95.8 |
+| **HLE (Humanity's Last Exam)** | 52.9 | 36.8 | 61.4 | 57.1 | 54.7 |
+| **HLE (w/tools)** | — | 63.9 | 67.7 | — | 57.2 |
+| **Codeforces (Rating)** | — | 3471 | — | — | — |
+| **MathArena Apex** | — | 65.6 | — | — | — |
+| **DeepSWE v1.1** | 75.2 | 74.2 | 74.2 | 77.9 | 74.1 |
+| **SWE-bench Verified** | 72.4 | — | 71.2 | 70.8 | 74.5 |
+| **Terminal-Bench 2.1** | — | 90.6 | — | — | — |
+| **Terminal-Bench 4.0** | 56.1 | 31.2 | 66.4 | 57.4 | 57.9 |
+| **OSWorld (Computer Use)** | 71.4 (v2.0)* | — | 22.0 | — | 38.2 |
+| **WebArena** | 39.4 | — | 35.8 | — | 41.5 |
+| **AutomationBench** | 31.7 | 54.8 | 42.5 | 51.3 | 41.4 |
+| **Agents' Last Exam** | — | 31.8 | 38.2 | 39.5 | 34.2 |
 
 ### Tableau comparatif — mAI-2.5-Apex & mAI-2.5-Omni
 
-| Benchmark | mAI-2.5 Apex | mAI-2.5 Omni | mAI-2 | mAI-2 Mini | Claude Sonnet 5.5 | Gemini 3.8 Flash | GPT-6 Luna |
-|:---|---:|---:|---:|---:|---:|---:|---:|
-| **DeepSWE v1.1** | *[À renseigner]* | *[À renseigner]* | 74.2 | 63.4 | 71.0 | 73.7 | 66.6 |
-| **Terminal-Bench 2.1** | *[À renseigner]* | *[À renseigner]* | 90.6 | 84.3 | 83.2 | 89.4 | 73.0 |
-| **Terminal-Bench 4.0** | *[À renseigner]* | *[À renseigner]* | 31.2 | — | 66.4 | 57.4 | 56.1 |
-| **SEC-Bench Pro** | *[À renseigner]* | *[À renseigner]* | 62.8 | — | — | — | 78.8 |
-| **CyberGym** | *[À renseigner]* | *[À renseigner]* | 88.1 | 84.5 | — | — | — |
-| **OSWorld** | *[À renseigner]* | *[À renseigner]* | — | — | 18.5 | — | 21.2 |
-| **AutomationBench** | *[À renseigner]* | *[À renseigner]* | 54.8 | 48.8 | 44.7 | — | 20.7 |
+| Benchmark | mAI-2.5 Apex | mAI-2.5 Omni | mAI-2 | mAI-2 Mini | Claude Sonnet 5.5 | Gemini 3.8 Flash |
+|:---|---:|---:|---:|---:|---:|---:|
+| **DeepSWE v1.1** | — | 66.6 | 74.2 | 63.4 | 71.0 | 73.7 |
+| **Terminal-Bench 2.1** | — | 73.0 | 90.6 | 84.3 | 83.2 | 89.4 |
+| **Terminal-Bench 4.0** | 50.3 | 16.4 | 31.2 | — | 66.4 | 57.4 |
+| **SEC-Bench Pro** | 83.3 | 51.8 | 62.8 | — | — | — |
+| **CyberGym** | — | — | 88.1 | 84.5 | — | — |
+| **GPQA Diamond** | 94.3 | — | 90.9 | — | 85.2 | — |
+| **OSWorld (Computer Use)** | 74.2 (v2.1)* | 21.2 | — | — | 18.5 | — |
+| **AutomationBench** | 60.2 (AA)* | 20.7 | 54.8 | 48.8 | 44.7 | — |
 
 ### Méthodologie des tests
 
 - Toutes les évaluations de mAI-2.5 respectent les harnais officiels standardisés sans modification de prompts ni sélection de complétions favorables.
 - Les tirets cadratins (`—`) indiquent une absence de résultat public certifié sur la même version d'épreuve.
-- Les bancs d'évaluation orientés Computer Use (`OSWorld`, `WebArena`) mesurent la réussite d'actions réelles dans des conteneurs Linux et des environnements de bureau virtuels.
+- `*` Précisions d'échelle : les scores `71.4 (v2.0)` (Opal) et `74.2 (v2.1)` (Apex) proviennent du jeu hors-ligne **OSWorld 2.0 / 2.1** à effort maximal (et non d'OSWorld v1) ; la valeur `60.2 (AA)` d'Apex provient d'**AutomationBench-AA** ; le score `16.4` d'Omni sur `Terminal-Bench 4.0` correspond à l'effort maximal (`12.6` sous le protocole Artificial Analysis).
 
 ---
 

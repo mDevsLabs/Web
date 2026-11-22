@@ -56,7 +56,7 @@ const models25: ModelCardData[] = [
     squareImage: "/site/mai-2.5-opal/icon.png",
     tagline: "Le fleuron de l'intelligence cognitive et du computer use.",
     tags: [
-      "Cloud (API mAI)",
+      "Cloud mAI",
       "Contexte 1M",
       "Thinking & Tools",
       "Flagship",
@@ -82,7 +82,7 @@ const models25: ModelCardData[] = [
     shadowHover: "hover:shadow-[0_8px_32px_0_rgba(245,158,11,0.25)]",
     squareImage: "/site/mai-2.5-apex/icon.png",
     tagline: "Rigueur analytique absolue et haute performance.",
-    tags: ["Cloud (API mAI)", "Contexte 1M", "Rigueur & Sécurité", "High Perf"],
+    tags: ["Cloud mAI", "Contexte 1M", "Rigueur & Sécurité", "High Perf"],
     vision: true,
   },
   {
@@ -103,7 +103,7 @@ const models25: ModelCardData[] = [
     shadowHover: "hover:shadow-[0_8px_32px_0_rgba(6,182,212,0.25)]",
     squareImage: "/site/mai-2.5-omni/icon.png",
     tagline: "Polyvalence quotidienne, vitesse d'exécution et productivité.",
-    tags: ["Cloud (API mAI)", "Contexte 1M", "Ultra-rapide", "Quotidien"],
+    tags: ["Cloud mAI", "Contexte 1M", "Ultra-rapide", "Quotidien"],
     vision: true,
   },
 ];
@@ -117,7 +117,7 @@ const models2: ModelCardData[] = [
     color: "from-sky-500 to-indigo-600",
     context: "1M tokens",
     description:
-      "Le modèle principal de la génération mAI-2. Raisonnement, codage, vitesse et création, avec un contexte pouvant atteindre 1 million de tokens. S'exécute dans le cloud via l'API mAI — aucune installation locale.",
+      "Le modèle principal de la génération mAI-2. Raisonnement, codage, vitesse et création, avec un contexte pouvant atteindre 1 million de tokens. S'exécute dans le cloud sur la plateforme mAI — aucune installation locale.",
     id: "mai-2",
     name: "mAI-2",
     num: "01",
@@ -127,7 +127,7 @@ const models2: ModelCardData[] = [
     shadowHover: "hover:shadow-[0_8px_32px_0_rgba(14,165,233,0.25)]",
     squareImage: "/site/mai-2/icon.png",
     tagline: "Notre modèle phare, au meilleur prix.",
-    tags: ["Cloud (API mAI)", "Contexte 1M", "Texte + images", "Flagship"],
+    tags: ["Cloud mAI", "Contexte 1M", "Texte + images", "Flagship"],
     vision: true,
   },
   {
@@ -148,7 +148,7 @@ const models2: ModelCardData[] = [
     shadowHover: "hover:shadow-[0_8px_32px_0_rgba(45,212,191,0.25)]",
     squareImage: "/site/mai-2/mai-galaxy.png",
     tagline: "Notre modèle équilibré pour les tâches du quotidien.",
-    tags: ["Cloud (API mAI)", "Contexte 1M", "Texte + images", "Équilibré"],
+    tags: ["Cloud mAI", "Contexte 1M", "Texte + images", "Équilibré"],
     vision: true,
   },
 ];
@@ -435,9 +435,7 @@ function ModelCard({ model, index }: { model: ModelCardData; index: number }) {
             )}
             <span>
               {model.cloud ? "Exécution" : "Paramètres"} :{" "}
-              <strong>
-                {model.cloud ? "Cloud (API mAI)" : model.parameters}
-              </strong>
+              <strong>{model.cloud ? "Cloud mAI" : model.parameters}</strong>
             </span>
           </div>
           <div className="flex items-center gap-2 text-xs font-medium text-slate-700">
@@ -504,9 +502,9 @@ export default function ModelsPage() {
           initial={{ opacity: 0 }}
           transition={{ delay: 0.1 }}
         >
-          Explorez la gamme de modèles mAI : la génération cloud mAI-2 via
-          l&apos;API mAI, et les modèles open-weights exécutables localement via
-          Ollama.
+          Explorez la gamme de modèles mAI : les générations cloud mAI-2.5 et
+          mAI-2 sur la plateforme mAI, et les modèles open-weights exécutables
+          localement via Ollama.
         </motion.p>
 
         <motion.div

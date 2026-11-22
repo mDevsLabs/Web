@@ -181,7 +181,9 @@ export async function POST(request: Request) {
         : getPluginInstallationsByUserId({ userId: ctx.userId }),
       fetchUserModels(),
     ]);
-    const toolsSupported = getModelCapabilitiesFor(ctx.chatModel, models).tools;
+    const modelCapabilities = getModelCapabilitiesFor(ctx.chatModel, models);
+    const toolsSupported = modelCapabilities.tools;
+    const reasoningSupported = modelCapabilities.reasoning;
 
     // 4. Plugins installés et activés pour l'utilisateur : seuls leurs outils
     // peuvent être instanciés, même si le client les mentionne.
@@ -215,19 +217,40 @@ export async function POST(request: Request) {
       ctx.userDefaultTemp ??
       undefined;
     const effectiveTopP = ctx.agentTopP ?? ctx.userDefaultTopP ?? undefined;
+    // Ne pas imposer un max_tokens démesuré (128k–384k) par défaut vers
+    // OpenRouter : cela provoque des rejets 400 (dépassement modèle) ou 402
+    // (crédits réservés d'avance). On n'envoie `maxOutputTokens` que lorsqu'un
+    // bot/agent définit explicitement un plafond, borné à la limite réelle du modèle.
     const effectiveMaxTokens =
-      ctx.agentMaxTokens ?? resolveModelMaxOutput(ctx.chatModel);
+      ctx.agentMaxTokens !== null && ctx.agentMaxTokens !== undefined
+        ? Math.min(
+            ctx.agentMaxTokens,
+            resolveModelMaxOutput(ctx.chatModel, models)
+          )
+        : undefined;
 
     // 6. Initialiser le modèle de langage mAI. Le collecteur est propre à la
     // requête : deux conversations concurrentes ne partagent jamais leur
     // raisonnement.
     const reasoningSink = createReasoningDetailsSink();
-    const model = getLanguageModel(ctx.chatModel, {
-      apiKey: ctx.userApiKey,
-      reasoningSink,
-      sessionToken: ctx.sessionToken,
-      userId: ctx.maiUser.id,
-    });
+    let model: ReturnType<typeof getLanguageModel>;
+    try {
+      model = getLanguageModel(ctx.chatModel, {
+        apiKey: ctx.userApiKey,
+        reasoningSink,
+        sessionToken: ctx.sessionToken,
+        userId: ctx.maiUser.id,
+      });
+    } catch (providerError) {
+      const msg =
+        providerError instanceof Error
+          ? providerError.message
+          : "Fournisseur IA non configuré.";
+      console.error(`[chat-api] provider_init_failed message="${msg}"`);
+      return errorResponse("service_unavailable", {
+        message: msg,
+      });
+    }
 
     // 6. Flux : MCP + outils + streamText (préparés à l'intérieur du stream)
     const stream = createChatStream({
@@ -346,6 +369,7 @@ export async function POST(request: Request) {
         };
       },
       reasoningSink,
+      reasoningSupported,
     });
 
     return createChatStreamResponse({

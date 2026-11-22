@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import { FALLBACK_MODELS } from "@/lib/ai/models";
 import { maiModelsList } from "@/lib/site/mai-models";
+import { getModelById } from "@/lib/site/models";
 import { modelsData } from "@/lib/site/models-data";
 import {
   resolveMaiIdentityPrompt,
@@ -75,21 +76,34 @@ describe("catalogue des modèles mAI-2.5", () => {
     }
   });
 
-  it("dispose des fiches de documentation dans apps/site/docs/documentation/", () => {
+  it("charge les fiches README.md et benchmarks mAI-2.5 sans colonnes GPT associées via getModelById", () => {
     const root = process.cwd();
-    for (const id of modelIds) {
-      const docPath = join(
-        root,
-        "apps",
-        "site",
-        "docs",
-        "documentation",
-        `model-${id}.md`
-      );
-      expect(existsSync(docPath)).toBe(true);
-      const content = readFileSync(docPath, "utf8");
-      expect(content).toContain(`category: "Modèles d'IA"`);
-      expect(content).toContain("1 000 000 tokens");
+    expect(
+      existsSync(join(root, "apps", "site", "docs", "documentation"))
+    ).toBe(false);
+
+    const opal = getModelById("mai-2.5-opal")?.readmeContent ?? "";
+    expect(opal).toContain("mAI-2.5 Opal");
+    expect(opal).toContain("GPT-6 Astra");
+    expect(opal).not.toContain("GPT-6.1 Sol");
+    expect(opal).toContain("95.4");
+    expect(opal).toContain("72.4");
+
+    const apex = getModelById("mai-2.5-apex")?.readmeContent ?? "";
+    expect(apex).toContain("mAI-2.5 Apex");
+    expect(apex).not.toContain("GPT-6.1 Sol");
+    expect(apex).not.toContain("GPT-6.1 Terra");
+    expect(apex).toContain("94.3");
+    expect(apex).toContain("74.2 (v2.1)*");
+
+    const omni = getModelById("mai-2.5-omni")?.readmeContent ?? "";
+    expect(omni).toContain("mAI-2.5 Omni");
+    expect(omni).not.toContain("GPT-6 Luna");
+    expect(omni).toContain("73.0");
+    expect(omni).toContain("1437 (v2)");
+
+    for (const content of [opal, apex, omni]) {
+      expect(content).not.toContain("*[À renseigner]*");
     }
   });
 
@@ -120,12 +134,19 @@ describe("catalogue des modèles mAI-2.5", () => {
     const json = JSON.parse(readFileSync(jsonPath, "utf8"));
     expect(json.title).toContain("mAI-2.5");
     expect(json.date).toBe("2026-11-19");
+    expect(json.image).toBe("/site/icon-25.png");
 
     const md = readFileSync(mdPath, "utf8");
+    expect(md).toContain("![mAI-2.5 — Cover](/site/icon-25.png)");
     expect(md).toContain("mAI-2.5-Opal");
     expect(md).toContain("mAI-2.5-Apex");
     expect(md).toContain("mAI-2.5-Omni");
     expect(md).toContain("Tableau comparatif");
+    expect(md).not.toContain("*[À renseigner]*");
+    expect(md).not.toContain("GPT-6 Luna");
+    expect(md).toContain("94.3");
+    expect(md).toContain("73.0");
+    expect(md).toContain("60.2 (AA)*");
   });
 });
 

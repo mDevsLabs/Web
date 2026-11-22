@@ -32,9 +32,14 @@ import {
 import {
   isAdminUser,
   type SupportTicket,
+  type SupportTicketsListResult,
 } from "@/app/(chat)/site/actions/support-utils";
 import { useAuth } from "@/components/site/auth-provider";
 import Link from "@/components/site/router";
+import {
+  TicketsListCardsSkeleton,
+  TicketsListSkeleton,
+} from "@/components/site/support/SupportSkeletons";
 import { formatDisplayDate } from "@/lib/site/date-format";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 
@@ -101,11 +106,17 @@ const PRIORITY_BADGES: Record<string, { label: string; bg: string }> = {
   urgent: { bg: "bg-red-100 text-red-700 border-red-200", label: "Critique" },
 };
 
-export default function TicketsListClient() {
+export default function TicketsListClient({
+  initialResult = null,
+}: {
+  initialResult?: SupportTicketsListResult | null;
+}) {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
 
-  const [tickets, setTickets] = useState<SupportTicket[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [tickets, setTickets] = useState<SupportTicket[]>(
+    initialResult?.success ? initialResult.tickets : []
+  );
+  const [loading, setLoading] = useState(!initialResult);
   const [statusFilter, setStatusFilter] = useState("all");
   const [projectFilter, setProjectFilter] = useState("all");
   const [priorityFilter, setPriorityFilter] = useState("all");
@@ -117,8 +128,11 @@ export default function TicketsListClient() {
   const [editingTitle, setEditingTitle] = useState("");
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+  const skipInitialFetchRef = useRef(Boolean(initialResult));
 
-  const isAdmin = isAdminUser(user?.email);
+  const isAdmin =
+    isAuthenticated &&
+    (isAdminUser(user?.email) || Boolean(initialResult?.isAdmin));
 
   const searchQueryRef = useRef(searchQuery);
   searchQueryRef.current = searchQuery;
@@ -142,9 +156,26 @@ export default function TicketsListClient() {
   }, [user, priorityFilter, projectFilter, statusFilter]);
 
   useEffect(() => {
-    if (!authLoading && isAuthenticated) fetchTickets();
-    else if (!authLoading && !isAuthenticated) setLoading(false);
-  }, [authLoading, isAuthenticated, fetchTickets]);
+    if (authLoading) return;
+    if (
+      skipInitialFetchRef.current &&
+      statusFilter === "all" &&
+      projectFilter === "all" &&
+      priorityFilter === "all"
+    ) {
+      skipInitialFetchRef.current = false;
+      return;
+    }
+    if (isAuthenticated) fetchTickets();
+    else setLoading(false);
+  }, [
+    authLoading,
+    isAuthenticated,
+    fetchTickets,
+    statusFilter,
+    projectFilter,
+    priorityFilter,
+  ]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -235,14 +266,7 @@ export default function TicketsListClient() {
   };
 
   if (authLoading) {
-    return (
-      <div className="flex justify-center items-center py-32 bg-white rounded-3xl border border-black/5">
-        <div className="flex items-center gap-3 text-slate-500 text-sm font-medium">
-          <Loader2 className="w-5 h-5 animate-spin text-purple-600" />
-          <span>Vérification de la session...</span>
-        </div>
-      </div>
-    );
+    return <TicketsListSkeleton />;
   }
 
   if (!isAuthenticated) {
@@ -353,7 +377,7 @@ export default function TicketsListClient() {
               <option value="mAI CLI">mAI CLI</option>
               <option value="mAI Coder">mAI Coder</option>
               <option value="mSearch">mSearch</option>
-              <option value="API & Modèles IA">API & Modèles IA</option>
+              <option value="Modèles IA">Modèles IA</option>
             </select>
           </div>
           <div className="sm:col-span-3">
@@ -374,12 +398,7 @@ export default function TicketsListClient() {
 
       {/* Liste */}
       {loading ? (
-        <div className="flex justify-center items-center py-24 bg-white rounded-3xl border border-black/5">
-          <div className="flex items-center gap-3 text-slate-500 text-sm font-medium">
-            <Loader2 className="w-5 h-5 animate-spin text-purple-600" />
-            <span>Chargement des tickets...</span>
-          </div>
-        </div>
+        <TicketsListCardsSkeleton />
       ) : tickets.length === 0 ? (
         <div className="p-12 rounded-3xl bg-white border border-black/5 text-center space-y-3">
           <FileQuestion className="w-10 h-10 mx-auto text-slate-400" />

@@ -67,9 +67,74 @@ export type ChatStreamParams = {
   effectiveTemperature?: number;
   effectiveTopP?: number;
   effectiveMaxTokens?: number;
+  /** Capacité de réflexion déclarée pour ce modèle. */
+  reasoningSupported?: boolean;
   /** Collecteur branché sur le flux du provider (voir `lib/ai/providers.ts`). */
   reasoningSink?: ReasoningDetailsSink;
 };
+
+/**
+ * Traduit une erreur de flux fournisseur (OpenRouter / AI SDK) en message
+ * lisible côté client, sans exposer de secrets.
+ */
+export function formatChatStreamError(error: unknown): string {
+  const err = error as {
+    message?: string;
+    responseBody?: string;
+    statusCode?: number;
+  } | null;
+  const status = typeof err?.statusCode === "number" ? err.statusCode : null;
+  const raw = `${err?.message ?? ""} ${err?.responseBody ?? ""}`.toLowerCase();
+
+  if (
+    status === 401 ||
+    raw.includes("openrouter_api_key") ||
+    raw.includes("user not found") ||
+    raw.includes("invalid api key")
+  ) {
+    return "Clé API OpenRouter absente ou invalide sur le serveur.";
+  }
+  if (
+    status === 402 ||
+    raw.includes("more credits") ||
+    raw.includes("insufficient credits")
+  ) {
+    return "Crédits OpenRouter insuffisants pour ce modèle. Réessayez avec un modèle gratuit ou rechargez le solde OpenRouter.";
+  }
+  if (
+    status === 404 ||
+    raw.includes("no endpoints found") ||
+    raw.includes("not a valid model")
+  ) {
+    return "Ce modèle n'est actuellement pas disponible sur OpenRouter. Essayez un autre modèle.";
+  }
+  if (status === 429 || raw.includes("rate limit")) {
+    return "Le fournisseur IA est momentanément saturé (429). Réessayez dans quelques instants.";
+  }
+  if (status === 400) {
+    return "La requête a été refusée par le fournisseur IA (paramètres incompatibles avec ce modèle).";
+  }
+  return "Une erreur est survenue lors de la génération de la réponse.";
+}
+
+function hasSubstantiveMessageParts(message: ChatMessage): boolean {
+  const parts = Array.isArray(message.parts) ? message.parts : [];
+  return parts.some((part: any) => {
+    if (!part || typeof part !== "object") {
+      return false;
+    }
+    if (part.type === "text" || part.type === "reasoning") {
+      return typeof part.text === "string" && part.text.trim().length > 0;
+    }
+    if (part.type === "file") {
+      return true;
+    }
+    if (typeof part.type === "string" && part.type.startsWith("tool-")) {
+      return true;
+    }
+    return part.type === "dynamic-tool";
+  });
+}
 
 export function createChatStream(params: ChatStreamParams) {
   const {
@@ -80,6 +145,7 @@ export function createChatStream(params: ChatStreamParams) {
     effectiveTemperature,
     effectiveTopP,
     effectiveMaxTokens,
+    reasoningSupported,
     reasoningSink,
   } = params;
 
@@ -180,7 +246,9 @@ export function createChatStream(params: ChatStreamParams) {
         ...(effectiveMaxTokens !== undefined && effectiveMaxTokens !== null
           ? { maxOutputTokens: effectiveMaxTokens }
           : {}),
-        ...(ctx.reasoningLevel
+        ...(ctx.reasoningLevel &&
+        reasoningSupported !== false &&
+        normalizeReasoningLevel(ctx.reasoningLevel) !== "none"
           ? {
               providerOptions: resolveReasoningProviderOptions(
                 normalizeReasoningLevel(ctx.reasoningLevel)
@@ -195,8 +263,12 @@ export function createChatStream(params: ChatStreamParams) {
             markModelActive();
           }
         },
-        onError() {
+        onError({ error }) {
           reasoningWriter?.finish();
+          console.error(
+            `[chat-stream] streamText error chatId=${ctx.id} model=${ctx.chatModel}:`,
+            error
+          );
         },
         onFinish: async ({ text, usage }) => {
           reasoningWriter?.finish();
@@ -267,6 +339,13 @@ export function createChatStream(params: ChatStreamParams) {
 
       dataStream.merge(
         toUIMessageStream({
+          onError: (error) => {
+            console.error(
+              `[chat-stream] toUIMessageStream error chatId=${ctx.id} model=${ctx.chatModel}:`,
+              error
+            );
+            return formatChatStreamError(error);
+          },
           sendReasoning: true,
           stream: result.stream,
         })
@@ -309,7 +388,7 @@ export function createChatStream(params: ChatStreamParams) {
     },
     onError: (error) => {
       console.error("Erreur Stream AI:", error);
-      return "Une erreur est survenue lors de la génération de la réponse.";
+      return formatChatStreamError(error);
     },
     originalMessages: ctx.isToolApprovalFlow ? ctx.uiMessages : undefined,
   });
@@ -455,16 +534,26 @@ export async function persistStreamEnd(
       })
     );
   } else if (finishedMessages.length > 0) {
-    await saveMessages({
-      messages: finishedMessages.map((currentMessage) => ({
-        attachments: [],
-        chatId: ctx.id,
-        createdAt: new Date(),
-        id: currentMessage.id,
-        parts: currentMessage.parts,
-        role: currentMessage.role,
-      })),
-    });
+    // Ne jamais persister une bulle assistant totalement vide créée avant une
+    // erreur amont (Photo 3 : icône étoiles seule). Les réponses partielles qui
+    // contiennent déjà du texte ou un outil restent persistées.
+    const persistableMessages = finishedMessages.filter(
+      (currentMessage) =>
+        currentMessage.role !== "assistant" ||
+        hasSubstantiveMessageParts(currentMessage)
+    );
+    if (persistableMessages.length > 0) {
+      await saveMessages({
+        messages: persistableMessages.map((currentMessage) => ({
+          attachments: [],
+          chatId: ctx.id,
+          createdAt: new Date(),
+          id: currentMessage.id,
+          parts: currentMessage.parts,
+          role: currentMessage.role,
+        })),
+      });
+    }
 
     // Le renommage auto n'est PLUS ici : il est fait dans `streamText.onFinish`
     // (au-dessus), tant que le flux est ouvert, pour pouvoir émettre la part

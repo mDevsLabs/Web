@@ -20,7 +20,7 @@ export const instant = false;
 
 export const metadata: Metadata = {
   description:
-    "Portail de suivi des versions, documentation et outils d'intelligence artificielle de mDevsLabs.",
+    "Portail de suivi des versions, support et outils d'intelligence artificielle de mDevsLabs.",
   icons: {
     apple: "/site/logo.png",
     icon: "/site/favicon.ico",

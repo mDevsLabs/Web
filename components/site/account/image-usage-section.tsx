@@ -32,8 +32,7 @@ export function ImageUsageSection({
             <ImageIcon className="w-5 h-5 text-purple-600" /> Usage Images
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            Consommation de vos générations d&apos;images quotidiennes via Comet
-            API et Flux.
+            Consommation de vos générations d&apos;images quotidiennes sur mAI.
           </p>
         </div>
       </div>

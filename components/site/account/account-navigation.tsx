@@ -4,7 +4,6 @@ import {
   CloudIcon as Cloud,
   GaugeIcon as Gauge,
   ImageIcon,
-  KeyRoundIcon as KeyRound,
   MonitorIcon as Monitor,
   RefreshCwIcon as RefreshCw,
   SparklesIcon as Sparkles,
@@ -14,7 +13,6 @@ import {
 
 export const ACCOUNT_SECTION_IDS = [
   "profil",
-  "usage-api",
   "usage-images",
   "usage-audio",
   "usage-mai",
@@ -32,7 +30,6 @@ const ITEMS: Array<{
   icon: React.ComponentType<any>;
 }> = [
   { icon: User, id: "profil", label: "Profil & Paramètres" },
-  { icon: KeyRound, id: "usage-api", label: "Usage API" },
   { icon: ImageIcon, id: "usage-images", label: "Usage Images" },
   { icon: Volume2, id: "usage-audio", label: "Usage Audio" },
   { icon: Gauge, id: "usage-mai", label: "Usage mAI" },

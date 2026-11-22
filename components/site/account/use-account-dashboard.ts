@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
-import { getUserApiUsage } from "@/app/(chat)/site/actions/api-keys";
 import { getUserImageUsage } from "@/app/(chat)/site/actions/image-usage";
 import {
   type AvailableResetItem,
@@ -12,22 +11,7 @@ import {
 import { useAuth } from "@/components/site/auth-provider";
 import type { UserImageUsageData } from "@/lib/site/image-usage";
 import { getAudioUsage, getTierSpeechLimit } from "@/lib/site/mai-api";
-import { getTierQuotaLimit } from "@/lib/site/tiers";
-import {
-  type ApiUsageStat,
-  type AudioUsageData,
-  getSafeKeyPrefix,
-} from "./account-utils";
-
-interface ApiUsageKey {
-  id?: string;
-  keyRef?: string;
-  maxLimit?: number | null;
-  name?: string;
-  plan?: string;
-  prefix?: string;
-  requestCount?: number;
-}
+import type { AudioUsageData } from "./account-utils";
 
 export function useAccountDashboard() {
   const {
@@ -39,10 +23,6 @@ export function useAccountDashboard() {
     refreshUsage,
     refreshCloudStorage,
   } = useAuth();
-
-  const [apiUsageStats, setApiUsageStats] = useState<ApiUsageStat[]>([]);
-  const [apiBoost, setApiBoost] = useState(0);
-  const [refreshingApi, setRefreshingApi] = useState(false);
 
   const [imageUsage, setImageUsage] = useState<UserImageUsageData | null>(null);
   const [refreshingImages, setRefreshingImages] = useState(false);
@@ -61,44 +41,6 @@ export function useAccountDashboard() {
 
   const userId = user?.id || user?.email || user?.username || null;
   const userTier = user?.tier || "Free";
-
-  const loadApiUsage = useCallback(async () => {
-    if (!userId) return;
-
-    const result = await getUserApiUsage();
-    if (!result.success) return;
-
-    if (typeof result.apiBoost === "number") {
-      setApiBoost(result.apiBoost);
-    }
-
-    const keys = (result.keys || []) as ApiUsageKey[];
-    const defaultLimit = getTierQuotaLimit(userTier);
-    setApiUsageStats(
-      keys.map((key, index) => {
-        const legacySecret =
-          "key" in key
-            ? (key as ApiUsageKey & { key?: string }).key
-            : undefined;
-        const keyRef =
-          key.keyRef ||
-          key.id ||
-          key.prefix ||
-          getSafeKeyPrefix(legacySecret, `clé-api-${index + 1}`);
-
-        return {
-          keyRef,
-          limit:
-            key.maxLimit === null || key.maxLimit === undefined
-              ? defaultLimit
-              : Number(key.maxLimit),
-          name: key.name || key.plan || "Clé API",
-          prefix: key.prefix || getSafeKeyPrefix(legacySecret, keyRef),
-          requestCount: Number(key.requestCount || 0),
-        };
-      })
-    );
-  }, [userId, userTier]);
 
   const loadImagesUsage = useCallback(async () => {
     if (!userId) return;
@@ -168,33 +110,18 @@ export function useAccountDashboard() {
         refreshUsage(),
         refreshCloudStorage(),
       ]);
-      await Promise.all([
-        loadApiUsage(),
-        loadImagesUsage(),
-        loadAudioUsage(),
-        loadResets(),
-      ]);
+      await Promise.all([loadImagesUsage(), loadAudioUsage(), loadResets()]);
       return { storageResult, usageResult };
     } finally {
       setRefreshing(false);
     }
   }, [
-    loadApiUsage,
     loadAudioUsage,
     loadImagesUsage,
     loadResets,
     refreshCloudStorage,
     refreshUsage,
   ]);
-
-  const refreshApiUsage = useCallback(async () => {
-    setRefreshingApi(true);
-    try {
-      await Promise.all([loadApiUsage(), refreshUsage()]);
-    } finally {
-      setRefreshingApi(false);
-    }
-  }, [loadApiUsage, refreshUsage]);
 
   const refreshImages = useCallback(async () => {
     setRefreshingImages(true);
@@ -250,20 +177,8 @@ export function useAccountDashboard() {
 
   useEffect(() => {
     if (!isAuthenticated || !userId) return;
-    void Promise.all([
-      loadApiUsage(),
-      loadImagesUsage(),
-      loadAudioUsage(),
-      loadResets(),
-    ]);
-  }, [
-    isAuthenticated,
-    loadApiUsage,
-    loadAudioUsage,
-    loadImagesUsage,
-    loadResets,
-    userId,
-  ]);
+    void Promise.all([loadImagesUsage(), loadAudioUsage(), loadResets()]);
+  }, [isAuthenticated, loadAudioUsage, loadImagesUsage, loadResets, userId]);
 
   const maiPercent = useMemo(() => {
     if (!usage?.limit) return 0;
@@ -271,8 +186,6 @@ export function useAccountDashboard() {
   }, [usage]);
 
   return {
-    apiBoost,
-    apiUsageStats,
     audioUsage,
     authLoading,
     availableResets,
@@ -285,11 +198,9 @@ export function useAccountDashboard() {
     loadResets,
     maiPercent,
     refreshAll,
-    refreshApiUsage,
     refreshAudio,
     refreshImages,
     refreshing,
-    refreshingApi,
     refreshingAudio,
     refreshingImages,
     refreshingStorage,

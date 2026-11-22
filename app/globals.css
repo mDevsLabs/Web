@@ -544,11 +544,11 @@ html.dark .md-root {
 @layer base {
   body {
     position: relative;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   html {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1,
@@ -921,6 +921,38 @@ html[data-economy="true"] *::after {
   max-width: min(40rem, calc(100vw - 1rem));
   padding: 0;
   overflow: hidden;
+}
+
+/*
+ * Hiérarchie d'empilement unifiée pour les modales, tiroirs et popovers Radix.
+ *
+ * `@mdevs/ui/styles.css` est importé après `globals.css` dans `app/layout.tsx`,
+ * donc sa couche `@layer mdevs` (`.md-overlay { z-index: 1000 }`, `.md-menu` /
+ * `.md-popover { z-index: 1002 }`) prime sur `@layer utilities` (`z-50`).
+ * Sans ces règles hors couche, `AlertDialogOverlay` (1000) peignait AU-DESSUS
+ * de `AlertDialogContent` (50) et bloquait tous les clics en grisant l'écran.
+ */
+[data-slot="dialog-overlay"],
+[data-slot="alert-dialog-overlay"],
+[data-slot="sheet-overlay"] {
+  z-index: 1050;
+}
+
+[data-slot="dialog-content"],
+[data-slot="alert-dialog-content"],
+[data-slot="sheet-content"] {
+  z-index: 1051;
+}
+
+[data-slot="dropdown-menu-content"],
+[data-slot="dropdown-menu-sub-content"],
+[data-slot="popover-content"],
+[data-slot="select-content"] {
+  z-index: 1060;
+}
+
+[data-slot="tooltip-content"] {
+  z-index: 1070;
 }
 
 /**

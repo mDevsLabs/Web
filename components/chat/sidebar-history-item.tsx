@@ -380,8 +380,7 @@ const PureChatItem = ({
           <DropdownMenuSeparator />
 
           <DropdownMenuItem
-            onSelect={(e) => {
-              e.preventDefault();
+            onSelect={() => {
               handleDelete();
             }}
             variant="destructive"

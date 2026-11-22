@@ -79,7 +79,7 @@ describe("accueil public sans session", () => {
       expect(destination.searchParams.get("redirectUrl")).toBe(path);
     }
   );
-  it.each(["/site", "/site/docs", "/login", "/register"])(
+  it.each(["/site", "/site/support", "/login", "/register"])(
     "laisse %s accessible",
     async (path) => {
       const response = await proxy(

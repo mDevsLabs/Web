@@ -1,0 +1,30 @@
+# Fichiers jamais envoyés à Vercel lors d'un déploiement depuis les sources
+# (`vercel deploy` sans `--prebuilt`). Le déploiement de la CI
+# (`.github/workflows/build.yml`) envoie déjà uniquement `.vercel/output`.
+#
+# Ne pas ignorer ici ce que `pnpm build` lit : apps/blackline, apps/site,
+# apps/vibe, apps/wakies, lib/quizzly/curriculum, CHANGELOG.md.
+
+# Applications natives et éditeur : builds séparés (Electron, Capacitor).
+apps/coder/
+apps/desktop/
+apps/mobile/
+
+# Documentation interne et tests : jamais lus à l'exécution.
+docs/
+tests/
+playwright-report/
+test-results/
+coverage/
+
+# Outillage local et CI.
+.github/
+.husky/
+.freebuff/
+.agents/
+*.log
+*.tsbuildinfo
+
+# Dépendances et caches : reconstruits par Vercel.
+node_modules/
+.next/

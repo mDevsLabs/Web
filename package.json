@@ -3,7 +3,7 @@
   "version": "0.9.5",
   "private": true,
   "scripts": {
-    "admin": "bun run scripts/admin.ts",
+    "admin": "tsx scripts/admin.ts",
     "build": "node scripts/validate-site-news.mjs && node scripts/build-vibe-css.mjs && node scripts/build-wakies-css.mjs && node scripts/build-site-css.mjs && node scripts/build-blackline.mjs && node scripts/build-blackline-css.mjs && node scripts/build-next.mjs",
     "build:all": "pnpm run build && pnpm --dir apps/coder run build && pnpm --dir apps/desktop run build",
     "build:blackline": "node scripts/build-blackline.mjs && node scripts/build-blackline-css.mjs",

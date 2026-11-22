@@ -6,7 +6,7 @@ export const PROJECT_OPTIONS = [
   "Pulse",
   "CLI",
   "Coder",
-  "API & Modèles IA",
+  "Modèles IA",
   "Autre",
 ] as const;
 
@@ -14,7 +14,7 @@ export const CATEGORY_OPTIONS = [
   "Bug / Anomalie technique",
   "Authentification & Sessions",
   "Modèles d'IA & Inférence",
-  "Clés d'API & Quotas",
+  "Quotas & Utilisation",
   "Facturation & Forfaits",
   "Stockage Cloud (Z1)",
   "Génération d'images",

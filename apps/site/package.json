@@ -11,15 +11,15 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "setup": "npm install",
-    "reset:api": "bun run ../../scripts/admin.ts --reset-api",
-    "reset:mai": "bun run ../../scripts/admin.ts --reset-mai",
-    "reset:images": "bun run ../../scripts/admin.ts --reset-images",
-    "reset:all": "bun run ../../scripts/admin.ts --reset-all",
-    "reset:audio": "bun run ../../scripts/admin.ts --reset-audio",
-    "admin": "bun run ../../scripts/admin.ts",
-    "newsletter:send": "bun run ../../scripts/newsletter-send.ts",
-    "code:create": "bun run ../../scripts/admin.ts --codes"
+    "setup": "pnpm install",
+    "reset:api": "../../node_modules/.bin/tsx ../../scripts/admin.ts --reset-api",
+    "reset:mai": "../../node_modules/.bin/tsx ../../scripts/admin.ts --reset-mai",
+    "reset:images": "../../node_modules/.bin/tsx ../../scripts/admin.ts --reset-images",
+    "reset:all": "../../node_modules/.bin/tsx ../../scripts/admin.ts --reset-all",
+    "reset:audio": "../../node_modules/.bin/tsx ../../scripts/admin.ts --reset-audio",
+    "admin": "../../node_modules/.bin/tsx ../../scripts/admin.ts",
+    "newsletter:send": "../../node_modules/.bin/tsx ../../scripts/newsletter-send.ts",
+    "code:create": "../../node_modules/.bin/tsx ../../scripts/admin.ts --codes"
   },
   "dependencies": {
     "@mdevs/icons": "file:../../packages/icons",
@@ -61,7 +61,8 @@
     "typescript": "^5.9.3",
     "vitest": "^5.0.3"
   },
+  "packageManager": "pnpm@10.32.1",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }

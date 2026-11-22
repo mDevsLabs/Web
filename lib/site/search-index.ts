@@ -10,7 +10,6 @@
  */
 
 import { getChangelogs } from "./changelog";
-import { getAllDocs } from "./docs";
 import { OFFICIAL_APPS } from "./downloads-data";
 import { modelsData } from "./models-data";
 import { getNewsArticles } from "./news";
@@ -49,12 +48,6 @@ const STATIC_PAGES: SearchEntry[] = [
     type: "page",
   },
   {
-    description: "Hub de documentation technique de la suite mAI.",
-    href: "/docs",
-    title: "Documentation",
-    type: "page",
-  },
-  {
     description: "Historique des versions de mAI et mSearch.",
     href: "/changelog",
     title: "Notes de version",
@@ -71,12 +64,6 @@ const STATIC_PAGES: SearchEntry[] = [
       "Centre d'assistance, signalement de bugs et suivi des tickets.",
     href: "/support",
     title: "Assistance",
-    type: "page",
-  },
-  {
-    description: "Créez et gérez vos clés d'accès à l'API mAI.",
-    href: "/account/keys",
-    title: "Clés API",
     type: "page",
   },
   {
@@ -104,20 +91,6 @@ export function getSearchIndex(): SearchEntry[] {
       meta: article.category ?? article.label,
       title: article.title,
       type: "news",
-    });
-  }
-
-  // Documentation
-  for (const doc of getAllDocs()) {
-    entries.push({
-      content: doc.content,
-      description: doc.description,
-      // Le lecteur de documentation est piloté par query param : il n'existe pas
-      // de route `/docs/[slug]`, ce chemin renvoyait systématiquement un 404.
-      href: `/docs?doc=${encodeURIComponent(doc.slug)}`,
-      meta: doc.category,
-      title: doc.title,
-      type: "doc",
     });
   }
 

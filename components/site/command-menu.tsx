@@ -5,7 +5,6 @@ import {
   DollarSignIcon as DollarSign,
   DownloadIcon as Download,
   FileTextIcon as FileText,
-  KeyIcon as Key,
   LifeBuoyIcon as LifeBuoy,
   Loader2Icon as Loader2,
   PlusCircleIcon as PlusCircle,
@@ -160,24 +159,6 @@ export function CommandMenu({
                       >
                         <Sparkles className="w-4 h-4 text-purple-500" />
                         <span>Modèles d&apos;IA &amp; Comparatif</span>
-                      </Command.Item>
-                      <Command.Item
-                        className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
-                        onSelect={() => runCommand(() => router.push("/docs"))}
-                        value="nav-docs"
-                      >
-                        <FileText className="w-4 h-4 text-blue-500" />
-                        <span>Centre de Documentation</span>
-                      </Command.Item>
-                      <Command.Item
-                        className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
-                        onSelect={() =>
-                          runCommand(() => router.push("/account/keys"))
-                        }
-                        value="nav-keys"
-                      >
-                        <Key className="w-4 h-4 text-amber-500" />
-                        <span>Console Développeur &amp; Clés API</span>
                       </Command.Item>
                       <Command.Item
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"

@@ -47,7 +47,6 @@ Web est le point d’entrée le plus immédiat. Aucune installation, aucune conf
 Elle sert de point de repère commun à toute la suite : c’est par elle que l’on compare deux versions, que l’on vérifie une réponse, que l’on retrouve une session.
 
 - [Page du projet](/projects/web)
-- [Documentation](/docs?doc=app-web)
 
 ---
 
@@ -60,7 +59,6 @@ Publiez, discutez et créez avec mAI intégré nativement : fil personnalisé, m
 Vibe prolonge le travail mené sur nos [applications mobiles](/news/android-mobile-app) : mêmes exigences de confidentialité, même attention portée à l’expérience tactile.
 
 - [Page du projet](/projects/vibe)
-- [Documentation](/docs?doc=app-vibe)
 
 ---
 
@@ -73,7 +71,6 @@ L’IDE IA de nouvelle génération avec agents IA autonomes, orchestration mult
 L’orchestration multi-modèles permet de confier chaque tâche au modèle le plus pertinent. Le support MCP n’est pas une option : c’est le protocole par lequel un agent appelle un outil, et il est intégré au premier rang.
 
 - [Page du projet](/projects/coder)
-- [Documentation](/docs?doc=app-coder)
 
 ---
 
@@ -86,7 +83,6 @@ Discussions et séances de codage dans le terminal CLI via mAI.
 Il repose sur trois piliers : l’intégration native au terminal, la liberté de choix du modèle d’inférence, et l’unification des flux de codage et de communication opérationnelle. Le modèle BYOK (*apportez votre propre clé*) laisse le choix du fournisseur entre les mains de l’utilisateur.
 
 - [Page du projet](/projects/cli)
-- [Documentation](/docs?doc=app-cli)
 - [Annonce détaillée](/news/introducing-mai-cli)
 
 ---
@@ -100,7 +96,6 @@ Ensemble d’extensions pour diverses applications pour discuter avec mAI direct
 Pour les éditeurs de code, l’extension Visual Studio Code apporte une complétion contextuelle et un panneau latéral interactif pour l’analyse d’architecture, la révision de code et le refactoring. Pour les navigateurs, l’extension permet d’analyser, de synthétiser et d’extraire des informations directement depuis les pages visitées.
 
 - [Page du projet](/projects/pulse)
-- [Documentation](/docs?doc=app-pulse)
 - [Annonce détaillée](/news/extensions-mai)
 
 ---
@@ -128,10 +123,9 @@ Chaque projet dispose de sa propre page, de sa documentation et de son dépôt p
 
 1. **Partez de la page des projets** : [/projects](/projects).
 2. **Téléchargez** depuis la page [Téléchargements](/downloads).
-3. **Installez** en suivant le guide dédié : [Documentation](/docs).
-4. **Suivez les versions** sur le dépôt GitHub du projet concerné.
+3. **Suivez les versions** sur le dépôt GitHub du projet concerné.
 
-Les cinq produits restent accessibles gratuitement. Les offres et forfaits ouvrent l’accès à l’API mAI et à des quotas d’utilisation supplémentaires : voir [Abonnements](/pricing).
+Les cinq produits restent accessibles gratuitement. Les offres et forfaits ouvrent l’accès à des quotas d’utilisation supplémentaires : voir [Abonnements](/pricing).
 
 ---
 

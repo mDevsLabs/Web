@@ -6,6 +6,7 @@ import {
   type ChatModel,
   FALLBACK_MODELS,
   formatModelName,
+  isBatchModelId,
   normalizeModelDisplayName,
 } from "./models";
 
@@ -14,16 +15,36 @@ function mapCatalogModels(rawList: unknown): ChatModel[] {
     return FALLBACK_MODELS;
   }
 
-  return rawList.map((m: any) => {
+  const seen = new Set<string>();
+  const result: ChatModel[] = [];
+
+  for (const m of rawList as any[]) {
+    if (
+      !m ||
+      typeof m.id !== "string" ||
+      !m.id ||
+      isBatchModelId(m.id) ||
+      seen.has(m.id)
+    ) {
+      continue;
+    }
+    seen.add(m.id);
     const { name, provider, isFree } = formatModelName(m.id);
     const displayName = normalizeModelDisplayName(m.id, m.name);
-    return {
+    const declaredMaxOutput =
+      typeof m.maxOutput === "number" && m.maxOutput > 0
+        ? m.maxOutput
+        : typeof m.top_provider?.max_completion_tokens === "number" &&
+            m.top_provider.max_completion_tokens > 0
+          ? m.top_provider.max_completion_tokens
+          : undefined;
+    result.push({
       architecture: m.architecture,
       description: m.description || `Modèle ${provider}`,
       id: m.id,
       isFree: m.isFree === undefined ? isFree : m.isFree,
       maxContext: m.maxContext || m.context_length || 128_000,
-      maxOutput: m.maxOutput || 4096,
+      ...(declaredMaxOutput ? { maxOutput: declaredMaxOutput } : {}),
       name: displayName || name,
       provider,
       // Capacités de réflexion déclarées par le fournisseur. Sans ce champ,
@@ -31,8 +52,10 @@ function mapCatalogModels(rawList: unknown): ChatModel[] {
       // proposerait des niveaux d'effort qu'aucun modèle n'accepte.
       reasoning: m.reasoning ?? null,
       supported_parameters: m.supported_parameters,
-    };
-  });
+    });
+  }
+
+  return result.length > 0 ? result : FALLBACK_MODELS;
 }
 
 type CachedCatalog = {
@@ -60,8 +83,11 @@ async function readCatalogModels(params: {
     if (res.ok) {
       const json = await res.json();
       const rawList = Array.isArray(json.data) ? json.data : [];
-      // Combiner les modèles souverains mAI avec le catalogue OpenRouter
-      const mapped = mapCatalogModels([...FALLBACK_MODELS, ...rawList]);
+      // Combiner uniquement les modèles souverains mAI avec le catalogue live OpenRouter
+      const sovereignModels = FALLBACK_MODELS.filter(
+        (m) => m.provider === "mdevslabs"
+      );
+      const mapped = mapCatalogModels([...sovereignModels, ...rawList]);
       CATALOG_CACHE.set(cacheKey, {
         expiresAt: now + CATALOG_CACHE_TTL_MS,
         models: mapped,

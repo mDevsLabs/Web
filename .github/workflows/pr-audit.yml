@@ -4,6 +4,11 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+# Un nouveau push sur la PR annule l'audit précédent, devenu obsolète.
+concurrency:
+  group: pr-audit-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: read
@@ -43,11 +48,8 @@ jobs:
       - name: Audit de performance mAI Optimizer
         run: pnpm run optimizer:check
 
-      - name: Lint du code (ultracite / Biome)
-        run: pnpm run check
-
-      - name: Vérification TypeScript
-        run: pnpm run typecheck
+      # Lint et typecheck sont déjà faits par le job `quality` de build.yml
+      # (run push ou run PR de fork) : on ne les rejoue pas ici.
 
       - name: Vérification du build Next.js
         run: pnpm run build

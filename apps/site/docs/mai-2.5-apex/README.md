@@ -32,31 +32,31 @@ Apex pilote les outils système avec une rigueur prédictive : validation préal
 
 mAI-2.5-Apex fait l'objet d'évaluations rigoureuses sur les bancs d'essais orientés exactitude, code et sécurité :
 
-| Benchmark | mAI-2.5 Apex | mAI-2 | Claude Sonnet 5.5 | Gemini 4 Argon | GPT-6.1 Sol |
-|:---|---:|---:|---:|---:|---:|
-| **DeepSWE v1.1** | *[À renseigner]* | 74.2 | 71.0 | 77.9 | 75.2 |
-| **SWE-bench Verified** | *[À renseigner]* | — | 68.4 | 70.8 | 72.4 |
-| **Terminal-Bench 2.1** | *[À renseigner]* | 90.6 | 83.2 | — | — |
-| **Terminal-Bench 4.0** | *[À renseigner]* | 31.2 | 66.4 | 57.4 | 56.1 |
-| **SEC-Bench Pro** | *[À renseigner]* | 62.8 | — | — | 78.8 |
-| **CyberGym** | *[À renseigner]* | 88.1 | — | — | — |
-| **ExploitGym** | *[À renseigner]* | 15.3 | — | — | 35.1 |
-| **GPQA Diamond** | *[À renseigner]* | 90.9 | 85.2 | — | 95.4 |
-| **HLE (w/tools)** | *[À renseigner]* | 63.9 | 64.5 | — | — |
-| **AutomationBench** | *[À renseigner]* | 54.8 | 44.7 | 51.3 | 31.7 |
-| **OSWorld (Computer Use)** | *[À renseigner]* | — | 18.5 | — | 32.4 |
+| Benchmark | mAI-2.5 Apex | mAI-2 | Claude Sonnet 5.5 | Gemini 4 Argon |
+|:---|---:|---:|---:|---:|
+| **DeepSWE v1.1** | — | 74.2 | 71.0 | 77.9 |
+| **SWE-bench Verified** | — | — | 68.4 | 70.8 |
+| **Terminal-Bench 2.1** | — | 90.6 | 83.2 | — |
+| **Terminal-Bench 4.0** | 50.3 | 31.2 | 66.4 | 57.4 |
+| **SEC-Bench Pro** | 83.3 | 62.8 | — | — |
+| **CyberGym** | — | 88.1 | — | — |
+| **ExploitGym** | — | 15.3 | — | — |
+| **GPQA Diamond** | 94.3 | 90.9 | 85.2 | — |
+| **HLE (Humanity's Last Exam)** | 46.2 | 36.8 | — | 57.1 |
+| **HLE (w/tools)** | — | 63.9 | 64.5 | — |
+| **AutomationBench** | 60.2 (AA)* | 54.8 | 44.7 | 51.3 |
+| **OSWorld (Computer Use)** | 74.2 (v2.1)* | — | 18.5 | — |
 
 ### Notes de méthode
 
-- Les mesures d'évaluation de mAI-2.5-Apex sont en cours de consolidation.
 - Un tiret cadratin (`—`) indique l'absence de donnée publique homologuée sous le même protocole.
+- `*` Précisions d'échelle : le score `74.2 (v2.1)` sur **OSWorld (Computer Use)** correspond au jeu hors-ligne **OSWorld 2.1** à effort maximal (tandis que `18.5` relève du barème v1) ; la valeur `60.2 (AA)` sur **AutomationBench** est issue du protocole **AutomationBench-AA** ; **HLE** (`46.2`) correspond au mode texte seul à effort maximal.
 - Les tests sur bancs de sécurité (SEC-Bench Pro, CyberGym) évaluent la capacité du modèle à identifier les vulnérabilités sans produire de faux positifs.
 
 ### Sources officielles
 
 - [Anthropic — Claude Sonnet 5.5](https://www.anthropic.com/claude-sonnet-5-5)
 - [Google DeepMind — Gemini 4 Argon](https://deepmind.google/models/evals-methodology/gemini-4-argon)
-- [OpenAI — GPT-6.1 Sol](https://openai.com/index/introducing-gpt-6-sol-and-astra/)
 
 ## Disponibilité
 

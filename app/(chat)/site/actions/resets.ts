@@ -7,7 +7,7 @@ export interface AvailableResetItem {
   createdAt: string;
   expiresAt: string | null;
   id: number;
-  resetType: "all" | "api" | "mai" | "images" | "audio";
+  resetType: "all" | "mai" | "images" | "audio";
 }
 
 /** Résout l'identité serveur puis les identifiants alternatifs (id, username, email) associés. */
@@ -150,14 +150,6 @@ export async function claimUserReset(resetId: number): Promise<{
     const resetType = reset.reset_type;
 
     // Appliquer la remise à 0 en fonction du type
-    if (resetType === "all" || resetType === "api") {
-      await sql`
-        UPDATE mprojects_api_keys
-        SET request_count = 0
-        WHERE user_id = ANY(${targetUserIds})
-      `;
-    }
-
     if (resetType === "all" || resetType === "mai") {
       await sql`
         UPDATE weekly_usage
@@ -185,7 +177,6 @@ export async function claimUserReset(resetId: number): Promise<{
 
     const labels: Record<string, string> = {
       all: "L'ensemble de vos quotas",
-      api: "Votre quota d'API",
       audio: "Votre quota de synthèse vocale Audio",
       images: "Votre quota journalier d'images",
       mai: "Votre quota de tokens mAI",

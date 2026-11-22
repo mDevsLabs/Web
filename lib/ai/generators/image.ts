@@ -97,7 +97,7 @@ export async function generateImageViaMai(params: {
       logError("Vérification du quota de génération d'image", quotaError);
     }
 
-    const cometApiKey = process.env.COMET_API_KEY;
+    const cometApiKey = process.env.COMET_API_KEY?.trim();
     if (!cometApiKey) {
       return { error: "Génération d'image indisponible pour le moment." };
     }
@@ -106,8 +106,11 @@ export async function generateImageViaMai(params: {
       body: JSON.stringify({
         height: targetHeight,
         model: targetModel,
+        n: 1,
         negative_prompt: negativePrompt || undefined,
         prompt,
+        response_format: "url",
+        size: `${targetWidth}x${targetHeight}`,
         width: targetWidth,
       }),
       headers: {
@@ -120,7 +123,15 @@ export async function generateImageViaMai(params: {
     // Le détail de l'erreur amont reste dans les journaux : il n'est jamais
     // relayé tel quel au modèle ni à l'utilisateur.
     if (!res.ok) {
-      logError("Erreur amont génération d'image", { status: res.status });
+      const errorPreview = await res
+        .text()
+        .then((txt) => txt.slice(0, 400))
+        .catch(() => "");
+      logError("Erreur amont génération d'image (CometAPI)", {
+        body: errorPreview,
+        model: targetModel,
+        status: res.status,
+      });
       return { error: IMAGE_GENERIC_ERROR };
     }
     const data = (await res.json().catch(() => ({}))) as {

@@ -11,11 +11,11 @@ import type { ReactNode } from "react";
 import Link from "@/components/site/router";
 import {
   formatStorageBytes,
+  getTierSpeechLimit,
   getTierTokenLimit,
   resolveTierTokenLimit,
   STORAGE_LIMITS_BYTES,
   TIER_DAILY_IMAGE_LIMITS,
-  TIER_REQUEST_LIMITS,
 } from "@/lib/site/tiers";
 import { OnboardingProgress } from "./onboarding-progress";
 import type { StepContext, StepDef } from "./types";
@@ -38,7 +38,7 @@ function TierCompare({
   // une indexation directe renvoyait le quota Free pour un forfait reçu en
   // minuscules (le client renvoie « pro », pas « Pro »).
   const tok = getTierTokenLimit(tier);
-  const req = TIER_REQUEST_LIMITS[tier] ?? TIER_REQUEST_LIMITS.Free;
+  const speech = getTierSpeechLimit(tier);
   const img = TIER_DAILY_IMAGE_LIMITS[tier] ?? TIER_DAILY_IMAGE_LIMITS.Free;
   const stor = STORAGE_LIMITS_BYTES[tier] ?? STORAGE_LIMITS_BYTES.Free;
 
@@ -55,8 +55,8 @@ function TierCompare({
         },
         {
           grad: "from-blue-500 to-indigo-500",
-          label: "Requêtes / mois",
-          value: `${req.toLocaleString("fr-FR")}`,
+          label: "Audio TTS / sem.",
+          value: `${formatTokens(speech)}`,
         },
         {
           grad: "from-pink-500 to-purple-500",
@@ -88,99 +88,31 @@ function TierCompare({
   );
 }
 
-function KeysSystemVisual() {
-  const steps = [
-    {
-      c: "bg-purple-600",
-      d: "Secret aléatoire 48 hex, préfixe mp-",
-      n: "1",
-      t: "Génération mp-…",
-    },
-    {
-      c: "bg-amber-500",
-      d: "Visible une seule fois, à copier aussitôt",
-      n: "2",
-      t: "Affichage unique",
-    },
-    {
-      c: "bg-blue-600",
-      d: "Le secret reste côté serveur et n’est renvoyé qu’à la création",
-      n: "3",
-      t: "Usage confidentiel",
-    },
-    {
-      c: "bg-emerald-600",
-      d: "mp-•••••••• pour identifier, révocable",
-      n: "4",
-      t: "Préfixe visible",
-    },
-  ];
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-      {steps.map((s, i) => (
-        <motion.div
-          animate={{ opacity: 1, y: 0 }}
-          className="flex gap-3 rounded-2xl bg-slate-50 border border-slate-200 p-3"
-          initial={{ opacity: 0, y: 8 }}
-          key={s.n}
-          transition={{ delay: i * 0.07 }}
-        >
-          <div
-            className={`w-8 h-8 rounded-xl ${s.c} text-white font-black text-sm flex items-center justify-center shrink-0`}
-          >
-            {s.n}
-          </div>
-          <div className="min-w-0">
-            <p className="text-xs font-bold text-slate-900 leading-none">
-              {s.t}
-            </p>
-            <p className="text-[11px] text-slate-500 leading-tight mt-1">
-              {s.d}
-            </p>
-          </div>
-        </motion.div>
-      ))}
-      <div className="sm:col-span-2 rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] font-medium text-amber-900 flex items-center gap-2">
-        <ShieldDot />
-        Astuce : en-tête{" "}
-        <code className="bg-white border px-1 py-0.5 rounded font-mono text-[11px]">
-          Authorization: Bearer mp-…
-        </code>{" "}
-        sur chaque requête.
-      </div>
-    </div>
-  );
-}
-
-function ShieldDot() {
-  return <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />;
-}
-
 function ModelsHubVisual() {
   const items = [
     {
       col: "from-blue-500 to-purple-600",
-      desc: "Contexte, tools, :free vs premium",
-      href: "/account/models",
-      name: "Modèles Texte",
+      desc: "Opal, Apex, Omni — Cloud 1M",
+      href: "/models#mai-2.5",
+      name: "Série mAI-2.5",
     },
     {
       col: "from-pink-500 to-purple-600",
-      desc: "Text-to-Image, Flux, tailles",
-      href: "/account/models/images",
-      name: "Modèles Images",
+      desc: "mAI-2 & mAI-2-Mini — Multimodaux",
+      href: "/models#mai-2",
+      name: "Série mAI-2",
     },
     {
       col: "from-indigo-500 to-pink-500",
-      desc: "TTS 6 voix naturelles",
-      href: "/account/models/audio",
-      name: "Modèles Audio",
+      desc: "Modèles open-weights via Ollama",
+      href: "/models#mai-1.5",
+      name: "Modèles Locaux",
     },
     {
       col: "from-slate-900 to-indigo-900",
-      desc: "Souverains, Ollama / HF",
-      href: "/account/models/mai",
-      name: "Modèles mAI",
+      desc: "Web, CLI, Coder & Wakies",
+      href: "/downloads",
+      name: "Applications mAI",
     },
   ];
   return (
@@ -252,7 +184,7 @@ export function OnboardingCard({
   onPrev,
   onSkip,
   onComplete,
-  onGoKeys,
+  onGoAccount,
   onGoModels,
 }: {
   step: StepDef;
@@ -263,7 +195,7 @@ export function OnboardingCard({
   onPrev: () => void;
   onSkip: () => void;
   onComplete: () => void;
-  onGoKeys: () => void;
+  onGoAccount: () => void;
   onGoModels: () => void;
 }) {
   const isFirst = stepIndex === 0;
@@ -275,8 +207,7 @@ export function OnboardingCard({
     body = step.renderBody(context);
   } else {
     // default body per id
-    if (step.id === "keys-system") body = <KeysSystemVisual />;
-    else if (step.id === "models-hub") body = <ModelsHubVisual />;
+    if (step.id === "models-hub") body = <ModelsHubVisual />;
     else if (step.id === "quotas") body = <QuotasVisual tier={context.tier} />;
     else if (step.id === "unlock" || step.id === "quotas-up")
       body = <UpgradeVisual prevTier={context.prevTier} tier={context.tier} />;
@@ -302,13 +233,13 @@ export function OnboardingCard({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
           <button
             className="rounded-2xl bg-slate-900 text-white p-4 text-left hover:bg-slate-800 transition-colors"
-            onClick={onGoKeys}
+            onClick={onGoAccount}
           >
             <p className="text-sm font-black flex items-center gap-2">
-              <Sparkles className="w-4 h-4" /> Créer une clé
+              <Sparkles className="w-4 h-4" /> Ouvrir mon compte
             </p>
             <p className="text-xs text-slate-300 mt-1">
-              Génère ton token Bearer sécurisé
+              Suivre quotas, stockage Cloud et appareils
             </p>
           </button>
           <button
@@ -319,7 +250,7 @@ export function OnboardingCard({
               Explorer les modèles
             </p>
             <p className="text-xs text-slate-500 mt-1">
-              4 catalogues filtrés par ta clé
+              Gammes Cloud mAI-2 / 2.5 et locales Ollama
             </p>
           </button>
         </div>
@@ -328,7 +259,7 @@ export function OnboardingCard({
   }
 
   const handlePrimary = () => {
-    if (step.ctaAction === "goKeys") onGoKeys();
+    if (step.ctaAction === "goAccount") onGoAccount();
     else if (step.ctaAction === "goModels") onGoModels();
     else if (isLast) onComplete();
     else onNext();

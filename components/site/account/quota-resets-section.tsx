@@ -21,12 +21,6 @@ const BADGES: Record<
     label: "Tous les Quotas",
     text: "text-purple-700",
   },
-  api: {
-    bg: "bg-blue-50",
-    border: "border-blue-200",
-    label: "Quotas API",
-    text: "text-blue-700",
-  },
   audio: {
     bg: "bg-pink-50",
     border: "border-pink-200",

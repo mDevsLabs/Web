@@ -5,38 +5,33 @@ import {
   CheckCircle2Icon as CheckCircle2,
   ChevronRightIcon as ChevronRight,
   FileQuestionIcon as FileQuestion,
-  Loader2Icon as Loader2,
   MessageSquareIcon as MessageSquare,
   PlusCircleIcon as PlusCircle,
   ShieldCheckIcon as ShieldCheck,
   TrendingUpIcon as TrendingUp,
 } from "@mdevs/icons";
-import { useEffect, useState } from "react";
-import {
-  getSupportStats,
-  getTicketsList,
-} from "@/app/(chat)/site/actions/support";
+import { useEffect, useRef, useState } from "react";
+import { getSupportDashboardData } from "@/app/(chat)/site/actions/support";
 import {
   isAdminUser,
+  type SupportDashboardResult,
   type SupportTicket,
 } from "@/app/(chat)/site/actions/support-utils";
 import { useAuth } from "@/components/site/auth-provider";
 import Link from "@/components/site/router";
-import { SupportDocumentationSearch } from "@/components/site/support/SupportDocumentationSearch";
 import { SupportKnowledgeBase } from "@/components/site/support/SupportKnowledgeBase";
 import { SupportServiceStatus } from "@/components/site/support/SupportServiceStatus";
+import {
+  SupportActiveTicketsSkeleton,
+  SupportHistoryListSkeleton,
+  SupportStatsCardsSkeleton,
+} from "@/components/site/support/SupportSkeletons";
 import {
   PRIORITY_BADGES,
   STATUS_CONFIG,
 } from "@/components/site/support/support-config";
+import type { SupportStatusResponse } from "@/components/site/support/support-status-types";
 import { formatDisplayDate } from "@/lib/site/date-format";
-
-const ACTIVE_TICKET_STATUSES = new Set<SupportTicket["status"]>([
-  "open",
-  "in_progress",
-  "waiting_user",
-  "reopened",
-]);
 
 type DashboardStats = {
   total?: number;
@@ -62,16 +57,40 @@ function formatHours(value: number | null | undefined): string {
   return `${Number.isInteger(value) ? value : value.toFixed(1)}h`;
 }
 
-export default function SupportDashboardClient() {
+export default function SupportDashboardClient({
+  initialDashboard = null,
+  initialStatus = null,
+}: {
+  initialDashboard?: SupportDashboardResult | null;
+  initialStatus?: SupportStatusResponse | null;
+}) {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
-  const [tickets, setTickets] = useState<SupportTicket[]>([]);
-  const [activeCount, setActiveCount] = useState(0);
-  const [historyTickets, setHistoryTickets] = useState<SupportTicket[]>([]);
-  const [stats, setStats] = useState<DashboardStats | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [dashboardError, setDashboardError] = useState<string | null>(null);
+  const seeded =
+    initialDashboard?.success && initialDashboard.authenticated
+      ? initialDashboard
+      : null;
+  const [tickets, setTickets] = useState<SupportTicket[]>(
+    seeded?.activeTickets ?? []
+  );
+  const [activeCount, setActiveCount] = useState<number>(
+    seeded?.activeCount ?? 0
+  );
+  const [historyTickets, setHistoryTickets] = useState<SupportTicket[]>(
+    seeded?.historyTickets ?? []
+  );
+  const [stats, setStats] = useState<DashboardStats | null>(
+    seeded?.stats ?? null
+  );
+  const [loading, setLoading] = useState(!initialDashboard);
+  const [dashboardError, setDashboardError] = useState<string | null>(
+    initialDashboard && !initialDashboard.success
+      ? initialDashboard.error || "Impossible de charger le centre de support."
+      : null
+  );
+  const skipInitialLoadRef = useRef(Boolean(initialDashboard));
 
-  const isAdmin = isAdminUser(user?.email);
+  const isAdmin =
+    isAuthenticated && (isAdminUser(user?.email) || Boolean(seeded?.isAdmin));
 
   useEffect(() => {
     let cancelled = false;
@@ -92,40 +111,22 @@ export default function SupportDashboardClient() {
       setLoading(true);
       setDashboardError(null);
       try {
-        // Un seul appel fournit la source commune aux vues actives et historique.
-        const [ticketsRes, statsRes] = await Promise.all([
-          getTicketsList({ status: "all" }),
-          getSupportStats(),
-        ]);
+        const res = await getSupportDashboardData();
         if (cancelled) return;
 
-        const allTickets: SupportTicket[] =
-          ticketsRes.success && Array.isArray(ticketsRes.tickets)
-            ? ticketsRes.tickets
-            : [];
-        const activeTickets = allTickets.filter((ticket: SupportTicket) =>
-          ACTIVE_TICKET_STATUSES.has(ticket.status)
-        );
-        const completedTickets = allTickets.filter(
-          (ticket: SupportTicket) => !ACTIVE_TICKET_STATUSES.has(ticket.status)
-        );
-
-        setActiveCount(activeTickets.length);
-        setTickets(activeTickets.slice(0, 6));
-        setHistoryTickets(completedTickets.slice(0, 8));
-        setStats(
-          statsRes.success && statsRes.stats
-            ? (statsRes.stats as DashboardStats)
-            : null
-        );
-
-        if (!ticketsRes.success) {
+        if (res.success && res.authenticated) {
+          setActiveCount(res.activeCount);
+          setTickets(res.activeTickets);
+          setHistoryTickets(res.historyTickets);
+          setStats(res.stats);
+        } else if (res.success && !res.authenticated) {
+          setActiveCount(0);
+          setTickets([]);
+          setHistoryTickets([]);
+          setStats(null);
+        } else {
           setDashboardError(
-            ticketsRes.error || "Impossible de charger les tickets."
-          );
-        } else if (!statsRes.success) {
-          setDashboardError(
-            statsRes.error || "Les statistiques sont indisponibles."
+            res.error || "Impossible de charger les données du support."
           );
         }
       } catch (error: unknown) {
@@ -139,7 +140,13 @@ export default function SupportDashboardClient() {
       }
     }
 
-    if (!authLoading) void loadData();
+    if (!authLoading) {
+      if (skipInitialLoadRef.current) {
+        skipInitialLoadRef.current = false;
+        return;
+      }
+      void loadData();
+    }
     return () => {
       cancelled = true;
     };
@@ -268,6 +275,8 @@ export default function SupportDashboardClient() {
             </p>
           </div>
         </section>
+      ) : loading && isAuthenticated ? (
+        <SupportStatsCardsSkeleton />
       ) : null}
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -297,13 +306,7 @@ export default function SupportDashboardClient() {
           </div>
 
           {loading ? (
-            <div className="flex items-center justify-center gap-3 rounded-3xl border border-black/5 bg-white py-12 text-sm font-medium text-slate-500">
-              <Loader2
-                aria-hidden="true"
-                className="h-5 w-5 animate-spin text-purple-600"
-              />
-              <span>Chargement…</span>
-            </div>
+            <SupportActiveTicketsSkeleton />
           ) : isAuthenticated ? (
             tickets.length === 0 ? (
               <div className="space-y-3 rounded-3xl border border-black/5 bg-white p-8 text-center">
@@ -438,12 +441,7 @@ export default function SupportDashboardClient() {
 
           <div className="space-y-3 rounded-3xl border border-black/5 bg-white p-4 shadow-sm">
             {loading ? (
-              <div className="flex items-center justify-center py-8">
-                <Loader2
-                  aria-label="Chargement de l'historique"
-                  className="h-4 w-4 animate-spin text-purple-600"
-                />
-              </div>
+              <SupportHistoryListSkeleton />
             ) : historyTickets.length === 0 ? (
               <div className="space-y-2 py-8 text-center">
                 <FileQuestion
@@ -532,10 +530,7 @@ export default function SupportDashboardClient() {
         </aside>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
-        <SupportServiceStatus />
-        <SupportDocumentationSearch />
-      </div>
+      <SupportServiceStatus initialData={initialStatus} />
 
       <SupportKnowledgeBase />
     </div>

@@ -32,27 +32,29 @@ Omni excelle dans l'automatisation bureautique : extraction d'informations de ca
 
 mAI-2.5-Omni est comparé aux modèles de classe agile et quotidienne les plus efficients :
 
-| Benchmark | mAI-2.5 Omni | mAI-2 Mini | Claude Haiku 4.5 | Gemini 3.8 Flash | GPT-6 Luna | Qwen3.8-Omni-Flash |
-|:---|---:|---:|---:|---:|---:|---:|
-| **Terminal-Bench 2.1** | *[À renseigner]* | 84.3 | — | 89.4 | 73.0 | — |
-| **DeepSWE v1.1** | *[À renseigner]* | 63.4 | 55.2 | 73.7 | 66.6 | 57.8 |
-| **Agents' Last Exam** | *[À renseigner]* | 26.3 | — | — | 25.0 | — |
-| **AutomationBench** | *[À renseigner]* | 48.8 | 38.6 | — | 20.7 | — |
-| **HLE (w/tools)** | *[À renseigner]* | 55.3 | — | — | — | — |
-| **CyberGym** | *[À renseigner]* | 84.5 | — | — | — | — |
-| **OSWorld (Computer Use)** | *[À renseigner]* | — | — | — | 21.2 | — |
-| **GDPVal-AA** | *[À renseigner]* | 1773 (v2) | — | 1545 (v2) | — | — |
+| Benchmark | mAI-2.5 Omni | mAI-2 Mini | Claude Haiku 4.5 | Gemini 3.8 Flash | Qwen3.8-Omni-Flash |
+|:---|---:|---:|---:|---:|---:|
+| **Terminal-Bench 2.1** | 73.0 | 84.3 | — | 89.4 | — |
+| **Terminal-Bench 4.0** | 16.4 | — | — | 57.4 | — |
+| **DeepSWE v1.1** | 66.6 | 63.4 | 55.2 | 73.7 | 57.8 |
+| **SEC-Bench Pro** | 51.8 | — | — | — | — |
+| **Agents' Last Exam** | 25.0 | 26.3 | — | — | — |
+| **AutomationBench** | 20.7 | 48.8 | 38.6 | — | — |
+| **HLE (w/tools)** | — | 55.3 | — | — | — |
+| **CyberGym** | — | 84.5 | — | — | — |
+| **OSWorld (Computer Use)** | 21.2 | — | — | — | — |
+| **GDPVal-AA** | 1437 (v2) | 1773 (v2) | — | 1545 (v2) | — |
 
 ### Notes de méthode
 
-- Les mesures d'évaluation de mAI-2.5-Omni sont en phase d'étalonnage.
 - Un tiret cadratin (`—`) indique qu'aucun résultat homologué n'est disponible sous un protocole identique.
-- La ligne `GDPVal-AA` évalue la fidélité de réponse et l'utilité générale sur un panel de questions variées.
+- Sur **Terminal-Bench 4.0**, la valeur `16.4` correspond à l'effort de raisonnement maximal (`12.6` sous le protocole Artificial Analysis).
+- Sur **AutomationBench**, la valeur `20.7` reflète le barème standard de comparaison ; les variantes **AutomationBench-AA** atteignent `47.8` (high) à `53.2` (max).
+- La ligne `GDPVal-AA` évalue la fidélité de réponse et l'utilité générale sur un panel de questions variées (score Elo v2).
 
 ### Sources officielles
 
 - [Google DeepMind — Gemini 3.8 Flash](https://deepmind.google/models/model-cards/gemini-3-8-flash/)
-- [OpenAI — GPT-6 Luna](https://openai.com/index/introducing-gpt-6-luna/)
 - [Qwen — Qwen3.8-Omni-Flash](https://qwen.ai/blog)
 
 ## Disponibilité

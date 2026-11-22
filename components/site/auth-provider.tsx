@@ -89,7 +89,7 @@ export function AuthProvider({
   const [cloudStorage, setCloudStorage] = useState<MaiCloudStorageUsage | null>(
     null
   );
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [authenticated, setAuthenticated] = useState(Boolean(initialUser));
 
   const applyUsage = useCallback((data: MaiUsage) => {

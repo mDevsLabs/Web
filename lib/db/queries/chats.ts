@@ -116,13 +116,20 @@ export async function deleteChatById({ id }: { id: string }) {
   }
 }
 
-export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
+export async function deleteAllChatsByUserId({
+  userId,
+  userEmail,
+}: {
+  userId: string;
+  userEmail?: string | null;
+}) {
   try {
     const db = await dbReady();
+    const ownerFilter = chatUserFilter(userId, userEmail);
     const userChats = await db
       .select({ id: chat.id })
       .from(chat)
-      .where(sql`${chat.userId}::text = ${userId}::text`);
+      .where(ownerFilter);
 
     if (userChats.length === 0) {
       return { deletedCount: 0 };
@@ -153,14 +160,15 @@ export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
         .set({ chatId: null })
         .where(inArray(documentProposal.chatId, chatIds));
 
-      const deletedChats = await tx
-        .delete(chat)
-        .where(sql`${chat.userId}::text = ${userId}::text`)
-        .returning();
+      const deletedChats = await tx.delete(chat).where(ownerFilter).returning();
 
       return { deletedCount: deletedChats.length };
     });
   } catch (error) {
+    console.error(
+      `[deleteAllChatsByUserId] Échec de suppression de l'historique (${userId}):`,
+      error
+    );
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }

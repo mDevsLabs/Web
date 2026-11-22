@@ -94,13 +94,26 @@ export async function GET(request: NextRequest) {
 }
 
 export async function DELETE() {
-  const session = await requireUser();
+  try {
+    const session = await requireUser();
 
-  if (!session) {
-    return new ChatbotError("unauthorized:chat").toResponse();
+    if (!session) {
+      return new ChatbotError("unauthorized:chat").toResponse();
+    }
+
+    const result = await deleteAllChatsByUserId({
+      userEmail: session.user.email,
+      userId: session.userId,
+    });
+
+    return Response.json(result, { status: 200 });
+  } catch (error) {
+    console.error("[history-api] DELETE error:", error);
+    if (error instanceof ChatbotError) {
+      return error.toResponse();
+    }
+    return new ChatbotError("bad_request:database", {
+      cause: error,
+    }).toResponse();
   }
-
-  const result = await deleteAllChatsByUserId({ userId: session.userId });
-
-  return Response.json(result, { status: 200 });
 }

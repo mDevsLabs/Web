@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ActivityIcon as Activity,
   ChevronDownIcon as ChevronDown,
   CloudIcon as Cloud,
   DownloadIcon as Download,
@@ -220,17 +219,6 @@ export function MobileNavigation({
             >
               <Gauge className="w-4 h-4 text-purple-600" />
               <span>Usage mAI</span>
-            </Link>
-            <Link
-              className="px-4 py-2.5 mx-1 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5 bg-black/[0.02]"
-              href="/account#usage-api"
-              onClick={() => {
-                onOpenChange(false);
-                handleAccountAnchorClick(pathname, "usage-api");
-              }}
-            >
-              <Activity className="w-4 h-4 text-purple-600" />
-              <span>Usage API</span>
             </Link>
             <Link
               className="px-4 py-2.5 mx-1 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5 bg-black/[0.02]"

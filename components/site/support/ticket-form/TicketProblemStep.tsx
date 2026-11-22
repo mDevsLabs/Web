@@ -40,7 +40,7 @@ export function TicketProblemStep({
           maxLength={120}
           name="title"
           onChange={(event) => onTitleChange(event.target.value)}
-          placeholder="Ex. Erreur HTTP 429 sur /v1/chat/completions…"
+          placeholder="Ex. Erreur de chargement sur mAI Web ou modèle local Ollama…"
           required
           type="text"
           value={title}

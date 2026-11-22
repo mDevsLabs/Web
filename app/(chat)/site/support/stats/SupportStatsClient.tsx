@@ -3,17 +3,20 @@
 import {
   AlertTriangleIcon as AlertTriangle,
   ArrowLeftIcon as ArrowLeft,
-  Loader2Icon as Loader2,
   RefreshCwIcon as RefreshCw,
   ShieldCheckIcon as ShieldCheck,
 } from "@mdevs/icons";
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getSupportStats } from "@/app/(chat)/site/actions/support";
 import { isAdminUser } from "@/app/(chat)/site/actions/support-utils";
 import { useAuth } from "@/components/site/auth-provider";
 import Link from "@/components/site/router";
-import type { SupportStatsData } from "@/components/site/support/stats/stats-types";
+import { SupportStatsSkeleton } from "@/components/site/support/SupportSkeletons";
+import type {
+  SupportStatsData,
+  SupportStatsResult,
+} from "@/components/site/support/stats/stats-types";
 
 const SupportStatsCharts = dynamic(
   () =>
@@ -22,23 +25,33 @@ const SupportStatsCharts = dynamic(
     ),
   {
     loading: () => (
-      <div className="flex items-center justify-center gap-2 rounded-3xl border border-black/5 bg-white px-6 py-16 text-sm text-slate-500">
-        <Loader2
-          aria-hidden="true"
-          className="h-5 w-5 animate-spin text-purple-600"
-        />{" "}
-        Chargement des graphiques…
+      <div
+        aria-label="Chargement des graphiques"
+        className="grid grid-cols-1 gap-6 lg:grid-cols-2"
+        role="status"
+      >
+        <div className="h-72 animate-pulse rounded-3xl border border-black/5 bg-white p-6 shadow-2xs" />
+        <div className="h-72 animate-pulse rounded-3xl border border-black/5 bg-white p-6 shadow-2xs" />
       </div>
     ),
     ssr: false,
   }
 );
 
-export default function SupportStatsClient() {
+export default function SupportStatsClient({
+  initialResult = null,
+}: {
+  initialResult?: SupportStatsResult | null;
+}) {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
-  const [stats, setStats] = useState<SupportStatsData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const isAdmin = isAdminUser(user?.email);
+  const [stats, setStats] = useState<SupportStatsData | null>(
+    initialResult?.success && initialResult.stats ? initialResult.stats : null
+  );
+  const [loading, setLoading] = useState(!initialResult);
+  const skipInitialFetchRef = useRef(Boolean(initialResult));
+  const isAdmin =
+    isAuthenticated &&
+    (isAdminUser(user?.email) || Boolean(initialResult?.isAdmin));
 
   const fetchStats = useCallback(async () => {
     if (!user) return;
@@ -54,22 +67,17 @@ export default function SupportStatsClient() {
   }, [user]);
 
   useEffect(() => {
-    if (!authLoading && isAuthenticated) void fetchStats();
-    else if (!authLoading && !isAuthenticated) setLoading(false);
+    if (authLoading) return;
+    if (skipInitialFetchRef.current) {
+      skipInitialFetchRef.current = false;
+      return;
+    }
+    if (isAuthenticated) void fetchStats();
+    else setLoading(false);
   }, [authLoading, isAuthenticated, fetchStats]);
 
   if (authLoading || loading) {
-    return (
-      <div className="flex items-center justify-center rounded-3xl border border-black/5 bg-white py-32">
-        <div className="flex items-center gap-3 text-sm font-medium text-slate-500">
-          <Loader2
-            aria-hidden="true"
-            className="h-5 w-5 animate-spin text-purple-600"
-          />
-          <span>Calcul des métriques et indicateurs...</span>
-        </div>
-      </div>
-    );
+    return <SupportStatsSkeleton />;
   }
 
   if (!stats) {
@@ -185,7 +193,9 @@ export default function SupportStatsClient() {
             Taux de résolution
           </span>
           <p className="text-3xl font-black text-purple-600">
-            {stats.resolutionRate || 100}%
+            {typeof stats.resolutionRate === "number" && (stats.total ?? 0) > 0
+              ? `${stats.resolutionRate}%`
+              : "—"}
           </p>
           <p className="text-xs font-medium text-purple-600">Clôture globale</p>
         </div>
@@ -194,7 +204,9 @@ export default function SupportStatsClient() {
             Délai moyen
           </span>
           <p className="text-3xl font-black text-blue-600">
-            {stats.avgResolutionHours || 2.4}h
+            {typeof stats.avgResolutionHours === "number"
+              ? `${stats.avgResolutionHours}h`
+              : "—"}
           </p>
           <p className="text-xs font-medium text-blue-600">
             Temps de traitement

@@ -86,7 +86,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const activeAvatar = profile?.avatarUrl || user?.avatar_url || null;
 
   return (
-    <aside className="hidden sm:flex w-16 sm:w-20 xl:w-64 h-screen sticky top-0 border-r border-zinc-800 flex-col justify-between p-2 sm:p-3 xl:p-4 bg-black select-none z-30 shrink-0">
+    <aside className="hidden sm:flex w-16 sm:w-20 xl:w-64 h-dvh sticky top-0 self-start overflow-y-auto border-r border-zinc-800 flex-col justify-between p-2 sm:p-3 xl:p-4 bg-black select-none z-30 shrink-0">
       {/* Brand & Nav List */}
       <div className="space-y-4">
         {/* Brand Logo + bouton Notifications (déplacé en haut à droite du logo en xl) */}

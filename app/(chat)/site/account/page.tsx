@@ -21,7 +21,6 @@ import {
   AccountNavigation,
   type AccountSectionId,
 } from "@/components/site/account/account-navigation";
-import { ApiUsageSection } from "@/components/site/account/api-usage-section";
 import { AudioUsageSection } from "@/components/site/account/audio-usage-section";
 import { CloudStorageSection } from "@/components/site/account/cloud-storage-section";
 import { DevicesSection } from "@/components/site/account/devices-section";
@@ -116,15 +115,6 @@ export default function AccountPage() {
     const result = await dashboard.refreshAll();
     if (result.usageResult) toast.success("Quotas actualisés");
     else toast.error("Session expirée");
-  };
-
-  const handleRefreshApi = async () => {
-    try {
-      await dashboard.refreshApiUsage();
-      toast.success("Usage API actualisé !");
-    } catch {
-      toast.error("Erreur lors de l'actualisation de l'usage API.");
-    }
   };
 
   const handleRefreshImages = async () => {
@@ -253,7 +243,7 @@ export default function AccountPage() {
             Mon compte mAI
           </h1>
           <p className="text-slate-600 text-sm mt-1">
-            Gérez vos informations personnelles, forfaits et quotas d&apos;API.
+            Gérez vos informations personnelles, forfaits et quotas.
           </p>
         </div>
         <button
@@ -279,14 +269,6 @@ export default function AccountPage() {
           />
 
           <ProfileSection upgradedTier={upgradedTier} />
-
-          <ApiUsageSection
-            apiBoost={dashboard.apiBoost}
-            onRefresh={handleRefreshApi}
-            refreshing={dashboard.refreshingApi}
-            stats={dashboard.apiUsageStats}
-            tier={dashboard.user.tier}
-          />
 
           <ImageUsageSection
             onRefresh={handleRefreshImages}

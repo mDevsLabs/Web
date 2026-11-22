@@ -58,7 +58,6 @@ import type {
   ReasoningLevel,
   RegisteredAgentTool,
 } from "@/lib/agent/types";
-import { resolveModelMaxOutput } from "@/lib/ai/models";
 import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { createReasoningChunkWriter } from "@/lib/ai/reasoning-stream";
 import { resolveReasoningProviderOptions } from "@/lib/ai/registry/reasoning";
@@ -433,7 +432,6 @@ export function createAgentStream(params: AgentStreamParams) {
           params.context.instructions,
           pendingReorientations
         ),
-        maxOutputTokens: resolveModelMaxOutput(params.modelId),
         maxRetries: params.budget.maxRetries,
         messages: params.context.messages,
         model: params.model,

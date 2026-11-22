@@ -19,23 +19,21 @@
  */
 
 /**
- * Préfixes exemptés. Le `/` final fait partie de la clé : `/api/site/v1betaevil`
- * ne correspond pas à `/api/site/v1beta/`. Un préfixe approximatif serait une
+ * Préfixes exemptés. Le `/` final fait partie de la clé : `/api/site/v1evil`
+ * ne correspond pas à `/api/site/v1/`. Un préfixe approximatif serait une
  * porte de contournement vers des routes privées.
  */
 export const PREFIXES_API_AUTONOMES = [
   "/api/cron/",
-  // L'API publique v1 (OpenAI-compatible) et v1beta (Google Generative AI)
-  // s'authentifient par clé Bearer, jamais par cookie navigateur.
+  // Statut public Instatus et routes `/api/site/v1/` (contrôle de session géré dans chaque handler)
   "/api/site/v1/",
-  "/api/site/v1beta/",
   // Proxys de lecture des widgets du site vitrine (statistiques, versions et
   // activité GitHub). Publiques par conception : elles ne renvoient aucune donnée
   // de compte, et un visiteur anonyme de /site doit pouvoir les charger. Ce sont
   // des lectures côté serveur précisément pour que le navigateur n'ait pas à
-  // declaring d'origine externe dans la CSP.
+  // déclarer d'origine externe dans la CSP.
   "/api/site/github/",
-  // Recherche publique de contenu documentaire (site vitrine et support)
+  // Recherche publique de contenu du site vitrine et du support
   "/api/site/search/",
   "/api/skills/share/",
 ] as const;

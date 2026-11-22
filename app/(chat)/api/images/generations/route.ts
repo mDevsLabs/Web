@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
     const model = parsed.data.model || IMAGE_DEFAULT_MODEL;
     const negativePrompt = parsed.data.negative_prompt || undefined;
 
-    const cometKey = process.env.COMET_API_KEY;
+    const cometKey = process.env.COMET_API_KEY?.trim();
     if (!cometKey) {
       return errorResponse("service_unavailable", {
         message: "Génération d'image indisponible pour le moment.",
@@ -113,7 +113,15 @@ export async function POST(req: NextRequest) {
 
     // Le détail de l'erreur amont reste dans les journaux, jamais côté client.
     if (!res.ok) {
-      logError("Erreur amont génération d'image", { status: res.status });
+      const errorPreview = await res
+        .text()
+        .then((txt) => txt.slice(0, 400))
+        .catch(() => "");
+      logError("Erreur amont génération d'image (CometAPI)", {
+        body: errorPreview,
+        model,
+        status: res.status,
+      });
       return errorResponse("upstream_error", {
         message: "Le fournisseur d'images a renvoyé une erreur. Réessayez.",
       });

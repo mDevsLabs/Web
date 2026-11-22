@@ -7,7 +7,6 @@ import {
   CloudIcon as Cloud,
   GaugeIcon as Gauge,
   ImageIcon,
-  KeyRoundIcon as KeyRound,
   ShieldCheckIcon as ShieldCheck,
   SparklesIcon as Sparkles,
   UsersIcon as Users,
@@ -23,7 +22,6 @@ import Link from "@/components/site/router";
 
 interface PlanItem {
   agentsWeb?: string;
-  apiRequests: string;
   audioTokens: string;
   badge?: string;
   cloudStorage: string;
@@ -40,7 +38,6 @@ interface PlanItem {
 
 const PLANS: PlanItem[] = [
   {
-    apiRequests: "500 requêtes / semaine",
     audioTokens: "30 000 000 tokens / semaine",
     cloudStorage: "10 GB",
     dailyImages: "5 images / jour",
@@ -51,7 +48,6 @@ const PLANS: PlanItem[] = [
   },
   {
     agentsWeb: "15 Agents dans mAI Web",
-    apiRequests: "1 500 requêtes / semaine",
     audioTokens: "75 000 000 tokens / semaine",
     cloudStorage: "20 GB Cloud",
     dailyImages: "10 images / jour",
@@ -64,7 +60,6 @@ const PLANS: PlanItem[] = [
   },
   {
     agentsWeb: "25 Agents dans mAI Web",
-    apiRequests: "3 000 requêtes / semaine",
     audioTokens: "150 000 000 tokens / semaine",
     badge: "Recommandé",
     cloudStorage: "40 GB Cloud",
@@ -79,7 +74,6 @@ const PLANS: PlanItem[] = [
   },
   {
     agentsWeb: "Agents illimités dans mAI Web",
-    apiRequests: "7 500 requêtes / semaine",
     audioTokens: "300 000 000 tokens / semaine",
     cloudStorage: "60 GB Cloud",
     dailyImages: "35 images / jour",
@@ -139,8 +133,8 @@ function PricingContent() {
           initial={{ opacity: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Débloquez des limites de consommation étendues pour vos assistants mAI
-          et vos clés d&apos;API.
+          Débloquez des limites de consommation étendues pour vos assistants et
+          applications mAI.
         </motion.p>
       </div>
 
@@ -226,20 +220,6 @@ function PricingContent() {
                       </p>
                       <p className="text-xs text-slate-600 font-medium">
                         {plan.maiTokens}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2.5">
-                    <div className="p-1 rounded-lg bg-blue-100 text-blue-600 mt-0.5">
-                      <KeyRound className="w-3.5 h-3.5" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-slate-900">
-                        Quota API
-                      </p>
-                      <p className="text-xs text-slate-600 font-medium">
-                        {plan.apiRequests}
                       </p>
                     </div>
                   </div>

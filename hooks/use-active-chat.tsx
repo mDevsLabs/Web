@@ -169,6 +169,16 @@ export function ActiveChatProvider({
       return "Code 429 : Serveurs surchargés, réessayer plus tard !";
     if (Number.isInteger(code) && code > 0)
       return `Code ${code} : Une erreur est survenue !`;
+    // Conserver les messages d'erreur métier déjà formulés en français par le flux serveur.
+    if (
+      message &&
+      message.length <= 240 &&
+      /(OpenRouter|modèle|fournisseur|crédits|quota|indisponible|invalide|refusée)/i.test(
+        message
+      )
+    ) {
+      return message;
+    }
     return "Une erreur est survenue lors de la génération de la réponse.";
   }, []);
   const { mutate } = useSWRConfig();
@@ -636,6 +646,27 @@ export function ActiveChatProvider({
           });
         }
       }
+      // Retirer une bulle assistant entièrement vide laissée par un échec de
+      // stream avant le premier token (évite l'icône étoiles seule figée).
+      setMessages((current) => {
+        const last = current.at(-1);
+        if (last?.role !== "assistant") {
+          return current;
+        }
+        const parts = Array.isArray(last.parts) ? last.parts : [];
+        const hasVisible = parts.some(
+          (part: any) =>
+            (part?.type === "text" &&
+              typeof part.text === "string" &&
+              part.text.trim().length > 0) ||
+            (part?.type === "reasoning" &&
+              typeof part.text === "string" &&
+              part.text.trim().length > 0) ||
+            part?.type === "file" ||
+            (typeof part?.type === "string" && part.type.startsWith("tool-"))
+        );
+        return hasVisible ? current : current.slice(0, -1);
+      });
       if (error.message?.includes("AI Gateway requires a valid credit card")) {
         setShowCreditCardAlert(true);
       } else {

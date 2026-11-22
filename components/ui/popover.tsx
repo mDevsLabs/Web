@@ -27,7 +27,7 @@ function PopoverContent({
     <Popover.Portal>
       <Popover.Content
         align={align}
-        className={cn("md-root md-popover z-50 outline-hidden", className)}
+        className={cn("md-root md-popover z-[1060] outline-hidden", className)}
         data-slot="popover-content"
         sideOffset={sideOffset}
         {...mdevsScopeProps(theme)}

@@ -1,9 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server";
-import {
-  checkAndTrackUserUsage,
-  recordApiLog,
-  validateApiKey,
-} from "@/lib/site/api-key-manager";
 import { getLoopbackOllamaUrl } from "@/lib/site/ollama-url";
 import { authenticateSession } from "@/lib/site/session-auth";
 
@@ -25,13 +20,7 @@ export interface Message {
 }
 
 export async function POST(req: NextRequest) {
-  const startTime = performance.now();
   try {
-    const authHeader =
-      req.headers.get("authorization") ||
-      req.headers.get("Authorization") ||
-      "";
-
     const body = await req.json();
     const { model, messages, temperature, maxTokens, systemPrompt } = body as {
       model: string;
@@ -48,54 +37,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Le secret ne transite que par l'en-tête `Authorization` : l'accepter dans le
-    // corps JSON le faisait apparaître dans les journaux et les traces de requêtes.
-    const customKey = authHeader.startsWith("Bearer ")
-      ? authHeader.substring(7).trim()
-      : "";
-    let effectiveKey = "";
-
-    if (customKey) {
-      const validation = await validateApiKey(customKey);
-      if (!validation.valid) {
-        const isQuota =
-          validation.error?.toLowerCase().includes("limit") ||
-          validation.error?.toLowerCase().includes("quota");
-        return NextResponse.json(
-          { error: validation.error || "Clé API invalide ou quota atteint." },
-          { status: isQuota ? 429 : 403 }
-        );
-      }
-      effectiveKey = customKey;
-    } else {
-      // Identité vérifiée côté serveur (session signée) — l'en-tête x-user-id n'est plus accepté
-      const session = await authenticateSession(req);
-      if (!session.ok) {
-        return NextResponse.json(
-          {
-            error:
-              "Auth requise : fournissez une clé API (Bearer) ou connectez-vous.",
-          },
-          { status: 401 }
-        );
-      }
-      const usageCheck = await checkAndTrackUserUsage({
-        endpoint: "/api/ollama/chat",
-        method: "POST",
-        userId: session.identity.userId,
-      });
-
-      if (!usageCheck.allowed) {
-        return NextResponse.json(
-          {
-            error:
-              usageCheck.error ||
-              "Limite de requêtes API atteinte pour votre compte.",
-          },
-          { status: 429 }
-        );
-      }
-      effectiveKey = usageCheck.apiKey || "";
+    // Identité vérifiée côté serveur (session signée)
+    const session = await authenticateSession(req);
+    if (!session.ok) {
+      return NextResponse.json(
+        { error: "Authentification requise." },
+        { status: 401 }
+      );
     }
 
     const ollamaUrl = getLoopbackOllamaUrl();
@@ -244,15 +192,6 @@ export async function POST(req: NextRequest) {
           }
 
           controller.close();
-          if (customKey && effectiveKey) {
-            recordApiLog({
-              apiKey: effectiveKey,
-              endpoint: "/api/ollama/chat",
-              latencyMs: Math.round(performance.now() - startTime),
-              method: "POST",
-              statusCode: 200,
-            }).catch(() => {});
-          }
         } catch {
           console.error("Streaming error");
           controller.error("Streaming error");

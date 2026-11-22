@@ -4,10 +4,9 @@ import {
   ActivityIcon as Activity,
   AlertTriangleIcon as AlertTriangle,
   ExternalLinkIcon as ExternalLink,
-  Loader2Icon as Loader2,
   RefreshCwIcon as RefreshCw,
 } from "@mdevs/icons";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "@/components/site/router";
 import {
   isAbortError,
@@ -46,11 +45,16 @@ function StatusBadge({ status }: { status: SupportStatus }) {
   );
 }
 
-export function SupportServiceStatus() {
-  const [data, setData] = useState<SupportStatusResponse | null>(null);
-  const [loading, setLoading] = useState(true);
+export function SupportServiceStatus({
+  initialData = null,
+}: {
+  initialData?: SupportStatusResponse | null;
+}) {
+  const [data, setData] = useState<SupportStatusResponse | null>(initialData);
+  const [loading, setLoading] = useState(!initialData);
   const [error, setError] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState(0);
+  const skipInitialFetchRef = useRef(Boolean(initialData));
 
   const loadStatus = useCallback(async (signal: AbortSignal) => {
     setLoading(true);
@@ -72,10 +76,18 @@ export function SupportServiceStatus() {
       if (isAbortError(reason)) return;
       setData(null);
       setError("Le statut des services est momentanément indisponible.");
+    } finally {
+      if (!signal.aborted) {
+        setLoading(false);
+      }
     }
   }, []);
 
   useEffect(() => {
+    if (skipInitialFetchRef.current && refreshToken === 0) {
+      skipInitialFetchRef.current = false;
+      return;
+    }
     const controller = new AbortController();
     void loadStatus(controller.signal);
     return () => controller.abort();
@@ -121,15 +133,28 @@ export function SupportServiceStatus() {
         className="rounded-3xl border border-black/5 bg-white p-5 shadow-sm"
       >
         {loading && !data ? (
-          <div
-            className="flex items-center gap-3 py-5 text-sm text-slate-500"
-            role="status"
-          >
-            <Loader2
-              aria-hidden="true"
-              className="h-5 w-5 animate-spin text-emerald-600"
-            />
-            Chargement de l&apos;état des services…
+          <div className="space-y-4 py-1" role="status">
+            <span className="sr-only">
+              Chargement de l&apos;état des services…
+            </span>
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-11 w-11 animate-pulse rounded-2xl bg-slate-100" />
+                <div className="space-y-2">
+                  <div className="h-4 w-28 animate-pulse rounded bg-slate-100" />
+                  <div className="h-3 w-48 animate-pulse rounded bg-slate-100" />
+                </div>
+              </div>
+              <div className="h-3 w-32 animate-pulse rounded bg-slate-100" />
+            </div>
+            <div className="grid gap-2 border-t border-slate-100 pt-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[0, 1, 2, 3, 4, 5].map((item) => (
+                <div
+                  className="h-12 animate-pulse rounded-2xl border border-slate-100 bg-slate-50"
+                  key={item}
+                />
+              ))}
+            </div>
           </div>
         ) : error ? (
           <div
@@ -210,7 +235,7 @@ export function SupportServiceStatus() {
                 </span>
               </div>
               {data.services.length > 0 ? (
-                <div className="grid gap-2 sm:grid-cols-2">
+                <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                   {data.services.map((service) => (
                     <div
                       className="flex items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5"
