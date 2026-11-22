@@ -9,6 +9,23 @@
     "indentStyle": "space",
     "indentWidth": 2
   },
+  "markdown": {
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "yaml": {
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "useSortedProperties": "off"
+      }
+    }
+  },
   "javascript": {
     "globals": ["Deno", "loadPyodide"]
   },
@@ -180,7 +197,12 @@
         "noReturnAssign": "off",
         "noDocumentCookie": "off",
         "noNestedPromises": "off",
-        "useErrorMessage": "off"
+        "useErrorMessage": "off",
+        "noImportCycles": "off",
+        "useBaseline": "off",
+        "noDuplicateSelectors": "off",
+        "noLoopFunc": "off",
+        "noControlCharactersInRegex": "off"
       },
       "style": {
         "noMagicNumbers": "off",
@@ -198,17 +220,36 @@
         "useErrorCause": "off",
         "useFilenamingConvention": "off",
         "useConsistentMemberAccessibility": "off",
-        "noCommonJs": "off"
+        "noCommonJs": "off",
+        "useUnicodeRegex": "off",
+        "useNamedCaptureGroup": "off",
+        "useImportType": {
+          "level": "error",
+          "options": {
+            "style": "auto"
+          }
+        },
+        "useImportsFirst": "off",
+        "useDomQuerySelector": "off",
+        "useThisInClassMethods": "off",
+        "noExcessiveClassesPerFile": "off",
+        "useReduceTypeParameter": "off"
       },
       "nursery": {
-        "useSortedClasses": "off"
+        "useTailwindSortedClasses": "off"
       },
       "complexity": {
         "noExcessiveCognitiveComplexity": "off",
         "useSimplifiedLogicExpression": "off",
         "noVoid": "off",
         "noForEach": "off",
-        "noStaticOnlyClass": "off"
+        "noStaticOnlyClass": "off",
+        "useMathMinMax": "off",
+        "useWhile": "off",
+        "useArraySome": "off"
+      },
+      "security": {
+        "useIframeSandbox": "off"
       },
       "a11y": {
         "noSvgWithoutTitle": "off",

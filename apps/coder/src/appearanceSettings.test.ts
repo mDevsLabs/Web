@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   appearanceSettingsColorVars,
   applyAppearanceSettingsToDom,
@@ -8,23 +8,22 @@ import {
 } from "./appearanceSettings";
 
 function withFakeDocument(test: (style: Map<string, string>) => void): void {
-  const previousDocument = globalThis.document;
   const style = new Map<string, string>();
   const fakeStyle = {
     removeProperty: (key: string) => style.delete(key),
     setProperty: (key: string, value: string) => style.set(key, value),
   };
   const attributes = new Map<string, string>();
-  globalThis.document = {
+  vi.stubGlobal("document", {
     documentElement: {
       setAttribute: (key: string, value: string) => attributes.set(key, value),
       style: fakeStyle,
     },
-  } as unknown as Document;
+  } as unknown as Document);
   try {
     test(style);
   } finally {
-    globalThis.document = previousDocument;
+    vi.unstubAllGlobals();
   }
 }
 

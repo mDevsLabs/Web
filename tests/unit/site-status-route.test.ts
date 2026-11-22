@@ -1,6 +1,14 @@
 import { NextRequest } from "next/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+vi.mock("next/server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next/server")>();
+  return {
+    ...actual,
+    connection: vi.fn(async () => {}),
+  };
+});
+
 /**
  * La route de statut ne transforme jamais une panne en « tout va bien ».
  *

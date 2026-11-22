@@ -2,7 +2,6 @@ import type {
   ContentBlockParam,
   MessageParam,
 } from "@anthropic-ai/sdk/resources/messages";
-import { HttpsProxyAgent } from "https-proxy-agent";
 import OpenAI from "openai";
 import type { ProviderIdentitySettings } from "../../src/providerIdentitySettings.js";
 import { runCodexOAuthResponseText } from "../llm/codexOAuthAdapter.js";
@@ -22,6 +21,7 @@ import {
   providerIdentityForOAuthAuth,
 } from "../llm/providerIdentity.js";
 import { ensureFreshOAuthAuthForRequest } from "../llm/providerOAuthLogin.js";
+import { buildSdkProxyFetchOptions } from "../llm/proxyFetch.js";
 import { anthropicEffectiveMaxTokens } from "../llm/thinkingLevel.js";
 import type {
   ProviderOAuthAuthRecord,
@@ -360,7 +360,11 @@ function openAISummaryLine(message: OpenAIMessage): string | null {
   if (message.role === "assistant") {
     const toolCalls = Array.isArray(message.tool_calls)
       ? message.tool_calls
-          .map((call) => call.function?.name ?? "tool")
+          .map((call) =>
+            call.type === "function"
+              ? call.function.name
+              : (call.custom?.name ?? "tool")
+          )
           .join(", ")
       : "";
     return `assistant${toolCalls ? ` tool_calls=[${toolCalls}]` : ""}: ${truncate(String(message.content ?? ""), SUMMARY_MAX_LINE_CHARS)}`;
@@ -463,9 +467,7 @@ async function summarizeWithOpenAI(
         baseURL: options.baseURL?.trim() || undefined,
         maxRetries: 1,
         timeout: 60_000,
-        ...(options.proxyUrl?.trim()
-          ? { httpAgent: new HttpsProxyAgent(options.proxyUrl.trim()) }
-          : {}),
+        ...buildSdkProxyFetchOptions(options.proxyUrl),
       }
     ),
   });
@@ -517,9 +519,7 @@ async function summarizeWithAnthropic(
         baseURL: options.baseURL?.trim() || undefined,
         maxRetries: 1,
         timeout: 60_000,
-        ...(options.proxyUrl?.trim()
-          ? { httpAgent: new HttpsProxyAgent(options.proxyUrl.trim()) }
-          : {}),
+        ...buildSdkProxyFetchOptions(options.proxyUrl),
       }
     )
   );
@@ -538,7 +538,6 @@ async function summarizeWithAnthropic(
           identitySettings,
           "You summarize coding-agent conversation history for context compaction."
         ),
-        temperature: 0,
         ...(anthropicMetadata ? { metadata: anthropicMetadata } : {}),
       }),
     { signal: options.signal }

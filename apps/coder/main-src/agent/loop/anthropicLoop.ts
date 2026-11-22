@@ -3,7 +3,6 @@ import type {
   ContentBlockParam,
   MessageParam,
 } from "@anthropic-ai/sdk/resources/messages";
-import { HttpsProxyAgent } from "https-proxy-agent";
 import { parseAgentAssistantPayload } from "../../../src/agentStructuredMessage.js";
 import {
   resolveProviderIdentityWithOverride,
@@ -35,6 +34,7 @@ import {
   providerIdentityForOAuthAuth,
 } from "../../llm/providerIdentity.js";
 import { ensureFreshOAuthAuthForRequest } from "../../llm/providerOAuthLogin.js";
+import { buildSdkProxyFetchOptions } from "../../llm/proxyFetch.js";
 import {
   buildAnthropicUserBlocks,
 } from "../../llm/resolvedUserSerialize.js";
@@ -185,10 +185,10 @@ export async function runAnthropicLoop(
   const proxyRaw =
     (options.requestProxyUrl?.trim() || settings.openAI?.proxyUrl?.trim()) ??
     "";
-  let httpAgent: InstanceType<typeof HttpsProxyAgent> | undefined;
+  let proxyFetchOptions: ReturnType<typeof buildSdkProxyFetchOptions> = {};
   if (proxyRaw) {
     try {
-      httpAgent = new HttpsProxyAgent(proxyRaw);
+      proxyFetchOptions = buildSdkProxyFetchOptions(proxyRaw);
     } catch {
       handlers.onError("代理地址无效。");
       return;
@@ -210,7 +210,7 @@ export async function runAnthropicLoop(
       {
         ...authOptions,
         baseURL: baseURL || undefined,
-        ...(httpAgent ? { httpAgent } : {}),
+        ...proxyFetchOptions,
         maxRetries: 0,
         timeout: llmSdkResponseHeadTimeoutMs(),
       },

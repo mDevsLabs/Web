@@ -11,7 +11,7 @@ function mockClient(
     canRefresh: false,
     hasUserToken,
     lark: null as unknown as FeishuApiClient["lark"],
-    request,
+    request: request as unknown as FeishuApiClient["request"],
     userAccessToken: hasUserToken ? "u" : "",
   };
 }

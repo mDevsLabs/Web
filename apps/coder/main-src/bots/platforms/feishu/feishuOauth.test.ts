@@ -6,13 +6,15 @@ const userInfoGetMock = vi.hoisted(() => vi.fn());
 const openExternalMock = vi.hoisted(() => vi.fn());
 
 vi.mock("@larksuiteoapi/node-sdk", () => ({
-  Client: vi.fn().mockImplementation(() => ({
-    authen: {
-      oidcAccessToken: { create: oidcAccessTokenMock },
-      userInfo: { get: userInfoGetMock },
-    },
-    request: vi.fn(),
-  })),
+  Client: vi.fn().mockImplementation(function () {
+    return {
+      authen: {
+        oidcAccessToken: { create: oidcAccessTokenMock },
+        userInfo: { get: userInfoGetMock },
+      },
+      request: vi.fn(),
+    };
+  }),
   withUserAccessToken: vi.fn(),
 }));
 

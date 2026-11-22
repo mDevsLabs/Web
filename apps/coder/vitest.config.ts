@@ -11,11 +11,24 @@ export default defineConfig({
     },
   },
   test: {
-    environment: "node",
-    environmentMatchGlobs: [["src/**/*.test.{ts,tsx}", "jsdom"]],
     exclude: ["node_modules", "dist", "release", "e2e"],
-    include: ["main-src/**/*.test.ts", "src/**/*.test.ts"],
     pool: "forks",
+    projects: [
+      {
+        extends: true,
+        test: {
+          environment: "node",
+          include: ["main-src/**/*.test.ts"],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          environment: "jsdom",
+          include: ["src/**/*.test.ts"],
+        },
+      },
+    ],
     setupFiles: [],
   },
 });

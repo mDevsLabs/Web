@@ -1,4 +1,3 @@
-import { HttpsProxyAgent } from "https-proxy-agent";
 import OpenAI from "openai";
 import { parseAgentAssistantPayload } from "../../../src/agentStructuredMessage.js";
 import {
@@ -15,6 +14,7 @@ import {
   applyOpenAIProviderIdentity,
   prependProviderIdentitySystemPrompt,
 } from "../../llm/providerIdentity.js";
+import { buildSdkProxyFetchOptions } from "../../llm/proxyFetch.js";
 import {
   buildOpenAIUserContent,
 } from "../../llm/resolvedUserSerialize.js";
@@ -176,10 +176,10 @@ export async function runOpenAILoop(
   const proxyRaw =
     (options.requestProxyUrl?.trim() || settings.openAI?.proxyUrl?.trim()) ??
     "";
-  let httpAgent: InstanceType<typeof HttpsProxyAgent> | undefined;
+  let proxyFetchOptions: ReturnType<typeof buildSdkProxyFetchOptions> = {};
   if (proxyRaw) {
     try {
-      httpAgent = new HttpsProxyAgent(proxyRaw);
+      proxyFetchOptions = buildSdkProxyFetchOptions(proxyRaw);
     } catch {
       handlers.onError("代理地址无效。");
       return;
@@ -193,7 +193,7 @@ export async function runOpenAILoop(
         apiKey: key,
         baseURL,
         dangerouslyAllowBrowser: false,
-        httpAgent,
+        ...proxyFetchOptions,
         maxRetries: 0,
         timeout: llmSdkResponseHeadTimeoutMs(),
       },

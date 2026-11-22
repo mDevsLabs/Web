@@ -110,14 +110,14 @@ const PureSpreadsheetEditor = ({ content, saveContent }: SheetEditorProps) => {
   const handleCellClick = useCallback(
     (args: {
       column: { key: string };
-      setActivePosition?: (enableEditor?: boolean) => void;
-      selectCell?: (enableEditor?: boolean) => void;
+      setActivePosition?: (options?: {
+        enableEditor?: boolean | null;
+        shouldFocus?: boolean | null;
+      }) => void;
     }) => {
       if (args.column.key !== "rowNumber") {
         if (typeof args.setActivePosition === "function") {
-          args.setActivePosition(true);
-        } else if (typeof args.selectCell === "function") {
-          args.selectCell(true);
+          args.setActivePosition({ enableEditor: true });
         }
       }
     },

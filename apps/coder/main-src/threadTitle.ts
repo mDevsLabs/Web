@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { HttpsProxyAgent } from "https-proxy-agent";
 import OpenAI from "openai";
 import { runCodexOAuthResponseText } from "./llm/codexOAuthAdapter.js";
 import { resolveModelRequest } from "./llm/modelResolve.js";
@@ -13,6 +12,7 @@ import {
   providerIdentityForOAuthAuth,
 } from "./llm/providerIdentity.js";
 import { ensureFreshOAuthAuthForRequest } from "./llm/providerOAuthLogin.js";
+import { buildSdkProxyFetchOptions } from "./llm/proxyFetch.js";
 import { openAICompatibleEffectiveTemperature } from "./llm/thinkingLevel.js";
 import { checkMaiQuotaAvailable } from "./maiAccountStore.js";
 import type { ShellSettings } from "./settingsStore.js";
@@ -232,8 +232,6 @@ export async function generateThreadTitle(
         });
         return parseGeneratedThreadTitle(text);
       }
-      const proxyRaw = resolved.proxyUrl?.trim() ?? "";
-      const httpAgent = proxyRaw ? new HttpsProxyAgent(proxyRaw) : undefined;
       const client = new OpenAI(
         applyOpenAIProviderIdentity(
           settings,
@@ -241,7 +239,7 @@ export async function generateThreadTitle(
             apiKey: resolved.apiKey,
             baseURL: resolved.baseURL,
             dangerouslyAllowBrowser: false,
-            httpAgent,
+            ...buildSdkProxyFetchOptions(resolved.proxyUrl),
             maxRetries: 0,
           },
           resolved.providerIdentity
@@ -305,7 +303,6 @@ export async function generateThreadTitle(
           buildThreadTitleSystemPrompt(ruleContext, threadLang),
           requestProviderIdentity
         ),
-        temperature: 0,
         ...(anthropicMetadata ? { metadata: anthropicMetadata } : {}),
         messages: [{ content: userPrompt, role: "user" }],
       });

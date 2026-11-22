@@ -316,9 +316,9 @@ export function ProjectsChatsDataGrid({
             columns={columns}
             defaultColumnOptions={{ resizable: true }}
             enableVirtualization={true}
+            getRowKey={(row: ChatGridRow) => row.id}
             onSelectedRowsChange={onSelectedChatIdsChange}
             renderers={CHAT_GRID_RENDERERS}
-            rowKeyGetter={(row: ChatGridRow) => row.id}
             rows={chats}
             selectedRows={selectedChatIds}
             style={{ height: 500 }}

@@ -14,11 +14,11 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { app } from "electron";
-import { HttpsProxyAgent } from "https-proxy-agent";
 import OpenAI from "openai";
 import type { ProviderIdentitySettings } from "../../src/providerIdentitySettings.js";
 import { getSettings, type ModelRequestParadigm } from "../settingsStore.js";
 import { applyOpenAIProviderIdentity } from "./providerIdentity.js";
+import { buildSdkProxyFetchOptions } from "./proxyFetch.js";
 
 // ─── context.ts 对齐常量 ───────────────────────────────────────────────────
 
@@ -169,11 +169,11 @@ export async function refreshOpenAiCompatibleModelCapabilitiesCache(params: {
     return existing;
   }
   const p = (async () => {
-    let httpAgent: InstanceType<typeof HttpsProxyAgent> | undefined;
+    let proxyFetchOptions: ReturnType<typeof buildSdkProxyFetchOptions> = {};
     const proxyRaw = params.proxyUrl?.trim();
     if (proxyRaw) {
       try {
-        httpAgent = new HttpsProxyAgent(proxyRaw);
+        proxyFetchOptions = buildSdkProxyFetchOptions(proxyRaw);
       } catch {
         return;
       }
@@ -184,7 +184,7 @@ export async function refreshOpenAiCompatibleModelCapabilitiesCache(params: {
         {
           apiKey: params.apiKey,
           baseURL: params.baseURL?.trim() || undefined,
-          httpAgent,
+          ...proxyFetchOptions,
           maxRetries: 0,
           timeout: 45_000,
         },

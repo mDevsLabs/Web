@@ -13,12 +13,33 @@ export default defineConfig({
     outDir: "dist",
     rollupOptions: {
       output: {
-        manualChunks: {
-          charts: ["recharts"],
-          markdown: ["react-markdown", "remark-gfm"],
-          monaco: ["monaco-editor", "@monaco-editor/react"],
-          shiki: ["shiki"],
-          xterm: ["@xterm/xterm", "@xterm/addon-fit", "@xterm/addon-search"],
+        manualChunks(id) {
+          if (id.includes("node_modules/recharts")) {
+            return "charts";
+          }
+          if (
+            id.includes("node_modules/react-markdown") ||
+            id.includes("node_modules/remark-gfm")
+          ) {
+            return "markdown";
+          }
+          if (
+            id.includes("node_modules/monaco-editor") ||
+            id.includes("node_modules/@monaco-editor/react")
+          ) {
+            return "monaco";
+          }
+          if (id.includes("node_modules/shiki")) {
+            return "shiki";
+          }
+          if (
+            id.includes("node_modules/@xterm/xterm") ||
+            id.includes("node_modules/@xterm/addon-fit") ||
+            id.includes("node_modules/@xterm/addon-search")
+          ) {
+            return "xterm";
+          }
+          return undefined;
         },
       },
     },
