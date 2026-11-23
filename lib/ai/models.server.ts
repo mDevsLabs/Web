@@ -1,7 +1,5 @@
 import "server-only";
 
-import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { getUserApiKey } from "@/lib/db/api-keys";
 import {
   type ChatModel,
   FALLBACK_MODELS,
@@ -62,18 +60,22 @@ type CachedCatalog = {
   expiresAt: number;
   models: ChatModel[];
 };
-const CATALOG_CACHE = new Map<string, CachedCatalog>();
-const CATALOG_CACHE_TTL_MS = 60_000;
+/**
+ * Le catalogue OpenRouter est GLOBAL, pas par compte.
+ *
+ * L'ancien cache était indexé par jeton et identifiant utilisateur alors que
+ * la requête `https://openrouter.ai/api/v1/models` n'envoie aucun en-tête :
+ * chaque compte (et chaque instance froide) re-téléchargeait et re-parsait
+ * ~1 Mo de JSON pour produire exactement la même liste. Une seule entrée
+ * module suffit ; elle est partagée par le chat et par les ticks.
+ */
+let catalogCache: CachedCatalog | null = null;
+const CATALOG_CACHE_TTL_MS = 300_000;
 
-async function readCatalogModels(params: {
-  headers: Record<string, string>;
-  token: string | null;
-}): Promise<ChatModel[] | null> {
-  const cacheKey = `${params.token || "anonymous"}:${params.headers["x-user-id"] || "none"}`;
-  const cached = CATALOG_CACHE.get(cacheKey);
+async function readCatalogModels(): Promise<ChatModel[] | null> {
   const now = Date.now();
-  if (cached && now < cached.expiresAt) {
-    return cached.models;
+  if (catalogCache && now < catalogCache.expiresAt) {
+    return catalogCache.models;
   }
 
   try {
@@ -88,10 +90,10 @@ async function readCatalogModels(params: {
         (m) => m.provider === "mdevslabs"
       );
       const mapped = mapCatalogModels([...sovereignModels, ...rawList]);
-      CATALOG_CACHE.set(cacheKey, {
+      catalogCache = {
         expiresAt: now + CATALOG_CACHE_TTL_MS,
         models: mapped,
-      });
+      };
       return mapped;
     }
   } catch {}
@@ -101,37 +103,10 @@ async function readCatalogModels(params: {
 
 export async function fetchUserModels(): Promise<ChatModel[]> {
   try {
-    const user = await getMaiUser();
-    let authHeader = "";
-
-    if (user?.id) {
-      const apiKey = await getUserApiKey(user.id);
-      if (apiKey) {
-        authHeader = `Bearer ${apiKey}`;
-      }
-    }
-
-    if (!authHeader) {
-      const token = await getMaiSessionToken();
-      if (token) {
-        authHeader = `Bearer ${token}`;
-      }
-    }
-
-    const headers: Record<string, string> = {};
-    if (authHeader) {
-      headers.Authorization = authHeader;
-    }
-    if (user?.id) {
-      headers["x-user-id"] = user.id;
-    }
-
-    const models = await readCatalogModels({
-      headers,
-      // `authHeader` est déjà préfixé par « Bearer » : c'est une clé API
-      // personnelle pour les comptes qui en ont une, sinon le jeton de session.
-      token: authHeader ? authHeader.replace(/^Bearer\s+/i, "") : null,
-    });
+    // Le catalogue ne dépend ni du compte ni d'une clé : la route OpenRouter
+    // appelée est publique. Lire la session et la clé utilisateur ici coûtait
+    // deux requêtes base pour un résultat identique pour tous.
+    const models = await readCatalogModels();
 
     // Un catalogue illisible ne doit pas casser le sélecteur de modèle : on
     // retombe sur la liste embarquée, qui est la seule source disponible hors
@@ -148,19 +123,12 @@ export async function fetchUserModels(): Promise<ChatModel[]> {
  * du compte et son identifiant : `fetchUserModels` lirait une session
  * absente et retomberait sur la liste embarquée, qui ne connaît pas Flint.
  */
-export async function fetchModelsForUser(params: {
+export async function fetchModelsForUser(_params: {
   apiKey: string | null;
   userId: string;
 }): Promise<ChatModel[]> {
   try {
-    const headers: Record<string, string> = {};
-    if (params.userId) {
-      headers["x-user-id"] = params.userId;
-    }
-    const models = await readCatalogModels({
-      headers,
-      token: params.apiKey,
-    });
+    const models = await readCatalogModels();
     return models ?? FALLBACK_MODELS;
   } catch (err) {
     console.error("Erreur fetchModelsForUser:", err);

@@ -77,14 +77,17 @@ export async function POST(req: NextRequest) {
       requestedModel: parsed.data.model,
     });
     if (!resolvedModel.ok) {
-      return errorResponse(
-        resolvedModel.status === 503 ? "service_unavailable" : "invalid_request",
-        {
-          code: resolvedModel.code,
-          message: resolvedModel.message,
-          status: resolvedModel.status,
-        }
-      );
+      const apiCode =
+        resolvedModel.status === 503
+          ? "service_unavailable"
+          : resolvedModel.status === 404
+            ? "not_found"
+            : "invalid_request";
+      return errorResponse(apiCode, {
+        details: { reason: resolvedModel.code },
+        message: resolvedModel.message,
+        status: resolvedModel.status,
+      });
     }
     const model = resolvedModel.model.id;
     const negativePrompt = parsed.data.negative_prompt || undefined;

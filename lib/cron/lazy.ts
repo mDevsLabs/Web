@@ -24,11 +24,12 @@ import {
  *      bail expire et le tick est repris.
  *
  * Filet de secours seulement : l'ordonnanceur principal est le workflow
- * GitHub `cron-master` (toutes les 5 min, exécution directe hors Vercel, via
+ * GitHub `cron-master` (toutes les 15 min, exécution directe hors Vercel, via
  * `scripts/cron/run-direct.ts`). Ici, un tick n'est réclamé qu'avec
  * `LAZY_GRACE_MS` de retard, pour ne pas brûler l'Active CPU Vercel quand
  * GitHub tient la cadence. Même bail pour tous : un tick ne tourne jamais
- * deux fois en parallèle. Désactivable avec `CRON_LAZY_TICKS=off`.
+ * deux fois en parallèle. DÉSACTIVÉ PAR DÉFAUT : `CRON_LAZY_TICKS=on`
+ * l'active, pour un déploiement sans ordonnanceur externe.
  */
 
 const THROTTLE_MS = 60_000;
@@ -148,12 +149,18 @@ export async function runClaimedCronTicks(
   );
 }
 
-/** Ticks exécutables ici : jamais en test, ni si l'exploitant l'a coupé. */
+/**
+ * Ticks exécutables ici : jamais en test, et SEULEMENT sur activation
+ * explicite. Le défaut est « coupé » : un tick paresseux qui se déclenche
+ * consomme plusieurs minutes d'Active CPU Vercel, alors que GitHub Actions
+ * exécute le même tick hors Vercel. Un déploiement sans ordonnanceur externe
+ * rétablit le filet avec `CRON_LAZY_TICKS=on`.
+ */
 function lazyTicksEnabled(): boolean {
   if (process.env.NODE_ENV === "test" || process.env.VITEST) {
     return false;
   }
-  if (process.env.CRON_LAZY_TICKS === "off") {
+  if (process.env.CRON_LAZY_TICKS !== "on") {
     return false;
   }
   // Sans secret, les routes refusent en production : inutile de poser des

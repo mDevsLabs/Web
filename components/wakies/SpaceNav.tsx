@@ -103,7 +103,7 @@ export function SpaceNav({
     const reload = () => {
       if (document.visibilityState === "visible") void load();
     };
-    const timer = setInterval(reload, 20_000);
+    const timer = setInterval(reload, 120_000);
     document.addEventListener("visibilitychange", reload);
     return () => {
       current = false;

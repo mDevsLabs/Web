@@ -975,7 +975,7 @@ function WakieChat({
         .catch(() => {});
     };
     document.addEventListener("visibilitychange", refreshHistory);
-    const timer = setInterval(refreshHistory, 30_000);
+    const timer = setInterval(refreshHistory, 120_000);
     return () => {
       controller.abort();
       clearInterval(timer);

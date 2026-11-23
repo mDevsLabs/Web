@@ -80,7 +80,7 @@ export function PlanningClient({
         filterStatus === "all"
           ? initialSchedules
           : initialSchedules.filter((item) => item.status === filterStatus),
-      refreshInterval: 15_000,
+      refreshInterval: 120_000,
     }
   );
 
@@ -94,7 +94,7 @@ export function PlanningClient({
       fallbackData: initialSchedules.filter(
         (item) => item.status === "pending"
       ),
-      refreshInterval: 60_000,
+      refreshInterval: 300_000,
       revalidateOnFocus: false,
     }
   );

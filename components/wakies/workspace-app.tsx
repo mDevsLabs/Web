@@ -437,7 +437,7 @@ function WakiesWorkspaceContent({
     load();
     const timer = setInterval(() => {
       if (document.visibilityState === "visible" && navigator.onLine) load();
-    }, 30_000);
+    }, 120_000);
     return () => {
       active = false;
       clearInterval(timer);

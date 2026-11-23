@@ -7,11 +7,21 @@
  * (`revalidateOnFocus`) : la fraîcheur perçue ne baisse pas.
  */
 
-/** Relève des données visibles (historique, amis, espace de travail…). */
-export const WAKIES_POLL_MS = 20_000;
+/**
+ * Relève des données visibles (historique, amis, espace de travail…).
+ *
+ * Deux minutes, pas vingt secondes : chaque relève est une invocation
+ * serverless ET une requête Neon. À 20 s, un onglet ouvert gardait le compute
+ * éveillé en continu ; à 2 min, une fenêtre d'inactivité peut exister entre
+ * deux relèves quand l'utilisateur ne fait rien.
+ */
+export const WAKIES_POLL_MS = 120_000;
 
-/** Relève des alertes quand l'onglet est masqué (notifications du navigateur). */
-export const WAKIES_POLL_HIDDEN_MS = 60_000;
+/**
+ * Relève des alertes quand l'onglet est masqué (notifications du navigateur).
+ * Un onglet caché n'a besoin que d'être alerté, pas d'être frais.
+ */
+export const WAKIES_POLL_HIDDEN_MS = 300_000;
 
 /** `refreshInterval` SWR : rapide si l'onglet est visible, lent sinon. */
 export function wakiesAlertPollInterval(): number {

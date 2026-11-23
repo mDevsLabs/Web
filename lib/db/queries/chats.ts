@@ -271,7 +271,11 @@ export async function getChatsByUserId({
         .from(chat)
         .leftJoin(agent, eq(chat.agentId, agent.id))
         .where(where)
-        .orderBy(desc(chat.pinned), desc(chat.lastMessageAt), desc(chat.createdAt))
+        .orderBy(
+          desc(chat.pinned),
+          desc(chat.lastMessageAt),
+          desc(chat.createdAt)
+        )
         .limit(extendedLimit);
     };
 
@@ -654,12 +658,38 @@ export async function updateMessage({
   }
 }
 
-export async function getMessagesByChatId({ id }: { id: string }) {
+export async function getMessagesByChatId({
+  id,
+  limit,
+}: {
+  id: string;
+  /**
+   * Nombre maximal de messages, en gardant les PLUS RÉCENTS.
+   *
+   * `undefined` conserve le contrat historique (tout l'historique), utilisé
+   * par l'interface, les exports et les forks. Le prompt IA, lui, n'a pas
+   * besoin de rejouer des centaines de messages : la borne évite de charger
+   * et de convertir un historique entier à chaque tour.
+   */
+  limit?: number;
+}) {
   if (!id || typeof id !== "string") {
     return [];
   }
   try {
     const db = await dbReady();
+    if (limit && limit > 0) {
+      // Tri décroissant pour prendre la FIN de l'historique, puis remise en
+      // ordre chronologique : le modèle reçoit la conversation dans le bon
+      // sens, et la coupure ne retire que les messages les plus anciens.
+      const recent = await db
+        .select()
+        .from(message)
+        .where(eq(message.chatId, id))
+        .orderBy(desc(message.createdAt))
+        .limit(limit);
+      return recent.reverse();
+    }
     return await db
       .select()
       .from(message)
@@ -1066,7 +1096,6 @@ export async function recordTokenUsage({
     return;
   }
 
-  let insertedUsageEventKey: string | null = null;
   try {
     await dbReady();
     if (!_rawClient) {
@@ -1087,169 +1116,158 @@ export async function recordTokenUsage({
       return;
     }
 
-    let shouldDebit = true;
-    if (idempotencyKey) {
-      const safeKey = idempotencyKey.slice(0, 256);
-      const safeInputTokens = Math.max(0, Math.floor(inputTokens || 0));
-      const safeOutputTokens = Math.max(0, Math.floor(outputTokens || 0));
-      const safeReasoningTokens = Math.max(0, Math.floor(reasoningTokens || 0));
-      const safeTotalTokens = Math.max(0, Math.floor(actualTotal));
-      // Un `chatId` non uuid (identifiant historique d'une autre forme) doit
-      // faire perdre le lien, pas l'INSERT : on l'écarte plutôt que de laisser
-      // Postgres rejeter l'ensemble de la ligne.
-      const safeChatId =
-        chatId && /^[0-9a-fA-F-]{36}$/.test(chatId) ? chatId : null;
-      // INSERT avec le lien de conversation. Sur une base pas encore migrée en
-      // 0033, Postgres rejette la colonne (42703) et l'on RETOMBE sur l'INSERT
-      // historique : le lien est perdu, pas la ligne. Ce repli est ce qui rend
-      // le déploiement sans risque — un environnement qui traîne une migration
-      // de retard continue d'enregistrer sa consommation au lieu de la
-      // perdre entièrement. La migration 0035 ajoute un TROISIÈME palier, dans
-      // le même ordre : on descend d'un cran à chaque 42703, jamais plus bas.
-      //
-      // `client` est capturé localement : le garde `if (!_rawClient) return`
-      // plus haut ne survit pas à la fermeture, et sans cette capture chaque
-      // requête serait typée `Sql | null`.
-      const client = _rawClient;
-      // Même règle que pour `chatId` : un identifiant de projet mal formé perd
-      // l'attribution, il ne doit pas faire échouer l'INSERT entier.
-      const safeChatProjectId =
-        chatProjectId && /^[0-9a-fA-F-]{36}$/.test(chatProjectId)
-          ? chatProjectId
-          : null;
-      // `chatMode` est une énumération fermée, un cast `::varchar` inutile :
-      // `postgres.js` l'échappe comme une chaîne.
-      const safeChatMode =
-        chatMode === "agent" ? "agent" : chatMode === "chat" ? "chat" : null;
-      const insertWithAttribution = async (
-        includeChatId: boolean,
-        includeAttribution: boolean
-      ) => {
-        if (includeAttribution) {
-          return client`
-            INSERT INTO "UsageEvent" (
-              "id", "userId", "model", "inputTokens", "outputTokens",
-              "reasoningTokens", "totalTokens", "isGhostMode", "chatId",
-              "chatMode", "chatProjectId"
-            )
-            VALUES (
-              ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
-              ${safeOutputTokens}, ${safeReasoningTokens},
-              ${safeTotalTokens}, ${isGhostMode}, ${safeChatId}::uuid,
-              ${safeChatMode}::varchar, ${safeChatProjectId}::uuid
-            )
-            ON CONFLICT ("id") DO NOTHING
-            RETURNING "id"
-          `;
-        }
-        if (includeChatId) {
-          return client`
-            INSERT INTO "UsageEvent" (
-              "id", "userId", "model", "inputTokens", "outputTokens",
-              "reasoningTokens", "totalTokens", "isGhostMode", "chatId"
-            )
-            VALUES (
-              ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
-              ${safeOutputTokens}, ${safeReasoningTokens},
-              ${safeTotalTokens}, ${isGhostMode}, ${safeChatId}::uuid
-            )
-            ON CONFLICT ("id") DO NOTHING
-            RETURNING "id"
-          `;
-        }
-        return client`
-          INSERT INTO "UsageEvent" (
-            "id", "userId", "model", "inputTokens", "outputTokens",
-            "reasoningTokens", "totalTokens", "isGhostMode"
-          )
-          VALUES (
-            ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
-            ${safeOutputTokens}, ${safeReasoningTokens},
-            ${safeTotalTokens}, ${isGhostMode}
-          )
-          ON CONFLICT ("id") DO NOTHING
-          RETURNING "id"
-        `;
-      };
-
-      try {
-        // On ne lit que la LONGUEUR de la liste renvoyée (`ON CONFLICT DO
-        // NOTHING` + `RETURNING`) : le type précis de ligne n'a pas d'intérêt.
-        // Les paliers sont essayés dans l'ordre décroissant de fidélité ; seul
-        // un 42703 (colonne absente) fait descendre d'un cran, toute autre
-        // erreur est réelle et remontée plus bas.
-        const attempts: [boolean, boolean][] = [
-          [true, true],
-          [true, false],
-          [false, false],
-        ];
-        let inserted: unknown[] = [];
-        for (const [withChatId, withAttribution] of attempts) {
-          try {
-            inserted = await insertWithAttribution(withChatId, withAttribution);
-            break;
-          } catch (tierError) {
-            if ((tierError as { code?: string })?.code !== "42703") {
-              throw tierError;
-            }
-          }
-        }
-        shouldDebit = inserted.length > 0;
-        if (shouldDebit) {
-          insertedUsageEventKey = safeKey;
-        }
-      } catch (eventError) {
-        // La table est ajoutée par la migration 0026, `reasoningTokens` par la
-        // 0030, `chatId` par la 0033, l'attribution par la 0035. Tant qu'elles
-        // ne sont pas appliquées, conserver le comptage historique plutôt que
-        // de le perdre.
-        console.warn(
-          "UsageEvent indisponible, comptage direct conservé:",
-          eventError
-        );
-      }
-    }
-
     // weekly_usage.user_id est un INTEGER (table plateforme partagée avec le
     // backend mAI : handleGetUsage passe un integer). On n'y débite que les
     // identifiants numériques (users.id) ; les autres formats (uuid, emails)
     // ne sont pas comptabilisés ici — le quota hebdomadaire reste cohérent.
-    const numericUserId = String(targetUserId).match(/^\d+$/)?.[0];
-    if (shouldDebit && numericUserId) {
-      // 1. Mise à jour ou insertion dans weekly_usage
-      await _rawClient`
-        INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-        VALUES (${Number(numericUserId)}, ${weekStartStr}::date, ${actualTotal})
-        ON CONFLICT (user_id, week_start)
-        DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${actualTotal}
-      `;
-    }
+    const numericUserId = String(targetUserId).match(/^\d+$/)?.[0] ?? null;
 
-    if (shouldDebit) {
-      // 2. Enregistrement dans mprojects_api_logs
-      try {
-        await _rawClient`
-          INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
-          VALUES (
-            ${targetUserId}::text,
-            ${isGhostMode ? `/v1/chat/completions?ghost=true&model=${model}` : `/v1/chat/completions?model=${model}`}::text,
-            'POST',
-            200,
-            1200,
-            NOW()
-          )
-        `;
-      } catch (logErr) {
-        // Repli volontaire (l'usage a déjà été débité) — tracé pour audit.
-        console.warn("Insertion mprojects_api_logs impossible:", logErr);
+    // Sans clé d'idempotence, l'événement reçoit un identifiant neuf : il est
+    // bien enregistré, une seule fois, et le débit reste attaché à CETTE
+    // insertion. Auparavant les appels sans clé n'écrivaient pas UsageEvent.
+    const safeKey = (idempotencyKey ?? crypto.randomUUID()).slice(0, 256);
+    const safeInputTokens = Math.max(0, Math.floor(inputTokens || 0));
+    const safeOutputTokens = Math.max(0, Math.floor(outputTokens || 0));
+    const safeReasoningTokens = Math.max(0, Math.floor(reasoningTokens || 0));
+    const safeTotalTokens = Math.max(0, Math.floor(actualTotal));
+    // Un `chatId` non uuid (identifiant historique d'une autre forme) doit
+    // faire perdre le lien, pas l'INSERT : on l'écarte plutôt que de laisser
+    // Postgres rejeter l'ensemble de la ligne.
+    const safeChatId =
+      chatId && /^[0-9a-fA-F-]{36}$/.test(chatId) ? chatId : null;
+    // Même règle que pour `chatId` : un identifiant de projet mal formé perd
+    // l'attribution, il ne doit pas faire échouer l'INSERT entier.
+    const safeChatProjectId =
+      chatProjectId && /^[0-9a-fA-F-]{36}$/.test(chatProjectId)
+        ? chatProjectId
+        : null;
+    const safeChatMode =
+      chatMode === "agent" ? "agent" : chatMode === "chat" ? "chat" : null;
+    // `client` est capturé localement : le garde `if (!_rawClient) return`
+    // plus haut ne survit pas à la fermeture.
+    const client = _rawClient;
+
+    /**
+     * UN aller-retour pour les deux écritures qui comptent.
+     *
+     * Avant : `UsageEvent`, `weekly_usage`, puis `mprojects_api_logs` — trois
+     * requêtes séquentielles par réponse IA. `mprojects_api_logs` documente
+     * l'API publique et n'était lu par aucune surface de l'hôte : il dupliquait
+     * `UsageEvent` sur le chemin chaud et disparaît. Les deux écritures
+     * restantes partent dans la même requête ; le débit est conditionné à
+     * l'insertion RÉELLE par une CTE, donc un rejeu idempotent ne débite pas
+     * deux fois.
+     */
+    const insertUsage = async (
+      withChatId: boolean,
+      withAttribution: boolean
+    ) => {
+      const columns = [
+        "id",
+        "userId",
+        "model",
+        "inputTokens",
+        "outputTokens",
+        "reasoningTokens",
+        "totalTokens",
+        "isGhostMode",
+      ];
+      const values: (string | number | boolean | null)[] = [
+        safeKey,
+        targetUserId,
+        model,
+        safeInputTokens,
+        safeOutputTokens,
+        safeReasoningTokens,
+        safeTotalTokens,
+        isGhostMode,
+      ];
+      if (withChatId) {
+        columns.push("chatId");
+        values.push(safeChatId);
       }
+      if (withAttribution) {
+        columns.push("chatMode", "chatProjectId");
+        values.push(safeChatMode, safeChatProjectId);
+      }
+      const placeholders = columns.map((column, index) => {
+        const position = `$${index + 1}`;
+        if (column === "chatId" || column === "chatProjectId") {
+          return `${position}::uuid`;
+        }
+        if (column === "chatMode") {
+          return `${position}::varchar`;
+        }
+        return position;
+      });
+      const userIdParam = values.length + 1;
+      const weekParam = values.length + 2;
+      const totalParam = values.length + 3;
+      // `debited` n'est pas relue : une CTE modificatrice s'exécute dès lors
+      // que l'instruction est présente. Le SELECT final renvoie les lignes
+      // réellement insérées, ce qui suffit à savoir si le débit a eu lieu.
+      const query = `WITH inserted AS (
+          INSERT INTO "UsageEvent" (${columns.map((column) => `"${column}"`).join(", ")})
+          VALUES (${placeholders.join(", ")})
+          ON CONFLICT ("id") DO NOTHING
+          RETURNING "id"
+        ), debited AS (
+          INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+          SELECT $${userIdParam}::int, $${weekParam}::date, $${totalParam}::int
+          FROM inserted
+          WHERE $${userIdParam}::int IS NOT NULL
+          ON CONFLICT (user_id, week_start)
+          DO UPDATE SET tokens_used = weekly_usage.tokens_used + $${totalParam}::int
+        )
+        SELECT "id" FROM inserted`;
+      return client.unsafe(query, [
+        ...values,
+        numericUserId ? Number(numericUserId) : null,
+        weekStartStr,
+        safeTotalTokens,
+      ]);
+    };
+
+    try {
+      // La table est ajoutée par la migration 0026, `reasoningTokens` par la
+      // 0030, `chatId` par la 0033, l'attribution par la 0035. On descend d'un
+      // cran à chaque 42703 (colonne absente) : un environnement qui traîne une
+      // migration de retard continue d'enregistrer sa consommation.
+      const attempts: [boolean, boolean][] = [
+        [true, true],
+        [true, false],
+        [false, false],
+      ];
+      for (const [withChatId, withAttribution] of attempts) {
+        try {
+          await insertUsage(withChatId, withAttribution);
+          return;
+        } catch (tierError) {
+          if ((tierError as { code?: string })?.code !== "42703") {
+            throw tierError;
+          }
+        }
+      }
+
+      // Repli ultime : aucune colonne d'attribution n'est disponible. Le quota
+      // hebdomadaire reste débité, comme avant la migration 0026.
+      if (numericUserId) {
+        await client`
+          INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+          VALUES (${Number(numericUserId)}, ${weekStartStr}::date, ${safeTotalTokens})
+          ON CONFLICT (user_id, week_start)
+          DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${safeTotalTokens}
+        `;
+      }
+      console.warn(
+        "UsageEvent indisponible, comptage direct conservé (aucun palier n'a abouti)."
+      );
+    } catch (eventError) {
+      // Une seule instruction atomique : un échec n'a rien écrit, il n'y a
+      // donc rien à compenser.
+      console.error("Erreur recordTokenUsage direct en BDD:", eventError);
     }
   } catch (err) {
-    if (insertedUsageEventKey && _rawClient) {
-      await _rawClient`
-        DELETE FROM "UsageEvent" WHERE "id" = ${insertedUsageEventKey}
-      `.catch(() => {});
-    }
     console.error("Erreur recordTokenUsage direct en BDD:", err);
   }
 }

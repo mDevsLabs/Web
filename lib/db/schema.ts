@@ -451,9 +451,11 @@ export const chat = pgTable(
       table.userId,
       table.pinned
     ),
-    userPinnedLastMessageIdx: index(
-      "Chat_userId_pinned_lastMessageAt_idx"
-    ).on(table.userId, table.pinned, table.lastMessageAt),
+    userPinnedLastMessageIdx: index("Chat_userId_pinned_lastMessageAt_idx").on(
+      table.userId,
+      table.pinned,
+      table.lastMessageAt
+    ),
     userProjectIdx: index("Chat_userId_projectId_idx").on(
       table.userId,
       table.projectId

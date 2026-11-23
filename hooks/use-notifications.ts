@@ -81,7 +81,7 @@ export function useNotifications(limit = 20) {
     fetcher,
     {
       dedupingInterval: 60_000,
-      refreshInterval: isVeille ? 0 : 180_000,
+      refreshInterval: isVeille ? 0 : 300_000,
       revalidateOnFocus: false,
     }
   );

@@ -399,7 +399,12 @@ export async function buildChatContext(
       );
       throw new ChatbotError("forbidden:chat");
     }
-    messagesFromDb = await getMessagesByChatId({ id });
+    // Le contexte envoyé au modèle est borné aux 200 derniers messages. Une
+    // conversation très longue n'a pas besoin de rejouer tout son historique
+    // à chaque tour : le chargement et la conversion de `parts` JSON coûtent
+    // du CPU et de l'I/O pour des messages que le modèle ne lirait qu'en
+    // partie. L'interface, elle, continue de tout charger pour l'affichage.
+    messagesFromDb = await getMessagesByChatId({ id, limit: 200 });
     // Renommer seulement si c'est la première interaction : soit aucun message
     // en base, soit le seul message présent EST le message entrant — le cas
     // d'une régénération du premier tour, où le message utilisateur reste en

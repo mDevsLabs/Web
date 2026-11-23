@@ -4,13 +4,13 @@ import * as readline from "node:readline/promises";
 import { neon } from "@neondatabase/serverless";
 import { articleBoutique, type ShopKind } from "../lib/quizzly/shop.ts";
 import { openAdminHtml } from "./admin-browser.ts";
-import { renderMenu, resolveCommand } from "./admin-navigation.ts";
 import { runNewsletterStudio, sendEmail } from "./admin-email.ts";
 import { runFormManager } from "./admin-forms.ts";
 import {
   generateMaintenanceAccessCode,
   runMaintenanceManager,
 } from "./admin-maintenance.ts";
+import { renderMenu, resolveCommand } from "./admin-navigation.ts";
 
 export { generateMaintenanceAccessCode, runMaintenanceManager };
 

@@ -291,14 +291,6 @@ async function resolveUserFromDb(
     const sql = getRawClient();
     if (!sql) return null;
 
-    // 1. Contrôle du jeton dans la liste noire
-    const revoked = await sql<{ token: string }[]>`
-      SELECT token FROM token_blacklist WHERE token = ${token} LIMIT 1
-    `.catch(() => []);
-    if (revoked.length > 0) {
-      return { status: "refused" };
-    }
-
     const userId =
       verifiedPayload?.sub || verifiedPayload?.id || verifiedPayload?.email;
     const payloadEmail = String(verifiedPayload?.email || "")
@@ -309,47 +301,7 @@ async function resolveUserFromDb(
       .toLowerCase();
     if (!userId && !payloadEmail) return null;
 
-    // 2. Recherche utilisateur dans Neon PostgreSQL (en excluant les pseudo-comptes systèmes @mai / @bot)
-    const users = await sql<
-      {
-        avatar_url: string | null;
-        email: string;
-        id: string;
-        is_blocked: boolean | null;
-        phone: string | null;
-        tier: string | null;
-        username: string | null;
-      }[]
-    >`
-      SELECT id::text AS id, email, username, tier, phone, avatar_url, is_blocked
-      FROM users
-      WHERE LOWER(COALESCE(username, '')) NOT IN ('mai', 'bot')
-        AND LOWER(COALESCE(email, '')) <> 'mai@vibe.ai'
-        AND (
-          (${payloadEmail} <> '' AND email IS NOT NULL AND LOWER(email) = ${payloadEmail})
-          OR (${payloadUsername} <> '' AND username IS NOT NULL AND LOWER(username) = ${payloadUsername})
-          OR id::text = ${String(userId)}::text
-          OR (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)}))
-          OR (username IS NOT NULL AND LOWER(username) = LOWER(${String(userId)}))
-        )
-      ORDER BY
-        (${payloadEmail} <> '' AND email IS NOT NULL AND LOWER(email) = ${payloadEmail}) DESC,
-        (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)})) DESC,
-        (${payloadUsername} <> '' AND username IS NOT NULL AND LOWER(username) = ${payloadUsername}) DESC,
-        (id::text = ${String(userId)}::text) DESC
-      LIMIT 1
-    `;
-
-    if (users.length === 0) {
-      // Non trouvé dans la base locale Neon : déléguer à l'API distante / repli
-      return null;
-    }
-    const user = users[0];
-    if (user.is_blocked === true) {
-      return { status: "refused" };
-    }
-
-    // 3. Calcul de la semaine et lecture de la consommation hebdomadaire
+    // Semaine courante : elle entre dans la requête unique ci-dessous.
     const now = new Date();
     const day = now.getUTCDay();
     const diff = now.getUTCDate() - day + (day === 0 ? -6 : 1);
@@ -359,33 +311,106 @@ async function resolveUserFromDb(
     const weekStartStr = monday.toISOString().split("T")[0];
     const nextMonday = new Date(monday.getTime() + 7 * 24 * 60 * 60 * 1000);
 
-    let tokensUsed = 0;
-    const numericUserId = String(user.id).match(/^\d+$/)?.[0];
-    if (numericUserId) {
-      const usageRows = await sql<{ tokens_used: number | string }[]>`
-        SELECT COALESCE(tokens_used, 0)::bigint AS tokens_used
-        FROM weekly_usage
-        WHERE user_id = ${Number(numericUserId)} AND week_start = ${weekStartStr}::date
+    /**
+     * UNE requête, trois lectures : révocation, compte, consommation.
+     *
+     * Les trois étaient séquentielles (blacklist, users, weekly_usage) : trois
+     * allers-retours Neon à chaque session non cachée, donc à chaque instance
+     * froide. Ici la consommation est une sous-requête corrélée : elle ne coûte
+     * pas un aller-retour de plus. Si `weekly_usage` manque (base neuve), la
+     * requête échoue et la résolution délègue à l'API émettrice, qui reste
+     * l'autorité — jamais un refus inventé.
+     *
+     * `numeric_id` ne caste que les identifiants numériques : un uuid ou un
+     * e-mail ne doit pas faire échouer l'expression.
+     */
+    const rows = await sql<
+      {
+        avatar_url: string | null;
+        email: string | null;
+        id: string | null;
+        is_blocked: boolean | null;
+        phone: string | null;
+        revoked: boolean;
+        tier: string | null;
+        tokens_used: number | string;
+        username: string | null;
+      }[]
+    >`
+      WITH revoked AS (
+        SELECT 1 AS hit FROM token_blacklist WHERE token = ${token} LIMIT 1
+      ), candidate AS (
+        SELECT
+          id::text AS id,
+          email,
+          username,
+          tier,
+          phone,
+          avatar_url,
+          is_blocked,
+          CASE WHEN id::text ~ '^[0-9]+$' THEN id::text::bigint END AS numeric_id
+        FROM users
+        WHERE LOWER(COALESCE(username, '')) NOT IN ('mai', 'bot')
+          AND LOWER(COALESCE(email, '')) <> 'mai@vibe.ai'
+          AND (
+            (${payloadEmail} <> '' AND email IS NOT NULL AND LOWER(email) = ${payloadEmail})
+            OR (${payloadUsername} <> '' AND username IS NOT NULL AND LOWER(username) = ${payloadUsername})
+            OR id::text = ${String(userId)}::text
+            OR (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)}))
+            OR (username IS NOT NULL AND LOWER(username) = LOWER(${String(userId)}))
+          )
+        ORDER BY
+          (${payloadEmail} <> '' AND email IS NOT NULL AND LOWER(email) = ${payloadEmail}) DESC,
+          (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)})) DESC,
+          (${payloadUsername} <> '' AND username IS NOT NULL AND LOWER(username) = ${payloadUsername}) DESC,
+          (id::text = ${String(userId)}::text) DESC
         LIMIT 1
-      `.catch(() => []);
-      if (usageRows.length > 0) {
-        tokensUsed = Number(usageRows[0].tokens_used || 0);
-      }
+      )
+      SELECT
+        (SELECT count(*) FROM revoked) > 0 AS revoked,
+        candidate.id,
+        candidate.email,
+        candidate.username,
+        candidate.tier,
+        candidate.phone,
+        candidate.avatar_url,
+        candidate.is_blocked,
+        COALESCE((
+          SELECT wu.tokens_used
+          FROM weekly_usage wu
+          WHERE wu.user_id = candidate.numeric_id
+            AND wu.week_start = ${weekStartStr}::date
+          LIMIT 1
+        ), 0)::bigint AS tokens_used
+      FROM (SELECT 1) AS one
+      LEFT JOIN candidate ON TRUE
+    `;
+
+    const row = rows[0];
+    if (!row || row.revoked) {
+      return { status: "refused" };
+    }
+    if (!row.id) {
+      // Non trouvé dans la base locale Neon : déléguer à l'API distante / repli
+      return null;
+    }
+    if (row.is_blocked === true) {
+      return { status: "refused" };
     }
 
-    const tier = user.tier || "Free";
+    const tier = row.tier || "Free";
     return {
       status: "ok",
       user: {
-        avatarUrl: user.avatar_url || null,
-        email: user.email || "",
-        id: user.id,
+        avatarUrl: row.avatar_url || null,
+        email: row.email || "",
+        id: row.id,
         limit: getTierChatWeeklyLimit(tier),
-        phone: user.phone || "",
+        phone: row.phone || "",
         resetAt: nextMonday.toISOString(),
         tier,
-        tokensUsed,
-        username: user.username || "Utilisateur",
+        tokensUsed: Number(row.tokens_used || 0),
+        username: row.username || "Utilisateur",
         weekStart: weekStartStr,
       },
     };

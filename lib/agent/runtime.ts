@@ -890,7 +890,9 @@ export function createAgentStream(params: AgentStreamParams) {
         !aborted
       ) {
         try {
-          const assistantText = ((await result.text.catch(() => "")) || "")
+          const assistantText = (
+            (await Promise.resolve(result.text).catch(() => "")) || ""
+          )
             .slice(0, 500)
             .trim();
           const userText = getTextFromMessage(params.firstUserMessageForTitle);

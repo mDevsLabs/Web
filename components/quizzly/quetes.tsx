@@ -98,9 +98,7 @@ function CarteQuete({
 
   const terminee = quete.progress >= quete.target;
   const recompense =
-    quete.monnaie === "xp"
-      ? `${quete.reward} XP`
-      : `${quete.reward} gemmes`;
+    quete.monnaie === "xp" ? `${quete.reward} XP` : `${quete.reward} gemmes`;
 
   return (
     <li

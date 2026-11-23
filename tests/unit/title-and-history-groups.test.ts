@@ -19,7 +19,8 @@ describe("Génération de titre par le modèle de la conversation", () => {
 
   it("utilise le modèle actif de la conversation puis bascule sur mai-2.5-omni en cas d'échec", async () => {
     const attemptedModels: string[] = [];
-    const resolveModel = (id: string) => ({ modelId: id }) as unknown as LanguageModel;
+    const resolveModel = (id: string) =>
+      ({ modelId: id }) as unknown as LanguageModel;
 
     // 1. Succès direct du modèle de la conversation
     const direct = await generateConversationTitleWithModel({

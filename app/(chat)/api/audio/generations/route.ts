@@ -139,18 +139,19 @@ export async function POST(req: NextRequest) {
       tier,
     });
     if (!resolved.ok) {
-      return errorResponse(
+      const apiCode =
         resolved.status === 403
-          ? "forbidden"
-          : resolved.status === 503
-            ? "service_unavailable"
-            : "invalid_request",
-        {
-          code: resolved.code,
-          message: resolved.message,
-          status: resolved.status,
-        }
-      );
+          ? "model_access_denied"
+          : resolved.status === 404
+            ? "not_found"
+            : resolved.status === 503
+              ? "service_unavailable"
+              : "invalid_request";
+      return errorResponse(apiCode, {
+        details: { reason: resolved.code },
+        message: resolved.message,
+        status: resolved.status,
+      });
     }
 
     const model = resolved.model.id;
@@ -257,7 +258,9 @@ export async function POST(req: NextRequest) {
             const wavBytes = wrapPcm16AsWav(
               Buffer.from(json.audioContent, "base64"),
               parsePcmAudioParams(
-                typeof json.mime_type === "string" ? json.mime_type : contentType
+                typeof json.mime_type === "string"
+                  ? json.mime_type
+                  : contentType
               )
             );
             resolvedMimeType = "audio/wav";

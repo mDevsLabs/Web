@@ -14,9 +14,10 @@ import {
 
 // Deno / Val Town acceptent npm:, tandis que la CLI Bun utilise les dépendances locales.
 async function connectDatabase(url: string) {
-  const { neon } = typeof Deno === "undefined"
-    ? await import("@neondatabase/serverless")
-    : await import("npm:@neondatabase/serverless");
+  const { neon } =
+    typeof Deno === "undefined"
+      ? await import("@neondatabase/serverless")
+      : await import("npm:@neondatabase/serverless");
   return neon(url);
 }
 

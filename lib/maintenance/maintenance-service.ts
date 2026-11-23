@@ -1,4 +1,4 @@
-import { neon } from "@neondatabase/serverless";
+import { type NeonQueryFunction, neon } from "@neondatabase/serverless";
 import { generateMaintenanceAccessCode } from "./maintenance-bypass";
 import type {
   CreateMaintenanceInput,
@@ -11,14 +11,25 @@ let cachedMaintenance: {
   value: MaintenanceRecord | null;
   expiresAt: number;
 } | null = null;
-const CACHE_TTL_MS = 5000; // 5 secondes pour une réactivité quasi-instantanée tout en préservant Neon
+/**
+ * Le cache était de 5 s : le proxy interrogeait Neon en quasi-permanence dès
+ * qu'il y avait du trafic, ce qui empêchait le compute de s'endormir. Une
+ * minute réduit ce bruit d'un facteur 12 sans rendre une maintenance
+ * d'urgence invisible plus longtemps qu'une minute sur les instances qui ne
+ * l'ont pas créée (celle qui la crée vide son cache immédiatement).
+ */
+const CACHE_TTL_MS = 60_000;
+
+let cachedClient: NeonQueryFunction<false, false> | null = null;
 
 function getDbClient() {
   const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
   if (!dbUrl) {
     return null;
   }
-  return neon<false, false>(dbUrl);
+  // Un client par requête créait un pool éphémère à chaque appel du proxy.
+  cachedClient ??= neon<false, false>(dbUrl);
+  return cachedClient;
 }
 
 /**
@@ -57,7 +68,7 @@ export function resolveMaintenancePhase(
 
 /**
  * Récupère la maintenance active en cours (isActive=true et startAt <= NOW() < endAt).
- * Utilise un cache mémoire de 5s pour ne pas surcharger la base de données sur chaque requête.
+ * Utilise un cache mémoire d'une minute pour ne pas réveiller Neon à chaque requête.
  */
 export async function getActiveMaintenance(
   forceRefresh = false

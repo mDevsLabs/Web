@@ -3,10 +3,10 @@
 > Diagnostic établi le 23 novembre 2026 sur la base du code, du build PPR
 > présent dans `.next/` et des quotas publics des deux plateformes.
 >
-> **Aucune modification de code n'a été faite à ce stade.** Ce document est le
-> plan d'options demandé : chaque action porte son gain estimé, son effort et
-> son risque. Les gains sont **modélisés**, pas mesurés : la première étape
-> (phase 0) consiste à relever la répartition réelle dans les deux consoles.
+> **Lots 1, 2 et 3b/c appliqués le 23 novembre 2026** (voir § 10). Ce document
+> reste le plan d'options de référence : chaque action porte son gain estimé,
+> son effort et son risque. Les gains sont **modélisés**, pas mesurés : la
+> phase 0 (relever la répartition réelle dans les deux consoles) reste à faire.
 
 ---
 
@@ -326,3 +326,42 @@ des pics qui faussent une mesure courte.
 (−40 à −50 %), Vercel **−50 à −70 %** du CPU hors IA. Pour garantir moins de
 4 h/mois avec un usage IA réel, il faudra soit déporter le streaming, soit
 passer au plan Pro.
+
+---
+
+## 10. État d'application (23 novembre 2026)
+
+Appliqué dans le dépôt :
+
+| Action | Valeur retenue | Fichiers |
+|---|---|---|
+| **V1** | Ticks paresseux **désactivés par défaut** ; `CRON_LAZY_TICKS=on` pour les rétablir | `lib/cron/lazy.ts` |
+| **V2** | Télémétrie **opt-in** : `OTEL_ENABLED=1` | `instrumentation.ts` |
+| **V5** | Changelogs et actualités lus/parsés **une fois par processus** | `lib/site/changelog.ts`, `lib/site/news.ts` |
+| **V6** | Catalogue de modèles : **un cache global**, plus de lecture de session | `lib/ai/models.server.ts` |
+| **N6** | Cache maintenance **60 s** (au lieu de 5 s) + client Neon réutilisé | `lib/maintenance/maintenance-service.ts` |
+| **N2** | Cloche : **300 s** | `hooks/use-notifications.ts` |
+| **N3** | Wakies : **120 s** visible / **300 s** masqué ; captures, pages et historique à **120 s** | `components/wakies/*` |
+| **N4** | Vibe : **300 s** (compteurs), notifications **300 s**, Livres **120 s** | `components/vibe/*` |
+| **V7** | Planning : **120 s** / **300 s** ; journaux MCP : **30 s** | `app/(chat)/planning`, `app/(chat)/mcp` |
+| **N5** | CRON GitHub : **toutes les 15 min** | `.github/workflows/cron-master.yml` |
+| **N7** | Session : **une requête CTE** (révocation + compte + consommation) ; index d'expression `lower(email)` / `lower(username)` | `lib/auth/session.ts`, migration `0093` |
+| **N8** | `UsageEvent` + `weekly_usage` en **un aller-retour** via CTE ; écriture `mprojects_api_logs` retirée du chemin chaud | `lib/db/queries/chats.ts` |
+| **N9** | Index composite `Notification(userId, createdAt DESC)` | migration `0093` |
+| **N10** | Contexte IA borné aux **200 derniers messages** (l'interface garde l'historique complet) | `lib/chat/context.ts`, `lib/db/queries/chats.ts` |
+
+Reste à faire :
+
+- **N1** — vérifier et fixer la taille du compute dans la console Neon (0,25 CU).
+  C'est le gain le plus mécanique du plan et il ne dépend pas du code.
+- **N7 (suite)** — le cache de session reste à 2 min : augmenter à 10 min
+  retarderait d'autant la révocation d'un jeton. À arbitrer avec le produit.
+- **V3 / V4** — sortir `{children}` de la porte `await getMaiUser()` et créer un
+  groupe de routes public pour `/site` : c'est le poste Vercel le plus lourd
+  restant, mais c'est un chantier structurel.
+- **Phase 0** — relever Active CPU par route et CU-hours réels sur 7 jours
+  avant de conclure sur l'effet des lots appliqués.
+
+> La mesure reste indispensable : les valeurs ci-dessus réduisent le **nombre**
+> de réveils et d'invocations, mais seul le relevé Vercel/Neon dira si le
+> plafond Hobby est repassé sous les quotas.

@@ -17,8 +17,10 @@ import {
   type NotificationType,
 } from "@/lib/notifications/types";
 
-// `after()` exécute les ticks CRON paresseux (lib/cron/lazy.ts) dans le budget
-// de cette invocation : le plus long (Agent/Wakies) peut durer ~290 s.
+// `after()` peut exécuter les ticks CRON paresseux (lib/cron/lazy.ts) dans le
+// budget de cette invocation : le plus long (Agent/Wakies) peut durer ~290 s.
+// Ces ticks sont désactivés par défaut (`CRON_LAZY_TICKS=on` pour les
+// rétablir), mais le budget reste dimensionné pour ce cas.
 export const maxDuration = 300;
 
 const notificationSchema = z.object({

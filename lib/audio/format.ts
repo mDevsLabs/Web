@@ -157,14 +157,22 @@ export function parsePcmAudioParams(contentType: string | null | undefined): {
   const rateMatch = contentType.match(/;\s*rate=(\d+)/i);
   if (rateMatch) {
     const parsedRate = Number.parseInt(rateMatch[1], 10);
-    if (Number.isFinite(parsedRate) && parsedRate >= 8000 && parsedRate <= 192_000) {
+    if (
+      Number.isFinite(parsedRate) &&
+      parsedRate >= 8000 &&
+      parsedRate <= 192_000
+    ) {
       sampleRate = parsedRate;
     }
   }
   const channelsMatch = contentType.match(/;\s*channels=(\d+)/i);
   if (channelsMatch) {
     const parsedChannels = Number.parseInt(channelsMatch[1], 10);
-    if (Number.isFinite(parsedChannels) && parsedChannels >= 1 && parsedChannels <= 8) {
+    if (
+      Number.isFinite(parsedChannels) &&
+      parsedChannels >= 1 &&
+      parsedChannels <= 8
+    ) {
       channels = parsedChannels;
     }
   }

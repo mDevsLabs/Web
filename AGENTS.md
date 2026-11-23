@@ -34,7 +34,7 @@ Conséquences pratiques:
 
 - **Persistance directe sur Neon** : Toutes les écritures et lectures critiques (utilisateurs, OTP, messages, fils de discussion, projets) s'exécutent directement sur PostgreSQL Neon via Drizzle avec transactions sécurisées.
 - **Modèles mAI-2.5** : Les alias souverains `mai-2.5-opal`, `mai-2.5-apex` et `mai-2.5-omni` sont routés vers les backends OpenRouter GPT (`openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`) avec le prompt d'identité souverain injecté via `mai-identity.ts`.
-- **Ordonnancement des 6 ticks cron** (`/api/cron/agent`, `/api/cron/planning`, `/api/cron/wakies`, `/api/cron/vibe`, `/api/cron/notifications`, `/api/cron/quizzly`) : trois déclencheurs partagent le même bail atomique (table Neon `cron_ticks`, registre `lib/cron/ticks.ts`), donc aucune occurrence n'est exécutée deux fois. (1) GitHub Actions `cron-master.yml`, ordonnanceur principal toutes les 5 minutes : il exécute les handlers DIRECTEMENT sur le runner contre Neon (`scripts/cron/run-direct.ts`), sans appel HTTP à Vercel, donc sans Active CPU Fluid ; journaux publics masqués par `lib/cron/log-mask.ts` (dépôt public : minutes illimitées, mais `schedule` non ponctuel). (2) Vercel Cron `/api/cron/daily` (plan Hobby : 1 passage/jour max, usage non commercial). (3) Ticks paresseux déclenchés par la cloche de notifications, uniquement après 15 min de retard (`LAZY_GRACE_MS` dans `lib/cron/lazy.ts`, désactivables avec `CRON_LAZY_TICKS=off`). Le val Val Town `cron.ts` est désactivé.
+- **Ordonnancement des 6 ticks cron** (`/api/cron/agent`, `/api/cron/planning`, `/api/cron/wakies`, `/api/cron/vibe`, `/api/cron/notifications`, `/api/cron/quizzly`) : trois déclencheurs partagent le même bail atomique (table Neon `cron_ticks`, registre `lib/cron/ticks.ts`), donc aucune occurrence n'est exécutée deux fois. (1) GitHub Actions `cron-master.yml`, ordonnanceur principal toutes les 15 minutes : il exécute les handlers DIRECTEMENT sur le runner contre Neon (`scripts/cron/run-direct.ts`), sans appel HTTP à Vercel, donc sans Active CPU Fluid ; journaux publics masqués par `lib/cron/log-mask.ts` (dépôt public : minutes illimitées, mais `schedule` non ponctuel). (2) Vercel Cron `/api/cron/daily` (plan Hobby : 1 passage/jour max, usage non commercial). (3) Ticks paresseux déclenchés par la cloche de notifications, uniquement après 15 min de retard (`LAZY_GRACE_MS` dans `lib/cron/lazy.ts`) et **désactivés par défaut** : `CRON_LAZY_TICKS=on` les rétablit. À 15 min, deux passages sur trois laissent à Neon une fenêtre de 5 min sans requête, donc le compute peut s'endormir. Le val Val Town `cron.ts` est désactivé.
 - **Remplacement des tokens par un usage en %** : Le comptage brut de tokens par message est remplacé par une jauge en pourcentage par forfait avec réinitialisation le lundi à 00:00 UTC. Le blocage de quota de requêtes publiques mAI est levé.
 - Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 64
   fichiers du graphe d'imports transitif de `main.ts`).
@@ -479,11 +479,7 @@ seulement des fichiers:
   CopilotKit Intelligence. Les messages sont des `UIMessage` stockés dans
   `WakiesMessage`, et un message Wakie consomme le quota hebdomadaire du compte
   — il n'existe pas de quota séparé.
-- **Web**: l'outil `webSearch` de l'hôte, donc `/v1/web/search`.
-- **Tâches planifiées**: plus de `setInterval`; tick par
-  `app/api/cron/wakies`, visé toutes les 5 min par les ticks paresseux
-  (`cron_ticks`) et relancé par `cron-master.yml` (30 min) et Vercel
-  (`/api/cron/daily`), `CRON_SECRET`, bail transactionnel.
+- **Web**: l'outil `webSearch` de l'hôte, donc `/v1/web/search`.- **Tâches planifiées**: plus de `setInterval`; tick par `app/api/cron/wakies`, visé par le bail `cron_ticks` et relancé par `cron-master.yml` (15 min) et Vercel (`/api/cron/daily`), `CRON_SECRET`, bail transactionnel. Les ticks paresseux de la cloche sont désactivés par défaut (`CRON_LAZY_TICKS=on` pour les rétablir).
 
 Cinq règles à ne pas contourner:
 

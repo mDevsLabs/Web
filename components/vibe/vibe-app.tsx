@@ -276,7 +276,7 @@ function VibeShell({
     // Le filet de sécurité ne tourne que sur un onglet visible.
     const interval = doitSuspendre
       ? undefined
-      : setInterval(refreshUnreadCounts, 60_000);
+      : setInterval(refreshUnreadCounts, 300_000);
     return () => {
       if (interval !== undefined) {
         clearInterval(interval);

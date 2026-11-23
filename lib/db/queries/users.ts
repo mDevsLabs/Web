@@ -59,8 +59,7 @@ export async function getUserPreferences(userId: string) {
         defaultDictationLanguage: normalizeDictationLanguage(
           row.defaultDictationLanguage
         ),
-        defaultImageModel:
-          row.defaultImageModel || DEFAULT_IMAGE_MODEL,
+        defaultImageModel: row.defaultImageModel || DEFAULT_IMAGE_MODEL,
         defaultImageSize: row.defaultImageSize || "1024x1024",
         defaultTranslationLanguage:
           normalizeTranslationTarget(row.defaultTranslationLanguage) ??
@@ -292,8 +291,7 @@ export async function upsertUserPreferences(
           defaultDictationLanguage: normalizeDictationLanguage(
             data.defaultDictationLanguage
           ),
-          defaultImageModel:
-            data.defaultImageModel ?? DEFAULT_IMAGE_MODEL,
+          defaultImageModel: data.defaultImageModel ?? DEFAULT_IMAGE_MODEL,
           defaultImageSize: data.defaultImageSize ?? "1024x1024",
           defaultTemperature: data.temperature ?? 0.7,
           defaultTopP: data.topP ?? 0.9,

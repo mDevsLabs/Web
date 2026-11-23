@@ -1,9 +1,13 @@
 import "server-only";
 
 import type { AudioResponseFormat } from "@/lib/audio/format";
-import { dbReady, getRawClient } from "@/lib/db/queries/connection";
 import { isPaidTier } from "@/lib/auth/plan";
-import { getModelCatalog, type SqlClient, type StoredModel } from "@/openrouter-models";
+import { dbReady, getRawClient } from "@/lib/db/queries/connection";
+import {
+  getModelCatalog,
+  type SqlClient,
+  type StoredModel,
+} from "@/openrouter-models";
 import {
   buildCometImageCatalog,
   buildSpeechCatalog,
@@ -48,10 +52,13 @@ export async function getSpeechCapabilitiesMap(): Promise<
   }
   speechCapsInFlight = (async () => {
     try {
-      const res = await fetch("https://openrouter.ai/api/v1/audio/speech/models", {
-        headers: { Accept: "application/json" },
-        signal: AbortSignal.timeout(5000),
-      });
+      const res = await fetch(
+        "https://openrouter.ai/api/v1/audio/speech/models",
+        {
+          headers: { Accept: "application/json" },
+          signal: AbortSignal.timeout(5000),
+        }
+      );
       if (!res.ok) {
         return speechCapsCache?.specs ?? new Map();
       }

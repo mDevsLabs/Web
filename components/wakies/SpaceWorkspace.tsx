@@ -63,7 +63,7 @@ export function SpaceWorkspace({
     const reload = () => {
       if (document.visibilityState === "visible") void load();
     };
-    const timer = setInterval(reload, 15_000);
+    const timer = setInterval(reload, 120_000);
     document.addEventListener("visibilitychange", reload);
     return () => {
       active = false;

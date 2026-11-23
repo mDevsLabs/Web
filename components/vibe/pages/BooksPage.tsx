@@ -223,7 +223,7 @@ export const BooksPage: React.FC<{
       if (bookId) fetchBookDetail(true);
       else fetchBooks(true);
     };
-    const timer = setInterval(refresh, 30_000);
+    const timer = setInterval(refresh, 120_000);
     window.addEventListener("focus", refresh);
     return () => {
       clearInterval(timer);

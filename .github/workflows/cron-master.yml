@@ -5,11 +5,18 @@ name: "CRON Master (Ordonnanceur Groupé)"
 # et les fournisseurs IA : aucun appel à Vercel, donc zéro Active CPU Fluid
 # consommé par les ticks (plan Hobby, quota de 4 h/mois).
 #
+# Cadence : toutes les 15 min. À 5 min, la requête de bail `cron_ticks` toutes
+# les 5 minutes laissait à Neon une fenêtre d'inactivité nulle, donc un compute
+# éveillé 24 h/24 (≈180 CU-h/mois). À 15 min, deux passages sur trois laissent
+# au moins 5 minutes sans requête : le compute peut s'endormir. Les intervalles
+# de `lib/cron/ticks.ts` restent des MINIMUMS ; ils sont servis à 15 min près.
+#
 # Même registre (`lib/cron/ticks.ts`) et même bail atomique (table Neon
 # `cron_ticks`) que les deux filets restants côté Vercel :
 #   - Vercel Cron (1 passage/jour) sur la route quotidienne `daily` ;
 #   - ticks paresseux (cloche de notifications), seulement après 15 min de
-#     retard, au cas où GitHub saute des passages.
+#     retard et seulement si `CRON_LAZY_TICKS=on` (désactivés par défaut), au
+#     cas où GitHub saute des passages.
 # Aucune occurrence n'est exécutée deux fois.
 #
 # Dépôt public = journaux publics : le script masque URL de base, jetons,
@@ -17,7 +24,7 @@ name: "CRON Master (Ordonnanceur Groupé)"
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       tick:

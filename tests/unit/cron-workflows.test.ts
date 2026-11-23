@@ -33,7 +33,7 @@ describe("CRON & Workflows GitHub Actions", () => {
 
   it("cron-master.yml exécute les ticks directement, sans appeler Vercel", () => {
     const content = readFileSync(join(workflowsDir, "cron-master.yml"), "utf8");
-    expect(content).toContain('cron: "*/5 * * * *"');
+    expect(content).toContain('cron: "*/15 * * * *"');
     expect(content).toContain("scripts/cron/run-direct.ts");
     expect(content).toContain("--conditions=react-server");
     expect(content).toContain("--frozen-lockfile");

@@ -6,15 +6,15 @@
  * et partagé entre les routes API et les générateurs Chat/Agent.
  */
 
-import type { AudioResponseFormat } from "@/lib/audio/format";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
+import type { AudioResponseFormat } from "@/lib/audio/format";
 import {
   effectiveFournisseur,
   effectiveModel,
   isFreeModelId,
   isPublicImageModel,
-  selectAudioModels,
   type StoredModel,
+  selectAudioModels,
 } from "@/openrouter-models";
 import {
   DEFAULT_AUDIO_MODEL,
@@ -129,8 +129,7 @@ export function buildCometImageCatalog(
       const rawFeatures = Array.isArray(eff.supported_parameters)
         ? eff.supported_parameters.map((f) => String(f).toLowerCase())
         : [];
-      const features =
-        rawFeatures.length > 0 ? rawFeatures : ["text-to-image"];
+      const features = rawFeatures.length > 0 ? rawFeatures : ["text-to-image"];
       const supportsEdit =
         features.includes("image-to-image") ||
         features.includes("edits") ||
@@ -237,10 +236,7 @@ export function inferSpeechParamSpecFallback(
   modelId: string
 ): OpenRouterSpeechParamSpec {
   const lower = normalizeBaseSpeechModelId(modelId).toLowerCase();
-  if (
-    lower.startsWith("heygen/") ||
-    lower.includes("gemini-")
-  ) {
+  if (lower.startsWith("heygen/") || lower.includes("gemini-")) {
     return {
       supportedFormats: ["pcm"],
       supportsSpeed: false,
@@ -274,7 +270,11 @@ export function parseOpenRouterSpeechCapabilities(
   }
 
   for (const item of rawData) {
-    if (!item || typeof item !== "object" || typeof (item as any).id !== "string") {
+    if (
+      !item ||
+      typeof item !== "object" ||
+      typeof (item as any).id !== "string"
+    ) {
       continue;
     }
     const id = (item as any).id.trim();
@@ -287,7 +287,15 @@ export function parseOpenRouterSpeechCapabilities(
 
     const rawFormats = readStringArray(params?.response_format?.values)
       .map((f) => f.toLowerCase())
-      .filter((f): f is AudioResponseFormat => f === "mp3" || f === "pcm" || f === "wav" || f === "opus" || f === "flac" || f === "aac");
+      .filter(
+        (f): f is AudioResponseFormat =>
+          f === "mp3" ||
+          f === "pcm" ||
+          f === "wav" ||
+          f === "opus" ||
+          f === "flac" ||
+          f === "aac"
+      );
     const supportedFormats: AudioResponseFormat[] =
       rawFormats.length > 0 ? rawFormats : ["mp3", "pcm"];
 
@@ -326,13 +334,11 @@ export function buildSpeechCatalog(params: {
     const dbVoices = readStringArray(
       model.overrides?.supported_voices ?? model.upstream?.supported_voices
     );
-    const voices =
-      dbVoices.length > 0 ? dbVoices : (spec.voices ?? []);
+    const voices = dbVoices.length > 0 ? dbVoices : (spec.voices ?? []);
 
     return {
       created: eff.created,
-      description:
-        eff.description || `Modèle de synthèse vocale ${eff.name}.`,
+      description: eff.description || `Modèle de synthèse vocale ${eff.name}.`,
       fournisseur: eff.fournisseur,
       id: eff.id,
       isFree: isFreeModelId(eff.id),
@@ -350,7 +356,9 @@ export function buildSpeechCatalog(params: {
   models.sort((a, b) => {
     if (a.id === DEFAULT_AUDIO_MODEL && b.id !== DEFAULT_AUDIO_MODEL) return -1;
     if (b.id === DEFAULT_AUDIO_MODEL && a.id !== DEFAULT_AUDIO_MODEL) return 1;
-    return compareAlphabetical(a.name, b.name) || compareAlphabetical(a.id, b.id);
+    return (
+      compareAlphabetical(a.name, b.name) || compareAlphabetical(a.id, b.id)
+    );
   });
 
   return models;
@@ -362,7 +370,7 @@ export function formatVoiceDisplayName(voiceId: string): string {
     .replace(/:MAI-Voice-[^:]+$/i, "");
   const parts = base.split(/[-_]+/).filter(Boolean);
   // Retirer un éventuel suffixe de langue (en, fr, es...) si un nom le précède
-  if (parts.length > 1 && /^[a-z]{2}$/i.test(parts[parts.length - 1] ?? "")) {
+  if (parts.length > 1 && /^[a-z]{2}$/i.test(parts.at(-1) ?? "")) {
     parts.pop();
   }
   const label = parts
@@ -414,7 +422,12 @@ export function resolveSpeechGenerationParams(params: {
       responseFormat: AudioResponseFormat;
       voice: string;
     }
-  | { code: string; message: string; ok: false; status: 400 | 403 | 404 | 503 } {
+  | {
+      code: string;
+      message: string;
+      ok: false;
+      status: 400 | 403 | 404 | 503;
+    } {
   const accessible = buildSpeechCatalog({
     isPaid: params.isPaid,
     paramSpecs: params.paramSpecs,
@@ -435,9 +448,7 @@ export function resolveSpeechGenerationParams(params: {
   const requested = (params.requestedModel ?? "").trim();
 
   let targetModel: CatalogSpeechModel | undefined;
-  if (!requested) {
-    targetModel = defaultAccessible;
-  } else {
+  if (requested) {
     const lower = requested.toLowerCase();
     targetModel = accessible.find((m) => m.id.toLowerCase() === lower);
 
@@ -473,6 +484,8 @@ export function resolveSpeechGenerationParams(params: {
         };
       }
     }
+  } else {
+    targetModel = defaultAccessible;
   }
 
   // Choix de la voix compatible avec le modèle
