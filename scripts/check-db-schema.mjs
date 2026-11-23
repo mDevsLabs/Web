@@ -172,6 +172,7 @@ const REQUIRED_COLUMNS = [
   { column: "userId", table: "QuizzlyCoachConversation" },
   { column: "pinned", table: "QuizzlyCoachConversation" },
   { column: "text", table: "QuizzlyCoachMessage" },
+  { column: "attachments", table: "QuizzlyCoachMessage" },
   { column: "conversationId", table: "QuizzlyCoachMessage" },
   { column: "userId", table: "QuizzlyCoachMessage" },
   { column: "role", table: "QuizzlyCoachMessage" },

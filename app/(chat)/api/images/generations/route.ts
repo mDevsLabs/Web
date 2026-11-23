@@ -4,8 +4,9 @@ import { errorResponse, logError } from "@/lib/api/error-response";
 import { enforceApiRateLimit } from "@/lib/api/rate-limit";
 import { requireUser } from "@/lib/auth/require-user";
 import {
-  countTodayImageGenerations,
-  recordImageGeneration,
+  confirmImageGenerationReservation,
+  releaseImageGenerationReservation,
+  reserveDailyImageQuota,
 } from "@/lib/db/queries/generations";
 import { getTierImageDailyLimit } from "@/lib/plans/tier-limits";
 import { formatImageSrc } from "@/lib/utils";
@@ -81,38 +82,65 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Quota journalier du forfait, contrôlé côté serveur AVANT l'appel payant.
-    // Une lecture de quota en échec refuse la requête (fail-closed).
+    // Réservation atomique et verrouillée du quota journalier AVANT l'appel
+    // externe (BUG-001 & BUG-003) : protège contre la concurrence et empêche
+    // tout contournement si l'écriture post-génération échoue.
     const dailyLimit = getTierImageDailyLimit(user.tier || "Free");
-    const usedToday = await countTodayImageGenerations(userId);
-    if (dailyLimit > 0 && usedToday >= dailyLimit) {
+    const reservation = await reserveDailyImageQuota({
+      dailyLimit,
+      height,
+      model,
+      negativePrompt,
+      prompt,
+      userId,
+      width,
+    });
+    if (!reservation.ok) {
       return errorResponse("quota_exceeded", {
-        details: { limit: dailyLimit, used: usedToday },
-        message: `Votre quota journalier de génération d'images est épuisé (${usedToday}/${dailyLimit} images). Réinitialisation à minuit UTC.`,
+        details: { limit: reservation.limit, used: reservation.used },
+        message: `Votre quota journalier de génération d'images est épuisé (${reservation.used}/${reservation.limit} images). Réinitialisation à minuit UTC.`,
       });
     }
 
-    const res = await fetch("https://api.cometapi.com/v1/images/generations", {
-      body: JSON.stringify({
-        height,
-        model,
-        n: 1,
-        negative_prompt: negativePrompt,
-        prompt,
-        response_format: "url",
-        size: `${width}x${height}`,
-        width,
-      }),
-      headers: {
-        Authorization: `Bearer ${cometKey}`,
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      signal: AbortSignal.timeout(IMAGE_UPSTREAM_TIMEOUT_MS),
-    });
+    const releaseReservation = async () => {
+      try {
+        await releaseImageGenerationReservation({
+          reservationId: reservation.reservationId,
+          userId,
+        });
+      } catch (releaseErr) {
+        logError("Erreur libération réservation quota image", releaseErr);
+      }
+    };
+
+    let res: Response;
+    try {
+      res = await fetch("https://api.cometapi.com/v1/images/generations", {
+        body: JSON.stringify({
+          height,
+          model,
+          n: 1,
+          negative_prompt: negativePrompt,
+          prompt,
+          response_format: "url",
+          size: `${width}x${height}`,
+          width,
+        }),
+        headers: {
+          Authorization: `Bearer ${cometKey}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        signal: AbortSignal.timeout(IMAGE_UPSTREAM_TIMEOUT_MS),
+      });
+    } catch (fetchErr) {
+      await releaseReservation();
+      throw fetchErr;
+    }
 
     // Le détail de l'erreur amont reste dans les journaux, jamais côté client.
     if (!res.ok) {
+      await releaseReservation();
       const errorPreview = await res
         .text()
         .then((txt) => txt.slice(0, 400))
@@ -133,24 +161,22 @@ export async function POST(req: NextRequest) {
     const first = data?.data?.[0];
     const rawImage = first?.url || first?.b64_json || data?.image_url || "";
     if (!rawImage) {
+      await releaseReservation();
       return errorResponse("upstream_error", {
         message: "Aucune image retournée par le fournisseur.",
       });
     }
 
-    // Un échec d'écriture de l'historique ne doit pas faire perdre l'image.
+    // Confirmation de la réservation existante : même si cette mise à jour
+    // échoue, la ligne `pending` reste comptabilisée (aucun contournement).
     try {
-      await recordImageGeneration({
-        height,
+      await confirmImageGenerationReservation({
         imageUrl: formatImageSrc(rawImage),
-        model,
-        negativePrompt,
-        prompt,
+        reservationId: reservation.reservationId,
         userId,
-        width,
       });
     } catch (dbErr) {
-      logError("Erreur enregistrement image en base", dbErr);
+      logError("Erreur confirmation réservation image en base", dbErr);
     }
 
     // Projection minimale : seuls les champs lus par l'interface sont renvoyés.

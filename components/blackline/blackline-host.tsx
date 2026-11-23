@@ -546,28 +546,27 @@ export function BlacklineHost({
             </div>
 
             <div className="flex items-center justify-end gap-2 pt-1">
-              <Button
-                className="border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white"
+              <button
+                className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-white/25 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6dd94]"
                 onClick={() => setEditionProfilOuverte(false)}
                 type="button"
-                variant="outline"
               >
                 Annuler
-              </Button>
-              <Button
-                className="bg-[#c6dd94] text-[#0f1714] hover:bg-[#d6e9ac]"
+              </button>
+              <button
+                className="inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-[#c6dd94] px-4 py-2 text-sm font-medium text-[#0f1714] transition-colors hover:bg-[#d6e9ac] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6dd94]"
                 disabled={enregistrementProfil}
                 type="submit"
               >
                 {enregistrementProfil ? (
                   <>
-                    <Loader2Icon className="mr-1.5 size-4 animate-spin" />
+                    <Loader2Icon className="size-4 animate-spin" />
                     Enregistrement…
                   </>
                 ) : (
                   "Enregistrer"
                 )}
-              </Button>
+              </button>
             </div>
           </form>
         </div>

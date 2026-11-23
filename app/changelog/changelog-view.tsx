@@ -73,7 +73,7 @@ export default function ChangelogView({
       <div className="relative">
         <SearchIcon
           aria-hidden
-          className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
+          className="pointer-events-none absolute top-1/2 left-3 z-10 size-4 -translate-y-1/2 text-muted-foreground"
         />
         <input
           aria-label="Rechercher dans les notes de version"

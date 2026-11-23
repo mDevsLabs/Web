@@ -7,6 +7,7 @@
 
 import type React from "react";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { logoutAction } from "@/app/(auth)/actions";
 import { ApiService } from "@/lib/vibe/services/api";
 import { RealtimeService } from "@/lib/vibe/services/realtimeService";
 import type {
@@ -21,7 +22,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isLoadingSession: boolean;
   loginWithToken: (token: string) => Promise<void>;
-  logout: () => void;
+  logout: (options?: { fullSignOut?: boolean }) => Promise<void>;
   profile: Profile | null;
   quotas: MAIQuotas | null;
   refreshProfile: () => Promise<void>;
@@ -207,8 +208,21 @@ export const AuthProvider: React.FC<{
     await fetchSession(true);
   };
 
-  const logout = () => {
+  const logout = async (options?: { fullSignOut?: boolean }) => {
+    const fullSignOut = options?.fullSignOut ?? true;
     clearLocalSession();
+    if (!fullSignOut) {
+      return;
+    }
+    try {
+      await logoutAction();
+    } catch {
+      // On redirige vers /login même si la révocation cookie échoue côté réseau.
+    }
+    if (typeof window !== "undefined") {
+      const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+      window.location.assign(`${basePath}/login`);
+    }
   };
 
   // Bootstrap de session : un seul chargement au montage. Les changements de

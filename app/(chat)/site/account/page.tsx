@@ -14,7 +14,6 @@ import { DevicesSection } from "@/components/site/account/devices-section";
 import { ImageUsageSection } from "@/components/site/account/image-usage-section";
 import { MaiUsageSection } from "@/components/site/account/mai-usage-section";
 import { ProfileSection } from "@/components/site/account/profile-section";
-import { QuotaResetsSection } from "@/components/site/account/quota-resets-section";
 import { useAccountDashboard } from "@/components/site/account/use-account-dashboard";
 import { useAuth } from "@/components/site/auth-provider";
 import { useSiteRouter as useRouter } from "@/components/site/router";
@@ -179,14 +178,6 @@ export default function AccountPage() {
           />
 
           <DevicesSection />
-
-          <QuotaResetsSection
-            claimingId={dashboard.claimingResetId}
-            loading={dashboard.loadingResets}
-            onClaim={dashboard.claimReset}
-            onRefresh={dashboard.loadResets}
-            resets={dashboard.availableResets}
-          />
         </div>
       </div>
     </div>

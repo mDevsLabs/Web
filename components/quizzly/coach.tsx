@@ -5,6 +5,7 @@ import {
   GraduationCapIcon,
   HeartIcon,
   LightbulbIcon,
+  Loader2Icon,
   MessageSquareIcon,
   MoreHorizontalIcon,
   PaperclipIcon,
@@ -12,13 +13,22 @@ import {
   PlusIcon,
   SendIcon,
   SparklesIcon,
+  XIcon,
 } from "@mdevs/icons";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  type ChangeEvent,
+  type ClipboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { useModelCapabilities } from "@/components/chat/input/use-model-capabilities";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { Quizzy } from "@/components/quizzly/quizzy";
 import { useResumeQuizzly } from "@/components/quizzly/shell";
 import {
   DropdownMenu,
@@ -26,7 +36,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { CoachIntent } from "@/lib/quizzly/coach";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
+import {
+  COACH_ATTACHMENTS_MAX,
+  COACH_IMAGE_CONTENT_TYPES,
+  COACH_IMAGES_NON_SUPPORTEES,
+  type CoachAttachment,
+  type CoachIntent,
+} from "@/lib/quizzly/coach";
 import {
   COACH_CONVERSATIONS_URL,
   COACH_DONNEES_URL,
@@ -54,6 +72,7 @@ type Erreur = {
 };
 
 type CoachDonnees = {
+  effectiveModelId?: string;
   misses: Erreur[];
   modelId: string | null;
 };
@@ -67,12 +86,15 @@ type ConversationListe = {
 };
 
 type MessageFil = {
+  attachments?: CoachAttachment[];
   createdAt: string;
   id: string;
   pinned: boolean;
   role: "assistant" | "user";
   text: string;
 };
+
+const TYPES_IMAGES_ACCEPTES = new Set<string>(COACH_IMAGE_CONTENT_TYPES);
 
 type Fil = {
   conversation: ConversationListe;
@@ -200,6 +222,8 @@ export function CoachQuizzly({
     Boolean(quizId && questionId)
   );
   const [brouillon, setBrouillon] = useState("");
+  const [piecesJointes, setPiecesJointes] = useState<CoachAttachment[]>([]);
+  const [envoiFichier, setEnvoiFichier] = useState(false);
   const [courant, setCourant] = useState<string | null>(null);
   const [epilogue, setEpilogue] = useState<{
     conversationId: string;
@@ -215,9 +239,185 @@ export function CoachQuizzly({
   } | null>(null);
   const abandon = useRef<AbortController | null>(null);
   const bas = useRef<HTMLDivElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const modeleSelectionne = resume.data?.modelId ?? donnees.data?.modelId ?? "";
+  const modeleEffectif =
+    modeleSelectionne || donnees.data?.effectiveModelId || "";
+  const { currentCapabilities, hasStrictCaps } =
+    useModelCapabilities(modeleEffectif);
+  const supporteImages = Boolean(
+    currentCapabilities?.image || currentCapabilities?.vision
+  );
+
+  // Retirer les pièces jointes en attente si l'élève bascule vers un modèle sans vision.
+  useEffect(() => {
+    if (!hasStrictCaps || supporteImages || piecesJointes.length === 0) {
+      return;
+    }
+    setPiecesJointes([]);
+    setMessage(COACH_IMAGES_NON_SUPPORTEES);
+    toast.error(COACH_IMAGES_NON_SUPPORTEES);
+  }, [hasStrictCaps, piecesJointes.length, supporteImages]);
+
+  // Effacer l'épilogue dès que le message persisté est présent dans le fil SWR
+  // ou si l'élève change de conversation : empêche tout doublon d'affichage.
+  useEffect(() => {
+    if (!epilogue) {
+      return;
+    }
+    if (
+      conversationId &&
+      epilogue.conversationId &&
+      epilogue.conversationId !== conversationId
+    ) {
+      setEpilogue(null);
+      return;
+    }
+    const messagesFil = fil.data?.messages ?? [];
+    const dernier = messagesFil.at(-1);
+    if (
+      dernier?.role === "assistant" &&
+      dernier.text.trim() === epilogue.text.trim()
+    ) {
+      setEpilogue(null);
+    }
+  }, [conversationId, epilogue, fil.data?.messages]);
+
+  const televerserImages = useCallback(
+    async (fichiers: File[]) => {
+      if (fichiers.length === 0) {
+        return;
+      }
+      if (hasStrictCaps && !supporteImages) {
+        setMessage(COACH_IMAGES_NON_SUPPORTEES);
+        toast.error(COACH_IMAGES_NON_SUPPORTEES);
+        return;
+      }
+      const placesRestantes = COACH_ATTACHMENTS_MAX - piecesJointes.length;
+      if (placesRestantes <= 0) {
+        toast.error(
+          `Maximum ${COACH_ATTACHMENTS_MAX} images par message pour le Coach.`
+        );
+        return;
+      }
+      const candidats = fichiers.slice(0, placesRestantes);
+      if (fichiers.length > placesRestantes) {
+        toast.info(
+          `Seules ${placesRestantes} image(s) supplémentaire(s) peuvent être ajoutées.`
+        );
+      }
+      const valides = candidats.filter((fichier) =>
+        TYPES_IMAGES_ACCEPTES.has(fichier.type)
+      );
+      if (valides.length < candidats.length) {
+        toast.error(
+          "Seules les images PNG, JPEG, WebP et GIF sont acceptées par le Coach."
+        );
+      }
+      if (valides.length === 0) {
+        return;
+      }
+      setMessage(null);
+      setEnvoiFichier(true);
+      try {
+        const ajoutes: CoachAttachment[] = [];
+        for (const fichier of valides) {
+          const formData = new FormData();
+          formData.append("file", fichier);
+          const reponse = await fetch(apiEndpoints.fileUpload(), {
+            body: formData,
+            method: "POST",
+          });
+          const payload = (await reponse.json().catch(() => null)) as {
+            contentType?: string;
+            library?: { reason?: string; saved?: boolean };
+            pathname?: string;
+            url?: string;
+          } | null;
+          if (!reponse.ok || !payload?.url) {
+            toast.error(
+              extractApiErrorMessage(payload) ||
+                "Échec de l'importation de l'image."
+            );
+            continue;
+          }
+          if (
+            payload.library?.saved === false &&
+            payload.library?.reason === "quota_exceeded"
+          ) {
+            toast.info(
+              "Image importée, mais votre quota Bibliothèque est plein (non enregistrée dans la Bibliothèque)."
+            );
+          }
+          const mime = TYPES_IMAGES_ACCEPTES.has(payload.contentType ?? "")
+            ? (payload.contentType as CoachAttachment["contentType"])
+            : (fichier.type as CoachAttachment["contentType"]);
+          ajoutes.push({
+            contentType: mime,
+            name: fichier.name || "image",
+            pathname: payload.pathname,
+            size: fichier.size,
+            url: payload.url,
+          });
+        }
+        if (ajoutes.length > 0) {
+          setPiecesJointes((actuelles) =>
+            [...actuelles, ...ajoutes].slice(0, COACH_ATTACHMENTS_MAX)
+          );
+        }
+      } catch {
+        toast.error("Impossible d'importer l'image, réessaie.");
+      } finally {
+        setEnvoiFichier(false);
+      }
+    },
+    [hasStrictCaps, piecesJointes.length, supporteImages]
+  );
+
+  const handleFileChange = useCallback(
+    async (event: ChangeEvent<HTMLInputElement>) => {
+      const fichiers = Array.from(event.target.files ?? []);
+      try {
+        await televerserImages(fichiers);
+      } finally {
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+      }
+    },
+    [televerserImages]
+  );
+
+  const handlePaste = useCallback(
+    (event: ClipboardEvent<HTMLTextAreaElement>) => {
+      const items = event.clipboardData?.items;
+      if (!items) {
+        return;
+      }
+      const images = Array.from(items).filter((item) =>
+        item.type.startsWith("image/")
+      );
+      if (images.length === 0) {
+        return;
+      }
+      event.preventDefault();
+      if (hasStrictCaps && !supporteImages) {
+        setMessage(COACH_IMAGES_NON_SUPPORTEES);
+        toast.error(COACH_IMAGES_NON_SUPPORTEES);
+        return;
+      }
+      const fichiers = images
+        .map((item) => item.getAsFile())
+        .filter((fichier): fichier is File => fichier !== null);
+      void televerserImages(fichiers);
+    },
+    [hasStrictCaps, supporteImages, televerserImages]
+  );
 
   const demander = useCallback(
     async (params: {
+      attachments?: CoachAttachment[];
       conversationId?: string;
       intent?: Intention;
       questionId?: string;
@@ -237,6 +437,10 @@ export function CoachQuizzly({
       try {
         const corpsRequete = {
           ...params,
+          attachments:
+            params.attachments && params.attachments.length > 0
+              ? params.attachments
+              : undefined,
           sheetId: params.sheetId ?? sheetId ?? undefined,
           sheetTitle: params.sheetTitle ?? sheetTitle ?? undefined,
         };
@@ -448,16 +652,24 @@ export function CoachQuizzly({
     "Nouvelle conversation";
   const epingles = messages.filter((entree) => entree.pinned);
   const complet = messages.length >= MESSAGES_MAX;
+  const dernierMessage = messages.at(-1);
+  const epilogueDejaDansFil = Boolean(
+    epilogue &&
+      dernierMessage?.role === "assistant" &&
+      dernierMessage.text.trim() === epilogue.text.trim()
+  );
   const epilogueVisible =
     epilogue &&
+    !epilogueDejaDansFil &&
     (epilogue.conversationId === conversationId ||
       (!conversationId && epilogue.conversationId.length > 0))
       ? epilogue.text
       : null;
-  const affiches = epilogueVisible
+  const affiches: MessageFil[] = epilogueVisible
     ? [
         ...messages,
         {
+          attachments: [],
           createdAt: "",
           id: "epilogue",
           pinned: false,
@@ -468,22 +680,24 @@ export function CoachQuizzly({
     : messages;
 
   return (
-    <section className="flex h-full min-h-0 flex-col md:flex-row bg-background">
+    <section className="flex h-full min-h-0 flex-col bg-white text-slate-900 md:flex-row">
       {/* Volet Historique gauche */}
       <aside
         className={cn(
-          "flex max-h-72 shrink-0 flex-col gap-3 overflow-auto border-b border-q-border/30 bg-card/60 p-4 md:max-h-none md:w-72 md:border-r md:border-b-0",
+          "flex max-h-72 shrink-0 flex-col gap-3 overflow-auto border-b border-slate-200 bg-white p-4 md:max-h-none md:w-72 md:border-r md:border-b-0",
           historiqueOuvert ? "flex" : "hidden md:flex"
         )}
       >
         <div className="flex items-center justify-between gap-2">
-          <h2 className="text-base font-bold text-foreground">Historique</h2>
+          <h2 className="text-base font-bold text-slate-900">Historique</h2>
           <button
-            className="flex items-center gap-1.5 rounded-xl bg-q-level px-3 py-1.5 text-xs font-bold text-q-on shadow-sm transition-all hover:opacity-90 active:scale-95"
+            className="flex items-center gap-1.5 rounded-xl bg-q-level px-3 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:opacity-90 active:scale-95"
             onClick={() => {
               playClickSound();
               setMontrerErreurs(false);
               setMessage(null);
+              setEpilogue(null);
+              setPiecesJointes([]);
               router.replace("/quizzly/coach", { scroll: false });
             }}
             type="button"
@@ -494,7 +708,7 @@ export function CoachQuizzly({
         </div>
 
         {conversations.length === 0 ? (
-          <p className="py-4 text-xs text-muted-foreground text-center">
+          <p className="py-4 text-center text-xs text-slate-500">
             Les conversations apparaîtront ici.
           </p>
         ) : (
@@ -509,15 +723,15 @@ export function CoachQuizzly({
                   className={cn(
                     "group flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm transition-all",
                     actif
-                      ? "border-q-level/60 bg-q-level/10 font-semibold text-foreground shadow-xs"
-                      : "border-transparent text-muted-foreground hover:bg-q-level/5 hover:text-foreground"
+                      ? "border-q-level/60 bg-q-level/10 font-semibold text-slate-900 shadow-xs"
+                      : "border-transparent text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                   )}
                   key={conversation.id}
                 >
                   <MessageSquareIcon
                     className={cn(
                       "size-4 shrink-0",
-                      actif ? "text-q-level" : "text-muted-foreground"
+                      actif ? "text-q-level" : "text-slate-400"
                     )}
                   />
                   {edition ? (
@@ -531,7 +745,7 @@ export function CoachQuizzly({
                       }}
                     >
                       <input
-                        className="field-input text-xs"
+                        className="field-input bg-white text-xs text-slate-900"
                         maxLength={80}
                         onChange={(evenement) =>
                           setRenommage({
@@ -543,7 +757,7 @@ export function CoachQuizzly({
                         value={renommage.text}
                       />
                       <button
-                        className="rounded-lg bg-q-level px-2 py-0.5 text-xs font-bold text-q-on"
+                        className="rounded-lg bg-q-level px-2 py-0.5 text-xs font-bold text-white"
                         type="submit"
                       >
                         Enregistrer
@@ -556,6 +770,7 @@ export function CoachQuizzly({
                         playClickSound();
                         setHistoriqueOuvert(false);
                         setMontrerErreurs(false);
+                        setEpilogue(null);
                         router.replace(
                           `/quizzly/coach?conversation=${encodeURIComponent(conversation.id)}`,
                           { scroll: false }
@@ -621,19 +836,19 @@ export function CoachQuizzly({
         )}
       </aside>
 
-      {/* Zone de discussion principale */}
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+      {/* Zone de discussion principale — fond blanc pur pour les GIF Quizzy */}
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col bg-white text-slate-900">
         {/* En-tête */}
-        <header className="flex flex-wrap items-center justify-between gap-3 border-b border-q-border/30 bg-card/40 px-5 py-3">
+        <header className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-white px-5 py-3">
           <div className="flex items-center gap-2">
             <button
-              className="rounded-xl border border-q-border/30 px-2.5 py-1 text-xs font-semibold md:hidden"
+              className="rounded-xl border border-slate-200 px-2.5 py-1 text-xs font-semibold text-slate-700 md:hidden"
               onClick={() => setHistoriqueOuvert((valeur) => !valeur)}
               type="button"
             >
               Historique
             </button>
-            <h1 className="truncate text-base font-bold text-foreground">
+            <h1 className="truncate text-base font-bold text-slate-900">
               {titreActif}
             </h1>
           </div>
@@ -646,21 +861,19 @@ export function CoachQuizzly({
               onModelChange={(modelId) => {
                 void choisirModele(modelId);
               }}
-              selectedModelId={
-                resume.data?.modelId ?? donnees.data.modelId ?? ""
-              }
+              selectedModelId={modeleSelectionne}
               variant="block"
             />
           </div>
         </header>
 
         {/* Corps des messages ou Écran d'accueil du Coach */}
-        <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-auto p-4 sm:p-6">
+        <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-auto bg-white p-4 sm:p-6">
           {epingles.length > 0 ? (
-            <div className="surface-muted flex flex-col gap-1 rounded-2xl border border-amber-500/20 bg-amber-500/5 px-4 py-2.5 text-xs">
+            <div className="flex flex-col gap-1 rounded-2xl border border-amber-500/25 bg-amber-50/70 px-4 py-2.5 text-xs">
               {epingles.map((entree) => (
                 <p
-                  className="truncate text-foreground font-medium"
+                  className="truncate font-medium text-slate-900"
                   key={entree.id}
                 >
                   <PinIcon className="mr-1.5 inline size-3 text-amber-500" />
@@ -672,24 +885,20 @@ export function CoachQuizzly({
 
           {/* État d'accueil si conversation vide */}
           {affiches.length === 0 && courant === null ? (
-            <div className="my-auto flex flex-col items-center justify-center py-6 text-center">
-              {/* Mascotte Quizzy au centre */}
-              <div className="relative mb-3 flex items-center justify-center">
-                <Image
-                  alt="Quizzy Mascotte"
-                  className="size-32 object-contain drop-shadow-md select-none animate-bounce"
-                  height={128}
-                  priority
-                  src="/quizzly/quizzy.png"
-                  style={{ animationDuration: "3s" }}
-                  width={128}
+            <div className="my-auto flex flex-col items-center justify-center bg-white py-6 text-center">
+              {/* Mascotte Quizzy animée sans ombre carrée */}
+              <div className="relative mb-3 flex items-center justify-center bg-white">
+                <Quizzy
+                  className="size-36 sm:size-40"
+                  pose="cheer"
+                  taille="score"
                 />
               </div>
 
-              <h2 className="text-xl font-bold text-foreground">
+              <h2 className="text-xl font-bold text-slate-900">
                 Écris une question, ou choisis une action.
               </h2>
-              <p className="mt-1 text-xs text-muted-foreground max-w-sm">
+              <p className="mt-1 max-w-sm text-xs text-slate-500">
                 Je connais ta classe, ta ligue, tes fiches et tes derniers quiz
                 pour t'aider à progresser chaque jour !
               </p>
@@ -701,10 +910,10 @@ export function CoachQuizzly({
                 </div>
               )}
 
-              {/* Boutons d'actions rapides (Image 4) */}
-              <div className="mt-6 flex flex-wrap justify-center gap-2.5 max-w-lg">
+              {/* Boutons d'actions rapides */}
+              <div className="mt-6 flex max-w-lg flex-wrap justify-center gap-2.5">
                 <button
-                  className="surface-quizzly-card flex items-center gap-2 rounded-2xl border border-q-border/40 bg-card px-4 py-2.5 text-xs font-semibold text-foreground shadow-xs transition-all hover:border-q-level/60 hover:bg-q-level/5 active:scale-95"
+                  className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-800 shadow-xs transition-all hover:border-q-level/60 hover:bg-blue-50/60 active:scale-95"
                   onClick={() => {
                     setMontrerErreurs(true);
                   }}
@@ -715,7 +924,7 @@ export function CoachQuizzly({
                 </button>
 
                 <button
-                  className="surface-quizzly-card flex items-center gap-2 rounded-2xl border border-q-border/40 bg-card px-4 py-2.5 text-xs font-semibold text-foreground shadow-xs transition-all hover:border-q-level/60 hover:bg-q-level/5 active:scale-95"
+                  className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-800 shadow-xs transition-all hover:border-q-level/60 hover:bg-blue-50/60 active:scale-95"
                   onClick={() => {
                     setMontrerErreurs(false);
                     void demander({ intent: "summary" });
@@ -727,20 +936,20 @@ export function CoachQuizzly({
                 </button>
 
                 <button
-                  className="surface-quizzly-card flex items-center gap-2 rounded-2xl border border-q-border/40 bg-card px-4 py-2.5 text-xs font-semibold text-foreground shadow-xs transition-all hover:border-q-level/60 hover:bg-q-level/5 active:scale-95"
+                  className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-800 shadow-xs transition-all hover:border-q-level/60 hover:bg-blue-50/60 active:scale-95"
                   onClick={() => {
                     setMontrerErreurs(false);
                     void demander({ intent: "encourage" });
                   }}
                   type="button"
                 >
-                  <HeartIcon className="size-4 text-rose-500 fill-rose-500" />
+                  <HeartIcon className="size-4 fill-rose-500 text-rose-500" />
                   <span>M'encourager</span>
                 </button>
 
                 {sheetTitle && (
                   <button
-                    className="surface-quizzly-card flex items-center gap-2 rounded-2xl border border-q-level/40 bg-q-level/10 px-4 py-2.5 text-xs font-bold text-q-level shadow-xs transition-all hover:bg-q-level/20 active:scale-95"
+                    className="flex items-center gap-2 rounded-2xl border border-q-level/40 bg-q-level/10 px-4 py-2.5 text-xs font-bold text-q-level shadow-xs transition-all hover:bg-q-level/20 active:scale-95"
                     onClick={() => {
                       setMontrerErreurs(false);
                       void demander({
@@ -764,6 +973,7 @@ export function CoachQuizzly({
           {affiches.map((bulle) => {
             const edition =
               renommage?.kind === "message" && renommage.id === bulle.id;
+            const imagesBulle = bulle.attachments ?? [];
             return (
               <div
                 className={cn(
@@ -776,10 +986,29 @@ export function CoachQuizzly({
                   className={cn(
                     "flex max-w-[85%] flex-col gap-2 rounded-3xl p-4 text-sm shadow-xs",
                     bulle.role === "user"
-                      ? "bg-q-level text-q-on rounded-br-sm"
-                      : "surface-quizzly-card border border-q-border/30 bg-card text-foreground rounded-bl-sm"
+                      ? "rounded-br-sm bg-q-level text-white"
+                      : "rounded-bl-sm border border-slate-200 bg-white text-slate-900"
                   )}
                 >
+                  {imagesBulle.length > 0 ? (
+                    <div className="flex flex-wrap gap-2">
+                      {imagesBulle.map((piece) => (
+                        <a
+                          className="block overflow-hidden rounded-xl border border-white/25 bg-white/10"
+                          href={piece.url}
+                          key={`${bulle.id}-${piece.url}`}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          <img
+                            alt={piece.name}
+                            className="max-h-48 max-w-56 object-cover"
+                            src={piece.url}
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
                   {edition ? (
                     <form
                       className="flex flex-col gap-2"
@@ -789,7 +1018,7 @@ export function CoachQuizzly({
                       }}
                     >
                       <textarea
-                        className="field-input min-h-20 text-foreground text-xs"
+                        className="field-input min-h-20 bg-white text-xs text-slate-900"
                         maxLength={bulle.role === "user" ? 2000 : 8000}
                         onChange={(evenement) =>
                           setRenommage({
@@ -801,7 +1030,7 @@ export function CoachQuizzly({
                         value={renommage.text}
                       />
                       <button
-                        className="rounded-xl bg-card px-3 py-1 text-xs font-bold text-foreground"
+                        className="rounded-xl bg-white px-3 py-1 text-xs font-bold text-slate-900"
                         type="submit"
                       >
                         Enregistrer
@@ -855,13 +1084,13 @@ export function CoachQuizzly({
 
           {courant === null ? null : (
             <div className="flex justify-start">
-              <div className="max-w-[85%] rounded-3xl rounded-bl-sm border border-q-border/30 bg-card p-4 text-sm text-foreground shadow-xs whitespace-pre-wrap">
+              <div className="max-w-[85%] whitespace-pre-wrap rounded-3xl rounded-bl-sm border border-slate-200 bg-white p-4 text-sm text-slate-900 shadow-xs">
                 {courant.trim() ? (
                   courant
                 ) : (
-                  <span className="flex items-center gap-2 text-muted-foreground">
-                    <SparklesIcon className="size-4 animate-spin text-q-level" />
-                    Le coach réfléchit…
+                  <span className="flex items-center gap-2.5 text-slate-500">
+                    <Quizzy className="size-10" pose="think" taille="compact" />
+                    <span>Le coach réfléchit…</span>
                   </span>
                 )}
               </div>
@@ -872,13 +1101,13 @@ export function CoachQuizzly({
 
         {/* Sélecteur d'erreurs si mode explain activé */}
         {montrerErreurs ? (
-          <div className="border-t border-q-border/30 bg-card/60 p-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-foreground">
+          <div className="border-t border-slate-200 bg-slate-50/70 p-4">
+            <div className="mb-2 flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-900">
                 Choisis une question à analyser :
               </span>
               <button
-                className="text-xs text-muted-foreground hover:text-foreground"
+                className="text-xs text-slate-500 hover:text-slate-900"
                 onClick={() => setMontrerErreurs(false)}
                 type="button"
               >
@@ -886,7 +1115,7 @@ export function CoachQuizzly({
               </button>
             </div>
             {donnees.data.misses.length === 0 ? (
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-slate-500">
                 Fais un quiz pour que je puisse analyser tes erreurs.
               </p>
             ) : (
@@ -894,7 +1123,7 @@ export function CoachQuizzly({
                 {donnees.data.misses.map((erreur) => (
                   <li key={`${erreur.quizId}:${erreur.questionId}`}>
                     <button
-                      className="flex w-full flex-col gap-1 rounded-2xl border border-q-border/40 bg-card p-2.5 text-left transition-all hover:border-q-level/60 hover:bg-q-level/5"
+                      className="flex w-full flex-col gap-1 rounded-2xl border border-slate-200 bg-white p-2.5 text-left transition-all hover:border-q-level/60 hover:bg-blue-50/50"
                       disabled={enCours}
                       onClick={() => {
                         setMontrerErreurs(false);
@@ -911,7 +1140,7 @@ export function CoachQuizzly({
                           .filter(Boolean)
                           .join(" · ")}
                       </span>
-                      <span className="text-xs font-medium text-foreground">
+                      <span className="text-xs font-medium text-slate-900">
                         {erreur.question}
                       </span>
                     </button>
@@ -922,40 +1151,110 @@ export function CoachQuizzly({
           </div>
         ) : null}
 
-        {/* Barre de saisie inférieure (Image 4) */}
+        {/* Barre de saisie inférieure avec support pièces jointes images */}
         <form
-          className="border-t border-q-border/30 bg-card/80 p-3 sm:p-4 backdrop-blur-md"
+          className="border-t border-slate-200 bg-white p-3 sm:p-4"
           onSubmit={(evenement) => {
             evenement.preventDefault();
             const text = brouillon.trim();
-            if (!text || enCours || complet) {
+            if (
+              (!text && piecesJointes.length === 0) ||
+              enCours ||
+              complet ||
+              envoiFichier
+            ) {
               return;
             }
+            if (piecesJointes.length > 0 && hasStrictCaps && !supporteImages) {
+              setMessage(COACH_IMAGES_NON_SUPPORTEES);
+              toast.error(COACH_IMAGES_NON_SUPPORTEES);
+              return;
+            }
+            const attachees = [...piecesJointes];
             setBrouillon("");
+            setPiecesJointes([]);
             void demander({
+              attachments: attachees.length > 0 ? attachees : undefined,
               conversationId: conversationId ?? undefined,
               intent: conversationId ? undefined : "chat",
-              text,
+              text: text || undefined,
             });
           }}
         >
-          <div className="flex items-center gap-2 rounded-2xl border border-q-border/40 bg-background px-3 py-1.5 shadow-xs focus-within:border-q-level focus-within:ring-2 focus-within:ring-q-level/20">
+          <input
+            accept={COACH_IMAGE_CONTENT_TYPES.join(",")}
+            className="hidden"
+            multiple
+            onChange={(event) => {
+              void handleFileChange(event);
+            }}
+            ref={fileInputRef}
+            type="file"
+          />
+
+          {piecesJointes.length > 0 ? (
+            <div className="mb-2 flex flex-wrap gap-2">
+              {piecesJointes.map((piece, idx) => (
+                <div
+                  className="group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-50"
+                  key={`${piece.url}-${idx}`}
+                >
+                  <img
+                    alt={piece.name}
+                    className="size-16 object-cover"
+                    src={piece.url}
+                  />
+                  <button
+                    aria-label={`Retirer ${piece.name}`}
+                    className="absolute top-1 right-1 flex size-5 items-center justify-center rounded-full bg-slate-900/75 text-white transition-opacity hover:bg-slate-900"
+                    onClick={() =>
+                      setPiecesJointes((actuelles) =>
+                        actuelles.filter((_, index) => index !== idx)
+                      )
+                    }
+                    type="button"
+                  >
+                    <XIcon className="size-3" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-1.5 shadow-xs focus-within:border-q-level focus-within:ring-2 focus-within:ring-q-level/20">
             <button
-              className="p-1.5 text-muted-foreground hover:text-q-level transition-colors shrink-0"
+              aria-label="Joindre une image"
+              className={cn(
+                "shrink-0 p-1.5 transition-colors",
+                hasStrictCaps && !supporteImages
+                  ? "text-slate-300 hover:text-destructive"
+                  : "text-slate-500 hover:text-q-level"
+              )}
+              disabled={enCours || complet || envoiFichier}
               onClick={() => {
-                toast.info("Pièce jointe", {
-                  description:
-                    "Pour poser une question sur un cours, mentionne directement le sujet ou sélectionne une fiche de révision.",
-                });
+                if (hasStrictCaps && !supporteImages) {
+                  setMessage(COACH_IMAGES_NON_SUPPORTEES);
+                  toast.error(COACH_IMAGES_NON_SUPPORTEES);
+                  return;
+                }
+                fileInputRef.current?.click();
               }}
-              title="Joindre un contexte"
+              title={
+                hasStrictCaps && !supporteImages
+                  ? COACH_IMAGES_NON_SUPPORTEES
+                  : "Joindre une image"
+              }
               type="button"
             >
-              <PaperclipIcon className="size-4" />
+              {envoiFichier ? (
+                <Loader2Icon className="size-4 animate-spin text-q-level" />
+              ) : (
+                <PaperclipIcon className="size-4" />
+              )}
             </button>
 
             <textarea
-              className="min-h-9 max-h-28 flex-1 resize-none bg-transparent py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+              className="max-h-28 min-h-9 flex-1 resize-none bg-transparent py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
               disabled={enCours || complet}
               id="quizzly-coach-saisie"
               maxLength={2000}
@@ -966,6 +1265,7 @@ export function CoachQuizzly({
                   evenement.currentTarget.form?.requestSubmit();
                 }
               }}
+              onPaste={handlePaste}
               placeholder="Écris au Coach"
               rows={1}
               value={brouillon}
@@ -973,12 +1273,20 @@ export function CoachQuizzly({
 
             <button
               className={cn(
-                "flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold shadow-xs transition-all shrink-0",
-                brouillon.trim().length > 0 && !enCours && !complet
-                  ? "bg-q-level text-q-on hover:opacity-90 active:scale-95 cursor-pointer"
-                  : "bg-muted text-muted-foreground cursor-not-allowed"
+                "flex shrink-0 items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold shadow-xs transition-all",
+                (brouillon.trim().length > 0 || piecesJointes.length > 0) &&
+                  !enCours &&
+                  !complet &&
+                  !envoiFichier
+                  ? "cursor-pointer bg-q-level text-white hover:opacity-90 active:scale-95"
+                  : "cursor-not-allowed bg-slate-100 text-slate-400"
               )}
-              disabled={enCours || complet || brouillon.trim().length === 0}
+              disabled={
+                enCours ||
+                complet ||
+                envoiFichier ||
+                (brouillon.trim().length === 0 && piecesJointes.length === 0)
+              }
               type="submit"
             >
               <SendIcon className="size-3.5" />
@@ -986,8 +1294,13 @@ export function CoachQuizzly({
             </button>
           </div>
 
+          {hasStrictCaps && !supporteImages ? (
+            <p className="mt-1.5 text-center text-[11px] text-slate-500">
+              {COACH_IMAGES_NON_SUPPORTEES}
+            </p>
+          ) : null}
           {complet ? (
-            <p className="mt-2 text-center text-xs text-muted-foreground">
+            <p className="mt-2 text-center text-xs text-slate-500">
               Cette conversation est complète. Ouvre-en une nouvelle.
             </p>
           ) : null}

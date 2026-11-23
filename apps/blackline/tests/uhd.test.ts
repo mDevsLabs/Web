@@ -30,6 +30,12 @@ test('le mode Auto conserve les budgets mobiles et seule l’adaptation explicit
  const a=renderDimensions(1920,1080,1,budget,'8k',limits,.5);assert.deepEqual([a.width,a.height],[3840,2160]);assert.equal(a.limited,false);
  assert.deepEqual([renderDimensions(1000,500,2,budget,'native',limits).width,renderDimensions(1000,500,2,budget,'native',limits).height],[2000,1000]);
 });
+test('le mode Auto ne suréchantillonne jamais au-delà de la densité de l’écran',()=>{
+ const desktop=renderDimensions(1920,1080,1,budget,'auto',limits);assert.deepEqual([desktop.width,desktop.height],[1920,1080]);assert.equal(desktop.ratio,1);
+ const retina=renderDimensions(1440,900,2,budget,'auto',limits);assert.deepEqual([retina.width,retina.height],[2880,1800]);
+ const bogus=renderDimensions(1920,1080,Number.NaN,budget,'auto',limits);assert.equal(bogus.ratio,1);
+ const explicit=renderDimensions(1920,1080,1,budget,'4k',limits);assert.deepEqual([explicit.width,explicit.height],[3840,2160]);
+});
 test('les profils Ultra sont sauvegardables et l’économie ne baisse jamais les matériaux',()=>{
  for(const id of ['smooth','4k','uhd']){const s=normalizeSettings({...DEFAULT_SETTINGS,...graphicsPreset(id)});assert.equal(s.quality,'ultra');assert.equal(s.adaptive,false);assert.equal(targetFPS('playing',s),120);const save=normalizeSave({settings:s});assert.equal(save.settings.renderResolution,s.renderResolution);}
  const s=normalizeSettings({...DEFAULT_SETTINGS,renderResolution:'8k',batterySaver:true});assert.equal(s.renderResolution,'8k');assert.equal(targetFPS('playing',s),30);

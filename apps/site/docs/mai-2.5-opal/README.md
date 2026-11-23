@@ -11,7 +11,7 @@ mAI-2.5-Opal est le fleuron de la génération mAI-2.5, conçu comme un modèle 
 | Entrée image & vision | Oui (Multimodal natif) |
 | Entrée documents & fichiers | Oui |
 | Licence indiquée | Propriétaire |
-| Date de sortie indiquée | 19 novembre 2026 |
+| Date de sortie indiquée | Décembre 2026 |
 
 ## Avancées technologiques majeures
 

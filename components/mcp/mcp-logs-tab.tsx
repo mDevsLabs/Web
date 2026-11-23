@@ -143,11 +143,13 @@ export function McpLogsTab({
                 {filteredLogs.map((log) => (
                   <tr className="hover:bg-muted/30" key={log.id}>
                     <td className="py-2.5 px-3 whitespace-nowrap text-muted-foreground font-mono text-[11px]">
-                      {new Date(log.createdAt).toLocaleTimeString("fr-FR", {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        second: "2-digit",
-                      })}
+                      {log.createdAt
+                        ? new Date(log.createdAt).toLocaleTimeString("fr-FR", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                          })
+                        : "—"}
                     </td>
                     <td className="py-2.5 px-3 font-medium whitespace-nowrap">
                       {log.serverName}

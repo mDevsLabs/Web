@@ -495,7 +495,7 @@ function ProjectsPageInner() {
         <div className="mt-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
           <div className="flex flex-wrap items-center gap-2">
             <div className="relative">
-              <SearchIcon className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
+              <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 aria-label="Rechercher une discussion"
                 className="h-8 w-[200px] pl-8 text-xs"

@@ -45,7 +45,6 @@ import {
   ZapIcon,
 } from "@mdevs/icons";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   type DevicePowerProfile,
   formatPowerLabel,
@@ -226,31 +225,31 @@ export function BlacklineAgeGate({
                 Blackline n&apos;est pas accessible aux moins de 16 ans. Vous
                 pouvez continuer à utiliser mAI normalement.
               </p>
-              <Button
-                asChild
-                className="w-fit border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white"
-                variant="outline"
+              <a
+                className="inline-flex w-fit items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6dd94]"
+                href="/"
               >
-                <a href="/">Retour à mAI</a>
-              </Button>
+                Retour à mAI
+              </a>
             </div>
           ) : (
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button
-                className="flex items-center gap-2 bg-[#c6dd94] text-[#0f1714] hover:bg-[#d6e9ac]"
+              <button
+                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#c6dd94] px-4 py-2 text-sm font-medium text-[#0f1714] transition-colors hover:bg-[#d6e9ac] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6dd94]"
                 onClick={() => onDecide("accepted")}
                 ref={confirmerRef}
+                type="button"
               >
                 <CrosshairIcon className="size-4" />
                 J&apos;ai 16 ans ou plus — lancer le jeu
-              </Button>
-              <Button
-                className="border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white sm:ml-auto"
+              </button>
+              <button
+                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6dd94] sm:ml-auto"
                 onClick={() => setRefuse(true)}
-                variant="outline"
+                type="button"
               >
                 J&apos;ai moins de 16 ans
-              </Button>
+              </button>
             </div>
           )}
         </section>

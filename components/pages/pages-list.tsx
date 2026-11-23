@@ -130,7 +130,7 @@ export function PagesList() {
       </div>
       <div className="flex flex-col gap-3 px-6 py-4 sm:px-8">
         <div className="relative max-w-md">
-          <SearchIcon className="absolute top-2.5 left-2.5 size-4 text-muted-foreground" />
+          <SearchIcon className="pointer-events-none absolute top-1/2 left-2.5 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
             aria-label="Rechercher une page"
             className="field-input h-9 w-full pr-3 pl-8 text-sm"

@@ -4,8 +4,9 @@ import { logError } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getUserPreferences } from "@/lib/db/queries";
 import {
-  countTodayImageGenerations,
-  recordImageGeneration,
+  confirmImageGenerationReservation,
+  releaseImageGenerationReservation,
+  reserveDailyImageQuota,
 } from "@/lib/db/queries/generations";
 import { getTierImageDailyLimit } from "@/lib/plans/tier-limits";
 import { formatImageSrc } from "@/lib/utils";
@@ -79,50 +80,81 @@ export async function generateImageViaMai(params: {
       }
     }
 
-    // Quota journalier du forfait (même source que la route
-    // /api/images/generations), vérifié avant l'appel payant. Forfait
-    // illisible : limites Free, les plus strictes.
-    const user = await getMaiUser(token).catch(() => null);
-    const dailyLimit = getTierImageDailyLimit(user?.tier);
-    try {
-      const usedToday = await countTodayImageGenerations(params.userId);
-      if (dailyLimit > 0 && usedToday >= dailyLimit) {
-        return {
-          error: `Votre quota journalier de génération d'images est épuisé (${usedToday}/${dailyLimit} images). Réinitialisation à minuit UTC.`,
-          limit: dailyLimit,
-          used: usedToday,
-        };
-      }
-    } catch (quotaError) {
-      logError("Vérification du quota de génération d'image", quotaError);
-    }
-
     const cometApiKey = process.env.COMET_API_KEY?.trim();
     if (!cometApiKey) {
       return { error: "Génération d'image indisponible pour le moment." };
     }
 
-    const res = await fetch("https://api.cometapi.com/v1/images/generations", {
-      body: JSON.stringify({
+    // Réservation atomique du quota journalier AVANT l'appel payant
+    // (BUG-001 & BUG-003). En cas d'échec DB, refus (fail-closed).
+    const user = await getMaiUser(token).catch(() => null);
+    const dailyLimit = getTierImageDailyLimit(user?.tier);
+    let reservation: Awaited<ReturnType<typeof reserveDailyImageQuota>>;
+    try {
+      reservation = await reserveDailyImageQuota({
+        dailyLimit,
         height: targetHeight,
         model: targetModel,
-        n: 1,
-        negative_prompt: negativePrompt || undefined,
+        negativePrompt,
         prompt,
-        response_format: "url",
-        size: `${targetWidth}x${targetHeight}`,
+        userId: params.userId,
         width: targetWidth,
-      }),
-      headers: {
-        Authorization: `Bearer ${cometApiKey}`,
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      signal: AbortSignal.timeout(IMAGE_UPSTREAM_TIMEOUT_MS),
-    });
+      });
+    } catch (quotaError) {
+      logError("Réservation du quota de génération d'image", quotaError);
+      return {
+        error:
+          "Quota de génération d'images momentanément invérifiable. Réessayez dans un instant.",
+      };
+    }
+    if (!reservation.ok) {
+      return {
+        error: `Votre quota journalier de génération d'images est épuisé (${reservation.used}/${reservation.limit} images). Réinitialisation à minuit UTC.`,
+        limit: reservation.limit,
+        used: reservation.used,
+      };
+    }
+
+    const releaseReservation = async () => {
+      try {
+        await releaseImageGenerationReservation({
+          reservationId: reservation.reservationId,
+          userId: params.userId,
+        });
+      } catch (releaseError) {
+        logError("Erreur libération réservation quota image", releaseError);
+      }
+    };
+
+    let res: Response;
+    try {
+      res = await fetch("https://api.cometapi.com/v1/images/generations", {
+        body: JSON.stringify({
+          height: targetHeight,
+          model: targetModel,
+          n: 1,
+          negative_prompt: negativePrompt || undefined,
+          prompt,
+          response_format: "url",
+          size: `${targetWidth}x${targetHeight}`,
+          width: targetWidth,
+        }),
+        headers: {
+          Authorization: `Bearer ${cometApiKey}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        signal: AbortSignal.timeout(IMAGE_UPSTREAM_TIMEOUT_MS),
+      });
+    } catch (fetchError) {
+      await releaseReservation();
+      throw fetchError;
+    }
+
     // Le détail de l'erreur amont reste dans les journaux : il n'est jamais
     // relayé tel quel au modèle ni à l'utilisateur.
     if (!res.ok) {
+      await releaseReservation();
       const errorPreview = await res
         .text()
         .then((txt) => txt.slice(0, 400))
@@ -141,23 +173,20 @@ export async function generateImageViaMai(params: {
     const rawUrl =
       data?.data?.[0]?.url || data?.data?.[0]?.b64_json || data?.image_url;
     if (!rawUrl) {
+      await releaseReservation();
       return { error: "Aucune image retournée" };
     }
     const imageUrl = formatImageSrc(rawUrl);
 
-    // Persistance directe dans la table Neon mprojects_image_generations
+    // Confirmation de la réservation dans la table Neon mprojects_image_generations
     try {
-      await recordImageGeneration({
-        height: targetHeight,
+      await confirmImageGenerationReservation({
         imageUrl,
-        model: targetModel,
-        negativePrompt,
-        prompt,
+        reservationId: reservation.reservationId,
         userId: params.userId,
-        width: targetWidth,
       });
     } catch (dbErr) {
-      logError("Erreur enregistrement image en base", dbErr);
+      logError("Erreur confirmation réservation image en base", dbErr);
     }
 
     params.onImage?.(imageUrl);

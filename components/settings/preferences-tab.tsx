@@ -28,7 +28,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { useAutosavePreference } from "@/hooks/use-autosave-preference";
 import { useFavoriteApp } from "@/hooks/use-favorite-app";
-import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import { useSettings } from "@/hooks/use-settings";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
@@ -38,7 +37,6 @@ import {
   type ReasoningLevel,
 } from "@/lib/ai/registry/reasoning";
 import {
-  APP_CATALOG,
   APP_ORDER,
   type AppCatalogEntry,
   type AppKey,
@@ -89,7 +87,6 @@ const WEB_FAVORITE_OPTIONS: OptionSelectorItem[] = APP_ORDER.map(
 
 export function PreferencesTab() {
   const { data: settingsData } = useSettings();
-  const { isDesktop } = useIsDesktopApp();
   const profile = settingsData?.user ?? null;
   const tierRaw = profile?.tier;
   // Le mode économie est un réglage d'APPAREIL : il vit dans le
@@ -97,22 +94,7 @@ export function PreferencesTab() {
   // pas les mêmes ressources.
   const { isEconomyRequested: economyRequested, setEconomyRequested } =
     useEconomy();
-  // Le CLI n'apparaît que dans l'application de bureau : sur le web, choisir
-  // ce favori mènerait à une impasse au prochain login.
-  const favoriteAppOptions = useMemo<OptionSelectorItem[]>(
-    () =>
-      isDesktop
-        ? [
-            ...WEB_FAVORITE_OPTIONS,
-            {
-              description: APP_CATALOG.cli.description,
-              id: "cli",
-              label: APP_CATALOG.cli.label,
-            },
-          ]
-        : WEB_FAVORITE_OPTIONS,
-    [isDesktop]
-  );
+  const favoriteAppOptions = WEB_FAVORITE_OPTIONS;
 
   const [defaultModelId, setDefaultModelId] =
     useState<string>(DEFAULT_CHAT_MODEL);

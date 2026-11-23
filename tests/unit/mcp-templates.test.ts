@@ -121,6 +121,7 @@ describe("Catalogue de modèles MCP", () => {
       "gitlab",
       "notion",
       "brave-search",
+      "slack",
       "supabase",
       "stripe",
       "airtable",
@@ -129,9 +130,7 @@ describe("Catalogue de modèles MCP", () => {
       const template = getMcpTemplate(id);
       expect(template, `modèle ${id} absent du catalogue`).toBeDefined();
       expect(template?.activation).toBe(
-        ["notion", "brave-search", "stripe"].includes(id)
-          ? "requires_vetted_stdio"
-          : "ready"
+        ["notion", "stripe"].includes(id) ? "requires_vetted_stdio" : "ready"
       );
     }
     expect(getMcpTemplate("modele-qui-nexiste-pas")).toBeUndefined();

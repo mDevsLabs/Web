@@ -5,23 +5,45 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 // configuré, l'échec est explicite et récupérable — jamais un 500 opaque, et
 // jamais présenté comme un succès. HTML, SVG et JavaScript restent refusés.
 
-const { delMock, issueSignedTokenMock, presignUrlMock, putMock } = vi.hoisted(
-  () => ({
-    delMock: vi.fn(async () => undefined),
-    issueSignedTokenMock: vi.fn(async () => ({
-      clientSigningToken: "signature-test",
-      delegationToken: "delegation-test",
-      validUntil: Date.now() + 600_000,
-    })),
-    presignUrlMock: vi.fn(async () => ({
-      presignedUrl: "https://blob.test/uploads/lien-signe",
-    })),
-    putMock: vi.fn(async () => ({
-      pathname: "uploads/utilisateur-test/fichier",
-      url: "https://blob.test/uploads/utilisateur-test/fichier",
-    })),
-  })
-);
+const {
+  delMock,
+  issueSignedTokenMock,
+  presignUrlMock,
+  putMock,
+  syncUploadedImageToLibraryMock,
+} = vi.hoisted(() => ({
+  delMock: vi.fn(async () => undefined),
+  issueSignedTokenMock: vi.fn(async () => ({
+    clientSigningToken: "signature-test",
+    delegationToken: "delegation-test",
+    validUntil: Date.now() + 600_000,
+  })),
+  presignUrlMock: vi.fn(async () => ({
+    presignedUrl: "https://blob.test/uploads/lien-signe",
+  })),
+  putMock: vi.fn(async () => ({
+    pathname: "uploads/utilisateur-test/fichier",
+    url: "https://blob.test/uploads/utilisateur-test/fichier",
+  })),
+  syncUploadedImageToLibraryMock: vi.fn(
+    async (): Promise<
+      | { fileId: string | null; saved: true; url: string | null }
+      | {
+          reason:
+            | "file_too_large"
+            | "not_image"
+            | "quota_exceeded"
+            | "unauthenticated"
+            | "unavailable";
+          saved: false;
+        }
+    > => ({
+      fileId: "cloud-file-1",
+      saved: true,
+      url: "https://cdn.test/cloud/photo.png",
+    })
+  ),
+}));
 
 vi.mock("@/app/(auth)/auth", () => ({
   auth: async () => ({ user: { id: "utilisateur-test" } }),
@@ -31,6 +53,9 @@ vi.mock("@vercel/blob", () => ({
   issueSignedToken: issueSignedTokenMock,
   presignUrl: presignUrlMock,
   put: putMock,
+}));
+vi.mock("@/lib/files/library-sync", () => ({
+  syncUploadedImageToLibrary: syncUploadedImageToLibraryMock,
 }));
 
 import { POST } from "@/app/(chat)/api/files/upload/route";
@@ -69,6 +94,7 @@ describe("Import de fichiers — /api/files/upload (issue #47)", () => {
     issueSignedTokenMock.mockClear();
     presignUrlMock.mockClear();
     delMock.mockClear();
+    syncUploadedImageToLibraryMock.mockClear();
     configureStorage();
   });
 
@@ -149,5 +175,40 @@ describe("Import de fichiers — /api/files/upload (issue #47)", () => {
       expect(response.status).toBe(API_ERROR_STATUS.unsupported_media_type);
     }
     expect(putMock).not.toHaveBeenCalled();
+  });
+
+  it("synchronise les images importées vers la Bibliothèque en best-effort sans bloquer si le quota est plein", async () => {
+    const imgResponse = await POST(
+      uploadRequest("photo.png", "image/png", PNG)
+    );
+    expect(imgResponse.status).toBe(200);
+    const imgBody = (await imgResponse.json()) as {
+      library?: { fileId?: string; saved?: boolean };
+    };
+    expect(syncUploadedImageToLibraryMock).toHaveBeenCalledTimes(1);
+    expect(imgBody.library?.saved).toBe(true);
+
+    syncUploadedImageToLibraryMock.mockResolvedValueOnce({
+      reason: "quota_exceeded",
+      saved: false,
+    });
+    const fullResponse = await POST(
+      uploadRequest("photo2.jpg", "image/jpeg", JPEG)
+    );
+    expect(fullResponse.status).toBe(200);
+    const fullBody = (await fullResponse.json()) as {
+      library?: { reason?: string; saved?: boolean };
+    };
+    expect(fullBody.library).toEqual({
+      reason: "quota_exceeded",
+      saved: false,
+    });
+
+    syncUploadedImageToLibraryMock.mockClear();
+    const txtResponse = await POST(
+      uploadRequest("notes.txt", "text/plain", new TextEncoder().encode("ok"))
+    );
+    expect(txtResponse.status).toBe(200);
+    expect(syncUploadedImageToLibraryMock).not.toHaveBeenCalled();
   });
 });

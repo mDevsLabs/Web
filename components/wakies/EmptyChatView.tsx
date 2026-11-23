@@ -126,9 +126,18 @@ export const EmptyChatView: React.FC<EmptyChatViewProps> = ({
         </div>
       </div>
     )}
-    <div className="chat-composer">
+    <form
+      className="chat-composer chat-composer-box"
+      onSubmit={(e) => {
+        e.preventDefault();
+        const fullText = source.trim()
+          ? `${source.trim()}\n\n${prompt}`
+          : prompt;
+        void onNewConversation(fullText);
+      }}
+    >
       {sourceOpen && (
-        <div className="chat-composer-source">
+        <div className="source-input chat-composer-source">
           <LinkIcon size={14} />
           <Input
             aria-label="Lien source ou référence web"
@@ -150,147 +159,136 @@ export const EmptyChatView: React.FC<EmptyChatViewProps> = ({
           </Button>
         </div>
       )}
-      <form
-        className="composer chat-composer-box"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const fullText = source.trim()
-            ? `${source.trim()}\n\n${prompt}`
-            : prompt;
-          void onNewConversation(fullText);
-        }}
-      >
-        <div className="chat-compose-row">
-          {accepteFichiers && (
-            <FileLibrary
-              onOpenChange={setBibliothequeOuverte}
-              onSelect={(piece) => {
-                void onNewConversation(
-                  prompt
-                    ? `${prompt}\n[Fichier: ${piece.nom}]`
-                    : `Consultons le document : ${piece.nom}`
-                );
-              }}
-              open={bibliothequeOuverte}
-              sansDeclencheur
-            />
-          )}
-          <input
-            accept={formatsPieces(capacitesFichiers)}
-            className="visually-hidden-input"
-            disabled={!configured || busy}
-            multiple
-            onChange={(event) => {
-              const fichiers = [...(event.target.files ?? [])];
-              if (fichiers.length > 0) {
-                void onNewConversation(
-                  prompt
-                    ? `${prompt}\n[Fichiers joints : ${fichiers.map((f) => f.name).join(", ")}]`
-                    : `Fichiers joints : ${fichiers.map((f) => f.name).join(", ")}`
-                );
-              }
-              event.target.value = "";
+      <div className="chat-compose-row">
+        {accepteFichiers && (
+          <FileLibrary
+            onOpenChange={setBibliothequeOuverte}
+            onSelect={(piece) => {
+              void onNewConversation(
+                prompt
+                  ? `${prompt}\n[Fichier: ${piece.nom}]`
+                  : `Consultons le document : ${piece.nom}`
+              );
             }}
-            ref={inputFichier}
-            tabIndex={-1}
-            type="file"
+            open={bibliothequeOuverte}
+            sansDeclencheur
           />
-          <DropdownMenu
-            items={[
-              ...(accepteFichiers
-                ? [
-                    {
-                      id: "importer",
-                      label: "Importer un fichier",
-                      onSelect: () => inputFichier.current?.click(),
-                    },
-                    {
-                      id: "bibliotheque",
-                      label: "Choisir dans Mes fichiers",
-                      onSelect: () => setBibliothequeOuverte(true),
-                    },
-                  ]
-                : []),
-              ...(selectedThread
-                ? [
-                    {
-                      id: "tache",
-                      label: "Planifier une tâche",
-                      onSelect: () =>
-                        setDialog({
-                          conversationId: selectedThread,
-                          type: "schedule",
-                        }),
-                    },
-                  ]
-                : []),
-              {
-                id: "source",
-                label: sourceOpen
-                  ? "Retirer le lien source"
-                  : "Ajouter un lien source",
-                onSelect: () => {
-                  if (sourceOpen) setSource("");
-                  setSourceOpen(!sourceOpen);
-                },
+        )}
+        <input
+          accept={formatsPieces(capacitesFichiers)}
+          className="visually-hidden-input"
+          disabled={!configured || busy}
+          multiple
+          onChange={(event) => {
+            const fichiers = [...(event.target.files ?? [])];
+            if (fichiers.length > 0) {
+              void onNewConversation(
+                prompt
+                  ? `${prompt}\n[Fichiers joints : ${fichiers.map((f) => f.name).join(", ")}]`
+                  : `Fichiers joints : ${fichiers.map((f) => f.name).join(", ")}`
+              );
+            }
+            event.target.value = "";
+          }}
+          ref={inputFichier}
+          tabIndex={-1}
+          type="file"
+        />
+        <DropdownMenu
+          items={[
+            ...(accepteFichiers
+              ? [
+                  {
+                    id: "importer",
+                    label: "Importer un fichier",
+                    onSelect: () => inputFichier.current?.click(),
+                  },
+                  {
+                    id: "bibliotheque",
+                    label: "Choisir dans Mes fichiers",
+                    onSelect: () => setBibliothequeOuverte(true),
+                  },
+                ]
+              : []),
+            ...(selectedThread
+              ? [
+                  {
+                    id: "tache",
+                    label: "Planifier une tâche",
+                    onSelect: () =>
+                      setDialog({
+                        conversationId: selectedThread,
+                        type: "schedule",
+                      }),
+                  },
+                ]
+              : []),
+            {
+              id: "source",
+              label: sourceOpen
+                ? "Retirer le lien source"
+                : "Ajouter un lien source",
+              onSelect: () => {
+                if (sourceOpen) setSource("");
+                setSourceOpen(!sourceOpen);
               },
-            ]}
-            label="Ajouter au message"
-            trigger={
-              <Button
-                aria-label="Ajouter au message"
-                className="icon-button"
-                type="button"
-                variant="ghost"
-              >
-                <PlusIcon size={19} />
-              </Button>
-            }
+            },
+          ]}
+          label="Ajouter au message"
+          trigger={
+            <Button
+              aria-label="Ajouter au message"
+              className="icon-button"
+              type="button"
+              variant="ghost"
+            >
+              <PlusIcon size={19} />
+            </Button>
+          }
+        />
+        <span className="wakies-model-picker">
+          <ModelPicker
+            disabled={busy}
+            modeleEffectif={newConvModel || wakie.model || undefined}
+            onCapacitesPieces={setCapacitesFichiers}
+            onChoisir={(choisi) => setNewConvModel(choisi ?? "")}
+            valeur={newConvModel}
           />
-          <span className="wakies-model-picker">
-            <ModelPicker
-              disabled={busy}
-              modeleEffectif={newConvModel || wakie.model || undefined}
-              onCapacitesPieces={setCapacitesFichiers}
-              onChoisir={(choisi) => setNewConvModel(choisi ?? "")}
-              valeur={newConvModel}
-            />
-          </span>
-          <Textarea
-            aria-label={`Message à ${wakie.name}`}
-            disabled={!configured}
-            maxLength={4000}
-            onChange={(e) => {
-              setPrompt(e.target.value);
-              e.target.style.height = "auto";
-              e.target.style.height = `${Math.min(e.target.scrollHeight, 180)}px`;
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                e.currentTarget.form?.requestSubmit();
-              }
-            }}
-            placeholder={
-              configured
-                ? `Message à ${wakie.name}…`
-                : "Votre première conversation démarre après la configuration."
+        </span>
+        <Textarea
+          aria-label={`Message à ${wakie.name}`}
+          disabled={!configured}
+          maxLength={4000}
+          onChange={(e) => {
+            setPrompt(e.target.value);
+            e.target.style.height = "auto";
+            e.target.style.height = `${Math.min(e.target.scrollHeight, 180)}px`;
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              e.currentTarget.form?.requestSubmit();
             }
-            rows={1}
-            value={prompt}
-          />
-          <Button
-            aria-label="Démarrer la conversation"
-            className="send-button"
-            disabled={!configured || busy || !prompt.trim()}
-            type="submit"
-            variant="solid"
-          >
-            <ArrowUpIcon size={19} />
-          </Button>
-        </div>
-      </form>
-    </div>
+          }}
+          placeholder={
+            configured
+              ? `Message à ${wakie.name}…`
+              : "Votre première conversation démarre après la configuration."
+          }
+          rows={1}
+          value={prompt}
+        />
+        <Button
+          aria-label="Démarrer la conversation"
+          className="send-button"
+          disabled={!configured || busy || !prompt.trim()}
+          type="submit"
+          variant="solid"
+        >
+          <ArrowUpIcon size={19} />
+        </Button>
+      </div>
+    </form>
     <div className="starter-suggestions">
       {[
         "Aidez-moi à réfléchir à cela",

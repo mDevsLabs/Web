@@ -263,6 +263,85 @@ export function encodeSummaryEvent(event: SummaryStreamEvent): string {
   return `data: ${JSON.stringify(event)}\n\n`;
 }
 
+function expandCitationIndices(rawInner: string): number[] {
+  const indices: number[] = [];
+  const seen = new Set<number>();
+  const push = (n: number) => {
+    if (Number.isInteger(n) && n >= 1 && !seen.has(n)) {
+      seen.add(n);
+      indices.push(n);
+    }
+  };
+
+  // Découpe séquentielle qui préserve l'ordre entre plages (« 1 à 6 », « 1-3 »)
+  // et numéros isolés (« 4, 6 et 5 »).
+  const tokenPattern = /(\d+)\s*(?:à|au|-|–|—)\s*(\d+)|(\d+)/gi;
+  for (const match of rawInner.matchAll(tokenPattern)) {
+    if (match[1] && match[2]) {
+      const start = Number(match[1]);
+      const end = Number(match[2]);
+      if (start <= end && end - start <= 25) {
+        for (let i = start; i <= end; i += 1) {
+          push(i);
+        }
+      } else {
+        push(start);
+        push(end);
+      }
+    } else if (match[3]) {
+      push(Number(match[3]));
+    }
+  }
+  return indices;
+}
+
+function sanitizeLinkTitle(rawTitle: string, fallback: string): string {
+  const cleaned = rawTitle
+    .replace(/[[\]\r\n]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return cleaned || fallback;
+}
+
+/**
+ * Transforme les citations de sources `[Source 1]`, `[Sources 1 et 2]`,
+ * `[Sources 4, 6 et 5]`, `[Sources 1 à 6]` en titres entre parenthèses avec
+ * hyperliens Markdown cliquables : `([Titre de la source](https://...))`.
+ */
+export function formatSummarySourceCitations(
+  text: string,
+  sources: readonly SummarySource[]
+): string {
+  if (!text || sources.length === 0) {
+    return text;
+  }
+  return text.replace(
+    /\[\s*Sources?\s+([^\]]+?)\s*\](?!\()/gi,
+    (fullMatch, inner: string) => {
+      const indices = expandCitationIndices(inner);
+      if (indices.length === 0) {
+        return fullMatch;
+      }
+      const links: string[] = [];
+      for (const index of indices) {
+        const source = sources[index - 1];
+        if (!source?.url) {
+          continue;
+        }
+        const title = sanitizeLinkTitle(
+          source.title || source.domain,
+          `Source ${index}`
+        );
+        links.push(`[${title}](${source.url})`);
+      }
+      if (links.length === 0) {
+        return fullMatch;
+      }
+      return `(${links.join(", ")})`;
+    }
+  );
+}
+
 /**
  * Lit le flux SSE de la synthèse. Tolérant aux fragments : un chunk réseau peut
  * couper une ligne JSON au milieu, on ne désérialise que les lignes complètes.

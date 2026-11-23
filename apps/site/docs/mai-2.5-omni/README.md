@@ -11,7 +11,7 @@ mAI-2.5-Omni est la déclinaison polyvalente, fluide et ultra-réactive de la g�
 | Entrée image & vision | Oui (Multimodal natif) |
 | Entrée documents & fichiers | Oui |
 | Licence indiquée | Propriétaire |
-| Date de sortie indiquée | 19 novembre 2026 |
+| Date de sortie indiquée | Décembre 2026 |
 
 ## Avancées technologiques majeures
 

@@ -30,7 +30,7 @@ export function MessageReasoning({
       defaultOpen={hasBeenStreaming}
       isStreaming={isLoading}
     >
-      <ReasoningTrigger copyText={reasoning} />
+      <ReasoningTrigger />
       <ReasoningContent>{reasoning}</ReasoningContent>
     </Reasoning>
   );

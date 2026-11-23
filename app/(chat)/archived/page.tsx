@@ -153,7 +153,7 @@ export default function ArchivedPage() {
 
           <div className="mt-5 flex items-center gap-2">
             <div className="relative flex-1 max-w-md">
-              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+              <SearchIcon className="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 size-4 text-muted-foreground" />
               <Input
                 aria-label="Rechercher dans les conversations archivées"
                 className="pl-9 h-9 rounded-xl border-border/60 bg-muted/20 text-sm"

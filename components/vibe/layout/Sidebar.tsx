@@ -18,6 +18,7 @@ import {
   UserIcon,
 } from "@mdevs/icons";
 import type React from "react";
+import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
 import { GlobalSearchBar } from "@/components/vibe/layout/GlobalSearchBar";
@@ -72,6 +73,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const { user, profile, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const { confirm, confirmDialog } = useConfirmDialog();
+
+  const handleConfirmLogout = async () => {
+    const ok = await confirm({
+      cancelLabel: "Annuler",
+      confirmLabel: "Se déconnecter",
+      message:
+        "Votre session unifiée mAI Web et Vibe sera fermée sur cet appareil.",
+      title: "Se déconnecter ?",
+      tone: "danger",
+    });
+    if (ok) {
+      await logout({ fullSignOut: true });
+    }
+  };
 
   const isActive = (path: string, exact?: boolean) =>
     exact ? location.pathname === "/" : location.pathname.startsWith(path);
@@ -261,14 +277,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="hidden xl:flex items-center gap-1">
             <button
               className="text-zinc-400 hover:text-white p-2 rounded-xl hover:bg-zinc-800 transition-all"
-              onClick={logout}
+              onClick={() => void handleConfirmLogout()}
               title="Se déconnecter"
+              type="button"
             >
               <LogOut className="w-4 h-4" />
             </button>
           </div>
         </div>
       </div>
+      {confirmDialog}
     </aside>
   );
 };

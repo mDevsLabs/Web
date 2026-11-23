@@ -45,9 +45,9 @@ export function McpSettingsTab({
 }: McpSettingsTabProps) {
   return (
     <div className="py-2 max-w-3xl">
-      <div className="p-5 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
+      <div className="surface-card flex flex-col gap-5 sm:p-6">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 ring-1 ring-purple-500/20">
+          <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
             <SettingsIcon className="size-5" />
           </div>
           <div>
@@ -59,16 +59,16 @@ export function McpSettingsTab({
           <span
             className={`ml-auto text-xs px-2 py-1 rounded-full border font-medium ${
               mcpKillSwitch
-                ? "bg-red-500/10 text-red-600 border-red-500/20"
-                : "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
+                ? "bg-destructive/10 text-destructive border-destructive/20"
+                : "bg-success/10 text-success border-success/20"
             }`}
           >
             {mcpKillSwitch ? "MCP OFF" : "MCP ON"}
           </span>
         </div>
-        <label className="flex items-center justify-between p-3 rounded-xl border border-red-500/20 bg-red-500/5 cursor-pointer">
+        <label className="flex items-center justify-between p-3 rounded-xl border border-destructive/20 bg-destructive/5 cursor-pointer">
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-red-600">
+            <span className="text-sm font-semibold text-destructive">
               Kill-switch global
             </span>
             <span className="text-xs text-muted-foreground">
@@ -77,7 +77,7 @@ export function McpSettingsTab({
           </div>
           <input
             checked={mcpKillSwitch}
-            className="size-5 accent-red-600"
+            className="size-5 accent-destructive"
             onChange={(e) => setMcpKillSwitch(e.target.checked)}
             type="checkbox"
           />
@@ -180,9 +180,10 @@ export function McpSettingsTab({
             )}
           </Button>
         </div>
-        <div className="p-3 rounded-xl border border-border/40 bg-muted/20 text-[11px] text-muted-foreground">
-          Ces réglages s'appliquent à tous les serveurs. Exports disponibles en
-          JSON/CSV/MD/TXT depuis /mcp et /skills.
+        <div className="surface-muted p-3 text-[11px] text-muted-foreground">
+          Ces réglages s'appliquent à tous les serveurs MCP de votre compte. Les
+          exports JSON/CSV/MD/TXT des serveurs et journaux sont disponibles
+          depuis l'en-tête.
         </div>
       </div>
     </div>

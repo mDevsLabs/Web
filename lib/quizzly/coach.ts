@@ -35,6 +35,63 @@ export const COACH_MESSAGES_MAX = 80;
 export const COACH_CONVERSATIONS_MAX = 40;
 export const COACH_TITLE_MAX = 80;
 export const COACH_MESSAGES_EPINGLES_MAX = 3;
+/** Nombre maximal d'images jointes par message du Coach. */
+export const COACH_ATTACHMENTS_MAX = 4;
+
+export const COACH_IMAGE_CONTENT_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+] as const;
+
+export const COACH_IMAGES_NON_SUPPORTEES =
+  "Ce modèle ne prend pas en charge les images.";
+
+export const coachAttachmentSchema = z.object({
+  contentType: z.enum(COACH_IMAGE_CONTENT_TYPES),
+  name: z.string().trim().min(1).max(255),
+  pathname: z.string().trim().min(1).max(512).optional(),
+  size: z
+    .number()
+    .int()
+    .nonnegative()
+    .max(50 * 1024 * 1024)
+    .optional(),
+  url: z
+    .string()
+    .trim()
+    .url()
+    .refine(
+      (value) => value.startsWith("https://") || value.startsWith("http://"),
+      { message: "URL de pièce jointe invalide." }
+    ),
+});
+
+export type CoachAttachment = z.infer<typeof coachAttachmentSchema>;
+
+export const coachAttachmentsSchema = z
+  .array(coachAttachmentSchema)
+  .max(COACH_ATTACHMENTS_MAX);
+
+export function normaliserPiecesJointesCoach(
+  valeur: unknown
+): CoachAttachment[] {
+  if (!Array.isArray(valeur)) {
+    return [];
+  }
+  const resultat: CoachAttachment[] = [];
+  for (const entree of valeur) {
+    const parsed = coachAttachmentSchema.safeParse(entree);
+    if (parsed.success) {
+      resultat.push(parsed.data);
+      if (resultat.length >= COACH_ATTACHMENTS_MAX) {
+        break;
+      }
+    }
+  }
+  return resultat;
+}
 
 const questionIdSchema = z.string().regex(/^q(?:[1-9]|10)$/);
 
@@ -495,6 +552,7 @@ export function preparerEchangeCoach(params: {
 }
 
 export function messageVisibleCoach(params: {
+  attachments?: readonly CoachAttachment[];
   contexte: ContexteCoach;
   intent: CoachIntent;
   questionId?: string;
@@ -527,14 +585,24 @@ export function messageVisibleCoach(params: {
   if (params.intent === "encourage") {
     return { ok: true, text: "Encourage-moi." };
   }
-  return texteSuivi(params.text);
+  return texteSuivi(params.text, params.attachments?.length ?? 0);
 }
 
 export function texteSuivi(
-  text: string | undefined
+  text: string | undefined,
+  attachmentsCount = 0
 ): { message: string; ok: false } | { ok: true; text: string } {
   const propre = text?.trim() ?? "";
   if (!propre) {
+    if (attachmentsCount > 0) {
+      return {
+        ok: true,
+        text:
+          attachmentsCount > 1
+            ? "Peux-tu m'aider avec ces images ?"
+            : "Peux-tu m'aider avec cette image ?",
+      };
+    }
     return { message: "Écris un message.", ok: false };
   }
   if (propre.length > COACH_MESSAGE_MAX) {

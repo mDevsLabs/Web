@@ -278,10 +278,13 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
     }
   }, [coeurs, data]);
 
+  // Accueil et Coach affichent les GIF fond blanc de public/quizzly : on force
+  // un fond blanc pur même en mode sombre afin d'éviter tout cadre visible.
+  const fondBlancForce =
+    pathname === "/quizzly" || pathname.startsWith("/quizzly/coach");
   const aQuizzyVisible =
-    pathname === "/quizzly" ||
+    fondBlancForce ||
     pathname.startsWith("/quizzly/quiz") ||
-    pathname.startsWith("/quizzly/coach") ||
     pathname.startsWith("/quizzly/parcours");
 
   return (
@@ -289,7 +292,10 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
       <div
         className={cn(
           "quizzly-root flex h-dvh overflow-hidden text-foreground",
-          aQuizzyVisible && "bg-white dark:bg-[#0b1120] [background-image:none]"
+          fondBlancForce
+            ? "bg-white text-slate-900 [background-image:none]"
+            : aQuizzyVisible &&
+                "bg-white dark:bg-[#0b1120] [background-image:none]"
         )}
       >
         <aside className="hidden w-60 shrink-0 flex-col gap-4 border-r border-q-level/20 bg-q-level/8 px-3 py-4 md:flex">
@@ -390,7 +396,9 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
           <main
             className={cn(
               "min-h-0 flex-1 overflow-auto pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0",
-              aQuizzyVisible && "bg-white dark:bg-[#0b1120]"
+              fondBlancForce
+                ? "bg-white text-slate-900"
+                : aQuizzyVisible && "bg-white dark:bg-[#0b1120]"
             )}
           >
             {children}

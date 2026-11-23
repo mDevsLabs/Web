@@ -250,7 +250,7 @@ export const FALLBACK_MODELS: ChatModel[] = [
       modality: "text+image->text",
       output_modalities: ["text"],
     },
-    description: "Modèle rapide et polyvalent Gemma 4 de Google (Gratuit)",
+    description: "Modèle rapide et polyvalent Gemma 4 de Google",
     id: "google/gemma-4-26b-a4b-it:free",
     isFree: true,
     maxContext: 262_144,
@@ -272,7 +272,7 @@ export const FALLBACK_MODELS: ChatModel[] = [
       modality: "text+image->text",
       output_modalities: ["text"],
     },
-    description: "Modèle dense haute qualité Gemma 4 31B de Google (Gratuit)",
+    description: "Modèle dense haute qualité Gemma 4 31B de Google",
     id: "google/gemma-4-31b-it:free",
     isFree: true,
     maxContext: 262_144,
@@ -294,7 +294,7 @@ export const FALLBACK_MODELS: ChatModel[] = [
       modality: "text->text",
       output_modalities: ["text"],
     },
-    description: "Modèle rapide à long contexte de NVIDIA (Gratuit)",
+    description: "Modèle rapide à long contexte de NVIDIA",
     id: "nvidia/nemotron-3.5-lightning:free",
     isFree: true,
     maxContext: 1_000_000,
@@ -316,7 +316,7 @@ export const FALLBACK_MODELS: ChatModel[] = [
       modality: "text->text",
       output_modalities: ["text"],
     },
-    description: "Modèle de raisonnement avancé Nemotron 3 Ultra (Gratuit)",
+    description: "Modèle de raisonnement avancé Nemotron 3 Ultra",
     id: "nvidia/nemotron-3-ultra-550b-a55b:free",
     isFree: true,
     maxContext: 1_000_000,
@@ -356,22 +356,31 @@ export function excludeBatchModels<T extends { id: string }>(
   return models.filter((model) => !isBatchModelId(model.id));
 }
 
+/**
+ * Supprime tous les commentaires entre parenthèses d'un nom de modèle
+ * (ex. "(Free)", "(Preview)", "(Raisonnement)") et normalise les espaces.
+ */
+export function stripModelNameParentheses(rawName: string): string {
+  return rawName
+    .replace(/\s*\([^)]*\)/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 // Nom affichable : retire le préfixe fournisseur ("Poolside: Laguna xs 2.1" ->
-// "Laguna xs 2.1") et suffixe "(Free)" dérivé de l'id uniquement (idempotent).
+// "Laguna xs 2.1"), le suffixe ":free" et tout commentaire entre parenthèses.
 export function normalizeModelDisplayName(
   id: string,
   rawName?: string
 ): string {
-  let name =
+  const base =
     rawName?.trim() && rawName.trim() !== id
       ? rawName.trim()
       : formatModelName(id).name;
-  name = name
-    .replace(/^[^:]{1,30}:\s+/, "")
-    .replace(/\s*\((free|gratuit|free tier)\)/gi, "")
-    .replace(/:free/gi, "")
-    .trim();
-  return id.toLowerCase().includes("free") ? `${name} (Free)` : name;
+  const cleaned = stripModelNameParentheses(
+    base.replace(/^[^:]{1,30}:\s+/, "").replace(/:free/gi, "")
+  );
+  return cleaned || formatModelName(id).name;
 }
 
 export function formatModelName(modelId: string): {
@@ -392,7 +401,7 @@ export function formatModelName(modelId: string): {
     "claude-3-5-haiku": "Claude 3.5 Haiku",
     "claude-3-5-sonnet": "Claude 3.5 Sonnet",
     "deepseek-chat": "DeepSeek Chat",
-    "deepseek-r1": "DeepSeek R1 (Raisonnement)",
+    "deepseek-r1": "DeepSeek R1",
     "deepseek-v3": "DeepSeek V3",
     "gemini-1.5-flash": "Gemini 1.5 Flash",
     "gemini-1.5-pro": "Gemini 1.5 Pro",
@@ -428,7 +437,7 @@ export function formatModelName(modelId: string): {
 
   return {
     isFree,
-    name: cleanName,
+    name: stripModelNameParentheses(cleanName),
     provider,
   };
 }

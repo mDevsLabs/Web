@@ -1,13 +1,14 @@
 import "server-only";
 
 import { logError } from "@/lib/api/error-response";
+import { buildAudioDataUrl, resolveAudioMimeType } from "@/lib/audio/format";
 import { getMaiUser } from "@/lib/auth/session";
 import { getUserPreferences } from "@/lib/db/queries";
 import {
-  addWeeklySpeechUsage,
   estimateSpeechTokens,
-  getWeeklySpeechUsage,
   recordSpeechGeneration,
+  releaseWeeklySpeechQuota,
+  reserveWeeklySpeechQuota,
 } from "@/lib/db/queries/generations";
 import { getTierSpeechWeeklyLimit } from "@/lib/plans/tier-limits";
 
@@ -61,41 +62,52 @@ export async function generateAudioViaMai(params: {
       return { error: "Le texte à synthétiser est obligatoire." };
     }
 
-    // Quota Speech hebdomadaire du forfait, contrôlé côté serveur AVANT l'appel
-    // payant. Forfait illisible : limites Free (les plus strictes). Lecture de
-    // quota en échec : refus (fail-closed), comme la route /api/audio/generations.
+    const openRouterApiKey = process.env.OPENROUTER_API_KEY;
+    if (!openRouterApiKey) {
+      return { error: "Synthèse vocale indisponible pour le moment." };
+    }
+
+    // Réservation atomique et verrouillée du quota Speech hebdomadaire AVANT
+    // l'appel payant (BUG-001 & BUG-003). En cas d'échec de lecture/réservation
+    // en base, on refuse (fail-closed).
     const user = await getMaiUser(token).catch(() => null);
     const weeklyLimit = getTierSpeechWeeklyLimit(user?.tier);
     const tokensUsed = estimateSpeechTokens(text);
-    let usedThisWeek = 0;
+    let reservation: Awaited<ReturnType<typeof reserveWeeklySpeechQuota>>;
     try {
-      const usage = await getWeeklySpeechUsage([
-        user?.id,
-        user?.email,
-        user?.username,
-        params.userId,
-      ]);
-      usedThisWeek = usage.tokensUsed;
+      reservation = await reserveWeeklySpeechQuota({
+        tokens: tokensUsed,
+        userId: params.userId,
+        userKeys: [user?.id, user?.email, user?.username, params.userId],
+        weeklyLimit,
+      });
     } catch (quotaError) {
-      logError("Lecture du quota Speech impossible", quotaError);
+      logError("Réservation du quota Speech impossible", quotaError);
       return {
         error:
           "Quota Speech momentanément invérifiable. Réessayez dans un instant.",
       };
     }
-    if (weeklyLimit > 0 && usedThisWeek + tokensUsed > weeklyLimit) {
+    if (!reservation.ok) {
       return {
         error:
           "Votre quota hebdomadaire de synthèse vocale est épuisé. Réinitialisation lundi à minuit UTC.",
-        limit: weeklyLimit,
-        used: usedThisWeek,
+        limit: reservation.limit,
+        used: reservation.used,
       };
     }
 
-    const openRouterApiKey = process.env.OPENROUTER_API_KEY;
-    if (!openRouterApiKey) {
-      return { error: "Synthèse vocale indisponible pour le moment." };
-    }
+    const releaseReservation = async () => {
+      try {
+        await releaseWeeklySpeechQuota({
+          tokens: tokensUsed,
+          userId: params.userId,
+          weekStart: reservation.weekStart,
+        });
+      } catch (releaseError) {
+        logError("Erreur libération réservation quota Speech", releaseError);
+      }
+    };
 
     // Préférences utilisateur : lecture directe en base Neon
     let targetModel = "deepgram/flux-tts:free";
@@ -116,27 +128,34 @@ export async function generateAudioViaMai(params: {
       ? Math.min(Math.max(numericSpeed, SPEECH_SPEED_MIN), SPEECH_SPEED_MAX)
       : 1.0;
 
-    const res = await fetch("https://openrouter.ai/api/v1/audio/speech", {
-      body: JSON.stringify({
-        input: text,
-        model: targetModel,
-        response_format: "mp3",
-        speed: safeSpeed,
-        voice: targetVoice,
-      }),
-      headers: {
-        Authorization: `Bearer ${openRouterApiKey}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://mai.mdevs.fr",
-        "X-Title": "mAI Speech",
-      },
-      method: "POST",
-      signal: AbortSignal.timeout(SPEECH_UPSTREAM_TIMEOUT_MS),
-    });
+    let res: Response;
+    try {
+      res = await fetch("https://openrouter.ai/api/v1/audio/speech", {
+        body: JSON.stringify({
+          input: text,
+          model: targetModel,
+          response_format: "mp3",
+          speed: safeSpeed,
+          voice: targetVoice,
+        }),
+        headers: {
+          Authorization: `Bearer ${openRouterApiKey}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "https://mai.mdevs.fr",
+          "X-Title": "mAI Speech",
+        },
+        method: "POST",
+        signal: AbortSignal.timeout(SPEECH_UPSTREAM_TIMEOUT_MS),
+      });
+    } catch (fetchError) {
+      await releaseReservation();
+      throw fetchError;
+    }
 
     // Le détail de l'erreur amont reste dans les journaux : il n'est jamais
     // relayé tel quel au modèle ni à l'utilisateur.
     if (!res.ok) {
+      await releaseReservation();
       logError("Erreur amont synthèse vocale", { status: res.status });
       return { error: SPEECH_GENERIC_ERROR };
     }
@@ -144,33 +163,52 @@ export async function generateAudioViaMai(params: {
     const contentType = res.headers.get("content-type") || "";
     let audioUrl = "";
 
-    if (contentType.includes("application/json")) {
-      const data = (await res.json().catch(() => ({}))) as {
-        audio_url?: string;
-        audioContent?: string;
-      };
-      audioUrl =
-        data?.audio_url ||
-        (data?.audioContent
-          ? `data:audio/mp3;base64,${data.audioContent}`
-          : "");
-    } else {
-      const arrayBuf = await res.arrayBuffer();
-      if (arrayBuf.byteLength > 0) {
-        const base64 = Buffer.from(arrayBuf).toString("base64");
-        audioUrl = `data:audio/mp3;base64,${base64}`;
+    try {
+      if (contentType.includes("application/json")) {
+        const data = (await res.json().catch(() => ({}))) as {
+          audio_url?: string;
+          audioContent?: string;
+          content_type?: string;
+          format?: string;
+          mime_type?: string;
+        };
+        const mimeType = resolveAudioMimeType({
+          jsonFormat: data?.format,
+          jsonMimeType: data?.mime_type ?? data?.content_type,
+          requestedFormat: "mp3",
+        });
+        audioUrl =
+          data?.audio_url ||
+          (data?.audioContent
+            ? buildAudioDataUrl(data.audioContent, mimeType)
+            : "");
+      } else {
+        const arrayBuf = await res.arrayBuffer();
+        if (arrayBuf.byteLength > 0) {
+          const mimeType = resolveAudioMimeType({
+            requestedFormat: "mp3",
+            upstreamContentType: contentType,
+          });
+          audioUrl = buildAudioDataUrl(
+            Buffer.from(arrayBuf).toString("base64"),
+            mimeType
+          );
+        }
       }
+    } catch (readError) {
+      await releaseReservation();
+      throw readError;
     }
 
     if (!audioUrl) {
+      await releaseReservation();
       return { error: "Aucun flux audio retourné." };
     }
 
-    // Comptabilisation du quota + historique (table mprojects_speech_generations).
-    // Un échec d'écriture ne doit pas faire perdre l'audio déjà généré.
-    const [usageWrite, historyWrite] = await Promise.allSettled([
-      addWeeklySpeechUsage(params.userId, tokensUsed),
-      recordSpeechGeneration({
+    // Le quota est déjà acté avant l'appel externe : l'historique ne peut plus
+    // annuler la comptabilisation en cas d'erreur d'écriture.
+    try {
+      await recordSpeechGeneration({
         audioUrl,
         characterCount: text.length,
         inputText: text,
@@ -178,13 +216,9 @@ export async function generateAudioViaMai(params: {
         tokensCount: tokensUsed,
         userId: params.userId,
         voice: targetVoice,
-      }),
-    ]);
-    if (usageWrite.status === "rejected") {
-      logError("Erreur comptabilisation quota Speech", usageWrite.reason);
-    }
-    if (historyWrite.status === "rejected") {
-      logError("Erreur enregistrement audio en base", historyWrite.reason);
+      });
+    } catch (historyErr) {
+      logError("Erreur enregistrement audio en base", historyErr);
     }
 
     params.onAudio?.(audioUrl);

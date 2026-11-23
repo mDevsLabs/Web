@@ -134,54 +134,6 @@ export function AppSwitcherMenu({
     [currentApp, isAuthed, isDesktop, openCoder, resetChat, router]
   );
 
-  const handleOpenCli = useCallback(async () => {
-    // VÉRIFICATION OBLIGATOIRE : Bloquer si non connecté à un compte mAI
-    if (isAuthed !== true) {
-      if (isAuthed === undefined) {
-        toast.info(
-          "La connexion est en cours de vérification. Réessayez dans un instant."
-        );
-        return;
-      }
-      toast.error(
-        "Veuillez vous connecter à votre compte mAI pour accéder au CLI.",
-        {
-          action: {
-            label: "Connexion",
-            onClick: () => router.push("/login"),
-          },
-          duration: 5000,
-        }
-      );
-      return;
-    }
-
-    if (!isDesktop) {
-      toast.error(
-        "Le CLI mAI nécessite l'application de bureau mAI. Téléchargez l'application de bureau pour y accéder.",
-        {
-          action: {
-            label: "Télécharger",
-            onClick: () => router.push("/downloads"),
-          },
-          duration: 5000,
-        }
-      );
-      return;
-    }
-
-    try {
-      const result = await window.maiDesktop?.openCli?.();
-      if (!result?.success) {
-        toast.error(
-          result?.error || "Mettez à jour mAI Bureau pour ouvrir le CLI."
-        );
-      }
-    } catch {
-      toast.error("Impossible d'ouvrir le terminal CLI.");
-    }
-  }, [isAuthed, isDesktop, router]);
-
   return (
     <DropdownMenu>
       {children ? (
@@ -225,16 +177,13 @@ export function AppSwitcherMenu({
 
         {/*
           Les entrées sont rendues par le module partagé : l'ordre du menu
-          (mAI, Site, Vibe, Coder, CLI, Blackline) n'existe qu'à un seul
+          (mAI, Site, Vibe, Coder, Blackline, Quizzly) n'existe qu'à un seul
           endroit, et les trois rendus du menu ne peuvent plus diverger.
         */}
         <AppMenuItems
           currentApp={currentApp}
           isAuthenticated={isAuthed}
           isDesktop={isDesktop}
-          onOpenCli={() => {
-            void handleOpenCli();
-          }}
           onSelectApp={(key, path) => {
             handleAppSelect(key, path);
           }}

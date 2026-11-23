@@ -5,7 +5,6 @@ import {
   GaugeIcon as Gauge,
   ImageIcon,
   MonitorIcon as Monitor,
-  RefreshCwIcon as RefreshCw,
   UserIcon as User,
   Volume2Icon as Volume2,
 } from "@mdevs/icons";
@@ -17,7 +16,6 @@ export const ACCOUNT_SECTION_IDS = [
   "usage-mai",
   "usage-cloud",
   "appareils",
-  "resets",
 ] as const;
 
 export type AccountSectionId = (typeof ACCOUNT_SECTION_IDS)[number];
@@ -33,7 +31,6 @@ const ITEMS: Array<{
   { icon: Gauge, id: "usage-mai", label: "Usage mAI" },
   { icon: Cloud, id: "usage-cloud", label: "Stockage Cloud" },
   { icon: Monitor, id: "appareils", label: "Appareils Connectés" },
-  { icon: RefreshCw, id: "resets", label: "Réinitialisations" },
 ];
 
 export function AccountNavigation({

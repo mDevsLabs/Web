@@ -2,6 +2,7 @@
 
 import {
   CheckIcon,
+  CopyIcon,
   LanguagesIcon,
   Loader2Icon,
   Volume2Icon,
@@ -147,7 +148,7 @@ export function MessageTranslateMenu({
       <DropdownMenuTrigger asChild>
         <button
           aria-label="Traduire ce message"
-          className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40 disabled:opacity-50"
+          className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/75 hover:text-foreground hover:bg-muted/40 disabled:opacity-50"
           data-testid="message-translate"
           disabled={isPending}
           title="Traduire ce message"
@@ -276,28 +277,7 @@ export function MessageTranslationBlock({
             title="Copier la traduction"
             type="button"
           >
-            <svg
-              aria-hidden="true"
-              className="size-3.5"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <rect
-                height="13"
-                rx="2"
-                stroke="currentColor"
-                strokeWidth="2"
-                width="13"
-                x="8"
-                y="8"
-              />
-              <path
-                d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeWidth="2"
-              />
-            </svg>
+            <CopyIcon className="size-3.5" />
           </button>
         </div>
       </div>

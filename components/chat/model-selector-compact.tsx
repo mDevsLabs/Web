@@ -66,6 +66,7 @@ import {
   DEFAULT_CHAT_MODEL,
   isBatchModelId,
   type ModelCapabilities,
+  stripModelNameParentheses,
 } from "@/lib/ai/models";
 import {
   REASONING_LEVEL_DESCRIPTIONS,
@@ -507,7 +508,8 @@ function PureModelSelectorCompact({
     for (const m of rawModels) {
       if (m?.id && !isBatchModelId(m.id) && !seen.has(m.id)) {
         seen.add(m.id);
-        res.push(m);
+        const cleanName = m.name ? stripModelNameParentheses(m.name) : m.name;
+        res.push(cleanName === m.name ? m : { ...m, name: cleanName });
       }
     }
     return res;

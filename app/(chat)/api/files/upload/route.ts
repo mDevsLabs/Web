@@ -5,6 +5,7 @@ import { z } from "zod";
 
 import { auth } from "@/app/(auth)/auth";
 import { errorResponse, logError } from "@/lib/api/error-response";
+import { syncUploadedImageToLibrary } from "@/lib/files/library-sync";
 
 const ALLOWED_UPLOAD_TYPES = [
   "image/jpeg",
@@ -157,7 +158,26 @@ export async function POST(request: Request) {
         validUntil,
       });
 
-      return NextResponse.json({ ...data, url: presignedUrl });
+      // Toute image importée dans mAI est enregistrée en best-effort dans la
+      // Bibliothèque si le quota disponible le permet (sans jamais bloquer l'envoi).
+      const contentType = file.type || data.contentType || "";
+      const library = contentType.toLowerCase().startsWith("image/")
+        ? await syncUploadedImageToLibrary({
+            buffer: fileBuffer,
+            contentType,
+            filename,
+            size: file.size,
+          }).catch(() => ({
+            reason: "unavailable" as const,
+            saved: false as const,
+          }))
+        : undefined;
+
+      return NextResponse.json({
+        ...data,
+        ...(library ? { library } : {}),
+        url: presignedUrl,
+      });
     } catch (error) {
       if (uploadedUrl) {
         await del(uploadedUrl).catch(() => {});

@@ -3262,6 +3262,18 @@ export type QuizzlyCoachConversation = InferSelectModel<
 export const quizzlyCoachMessage = pgTable(
   "QuizzlyCoachMessage",
   {
+    attachments: jsonb("attachments")
+      .$type<
+        Array<{
+          contentType: string;
+          name: string;
+          pathname?: string;
+          size?: number;
+          url: string;
+        }>
+      >()
+      .notNull()
+      .default([]),
     conversationId: uuid("conversationId").notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),

@@ -477,49 +477,6 @@ export function AppSidebar({
     [handleNavClick, isDesktop, isUserLoggedIn, openCoder, resetChat, router]
   );
 
-  const handleOpenCli = useCallback(async () => {
-    handleNavClick();
-
-    // Bloquer le CLI si non connecté à son compte mAI
-    if (!isUserLoggedIn) {
-      toast.error(
-        "Veuillez vous connecter à votre compte mAI pour accéder au CLI.",
-        {
-          action: {
-            label: "Connexion",
-            onClick: () => router.push("/login"),
-          },
-          duration: 5000,
-        }
-      );
-      return;
-    }
-
-    if (!isDesktop) {
-      toast.error(
-        "Le CLI mAI nécessite l'application de bureau mAI. Téléchargez l'application de bureau pour y accéder.",
-        {
-          action: {
-            label: "Télécharger",
-            onClick: () => router.push("/downloads"),
-          },
-          duration: 5000,
-        }
-      );
-      return;
-    }
-    try {
-      const result = await window.maiDesktop?.openCli?.();
-      if (!result?.success) {
-        toast.error(
-          result?.error || "Mettez à jour mAI Bureau pour ouvrir le CLI."
-        );
-      }
-    } catch {
-      toast.error("Impossible d'ouvrir le terminal CLI.");
-    }
-  }, [handleNavClick, isDesktop, isUserLoggedIn, router]);
-
   const handleNewChat = useCallback(() => {
     handleNavClick();
     resetChat();
@@ -578,9 +535,6 @@ export function AppSidebar({
                       currentApp={currentApp}
                       isAuthenticated={sidebarAuthState}
                       isDesktop={isDesktop}
-                      onOpenCli={() => {
-                        void handleOpenCli();
-                      }}
                       onSelectApp={(_key, path) => {
                         handleAppSelect(path);
                       }}
@@ -628,9 +582,6 @@ export function AppSidebar({
                     currentApp={currentApp}
                     isAuthenticated={sidebarAuthState}
                     isDesktop={isDesktop}
-                    onOpenCli={() => {
-                      void handleOpenCli();
-                    }}
                     onSelectApp={(_key, path) => {
                       handleAppSelect(path);
                     }}

@@ -1,3 +1,4 @@
+@layer theme, base, wakies-base, mdevs, components, utilities;
 @import "tailwindcss";
 @import "katex/dist/katex.min.css";
 
@@ -1009,7 +1010,11 @@ html[data-economy="true"] *::after {
 /** Champ de saisie Liquid Glass : le focus est porté par l'anneau, pas par la bordure. */
 @utility field-input {
   box-shadow: inset 0 1px 0 var(--md-highlight);
-  @apply w-full rounded-lg border border-border/80 bg-background/85 px-3 py-2.5 text-sm outline-none transition-all backdrop-blur-sm;
+  @apply w-full rounded-lg border border-border/80 bg-background/85 text-sm outline-none transition-all backdrop-blur-sm;
+  :where(&) {
+    padding-inline: 0.75rem;
+    padding-block: 0.625rem;
+  }
   &:focus-visible {
     border-color: color-mix(in oklab, var(--foreground) 30%, var(--border));
     box-shadow:

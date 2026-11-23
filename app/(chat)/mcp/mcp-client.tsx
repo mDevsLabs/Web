@@ -3,12 +3,8 @@ import {
   ActivityIcon,
   BookOpenIcon,
   CpuIcon,
-  CreditCardIcon,
-  DatabaseIcon,
   DownloadIcon,
-  FileTextIcon,
   PlusIcon,
-  SearchIcon,
   ServerIcon,
   SettingsIcon,
   StoreIcon,
@@ -22,11 +18,23 @@ import { PageBackButton } from "@/components/chat/page-back-button";
 import { McpInspectToolsModal } from "@/components/mcp/mcp-inspect-modal";
 import { McpLibraryTab } from "@/components/mcp/mcp-library-tab";
 import { McpLogsTab } from "@/components/mcp/mcp-logs-tab";
-import { McpServerModal } from "@/components/mcp/mcp-server-modal";
+import {
+  McpServerModal,
+  type ParsedMcpJsonImport,
+} from "@/components/mcp/mcp-server-modal";
 import { McpServersTab } from "@/components/mcp/mcp-servers-tab";
 import { McpSettingsTab } from "@/components/mcp/mcp-settings-tab";
 import { McpStoreTab } from "@/components/mcp/mcp-store-tab";
 import { McpTutorialTab } from "@/components/mcp/mcp-tutorial-tab";
+import {
+  MCP_APPROVALS,
+  MCP_AUTH_TYPES,
+  MCP_TRANSPORTS,
+  type McpEnvPair,
+  type McpTemplateRow,
+  pickOption,
+  STORE_CONNECTORS,
+} from "@/components/mcp/mcp-types";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -47,92 +55,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
-import type { McpLog, McpServer } from "@/lib/db/schema";
+import type { McpLogDto, McpServerDto } from "@/lib/mcp/dto";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
-
-// Catalogue MCP servi par /api/mcp/templates : il provient du catalogue statique
-// (lib/mcp-templates), source de vérité unique. Aucune liste locale de modèles
-// n'est maintenue ici, sinon elle diverge (c'était le cas des presets et du
-// Store, dont 5 connecteurs sur 6 ne résolvaient aucun template).
-type McpTemplateRow = {
-  activation: "ready" | "requires_oauth_flow" | "requires_vetted_stdio";
-  args: string;
-  authType: string;
-  command: string;
-  description: string;
-  icon: string;
-  id: string;
-  minTier: string;
-  name: string;
-  readOnly: boolean;
-  requireApproval: string;
-  tags: string[];
-  transport: string;
-  url: string;
-};
-
-// Visuel des connecteurs mis en avant dans le Store : appariement par
-// identifiant de catalogue (et non par nom, qui n'était pas stable).
-const STORE_CONNECTORS: ReadonlyArray<{
-  color: string;
-  highlight: string;
-  icon: React.ComponentType<any>;
-  templateId: string;
-  tint: string;
-}> = [
-  {
-    color: "text-violet-600 dark:text-violet-400",
-    highlight: "Docs & bases Notion",
-    icon: FileTextIcon,
-    templateId: "notion",
-    tint: "bg-violet-500/10",
-  },
-  {
-    color: "text-orange-600 dark:text-orange-400",
-    highlight: "Recherche web privée",
-    icon: SearchIcon,
-    templateId: "brave-search",
-    tint: "bg-orange-500/10",
-  },
-  {
-    color: "text-cyan-600 dark:text-cyan-400",
-    highlight: "PostgreSQL hébergé",
-    icon: DatabaseIcon,
-    templateId: "supabase",
-    tint: "bg-cyan-500/10",
-  },
-  {
-    color: "text-sky-600 dark:text-sky-400",
-    highlight: "Paiements & factures",
-    icon: CreditCardIcon,
-    templateId: "stripe",
-    tint: "bg-sky-500/10",
-  },
-];
-
-// Garde-fous de typage pour les valeurs libres du catalogue (aucun `any`).
-const MCP_TRANSPORTS = ["sse", "http", "stdio", "websocket"] as const;
-const MCP_AUTH_TYPES = [
-  "none",
-  "bearer",
-  "basic",
-  "oauth2",
-  "custom_headers",
-] as const;
-const MCP_APPROVALS = ["always_allow", "ask_permission", "write_only"] as const;
-
-function pickOption<T extends readonly string[]>(
-  options: T,
-  value: unknown,
-  fallback: T[number]
-): T[number] {
-  return typeof value === "string" && options.includes(value as T[number])
-    ? (value as T[number])
-    : fallback;
-}
 export default function McpClient({
   embedded = false,
   initialCreate = false,
@@ -147,13 +74,13 @@ export default function McpClient({
     isLoading,
     mutate: mutateServers,
   } = useSWR<{
-    servers: McpServer[];
+    servers: McpServerDto[];
     stats: { servers: number; totalCalls: number };
   }>("/api/mcp", fetcher);
   const [activeTab, setActiveTab] = useState<
     "store" | "servers" | "library" | "tutorial" | "logs" | "settings"
   >("servers");
-  const { data: logs = [], mutate: mutateLogs } = useSWR<McpLog[]>(
+  const { data: logs = [], mutate: mutateLogs } = useSWR<McpLogDto[]>(
     "/api/mcp/logs",
     fetcher,
     {
@@ -192,9 +119,14 @@ export default function McpClient({
     null
   );
   const [isServerModalOpen, setIsServerModalOpen] = useState(initialCreate);
-  const [editingServer, setEditingServer] = useState<McpServer | null>(null);
-  const [serverToDelete, setSkillToDelete] = useState<McpServer | null>(null);
-  const [isInspectingTools, setIsInspectingTools] = useState<McpServer | null>(
+  const [editingServer, setEditingServer] = useState<McpServerDto | null>(null);
+  const [serverToDelete, setServerToDelete] = useState<McpServerDto | null>(
+    null
+  );
+  const [isInspectingTools, setIsInspectingTools] =
+    useState<McpServerDto | null>(null);
+  const [testingServerId, setTestingServerId] = useState<string | null>(null);
+  const [refreshingServerId, setRefreshingServerId] = useState<string | null>(
     null
   );
   const [formName, setFormName] = useState("");
@@ -211,15 +143,22 @@ export default function McpClient({
   const [formToken, setFormToken] = useState("");
   const [formUsername, setFormUsername] = useState("");
   const [formPassword, setFormPassword] = useState("");
+  const [formClientId, setFormClientId] = useState("");
+  const [formClientSecret, setFormClientSecret] = useState("");
+  const [formTokenUrl, setFormTokenUrl] = useState("");
   const [formHeaders, setFormHeaders] = useState("");
   const [formRequireApproval, setFormRequireApproval] = useState<
     "always_allow" | "ask_permission" | "write_only"
   >("write_only");
   const [formTimeoutMs, setFormTimeoutMs] = useState(15_000);
   const [formRateLimit, setFormRateLimit] = useState(60);
-  const [formEnvPairs, setFormEnvPairs] = useState<
-    Array<{ k: string; v: string }>
+  const [formEnvPairs, setFormEnvPairs] = useState<McpEnvPair[]>([]);
+  const [removedSecrets, setRemovedSecrets] = useState<
+    Array<{ kind: "auth" | "env" | "header"; key: string }>
   >([]);
+  const [templateSecretDrafts, setTemplateSecretDrafts] = useState<
+    Record<string, string>
+  >({});
   const [logServerFilter, setLogServerFilter] = useState("");
   const [logToolFilter, setLogToolFilter] = useState("");
   const [logActionFilter, setLogActionFilter] = useState("");
@@ -327,6 +266,9 @@ export default function McpClient({
     setFormToken("");
     setFormUsername("");
     setFormPassword("");
+    setFormClientId("");
+    setFormClientSecret("");
+    setFormTokenUrl("");
     setFormHeaders("");
     setFormRequireApproval(
       pickOption(MCP_APPROVALS, template?.requireApproval, "write_only")
@@ -334,37 +276,125 @@ export default function McpClient({
     setFormTimeoutMs(15_000);
     setFormRateLimit(60);
     setFormEnvPairs([]);
+    setRemovedSecrets([]);
+    setTemplateSecretDrafts({});
     setIsServerModalOpen(true);
   };
-  const handleEditServer = (s: McpServer) => {
+  const handleEditServer = (s: McpServerDto) => {
     setEditingServer(s);
     setTestResult(null);
     setFormName(s.name);
     setFormDescription(s.description ?? "");
-    setFormTransport((s.transport as any) ?? "sse");
+    setFormTransport(pickOption(MCP_TRANSPORTS, s.transport, "sse"));
     setFormUrl(s.url ?? "");
     setFormCommand(s.command ?? "");
-    setFormArgs(Array.isArray(s.args) ? (s.args as string[]).join(" ") : "");
-    setFormAuthType((s.authType as any) ?? "none");
-    setFormToken((s.authConfig as any)?.token ?? "");
-    setFormUsername((s.authConfig as any)?.username ?? "");
-    setFormPassword((s.authConfig as any)?.password ?? "");
-    setFormHeaders(
-      s.headers && Object.keys(s.headers).length > 0
-        ? JSON.stringify(s.headers, null, 2)
-        : ""
+    setFormArgs(Array.isArray(s.args) ? s.args.join(" ") : "");
+    setFormAuthType(pickOption(MCP_AUTH_TYPES, s.authType, "none"));
+    // Les secrets vivent chiffrés côté serveur : l'édition affiche les clés
+    // déjà configurées via `secretKeys` et ne demande que les nouvelles valeurs.
+    setFormToken("");
+    setFormUsername("");
+    setFormPassword("");
+    setFormClientId("");
+    setFormClientSecret("");
+    setFormTokenUrl("");
+    setFormHeaders("");
+    setFormRequireApproval(
+      pickOption(MCP_APPROVALS, s.requireApproval, "write_only")
     );
-    setFormRequireApproval((s.requireApproval as any) ?? "write_only");
-    setFormTimeoutMs((s as any).timeoutMs ?? 15_000);
-    setFormRateLimit((s as any).rateLimitPerMin ?? 60);
-    const env = (s.env as Record<string, string>) ?? {};
-    setFormEnvPairs(Object.entries(env).map(([k, v]) => ({ k, v: String(v) })));
+    setFormTimeoutMs(s.timeoutMs ?? 15_000);
+    setFormRateLimit(s.rateLimitPerMin ?? 60);
+    setFormEnvPairs(
+      (s.secretKeys?.env ?? []).map((key) => ({
+        configured: true,
+        k: key,
+        v: "",
+      }))
+    );
+    setRemovedSecrets([]);
+    setTemplateSecretDrafts({});
     setIsServerModalOpen(true);
+  };
+  const handleDuplicateServer = (s: McpServerDto) => {
+    setEditingServer(null);
+    setTestResult(null);
+    setFormName(`${s.name} (copie)`);
+    setFormDescription(s.description ?? "");
+    setFormTransport(pickOption(MCP_TRANSPORTS, s.transport, "http"));
+    setFormUrl(s.url ?? "");
+    setFormCommand(s.command ?? "");
+    setFormArgs(Array.isArray(s.args) ? s.args.join(" ") : "");
+    setFormAuthType(pickOption(MCP_AUTH_TYPES, s.authType, "none"));
+    setFormToken("");
+    setFormUsername("");
+    setFormPassword("");
+    setFormClientId("");
+    setFormClientSecret("");
+    setFormTokenUrl("");
+    setFormHeaders("");
+    setFormRequireApproval(
+      pickOption(MCP_APPROVALS, s.requireApproval, "write_only")
+    );
+    setFormTimeoutMs(s.timeoutMs ?? 15_000);
+    setFormRateLimit(s.rateLimitPerMin ?? 60);
+    setFormEnvPairs([]);
+    setRemovedSecrets([]);
+    setTemplateSecretDrafts({});
+    setIsServerModalOpen(true);
+  };
+  const handleApplyJsonImport = (imported: ParsedMcpJsonImport) => {
+    if (imported.name) setFormName(imported.name);
+    if (imported.transport) setFormTransport(imported.transport);
+    if (imported.url !== undefined) setFormUrl(imported.url);
+    if (imported.command !== undefined) setFormCommand(imported.command);
+    if (imported.args !== undefined) setFormArgs(imported.args);
+    if (imported.env) setFormEnvPairs(imported.env);
+    if (imported.headers) {
+      setFormHeaders(imported.headers);
+      setFormAuthType("custom_headers");
+    }
+    toast.success("Configuration JSON importée dans le formulaire.");
+  };
+  const handleMarkRemoveSecret = (
+    kind: "auth" | "env" | "header",
+    key: string
+  ) => {
+    setRemovedSecrets((prev) =>
+      prev.some((item) => item.kind === kind && item.key === key)
+        ? prev
+        : [...prev, { key, kind }]
+    );
+  };
+  const handleQuickTestServer = async (s: McpServerDto) => {
+    setTestingServerId(s.id);
+    try {
+      const res = await fetch("/api/mcp/test", {
+        body: JSON.stringify({
+          authType: pickOption(MCP_AUTH_TYPES, s.authType, "none"),
+          name: s.name,
+          serverId: s.id,
+          transport: pickOption(MCP_TRANSPORTS, s.transport, "http"),
+          url: s.url ?? undefined,
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast.success(`${s.name} : ${data.message}`);
+      } else {
+        toast.error(`${s.name} : ${data.message || "Échec du test"}`);
+      }
+    } catch {
+      toast.error(`Échec du test de connexion pour ${s.name}`);
+    } finally {
+      setTestingServerId(null);
+    }
   };
   const handleTestConnection = async () => {
     setIsTesting(true);
     setTestResult(null);
-    let parsedHeaders = {};
+    let parsedHeaders: Record<string, string> | undefined;
     if (formHeaders.trim()) {
       try {
         parsedHeaders = JSON.parse(formHeaders);
@@ -374,19 +404,27 @@ export default function McpClient({
         return;
       }
     }
+    const authConfigPayload: Record<string, string> = {};
+    if (formToken.trim()) authConfigPayload.token = formToken.trim();
+    if (formUsername.trim()) authConfigPayload.username = formUsername.trim();
+    if (formPassword.trim()) authConfigPayload.password = formPassword.trim();
+    if (formClientId.trim()) authConfigPayload.clientId = formClientId.trim();
+    if (formClientSecret.trim()) {
+      authConfigPayload.clientSecret = formClientSecret.trim();
+    }
+    if (formTokenUrl.trim()) authConfigPayload.tokenUrl = formTokenUrl.trim();
     try {
       const res = await fetch("/api/mcp/test", {
         body: JSON.stringify({
           args: formArgs ? formArgs.split(" ").filter(Boolean) : [],
-          authConfig: {
-            password: formPassword,
-            token: formToken,
-            username: formUsername,
-          },
+          ...(Object.keys(authConfigPayload).length > 0
+            ? { authConfig: authConfigPayload }
+            : {}),
           authType: formAuthType,
           command: formCommand,
-          headers: parsedHeaders,
+          ...(parsedHeaders ? { headers: parsedHeaders } : {}),
           name: formName || "Test Server",
+          ...(editingServer ? { serverId: editingServer.id } : {}),
           transport: formTransport,
           url: formUrl,
         }),
@@ -425,7 +463,7 @@ export default function McpClient({
       toast.error("La commande stdio est requise");
       return;
     }
-    let parsedHeaders = {};
+    let parsedHeaders: Record<string, string> | undefined;
     if (formHeaders.trim()) {
       try {
         parsedHeaders = JSON.parse(formHeaders);
@@ -436,29 +474,39 @@ export default function McpClient({
     }
     const envObj: Record<string, string> = {};
     for (const p of formEnvPairs) {
-      if (p.k.trim()) {
+      if (p.k.trim() && p.v.trim()) {
         envObj[p.k.trim()] = p.v;
       }
     }
+    const authConfigPayload: Record<string, string> = {};
+    if (formToken.trim()) authConfigPayload.token = formToken.trim();
+    if (formUsername.trim()) authConfigPayload.username = formUsername.trim();
+    if (formPassword.trim()) authConfigPayload.password = formPassword.trim();
+    if (formClientId.trim()) authConfigPayload.clientId = formClientId.trim();
+    if (formClientSecret.trim()) {
+      authConfigPayload.clientSecret = formClientSecret.trim();
+    }
+    if (formTokenUrl.trim()) authConfigPayload.tokenUrl = formTokenUrl.trim();
     setIsSaving(true);
-    const payload: any = {
+    const payload: Record<string, unknown> = {
       args: formArgs ? formArgs.split(" ").filter(Boolean) : [],
-      authConfig: {
-        password: formPassword,
-        token: formToken,
-        username: formUsername,
-      },
+      ...(Object.keys(authConfigPayload).length > 0
+        ? { authConfig: authConfigPayload }
+        : {}),
       authType: formAuthType,
       command: formCommand,
       description: formDescription,
-      env: envObj,
-      headers: parsedHeaders,
+      ...(Object.keys(envObj).length > 0 ? { env: envObj } : {}),
+      ...(parsedHeaders ? { headers: parsedHeaders } : {}),
       name: formName,
       rateLimitPerMin: formRateLimit,
       requireApproval: formRequireApproval,
       timeoutMs: formTimeoutMs,
       transport: formTransport,
       url: formUrl,
+      ...(editingServer && removedSecrets.length > 0
+        ? { removeSecretKeys: removedSecrets }
+        : {}),
     };
     try {
       if (editingServer) {
@@ -468,7 +516,31 @@ export default function McpClient({
           method: "PATCH",
         });
         if (!res.ok) {
-          throw new Error("Erreur de modification");
+          const errBody = await res.json().catch(() => null);
+          throw new Error(
+            extractApiErrorMessage(errBody) || "Erreur de modification"
+          );
+        }
+        const nonEmptyTemplateSecrets = Object.fromEntries(
+          Object.entries(templateSecretDrafts).filter(
+            ([, v]) => typeof v === "string" && v.trim().length > 0
+          )
+        );
+        if (Object.keys(nonEmptyTemplateSecrets).length > 0) {
+          const secRes = await fetch(`/api/mcp/${editingServer.id}`, {
+            body: JSON.stringify({
+              encryptedSecrets: nonEmptyTemplateSecrets,
+            }),
+            headers: { "Content-Type": "application/json" },
+            method: "PATCH",
+          });
+          if (!secRes.ok) {
+            const secBody = await secRes.json().catch(() => null);
+            throw new Error(
+              extractApiErrorMessage(secBody) ||
+                "Erreur lors de l'enregistrement des identifiants"
+            );
+          }
         }
         toast.success("Serveur MCP mis à jour !");
       } else {
@@ -478,7 +550,10 @@ export default function McpClient({
           method: "POST",
         });
         if (!res.ok) {
-          throw new Error("Erreur de création");
+          const errBody = await res.json().catch(() => null);
+          throw new Error(
+            extractApiErrorMessage(errBody) || "Erreur de création"
+          );
         }
         toast.success("Serveur MCP connecté et enregistré !");
       }
@@ -490,24 +565,32 @@ export default function McpClient({
       setIsSaving(false);
     }
   };
-  const handleToggleEnabled = async (s: McpServer) => {
+  const handleToggleEnabled = async (s: McpServerDto) => {
     try {
-      await fetch(`/api/mcp/${s.id}`, {
+      const res = await fetch(`/api/mcp/${s.id}`, {
         body: JSON.stringify({ toggleEnabled: true }),
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => null);
+        throw new Error(
+          extractApiErrorMessage(errBody) ||
+            "Impossible de basculer l'état du serveur"
+        );
+      }
       toast.success(
         s.isEnabled
           ? `Serveur "${s.name}" désactivé`
           : `Serveur "${s.name}" activé`
       );
       await mutateServers();
-    } catch {
-      toast.error("Impossible de basculer l'état du serveur");
+    } catch (err: any) {
+      toast.error(err?.message ?? "Impossible de basculer l'état du serveur");
     }
   };
-  const handleRefreshTools = async (s: McpServer) => {
+  const handleRefreshTools = async (s: McpServerDto) => {
+    setRefreshingServerId(s.id);
     try {
       toast.info(`Synchronisation des outils pour ${s.name}...`);
       const res = await fetch(`/api/mcp/${s.id}`, {
@@ -525,9 +608,11 @@ export default function McpClient({
       await mutateServers();
     } catch (err: any) {
       toast.error(err.message ?? "Impossible de rafraîchir les outils");
+    } finally {
+      setRefreshingServerId(null);
     }
   };
-  const handleToggleTool = async (s: McpServer, toolName: string) => {
+  const handleToggleTool = async (s: McpServerDto, toolName: string) => {
     try {
       await fetch(`/api/mcp/${s.id}`, {
         body: JSON.stringify({ toggleTool: toolName }),
@@ -545,7 +630,7 @@ export default function McpClient({
     }
   };
   const handleSetToolApproval = async (
-    s: McpServer,
+    s: McpServerDto,
     toolName: string,
     val: string | null
   ) => {
@@ -579,7 +664,7 @@ export default function McpClient({
         throw new Error("Erreur de suppression");
       }
       toast.success(`Serveur "${serverToDelete.name}" supprimé`);
-      setSkillToDelete(null);
+      setServerToDelete(null);
       await mutateServers();
     } catch (err: any) {
       toast.error(err.message ?? "Impossible de supprimer le serveur");
@@ -617,7 +702,7 @@ export default function McpClient({
   // Store : activation en un clic — installe le template, ou active/désactive si déjà connecté
   const handleStoreConnector = async (
     connector: (typeof STORE_CONNECTORS)[number],
-    installed: McpServer | undefined
+    installed: McpServerDto | undefined
   ) => {
     const tpl = templates.find(
       (candidate) => candidate.id === connector.templateId
@@ -707,6 +792,15 @@ export default function McpClient({
       ),
     [logs, logServerFilter, logToolFilter, logActionFilter]
   );
+  const editingTemplateCredentials = useMemo(
+    () =>
+      editingServer?.templateId
+        ? (templates.find((tpl) => tpl.id === editingServer.templateId)
+            ?.credentials ?? [])
+        : [],
+    [editingServer?.templateId, templates]
+  );
+
   // Rangée d'actions globale de la page Outils : on y porte les boutons
   // Exporter / Ajouter un serveur quand le panneau est intégré.
   const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
@@ -715,6 +809,53 @@ export default function McpClient({
       setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
     }
   }, [embedded]);
+
+  const actionsToolbar = (
+    <div className="flex items-center gap-2 shrink-0">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button className="h-8 gap-1.5 text-xs font-medium" variant="outline">
+            <DownloadIcon className="size-3.5" />
+            <span>Exporter</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem onClick={() => handleExport("json", "servers")}>
+            Serveurs JSON
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleExport("csv", "servers")}>
+            Serveurs CSV
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleExport("md", "servers")}>
+            Serveurs MD
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleExport("txt", "servers")}>
+            Serveurs TXT
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => handleExport("json", "logs")}>
+            Logs JSON
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleExport("csv", "logs")}>
+            Logs CSV
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleExport("md", "logs")}>
+            Logs MD
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleExport("txt", "logs")}>
+            Logs TXT
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <Button
+        className="h-8 gap-1.5 text-xs font-medium shadow-xs"
+        onClick={() => handleNewServer()}
+      >
+        <PlusIcon className="size-3.5" />
+        <span>Ajouter un serveur MCP</span>
+      </Button>
+    </div>
+  );
 
   return (
     <div
@@ -725,66 +866,7 @@ export default function McpClient({
       }
     >
       {embedded && actionsAnchor
-        ? createPortal(
-            <div className="flex items-center gap-2">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    className="h-8 gap-1.5 text-xs font-medium"
-                    variant="outline"
-                  >
-                    <DownloadIcon className="size-3.5" />
-                    <span>Exporter</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem
-                    onClick={() => handleExport("json", "servers")}
-                  >
-                    Serveurs JSON
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => handleExport("csv", "servers")}
-                  >
-                    Serveurs CSV
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => handleExport("md", "servers")}
-                  >
-                    Serveurs MD
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => handleExport("txt", "servers")}
-                  >
-                    Serveurs TXT
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    onClick={() => handleExport("json", "logs")}
-                  >
-                    Logs JSON
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleExport("csv", "logs")}>
-                    Logs CSV
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleExport("md", "logs")}>
-                    Logs MD
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleExport("txt", "logs")}>
-                    Logs TXT
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <Button
-                className="h-8 gap-1.5 text-xs font-medium shadow-xs"
-                onClick={() => handleNewServer()}
-              >
-                <PlusIcon className="size-3.5" />
-                <span>Ajouter un serveur MCP</span>
-              </Button>
-            </div>,
-            actionsAnchor
-          )
+        ? createPortal(actionsToolbar, actionsAnchor)
         : null}
       <header
         className={
@@ -794,37 +876,40 @@ export default function McpClient({
         }
       >
         <div
-          className={`flex items-center gap-3 ${embedded ? "justify-end" : "justify-between"}`}
+          className={`flex flex-wrap items-center gap-3 ${embedded ? "justify-end" : "justify-between"}`}
         >
           {embedded ? null : (
-            <div className="flex items-center gap-3">
-              <PageBackButton
-                fallbackHref="/tools?tab=plugins"
-                label="Retour aux serveurs MCP"
-              />
-              <div className="flex items-center gap-2.5">
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <CpuIcon className="size-5" />
-                </div>
-                <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h1 className="text-lg font-bold tracking-tight sm:text-xl">
-                      Model Context Protocol (MCP)
-                    </h1>
-                    <Badge
-                      className="text-[10px] font-semibold"
-                      variant="secondary"
-                    >
-                      Standard Anthropic / Open Protocol
-                    </Badge>
+            <>
+              <div className="flex items-center gap-3">
+                <PageBackButton
+                  fallbackHref="/tools?tab=plugins"
+                  label="Retour aux serveurs MCP"
+                />
+                <div className="flex items-center gap-2.5">
+                  <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <CpuIcon className="size-5" />
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    Connectez vos bases de données, APIs et outils locaux
-                    directement à l'IA
-                  </p>
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h1 className="text-lg font-bold tracking-tight sm:text-xl">
+                        Model Context Protocol (MCP)
+                      </h1>
+                      <Badge
+                        className="text-[10px] font-semibold"
+                        variant="secondary"
+                      >
+                        Standard Anthropic / Open Protocol
+                      </Badge>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Connectez vos bases de données, APIs et outils locaux
+                      directement à l'IA
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+              {actionsToolbar}
+            </>
           )}
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
@@ -865,7 +950,7 @@ export default function McpClient({
               onClick={() => setActiveTab("library")}
               type="button"
             >
-              <WrenchIcon className="size-3.5 text-amber-500" />
+              <WrenchIcon className="size-3.5 text-warning" />
               <span>Bibliothèque ({templates.length})</span>
             </button>
             <button
@@ -878,7 +963,7 @@ export default function McpClient({
               onClick={() => setActiveTab("tutorial")}
               type="button"
             >
-              <BookOpenIcon className="size-3.5 text-sky-500" />
+              <BookOpenIcon className="size-3.5 text-info" />
               <span>Tutoriel</span>
             </button>
             <button
@@ -891,7 +976,7 @@ export default function McpClient({
               onClick={() => setActiveTab("logs")}
               type="button"
             >
-              <ActivityIcon className="size-3.5 text-emerald-500" />
+              <ActivityIcon className="size-3.5 text-success" />
               <span>Journal ({stats.totalCalls})</span>
             </button>
             <button
@@ -904,7 +989,7 @@ export default function McpClient({
               onClick={() => setActiveTab("settings")}
               type="button"
             >
-              <SettingsIcon className="size-3.5 text-slate-500" />
+              <SettingsIcon className="size-3.5 text-muted-foreground" />
               <span>Paramètres</span>
             </button>
           </div>
@@ -927,15 +1012,19 @@ export default function McpClient({
         {activeTab === "servers" && (
           <McpServersTab
             filteredServers={filteredServers}
+            handleDuplicateServer={handleDuplicateServer}
             handleEditServer={handleEditServer}
             handleNewServer={handleNewServer}
+            handleQuickTestServer={handleQuickTestServer}
             handleRefreshTools={handleRefreshTools}
             handleToggleEnabled={handleToggleEnabled}
             installableTemplates={installableTemplates}
             isLoading={isLoading}
+            refreshingServerId={refreshingServerId}
             servers={servers}
             setIsInspectingTools={setIsInspectingTools}
-            setSkillToDelete={setSkillToDelete}
+            setServerToDelete={setServerToDelete}
+            testingServerId={testingServerId}
           />
         )}
         {activeTab === "library" && (
@@ -945,13 +1034,14 @@ export default function McpClient({
             handleNewServer={handleNewServer}
             installableTemplates={installableTemplates}
             mutateTpl={mutateTpl}
+            servers={servers}
             templates={templates}
           />
         )}
         {activeTab === "tutorial" && <McpTutorialTab />}
         {activeTab === "logs" && (
           <McpLogsTab
-            filteredLogs={filteredLogs as any}
+            filteredLogs={filteredLogs}
             handleExport={handleExport}
             handlePurgeLogs={handlePurgeLogs}
             logActionFilter={logActionFilter}
@@ -969,13 +1059,13 @@ export default function McpClient({
             handleSaveMcpPrefs={handleSaveMcpPrefs}
             isSavingMcpPrefs={isSavingMcpPrefs}
             mcpAllowStdio={mcpAllowStdio}
-            mcpDefaultApproval={mcpDefaultApproval as any}
+            mcpDefaultApproval={mcpDefaultApproval}
             mcpDefaultRateLimit={mcpDefaultRateLimit}
             mcpDefaultTimeout={mcpDefaultTimeout}
             mcpKillSwitch={mcpKillSwitch}
             mcpRetention={mcpRetention}
             setMcpAllowStdio={setMcpAllowStdio}
-            setMcpDefaultApproval={setMcpDefaultApproval as any}
+            setMcpDefaultApproval={setMcpDefaultApproval}
             setMcpDefaultRateLimit={setMcpDefaultRateLimit}
             setMcpDefaultTimeout={setMcpDefaultTimeout}
             setMcpKillSwitch={setMcpKillSwitch}
@@ -984,9 +1074,11 @@ export default function McpClient({
         )}
       </main>
       <McpServerModal
-        editingServer={editingServer as any}
+        editingServer={editingServer}
         formArgs={formArgs}
         formAuthType={formAuthType}
+        formClientId={formClientId}
+        formClientSecret={formClientSecret}
         formCommand={formCommand}
         formDescription={formDescription}
         formEnvPairs={formEnvPairs}
@@ -997,6 +1089,7 @@ export default function McpClient({
         formRequireApproval={formRequireApproval}
         formTimeoutMs={formTimeoutMs}
         formToken={formToken}
+        formTokenUrl={formTokenUrl}
         formTransport={formTransport}
         formUrl={formUrl}
         formUsername={formUsername}
@@ -1005,8 +1098,13 @@ export default function McpClient({
         isOpen={isServerModalOpen}
         isSaving={isSaving}
         isTesting={isTesting}
+        onApplyJsonImport={handleApplyJsonImport}
+        onMarkRemoveSecret={handleMarkRemoveSecret}
+        removedSecrets={removedSecrets}
         setFormArgs={setFormArgs}
         setFormAuthType={setFormAuthType}
+        setFormClientId={setFormClientId}
+        setFormClientSecret={setFormClientSecret}
         setFormCommand={setFormCommand}
         setFormDescription={setFormDescription}
         setFormEnvPairs={setFormEnvPairs}
@@ -1017,21 +1115,25 @@ export default function McpClient({
         setFormRequireApproval={setFormRequireApproval}
         setFormTimeoutMs={setFormTimeoutMs}
         setFormToken={setFormToken}
+        setFormTokenUrl={setFormTokenUrl}
         setFormTransport={setFormTransport}
         setFormUrl={setFormUrl}
         setFormUsername={setFormUsername}
         setIsOpen={setIsServerModalOpen}
+        setTemplateSecretDrafts={setTemplateSecretDrafts}
+        templateCredentials={editingTemplateCredentials}
+        templateSecretDrafts={templateSecretDrafts}
         testResult={testResult}
       />
       <McpInspectToolsModal
-        handleRefreshTools={handleRefreshTools as any}
-        handleSetToolApproval={handleSetToolApproval as any}
-        handleToggleTool={handleToggleTool as any}
-        isInspectingTools={isInspectingTools as any}
-        setIsInspectingTools={(s) => setIsInspectingTools(s as any)}
+        handleRefreshTools={handleRefreshTools}
+        handleSetToolApproval={handleSetToolApproval}
+        handleToggleTool={handleToggleTool}
+        isInspectingTools={isInspectingTools}
+        setIsInspectingTools={setIsInspectingTools}
       />
       <AlertDialog
-        onOpenChange={(open) => !open && setSkillToDelete(null)}
+        onOpenChange={(open) => !open && setServerToDelete(null)}
         open={Boolean(serverToDelete)}
       >
         <AlertDialogContent>

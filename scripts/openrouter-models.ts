@@ -79,11 +79,18 @@ function displayProvider(model: StoredModel): string {
     .replace(/^([a-z])/i, (letter) => letter.toUpperCase());
 }
 
+function stripParenthesesFromModelName(name: string): string {
+  return name
+    .replace(/\s*\([^)]*\)/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 function displayModelName(name: unknown, modelId: string): string {
   if (typeof name !== "string") return modelId;
   const match = name.match(/^\s*([^:]+?)\s*:\s*(.+?)\s*$/);
-  if (match && providerFromName(name, modelId)) return match[2].trim();
-  return name;
+  const raw = match && providerFromName(name, modelId) ? match[2].trim() : name;
+  return stripParenthesesFromModelName(raw) || raw.trim();
 }
 
 export function supportsOutput(model: StoredModel, modality: string): boolean {

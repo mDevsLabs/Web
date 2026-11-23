@@ -9,6 +9,7 @@ import { CheckIcon as Check, SettingsIcon as Settings } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import {
+  AccountSection,
   AppearanceSettingsSection,
   BlockedAccountsSection,
   ChatAppearanceSection,
@@ -550,6 +551,9 @@ export const SettingsPage: React.FC<{
         )}
 
         <form className="space-y-6" onSubmit={handleSaveSettings}>
+          {/* Row 0: Identité & Compte unifié mAI/Vibe */}
+          <AccountSection />
+
           {/* Row 1: Apparence globale & Langue */}
           <AppearanceSettingsSection
             setUiLanguage={setUiLanguage}

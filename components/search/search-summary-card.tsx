@@ -15,7 +15,10 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Streamdown } from "streamdown";
 import { formatModelName } from "@/lib/ai/models";
-import type { SummarySource } from "@/lib/search/summary-stream";
+import {
+  formatSummarySourceCitations,
+  type SummarySource,
+} from "@/lib/search/summary-stream";
 import { cn } from "@/lib/utils";
 
 export function modelLabelFromResponse(response: Response): string | null {
@@ -52,24 +55,30 @@ export function AnswerReasoning({
         >
           Réflexion
         </button>
-        <button
-          className="ml-auto text-[11px] text-muted-foreground hover:text-foreground"
-          onClick={() => {
-            navigator.clipboard
-              .writeText(text)
-              .then(() => {
-                setCopied(true);
-                window.setTimeout(() => setCopied(false), 2000);
-              })
-              .catch(() => toast.error("Impossible de copier la réflexion."));
-          }}
-          type="button"
-        >
-          {copied ? "Copié" : "Copier"}
-        </button>
       </div>
       {open ? (
         <div className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          <div className="mb-1.5 flex justify-end">
+            <button
+              aria-label="Copier la réflexion"
+              className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px] text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground cursor-pointer"
+              onClick={() => {
+                navigator.clipboard
+                  .writeText(text)
+                  .then(() => {
+                    setCopied(true);
+                    window.setTimeout(() => setCopied(false), 2000);
+                  })
+                  .catch(() =>
+                    toast.error("Impossible de copier la réflexion.")
+                  );
+              }}
+              type="button"
+            >
+              <CopyIcon className="size-3.5" />
+              {copied ? "Copié" : "Copier"}
+            </button>
+          </div>
           <Streamdown>{text}</Streamdown>
         </div>
       ) : null}
@@ -219,13 +228,15 @@ export function SearchSummaryCard({
       <div className="text-sm leading-relaxed text-foreground/90 flex flex-col gap-3">
         <AnswerReasoning streaming={isSummaryLoading} text={summaryReasoning} />
         {summary ? (
-          <div className="prose dark:prose-invert max-w-none text-sm">
+          <div className="prose dark:prose-invert max-w-none text-sm [&_a]:text-primary [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:opacity-80">
             {summaryReasoning ? (
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
                 Réponse
               </p>
             ) : null}
-            <Streamdown>{summary}</Streamdown>
+            <Streamdown>
+              {formatSummarySourceCitations(summary, summarySources)}
+            </Streamdown>
             <SummarySources sources={summarySources} />
           </div>
         ) : isSummaryLoading ? (

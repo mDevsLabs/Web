@@ -26,7 +26,14 @@ export function FooterLegal() {
 
   return (
     <div
-      className="relative group text-xs md:text-sm text-slate-500 font-medium"
+      className="relative text-xs md:text-sm text-slate-500 font-medium"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          setOpen(false);
+        }
+      }}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
       ref={ref}
     >
       <button
@@ -38,17 +45,17 @@ export function FooterLegal() {
         <span>Légal</span>
         <ChevronDown
           className={`w-4 h-4 transition-transform duration-200 ${
-            open ? "rotate-180" : "group-hover:-rotate-180"
+            open ? "rotate-180" : ""
           }`}
         />
       </button>
 
       {/* Liste de liens s'ouvrant vers le haut (survol desktop + tap mobile) */}
       <div
-        className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 transition-all duration-200 z-50 ${
+        className={`absolute bottom-full left-1/2 -translate-x-1/2 pb-2 transition-all duration-200 z-50 ${
           open
-            ? "opacity-100 translate-y-0 visible"
-            : "opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible"
+            ? "opacity-100 translate-y-0 visible pointer-events-auto"
+            : "opacity-0 translate-y-2 invisible pointer-events-none"
         }`}
       >
         <div className="bg-white/95 backdrop-blur-xl border border-black/10 shadow-xl rounded-2xl p-1.5 min-w-[140px] flex flex-col gap-0.5">

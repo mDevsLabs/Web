@@ -1,7 +1,7 @@
 import { Loader2Icon, PlusIcon, StoreIcon, ZapIcon } from "@mdevs/icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { McpServer } from "@/lib/db/schema";
+import type { McpServerDto } from "@/lib/mcp/dto";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { cn } from "@/lib/utils";
 import type { McpTemplateRow, STORE_CONNECTORS } from "./mcp-types";
@@ -22,11 +22,11 @@ export function McpStoreTab({
     tpl: McpTemplateRow;
   }>;
   searchQuery: string;
-  servers: McpServer[];
+  servers: McpServerDto[];
   installingConnector: string | null;
   handleStoreConnector: (
     connector: StoreConnectorItem,
-    installed?: McpServer
+    installed?: McpServerDto
   ) => void;
   templates: McpTemplateRow[];
   setActiveTab: (tab: any) => void;
@@ -70,9 +70,7 @@ export function McpStoreTab({
             <div
               className={cn(
                 "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md",
-                installed?.isEnabled
-                  ? "border-emerald-500/40"
-                  : "border-border/60"
+                installed?.isEnabled ? "border-success/40" : "border-border/60"
               )}
               key={connector.templateId}
             >
@@ -94,7 +92,7 @@ export function McpStoreTab({
                         className={cn(
                           "inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold",
                           installed.isEnabled
-                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                            ? "bg-success/10 text-success"
                             : "bg-muted text-muted-foreground"
                         )}
                       >
@@ -102,7 +100,7 @@ export function McpStoreTab({
                           className={cn(
                             "size-1.5 rounded-full",
                             installed.isEnabled
-                              ? "bg-emerald-500"
+                              ? "bg-success"
                               : "bg-muted-foreground/50"
                           )}
                         />
@@ -138,8 +136,7 @@ export function McpStoreTab({
                 <Button
                   className={cn(
                     "w-full gap-2 text-xs font-medium",
-                    installed?.isEnabled &&
-                      "border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
+                    installed?.isEnabled && "border-success/40 text-success"
                   )}
                   disabled={Boolean(installingConnector)}
                   onClick={() => handleStoreConnector(connector, installed)}

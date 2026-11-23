@@ -505,7 +505,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       {/* Barre de Recherche et Filtres */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 pt-1 border-t border-border/40">
         <div className="relative flex-1 max-w-sm">
-          <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+          <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 z-10 -translate-y-1/2 size-3.5 text-muted-foreground" />
           <Input
             aria-label="Rechercher dans les mémoires"
             className="pl-8 h-8 text-xs bg-background/50"

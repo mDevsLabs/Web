@@ -177,6 +177,9 @@ export async function ensureStoriesTables() {
     await sql`
       ALTER TABLE vibe_stories ADD COLUMN IF NOT EXISTS stickers JSONB
     `.catch(() => {});
+    await sql`
+      ALTER TABLE vibe_stories ADD COLUMN IF NOT EXISTS style JSONB
+    `.catch(() => {});
 
     await sql`
       CREATE TABLE IF NOT EXISTS vibe_story_poll_votes (
@@ -450,6 +453,7 @@ function assemblerRail(
         Number(compteurs[index] || 0)
       );
       const stickers = lireJsonb(ligne.stickers);
+      const brutStyle = lireJsonb(ligne.style);
 
       story = {
         caption: ligne.caption || "",
@@ -476,6 +480,12 @@ function assemblerRail(
               }
             : null,
         stickers: Array.isArray(stickers) ? stickers : [],
+        style:
+          brutStyle &&
+          typeof brutStyle === "object" &&
+          !Array.isArray(brutStyle)
+            ? brutStyle
+            : null,
         visibility: ligne.visibility,
       };
       parStory.set(cle, story);
@@ -537,7 +547,7 @@ export function registerVibeStoriesRoutes(
         await Promise.all([
           sql`
           SELECT s.id, s.user_id, s.caption, s.visibility, s.created_at, s.expires_at,
-                 s.poll, s.stickers,
+                 s.poll, s.stickers, s.style,
                  u.username, p.display_name, p.avatar_url,
                  m.id AS media_id, m.url, m.media_type, m.position,
                  m.width, m.height, m.alt_text
@@ -634,7 +644,7 @@ export function registerVibeStoriesRoutes(
         etat === "active"
           ? sql`
               SELECT s.id, s.user_id, s.caption, s.visibility, s.created_at, s.expires_at,
-                     s.poll, s.stickers,
+                     s.poll, s.stickers, s.style,
                      NULL::varchar AS display_name, NULL::varchar AS avatar_url,
                      '' AS username,
                      m.id AS media_id, m.url, m.media_type, m.position,
@@ -650,7 +660,7 @@ export function registerVibeStoriesRoutes(
             `
           : await sql`
               SELECT s.id, s.user_id, s.caption, s.visibility, s.created_at, s.expires_at,
-                     s.poll, s.stickers,
+                     s.poll, s.stickers, s.style,
                      NULL::varchar AS display_name, NULL::varchar AS avatar_url,
                      '' AS username,
                      m.id AS media_id, m.url, m.media_type, m.position,
@@ -788,6 +798,56 @@ export function registerVibeStoriesRoutes(
         }
       }
 
+      // Mise en forme visuelle de la story (fond, typographie, filtre, cadrage).
+      let style: Record<string, unknown> | null = null;
+      if (
+        body?.style &&
+        typeof body.style === "object" &&
+        !Array.isArray(body.style)
+      ) {
+        const brut = body.style as Record<string, unknown>;
+        style = {
+          backgroundId:
+            typeof brut.backgroundId === "string"
+              ? brut.backgroundId.slice(0, 32)
+              : undefined,
+          filterId:
+            typeof brut.filterId === "string"
+              ? brut.filterId.slice(0, 32)
+              : undefined,
+          mediaContain: Boolean(brut.mediaContain),
+          mediaMirror: Boolean(brut.mediaMirror),
+          textAlign:
+            brut.textAlign === "left" ||
+            brut.textAlign === "center" ||
+            brut.textAlign === "right"
+              ? brut.textAlign
+              : undefined,
+          textColor:
+            typeof brut.textColor === "string" &&
+            /^#[0-9a-fA-F]{6}$/.test(brut.textColor)
+              ? brut.textColor
+              : undefined,
+          textFont:
+            typeof brut.textFont === "string"
+              ? brut.textFont.slice(0, 24)
+              : undefined,
+          textPosition:
+            brut.textPosition === "top" ||
+            brut.textPosition === "center" ||
+            brut.textPosition === "bottom"
+              ? brut.textPosition
+              : undefined,
+          textStyle:
+            brut.textStyle === "clean" ||
+            brut.textStyle === "translucent" ||
+            brut.textStyle === "solid" ||
+            brut.textStyle === "neon"
+              ? brut.textStyle
+              : undefined,
+        };
+      }
+
       // Une story vide n'a pas de sens : média, légende ou sondage, au moins l'un.
       if (items.length === 0 && !caption && !poll) {
         return c.json(
@@ -900,7 +960,7 @@ export function registerVibeStoriesRoutes(
 
       const storyId = crypto.randomUUID();
       await sql`
-        INSERT INTO vibe_stories (id, user_id, caption, visibility, expires_at, poll, stickers)
+        INSERT INTO vibe_stories (id, user_id, caption, visibility, expires_at, poll, stickers, style)
         VALUES (
           ${storyId}::uuid,
           ${userId},
@@ -908,7 +968,8 @@ export function registerVibeStoriesRoutes(
           ${visibility},
           NOW() + make_interval(hours => ${STORY_TTL_HOURS}),
           ${poll ? JSON.stringify(poll) : null}::jsonb,
-          ${stickers.length > 0 ? JSON.stringify(stickers) : null}::jsonb
+          ${stickers.length > 0 ? JSON.stringify(stickers) : null}::jsonb,
+          ${style ? JSON.stringify(style) : null}::jsonb
         )
       `;
 

@@ -25,6 +25,7 @@ import {
 } from "@/components/search/search-summary-card";
 import { formatModelName } from "@/lib/ai/models";
 import {
+  formatSummarySourceCitations,
   MAI_SEARCH_SUMMARY_MODEL_ID,
   type SummarySource,
 } from "@/lib/search/summary-stream";
@@ -228,7 +229,7 @@ export function SearchDrawerConversation({
                     >
                       {isAssistant ? (
                         msg.content ? (
-                          <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm">
+                          <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm [&_a]:text-primary [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:opacity-80">
                             <AnswerReasoning
                               streaming={
                                 targetConversation.isLoading &&
@@ -236,7 +237,12 @@ export function SearchDrawerConversation({
                               }
                               text={msg.reasoning || ""}
                             />
-                            <Streamdown>{msg.content}</Streamdown>
+                            <Streamdown>
+                              {formatSummarySourceCitations(
+                                msg.content,
+                                msg.sources ?? []
+                              )}
+                            </Streamdown>
                             {msg.sources ? (
                               <SummarySources sources={msg.sources} />
                             ) : null}

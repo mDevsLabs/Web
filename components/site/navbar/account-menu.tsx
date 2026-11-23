@@ -9,6 +9,7 @@ import {
   UserRoundIcon as UserRound,
   Volume2Icon as Volume2,
 } from "@mdevs/icons";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { handleAccountAnchorClick } from "@/components/site/navbar/account-anchor";
 import { StorageMeter } from "@/components/site/navbar/storage-meter";
@@ -20,16 +21,52 @@ interface AccountMenuProps {
   pathname: string;
 }
 
+function isKeyboardFocus(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false;
+  try {
+    return target.matches(":focus-visible");
+  } catch {
+    return false;
+  }
+}
+
 export function AccountMenu({ pathname, account }: AccountMenuProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
-    <div className="hidden md:block relative group/account py-2">
+    <div
+      className="hidden md:block relative py-2"
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setIsOpen(false);
+        }
+      }}
+      onFocusCapture={(event) => {
+        if (isKeyboardFocus(event.target)) {
+          setIsOpen(true);
+        }
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          setIsOpen(false);
+        }
+      }}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <Link
+        aria-expanded={isOpen}
         className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-semibold transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.97] ${
           pathname.startsWith("/account")
             ? "border-purple-300 bg-purple-50 text-purple-700 shadow-2xs"
             : "border-black/10 bg-black/5 text-slate-700 hover:bg-black/10 hover:scale-105"
         }`}
         href={account.accountHref}
+        onClick={() => setIsOpen(false)}
         title={
           account.isAuthenticated
             ? `Compte (${account.user?.tier || "Free"})`
@@ -52,17 +89,28 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
         <span className="max-w-[100px] truncate">
           {account.loading ? "…" : account.accountLabel}
         </span>
-        <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover/account:rotate-180 transition-transform duration-200" />
+        <ChevronDown
+          className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
       </Link>
 
       {/* Menu déroulant Compte */}
-      <div className="absolute right-0 top-full pt-2 origin-top opacity-0 translate-y-2 scale-[0.98] invisible group-hover/account:opacity-100 group-hover/account:translate-y-0 group-hover/account:scale-100 group-hover/account:visible group-focus-within/account:opacity-100 group-focus-within/account:translate-y-0 group-focus-within/account:scale-100 group-focus-within/account:visible transition-[opacity,transform] duration-200 z-50">
+      <div
+        className={`absolute right-0 top-full pt-2 origin-top transition-[opacity,transform] duration-200 z-50 ${
+          isOpen
+            ? "opacity-100 translate-y-0 scale-100 visible pointer-events-auto"
+            : "opacity-0 translate-y-2 scale-[0.98] invisible pointer-events-none"
+        }`}
+      >
         <div className="glass-dropdown w-64 space-y-1">
           {account.isAuthenticated ? (
             <>
               <Link
                 className="block p-3 rounded-2xl bg-purple-50/70 border border-purple-100 space-y-1 hover:bg-purple-100 transition-colors"
                 href="/account"
+                onClick={() => setIsOpen(false)}
               >
                 <div className="flex items-center justify-between">
                   <p className="font-extrabold text-slate-900 text-sm truncate">
@@ -81,9 +129,10 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                 <Link
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5"
                   href="/account#usage-mai"
-                  onClick={() =>
-                    handleAccountAnchorClick(pathname, "usage-mai")
-                  }
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleAccountAnchorClick(pathname, "usage-mai");
+                  }}
                 >
                   <Gauge className="w-4 h-4 text-purple-600" />
                   Usage mAI
@@ -91,9 +140,10 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                 <Link
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5"
                   href="/account#usage-images"
-                  onClick={() =>
-                    handleAccountAnchorClick(pathname, "usage-images")
-                  }
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleAccountAnchorClick(pathname, "usage-images");
+                  }}
                 >
                   <ImageIcon className="w-4 h-4 text-purple-600" />
                   Usage Images
@@ -101,9 +151,10 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                 <Link
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5"
                   href="/account#usage-audio"
-                  onClick={() =>
-                    handleAccountAnchorClick(pathname, "usage-audio")
-                  }
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleAccountAnchorClick(pathname, "usage-audio");
+                  }}
                 >
                   <Volume2 className="w-4 h-4 text-purple-600" />
                   Usage Audio
@@ -111,9 +162,10 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                 <Link
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex flex-col gap-1.5 group/storage"
                   href="/account#usage-cloud"
-                  onClick={() =>
-                    handleAccountAnchorClick(pathname, "usage-cloud")
-                  }
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleAccountAnchorClick(pathname, "usage-cloud");
+                  }}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
@@ -137,6 +189,7 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                 <button
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2.5 cursor-pointer text-left"
                   onClick={() => {
+                    setIsOpen(false);
                     account.logout();
                     toast.success("Déconnecté avec succès");
                   }}
@@ -152,12 +205,14 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
               <Link
                 className="w-full px-4 py-2.5 rounded-2xl bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-2 shadow-2xs"
                 href="/account/login"
+                onClick={() => setIsOpen(false)}
               >
                 Se connecter
               </Link>
               <Link
                 className="w-full px-4 py-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition-all flex items-center justify-center gap-2"
                 href="/account/register"
+                onClick={() => setIsOpen(false)}
               >
                 Créer un compte
               </Link>

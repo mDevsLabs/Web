@@ -3,7 +3,9 @@ import { errorResponse, logError } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   deleteMcpServer,
+  deleteMcpServerSecret,
   getMcpServerById,
+  getMcpServerSecrets,
   getUserMcpPrefs,
   toggleMcpServer,
   updateMcpServer,
@@ -12,7 +14,7 @@ import {
 import { ChatbotError } from "@/lib/errors";
 import { mcpServerToConfig } from "@/lib/mcp/chat-tools";
 import { fetchMcpTools, validateMcpConfig } from "@/lib/mcp/client";
-import { toMcpServerDto } from "@/lib/mcp/dto";
+import { extractMcpSecretKeys, toMcpServerDto } from "@/lib/mcp/dto";
 import { isEncryptionConfigured } from "@/lib/mcp/encryption";
 import {
   assertMcpRuntimeEnabled,
@@ -61,6 +63,15 @@ const updateMcpSchema = z.object({
   isEnabled: z.boolean().optional(),
   name: z.string().min(1).max(100).optional(),
   rateLimitPerMin: z.number().int().min(1).max(1000).optional(),
+  removeSecretKeys: z
+    .array(
+      z.object({
+        key: z.string().min(1).max(128),
+        kind: z.enum(["auth", "env", "header"]),
+      })
+    )
+    .max(100)
+    .optional(),
   requireApproval: z
     .enum(["always_allow", "ask_permission", "write_only"])
     .optional(),
@@ -79,6 +90,17 @@ const updateMcpSchema = z.object({
   transport: z.enum(["sse", "http", "stdio", "websocket"]).optional(),
   url: z.string().max(4096).nullable().optional(),
 });
+
+async function serializeMcpServerDto(
+  row: unknown,
+  serverId: string,
+  userId: string
+) {
+  const secretRows = await getMcpServerSecrets({ serverId, userId }).catch(
+    () => []
+  );
+  return toMcpServerDto(row, extractMcpSecretKeys(secretRows));
+}
 
 export async function GET(
   _request: Request,
@@ -100,7 +122,7 @@ export async function GET(
 
   // DTO redacté : jamais de valeur secrète dans la réponse, quel que soit
   // l'historique de la ligne en base.
-  return Response.json(toMcpServerDto(found));
+  return Response.json(await serializeMcpServerDto(found, id, userId));
 }
 
 export async function PATCH(
@@ -187,7 +209,7 @@ export async function PATCH(
         );
       }
       const updated = await toggleMcpServer({ id, userId });
-      return Response.json(toMcpServerDto(updated));
+      return Response.json(await serializeMcpServerDto(updated, id, userId));
     }
 
     // 1b. Toggle per-tool
@@ -218,7 +240,7 @@ export async function PATCH(
         id,
         userId,
       });
-      return Response.json(toMcpServerDto(updated));
+      return Response.json(await serializeMcpServerDto(updated, id, userId));
     }
 
     // 1c. Set per-tool approval
@@ -255,7 +277,7 @@ export async function PATCH(
         id,
         userId,
       });
-      return Response.json(toMcpServerDto(updated));
+      return Response.json(await serializeMcpServerDto(updated, id, userId));
     }
 
     // 2. Rafraîchissement des outils en cache
@@ -344,7 +366,7 @@ export async function PATCH(
 
       return Response.json({
         message: `${tools.length} outil(s) synchronisé(s)`,
-        server: toMcpServerDto(updated),
+        server: await serializeMcpServerDto(updated, id, userId),
         tools: redactMcpValue(tools),
       });
     }
@@ -462,11 +484,19 @@ export async function PATCH(
     // Les colonnes JSON sensibles sont vidées dans la ligne : les valeurs
     // partent exclusivement dans `mcp_server_secret` (chiffrées).
     const split = splitInlineSecrets(parsed as Record<string, unknown>);
-    const serverRow = split.row;
-    const existingDescriptors = await loadMcpSecretDescriptors({
-      serverId: id,
-      userId,
-    });
+    const serverRow = { ...split.row };
+    delete (serverRow as Record<string, unknown>).removeSecretKeys;
+    const removedSet = new Set(
+      (parsed.removeSecretKeys ?? []).map((item) => `${item.kind}:${item.key}`)
+    );
+    const existingDescriptors = (
+      await loadMcpSecretDescriptors({
+        serverId: id,
+        userId,
+      })
+    ).filter(
+      (descriptor) => !removedSet.has(`${descriptor.kind}:${descriptor.key}`)
+    );
     const effective = mergeMcpSecrets({
       authConfig: parsed.authConfig ?? current.authConfig,
       authType: parsed.authType ?? current.authType,
@@ -525,6 +555,17 @@ export async function PATCH(
       });
     }
 
+    if (parsed.removeSecretKeys?.length) {
+      for (const item of parsed.removeSecretKeys) {
+        await deleteMcpServerSecret({
+          key: item.key,
+          kind: item.kind,
+          serverId: id,
+          userId,
+        });
+      }
+    }
+
     if (inlineSecretCount > 0) {
       try {
         await persistInlineMcpSecrets({
@@ -547,7 +588,7 @@ export async function PATCH(
       }
     }
 
-    return Response.json(toMcpServerDto(updated));
+    return Response.json(await serializeMcpServerDto(updated, id, userId));
   } catch (err: unknown) {
     if (err instanceof z.ZodError) {
       const issues = err.issues

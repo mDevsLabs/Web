@@ -14,13 +14,13 @@ import {
   TrophyIcon,
   ZapIcon,
 } from "@mdevs/icons";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { ConfettisBonneReponse } from "@/components/quizzly/confetti";
 import { IconeLigue, nomLigue } from "@/components/quizzly/icones";
+import { Quizzy } from "@/components/quizzly/quizzy";
 import { useResumeQuizzly } from "@/components/quizzly/shell";
 import { IconeMatiere } from "@/components/quizzly/subject-icon";
 import { libelleAnnee, type SchoolYear } from "@/lib/quizzly/program";
@@ -159,35 +159,28 @@ export function AccueilQuizzly() {
   }
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-6 p-4 sm:p-6 lg:p-8">
+    <div className="mx-auto flex max-w-7xl flex-col gap-6 bg-white p-4 text-slate-900 sm:p-6 lg:p-8">
       <ConfettisBonneReponse actif={feteCadeau} />
 
       <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12">
         {/* Colonne Principale (Gauche - 8/12) */}
         <div className="flex flex-col gap-6 lg:col-span-8">
-          {/* Hero Banner avec Quizzy */}
-          <div className="relative overflow-hidden rounded-3xl border border-blue-100/80 bg-white p-6 shadow-sm shadow-blue-500/5 sm:p-8 dark:border-blue-900/40 dark:bg-slate-900">
+          {/* Hero Banner avec Quizzy — fond blanc pur sans ombre carrée pour les GIF */}
+          <div className="relative overflow-hidden rounded-3xl border border-blue-100/80 bg-white p-6 shadow-sm shadow-blue-500/5 sm:p-8">
             <div className="relative z-10 flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
-              {/* Mascotte Quizzy avec animation douce */}
-              <div className="relative shrink-0">
-                <div className="q-float relative size-36 sm:size-44">
-                  <Image
-                    alt="Quizzy, la mascotte de Quizzly"
-                    className="object-contain drop-shadow-md"
-                    fill
-                    priority
-                    sizes="(max-width: 640px) 144px, 176px"
-                    src="/quizzly/quizzy.png"
-                  />
-                </div>
-                {/* Ombre portée douce sous Quizzy */}
-                <div className="mx-auto h-3 w-28 rounded-full bg-slate-300/40 blur-xs dark:bg-blue-400/10" />
+              {/* Mascotte Quizzy animée depuis public/quizzly */}
+              <div className="relative shrink-0 bg-white">
+                <Quizzy
+                  className="q-float size-36 sm:size-44"
+                  pose={streakCount > 0 ? "streak" : "cheer"}
+                  taille="score"
+                />
               </div>
 
               {/* Texte et appel à l'action */}
               <div className="flex flex-1 flex-col items-center gap-3 sm:items-start">
-                <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
-                  <SparklesIcon className="size-3.5 text-blue-600 dark:text-blue-400" />
+                <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                  <SparklesIcon className="size-3.5 text-blue-600" />
                   <span>
                     {schoolYear
                       ? libelleAnnee(schoolYear as SchoolYear)
@@ -195,12 +188,12 @@ export function AccueilQuizzly() {
                   </span>
                 </div>
 
-                <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+                <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
                   Bonjour !{" "}
                   <span className="inline-block animate-wiggle">👋</span>
                 </h1>
 
-                <p className="max-w-md text-base font-medium text-slate-600 dark:text-slate-300">
+                <p className="max-w-md text-base font-medium text-slate-600">
                   Prêt à progresser aujourd'hui et à consolider vos
                   connaissances ?
                 </p>
@@ -219,7 +212,7 @@ export function AccueilQuizzly() {
                   </Link>
 
                   <Link
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-5 py-3 text-sm font-semibold text-slate-700 backdrop-blur-sm transition-all hover:bg-slate-50 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-800"
+                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50 hover:text-slate-900"
                     href="/quizzly/apprentissage"
                   >
                     <span>Explorer le parcours</span>
@@ -229,13 +222,13 @@ export function AccueilQuizzly() {
             </div>
 
             {/* Barre de progression / Fil d'étapes */}
-            <div className="mt-8 border-t border-blue-100/80 pt-6 dark:border-blue-900/30">
+            <div className="mt-8 border-t border-blue-100/80 pt-6">
               <div className="mb-3 flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   Votre progression récente
                 </span>
                 <Link
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700"
                   href="/quizzly/apprentissage"
                 >
                   <span>Voir tout</span>
@@ -254,9 +247,9 @@ export function AccueilQuizzly() {
                           node.status === "completed" &&
                             "border-2 border-blue-600 bg-blue-600 text-white shadow-blue-500/20",
                           node.status === "current" &&
-                            "border-2 border-blue-500 bg-blue-100 text-blue-700 ring-4 ring-blue-500/20 q-float dark:bg-blue-950 dark:text-blue-300",
+                            "border-2 border-blue-500 bg-blue-100 text-blue-700 ring-4 ring-blue-500/20 q-float",
                           node.status === "locked" &&
-                            "border border-slate-200 bg-slate-100 text-slate-400 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-500"
+                            "border border-slate-200 bg-slate-100 text-slate-400"
                         )}
                         title={node.title}
                       >
@@ -275,7 +268,7 @@ export function AccueilQuizzly() {
                           "h-1 flex-1 rounded-full",
                           node.status === "completed"
                             ? "bg-blue-600"
-                            : "bg-slate-200 dark:bg-slate-800"
+                            : "bg-slate-200"
                         )}
                       />
                     )}
@@ -288,44 +281,40 @@ export function AccueilQuizzly() {
           {/* Section 3 Statistiques clés */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {/* Stat 1: Total XP */}
-            <div className="surface-quizzly-card flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white/95 p-4 shadow-xs transition-all hover:shadow-md sm:p-5 dark:border-blue-900/40 dark:bg-slate-900/80">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500 dark:bg-amber-500/20">
+            <div className="flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white p-4 shadow-xs transition-all hover:shadow-md sm:p-5">
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500">
                 <ZapIcon className="size-6 fill-amber-500/20" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                  Total XP
-                </p>
-                <p className="truncate text-2xl font-black text-slate-900 dark:text-white">
+                <p className="text-xs font-semibold text-slate-500">Total XP</p>
+                <p className="truncate text-2xl font-black text-slate-900">
                   {data?.xp ?? 0}
                 </p>
-                <p className="text-[11px] font-medium text-amber-600 dark:text-amber-400">
+                <p className="text-[11px] font-medium text-amber-600">
                   +{data?.weeklyXp ?? 0} cette semaine
                 </p>
               </div>
             </div>
 
             {/* Stat 2: Niveau & Palier */}
-            <div className="surface-quizzly-card flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white/95 p-4 shadow-xs transition-all hover:shadow-md sm:p-5 dark:border-blue-900/40 dark:bg-slate-900/80">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400">
+            <div className="flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white p-4 shadow-xs transition-all hover:shadow-md sm:p-5">
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-600">
                 <GraduationCapIcon className="size-6" />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                    Niveau
-                  </p>
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
+                  <p className="text-xs font-semibold text-slate-500">Niveau</p>
+                  <span className="text-xs font-bold text-blue-600">
                     Niv. {data?.niveau ?? 1}
                   </span>
                 </div>
-                <p className="truncate text-2xl font-black text-slate-900 dark:text-white">
+                <p className="truncate text-2xl font-black text-slate-900">
                   {data?.xpDansPalier ?? 0}{" "}
                   <span className="text-xs font-semibold text-slate-400">
                     / {data?.xpPalier ?? 100}
                   </span>
                 </p>
-                <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
                   <div
                     className="h-full rounded-full bg-blue-600"
                     style={{
@@ -337,21 +326,21 @@ export function AccueilQuizzly() {
             </div>
 
             {/* Stat 3: Série & Record */}
-            <div className="surface-quizzly-card flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white/95 p-4 shadow-xs transition-all hover:shadow-md sm:p-5 dark:border-blue-900/40 dark:bg-slate-900/80">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-500 dark:bg-orange-500/20">
+            <div className="flex items-center gap-4 rounded-2xl border border-blue-100/80 bg-white p-4 shadow-xs transition-all hover:shadow-md sm:p-5">
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-500">
                 <FlameIcon className="size-6 fill-orange-500/20" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                <p className="text-xs font-semibold text-slate-500">
                   Série active
                 </p>
-                <p className="truncate text-2xl font-black text-slate-900 dark:text-white">
+                <p className="truncate text-2xl font-black text-slate-900">
                   {data?.streakCount ?? 0}{" "}
                   <span className="text-xs font-semibold text-slate-500">
                     {(data?.streakCount ?? 0) > 1 ? "jours" : "jour"}
                   </span>
                 </p>
-                <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+                <p className="text-[11px] font-medium text-slate-500">
                   Record : {data?.streakBest ?? 0}{" "}
                   {(data?.streakBest ?? 0) > 1 ? "jours" : "jour"}
                 </p>
@@ -363,9 +352,9 @@ export function AccueilQuizzly() {
         {/* Colonne Latérale / Widgets Droite (4/12) */}
         <div className="flex flex-col gap-5 lg:col-span-4">
           {/* Widget 1: Semaine de Série en cours */}
-          <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white p-5 shadow-sm shadow-blue-500/5 dark:border-blue-900/40 dark:bg-slate-900">
+          <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white p-5 shadow-sm shadow-blue-500/5">
             {/* Flamme décorative transparente d'arrière-plan */}
-            <div className="pointer-events-none absolute -right-4 -bottom-4 opacity-5 dark:opacity-10">
+            <div className="pointer-events-none absolute -right-4 -bottom-4 opacity-5">
               <FlameIcon className="size-36 text-orange-500 fill-orange-500" />
             </div>
 
@@ -375,12 +364,12 @@ export function AccueilQuizzly() {
                   <div className="flex size-8 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500">
                     <FlameIcon className="size-4.5" />
                   </div>
-                  <h2 className="text-sm font-bold text-slate-900 dark:text-white">
+                  <h2 className="text-sm font-bold text-slate-900">
                     Série en cours
                   </h2>
                 </div>
                 <Link
-                  className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
+                  className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-blue-600"
                   href="/quizzly/quetes"
                 >
                   <span>Détails</span>
@@ -392,13 +381,13 @@ export function AccueilQuizzly() {
                 <span className="text-4xl font-black text-orange-500">
                   {streakCount}
                 </span>
-                <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                <span className="text-sm font-medium text-slate-600">
                   {streakCount > 1 ? "jours d'affilée" : "jour d'affilée"}
                 </span>
               </div>
 
               {/* Jauge des 7 jours de la semaine */}
-              <div className="flex items-center justify-between gap-1.5 rounded-2xl bg-slate-50 p-2.5 dark:bg-slate-800/60">
+              <div className="flex items-center justify-between gap-1.5 rounded-2xl bg-slate-50 p-2.5">
                 {joursSemaine.map((jour, index) => {
                   const estAujourdhui = index === aujourdhuiIndex;
                   const dateJour = new Date(
@@ -426,10 +415,10 @@ export function AccueilQuizzly() {
                             "bg-orange-500 text-white font-bold shadow-xs",
                           !valide &&
                             estAujourdhui &&
-                            "border-2 border-orange-400 bg-orange-50 text-orange-600 dark:bg-orange-950/40",
+                            "border-2 border-orange-400 bg-orange-50 text-orange-600",
                           !valide &&
                             !estAujourdhui &&
-                            "bg-slate-200/80 text-slate-400 dark:bg-slate-700/60"
+                            "bg-slate-200/80 text-slate-400"
                         )}
                       >
                         {valide ? (
@@ -444,7 +433,7 @@ export function AccueilQuizzly() {
               </div>
 
               {data?.streakFreezes ? (
-                <p className="text-xs font-medium text-sky-600 dark:text-sky-400">
+                <p className="text-xs font-medium text-sky-600">
                   🛡️ {data.streakFreezes} gel{data.streakFreezes > 1 ? "s" : ""}{" "}
                   de série actif{data.streakFreezes > 1 ? "s" : ""}
                 </p>
@@ -453,16 +442,16 @@ export function AccueilQuizzly() {
           </div>
 
           {/* Widget 2: Récompense quotidienne */}
-          <div className="rounded-3xl border border-blue-100 bg-linear-to-br from-blue-50/70 to-white p-5 shadow-sm shadow-blue-500/5 dark:border-blue-900/40 dark:from-blue-950/30 dark:to-slate-900">
+          <div className="rounded-3xl border border-blue-100 bg-linear-to-br from-blue-50/70 to-white p-5 shadow-sm shadow-blue-500/5">
             <div className="flex items-center gap-3">
               <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-500/20">
                 <GiftIcon className="size-6" />
               </div>
               <div className="min-w-0 flex-1">
-                <h2 className="text-sm font-bold text-slate-900 dark:text-white">
+                <h2 className="text-sm font-bold text-slate-900">
                   Récompense quotidienne
                 </h2>
-                <p className="truncate text-xs text-slate-500 dark:text-slate-400">
+                <p className="truncate text-xs text-slate-500">
                   {data?.dailyGiftClaimed
                     ? "Déjà récupérée aujourd'hui !"
                     : "Votre cadeau du jour est disponible"}
@@ -471,7 +460,7 @@ export function AccueilQuizzly() {
             </div>
 
             <div className="mt-4 flex items-center justify-between gap-3">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600">
                 <span>+5 Gemmes</span>
                 <span className="text-sm">💎</span>
               </span>
@@ -480,7 +469,7 @@ export function AccueilQuizzly() {
                 className={cn(
                   "rounded-full px-4 py-2 text-xs font-bold transition-all",
                   data?.dailyGiftClaimed
-                    ? "cursor-not-allowed bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
+                    ? "cursor-not-allowed bg-slate-100 text-slate-400"
                     : "cursor-pointer bg-blue-600 text-white shadow-md shadow-blue-500/20 hover:bg-blue-500 active:scale-95"
                 )}
                 disabled={Boolean(
@@ -499,25 +488,25 @@ export function AccueilQuizzly() {
           </div>
 
           {/* Widget 3: Ligue actuelle et Prochain Quiz */}
-          <div className="rounded-3xl border border-blue-100 bg-white p-5 shadow-sm shadow-blue-500/5 dark:border-blue-900/40 dark:bg-slate-900">
+          <div className="rounded-3xl border border-blue-100 bg-white p-5 shadow-sm shadow-blue-500/5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="flex size-8 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
                   <TrophyIcon className="size-4.5" />
                 </div>
-                <h2 className="text-sm font-bold text-slate-900 dark:text-white">
+                <h2 className="text-sm font-bold text-slate-900">
                   Ligue actuelle
                 </h2>
               </div>
               <Link
-                className="text-xs font-medium text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
+                className="text-xs font-medium text-slate-500 hover:text-blue-600"
                 href="/quizzly/ligues"
               >
                 Classement &gt;
               </Link>
             </div>
 
-            <div className="mt-4 flex items-center gap-4 rounded-2xl bg-slate-50 p-3.5 dark:bg-slate-800/60">
+            <div className="mt-4 flex items-center gap-4 rounded-2xl bg-slate-50 p-3.5">
               <div className="relative shrink-0">
                 {data?.league ? (
                   <IconeLigue
@@ -529,10 +518,10 @@ export function AccueilQuizzly() {
                 )}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-base font-extrabold text-slate-900 dark:text-white">
+                <p className="text-base font-extrabold text-slate-900">
                   Ligue {data?.league ? nomLigue(data.league as any) : "Bronze"}
                 </p>
-                <p className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                <p className="text-xs font-semibold text-blue-600">
                   {data?.weeklyXp ?? 0} XP cette semaine
                 </p>
               </div>
@@ -540,7 +529,7 @@ export function AccueilQuizzly() {
 
             {/* Prochain Quiz Card */}
             {prochainQuiz ? (
-              <div className="mt-4 border-t border-slate-100 pt-4 dark:border-slate-800">
+              <div className="mt-4 border-t border-slate-100 pt-4">
                 <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
                   Prochain quiz recommandé
                 </p>
@@ -551,11 +540,11 @@ export function AccueilQuizzly() {
                         className="size-3.5"
                         id={prochainQuiz.subjectId}
                       />
-                      <span className="truncate text-xs font-bold text-slate-700 dark:text-slate-300">
+                      <span className="truncate text-xs font-bold text-slate-700">
                         {prochainQuiz.subjectLabel}
                       </span>
                     </div>
-                    <p className="truncate text-sm font-bold text-slate-900 dark:text-white">
+                    <p className="truncate text-sm font-bold text-slate-900">
                       {prochainQuiz.title}
                     </p>
                   </div>

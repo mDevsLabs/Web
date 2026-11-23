@@ -44,9 +44,12 @@ describe("Page Tarifs (/site/pricing) et espace Mon compte (/site/account)", () 
     expect(pricingSource).not.toContain("#upgrade-code");
   });
 
-  it("supprime la section Code d'Upgrade de /site/account et de sa navigation", () => {
+  it("supprime les sections Code d'Upgrade et Réinitialisations de /site/account et de sa navigation", () => {
     expect(accountSource).not.toContain("UpgradeCodeSection");
     expect(accountSource).not.toContain("upgrade-code");
     expect(accountNavSource).not.toContain("upgrade-code");
+    expect(accountSource).not.toContain("QuotaResetsSection");
+    expect(accountNavSource).not.toContain("resets");
+    expect(accountNavSource).not.toContain("Réinitialisations");
   });
 });

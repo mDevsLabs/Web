@@ -582,6 +582,23 @@ export interface StorySticker {
 }
 
 /**
+ * Mise en forme visuelle d'une story (arrière-plan, typographie, filtre photo
+ * et cadrage). Persistée en JSONB sur `vibe_stories.style` et restituée par le
+ * lecteur comme par la grille d'archives.
+ */
+export interface StoryStyle {
+  backgroundId?: string;
+  filterId?: string;
+  mediaContain?: boolean;
+  mediaMirror?: boolean;
+  textAlign?: "left" | "center" | "right";
+  textColor?: string;
+  textFont?: string;
+  textPosition?: "top" | "center" | "bottom";
+  textStyle?: "clean" | "translucent" | "solid" | "neon";
+}
+
+/**
  * Une story : un instantané de 24 h, une légende, un ou plusieurs médias.
  * Les trois contenus — média, texte (légende seule), sondage — sont indépendants :
  * une story sans média est une story de texte, rendue sur un canevas à part.
@@ -595,6 +612,7 @@ export interface Story {
   media: StoryMedia[];
   poll: StoryPoll | null;
   stickers: StorySticker[];
+  style?: StoryStyle | null;
   visibility: "followers" | "public" | "private";
 }
 

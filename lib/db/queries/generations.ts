@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, count, desc, eq, gte, inArray, sql } from "drizzle-orm";
+import { and, count, desc, eq, gte, inArray, or, sql } from "drizzle-orm";
 import {
   type MprojectsImageGenerations,
   type MprojectsSpeechGenerations,
@@ -9,6 +9,10 @@ import {
   weeklySpeechUsage,
 } from "../schema";
 import { dbReady } from "./connection";
+
+// Une réservation `pending` qui survit plus de 5 min correspond à un worker
+// interrompu : elle ne doit pas bloquer définitivement le quota de l'utilisateur.
+const IMAGE_RESERVATION_TTL_MS = 5 * 60 * 1000;
 
 // Pagination bornée et entière : un `page=1.5` produisait un OFFSET décimal,
 // donc une erreur SQL.
@@ -122,6 +126,126 @@ export async function addWeeklySpeechUsage(
     });
 }
 
+export type SpeechQuotaReservationResult =
+  | {
+      limit: number;
+      ok: true;
+      used: number;
+      weekStart: string;
+    }
+  | {
+      limit: number;
+      ok: false;
+      used: number;
+    };
+
+/**
+ * Réservation atomique du quota Speech hebdomadaire AVANT tout appel externe
+ * (BUG-001 & BUG-003). Le verrou consultatif transactionnel sérialise les
+ * requêtes concurrentes du même compte, y compris quand la ligne hebdomadaire
+ * n'existe pas encore.
+ */
+export async function reserveWeeklySpeechQuota(params: {
+  tokens: number;
+  userId: string;
+  userKeys: Array<string | null | undefined>;
+  weeklyLimit: number;
+}): Promise<SpeechQuotaReservationResult> {
+  const db = await dbReady();
+  const weekStart = weekStartKey();
+  const keys = [
+    ...new Set(
+      [params.userId, ...params.userKeys].filter((key): key is string =>
+        Boolean(key)
+      )
+    ),
+  ];
+  const lockKey = `speech_quota:${params.userId}`;
+
+  return db.transaction(async (tx) => {
+    await tx.execute(sql`SELECT pg_advisory_xact_lock(hashtext(${lockKey}))`);
+
+    const rows = await tx
+      .select({
+        tokensUsed: sql<string>`coalesce(sum(${weeklySpeechUsage.tokensUsed}), 0)`,
+      })
+      .from(weeklySpeechUsage)
+      .where(
+        and(
+          inArray(weeklySpeechUsage.userId, keys),
+          eq(weeklySpeechUsage.weekStart, weekStart)
+        )
+      );
+
+    const currentUsed = Number(rows[0]?.tokensUsed ?? 0);
+    if (
+      params.weeklyLimit > 0 &&
+      currentUsed + params.tokens > params.weeklyLimit
+    ) {
+      return {
+        limit: params.weeklyLimit,
+        ok: false as const,
+        used: currentUsed,
+      };
+    }
+
+    await tx
+      .insert(weeklySpeechUsage)
+      .values({
+        requestsCount: 1,
+        tokensUsed: params.tokens,
+        userId: params.userId,
+        weekStart,
+      })
+      .onConflictDoUpdate({
+        set: {
+          requestsCount: sql`${weeklySpeechUsage.requestsCount} + 1`,
+          tokensUsed: sql`${weeklySpeechUsage.tokensUsed} + ${params.tokens}`,
+          updatedAt: new Date(),
+        },
+        target: [weeklySpeechUsage.userId, weeklySpeechUsage.weekStart],
+      });
+
+    return {
+      limit: params.weeklyLimit,
+      ok: true as const,
+      used: currentUsed + params.tokens,
+      weekStart,
+    };
+  });
+}
+
+/**
+ * Libération atomique d'une réservation Speech en cas d'échec du fournisseur
+ * externe ou de réponse audio vide.
+ */
+export async function releaseWeeklySpeechQuota(params: {
+  tokens: number;
+  userId: string;
+  weekStart?: string;
+}): Promise<void> {
+  const db = await dbReady();
+  const weekStart = params.weekStart ?? weekStartKey();
+  const lockKey = `speech_quota:${params.userId}`;
+
+  await db.transaction(async (tx) => {
+    await tx.execute(sql`SELECT pg_advisory_xact_lock(hashtext(${lockKey}))`);
+    await tx
+      .update(weeklySpeechUsage)
+      .set({
+        requestsCount: sql`GREATEST(0, ${weeklySpeechUsage.requestsCount} - 1)`,
+        tokensUsed: sql`GREATEST(0, ${weeklySpeechUsage.tokensUsed} - ${params.tokens})`,
+        updatedAt: new Date(),
+      })
+      .where(
+        and(
+          eq(weeklySpeechUsage.userId, params.userId),
+          eq(weeklySpeechUsage.weekStart, weekStart)
+        )
+      );
+  });
+}
+
 export async function getImageGenerations(params: {
   userId: string;
   page?: number;
@@ -129,19 +253,23 @@ export async function getImageGenerations(params: {
 }) {
   const db = await dbReady();
   const { limit, offset } = resolvePagination(params);
+  const completedFilter = and(
+    eq(mprojectsImageGenerations.userId, params.userId),
+    eq(mprojectsImageGenerations.status, "completed")
+  );
 
   const [items, totalCount] = await Promise.all([
     db
       .select()
       .from(mprojectsImageGenerations)
-      .where(eq(mprojectsImageGenerations.userId, params.userId))
+      .where(completedFilter)
       .orderBy(desc(mprojectsImageGenerations.createdAt))
       .limit(limit)
       .offset(offset),
     db
       .select({ count: count() })
       .from(mprojectsImageGenerations)
-      .where(eq(mprojectsImageGenerations.userId, params.userId)),
+      .where(completedFilter),
   ]);
 
   return {
@@ -156,6 +284,7 @@ export async function countTodayImageGenerations(
   const db = await dbReady();
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
+  const staleCutoff = new Date(Date.now() - IMAGE_RESERVATION_TTL_MS);
 
   const res = await db
     .select({ count: count() })
@@ -163,11 +292,149 @@ export async function countTodayImageGenerations(
     .where(
       and(
         eq(mprojectsImageGenerations.userId, userId),
-        gte(mprojectsImageGenerations.createdAt, today)
+        gte(mprojectsImageGenerations.createdAt, today),
+        or(
+          eq(mprojectsImageGenerations.status, "completed"),
+          and(
+            eq(mprojectsImageGenerations.status, "pending"),
+            gte(mprojectsImageGenerations.createdAt, staleCutoff)
+          )
+        )
       )
     );
 
   return res[0]?.count ?? 0;
+}
+
+export type ImageQuotaReservationResult =
+  | {
+      limit: number;
+      ok: true;
+      reservationId: string;
+      used: number;
+    }
+  | {
+      limit: number;
+      ok: false;
+      used: number;
+    };
+
+/**
+ * Réservation atomique d'une unité de quota d'image journalier AVANT l'appel
+ * externe (BUG-001 & BUG-003). Une ligne `status = 'pending'` est insérée sous
+ * verrou consultatif transactionnel, confirmée après succès ou supprimée en cas
+ * d'échec fournisseur.
+ */
+export async function reserveDailyImageQuota(params: {
+  dailyLimit: number;
+  height?: number;
+  model?: string;
+  negativePrompt?: string | null;
+  prompt: string;
+  title?: string;
+  userId: string;
+  width?: number;
+}): Promise<ImageQuotaReservationResult> {
+  const db = await dbReady();
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+  const staleCutoff = new Date(Date.now() - IMAGE_RESERVATION_TTL_MS);
+  const lockKey = `image_quota:${params.userId}`;
+
+  return db.transaction(async (tx) => {
+    await tx.execute(sql`SELECT pg_advisory_xact_lock(hashtext(${lockKey}))`);
+
+    const res = await tx
+      .select({ count: count() })
+      .from(mprojectsImageGenerations)
+      .where(
+        and(
+          eq(mprojectsImageGenerations.userId, params.userId),
+          gte(mprojectsImageGenerations.createdAt, today),
+          or(
+            eq(mprojectsImageGenerations.status, "completed"),
+            and(
+              eq(mprojectsImageGenerations.status, "pending"),
+              gte(mprojectsImageGenerations.createdAt, staleCutoff)
+            )
+          )
+        )
+      );
+
+    const usedToday = Number(res[0]?.count ?? 0);
+    if (params.dailyLimit > 0 && usedToday >= params.dailyLimit) {
+      return {
+        limit: params.dailyLimit,
+        ok: false as const,
+        used: usedToday,
+      };
+    }
+
+    const inserted = await tx
+      .insert(mprojectsImageGenerations)
+      .values({
+        height: params.height ?? 1024,
+        imageUrl: "",
+        model: params.model ?? "black-forest-labs/flux-1-schnell",
+        negativePrompt: params.negativePrompt ?? null,
+        prompt: params.prompt,
+        status: "pending",
+        title: params.title ?? null,
+        userId: params.userId,
+        width: params.width ?? 1024,
+      })
+      .returning({ id: mprojectsImageGenerations.id });
+
+    const reservationId = inserted[0]?.id;
+    if (!reservationId) {
+      throw new Error("Impossible de créer la réservation de quota image.");
+    }
+
+    return {
+      limit: params.dailyLimit,
+      ok: true as const,
+      reservationId,
+      used: usedToday + 1,
+    };
+  });
+}
+
+/** Confirme une réservation d'image après succès du fournisseur. */
+export async function confirmImageGenerationReservation(params: {
+  imageUrl: string;
+  reservationId: string;
+  userId: string;
+}): Promise<void> {
+  const db = await dbReady();
+  await db
+    .update(mprojectsImageGenerations)
+    .set({
+      imageUrl: params.imageUrl,
+      status: "completed",
+    })
+    .where(
+      and(
+        eq(mprojectsImageGenerations.id, params.reservationId),
+        eq(mprojectsImageGenerations.userId, params.userId)
+      )
+    );
+}
+
+/** Libère une réservation `pending` en cas d'échec fournisseur. */
+export async function releaseImageGenerationReservation(params: {
+  reservationId: string;
+  userId: string;
+}): Promise<void> {
+  const db = await dbReady();
+  await db
+    .delete(mprojectsImageGenerations)
+    .where(
+      and(
+        eq(mprojectsImageGenerations.id, params.reservationId),
+        eq(mprojectsImageGenerations.userId, params.userId),
+        eq(mprojectsImageGenerations.status, "pending")
+      )
+    );
 }
 
 export async function recordImageGeneration(params: {

@@ -460,7 +460,7 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
           </div>
 
           <div className="relative mt-5">
-            <SearchIcon className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+            <SearchIcon className="pointer-events-none absolute top-1/2 left-3 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
             <input
               aria-label="Rechercher"
               className="field-input h-11 pl-9"

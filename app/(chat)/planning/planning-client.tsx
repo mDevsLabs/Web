@@ -378,7 +378,7 @@ export function PlanningClient({
           </div>
 
           <div className="relative w-full sm:w-64">
-            <SearchIcon className="absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 z-10 size-3.5 -translate-y-1/2 text-muted-foreground" />
             <Input
               aria-label="Rechercher une planification"
               className="h-8 pl-8 text-xs"

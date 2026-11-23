@@ -50,7 +50,7 @@ import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
 import type { Post, Profile, ProfileListUser } from "@/lib/vibe/types/vibe";
-import { useNavigate } from "../router";
+import { useLocation, useNavigate } from "../router";
 
 interface ProfilePageProps {
   /** Seed serveur de premier écran (voir lib/vibe/server/hydration.ts). */
@@ -69,6 +69,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
   onOpenProfile,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     user,
     profile: authProfile,
@@ -345,6 +346,14 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     targetUsername,
     username,
   ]);
+
+  useEffect(() => {
+    if (!isSelf || isLoadingProfile) return;
+    const params = new URLSearchParams(location.search);
+    if (params.get("edit") === "1") {
+      setIsEditOpen(true);
+    }
+  }, [isLoadingProfile, isSelf, location.search]);
 
   // Charger les publications aimées au clic sur l'onglet 'likes'
   useEffect(() => {
@@ -740,8 +749,21 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
           {isSelf && (
             <button
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-red-900/50 bg-red-950/20 text-red-400 text-xs font-medium hover:bg-red-950/40 transition-colors"
-              onClick={logout}
+              onClick={async () => {
+                const ok = await confirm({
+                  cancelLabel: "Annuler",
+                  confirmLabel: "Se déconnecter",
+                  message:
+                    "Votre session unifiée mAI Web et Vibe sera fermée sur cet appareil.",
+                  title: "Se déconnecter ?",
+                  tone: "danger",
+                });
+                if (ok) {
+                  await logout({ fullSignOut: true });
+                }
+              }}
               title="Se déconnecter"
+              type="button"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>Déconnexion</span>
@@ -1439,7 +1461,11 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
                     value={editUsername}
                   />
                   <p className="text-[10px] text-zinc-500">
-                    2 à 30 caractères : lettres minuscules, chiffres et _.
+                    2 à 30 caractères : lettres minuscules, chiffres et _. Lien
+                    public :{" "}
+                    <span className="font-mono text-zinc-300">
+                      /vibe/@{editUsername || targetUsername}
+                    </span>
                   </p>
                 </div>
 

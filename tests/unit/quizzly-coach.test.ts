@@ -3,16 +3,19 @@ import {
   assemblerTentatives,
   blocsCompteCoach,
   COACH_FACT_GUARD,
+  COACH_IMAGES_NON_SUPPORTEES,
   type ContexteCoach,
   construireTentative,
   messagesPourModele,
   messageVisibleCoach,
   modeleCoachEnregistrable,
+  normaliserPiecesJointesCoach,
   preparerEchangeCoach,
   promptCoachAvecCompte,
   type QuizTente,
   resoudreModeleCoach,
   scoreRetenu,
+  texteSuivi,
   validerSuivi,
 } from "@/lib/quizzly/coach";
 
@@ -395,5 +398,39 @@ describe("instructions personnalisées et mémoire du Coach", () => {
     const double = promptCoachAvecCompte(sansPerso, null);
     const occurrences = double.split(COACH_FACT_GUARD).length - 1;
     expect(occurrences).toBe(1);
+  });
+});
+
+describe("pièces jointes images du Coach", () => {
+  it("filtre les pièces jointes valides et refuse les types non image", () => {
+    const normalisees = normaliserPiecesJointesCoach([
+      {
+        contentType: "image/png",
+        name: "exercice.png",
+        url: "https://blob.test/uploads/u1/exercice.png",
+      },
+      {
+        contentType: "text/html",
+        name: "bad.html",
+        url: "https://blob.test/uploads/u1/bad.html",
+      },
+    ]);
+    expect(normalisees).toHaveLength(1);
+    expect(normalisees[0]?.name).toBe("exercice.png");
+    expect(COACH_IMAGES_NON_SUPPORTEES).toBe(
+      "Ce modèle ne prend pas en charge les images."
+    );
+  });
+
+  it("accepte un message vide s'il accompagne au moins une image", () => {
+    expect(texteSuivi("", 0)).toMatchObject({ ok: false });
+    expect(texteSuivi("", 1)).toEqual({
+      ok: true,
+      text: "Peux-tu m'aider avec cette image ?",
+    });
+    expect(texteSuivi("   ", 2)).toEqual({
+      ok: true,
+      text: "Peux-tu m'aider avec ces images ?",
+    });
   });
 });

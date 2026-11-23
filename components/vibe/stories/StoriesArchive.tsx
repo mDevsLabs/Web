@@ -1,6 +1,11 @@
 import type React from "react";
 import { useCallback, useEffect, useState } from "react";
 import { StoryViewer } from "@/components/vibe/stories/StoryViewer";
+import {
+  resolveEffectiveStoryStyle,
+  resolveStoryBackground,
+  resolveStoryFilter,
+} from "@/components/vibe/stories/story-styles";
 import { ApiService } from "@/lib/vibe/services/api";
 import type { Story, StoryAuthor } from "@/lib/vibe/types/vibe";
 
@@ -99,31 +104,59 @@ export const StoriesArchive: React.FC<StoriesArchiveProps> = ({
       <div className="vibe-stories-archive">
         {stories.map((story, index) => {
           const premier = story.media[0];
-          if (!premier) return null;
           const date = new Date(story.expiresAt);
+          const storyStyle = resolveEffectiveStoryStyle(story);
+          const presetFond = resolveStoryBackground(storyStyle?.backgroundId);
+          const filtreMedia = resolveStoryFilter(storyStyle?.filterId);
+
           return (
             <button
               className="group relative aspect-9/16 overflow-hidden rounded-xl bg-zinc-900"
               key={story.id}
               onClick={() => setIndexOuvert(index)}
+              style={
+                premier
+                  ? undefined
+                  : { background: presetFond.preview, color: "#ffffff" }
+              }
               type="button"
             >
-              {premier.mediaType === "video" ? (
-                <video
-                  className="h-full w-full object-cover"
-                  muted
-                  playsInline
-                  src={premier.url}
-                />
+              {premier ? (
+                premier.mediaType === "video" ? (
+                  <video
+                    className={`h-full w-full object-cover ${
+                      storyStyle?.mediaMirror ? "-scale-x-100" : ""
+                    }`}
+                    muted
+                    playsInline
+                    src={premier.url}
+                    style={{ filter: filtreMedia.filter }}
+                  />
+                ) : (
+                  <img
+                    alt={premier.altText || "Story archivée"}
+                    className={`h-full w-full object-cover ${
+                      storyStyle?.mediaMirror ? "-scale-x-100" : ""
+                    }`}
+                    loading="lazy"
+                    src={premier.url}
+                    style={{ filter: filtreMedia.filter }}
+                  />
+                )
               ) : (
-                <img
-                  alt={premier.altText || "Story archivée"}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                  src={premier.url}
-                />
+                <div className="flex h-full w-full items-center justify-center p-3 text-center">
+                  <p
+                    className="line-clamp-4 text-xs font-semibold leading-snug"
+                    style={{ color: "#ffffff" }}
+                  >
+                    {story.caption || story.poll?.question || "Story"}
+                  </p>
+                </div>
               )}
-              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-2 pb-1.5 pt-6 text-left text-[10px] text-white/80">
+              <span
+                className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-2 pb-1.5 pt-6 text-left text-[10px]"
+                style={{ color: "rgba(255, 255, 255, 0.85)" }}
+              >
                 {date.toLocaleDateString("fr-FR", {
                   day: "2-digit",
                   month: "short",

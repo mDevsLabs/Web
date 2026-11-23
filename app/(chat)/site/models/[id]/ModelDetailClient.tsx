@@ -183,8 +183,10 @@ export function ModelDetailClient({ model }: { model: ModelInfo }) {
               </p>
               {isCloud && (
                 <p className="text-slate-500 text-xs mt-1.5">
-                  Sortie le {model.releaseDate} · Exécution cloud sur la
-                  plateforme mAI
+                  {model.releaseDate.split("/").length === 2
+                    ? `Sortie en ${model.releaseDate}`
+                    : `Sortie le ${model.releaseDate}`}{" "}
+                  · Exécution cloud sur la plateforme mAI
                 </p>
               )}
             </div>

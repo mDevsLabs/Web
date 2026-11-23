@@ -2,13 +2,11 @@
 
 import {
   CheckIcon as Check,
+  Code2Icon as Code2,
   CopyIcon as Copy,
-  CpuIcon as Cpu,
   DownloadIcon as Download,
   ExternalLinkIcon as ExternalLink,
-  GlobeIcon as Globe,
   MonitorIcon as Monitor,
-  TerminalIcon as Terminal,
   UsersIcon as Users,
 } from "@mdevs/icons";
 import { motion } from "motion/react";
@@ -16,154 +14,35 @@ import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { PageSearch } from "@/components/site/ui/search-bar";
-import { PLATFORM_DEVICE_ICONS } from "@/lib/site/downloads-data";
+import {
+  OFFICIAL_APPS,
+  PLATFORM_DEVICE_ICONS,
+} from "@/lib/site/downloads-data";
 
-interface AppDownload {
-  borderHover: string;
-  description: string;
-  icon: any;
-  iconColor: string;
-  id: string;
-  name: string;
-  platforms?: {
-    label: string;
-    url: string;
-  }[];
-  releaseUrl: string;
-  tagline: string;
-  terminalCommand?: {
-    label: string;
-    command: string;
-    key: string;
-  };
-}
-
-const VIBE_RELEASE_URL = "https://github.com/mDevsLabs/Vibe/releases/latest";
-
-const OFFICIAL_APPS: AppDownload[] = [
+const APP_APPEARANCE: Record<
+  string,
   {
-    borderHover: "hover:border-purple-500/30",
-    description:
-      "Réseau social avec IA intégrée : publiez, échangez en messages privés et créez avec mAI nativement. Installez l'application mobile pour rester connecté à vos cercles et à vos collections.",
-    icon: Users,
-    iconColor: "text-purple-400",
-    id: "vibe",
-    name: "mAI Vibe",
-    platforms: [
-      { label: "Android", url: VIBE_RELEASE_URL },
-      { label: "iOS", url: VIBE_RELEASE_URL },
-    ],
-    releaseUrl: VIBE_RELEASE_URL,
-    tagline: "Le réseau social mAI, sur le web, Android et iOS.",
+    borderHover: string;
+    icon: typeof Monitor;
+    iconColor: string;
+  }
+> = {
+  "code-2": {
+    borderHover: "hover:border-blue-500/30",
+    icon: Code2,
+    iconColor: "text-blue-400",
   },
-  {
+  monitor: {
     borderHover: "hover:border-purple-500/30",
-    description:
-      "Accédez à la puissance de mAI avec accélération matérielle locale, multi-fenêtres et synchronisation complète de vos sessions.",
     icon: Monitor,
     iconColor: "text-purple-400",
-    id: "desktop",
-    name: "mAI Desktop",
-    platforms: [
-      {
-        label: "Windows",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
-      },
-      {
-        label: "macOS",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
-      },
-      {
-        label: "Linux",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
-      },
-      {
-        label: "Android",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
-      },
-      {
-        label: "iOS",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
-      },
-    ],
-    releaseUrl: "https://github.com/mDevsLabs/Desktop/releases/latest",
-    tagline:
-      "L'application native pour votre poste de travail et appareils mobiles.",
   },
-  {
-    borderHover: "hover:border-blue-500/30",
-    description:
-      "Interface web réactive et progressive pour échanger avec vos modèles, générer du code et synchroniser vos projets dans le Cloud.",
-    icon: Globe,
-    iconColor: "text-blue-400",
-    id: "web",
-    name: "mAI Web",
-    platforms: [
-      {
-        label: "Windows",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
-      },
-      {
-        label: "macOS",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
-      },
-      {
-        label: "Linux",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
-      },
-      {
-        label: "Android",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
-      },
-      { label: "iOS", url: "https://github.com/mDevsLabs/Web/releases/latest" },
-    ],
-    releaseUrl: "https://github.com/mDevsLabs/Web/releases/latest",
-    tagline:
-      "L'assistant IA Web direct, accessible depuis n'importe quel navigateur.",
+  users: {
+    borderHover: "hover:border-purple-500/30",
+    icon: Users,
+    iconColor: "text-purple-400",
   },
-  {
-    borderHover: "hover:border-emerald-500/30",
-    description:
-      "Outil CLI professionnel ultra-rapide pour développeurs : analyse de code, scripts automatisés et pipelines CI/CD.",
-    icon: Terminal,
-    iconColor: "text-emerald-400",
-    id: "cli",
-    name: "mAI CLI",
-    releaseUrl: "https://github.com/mDevsLabs/CLI/releases/latest",
-    tagline:
-      "Discussions et sessions de codage assistées directement dans votre terminal.",
-    terminalCommand: {
-      command: "npm install -g @mdevs/mai-cli",
-      key: "cli-npm",
-      label: "mAI CLI (npm)",
-    },
-  },
-  {
-    borderHover: "hover:border-amber-500/30",
-    description:
-      "Ensemble d'extensions pour navigateurs et éditeurs (VS Code) pour invoquer mAI instantanément dans votre contexte de travail.",
-    icon: Cpu,
-    iconColor: "text-amber-400",
-    id: "pulse",
-    name: "mAI Pulse",
-    platforms: [
-      {
-        label: "Windows",
-        url: "https://github.com/mDevsLabs/Pulse/releases/latest",
-      },
-      {
-        label: "macOS",
-        url: "https://github.com/mDevsLabs/Pulse/releases/latest",
-      },
-      {
-        label: "Linux",
-        url: "https://github.com/mDevsLabs/Pulse/releases/latest",
-      },
-    ],
-    releaseUrl: "https://github.com/mDevsLabs/Pulse/releases/latest",
-    tagline: "L'IA intégrée directement dans vos outils du quotidien.",
-  },
-];
+};
 
 export default function DownloadPage() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -229,11 +108,16 @@ export default function DownloadPage() {
 
           <div className="grid grid-cols-1 gap-6">
             {OFFICIAL_APPS.map((app, idx) => {
-              const IconComponent = app.icon;
+              const appearance = APP_APPEARANCE[app.iconKey] ?? {
+                borderHover: "hover:border-purple-500/30",
+                icon: Monitor,
+                iconColor: "text-purple-400",
+              };
+              const IconComponent = appearance.icon;
               return (
                 <motion.section
                   animate={{ opacity: 1, y: 0 }}
-                  className={`group bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-3xl p-6 md:p-8 ${app.borderHover} transition-all duration-300 relative overflow-hidden`}
+                  className={`group bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-3xl p-6 md:p-8 ${appearance.borderHover} transition-all duration-300 relative overflow-hidden`}
                   initial={{ opacity: 0, y: 20 }}
                   key={app.id}
                   transition={{ delay: 0.1 * idx }}
@@ -242,7 +126,7 @@ export default function DownloadPage() {
                     <div className="flex items-start md:items-center gap-5">
                       <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-slate-900 shadow-md flex items-center justify-center p-3 shrink-0">
                         <IconComponent
-                          className={`w-8 h-8 md:w-10 md:h-10 ${app.iconColor}`}
+                          className={`w-8 h-8 md:w-10 md:h-10 ${appearance.iconColor}`}
                         />
                       </div>
                       <div>

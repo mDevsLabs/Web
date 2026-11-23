@@ -182,12 +182,11 @@ export const ReasoningTrigger = memo(
   ({
     className,
     children,
-    copyText,
+    copyText: _copyText,
     getThinkingMessage = defaultGetThinkingMessage,
     ...props
   }: ReasoningTriggerProps) => {
     const { isStreaming, isOpen, duration } = useReasoning();
-    const [copied, setCopied] = useState(false);
 
     return (
       <div className="flex items-center gap-2">
@@ -216,25 +215,6 @@ export const ReasoningTrigger = memo(
             </>
           )}
         </CollapsibleTrigger>
-        {copyText ? (
-          <button
-            aria-label="Copier la réflexion"
-            className="inline-flex shrink-0 items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground"
-            onClick={() => {
-              navigator.clipboard
-                .writeText(copyText)
-                .then(() => {
-                  setCopied(true);
-                  window.setTimeout(() => setCopied(false), 2000);
-                })
-                .catch(() => {});
-            }}
-            type="button"
-          >
-            <CopyIcon className="size-3.5" />
-            {copied ? "Copié" : "Copier"}
-          </button>
-        ) : null}
       </div>
     );
   }
@@ -249,6 +229,7 @@ const streamdownPlugins = { cjk, code, math, mermaid };
 export const ReasoningContent = memo(
   ({ className, children, ...props }: ReasoningContentProps) => {
     const { isOpen } = useReasoning();
+    const [copied, setCopied] = useState(false);
 
     if (!isOpen) return null;
 
@@ -261,8 +242,29 @@ export const ReasoningContent = memo(
         {...props}
       >
         <div
-          className="rounded-xl border border-border/60 bg-muted/25 backdrop-blur-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-muted-foreground/85 font-sans shadow-[inset_0_1px_0_var(--md-highlight)]"
+          className="relative rounded-xl border border-border/60 bg-muted/25 backdrop-blur-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-muted-foreground/85 font-sans shadow-[inset_0_1px_0_var(--md-highlight)]"
         >
+          {children ? (
+            <div className="mb-1.5 flex justify-end">
+              <button
+                aria-label="Copier la réflexion"
+                className="inline-flex shrink-0 items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px] text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground cursor-pointer"
+                onClick={() => {
+                  navigator.clipboard
+                    .writeText(children)
+                    .then(() => {
+                      setCopied(true);
+                      window.setTimeout(() => setCopied(false), 2000);
+                    })
+                    .catch(() => {});
+                }}
+                type="button"
+              >
+                <CopyIcon className="size-3.5" />
+                {copied ? "Copié" : "Copier"}
+              </button>
+            </div>
+          ) : null}
           <Streamdown plugins={streamdownPlugins}>
             {children}
           </Streamdown>
