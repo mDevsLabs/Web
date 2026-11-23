@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/collapsible";
 import { PluginToolLogo } from "@/lib/integrations/logo";
 import { mcpHashedToolLabel } from "@/lib/mcp/provider-tool-label";
-import { getPluginByToolId } from "@/lib/plugins/catalog";
+import { getPluginByToolId } from "@/lib/plugins/core/catalog";
 import { cn } from "@/lib/utils";
 import { CheckCircleIcon, ChevronDownIcon, CircleIcon, ClockIcon, WrenchIcon, XCircleIcon } from "@mdevs/icons";
 import { isValidElement } from "react";

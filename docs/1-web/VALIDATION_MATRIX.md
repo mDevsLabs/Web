@@ -66,10 +66,10 @@ workflow Vercel. Chaque ligne indique où le comportement est vérifié
 | # | Interaction critique | Vérification | Où |
 |---|----------------------|--------------|----|
 | 34 | Trois plugins réels ajoutés (qualité de l'air, boîte à outils JSON/YAML, jours fériés FR) avec outil typé, schéma Zod et permissions explicites | Unitaire | `tests/unit/plugins-catalog.test.ts` |
-| 35 | `minTier` d'un plugin réellement appliqué côté serveur (install et activation), pas seulement affiché | Unitaire | `tests/unit/plugins-catalog.test.ts`, `lib/plugins/tier-lock.ts` |
+| 35 | Tous les plugins sont accessibles dès le forfait Free (aucun verrouillage par forfait) | Unitaire | `tests/unit/plugins-catalog.test.ts`, `app/(chat)/api/plugins/route.ts` |
 | 36 | Aucun outil de plugin ne masque un outil natif (`PLUGIN_PROVIDED_TOOL_IDS` vs `NATIVE_TOOL_IDS`) | Unitaire + `plugins:check` | `tests/unit/plugins-catalog.test.ts`, `scripts/validate-plugins.ts` |
 | 37 | Météo et Quizzly restent disponibles pour un compte Free ou en mode Fantôme (plus de désactivation silencieuse) | Unitaire | `tests/unit/plugins-catalog.test.ts` |
-| 38 | Icône de plugin hors liste blanche → échec, jamais de repli silencieux | Unitaire + `plugins:check` | `tests/unit/plugins-catalog.test.ts`, `lib/plugins/icon-allowlist.ts` |
+| 38 | Icône de plugin hors liste blanche → échec, jamais de repli silencieux | Unitaire + `plugins:check` | `tests/unit/plugins-catalog.test.ts`, `lib/plugins/core/icon-allowlist.ts` |
 | 39 | Catalogue MCP unique et statique : plus de lecture des tables/fichiers de seed supprimés | Unitaire | `tests/unit/mcp-templates.test.ts` |
 | 40 | Chaque modèle MCP est réellement documenté (URL éditeur, date de vérification, aucun hôte d'exemple) | Unitaire | `tests/unit/mcp-templates.test.ts` |
 | 41 | Aucun secret en clair dans `args`/`env` ; chaque credential déclare sa destination (`kind`) et sa documentation | Unitaire | `tests/unit/mcp-templates.test.ts` |

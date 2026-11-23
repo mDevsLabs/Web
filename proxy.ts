@@ -132,20 +132,6 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Le callback OAuth s'authentifie par son état scellé, pas par la session :
-  // le compte est EN TRAIN d'être connecté, et l'écran de consentement peut
-  // rester ouvert plus longtemps que l'`exp` du jeton de session. Le traiter
-  // comme une route privée affichrait un 401 JSON en pleine navigation
-  // utilisateur — une page que l'utilisateur ne peut pas interpréter.
-  // `connect`, `disconnect` et `status` restent protégés : ce sont des appels
-  // XHR de notre propre interface, qui doivent répondre 401.
-  if (
-    pathname.startsWith("/api/integration/") &&
-    pathname.endsWith("/callback")
-  ) {
-    return NextResponse.next();
-  }
-
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");

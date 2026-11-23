@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { isLucideIconName } from "../lib/plugins/icon-allowlist";
+import { isLucideIconName } from "../lib/plugins/core/icon-allowlist";
 import {
   buildGeneratedFiles,
   CATALOG_GENERATED_FILE,
@@ -28,7 +28,7 @@ const categoryIds = new Set(root.categories.map((c) => c.id));
 for (const category of root.categories) {
   if (!isLucideIconName(category.icon)) {
     fail(
-      `Icône inconnue « ${category.icon} » pour la catégorie ${category.id} (voir lib/plugins/icon-allowlist.ts)`
+      `Icône inconnue « ${category.icon} » pour la catégorie ${category.id} (voir lib/plugins/core/icon-allowlist.ts)`
     );
   }
 }
@@ -69,6 +69,13 @@ for (const entry of root.plugins) {
     );
   }
 
+  const expectedDir = `packs/${manifest.category}/${manifest.id}`;
+  if (entry.dir !== expectedDir) {
+    fail(
+      `Le dossier de « ${manifest.id} » (${entry.dir}) doit correspondre à sa catégorie : ${expectedDir}`
+    );
+  }
+
   for (const tool of manifest.tools) {
     if (seenToolIds.has(tool.id)) {
       fail(`Identifiant d'outil dupliqué : ${tool.id}`);
@@ -89,14 +96,11 @@ for (const entry of root.plugins) {
     );
   }
 
-  // Le point d'entrée du catalogue (ex. "./weather") doit résoudre vers un
-  // module `index.ts` / `index.tsx` présent dans le dossier, qui exporte
-  // nommément `<dir>Plugin` (contrat de `server.generated.ts`).
   const hasIndexEntry = ["index.ts", "index.tsx"].some((f) =>
     fs.existsSync(path.join(dirPath, f))
   );
   if (hasIndexEntry) {
-    const exportName = importName(entry.dir);
+    const exportName = importName(entry.id);
     if (!entryExportsPluginDefinition(entry.dir, exportName)) {
       fail(
         `Le plugin ${manifest.id} doit exporter « export const ${exportName} » depuis ${entry.dir}/index.ts`

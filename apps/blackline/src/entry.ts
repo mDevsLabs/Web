@@ -28,7 +28,7 @@ import { installLandscapeGuard } from './landscape.ts';
 import { loadingProgress, nextPaint } from './preload.ts';
 import { clearRoot, setRoot, toggleRootClass } from './root.ts';
 import { disposeArsenalViewer } from './ui/weapon-viewer.ts';
-import { loadProfile, loadSettings, flushProfileSave } from './storage.ts';
+import { loadProfile, loadSettings, flushProfileSave, saveSettings } from './storage.ts';
 import { preloadMenuPages } from './ui/page-loader.ts';
 import { UI } from './ui.ts';
 
@@ -199,7 +199,36 @@ export async function mountBlackline(
   ui.engineReady = false;
   ui.menu();
 
+  const onProfileUpdated = ((event: CustomEvent<{ avatarUrl?: string | null; callsign?: string }>) => {
+    if (!isCurrent()) return;
+    const detail = event.detail;
+    if (!detail || typeof detail !== 'object') return;
+    if (typeof detail.callsign === 'string' && detail.callsign.trim()) {
+      settings.callsign = detail.callsign.trim().slice(0, 18);
+      if (ui.game) {
+        ui.game.player.name = settings.callsign;
+      }
+    }
+    if (detail.avatarUrl !== undefined) {
+      if (typeof detail.avatarUrl === 'string' && detail.avatarUrl.trim()) {
+        settings.avatarUrl = detail.avatarUrl.trim();
+      } else {
+        delete settings.avatarUrl;
+      }
+    }
+    saveSettings(settings);
+    const prof = app.querySelector<HTMLElement>('.profile');
+    if (prof) {
+      prof.innerHTML = ui.profileMarkup();
+    }
+  }) as EventListener;
+  window.addEventListener('blackline:profile-updated', onProfileUpdated);
+
   const updateOrientation = installLandscapeGuard(mobile, app, () => ui.game);
+  const cleanupListeners = () => {
+    window.removeEventListener('blackline:profile-updated', onProfileUpdated);
+    updateOrientation.dispose();
+  };
   const status = loadingProgress((value, label) => {
     if (!isCurrent()) return;
     // L'écran de chargement est un frère de l'interface, pas un enfant :
@@ -220,7 +249,7 @@ export async function mountBlackline(
     status(5, 'CHARGEMENT DU MOTEUR 3D');
     await nextPaint();
     if (!isCurrent()) {
-      updateOrientation.dispose();
+      cleanupListeners();
       return null;
     }
     const [{ Game }, { preloadAssets }] = await Promise.all([
@@ -228,7 +257,7 @@ export async function mountBlackline(
       import('./asset-preload.ts'),
     ]);
     if (!isCurrent()) {
-      updateOrientation.dispose();
+      cleanupListeners();
       return null;
     }
     status(20, 'PRÉPARATION DES TEXTURES ULTRA');
@@ -237,7 +266,7 @@ export async function mountBlackline(
     );
     await nextPaint();
     if (!isCurrent()) {
-      updateOrientation.dispose();
+      cleanupListeners();
       return null;
     }
     const game = new Game(
@@ -261,7 +290,7 @@ export async function mountBlackline(
         // Libération best-effort.
       }
       ui.game = null;
-      updateOrientation.dispose();
+      cleanupListeners();
       return null;
     }
     ui.setGame(game);
@@ -273,7 +302,7 @@ export async function mountBlackline(
         disposeArsenalViewer();
         game.dispose();
         ui.game = null;
-        updateOrientation.dispose();
+        cleanupListeners();
       },
     };
     status(35, 'PRÉCHARGEMENT DE L’ARSENAL');
@@ -300,7 +329,7 @@ export async function mountBlackline(
     );
     return ui;
   } catch (error) {
-    updateOrientation.dispose();
+    cleanupListeners();
     conteneur.querySelector('#boot')?.remove();
     console.error('BLACKLINE initialization failed', error);
     if (isCurrent()) clearRoot();

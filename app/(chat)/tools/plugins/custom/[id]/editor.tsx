@@ -4,7 +4,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
-import type { UserPluginView } from "@/lib/plugins/user-plugin-input";
+import type { UserPluginView } from "@/lib/plugins/core/user-plugin-input";
 import { fetcher } from "@/lib/utils";
 import { UserPluginForm } from "../../../user-plugin-form";
 

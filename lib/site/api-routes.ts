@@ -4,6 +4,7 @@
  */
 
 export const SITE_API_ROUTES = {
+  accountPlan: "/api/site/v1/plan",
   device: (id: string) => `/api/site/v1/devices/${encodeURIComponent(id)}`,
 
   // Appareils connectés

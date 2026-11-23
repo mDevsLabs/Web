@@ -1,4 +1,4 @@
-import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
+import { isLucideIconName } from "@/lib/plugins/core/icon-allowlist";
 import type { SkillTemplateDefinition } from "./types";
 import { validateSkillTemplateManifest } from "./validation";
 

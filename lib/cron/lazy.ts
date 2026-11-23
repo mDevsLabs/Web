@@ -23,15 +23,30 @@ import {
  *      est repoussé d'un intervalle et le bail libéré. Si l'instance meurt, le
  *      bail expire et le tick est repris.
  *
- * Complément de (jamais substitut à) la route quotidienne Vercel et du
- * workflow GitHub `cron-master` : tous passent par le même bail, donc un tick
- * ne tourne jamais deux fois en parallèle. Désactivable avec
- * `CRON_LAZY_TICKS=off`.
+ * Filet de secours seulement : l'ordonnanceur principal est le workflow
+ * GitHub `cron-master` (toutes les 5 min, exécution directe hors Vercel, via
+ * `scripts/cron/run-direct.ts`). Ici, un tick n'est réclamé qu'avec
+ * `LAZY_GRACE_MS` de retard, pour ne pas brûler l'Active CPU Vercel quand
+ * GitHub tient la cadence. Même bail pour tous : un tick ne tourne jamais
+ * deux fois en parallèle. Désactivable avec `CRON_LAZY_TICKS=off`.
  */
 
 const THROTTLE_MS = 60_000;
 /** Marge ajoutée au budget du tick pour la durée du bail. */
 const LEASE_MARGIN_MS = 15_000;
+/**
+ * Tolérance d'échéance. L'échéance suivante part du DÉBUT du tick (et non de
+ * sa fin) moins cette marge : sinon un tick de 60 s lancé à 12:00 n'est plus
+ * dû au passage de 12:05, et la cadence réelle double. Les ticks sont
+ * idempotents, donc une avance de 90 s ne coûte rien.
+ */
+const SCHEDULE_SLACK_MS = 90_000;
+/**
+ * Filet paresseux : l'ordonnanceur principal est GitHub Actions (exécution
+ * directe, hors Vercel). Les ticks paresseux, qui consomment le CPU Vercel,
+ * ne prennent le relais que si un tick est en retard de plus de 15 minutes.
+ */
+const LAZY_GRACE_MS = 15 * 60_000;
 
 let lastAttemptAt = 0;
 let running = false;
@@ -60,7 +75,7 @@ async function seedTicks(): Promise<void> {
  */
 export async function claimCronTicks(
   definitions: readonly CronTickDefinition[],
-  options: { force?: boolean } = {}
+  options: { force?: boolean; graceMs?: number } = {}
 ): Promise<CronTickDefinition[]> {
   if (definitions.length === 0) {
     return [];
@@ -74,9 +89,10 @@ export async function claimCronTicks(
     ),
     sql`, `
   );
+  const graceMs = Math.max(0, Math.trunc(options.graceMs ?? 0));
   const dueCondition = options.force
     ? sql`TRUE`
-    : sql`t."next_run_at" <= now()`;
+    : sql`t."next_run_at" + (${graceMs}::int * interval '1 millisecond') <= now()`;
   const rows = (await db.execute(sql`
     UPDATE "cron_ticks" AS t
     SET "lease_until" = now() + (v.lease_ms * interval '1 millisecond'),
@@ -100,7 +116,8 @@ async function releaseCronTick(
   // idempotent, et on ne martèle pas une route cassée.
   await db.execute(sql`
     UPDATE "cron_ticks"
-    SET "next_run_at" = now() + (${definition.intervalMs}::int * interval '1 millisecond'),
+    SET "next_run_at" = COALESCE("last_started_at", now())
+          + (${definition.intervalMs - SCHEDULE_SLACK_MS}::int * interval '1 millisecond'),
         "lease_until" = NULL,
         "last_finished_at" = now(),
         "last_error" = ${outcome.ok ? null : (outcome.error ?? "échec")}
@@ -161,7 +178,9 @@ export async function maybeRunLazyCronTicks(): Promise<void> {
   lastAttemptAt = now;
   running = true;
   try {
-    const claimed = await claimCronTicks(CRON_TICKS);
+    const claimed = await claimCronTicks(CRON_TICKS, {
+      graceMs: LAZY_GRACE_MS,
+    });
     if (claimed.length > 0) {
       await runClaimedCronTicks(claimed);
     }

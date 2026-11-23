@@ -1,6 +1,6 @@
 import type { ChatRequestContext } from "@/lib/chat/context";
 import { getCustomCommandById } from "@/lib/db/queries";
-import { isPluginOnlyToolId } from "@/lib/plugins/catalog";
+import { isPluginOnlyToolId } from "@/lib/plugins/core/catalog";
 import {
   composePersonalInstructions,
   type PersonalBlock,
@@ -32,7 +32,7 @@ export async function buildPromptAddendum(
   options: { availablePluginToolIds?: string[] } = {}
 ): Promise<PromptAddendumResult> {
   // Un outil de plugin n'est annoncé au modèle que s'il est réellement
-  // disponible (plugin installé + forfait payant, décidé par l'appelant).
+  // disponible (plugin installé et activé, décidé par l'appelant).
   const availablePluginToolIds = new Set(options.availablePluginToolIds ?? []);
 
   // Seuls les identifiants fournis par un plugin peuvent être retirés : un
@@ -106,7 +106,7 @@ export async function buildPromptAddendum(
     ...(unavailableTools.length > 0
       ? [
           {
-            body: `${unavailableTools.join(", ")} : le plugin correspondant n'est pas installé ou activé pour ce compte (page Applications → Plugins, réservée aux forfaits payants). Ne simule jamais leur résultat : indique brièvement à l'utilisateur comment les activer.`,
+            body: `${unavailableTools.join(", ")} : le plugin correspondant n'est pas installé ou activé pour ce compte (page Applications → Plugins). Ne simule jamais leur résultat : indique brièvement à l'utilisateur comment les activer.`,
             label: "OUTILS DEMANDÉS MAIS INDISPONIBLES",
           },
         ]

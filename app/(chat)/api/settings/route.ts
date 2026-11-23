@@ -1,6 +1,11 @@
 import { createHash } from "node:crypto";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import {
+  getCachedSettings,
+  invalidateSettingsCache,
+  setCachedSettings,
+} from "@/lib/account/settings-cache";
 import { fetchUsageBundle } from "@/lib/account/usage";
 import {
   errorResponse,
@@ -39,12 +44,6 @@ const updateProfileSchema = z
     username: z.string().max(64).optional(),
   })
   .strict();
-
-const settingsCache = new Map<
-  string,
-  { data: Awaited<ReturnType<typeof fetchUsageBundle>>; expiresAt: number }
->();
-const SETTINGS_CACHE_TTL_MS = 180_000; // 3 minutes de cache
 
 // Hachage canonique d'une source confirmée : la carte renvoie ce hachage, la
 // route le recalcule — une confirmation ne vaut que pour CETTE image exacte.
@@ -209,9 +208,11 @@ export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const force = url.searchParams.get("force") === "true";
 
-  const cached = settingsCache.get(token);
-  if (cached && Date.now() < cached.expiresAt && !force) {
-    return NextResponse.json(cached.data);
+  if (!force) {
+    const cached = getCachedSettings(token);
+    if (cached) {
+      return NextResponse.json(cached);
+    }
   }
 
   try {
@@ -221,10 +222,7 @@ export async function GET(req: NextRequest) {
       sessionToken: token,
     });
 
-    settingsCache.set(token, {
-      data: result,
-      expiresAt: Date.now() + SETTINGS_CACHE_TTL_MS,
-    });
+    setCachedSettings(token, result);
 
     return NextResponse.json(result);
   } catch (error) {
@@ -242,7 +240,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Invalider le cache lors d'une mutation
-  settingsCache.delete(token);
+  invalidateSettingsCache(token);
 
   const contentType = req.headers.get("content-type") || "";
 

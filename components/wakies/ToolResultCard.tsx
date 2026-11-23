@@ -9,7 +9,7 @@ import type { UIMessage } from "ai";
 import { useEffect, useState } from "react";
 import { Markdown } from "@/components/wakies/markdown";
 import { PluginToolLogo } from "@/lib/integrations/logo";
-import { getPluginByToolId } from "@/lib/plugins/catalog";
+import { getPluginByToolId } from "@/lib/plugins/core/catalog";
 import { safeAttachmentLink } from "@/lib/wakies/shared/messages";
 
 function WakiesReasoningCard({

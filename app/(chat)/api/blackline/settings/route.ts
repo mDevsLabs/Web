@@ -69,8 +69,12 @@ export async function GET() {
     const nom = await lireNomAffiche(session.user);
     return Response.json(
       {
+        avatarUrl: nom.avatarUrl,
         displayName: nom.displayName,
-        settings: superposerIndicatif(settings, nom.displayName),
+        settings: {
+          ...superposerIndicatif(settings, nom.displayName),
+          ...(nom.avatarUrl ? { avatarUrl: nom.avatarUrl } : {}),
+        },
       },
       { headers: { "Cache-Control": "private, no-store" } }
     );
@@ -116,8 +120,12 @@ export async function PUT(request: Request) {
     );
     return Response.json(
       {
+        avatarUrl: nom.avatarUrl,
         displayName: nom.displayName,
-        settings: superposerIndicatif(settings, nom.displayName),
+        settings: {
+          ...superposerIndicatif(settings, nom.displayName),
+          ...(nom.avatarUrl ? { avatarUrl: nom.avatarUrl } : {}),
+        },
         success: true,
       },
       { headers: { "Cache-Control": "private, no-store" } }

@@ -8,12 +8,14 @@
  */
 
 export const MAKE_ZONES = ["eu1", "eu2", "us1", "us2"] as const;
+export const POSTHOG_REGIONS = ["us", "eu"] as const;
 
 export type TokenFieldKind =
   | "docker-username"
   | "email"
   | "jira-site"
   | "make-zone"
+  | "posthog-region"
   | "twilio-sid"
   | "upstash-origin";
 
@@ -86,6 +88,12 @@ export function normalizeTokenField(
       const zone = value.toLowerCase();
       return (MAKE_ZONES as readonly string[]).includes(zone) ? zone : null;
     }
+    case "posthog-region": {
+      const region = value.toLowerCase();
+      return (POSTHOG_REGIONS as readonly string[]).includes(region)
+        ? region
+        : null;
+    }
     case "upstash-origin": {
       const origin = value.toLowerCase().replace(/\/$/, "");
       return isUpstashOrigin(origin) ? origin : null;
@@ -107,6 +115,8 @@ function messageFor(kind: TokenFieldKind): string {
       return "Identifiant Docker Hub invalide.";
     case "make-zone":
       return "Zone Make invalide : eu1, eu2, us1 ou us2.";
+    case "posthog-region":
+      return "Région PostHog invalide : us ou eu.";
     case "upstash-origin":
       return "URL REST Upstash invalide : https://….upstash.io, sans chemin.";
     default:

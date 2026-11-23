@@ -43,6 +43,18 @@ import { listUsersWithPendingWakiesNotifications } from "@/lib/wakies/queries";
 
 export const maxDuration = 120;
 
+/**
+ * Cause d'échec journalisable : jamais l'e-mail ni l'identifiant du compte,
+ * ni le message brut (une erreur SQL peut citer les valeurs fautives). Le
+ * tick tourne aussi dans GitHub Actions, dont les journaux sont publics.
+ */
+function causeEchec(error: unknown): string {
+  if (error && typeof error === "object" && "code" in error) {
+    return String((error as { code: unknown }).code).slice(0, 40);
+  }
+  return error instanceof Error ? error.name : "inconnu";
+}
+
 async function isAuthorized(request: Request): Promise<boolean> {
   if (process.env.CRON_SECRET) {
     return verifyCronAuth(request);
@@ -79,17 +91,13 @@ export async function POST(request: Request) {
             const count = await replicateVibeNotifications(email);
             vibe += count;
           } catch (error) {
-            echecs.push(
-              `vibe:${email}:${error instanceof Error ? error.message : "inconnu"}`
-            );
+            echecs.push(`vibe:${causeEchec(error)}`);
           }
         })
       );
     }
   } catch (error) {
-    echecs.push(
-      `vibe:globaux:${error instanceof Error ? error.message : "inconnu"}`
-    );
+    echecs.push(`vibe:globaux:${causeEchec(error)}`);
   }
 
   // ── Wakies ────────────────────────────────────────────────────────────
@@ -105,17 +113,13 @@ export async function POST(request: Request) {
             const count = await replicateWakiesNotifications(userId);
             wakies += count;
           } catch (error) {
-            echecs.push(
-              `wakies:${userId}:${error instanceof Error ? error.message : "inconnu"}`
-            );
+            echecs.push(`wakies:${causeEchec(error)}`);
           }
         })
       );
     }
   } catch (error) {
-    echecs.push(
-      `wakies:globaux:${error instanceof Error ? error.message : "inconnu"}`
-    );
+    echecs.push(`wakies:globaux:${causeEchec(error)}`);
   }
 
   // Un échec partiel ne doit pas faire échouer le tick : la réplication

@@ -1,0 +1,39 @@
+{
+  "author": "mAI",
+  "category": "research",
+  "description": "Consultez Wikipédia en français ou dans d'autres langues (sans clé API) : recherche d'articles, résumés encyclopédiques et lecture des sections.",
+  "icon": { "name": "Library", "type": "lucide" },
+  "id": "wikipedia",
+  "name": "Wikipédia",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["wikipédia", "encyclopédie", "savoir", "articles", "public"],
+  "tools": [
+    {
+      "description": "Recherche des articles Wikipédia par mots-clés dans la langue choisie.",
+      "effect": "read",
+      "id": "wikipediaSearch",
+      "label": "Rechercher sur Wikipédia",
+      "systemHint": "Utilisez le titre exact retourné pour demander le résumé ou le contenu."
+    },
+    {
+      "description": "Lit le résumé encyclopédique officiel d'un article Wikipédia.",
+      "effect": "read",
+      "id": "wikipediaGetSummary",
+      "label": "Résumé d'article Wikipédia",
+      "systemHint": "Citez l'URL canonique de l'article retournée par l'API."
+    },
+    {
+      "description": "Extrait l'introduction et les sections principales d'un article Wikipédia.",
+      "effect": "read",
+      "id": "wikipediaGetArticleContent",
+      "label": "Contenu d'article Wikipédia",
+      "systemHint": "Utile lorsque le résumé court ne suffit pas."
+    }
+  ],
+  "version": "1.0.0"
+}

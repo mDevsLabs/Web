@@ -9,7 +9,6 @@ import {
   SparklesIcon as Sparkles,
   UserIcon as User,
 } from "@mdevs/icons";
-import { motion } from "motion/react";
 import {
   type ChangeEvent,
   type FormEvent,
@@ -21,11 +20,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "@/components/site/auth-provider";
 import Link from "@/components/site/router";
 
-export function ProfileSection({
-  upgradedTier,
-}: {
-  upgradedTier: string | null;
-}) {
+export function ProfileSection() {
   const { user, usage, updateProfile, uploadAvatar } = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadingAvatar, setUploadingAvatar] = useState(false);
@@ -194,31 +189,21 @@ export function ProfileSection({
           </p>
         </div>
         <Link
-          className={`rounded-2xl bg-white/60 border border-slate-200/80 p-4 shadow-sm transition-all duration-300 hover:border-purple-300 hover:shadow-md block ${
-            upgradedTier === user.tier
-              ? "ring-4 ring-purple-500/50 shadow-purple-500/30"
-              : ""
-          }`}
+          className="rounded-2xl bg-white/60 border border-slate-200/80 p-4 shadow-sm transition-all duration-300 hover:border-purple-300 hover:shadow-md block"
           href="/pricing"
         >
           <div className="flex items-center justify-between">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              <Sparkles
-                className={`w-3.5 h-3.5 ${upgradedTier === user.tier ? "text-purple-500 animate-pulse" : "text-purple-600"}`}
-              />
+              <Sparkles className="w-3.5 h-3.5 text-purple-600" />
               Abonnement
             </p>
             <span className="text-[10px] text-purple-600 font-bold hover:underline">
               Voir les offres →
             </span>
           </div>
-          <motion.p
-            animate={upgradedTier === user.tier ? { scale: [1, 1.1, 1] } : {}}
-            className="font-bold text-slate-900 text-base"
-            transition={{ duration: 0.5 }}
-          >
+          <p className="font-bold text-slate-900 text-base">
             {user.tier || "Free"}
-          </motion.p>
+          </p>
         </Link>
       </div>
 

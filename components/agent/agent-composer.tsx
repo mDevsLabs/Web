@@ -69,7 +69,7 @@ import { asArray, jsonArray, jsonObject } from "@/lib/api/client-fetch";
 import { resolveSlashCommandOutcome } from "@/lib/chat/slash-command-outcomes";
 import { pagePath } from "@/lib/client/api-endpoints";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
-import type { PluginCatalogEntry } from "@/lib/plugins/types";
+import type { PluginCatalogEntry } from "@/lib/plugins/core/types";
 import { saveThemePreference } from "@/lib/theme/preference";
 import type { Attachment } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -274,7 +274,7 @@ export function AgentComposer({
   const userPlugins = useMemo(
     () =>
       asArray<PluginCatalogEntry>(pluginData?.plugins).filter(
-        (plugin) => plugin.installed && plugin.enabled && !plugin.locked
+        (plugin) => plugin.installed && plugin.enabled
       ),
     [pluginData]
   );

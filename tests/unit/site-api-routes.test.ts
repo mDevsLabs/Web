@@ -3,6 +3,7 @@ import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 describe("Routes API Site (SITE_API_ROUTES)", () => {
   it("définit uniquement les routes conservées et toutes préfixées par /api/site/", () => {
+    expect(SITE_API_ROUTES.accountPlan).toBe("/api/site/v1/plan");
     expect(SITE_API_ROUTES.devices).toBe("/api/site/v1/devices");
     expect(SITE_API_ROUTES.device("dev_456")).toBe(
       "/api/site/v1/devices/dev_456"

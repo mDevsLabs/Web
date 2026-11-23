@@ -350,9 +350,15 @@ describe("Onglet Types de bots", () => {
 
 describe("Icônes uniques", () => {
   it("donne une icône distincte à chacun de ces plugins", () => {
-    const manifests = readFileSync("lib/plugins/index.json", "utf8");
-    expect(manifests).toContain("catalogVersion");
-    const dirs = [
+    const catalog = JSON.parse(
+      readFileSync("lib/plugins/index.json", "utf8")
+    ) as {
+      plugins: Array<{ dir: string; id: string }>;
+    };
+    const dirById = new Map(
+      catalog.plugins.map((entry) => [entry.id, entry.dir])
+    );
+    const ids = [
       "air-quality",
       "crossref",
       "discord",
@@ -375,14 +381,12 @@ describe("Icônes uniques", () => {
       "world-bank",
       "youtube",
     ];
-    const icons = dirs.map((dir) => {
+    const icons = ids.map((id) => {
+      const dir = dirById.get(id);
+      expect(dir).toBeDefined();
       const manifest = JSON.parse(source(`lib/plugins/${dir}/index.json`)) as {
         icon: { name?: string; src?: string; type: string };
       };
-      // Deux natures de repère coexistent : une icône lucide nommée, et le logo
-      // de marque d'un connecteur, désigné par son fichier. Les deux se comparent
-      // par leur identifiant visuel, sinon un connecteur passerait pour un
-      // doublon d'un autre simplement parce qu'il n'a pas de `name`.
       return manifest.icon.name ?? manifest.icon.src;
     });
     expect(icons).toHaveLength(21);
@@ -390,7 +394,7 @@ describe("Icônes uniques", () => {
   });
 
   it("déclare dans l'allowlist chaque icône utilisée par un manifeste", () => {
-    const allowlist = source("lib/plugins/icon-allowlist.ts");
+    const allowlist = source("lib/plugins/core/icon-allowlist.ts");
     const used = [
       "Banknote",
       "GitBranch",
@@ -406,7 +410,9 @@ describe("Icônes uniques", () => {
     for (const name of used) {
       expect(allowlist).toContain(`"${name}"`);
       // Le Record<LucideIconName, …> de icon.tsx rend l'implémentation obligatoire.
-      expect(source("lib/plugins/icon.tsx")).toContain(`${name}: ${name} as`);
+      expect(source("lib/plugins/core/icon.tsx")).toContain(
+        `${name}: ${name} as`
+      );
     }
   });
 

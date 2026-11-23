@@ -1,21 +1,8 @@
 "use client";
 
-import {
-  Loader2Icon as Loader2,
-  LogOutIcon as LogOut,
-  PartyPopperIcon as PartyPopper,
-  SparklesIcon as Sparkles,
-} from "@mdevs/icons";
-import { motion } from "motion/react";
-import {
-  type FormEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Loader2Icon as Loader2, LogOutIcon as LogOut } from "@mdevs/icons";
+import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useWindowSize } from "react-use";
 import {
   ACCOUNT_SECTION_IDS,
   AccountNavigation,
@@ -28,27 +15,16 @@ import { ImageUsageSection } from "@/components/site/account/image-usage-section
 import { MaiUsageSection } from "@/components/site/account/mai-usage-section";
 import { ProfileSection } from "@/components/site/account/profile-section";
 import { QuotaResetsSection } from "@/components/site/account/quota-resets-section";
-import { UpgradeCelebration } from "@/components/site/account/upgrade-celebration";
-import { UpgradeCodeSection } from "@/components/site/account/upgrade-code-section";
 import { useAccountDashboard } from "@/components/site/account/use-account-dashboard";
 import { useAuth } from "@/components/site/auth-provider";
 import { useSiteRouter as useRouter } from "@/components/site/router";
-import { MaiApiError } from "@/lib/site/mai-api";
 
 export default function AccountPage() {
   const router = useRouter();
-  const { logout, verifyUpgradeCode } = useAuth();
+  const { logout } = useAuth();
   const dashboard = useAccountDashboard();
-  const { width, height } = useWindowSize();
 
   const [activeSection, setActiveSection] = useState<string>("profil");
-  const [code, setCode] = useState("");
-  const [codeError, setCodeError] = useState("");
-  const [upgrading, setUpgrading] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [showRocket, setShowRocket] = useState(false);
-  const [upgradedTier, setUpgradedTier] = useState<string | null>(null);
-  const celebrationTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const scrollTo = useCallback((id: string) => {
     const element = document.getElementById(id);
@@ -98,13 +74,6 @@ export default function AccountPage() {
     }
   }, [dashboard.authLoading, dashboard.isAuthenticated, router]);
 
-  useEffect(
-    () => () => {
-      if (celebrationTimeout.current) clearTimeout(celebrationTimeout.current);
-    },
-    []
-  );
-
   const handleLogout = () => {
     logout();
     toast.success("Déconnecté");
@@ -145,88 +114,6 @@ export default function AccountPage() {
     }
   };
 
-  const handleUpgrade = async (event: FormEvent) => {
-    event.preventDefault();
-    setCodeError("");
-
-    const cleanCode = code.trim();
-    if (!cleanCode) {
-      setCodeError("Saisissez un code.");
-      return;
-    }
-
-    const previousTier =
-      dashboard.user?.tier || dashboard.usage?.tier || "Free";
-    setUpgrading(true);
-    try {
-      const tier = await verifyUpgradeCode(cleanCode);
-      setCode("");
-      setUpgradedTier(tier);
-      setShowConfetti(true);
-      setShowRocket(true);
-
-      const audio = new Audio("/site/sounds/plan-update.mp3");
-      audio.play().catch(() => undefined);
-
-      await dashboard.refreshAll();
-
-      toast.custom(
-        () => (
-          <motion.div
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-4 rounded-2xl shadow-2xl border border-white/20"
-            exit={{ opacity: 0, y: -20 }}
-            initial={{ opacity: 0, y: -20 }}
-          >
-            <div className="flex items-center gap-3">
-              <Sparkles className="w-6 h-6 text-yellow-300" />
-              <div>
-                <p className="font-black text-base">
-                  Merci d&apos;avoir souscrit au forfait {tier} !{" "}
-                  <PartyPopper className="inline w-4 h-4 align-middle" />
-                </p>
-                <p className="text-xs text-purple-100 mt-0.5">
-                  Vos quotas étendus sont immédiatement disponibles !
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        ),
-        { duration: 6000 }
-      );
-
-      try {
-        const { initUpgradeForTier } = await import(
-          "@/lib/site/onboarding-storage"
-        );
-        initUpgradeForTier(tier);
-        window.dispatchEvent(
-          new CustomEvent("mai:onboarding:open", {
-            detail: { flow: "upgrade", prevTier: previousTier, tier },
-          })
-        );
-      } catch {}
-
-      if (celebrationTimeout.current) clearTimeout(celebrationTimeout.current);
-      celebrationTimeout.current = setTimeout(() => {
-        setShowConfetti(false);
-        setShowRocket(false);
-        setUpgradedTier(null);
-      }, 5000);
-    } catch (error) {
-      const message =
-        error instanceof MaiApiError
-          ? error.message
-          : error instanceof Error
-            ? error.message
-            : "Code invalide.";
-      setCodeError(message);
-      toast.error(message);
-    } finally {
-      setUpgrading(false);
-    }
-  };
-
   if (dashboard.authLoading || !dashboard.isAuthenticated || !dashboard.user) {
     return (
       <div className="flex justify-center py-20 text-slate-500">
@@ -262,13 +149,7 @@ export default function AccountPage() {
         />
 
         <div className="flex-1 space-y-8">
-          <UpgradeCelebration
-            height={height}
-            show={showConfetti && showRocket}
-            width={width}
-          />
-
-          <ProfileSection upgradedTier={upgradedTier} />
+          <ProfileSection />
 
           <ImageUsageSection
             onRefresh={handleRefreshImages}
@@ -305,14 +186,6 @@ export default function AccountPage() {
             onClaim={dashboard.claimReset}
             onRefresh={dashboard.loadResets}
             resets={dashboard.availableResets}
-          />
-
-          <UpgradeCodeSection
-            code={code}
-            error={codeError}
-            onCodeChange={setCode}
-            onSubmit={handleUpgrade}
-            upgrading={upgrading}
           />
         </div>
       </div>

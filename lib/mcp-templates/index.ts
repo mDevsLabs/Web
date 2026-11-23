@@ -1,4 +1,4 @@
-import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
+import { isLucideIconName } from "@/lib/plugins/core/icon-allowlist";
 import type { McpTemplateDefinition } from "./types";
 
 // Catalogue des modèles MCP — SOURCE DE VÉRITÉ UNIQUE.

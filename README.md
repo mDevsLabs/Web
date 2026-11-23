@@ -28,8 +28,10 @@ typecheck ni build racine.
 
 ## Démarrer
 
-Prérequis : Node.js **22 ou supérieur** et pnpm **10** (`packageManager:
-pnpm@10.32.1`).
+Prérequis : Node.js **22.23.5** (épinglé dans `.nvmrc`) et pnpm **10**
+(`packageManager: pnpm@10.32.1`). pnpm exécute les scripts avec cette version
+(`useNodeVersion` dans `pnpm-workspace.yaml`) et la télécharge si besoin ;
+`nvm use`, `fnm use` ou `mise` lisent aussi `.nvmrc`.
 
 ```sh
 pnpm install

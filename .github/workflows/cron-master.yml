@@ -1,101 +1,94 @@
 name: "CRON Master (Ordonnanceur Groupé)"
 
-# Dépôt public : les minutes GitHub Actions sont illimitées, mais GitHub ne
-# garantit pas la ponctualité des `schedule` (retards de plusieurs minutes aux
-# heures de pointe, voire ticks sautés). Ce workflow est donc un filet régulier,
-# pas l'unique ordonnanceur :
-#   - Vercel Cron (plan Hobby, 1 passage/jour) appelle `/api/cron/daily` ;
-#   - les ticks paresseux (table Neon `cron_ticks`, bail atomique) se déclenchent
-#     à la sollicitation de la cloche de notifications.
-# Les trois sources partagent le même bail : aucune occurrence n'est exécutée
-# deux fois. Le job n'a besoin ni du dépôt ni de Node : un simple `curl`.
+# Ordonnanceur PRINCIPAL des six ticks (agent, planning, wakies, vibe,
+# notifications, quizzly), exécutés DIRECTEMENT sur le runner GitHub contre Neon
+# et les fournisseurs IA : aucun appel à Vercel, donc zéro Active CPU Fluid
+# consommé par les ticks (plan Hobby, quota de 4 h/mois).
+#
+# Même registre (`lib/cron/ticks.ts`) et même bail atomique (table Neon
+# `cron_ticks`) que les deux filets restants côté Vercel :
+#   - Vercel Cron (1 passage/jour) sur la route quotidienne `daily` ;
+#   - ticks paresseux (cloche de notifications), seulement après 15 min de
+#     retard, au cas où GitHub saute des passages.
+# Aucune occurrence n'est exécutée deux fois.
+#
+# Dépôt public = journaux publics : le script masque URL de base, jetons,
+# e-mails et identifiants (`lib/cron/log-mask.ts`). Aucun secret en argument.
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       tick:
-        description: "Tick spécifique à exécuter (all, agent, planning, wakies, vibe, notifications, quizzly)"
+        description: "Tick spécifique à exécuter"
         required: false
         default: "all"
-        type: string
+        type: choice
+        options:
+          - all
+          - agent
+          - planning
+          - wakies
+          - vibe
+          - notifications
+          - quizzly
 
 concurrency:
   group: cron-master
   cancel-in-progress: false
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
   run-ticks:
     name: "Exécution des Ticks"
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 8
 
     steps:
-      - name: "Appel des ticks CRON"
+      - name: "Récupération du code"
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: "Installation de pnpm"
+        uses: pnpm/action-setup@v4
+
+      - name: "Configuration de Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: "Installation des dépendances"
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: "Exécution directe des ticks"
         shell: bash
         env:
-          APP_URL: ${{ secrets.APP_URL }}
-          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          NODE_ENV: production
           TICK: ${{ inputs.tick || 'all' }}
+          # Requis
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # Optionnels : mêmes valeurs que sur Vercel, si utilisés
+          MAI_API_KEY: ${{ secrets.MAI_API_KEY }}
+          MAI_API_URL: ${{ secrets.MAI_API_URL }}
+          OPENROUTER_BASE_URL: ${{ secrets.OPENROUTER_BASE_URL }}
+          COMET_API_KEY: ${{ secrets.COMET_API_KEY }}
+          YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
+          MCP_ENCRYPTION_KEY: ${{ secrets.MCP_ENCRYPTION_KEY }}
+          MCP_ENCRYPTION_KEY_ID: ${{ secrets.MCP_ENCRYPTION_KEY_ID }}
+          MAI_JWT_SECRET: ${{ secrets.MAI_JWT_SECRET }}
+          NEXT_PUBLIC_APP_URL: ${{ secrets.APP_URL }}
+          PUBLIC_API_CONTACT_EMAIL: ${{ secrets.PUBLIC_API_CONTACT_EMAIL }}
         run: |
-          set -uo pipefail
-
-          if [ -z "${APP_URL:-}" ] || [ -z "${CRON_SECRET:-}" ]; then
-            echo "::error::Les secrets APP_URL et CRON_SECRET sont requis."
-            exit 1
+          set -euo pipefail
+          args=()
+          if [ "$TICK" != "all" ]; then
+            args+=("--tick=$TICK")
           fi
-
-          BASE="${APP_URL%/}"
-          case "$BASE" in
-            https://*) ;;
-            *) echo "::error::APP_URL doit commencer par https://"; exit 1 ;;
-          esac
-
-          case "$TICK" in
-            all|agent|planning|wakies|vibe|notifications|quizzly) ;;
-            *) echo "::error::Tick inconnu : $TICK"; exit 1 ;;
-          esac
-
-          # Le secret passe par un fichier de configuration curl (jamais en argument
-          # de ligne de commande, jamais dans l'URL).
-          HDR="$RUNNER_TEMP/cron-auth.conf"
-          umask 077
-          printf 'header = "Authorization: Bearer %s"\n' "$CRON_SECRET" > "$HDR"
-          trap 'rm -f "$HDR"' EXIT
-
-          run_tick() {
-            local name="$1" method="$2" max="$3" code
-            code=$(curl -sS -o /dev/null -w '%{http_code}' \
-              -X "$method" --max-time "$max" -K "$HDR" \
-              "$BASE/api/cron/$name") || code="000"
-            echo "tick=$name methode=$method statut=$code"
-            case "$code" in
-              2*) return 0 ;;
-              *) echo "::error::Tick $name en échec (HTTP $code)"; return 1 ;;
-            esac
-          }
-
-          pids=()
-          launch() {
-            if [ "$TICK" = "all" ] || [ "$TICK" = "$1" ]; then
-              run_tick "$1" "$2" "$3" &
-              pids+=("$!")
-            fi
-          }
-
-          # nom, verbe HTTP, budget en secondes (aligné sur maxDuration de la route)
-          launch agent         POST 285
-          launch planning      POST 290
-          launch wakies        POST 290
-          launch vibe          GET   60
-          launch notifications POST 120
-          launch quizzly       POST  60
-
-          failed=0
-          for pid in "${pids[@]}"; do
-            wait "$pid" || failed=1
-          done
-          exit "$failed"
+          node --conditions=react-server --import tsx scripts/cron/run-direct.ts "${args[@]}"

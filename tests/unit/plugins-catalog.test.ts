@@ -13,41 +13,46 @@ import {
   TOOL_IDS,
 } from "@/lib/ai/tools/ids";
 import { getIntegrationByPluginId } from "@/lib/integrations/providers";
-import { getAirQuality } from "@/lib/plugins/air-quality";
 import {
   getPluginManifest,
   getReadToolIdsForPluginIds,
   isPluginOnlyToolId,
   PLUGIN_MANIFEST_LIST,
   PLUGIN_ONLY_TOOL_IDS,
-} from "@/lib/plugins/catalog";
-import {
-  frHolidays,
-  internationalHolidays,
-  isPublicHoliday,
-} from "@/lib/plugins/fr-holidays";
-import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
-import { jsonToolbox } from "@/lib/plugins/json-toolbox";
-import { getFoodProduct } from "@/lib/plugins/open-food-facts";
+} from "@/lib/plugins/core/catalog";
+import { isLucideIconName } from "@/lib/plugins/core/icon-allowlist";
 import {
   createPluginTools,
   getPluginDefinition,
   getToolIdsForPluginIds,
   PLUGIN_DEFINITION_LIST,
-} from "@/lib/plugins/server";
-import { requireWriteScope } from "@/lib/plugins/shared/authorized-api";
-import {
-  fetchPublicJson,
-  PUBLIC_API_MAX_BYTES,
-} from "@/lib/plugins/shared/public-api";
+} from "@/lib/plugins/core/server";
 import {
   hasReadTool,
   readToolIds,
   toolEffect,
   writeToolIds,
-} from "@/lib/plugins/tool-effect";
-import type { PluginDefinition, PluginManifest } from "@/lib/plugins/types";
-import { searchWorldBankIndicators } from "@/lib/plugins/world-bank";
+} from "@/lib/plugins/core/tool-effect";
+import type {
+  PluginDefinition,
+  PluginManifest,
+} from "@/lib/plugins/core/types";
+import { searchWorldBankIndicators } from "@/lib/plugins/packs/data/world-bank";
+import { jsonToolbox } from "@/lib/plugins/packs/dev/json-toolbox";
+import { getFoodProduct } from "@/lib/plugins/packs/food/open-food-facts";
+import { getAirQuality } from "@/lib/plugins/packs/meteo/air-quality";
+import {
+  frHolidays,
+  internationalHolidays,
+  isPublicHoliday,
+} from "@/lib/plugins/packs/productivite/fr-holidays";
+import { arxivSearchPapers } from "@/lib/plugins/packs/research/arxiv";
+import { wikipediaSearch } from "@/lib/plugins/packs/research/wikipedia";
+import { webParseUrl } from "@/lib/plugins/packs/web/web-toolbox";
+import {
+  fetchPublicJson,
+  PUBLIC_API_MAX_BYTES,
+} from "@/lib/plugins/shared/public-api";
 
 const TOOL_CALL_OPTIONS = {
   abortSignal: new AbortController().signal,
@@ -85,6 +90,8 @@ describe("Catalogue de plugins", () => {
     );
     expect(ids).toEqual([
       "air-quality",
+      "airtable",
+      "arxiv",
       "asana",
       "brave",
       "brevo",
@@ -113,6 +120,7 @@ describe("Catalogue de plugins", () => {
       "posthog",
       "resend",
       "sentry",
+      "slack",
       "sonarcloud",
       "stripe",
       "supabase",
@@ -121,7 +129,9 @@ describe("Catalogue de plugins", () => {
       "upstash",
       "vercel",
       "weather",
+      "web-toolbox",
       "wikidata",
+      "wikipedia",
       "world-bank",
       "youtube",
       "zapier",
@@ -133,7 +143,7 @@ describe("Catalogue de plugins", () => {
     expect(new Set(toolIds).size).toBe(toolIds.length);
   });
 
-  it("déclare des permissions explicites, un forfait valide et une icône connue", () => {
+  it("déclare des permissions explicites et une icône connue pour tous les plugins (accessibles au forfait Free)", () => {
     for (const plugin of PLUGIN_MANIFEST_LIST) {
       expect(plugin.version).toMatch(/^\d+\.\d+\.\d+/);
       expect(plugin.category.length).toBeGreaterThan(0);
@@ -144,9 +154,6 @@ describe("Catalogue de plugins", () => {
         expect(pluginTool.description.length).toBeGreaterThan(0);
         expect(pluginTool.systemHint.length).toBeGreaterThan(0);
       }
-
-      // Les plugins sont autorisés dès le forfait Free.
-      expect(["free", "plus", "pro", "max"]).toContain(plugin.minTier);
 
       // Permissions déclaratives obligatoires.
       expect(["none", "read-only", "read-write"]).toContain(
@@ -295,7 +302,6 @@ describe("Catalogue de plugins", () => {
       description: "Lit et écrit le calendrier.",
       icon: { name: "Calendar", type: "lucide" },
       id: "mixed-agenda",
-      minTier: "plus",
       name: "Agenda mixte",
       permissions: {
         network: "read-write",
@@ -445,12 +451,12 @@ describe("Catalogue de plugins", () => {
         kind === "auth" ? "jeton-de-test" : undefined,
       userId: "user",
     });
-    // Neuf outils, dont trois écritures : l'Agent est le seul canal qui les
+    // Quinze outils, dont trois écritures : l'Agent est le seul canal qui les
     // serve, et chacun de ces trois doit être marqué à approuver.
-    expect(githubTools).toHaveLength(9);
+    expect(githubTools).toHaveLength(15);
     expect(
       githubTools.filter((agentTool) => agentTool.permissions.readOnly)
-    ).toHaveLength(6);
+    ).toHaveLength(12);
     expect(
       githubTools
         .filter((agentTool) => agentTool.permissions.default === "ask")
@@ -475,13 +481,13 @@ describe("Catalogue de plugins", () => {
       narrowPluginAgentToolsForTask("@GitHub inspecte ce dépôt", githubTools, [
         "github",
       ])
-    ).toHaveLength(9);
+    ).toHaveLength(15);
     expect(listPluginAgentTools([])).toEqual([]);
   });
 
   it("ne sert que la lecture d'un connecteur sur un canal non-Agent", () => {
-    // GitHub : 9 outils, 6 en lecture. Maps et YouTube sont entièrement en lecture.
-    expect(getReadToolIdsForPluginIds(["github"])).toHaveLength(6);
+    // GitHub : 15 outils, 12 en lecture. Maps et YouTube sont entièrement en lecture.
+    expect(getReadToolIdsForPluginIds(["github"])).toHaveLength(12);
     expect(getReadToolIdsForPluginIds(["google-maps"])).toHaveLength(4);
     expect(getReadToolIdsForPluginIds(["youtube"])).toHaveLength(3);
     const chatTools = createPluginTools({ channel: "chat", userId: "user" }, [
@@ -489,7 +495,7 @@ describe("Catalogue de plugins", () => {
       "google-maps",
       "youtube",
     ]);
-    expect(Object.keys(chatTools)).toHaveLength(13);
+    expect(Object.keys(chatTools)).toHaveLength(19);
     expect(chatTools.createGithubIssue).toBeUndefined();
     expect(chatTools.mapsGeocode).toBeDefined();
     expect(chatTools.youtubeSearchVideos).toBeDefined();
@@ -896,22 +902,6 @@ describe("Connecteurs publics des plugins", () => {
     expect(calls).toEqual([]);
   });
 
-  it("refuse une écriture dont le consentement ne porte pas la portée", async () => {
-    const result = await requireWriteScope(
-      {
-        secretResolver: async ({ key }) =>
-          key.endsWith(".scopes") ? "read:user" : "jeton-du-compte",
-        userId: "user",
-      },
-      "github",
-      "repo"
-    );
-    expect(result.ok).toBe(false);
-    if (!result.ok) {
-      expect(result.error).toContain("n'inclut pas la portée");
-    }
-  });
-
   it("envoie la clé Google Maps en paramètre, jamais dans le chemin", async () => {
     const calls: string[] = [];
     vi.stubGlobal(
@@ -1047,5 +1037,122 @@ describe("Connecteurs publics des plugins", () => {
       date: "2026-01-02",
     });
     expect(checked.isPublicHoliday).toBe(false);
+  });
+});
+
+describe("Nouveaux plugins et connecteurs enrichis", () => {
+  it("analyse et modifie une URL localement avec web-toolbox", async () => {
+    const result = await runTool(webParseUrl, {
+      removeParams: ["utm_source"],
+      setParams: { page: "2" },
+      url: "https://exemple.fr/articles?utm_source=test&q=ia#intro",
+    });
+    expect(result).toMatchObject({
+      hash: "#intro",
+      host: "exemple.fr",
+      pathname: "/articles",
+      queryParams: { page: ["2"], q: ["ia"] },
+    });
+  });
+
+  it("interroge l'API Wikipédia sans clé et expose une source", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: RequestInfo | URL) => {
+        calls.push(String(input));
+        return Response.json({
+          query: {
+            search: [
+              {
+                pageid: 42,
+                snippet: "<span>Intelligence</span> artificielle",
+                title: "Intelligence artificielle",
+                wordcount: 5000,
+              },
+            ],
+          },
+        });
+      })
+    );
+    const result = await runTool(wikipediaSearch, {
+      language: "fr",
+      limit: 5,
+      query: "intelligence artificielle",
+    });
+    expect(calls[0]).toContain("https://fr.wikipedia.org/w/api.php");
+    expect(result.articles).toMatchObject([
+      {
+        pageId: 42,
+        snippet: "Intelligence artificielle",
+        title: "Intelligence artificielle",
+      },
+    ]);
+    expect(result.source).toMatchObject({
+      title: "Wikipédia (fr)",
+    });
+  });
+
+  it("parse le flux Atom d'arXiv sans clé", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(
+        async () =>
+          new Response(
+            `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <id>http://arxiv.org/abs/2501.00001v1</id>
+    <published>2025-01-01T00:00:00Z</published>
+    <updated>2025-01-02T00:00:00Z</updated>
+    <title>Test Paper</title>
+    <summary>Un résumé court.</summary>
+    <author><name>Ada Lovelace</name></author>
+    <category term="cs.AI" />
+  </entry>
+</feed>`,
+            { headers: { "content-type": "application/atom+xml" }, status: 200 }
+          )
+      )
+    );
+    const result = await runTool(arxivSearchPapers, {
+      limit: 3,
+      query: "attention",
+      sortBy: "relevance",
+    });
+    expect(result.papers).toMatchObject([
+      {
+        authors: ["Ada Lovelace"],
+        categories: ["cs.AI"],
+        id: "2501.00001",
+        title: "Test Paper",
+      },
+    ]);
+  });
+
+  it("filtre les écritures de Slack et Airtable hors Agent et expose les nouveaux outils enrichis", () => {
+    const chatTools = createPluginTools({ channel: "chat", userId: "user" }, [
+      "slack",
+      "airtable",
+      "github",
+      "linear",
+      "stripe",
+    ]);
+    expect(chatTools.slackListChannels).toBeDefined();
+    expect(chatTools.slackSendMessage).toBeUndefined();
+    expect(chatTools.airtableListBases).toBeDefined();
+    expect(chatTools.airtableCreateRecord).toBeUndefined();
+    expect(chatTools.getGithubIssue).toBeDefined();
+    expect(chatTools.linearGetIssue).toBeDefined();
+    expect(chatTools.stripeGetCustomer).toBeDefined();
+
+    const agentTools = createPluginTools({ channel: "agent", userId: "user" }, [
+      "slack",
+      "airtable",
+      "linear",
+    ]);
+    expect(agentTools.slackSendMessage).toBeDefined();
+    expect(agentTools.airtableCreateRecord).toBeDefined();
+    expect(agentTools.linearCreateIssue).toBeDefined();
   });
 });

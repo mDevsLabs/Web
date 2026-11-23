@@ -9,6 +9,7 @@ import {
   regenerateVerificationCode,
   verifyVerificationCode,
 } from "@/lib/auth/verification";
+import { MAI_API_URL } from "@/lib/constants";
 import { dbReady, getRawClient } from "@/lib/db/queries/connection";
 import { sendVerificationEmail } from "@/lib/site/email";
 
@@ -850,7 +851,7 @@ export async function confirmUserEmailChange(params: {
 }
 
 /**
- * Définit l'URL de l'avatar d'un utilisateur dans Neon.
+ * Définit l'URL de l'avatar d'un utilisateur dans Neon et la propage au profil Vibe/Quizzly.
  */
 export async function setUserAvatar(
   userId: string,
@@ -862,8 +863,488 @@ export async function setUserAvatar(
 
   try {
     await sql`UPDATE users SET avatar_url = ${avatarUrl} WHERE id::text = ${userId}::text`;
+    await sql`UPDATE profiles SET avatar_url = ${avatarUrl} WHERE user_id::text = ${userId}::text`.catch(
+      () => {}
+    );
     return true;
   } catch {
     return false;
   }
+}
+
+type PlanTierLabel = "Free" | "Plus" | "Pro" | "Max";
+
+class PlanActionError extends Error {
+  code: string;
+
+  constructor(code: string, message: string) {
+    super(message);
+    this.code = code;
+  }
+}
+
+function normalizePlanTierLabel(tier?: string | null): PlanTierLabel | null {
+  const lower = (tier || "").trim().toLowerCase();
+  if (lower === "free" || lower === "gratuit") return "Free";
+  if (lower === "plus") return "Plus";
+  if (lower === "pro") return "Pro";
+  if (lower === "max") return "Max";
+  return null;
+}
+
+function isUndefinedTableError(error: unknown): boolean {
+  const err = error as { code?: unknown; cause?: { code?: unknown } } | null;
+  const code = err?.code ?? err?.cause?.code;
+  return code === "42P01";
+}
+
+function readEnvUpgradeCodes(): Record<string, PlanTierLabel> {
+  const map: Record<string, PlanTierLabel> = {};
+  const entries: [string | undefined, PlanTierLabel][] = [
+    [process.env.MAI_PLUS_CODE || process.env.PLUS_CODE, "Plus"],
+    [process.env.MAI_PRO_CODE || process.env.PRO_CODE, "Pro"],
+    [process.env.MAI_MAX_CODE || process.env.MAX_CODE, "Max"],
+  ];
+  for (const [raw, tier] of entries) {
+    const clean = raw?.trim().toUpperCase();
+    if (clean) {
+      map[clean] = tier;
+    }
+  }
+  return map;
+}
+
+type SqlQueryRunner = NonNullable<ReturnType<typeof getRawClient>>;
+
+async function runInSqlTransaction<T>(
+  sql: SqlQueryRunner,
+  fn: (tx: SqlQueryRunner) => Promise<T>
+): Promise<T> {
+  const maybeBegin = (
+    sql as unknown as {
+      begin?: (cb: (tx: SqlQueryRunner) => Promise<T>) => Promise<T>;
+    }
+  ).begin;
+  if (typeof maybeBegin === "function") {
+    return await maybeBegin.call(sql, fn);
+  }
+  return await fn(sql);
+}
+
+async function trySignRefreshedToken(params: {
+  avatarUrl?: string | null;
+  email: string;
+  id: string;
+  phone?: string | null;
+  tier: string;
+  username: string;
+}): Promise<string | undefined> {
+  if (!(process.env.MAI_JWT_SECRET || process.env.JWT_SECRET)) {
+    return undefined;
+  }
+  try {
+    return await signUserToken({
+      avatarUrl: params.avatarUrl || null,
+      email: params.email,
+      id: params.id,
+      phone: params.phone || "",
+      sub: params.id,
+      tier: params.tier,
+      username: params.username,
+    });
+  } catch {
+    return undefined;
+  }
+}
+
+type UpdatedUserRow = {
+  avatar_url?: string | null;
+  email: string;
+  id: string;
+  phone?: string | null;
+  username: string;
+};
+
+async function updateUserTierRow(
+  runner: SqlQueryRunner,
+  params: { email?: string; tier: PlanTierLabel; userId: string }
+): Promise<UpdatedUserRow | null> {
+  const byId = await runner<UpdatedUserRow[]>`
+    UPDATE users
+    SET tier = ${params.tier}
+    WHERE id::text = ${params.userId}::text
+    RETURNING id::text AS id, email, username, phone, avatar_url
+  `;
+  if (byId.length > 0) {
+    return byId[0];
+  }
+
+  const cleanEmail = (params.email || "").trim().toLowerCase();
+  if (cleanEmail) {
+    const byEmail = await runner<UpdatedUserRow[]>`
+      UPDATE users
+      SET tier = ${params.tier}
+      WHERE email IS NOT NULL AND LOWER(email) = ${cleanEmail}
+      RETURNING id::text AS id, email, username, phone, avatar_url
+    `;
+    if (byEmail.length > 0) {
+      return byEmail[0];
+    }
+  }
+
+  return null;
+}
+
+async function finalizeTierChange(params: {
+  notifyUpgradeEmail: boolean;
+  sql: SqlQueryRunner;
+  tier: PlanTierLabel;
+  user: UpdatedUserRow;
+}): Promise<AuthActionResult> {
+  await params.sql`
+    UPDATE mprojects_api_keys SET plan = ${params.tier} WHERE user_id = ${params.user.id}::text
+  `.catch(() => {});
+
+  if (params.notifyUpgradeEmail && params.user.email) {
+    await sendVerificationEmail(
+      params.user.email,
+      "",
+      "subscription_unlocked",
+      {
+        tier: params.tier,
+        username: params.user.username,
+      }
+    ).catch((mailErr) => {
+      console.warn(
+        "[auth] envoi email remerciements souscription:",
+        mailErr instanceof Error ? mailErr.message : mailErr
+      );
+    });
+  }
+
+  const token = await trySignRefreshedToken({
+    avatarUrl: params.user.avatar_url,
+    email: params.user.email,
+    id: params.user.id,
+    phone: params.user.phone,
+    tier: params.tier,
+    username: params.user.username,
+  });
+
+  return {
+    success: true,
+    tier: params.tier,
+    ...(token ? { token } : {}),
+  };
+}
+
+/**
+ * Active un code d'upgrade (Plus, Pro ou Max) directement sur Neon PostgreSQL,
+ * avec repli vers les variables d'environnement puis vers le backend Val Town
+ * durant la phase de transition.
+ */
+export async function redeemUpgradeCodeForUser(params: {
+  code: string;
+  email?: string;
+  sessionToken?: string;
+  userId: string;
+}): Promise<AuthActionResult> {
+  const inputCode = (params.code || "").trim().toUpperCase();
+  if (!inputCode) {
+    return {
+      code: "invalid_request",
+      error: "Saisissez un code.",
+      success: false,
+    };
+  }
+
+  await dbReady();
+  const sql = getRawClient();
+  if (!sql) {
+    return {
+      code: "service_unavailable",
+      error: "Base de données indisponible.",
+      success: false,
+    };
+  }
+
+  type CodeRow = {
+    expires_at: Date | string | null;
+    id: number;
+    is_active: boolean;
+    max_uses: number | string | null;
+    tier: string;
+    uses_count: number | string | null;
+  };
+
+  let codeRow: CodeRow | null = null;
+  let hasRedemptionsTable = true;
+
+  // 1. Recherche dans la table `subscription_codes` de Neon
+  try {
+    const rows = await sql<CodeRow[]>`
+      SELECT id, code, tier, max_uses, uses_count, is_active, expires_at
+      FROM subscription_codes
+      WHERE UPPER(code) = UPPER(${inputCode})
+      LIMIT 1
+    `;
+    codeRow = rows[0] ?? null;
+  } catch (err) {
+    if (!isUndefinedTableError(err)) {
+      console.warn(
+        "[auth] lecture subscription_codes impossible, bascule repli:",
+        err instanceof Error ? err.message : err
+      );
+    }
+  }
+
+  if (codeRow) {
+    const matchedCodeId = codeRow.id;
+    if (!codeRow.is_active) {
+      return {
+        code: "invalid_code",
+        error: "Ce code d'abonnement est désactivé.",
+        success: false,
+      };
+    }
+
+    if (codeRow.expires_at && new Date(codeRow.expires_at) < new Date()) {
+      return {
+        code: "invalid_code",
+        error: "Ce code d'abonnement a expiré.",
+        success: false,
+      };
+    }
+
+    const maxUses = Number(codeRow.max_uses ?? 0);
+    const usesCount = Number(codeRow.uses_count ?? 0);
+    if (maxUses > 0 && usesCount >= maxUses) {
+      return {
+        code: "invalid_code",
+        error: "Ce code a atteint son quota maximal d'utilisations.",
+        success: false,
+      };
+    }
+
+    try {
+      const redemptions = await sql<{ id: number }[]>`
+        SELECT id FROM subscription_code_redemptions
+        WHERE code_id = ${matchedCodeId} AND user_id = ${params.userId}::text
+        LIMIT 1
+      `;
+      if (redemptions.length > 0) {
+        return {
+          code: "already_redeemed",
+          error: "Vous avez déjà débloqué votre forfait avec ce code.",
+          success: false,
+        };
+      }
+    } catch (err) {
+      if (isUndefinedTableError(err)) {
+        hasRedemptionsTable = false;
+      }
+    }
+
+    const targetTier = normalizePlanTierLabel(codeRow.tier);
+    if (!targetTier || targetTier === "Free") {
+      return {
+        code: "invalid_code",
+        error: "Ce code ne correspond à aucun forfait payant valide.",
+        success: false,
+      };
+    }
+
+    let updatedUser: UpdatedUserRow | null = null;
+    try {
+      updatedUser = await runInSqlTransaction(sql, async (tx) => {
+        const claim = await tx<{ id: number }[]>`
+          UPDATE subscription_codes
+          SET uses_count = COALESCE(uses_count, 0) + 1,
+              is_active = CASE
+                WHEN COALESCE(max_uses, 0) > 0
+                  AND COALESCE(uses_count, 0) + 1 >= max_uses
+                THEN FALSE
+                ELSE is_active
+              END
+          WHERE id = ${matchedCodeId}
+            AND is_active = TRUE
+            AND (
+              COALESCE(max_uses, 0) <= 0
+              OR COALESCE(uses_count, 0) < max_uses
+            )
+            AND (expires_at IS NULL OR expires_at > NOW())
+          RETURNING id
+        `;
+        if (claim.length === 0) {
+          throw new PlanActionError(
+            "invalid_code",
+            "Ce code a atteint son quota maximal d'utilisations."
+          );
+        }
+
+        const userRow = await updateUserTierRow(tx, {
+          email: params.email,
+          tier: targetTier,
+          userId: params.userId,
+        });
+        if (!userRow) {
+          throw new PlanActionError(
+            "user_not_found",
+            "Compte utilisateur introuvable."
+          );
+        }
+
+        if (hasRedemptionsTable) {
+          await tx`
+            INSERT INTO subscription_code_redemptions (code_id, user_id)
+            VALUES (${matchedCodeId}, ${params.userId}::text)
+            ON CONFLICT DO NOTHING
+          `;
+        }
+
+        return userRow;
+      });
+    } catch (err) {
+      if (err instanceof PlanActionError) {
+        return { code: err.code, error: err.message, success: false };
+      }
+      throw err;
+    }
+
+    return finalizeTierChange({
+      notifyUpgradeEmail: true,
+      sql,
+      tier: targetTier,
+      user: updatedUser,
+    });
+  }
+
+  // 2. Repli vers les variables d'environnement Next.js
+  const envTier = readEnvUpgradeCodes()[inputCode] ?? null;
+  if (envTier) {
+    const updatedUser = await updateUserTierRow(sql, {
+      email: params.email,
+      tier: envTier,
+      userId: params.userId,
+    });
+    if (!updatedUser) {
+      return {
+        code: "user_not_found",
+        error: "Compte utilisateur introuvable.",
+        success: false,
+      };
+    }
+
+    return finalizeTierChange({
+      notifyUpgradeEmail: true,
+      sql,
+      tier: envTier,
+      user: updatedUser,
+    });
+  }
+
+  // 3. Repli transitoire vers Val Town si le code n'est configuré que là-bas
+  const upstreamBase = (process.env.MAI_API_URL || MAI_API_URL || "").trim();
+  if (params.sessionToken && upstreamBase) {
+    try {
+      const upstreamRes = await fetch(`${upstreamBase}/verify-code`, {
+        body: JSON.stringify({ code: inputCode }),
+        cache: "no-store",
+        headers: {
+          Authorization: `Bearer ${params.sessionToken}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        signal: AbortSignal.timeout(10_000),
+      });
+
+      const upstreamData = (await upstreamRes.json().catch(() => null)) as {
+        error?: unknown;
+        success?: unknown;
+        tier?: unknown;
+        token?: unknown;
+      } | null;
+
+      if (upstreamRes.ok && upstreamData?.success) {
+        const resolvedTier =
+          normalizePlanTierLabel(
+            typeof upstreamData.tier === "string" ? upstreamData.tier : null
+          ) ?? "Plus";
+        // S'assurer que Neon reflète aussi le nouveau forfait
+        await updateUserTierRow(sql, {
+          email: params.email,
+          tier: resolvedTier,
+          userId: params.userId,
+        }).catch(() => null);
+
+        return {
+          success: true,
+          tier: resolvedTier,
+          ...(typeof upstreamData.token === "string" && upstreamData.token
+            ? { token: upstreamData.token }
+            : {}),
+        };
+      }
+
+      if (
+        upstreamRes.status >= 400 &&
+        upstreamRes.status < 500 &&
+        typeof upstreamData?.error === "string" &&
+        upstreamData.error.trim()
+      ) {
+        return {
+          code: "invalid_code",
+          error: upstreamData.error,
+          success: false,
+        };
+      }
+    } catch {
+      // Val Town injoignable : on renvoie simplement l'échec standard ci-dessous.
+    }
+  }
+
+  return {
+    code: "invalid_code",
+    error: "Code invalide ou expiré.",
+    success: false,
+  };
+}
+
+/**
+ * Repasse un utilisateur au forfait Free sur simple confirmation, sans code.
+ */
+export async function downgradeUserToFree(params: {
+  email?: string;
+  userId: string;
+}): Promise<AuthActionResult> {
+  await dbReady();
+  const sql = getRawClient();
+  if (!sql) {
+    return {
+      code: "service_unavailable",
+      error: "Base de données indisponible.",
+      success: false,
+    };
+  }
+
+  const updatedUser = await updateUserTierRow(sql, {
+    email: params.email,
+    tier: "Free",
+    userId: params.userId,
+  });
+
+  if (!updatedUser) {
+    return {
+      code: "user_not_found",
+      error: "Compte utilisateur introuvable.",
+      success: false,
+    };
+  }
+
+  return finalizeTierChange({
+    notifyUpgradeEmail: false,
+    sql,
+    tier: "Free",
+    user: updatedUser,
+  });
 }

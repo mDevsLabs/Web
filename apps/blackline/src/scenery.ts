@@ -9,10 +9,14 @@ export const skyFragment=`
 varying vec3 vPos;uniform vec3 top;uniform vec3 bottom;uniform vec3 sun;uniform float time;
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+1.),f.x),f.y);}
-void main(){vec3 p=normalize(vPos);float h=clamp(p.y*1.5,0.,1.);vec3 c=mix(bottom,top,pow(h,.6));
-vec2 uv=p.xz/max(.15,p.y)*1.8+vec2(time*.003,0.);float n=noise(uv)*.57+noise(uv*2.03)*.28+noise(uv*4.07)*.15;
-float cloud=smoothstep(.49,.73,n)*smoothstep(.03,.23,p.y);float rim=smoothstep(.49,.6,n)*(1.-smoothstep(.6,.72,n));vec3 cloudColor=mix(bottom,vec3(.94,.96,.98),.55)+vec3(.12,.08,.035)*rim;c=mix(c,cloudColor,cloud*.76);
-float s=pow(max(dot(p,normalize(sun)),0.),350.);float glow=pow(max(dot(p,normalize(sun)),0.),12.);c+=vec3(1.,.69,.36)*s*2.+vec3(.15,.09,.035)*glow;
+void main(){vec3 p=normalize(vPos);vec3 sunDir=normalize(sun);float h=clamp(p.y*1.5,0.,1.);
+vec3 horizonGlow=mix(bottom,vec3(.96,.86,.72),pow(max(dot(p,sunDir),0.),4.)*.35);
+vec3 c=mix(horizonGlow,top,pow(h,.58));
+vec2 uv=p.xz/max(.14,p.y)*1.75+vec2(time*.003,0.);float n=noise(uv)*.54+noise(uv*2.05)*.27+noise(uv*4.13)*.13+noise(uv*8.2)*.06;
+float cloud=smoothstep(.47,.74,n)*smoothstep(.025,.24,p.y);float rim=smoothstep(.47,.59,n)*(1.-smoothstep(.59,.73,n));
+float sunLit=pow(max(dot(p,sunDir),0.),6.);
+vec3 cloudColor=mix(bottom,vec3(.95,.97,.99),.6)+vec3(.16,.11,.05)*(rim+sunLit*.45);c=mix(c,cloudColor,cloud*.8);
+float s=pow(max(dot(p,sunDir),0.),420.);float glow=pow(max(dot(p,sunDir),0.),10.);c+=vec3(1.,.72,.4)*s*2.2+vec3(.17,.1,.04)*glow;
 gl_FragColor=vec4(c,1.);
 #include <tonemapping_fragment>
 #include <colorspace_fragment>
@@ -20,16 +24,19 @@ gl_FragColor=vec4(c,1.);
 
 export const waterVertex=`
 uniform float time;varying vec3 p;varying vec3 worldPos;varying vec3 worldNormal;
-void main(){vec3 pos=position;float a=pos.x*.2+time*.45,b=pos.y*.12-time*.3;
-pos.z+=sin(a)*.17+sin(b)*.2;p=pos;worldPos=(modelMatrix*vec4(pos,1.)).xyz;
-worldNormal=normalize(mat3(modelMatrix)*vec3(-cos(a)*.034,-cos(b)*.024,1.));gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.);}`;
+void main(){vec3 pos=position;float a=pos.x*.2+time*.45,b=pos.y*.12-time*.3,c=(pos.x+pos.y)*.35+time*.6;
+pos.z+=sin(a)*.17+sin(b)*.2+cos(c)*.06;p=pos;worldPos=(modelMatrix*vec4(pos,1.)).xyz;
+worldNormal=normalize(mat3(modelMatrix)*vec3(-cos(a)*.036-sin(c)*.02,-cos(b)*.026-sin(c)*.02,1.));gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.);}`;
 export const waterFragment=`
 uniform float time;varying vec3 p;varying vec3 worldPos;varying vec3 worldNormal;
-void main(){vec3 normal=normalize(worldNormal+vec3(sin(p.x*.8+time)*.015,0.,cos(p.y*.7-time)*.02));
-vec3 eye=normalize(cameraPosition-worldPos);float fresnel=pow(1.-max(0.,dot(normal,eye)),3.);
-float wave=sin(p.x*.6+p.y*.25+time*.4)*sin(p.y*.4-time*.7);vec3 c=mix(vec3(.05,.15,.18),vec3(.2,.35,.37),wave*.17+.4);
-vec3 skyReflection=mix(vec3(.57,.64,.65),vec3(.22,.36,.49),smoothstep(0.,.8,reflect(-eye,normal).y));c=mix(c,skyReflection,fresnel*.82);vec3 reflected=reflect(-eye,normal);float sparkle=pow(max(dot(reflected,normalize(vec3(-45.,58.,-55.))),0.),110.);
-c+=vec3(1.,.72,.4)*sparkle*.65;gl_FragColor=vec4(c,1.);
+void main(){vec3 normal=normalize(worldNormal+vec3(sin(p.x*.85+time)*.018+cos(p.y*1.4-time*1.2)*.009,0.,cos(p.y*.75-time)*.022+sin(p.x*1.3+time*.9)*.01));
+vec3 eye=normalize(cameraPosition-worldPos);float fresnel=pow(1.-max(0.,dot(normal,eye)),3.2);
+float wave=sin(p.x*.6+p.y*.25+time*.4)*sin(p.y*.4-time*.7);
+float crest=smoothstep(.55,.92,wave);
+vec3 deep=vec3(.04,.13,.17),shallow=vec3(.18,.36,.38);
+vec3 c=mix(deep,shallow,wave*.2+.42)+vec3(.22,.26,.25)*crest*.18;
+vec3 skyReflection=mix(vec3(.59,.66,.67),vec3(.21,.37,.51),smoothstep(0.,.8,reflect(-eye,normal).y));c=mix(c,skyReflection,fresnel*.84);vec3 reflected=reflect(-eye,normal);float sparkle=pow(max(dot(reflected,normalize(vec3(-45.,58.,-55.))),0.),140.);
+c+=vec3(1.,.75,.42)*sparkle*.78;gl_FragColor=vec4(c,1.);
 #include <tonemapping_fragment>
 #include <colorspace_fragment>
 }`;

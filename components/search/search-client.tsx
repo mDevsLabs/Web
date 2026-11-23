@@ -4,6 +4,7 @@ import {
   BookIcon,
   GlobeIcon,
   ImageIcon,
+  Loader2Icon,
   NewspaperIcon,
   RotateCcwIcon,
   SearchIcon,
@@ -11,6 +12,7 @@ import {
   VideoIcon,
   XIcon,
 } from "@mdevs/icons";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -38,6 +40,7 @@ import {
   type ResultSort,
 } from "@/lib/search/result-order";
 import {
+  MAI_SEARCH_SUMMARY_MODEL_ID,
   mergeStreamText,
   readSummaryStream,
   type SummarySource,
@@ -72,11 +75,8 @@ export function SearchClient() {
   const [news, setNews] = useState<SearchNewsHit[]>([]);
   const [videos, setVideos] = useState<SearchVideoHit[]>([]);
   const [searchId, setSearchId] = useState<string | null>(null);
-  const [provider, setProvider] = useState<string | null>(null);
   const [durationMs, setDurationMs] = useState<number | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
-
-  const [selectedModelId, setSelectedModelId] = useState<string>("mai-2-mini");
 
   // Synthèse globale
   const [summary, setSummary] = useState("");
@@ -133,7 +133,6 @@ export function SearchClient() {
     setFollowupInput,
     targetConversation,
   } = useTargetConversation({
-    selectedModelId,
     submittedQuery,
   });
 
@@ -162,10 +161,10 @@ export function SearchClient() {
         const response = await fetch("/api/mai-search/summary", {
           body: JSON.stringify({
             length,
-            modelId: selectedModelId,
+            modelId: MAI_SEARCH_SUMMARY_MODEL_ID,
             query: q,
             searchId: currentSearchId,
-            sources: hits,
+            searchResults: hits,
           }),
           headers: { "Content-Type": "application/json" },
           method: "POST",
@@ -181,11 +180,12 @@ export function SearchClient() {
           setSummaryModel(modelLabel);
         }
         setSummarySubstituted(
-          response.headers.get("X-Model-Substituted") === "true"
+          response.headers.get("X-Model-Substituted") === "1"
         );
 
         let accumulated = "";
         let reasoningAccumulator = "";
+        let streamError: string | null = null;
         await readSummaryStream(response, (event) => {
           if (event.type === "reasoning-delta") {
             reasoningAccumulator = mergeStreamText(
@@ -199,9 +199,12 @@ export function SearchClient() {
           } else if (event.type === "sources") {
             setSummarySources(event.sources);
           } else if (event.type === "error") {
-            throw new Error(event.message);
+            streamError = event.message;
           }
         });
+        if (streamError) {
+          throw new Error(streamError);
+        }
       } catch (err: unknown) {
         if (err instanceof Error && err.name === "AbortError") {
           return;
@@ -217,7 +220,7 @@ export function SearchClient() {
         }
       }
     },
-    [selectedModelId]
+    []
   );
 
   const runSearch = useCallback(
@@ -234,23 +237,43 @@ export function SearchClient() {
         return;
       }
 
+      if (searchAbortRef.current) {
+        searchAbortRef.current.abort();
+      }
+      const controller = new AbortController();
+      searchAbortRef.current = controller;
+
       setSubmittedQuery(q);
       setIsLoading(true);
+      setResults([]);
+      setImages([]);
+      setNews([]);
+      setVideos([]);
       setSearchError(null);
       setDomainFilter(null);
+      setDurationMs(null);
+      setRequestedCount(null);
+      setTruncated(false);
+      setWikiFirst(false);
+      setSummarySources([]);
+      setSummaryModel(null);
+      setSummarySubstituted(false);
       setVote(options?.vote ?? null);
+
+      if (!options?.keepSummary) {
+        if (abortControllerRef.current) {
+          abortControllerRef.current.abort();
+        }
+        setIsSummaryLoading(false);
+        setSummary("");
+        setSummaryReasoning("");
+      }
 
       if (typeof window !== "undefined") {
         const nextUrl = new URL(window.location.href);
         nextUrl.searchParams.set("q", q);
         window.history.replaceState({}, "", nextUrl.toString());
       }
-
-      if (searchAbortRef.current) {
-        searchAbortRef.current.abort();
-      }
-      const controller = new AbortController();
-      searchAbortRef.current = controller;
 
       try {
         const res = await fetch("/api/mai-search", {
@@ -278,22 +301,24 @@ export function SearchClient() {
           error?: string;
           images?: SearchImageHit[];
           news?: SearchNewsHit[];
-          provider?: string;
           requestedCount?: number;
+          results?: SearchWebHit[];
           searchId?: string;
           truncated?: boolean;
           videos?: SearchVideoHit[];
-          web?: SearchWebHit[];
           wikiFirst?: boolean;
         };
 
-        const searchResults = Array.isArray(data.web) ? data.web : [];
+        if (controller.signal.aborted) {
+          return;
+        }
+
+        const searchResults = Array.isArray(data.results) ? data.results : [];
         setResults(searchResults);
         setImages(Array.isArray(data.images) ? data.images : []);
         setNews(Array.isArray(data.news) ? data.news : []);
         setVideos(Array.isArray(data.videos) ? data.videos : []);
         setSearchId(data.searchId || null);
-        setProvider(data.provider || null);
         setRequestedCount(
           typeof data.requestedCount === "number" ? data.requestedCount : null
         );
@@ -562,6 +587,10 @@ Peux-tu m'aider à analyser ou approfondir cela ?`;
                 <div
                   className="flex items-center gap-2 mr-2 cursor-pointer select-none shrink-0"
                   onClick={() => {
+                    searchAbortRef.current?.abort();
+                    abortControllerRef.current?.abort();
+                    setIsLoading(false);
+                    setIsSummaryLoading(false);
                     setSubmittedQuery("");
                     setQuery("");
                     setResults([]);
@@ -569,6 +598,11 @@ Peux-tu m'aider à analyser ou approfondir cela ?`;
                     setNews([]);
                     setVideos([]);
                     setSummary("");
+                    setSummaryReasoning("");
+                    setSummarySources([]);
+                    setSummaryModel(null);
+                    setSummarySubstituted(false);
+                    setSearchError(null);
                   }}
                 >
                   <div className="size-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20">
@@ -602,12 +636,19 @@ Peux-tu m'aider à analyser ou approfondir cela ?`;
                     </button>
                   ) : null}
                   <button
-                    className="mr-1.5 inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-3.5 py-1.5 text-xs font-semibold hover:opacity-90 active:scale-95 cursor-pointer disabled:opacity-40"
+                    className="mr-1.5 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary text-primary-foreground px-3.5 py-1.5 text-xs font-semibold hover:opacity-90 active:scale-95 cursor-pointer disabled:opacity-40"
                     disabled={!isSearchableQuery(query) || isLoading}
                     onClick={() => void runSearch()}
                     type="button"
                   >
-                    {isLoading ? "Recherche..." : "Rechercher"}
+                    {isLoading ? (
+                      <>
+                        <Loader2Icon className="size-3.5 animate-spin" />
+                        <span>Recherche...</span>
+                      </>
+                    ) : (
+                      "Rechercher"
+                    )}
                   </button>
                 </div>
 
@@ -672,21 +713,35 @@ Peux-tu m'aider à analyser ou approfondir cela ?`;
                   <BookIcon className="size-3.5" />
                   <span>Wikipédia ({wikipediaCount})</span>
                 </button>
-
-                {provider ? (
-                  <span
-                    className="chip ml-auto text-[10px] text-muted-foreground"
-                    data-static="true"
-                    title="Moteur ayant servi les résultats"
-                  >
-                    Source : {provider}
-                  </span>
-                ) : null}
               </div>
             </header>
 
             <main className="max-w-6xl mx-auto w-full p-4 sm:p-6 flex flex-col gap-6">
-              {searchError ? (
+              {isLoading ? (
+                <motion.div
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="surface-card flex flex-col items-center justify-center gap-3 p-10 sm:p-14 text-center"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  role="status"
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="relative flex size-12 items-center justify-center">
+                    <span className="absolute inset-0 rounded-full border-2 border-primary/20" />
+                    <span className="absolute inset-0 animate-spin rounded-full border-2 border-transparent border-t-primary" />
+                    <SearchIcon className="size-4 text-primary animate-pulse" />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <p className="text-sm font-medium text-foreground">
+                      Recherche en cours…
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Interrogation des sources pour « {submittedQuery} »
+                    </p>
+                  </div>
+                </motion.div>
+              ) : null}
+
+              {searchError && !isLoading ? (
                 <div className="surface-card p-6 flex flex-col items-center justify-center gap-3 text-center border-destructive/40 bg-destructive/5">
                   <p className="text-sm font-semibold text-destructive">
                     {searchError}
@@ -788,10 +843,8 @@ Peux-tu m'aider à analyser ou approfondir cela ?`;
                 onClose={handleCloseTargetConversation}
                 onCopyDrawerContent={handleCopyDrawerContent}
                 onFollowupInputChange={setFollowupInput}
-                onModelChange={setSelectedModelId}
                 onSendDrawerToChat={handleSendDrawerToChat}
                 onSendFollowupMessage={handleSendFollowupMessage}
-                selectedModelId={selectedModelId}
                 targetConversation={targetConversation}
               />,
               document.body

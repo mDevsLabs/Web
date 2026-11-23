@@ -1,0 +1,134 @@
+{
+  "author": "mAI",
+  "category": "dev",
+  "description": "Connectez votre compte GitHub par jeton personnel (PAT) : l'IA lit vos dépôts — privés compris —, explore l'arborescence, les branches, commits, issues et pull requests, recherche du code, et peut, avec votre accord dans l'Agent, ouvrir une issue, commenter ou créer une pull request.",
+  "icon": { "src": "/plugins/github.svg", "type": "image" },
+  "id": "github",
+  "name": "GitHub",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": [
+    "github",
+    "dépôt",
+    "code",
+    "issue",
+    "pull request",
+    "commits",
+    "branches",
+    "git",
+    "jeton",
+    "développeur"
+  ],
+  "tools": [
+    {
+      "description": "Liste les dépôts de votre compte, privés inclus, filtrables par nom.",
+      "effect": "read",
+      "id": "getGithubRepositories",
+      "label": "Mes dépôts GitHub",
+      "systemHint": "Commencez ici quand un dépôt est désigné par un mot du titre plutôt que par owner/repository."
+    },
+    {
+      "description": "Détail d'un dépôt : description, étoiles, forks, licence, branche par défaut.",
+      "effect": "read",
+      "id": "getGithubRepositoryDetails",
+      "label": "Détail d'un dépôt",
+      "systemHint": "Signalez explicitement qu'un dépôt est privé quand vous en citez un."
+    },
+    {
+      "description": "Recherche des dépôts publics ou accessibles sur GitHub par mots-clés.",
+      "effect": "read",
+      "id": "searchGithubRepositories",
+      "label": "Rechercher des dépôts GitHub",
+      "systemHint": "Utile pour trouver un dépôt externe ou open source par sujet ou nom."
+    },
+    {
+      "description": "Recherche des occurrences de code sur GitHub (dans un dépôt ou globalement).",
+      "effect": "read",
+      "id": "searchGithubCode",
+      "label": "Rechercher du code GitHub",
+      "systemHint": "Précisez repository (owner/repo) dès que possible pour cibler la recherche."
+    },
+    {
+      "description": "Liste les branches d'un dépôt GitHub.",
+      "effect": "read",
+      "id": "listGithubBranches",
+      "label": "Branches d'un dépôt",
+      "systemHint": "Vérifiez les noms exacts de branches avant de lire un fichier ou créer une pull request."
+    },
+    {
+      "description": "Liste les derniers commits d'un dépôt GitHub, sur la branche choisie.",
+      "effect": "read",
+      "id": "listGithubCommits",
+      "label": "Commits d'un dépôt",
+      "systemHint": "Résumez le SHA court, l'auteur et le message de commit."
+    },
+    {
+      "description": "Liste les fichiers et dossiers d'un répertoire dans un dépôt GitHub.",
+      "effect": "read",
+      "id": "listGithubDirectory",
+      "label": "Arborescence d'un dépôt",
+      "systemHint": "Utilisez path vide pour la racine afin de repérer les chemins avant de lire un fichier."
+    },
+    {
+      "description": "Liste les issues d'un dépôt, pull requests exclues.",
+      "effect": "read",
+      "id": "listGithubIssues",
+      "label": "Issues d'un dépôt",
+      "systemHint": "Le dépôt se donne au format owner/repository, sans URL."
+    },
+    {
+      "description": "Récupère une issue ou pull request précise avec son corps complet.",
+      "effect": "read",
+      "id": "getGithubIssue",
+      "label": "Détail d'une issue",
+      "systemHint": "Numéro d'issue ou de pull request, les deux passent par le même endpoint."
+    },
+    {
+      "description": "Lit les commentaires d'une issue ou pull request GitHub.",
+      "effect": "read",
+      "id": "listGithubIssueComments",
+      "label": "Commentaires d'une issue",
+      "systemHint": "Utile pour suivre l'historique d'une discussion avant de répondre."
+    },
+    {
+      "description": "Liste les pull requests d'un dépôt et leur branche source.",
+      "effect": "read",
+      "id": "listGithubPullRequests",
+      "label": "Pull requests d'un dépôt",
+      "systemHint": "Utilisez-la avant de proposer d'ouvrir une pull request dupliquée."
+    },
+    {
+      "description": "Lit un fichier dans un dépôt, sur la branche choisie, sortie plafonnée.",
+      "effect": "read",
+      "id": "readGithubFile",
+      "label": "Lire un fichier du dépôt",
+      "systemHint": "Le chemin est relatif à la racine du dépôt, sans point-point."
+    },
+    {
+      "description": "Ouvre une issue dans un dépôt.",
+      "effect": "write",
+      "id": "createGithubIssue",
+      "label": "Créer une issue",
+      "systemHint": "Écriture visible des autres contributeurs : montrez le titre et le corps avant approbation."
+    },
+    {
+      "description": "Ajoute un commentaire à une issue ou une pull request.",
+      "effect": "write",
+      "id": "commentGithubIssue",
+      "label": "Commenter une issue",
+      "systemHint": "Citez l'issue visée par son numéro complet dans le résumé soumis à approbation."
+    },
+    {
+      "description": "Ouvre une pull request entre deux branches.",
+      "effect": "write",
+      "id": "createGithubPullRequest",
+      "label": "Ouvrir une pull request",
+      "systemHint": "Vérifiez les branches base et head avec l'utilisateur avant de proposer la création."
+    }
+  ],
+  "version": "1.1.0"
+}

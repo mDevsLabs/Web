@@ -1,0 +1,46 @@
+{
+  "author": "mAI",
+  "category": "data",
+  "description": "Reliez PostHog (US ou EU) par clé personnelle : l'IA liste vos projets, leurs feature flags et leurs insights analytiques. Le plugin ne modifie rien chez PostHog.",
+  "icon": { "src": "/plugins/posthog.svg", "type": "image" },
+  "id": "posthog",
+  "name": "PostHog",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": [
+    "posthog",
+    "analytics",
+    "feature flags",
+    "insights",
+    "produit",
+    "jeton"
+  ],
+  "tools": [
+    {
+      "description": "Liste les projets PostHog du compte (US ou EU selon la région connectée).",
+      "effect": "read",
+      "id": "posthogListProjects",
+      "label": "Projets PostHog",
+      "systemHint": "L'identifiant numérique du projet sert à lire ses feature flags et insights."
+    },
+    {
+      "description": "Liste les feature flags d'un projet PostHog.",
+      "effect": "read",
+      "id": "posthogListFlags",
+      "label": "Feature flags PostHog",
+      "systemHint": "Indiquez si le flag est actif plutôt que de recopier ses filtres."
+    },
+    {
+      "description": "Liste les insights (graphiques et analyses) enregistrés d'un projet PostHog.",
+      "effect": "read",
+      "id": "posthogListInsights",
+      "label": "Insights PostHog",
+      "systemHint": "Utilisez l'identifiant du projet retourné par posthogListProjects."
+    }
+  ],
+  "version": "1.1.0"
+}

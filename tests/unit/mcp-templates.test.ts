@@ -14,7 +14,7 @@ import {
   splitTemplateArgs,
   templateRequiresConfiguration,
 } from "@/lib/mcp-templates/install";
-import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
+import { isLucideIconName } from "@/lib/plugins/core/icon-allowlist";
 
 // Le catalogue MCP est une source de vérité statique : ces tests garantissent
 // qu'aucun modèle ne peut être fictif, exposé sans documentation, ni porter un

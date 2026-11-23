@@ -1373,6 +1373,7 @@ export const integrationConnection = pgTable(
     // toute façon rejeté par `getIntegrationProvider`.
     provider: varchar("provider", {
       enum: [
+        "airtable",
         "asana",
         "brave",
         "brevo",
@@ -1392,6 +1393,7 @@ export const integrationConnection = pgTable(
         "posthog",
         "resend",
         "sentry",
+        "slack",
         "sonarcloud",
         "stripe",
         "supabase",

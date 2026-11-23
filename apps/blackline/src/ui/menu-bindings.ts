@@ -15,6 +15,7 @@ export function bindMenu(this:UI){
     } else {
       disposeArsenalViewer(this);
     }
+    const editProfile=this.app.querySelector<HTMLElement>('[data-edit-profile]');if(editProfile)editProfile.onclick=()=>{this.game?.audio.ui();if(typeof window!=='undefined')window.dispatchEvent(new CustomEvent('blackline:edit-profile',{detail:{callsign:this.settings.callsign,avatarUrl:this.settings.avatarUrl??null}}));};
     this.app.querySelectorAll<HTMLButtonElement>('[data-nav]').forEach(b=>{const preload=()=>void preloadPage(b.dataset.nav!).catch(()=>{});b.addEventListener('pointerenter',preload,{once:true});b.addEventListener('focus',preload,{once:true});});
     this.app.querySelectorAll<HTMLButtonElement>('[data-nav]').forEach(b=>b.onclick=()=>{this.game?.audio.ui();this.screen=b.dataset.nav!;this.menu();});
     this.app.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(b=>b.onclick=()=>{this.config.mode=b.dataset.mode as MatchConfig['mode'];this.game?.audio.ui();this.menu();});

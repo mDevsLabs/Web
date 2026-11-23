@@ -1,4 +1,4 @@
 export {
   PluginIcon as McpTemplateIcon,
   PluginIcon as SkillTemplateIcon,
-} from "@/lib/plugins/icon";
+} from "@/lib/plugins/core/icon";

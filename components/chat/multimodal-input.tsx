@@ -79,8 +79,8 @@ import { markInFlightChat } from "@/lib/chat/in-flight";
 import { runSlashCommand } from "@/lib/chat/slash-commands";
 import { executeCustomCommand } from "@/lib/commands/exec";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
-import { readToolIds } from "@/lib/plugins/tool-effect";
-import type { PluginCatalogEntry } from "@/lib/plugins/types";
+import { readToolIds } from "@/lib/plugins/core/tool-effect";
+import type { PluginCatalogEntry } from "@/lib/plugins/core/types";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -217,7 +217,7 @@ function PureMultimodalInput({
   const installedPlugins = useMemo(
     () =>
       asArray<PluginCatalogEntry>(pluginsData?.plugins).filter(
-        (plugin) => plugin.installed && plugin.enabled && !plugin.locked
+        (plugin) => plugin.installed && plugin.enabled
       ),
     [pluginsData]
   );

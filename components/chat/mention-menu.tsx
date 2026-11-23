@@ -18,8 +18,8 @@ import { AgentIcon } from "@/components/agents/agent-icon";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import type { ProjectLite } from "@/hooks/use-projects";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
-import { PluginIcon } from "@/lib/plugins/icon";
-import type { PluginManifest } from "@/lib/plugins/types";
+import { PluginIcon } from "@/lib/plugins/core/icon";
+import type { PluginManifest } from "@/lib/plugins/core/types";
 import { cn } from "@/lib/utils";
 import { ProjectIcon } from "./project-icon";
 

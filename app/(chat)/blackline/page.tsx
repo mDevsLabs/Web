@@ -32,15 +32,28 @@ export default async function BlacklinePage() {
   // réglages locaux, ce qui reste jouable.
   const session = await requireUser();
   let settings: Record<string, unknown> | null = null;
+  let initialProfile: {
+    avatarUrl: string | null;
+    displayName: string;
+    username: string;
+  } | null = null;
   if (session) {
     try {
       settings = await getBlacklineSettings(session.userId);
       const nom = await lireNomAffiche(session.user);
-      settings = superposerIndicatif(settings, nom.displayName);
+      initialProfile = {
+        avatarUrl: nom.avatarUrl,
+        displayName: nom.displayName,
+        username: nom.username,
+      };
+      settings = {
+        ...superposerIndicatif(settings, nom.displayName),
+        ...(nom.avatarUrl ? { avatarUrl: nom.avatarUrl } : {}),
+      };
     } catch (error) {
       console.error("GET /blackline : réglages illisibles", error);
     }
   }
 
-  return <BlacklineHost settings={settings} />;
+  return <BlacklineHost initialProfile={initialProfile} settings={settings} />;
 }

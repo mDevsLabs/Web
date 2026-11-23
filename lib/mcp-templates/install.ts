@@ -10,7 +10,7 @@ import {
   assertMcpRuntimeEnabled,
   toMcpRuntimePreferences,
 } from "@/lib/mcp/policy";
-import { linkMcpServerAsPlugin } from "@/lib/plugins/user-plugin-store";
+import { linkMcpServerAsPlugin } from "@/lib/plugins/core/user-plugin-store";
 import { getMcpTemplate } from "./catalog";
 import type { McpTemplateManifest } from "./types";
 

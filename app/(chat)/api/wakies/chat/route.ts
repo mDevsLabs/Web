@@ -41,7 +41,7 @@ import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import { createMcpChatTools } from "@/lib/mcp/chat-tools";
 import { toMcpRuntimePreferences } from "@/lib/mcp/policy";
 import { getWakiesQuota } from "@/lib/plans/tier-limits";
-import { createPluginTools } from "@/lib/plugins/server";
+import { createPluginTools } from "@/lib/plugins/core/server";
 import {
   lireProfilVibeBref,
   resumeProfilPourPrompt,

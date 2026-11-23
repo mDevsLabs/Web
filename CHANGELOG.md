@@ -4,15 +4,37 @@
 
 ### Nouveautés
 
-* **Quizzly : primaire** : Quizzly s'ouvre aux classes de CE1, CE2, CM1 et CM2, avec leurs propres matières et chapitres. 🧒📚
+* **Modèles mAI-2.5** : Intégration complète des modèles souverains mAI-2.5 (Opal, Apex, Omni) avec routage vers OpenRouter GPT (gpt-6.1-sol, gpt-6.1-terra, gpt-6-luna) et injection du prompt d'identité souverain. Nouveaux badges, icônes et documentations dédiées. 🎯
+* **Alignement mAI-2 et mAI-2-Mini** : Alignement du routage des modèles mAI-2 et mAI-2-Mini vers OpenRouter avec licence Propriétaire pour une cohérence totale du catalogue. 📋
+* **Système d'authentification Neon** : Migration complète de l'authentification, des codes OTP (`verification_codes`) et des sessions vers Neon PostgreSQL avec blacklist des jetons. Fin de la dépendance à Val Town pour l'authentification. 🔐
+* **Système d'usage en pourcentage** : Refonte complète du système de quotas avec jauge en pourcentage par forfait (Free: 100%, Plus: 200%, Pro: 400%, Max: 1000%) avec réinitialisation le lundi à 00:00 UTC. Suppression du quota API public mAI. 📊
+* **Ordonnancement GitHub Actions** : Migration des 6 ticks cron (Agent, Planning, Wakies, Vibe, Notifications, Quizzly) vers GitHub Actions avec master cron optimisé (`cron-master.yml`). Exécution directe sur le runner contre Neon sans Active CPU Fluid. Bail atomique via table `cron_ticks`. ⏰
+* **Transactions Neon en cascade** : Implémentation des transactions de suppression en cascade dans la base de données pour une meilleure robustesse des opérations de nettoyage. 🗃️
 
 ### Améliorations
 
-* **Migrations des services de Val Town** : migrations des services de Val Town.
+* **Documentation complète** : Mise à jour de l'architecture (`ARCHITECTURE.md`), des variables d'environnement (`.env.example`), de l'inventaire API (`API_INVENTORY.json`) et des guides de session Neon. Documentation des modèles mAI-2.5 avec fiches techniques dédiées. 📚
+* **Optimisation des workflows CI/CD** : Refonte des workflows GitHub Actions pour le build (`build.yml`), l'audit des PR (`pr-audit.yml`) et ajout des workflows cron spécifiques pour chaque service. Configuration du `.vercelignore` pour une meilleure gestion des artefacts. ⚙️
+* **Robustesse DOM et métadonnées** : Amélioration de la robustesse du DOM dans les composants chat, gestion des pièces jointes et afficher correctement les métadonnées des modèles mAI-2.5 dans l'interface. 🎨
+* **Nettoyage du code obsolète** : Suppression des fichiers obsolètes (`TASKS.md`, `TASKS_AGENTS.md`, `components/chat/preview.tsx`, `api-quota.ts` ancien système) et de nombreuses routes API obsolètes du backend Val Town. 🧹
+* **Amélioration des composants Quizzly** : Refonte partielle du joueur de quiz (`quiz-player.tsx`) et de la coquille (`shell.tsx`) pour une meilleure expérience utilisateur dans les classes primaires (CE1, CE2, CM1, CM2). 🧒
+* **Mise à jour des configurations** : Mise à jour des configurations Vite pour Vibe (`vite.config.ts`), correction des `tsconfig.json` et synchronisation des dépendances dans tous les sous-projets (blackline, coder, desktop, mobile, site, vibe, wakies). 📦
+* **Amélioration des composants Wakies** : Optimisation du polling, de la messagerie et de la navigation entre espaces. Correction des notifications de messagerie. 💬
+* **Optimisation des routes API** : Refactorisation des routes audio, images, bibliothèque, recherche mAI, modèles, traduction et Wakies pour une meilleure cohérence et performance. 🚀
+* **Gestion des cron** : Ajout du tick quotidien (`app/api/cron/daily/route.ts`) et mise à jour des workflows de notifications. ✅
 
 ### Corrections
 
-* **Correction de bugs et optimisations** : correction de bugs et optimisations.
+* **Vérification SQL** : Correction des tests de vérification SQL (`tests/unit/verification-sql.test.ts`) et amélioration de la gestion des codes de vérification dans `lib/auth/verification.ts`. ✅
+* **Configuration Vite Vibe** : Correction de la configuration Vite pour l'application Vibe (`apps/vibe/vite.config.ts`, `apps/vibe/tsconfig.app.json`) et suppression des dépendances obsolètes. ✅
+* **Gestion des sessions** : Correction de la gestion des sessions dans `app/(auth)/actions.ts`, `lib/auth/server-auth.ts` et `lib/auth/session.ts` pour une meilleure compatibilité avec Neon. ✅
+* **Tests Feishu** : Correction des tests unitaires pour les plateformes Feishu (API client, OAuth, documents, dossiers, tâches, utilisateurs). ✅
+* **Mises à jour des packages** : Mise à jour des fichiers `package-lock.json` et `pnpm-lock.yaml` pour tous les sous-projets (blackline, coder, desktop, mobile, site) avec correction des versions de dépendances. ✅
+* **Configuration de build** : Correction des configurations de build pour Next.js, Vite et Vitest dans tous les sous-projets. ✅
+* **Gestion des notifications** : Correction de la propagation des notifications entre mAI, Vibe et Wakies avec mise à jour de `app/(chat)/api/notifications/route.ts`. ✅
+* **Composants Wakies** : Correction des écrans d'amis, de la navigation entre espaces et de la gestion des workspace. ✅
+* **Affichage des modèles** : Correction de l'affichage des modèles audio et images dans les sélecteurs et pages dédiées. ✅
+* **Gestion des cron** : Correction et optimisation des scripts cron (`scripts/cron/run-tick.mjs`) et des tests associés. ✅
 
 ## 0.9.4
 

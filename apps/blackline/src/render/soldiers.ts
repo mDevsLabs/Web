@@ -21,9 +21,9 @@ export function createSoldier(team:Team,weapon:WeaponSpec,outfit='ranger',skinId
   for(const side of [-1,1]){meshBox(.06,.2,.12,side*.29,.94,.11,armor,root);meshBox(.037,.045,.015,side*.17,1.41,-.18,0x8e9b77,root);for(let i=0;i<3;i++)meshBox(.04,.006,.012,side*.17,1.39+i*.025,-.193,armor,root);}
   const leftLeg=new T.Group(),rightLeg=new T.Group();
   for(const [leg,x]of [[leftLeg,-.145],[rightLeg,.145]] as const){leg.position.set(x,.8,0);meshCylinder(.105,.11,.58,uniform,leg,0,-.31,0,8);meshBox(.155,.13,.13,0,-.38,-.09,armor,leg);meshCylinder(.085,.1,.21,0x2c3330,leg,0,-.68,0);meshBox(.19,.12,.3,0,-.77,-.05,0x262c2a,leg);root.add(leg);}
-  head.position.y=1.58;meshCylinder(.16,.145,.27,skin,head,0,0,0,12);meshBox(.28,.12,.035,0,.035,-.151,0x182828,head);meshBox(.24,.125,.035,0,-.07,-.155,armor,head);
-  const helmet=new T.Mesh(new T.SphereGeometry(.207,12,8,0,Math.PI*2,0,Math.PI*.62),material(armor));helmet.position.y=.035;helmet.castShadow=true;head.add(helmet);
-  meshBox(.07,.09,.055,0,.11,-.21,0x182828,head);meshBox(.07,.045,.07,.21,.025,0,0x182828,head);root.add(head);
+  head.position.y=1.58;meshCylinder(.16,.145,.27,skin,head,0,0,0,12);meshBox(.28,.12,.038,0,.035,-.152,0x182828,head,.7,.2);meshBox(.29,.022,.042,0,.095,-.154,armor,head);meshBox(.24,.125,.035,0,-.07,-.155,armor,head);
+  const helmet=new T.Mesh(new T.SphereGeometry(.207,14,10,0,Math.PI*2,0,Math.PI*.62),material(armor));helmet.position.y=.035;helmet.castShadow=true;head.add(helmet);
+  meshBox(.07,.09,.055,0,.11,-.21,0x182828,head);meshBox(.07,.045,.07,.21,.025,0,0x182828,head);meshBox(.048,.075,.065,-.205,.02,0,0x182828,head);root.add(head);
   for(const side of [-1,1]){meshBox(.025,.05,.16,side*.195,.045,-.025,armor,head);meshBox(.034,.035,.025,side*.192,.02,-.115,armor,head);meshBox(.03,.16,.025,side*.139,-.09,.03,armor,head);}
   const leftArm=new T.Group(),rightArm=new T.Group();
   for(const [arm,x]of [[leftArm,-.32],[rightArm,.32]] as const){arm.position.set(x,1.36,0);meshCylinder(.095,.075,.30,uniform,arm,0,-.16,0,10);const forearm=new T.Group();forearm.name='forearm';forearm.position.y=-.32;meshCylinder(.073,.065,.27,uniform,forearm,0,-.15,0,10);meshBox(.13,.12,.13,0,-.31,0,0x29342b,forearm);for(let i=0;i<3;i++)meshBox(.017,.01,.07,-.035+i*.035,-.365,-.02,0x29342b,forearm);arm.add(forearm);root.add(arm);}

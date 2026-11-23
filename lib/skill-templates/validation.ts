@@ -10,7 +10,7 @@ import {
   getPluginManifest,
   isPluginToolId,
   PLUGIN_TOOL_IDS,
-} from "@/lib/plugins/catalog";
+} from "@/lib/plugins/core/catalog";
 import type { SkillTemplateManifest } from "./types";
 
 /** Catégories de sources autorisées pour un outil de Skill. */

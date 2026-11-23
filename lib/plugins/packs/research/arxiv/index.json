@@ -1,0 +1,32 @@
+{
+  "author": "mAI",
+  "category": "research",
+  "description": "Recherchez et consultez les prépublications scientifiques d'arXiv (sans clé API) : informatique, IA, mathématiques, physique et biologie quantitative.",
+  "icon": { "name": "FileText", "type": "lucide" },
+  "id": "arxiv",
+  "name": "arXiv",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["arxiv", "préprints", "recherche", "ia", "sciences", "public"],
+  "tools": [
+    {
+      "description": "Recherche des préprints arXiv par mots-clés, auteur ou catégorie.",
+      "effect": "read",
+      "id": "arxivSearchPapers",
+      "label": "Rechercher sur arXiv",
+      "systemHint": "Citez l'identifiant arXiv et le lien PDF ou abstract retournés."
+    },
+    {
+      "description": "Récupère les métadonnées et le résumé complet d'un article arXiv par son identifiant.",
+      "effect": "read",
+      "id": "arxivGetPaper",
+      "label": "Fiche préprint arXiv",
+      "systemHint": "Accepte les identifiants arXiv récents (ex. 2401.12345) ou anciens (cs/0501001)."
+    }
+  ],
+  "version": "1.0.0"
+}

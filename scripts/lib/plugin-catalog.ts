@@ -6,7 +6,7 @@ import {
   isNativeToolId,
   isPluginProvidedToolId,
 } from "../../lib/ai/tools/ids";
-import { isLucideIconName } from "../../lib/plugins/icon-allowlist";
+import { isLucideIconName } from "../../lib/plugins/core/icon-allowlist";
 
 export const PLUGINS_DIR = path.resolve(process.cwd(), "lib", "plugins");
 
@@ -25,7 +25,7 @@ const iconSchema = z.union([
   z.object({
     name: z.string().refine(isLucideIconName, {
       message:
-        "Icône inconnue : ajoutez le nom dans lib/plugins/icon-allowlist.ts et son implémentation dans lib/plugins/icon.tsx.",
+        "Icône inconnue : ajoutez le nom dans lib/plugins/core/icon-allowlist.ts et son implémentation dans lib/plugins/core/icon.tsx.",
     }),
     type: z.literal("lucide"),
   }),
@@ -62,7 +62,7 @@ export const permissionsSchema = z
 
 const pluginToolSchema = z.object({
   description: z.string().min(1),
-  // Absent = déduit des permissions du plugin (voir lib/plugins/tool-effect.ts).
+  // Absent = déduit des permissions du plugin (voir lib/plugins/core/tool-effect.ts).
   effect: z.enum(["read", "write"]).optional(),
   id: z
     .string()
@@ -89,10 +89,6 @@ export const manifestSchema = z
     description: z.string().min(1),
     icon: iconSchema,
     id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
-    // Les plugins sont autorisés dès le forfait Free.
-    minTier: z.enum(["free", "plus", "pro", "max"], {
-      message: "minTier doit valoir free, plus, pro ou max.",
-    }),
     name: z.string().min(1),
     permissions: permissionsSchema,
     tags: z.array(z.string().min(1)).default([]),
@@ -162,7 +158,7 @@ export function listTsEntries(dir: string): string[] {
 }
 
 // Convention du catalogue généré : chaque `index.ts` doit exporter nommément
-// `<dir>Plugin`, sinon `server.generated.ts` ne compile pas.
+// `<id>Plugin`, sinon `server.generated.ts` ne compile pas.
 export function entryExportsPluginDefinition(
   dir: string,
   exportName: string
@@ -179,11 +175,11 @@ export function entryExportsPluginDefinition(
   return false;
 }
 
-// Nom d'export conventionnel dérivé du dossier : `weather` → `weatherPlugin`,
-// `air-quality` → `airQualityPlugin`. Les imports générés restent camelCase
-// lisibles quelle que soit la forme (kebab-case) du dossier.
-export function importName(dir: string): string {
-  const camel = dir
+// Nom d'export conventionnel dérivé de l'identifiant du plugin : `weather` →
+// `weatherPlugin`, `air-quality` → `airQualityPlugin`, indépendamment du
+// dossier `packs/<categorie>/<id>`.
+export function importName(id: string): string {
+  const camel = id
     .split(/[^a-zA-Z0-9_$]+/)
     .filter(Boolean)
     .map((part, index) =>
@@ -203,19 +199,19 @@ export function buildGeneratedFiles(): {
 
   const catalogImports = entries
     .map(
-      (e) => `import ${importName(e.dir)}Manifest from "./${e.dir}/index.json";`
+      (e) => `import ${importName(e.id)}Manifest from "./${e.dir}/index.json";`
     )
     .join("\n");
 
   const catalogArray = entries
-    .map((e) => `  ${importName(e.dir)}Manifest,`)
+    .map((e) => `  ${importName(e.id)}Manifest,`)
     .join("\n");
 
   const catalog = `// AUTO-GÉNÉRÉ par \`scripts/gen-plugin-catalog.ts\` — ne pas éditer à la main.
 // Safe côté client : n'importe que des manifestes JSON (aucun outil IA).
 ${catalogImports}
 import rootCatalog from "./index.json";
-import type { PluginCategory, PluginManifest } from "./types";
+import type { PluginCategory, PluginManifest } from "./core/types";
 
 export const PLUGIN_CATEGORIES = rootCatalog.categories as PluginCategory[];
 
@@ -226,19 +222,17 @@ ${catalogArray}
 export const PLUGIN_CATALOG_VERSION = rootCatalog.catalogVersion;
 `;
 
-  // Convention : chaque plugin exporte nommément `<dir>Plugin` depuis son
-  // `index.ts` (ex. `weather/index.ts` → `export const weatherPlugin`).
   const serverImports = entries
-    .map((e) => `import { ${importName(e.dir)} } from "./${e.dir}";`)
+    .map((e) => `import { ${importName(e.id)} } from "./${e.dir}";`)
     .join("\n");
 
-  const serverArray = entries.map((e) => `  ${importName(e.dir)},`).join("\n");
+  const serverArray = entries.map((e) => `  ${importName(e.id)},`).join("\n");
 
   const server = `// AUTO-GÉNÉRÉ par \`scripts/gen-plugin-catalog.ts\` — ne pas éditer à la main.
 // Réservé au serveur : importe les implémentations d'outils (ai, zod).
 import "server-only";
 ${serverImports}
-import type { PluginDefinition } from "./types";
+import type { PluginDefinition } from "./core/types";
 
 export const PLUGIN_DEFINITIONS: PluginDefinition[] = [
 ${serverArray}

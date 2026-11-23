@@ -1,0 +1,42 @@
+{
+  "author": "mAI",
+  "category": "communication",
+  "description": "Reliez Resend par clé API : l'IA liste vos domaines, consulte les e-mails envoyés et leur statut de livraison. Le plugin n'envoie pas de message.",
+  "icon": {
+    "src": "/plugins/resend.svg",
+    "type": "image"
+  },
+  "id": "resend",
+  "name": "Resend",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["resend", "e-mail", "domaines", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les domaines Resend et leur état de vérification.",
+      "effect": "read",
+      "id": "resendListDomains",
+      "label": "Domaines Resend",
+      "systemHint": "L'état du domaine dit s'il peut servir à envoyer."
+    },
+    {
+      "description": "Liste les e-mails récemment envoyés via Resend.",
+      "effect": "read",
+      "id": "resendListEmails",
+      "label": "E-mails Resend",
+      "systemHint": "Citez le destinataire, le sujet et le dernier état, pas le corps du message."
+    },
+    {
+      "description": "Consulte le statut de livraison détaillé d'un e-mail Resend.",
+      "effect": "read",
+      "id": "resendGetEmail",
+      "label": "Détail d'un e-mail Resend",
+      "systemHint": "Utilisez l'identifiant retourné par resendListEmails."
+    }
+  ],
+  "version": "1.1.0"
+}

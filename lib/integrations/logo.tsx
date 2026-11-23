@@ -2,7 +2,7 @@
 
 import { WrenchIcon } from "@mdevs/icons";
 import { useState } from "react";
-import { getPluginByToolId } from "@/lib/plugins/catalog";
+import { getPluginByToolId } from "@/lib/plugins/core/catalog";
 import { cn } from "@/lib/utils";
 import {
   getIntegrationByPluginId,

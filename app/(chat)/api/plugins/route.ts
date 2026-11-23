@@ -10,12 +10,10 @@ import {
   getPluginInstallationsByUserId,
   installPlugin,
 } from "@/lib/db/queries";
-import { buildCatalogEntries, getPluginManifest } from "@/lib/plugins/catalog";
 import {
-  canUsePlugin,
-  pluginTierMessage,
-  withTierLock,
-} from "@/lib/plugins/tier-lock";
+  buildCatalogEntries,
+  getPluginManifest,
+} from "@/lib/plugins/core/catalog";
 
 const installPluginSchema = z.object({
   pluginId: z.string().min(1).max(64),
@@ -30,15 +28,12 @@ export async function GET() {
 
   try {
     const installations = await getPluginInstallationsByUserId({ userId });
-    const plugins = withTierLock(
-      buildCatalogEntries(
-        installations.map((i) => ({
-          isEnabled: i.isEnabled,
-          pluginId: i.pluginId,
-          version: i.version,
-        }))
-      ),
-      user.tier
+    const plugins = buildCatalogEntries(
+      installations.map((i) => ({
+        isEnabled: i.isEnabled,
+        pluginId: i.pluginId,
+        version: i.version,
+      }))
     );
     return Response.json(
       { plugins },
@@ -73,14 +68,6 @@ export async function POST(request: Request) {
       });
     }
 
-    // Le niveau d'abonnement déclaré par le manifeste est appliqué ici : le
-    // forfait payant générique ne suffit pas pour un plugin réservé à Pro/Max.
-    if (!canUsePlugin(manifest, user.tier)) {
-      return errorResponse("plan_required", {
-        message: pluginTierMessage(manifest),
-      });
-    }
-
     await installPlugin({
       pluginId: manifest.id,
       userId,
@@ -88,15 +75,12 @@ export async function POST(request: Request) {
     });
 
     const installations = await getPluginInstallationsByUserId({ userId });
-    const plugins = withTierLock(
-      buildCatalogEntries(
-        installations.map((i) => ({
-          isEnabled: i.isEnabled,
-          pluginId: i.pluginId,
-          version: i.version,
-        }))
-      ),
-      user.tier
+    const plugins = buildCatalogEntries(
+      installations.map((i) => ({
+        isEnabled: i.isEnabled,
+        pluginId: i.pluginId,
+        version: i.version,
+      }))
     );
     return Response.json({
       plugin: plugins.find((p) => p.id === manifest.id) ?? null,

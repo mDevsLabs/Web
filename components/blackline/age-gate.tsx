@@ -226,7 +226,11 @@ export function BlacklineAgeGate({
                 Blackline n&apos;est pas accessible aux moins de 16 ans. Vous
                 pouvez continuer à utiliser mAI normalement.
               </p>
-              <Button asChild className="w-fit" variant="outline">
+              <Button
+                asChild
+                className="w-fit border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white"
+                variant="outline"
+              >
                 <a href="/">Retour à mAI</a>
               </Button>
             </div>
@@ -241,7 +245,7 @@ export function BlacklineAgeGate({
                 J&apos;ai 16 ans ou plus — lancer le jeu
               </Button>
               <Button
-                className="sm:ml-auto"
+                className="border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white sm:ml-auto"
                 onClick={() => setRefuse(true)}
                 variant="outline"
               >

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PluginIcon } from "@/lib/plugins/icon";
+import { PluginIcon } from "@/lib/plugins/core/icon";
 import type { McpTemplateManifest } from "./types";
 
 // Vrai logo du service (assets réels dans public/plugins/<id>.svg, source

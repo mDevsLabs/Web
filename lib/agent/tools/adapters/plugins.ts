@@ -15,15 +15,14 @@ import {
   isProviderToolName,
   pluginAgentToolDescription,
 } from "@/lib/mcp/provider-tool-id";
-import { getPluginManifest } from "@/lib/plugins/catalog";
+import { getPluginManifest } from "@/lib/plugins/core/catalog";
 import {
   createPluginTools,
   PLUGIN_DEFINITION_LIST,
-} from "@/lib/plugins/server";
-import { canUsePlugin } from "@/lib/plugins/tier-lock";
-import { toolEffect } from "@/lib/plugins/tool-effect";
-import type { PluginSecretResolver } from "@/lib/plugins/types";
-import { listCustomPluginAgentTools } from "@/lib/plugins/user-plugin-tools";
+} from "@/lib/plugins/core/server";
+import { toolEffect } from "@/lib/plugins/core/tool-effect";
+import type { PluginSecretResolver } from "@/lib/plugins/core/types";
+import { listCustomPluginAgentTools } from "@/lib/plugins/core/user-plugin-tools";
 
 type PublicReference = { title?: unknown; url?: unknown };
 
@@ -96,13 +95,6 @@ function legacyPluginFailure(output: unknown): ToolFailure | null {
   );
 }
 
-function pluginTiers(minTier: string): "all" | string[] {
-  if (minTier === "free") return "all";
-  if (minTier === "pro") return ["pro", "max"];
-  if (minTier === "max") return ["max"];
-  return ["plus", "pro", "max"];
-}
-
 export function listPluginAgentTools(
   pluginIds: string[],
   deps: { secretResolver?: PluginSecretResolver; userId?: string } = {}
@@ -126,7 +118,7 @@ export function listPluginAgentTools(
         availability: {
           categories: ["plugins"],
           requires: { tools: true },
-          tiers: pluginTiers(definition.manifest.minTier),
+          tiers: "all",
         },
         category: "plugins",
         description: pluginAgentToolDescription({
@@ -166,7 +158,7 @@ export function listPluginAgentTools(
 }
 
 export async function listInstalledPluginAgentTools(params: {
-  tier: string;
+  tier?: string;
   userId: string;
 }) {
   const installations = await getPluginInstallationsByUserId({
@@ -175,7 +167,7 @@ export async function listInstalledPluginAgentTools(params: {
   const pluginIds = installations.flatMap((installation) => {
     if (!installation.isEnabled) return [];
     const plugin = getPluginManifest(installation.pluginId);
-    return plugin && canUsePlugin(plugin, params.tier) ? [plugin.id] : [];
+    return plugin ? [plugin.id] : [];
   });
   return {
     pluginIds,
@@ -206,6 +198,43 @@ export function getMentionedPluginToolIds(task: string, pluginIds: string[]) {
 }
 
 const TOOL_INTENT_TERMS: Record<string, string[]> = {
+  airtableCreateRecord: [
+    "créer une fiche airtable",
+    "ajouter dans airtable",
+    "nouvel enregistrement airtable",
+  ],
+  airtableGetBaseSchema: [
+    "schéma airtable",
+    "colonnes airtable",
+    "tables airtable",
+  ],
+  airtableListBases: ["bases airtable", "mes bases airtable"],
+  airtableListRecords: [
+    "enregistrements airtable",
+    "lignes airtable",
+    "lire airtable",
+  ],
+  arxivGetPaper: ["article arxiv", "préprint arxiv", "fiche arxiv"],
+  arxivSearchPapers: [
+    "rechercher sur arxiv",
+    "papiers arxiv",
+    "publications arxiv",
+  ],
+  asanaCreateTask: ["créer une tâche asana", "nouvelle tâche asana"],
+  asanaListTasks: ["tâches asana", "mes tâches asana"],
+  asanaListWorkspaces: ["espaces asana", "workspaces asana"],
+  braveNewsSearch: ["actualités brave", "news brave"],
+  braveWebSearch: ["recherche brave", "brave search", "chercher sur brave"],
+  brevoListContacts: ["contacts brevo", "liste contacts brevo"],
+  brevoListLists: ["listes brevo", "listes d'envoi brevo"],
+  brevoSendEmail: ["envoyer un email brevo", "mail via brevo"],
+  cloudflareGetZone: ["détail zone cloudflare", "zone cloudflare"],
+  cloudflareListDnsRecords: [
+    "dns cloudflare",
+    "enregistrements dns cloudflare",
+  ],
+  cloudflareListWorkers: ["workers cloudflare", "scripts cloudflare"],
+  cloudflareListZones: ["zones cloudflare", "domaines cloudflare"],
   commentGithubIssue: [
     "commenter cette issue",
     "répondre sur github",
@@ -245,6 +274,16 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "crée une pr",
     "proposer mes modifications sur github",
   ],
+  discordListChannels: ["salons discord", "canaux discord"],
+  discordListGuilds: ["serveurs discord", "guildes discord"],
+  discordProfile: ["profil discord", "bot discord"],
+  discordReadMessages: ["messages discord", "lire discord"],
+  discordSendMessage: ["envoyer sur discord", "message discord"],
+  dockerCreateRepo: ["créer un dépôt docker", "nouveau repo docker"],
+  dockerListRepos: ["dépôts docker", "images docker hub"],
+  dockerListTags: ["tags docker", "étiquettes docker"],
+  exchangeConvert: ["convertir devise", "conversion devise", "taux de change"],
+  exchangeLatestRates: ["taux de change", "cours des devises"],
   frHolidays: [
     "jour férié français",
     "jours fériés français",
@@ -281,6 +320,7 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
   ],
   getFoodIngredients: ["ingrédients", "allergènes", "traces alimentaires"],
   getFoodProduct: ["code-barres", "code barre", "ean", "produit alimentaire"],
+  getGithubIssue: ["détail issue github", "numéro issue github"],
   getGithubRepositories: [
     "mes dépôts github",
     "mes repositories",
@@ -306,6 +346,7 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "long weekend",
     "ponts",
   ],
+  getMobilityDatasetDetails: ["détail mobilité", "jeu de données transport"],
   getOpenAlexAuthor: ["auteur openalex", "profil auteur openalex"],
   getOpenAlexWork: [
     "publication openalex",
@@ -354,6 +395,9 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "date fériée",
     "public holiday on",
   ],
+  jiraCreateIssue: ["créer ticket jira", "nouveau ticket jira"],
+  jiraListProjects: ["projets jira", "clés jira"],
+  jiraSearchIssues: ["tickets jira", "issues jira", "jql"],
   jsonToolbox: [
     "json",
     "minifier json",
@@ -362,6 +406,25 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "extraire un champ json",
     "aplatir le json",
     "fusionner deux json",
+  ],
+  linearCreateIssue: ["créer issue linear", "nouvelle issue linear"],
+  linearGetIssue: ["détail issue linear", "fiche issue linear"],
+  linearListIssues: ["issues linear", "tickets linear"],
+  linearListTeams: ["équipes linear", "teams linear"],
+  listGithubBranches: ["branches github", "branches du dépôt"],
+  listGithubCommits: [
+    "commits github",
+    "historique commits",
+    "derniers commits",
+  ],
+  listGithubDirectory: [
+    "fichiers du dépôt",
+    "arborescence github",
+    "dossier github",
+  ],
+  listGithubIssueComments: [
+    "commentaires issue github",
+    "commentaires pr github",
   ],
   listGithubIssues: [
     "issue github",
@@ -386,6 +449,12 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "pays et régions",
     "niveau de revenu des pays",
   ],
+  makeListOrganizations: ["organisations make", "espaces make"],
+  makeListScenarios: ["scénarios make", "automatisations make"],
+  makeRunScenario: ["lancer scénario make", "exécuter scénario make"],
+  mapboxDirections: ["itinéraire mapbox", "trajet mapbox"],
+  mapboxGeocode: ["géocoder mapbox", "coordonnées mapbox"],
+  mapboxReverseGeocode: ["géocodage inverse mapbox"],
   mapsDirections: [
     "itinéraire google maps",
     "trajet en voiture",
@@ -398,6 +467,20 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "trouver un endroit",
     "lieux google maps",
   ],
+  neonCreateBranch: ["créer branche neon", "nouvelle branche neon"],
+  neonListBranches: ["branches neon", "bases neon"],
+  neonListProjects: ["projets neon", "bases postgres neon"],
+  notionAppendBlocks: ["ajouter dans notion", "compléter page notion"],
+  notionCreatePage: ["créer page notion", "nouvelle page notion"],
+  notionQueryDatabase: ["base notion", "requêter base notion"],
+  notionReadPage: ["lire page notion", "contenu page notion"],
+  notionSearch: ["chercher dans notion", "pages notion"],
+  npmGetPackage: ["paquet npm", "version npm", "package npm"],
+  npmSearch: ["chercher paquet npm", "recherche npm"],
+  npmWhoami: ["compte npm", "whoami npm"],
+  posthogListFlags: ["feature flags posthog", "flags posthog"],
+  posthogListInsights: ["insights posthog", "graphiques posthog"],
+  posthogListProjects: ["projets posthog", "analytics posthog"],
   quizzly: ["quiz", "questionnaire", "tester mes connaissances"],
   readGithubFile: [
     "fichier github",
@@ -406,6 +489,9 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "contenu du fichier",
   ],
   readGitlabFile: ["fichier gitlab", "code gitlab", "lire le fichier gitlab"],
+  resendGetEmail: ["statut email resend", "détail email resend"],
+  resendListDomains: ["domaines resend", "dns resend"],
+  resendListEmails: ["emails resend", "envois resend"],
   searchAuthorPublications: [
     "publications de",
     "articles de l'auteur",
@@ -423,11 +509,19 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "chercher un produit",
     "produits alimentaires",
   ],
+  searchGithubCode: ["rechercher code github", "chercher dans le code github"],
+  searchGithubRepositories: ["rechercher dépôt github", "trouver repo github"],
   searchJournals: [
     "revue scientifique",
     "journal académique",
     "issn",
     "revues académiques",
+  ],
+  searchMobilityDatasets: [
+    "transport france",
+    "mobilité france",
+    "sncf",
+    "gtfs",
   ],
   searchOpenAlexAuthors: [
     "auteur scientifique openalex",
@@ -456,6 +550,43 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "indicateurs économiques",
     "indicateur de développement",
   ],
+  sentryGetIssue: ["détail erreur sentry", "détail issue sentry"],
+  sentryListIssues: ["erreurs sentry", "issues sentry", "bugs sentry"],
+  sentryListOrganizations: ["organisations sentry"],
+  sentryListProjects: ["projets sentry"],
+  slackGetThread: ["fil slack", "thread slack", "réponses slack"],
+  slackListChannels: ["salons slack", "canaux slack"],
+  slackReadMessages: ["messages slack", "lire slack"],
+  slackSendMessage: ["envoyer sur slack", "message slack"],
+  sonarCommentIssue: ["commenter sonarcloud"],
+  sonarListProjects: ["projets sonarcloud", "qualité de code sonar"],
+  sonarSearchIssues: ["issues sonarcloud", "vulnérabilités sonar"],
+  stripeGetCustomer: ["client stripe", "fiche client stripe"],
+  stripeListCustomers: ["clients stripe", "liste clients stripe"],
+  stripeListInvoices: ["factures stripe", "invoices stripe"],
+  stripeListPayments: ["paiements stripe", "transactions stripe"],
+  stripeListSubscriptions: ["abonnements stripe", "subscriptions stripe"],
+  supabaseGetProject: ["projet supabase", "détail supabase"],
+  supabaseListOrganizations: ["organisations supabase"],
+  supabaseListProjects: ["projets supabase"],
+  twilioListMessages: ["sms twilio", "messages twilio"],
+  twilioListNumbers: ["numéros twilio"],
+  twilioSendSms: ["envoyer sms twilio"],
+  upstashGet: ["lire clé redis", "upstash get"],
+  upstashSet: ["écrire clé redis", "upstash set"],
+  vercelDeploymentLogs: ["logs vercel", "journaux déploiement vercel"],
+  vercelGetDeployment: ["déploiement vercel", "statut déploiement vercel"],
+  vercelGetProject: ["projet vercel", "détail projet vercel"],
+  vercelListDeployments: ["déploiements vercel", "derniers déploiements"],
+  vercelListProjects: ["projets vercel", "mes projets vercel"],
+  webCodec: ["base64", "encoder", "décoder", "sha256", "hash"],
+  webInspectJwt: ["jwt", "décoder jwt", "token jwt"],
+  webParseCsv: ["csv", "parser csv", "tableau csv"],
+  webParseUrl: ["analyser url", "paramètres url", "parser url"],
+  webTestRegex: ["regex", "expression régulière", "tester regex"],
+  wikipediaGetArticleContent: ["article wikipédia", "contenu wikipédia"],
+  wikipediaGetSummary: ["résumé wikipédia", "définition wikipédia"],
+  wikipediaSearch: ["wikipédia", "wikipedia", "chercher sur wikipédia"],
   youtubeChannelDetails: [
     "chaîne youtube",
     "fiche de la chaîne",
@@ -471,6 +602,7 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "cette vidéo youtube",
     "vues youtube",
   ],
+  zapierListZaps: ["zaps zapier", "automatisations zapier"],
 };
 
 function normalizeIntent(value: string) {

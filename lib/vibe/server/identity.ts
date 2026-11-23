@@ -46,7 +46,10 @@ async function resolveVibeIdentityOnce(): Promise<VibeIdentity | null> {
   const email = String(user.email || "")
     .trim()
     .toLowerCase();
-  if (!rawId && !email) {
+  const username = String(user.username || "")
+    .trim()
+    .toLowerCase();
+  if (!rawId && !email && !username) {
     return null;
   }
   try {
@@ -54,7 +57,17 @@ async function resolveVibeIdentityOnce(): Promise<VibeIdentity | null> {
     if (cast === "bigint" && isUserIdForCast(rawId, "bigint")) {
       const rows = await sql`
         SELECT id::text AS id, username, tier FROM users
-        WHERE id = ${Number(rawId)} OR (LOWER(email) = ${email} AND ${email} <> '')
+        WHERE LOWER(COALESCE(username, '')) NOT IN ('mai', 'bot')
+          AND LOWER(COALESCE(email, '')) <> 'mai@vibe.ai'
+          AND (
+            (LOWER(email) = ${email} AND ${email} <> '')
+            OR (LOWER(username) = ${username} AND ${username} <> '')
+            OR id = ${Number(rawId)}
+          )
+        ORDER BY
+          (LOWER(email) = ${email} AND ${email} <> '') DESC,
+          (LOWER(username) = ${username} AND ${username} <> '') DESC,
+          (id = ${Number(rawId)}) DESC
         LIMIT 1
       `;
       return fromRow(rows[0]);
@@ -62,14 +75,34 @@ async function resolveVibeIdentityOnce(): Promise<VibeIdentity | null> {
     if (cast === "uuid" && isUserIdForCast(rawId, "uuid")) {
       const rows = await sql`
         SELECT id::text AS id, username, tier FROM users
-        WHERE id = ${rawId}::uuid OR (LOWER(email) = ${email} AND ${email} <> '')
+        WHERE LOWER(COALESCE(username, '')) NOT IN ('mai', 'bot')
+          AND LOWER(COALESCE(email, '')) <> 'mai@vibe.ai'
+          AND (
+            (LOWER(email) = ${email} AND ${email} <> '')
+            OR (LOWER(username) = ${username} AND ${username} <> '')
+            OR id = ${rawId}::uuid
+          )
+        ORDER BY
+          (LOWER(email) = ${email} AND ${email} <> '') DESC,
+          (LOWER(username) = ${username} AND ${username} <> '') DESC,
+          (id = ${rawId}::uuid) DESC
         LIMIT 1
       `;
       return fromRow(rows[0]);
     }
     const rows = await sql`
       SELECT id::text AS id, username, tier FROM users
-      WHERE id::text = ${rawId} OR (LOWER(email) = ${email} AND ${email} <> '')
+      WHERE LOWER(COALESCE(username, '')) NOT IN ('mai', 'bot')
+        AND LOWER(COALESCE(email, '')) <> 'mai@vibe.ai'
+        AND (
+          (LOWER(email) = ${email} AND ${email} <> '')
+          OR (LOWER(username) = ${username} AND ${username} <> '')
+          OR id::text = ${rawId}
+        )
+      ORDER BY
+        (LOWER(email) = ${email} AND ${email} <> '') DESC,
+        (LOWER(username) = ${username} AND ${username} <> '') DESC,
+        (id::text = ${rawId}) DESC
       LIMIT 1
     `;
     return fromRow(rows[0]);

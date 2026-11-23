@@ -9,16 +9,15 @@ import type {
   TargetConversationState,
 } from "@/components/search/search-drawer-conversation";
 import {
+  MAI_SEARCH_SUMMARY_MODEL_ID,
   mergeStreamText,
   readSummaryStream,
 } from "@/lib/search/summary-stream";
 
 export function useTargetConversation({
   submittedQuery,
-  selectedModelId,
 }: {
   submittedQuery: string;
-  selectedModelId: string;
 }) {
   const router = useRouter();
 
@@ -27,7 +26,7 @@ export function useTargetConversation({
       isLoading: false,
       isOpen: false,
       messages: [],
-      modelId: selectedModelId,
+      modelId: MAI_SEARCH_SUMMARY_MODEL_ID,
       target: null,
     });
   const [followupInput, setFollowupInput] = useState("");
@@ -64,7 +63,7 @@ export function useTargetConversation({
             sources: [],
           },
         ],
-        modelId: selectedModelId,
+        modelId: MAI_SEARCH_SUMMARY_MODEL_ID,
         target,
       });
 
@@ -72,7 +71,7 @@ export function useTargetConversation({
         const response = await fetch("/api/mai-search/summary", {
           body: JSON.stringify({
             messages: [],
-            modelId: selectedModelId,
+            modelId: MAI_SEARCH_SUMMARY_MODEL_ID,
             query: submittedQuery,
             target,
           }),
@@ -87,6 +86,7 @@ export function useTargetConversation({
 
         let accumulated = "";
         let reasoningAccumulator = "";
+        let streamError: string | null = null;
         await readSummaryStream(response, (event) => {
           if (event.type === "reasoning-delta") {
             reasoningAccumulator = mergeStreamText(
@@ -118,9 +118,12 @@ export function useTargetConversation({
               return { ...prev, messages: msgs };
             });
           } else if (event.type === "error") {
-            throw new Error(event.message);
+            streamError = event.message;
           }
         });
+        if (streamError) {
+          throw new Error(streamError);
+        }
       } catch (err: unknown) {
         if (err instanceof Error && err.name === "AbortError") {
           return;
@@ -146,7 +149,7 @@ export function useTargetConversation({
         }
       }
     },
-    [submittedQuery, selectedModelId]
+    [submittedQuery]
   );
 
   const handleSendFollowupMessage = useCallback(
@@ -191,7 +194,7 @@ export function useTargetConversation({
               content: m.content,
               role: m.role,
             })),
-            modelId: selectedModelId,
+            modelId: MAI_SEARCH_SUMMARY_MODEL_ID,
             query: submittedQuery,
             target: targetConversation.target,
           }),
@@ -206,6 +209,7 @@ export function useTargetConversation({
 
         let accumulated = "";
         let reasoningAccumulator = "";
+        let streamError: string | null = null;
         await readSummaryStream(response, (event) => {
           if (event.type === "reasoning-delta") {
             reasoningAccumulator = mergeStreamText(
@@ -243,9 +247,12 @@ export function useTargetConversation({
               return { ...prev, messages: msgs };
             });
           } else if (event.type === "error") {
-            throw new Error(event.message);
+            streamError = event.message;
           }
         });
+        if (streamError) {
+          throw new Error(streamError);
+        }
       } catch (err: unknown) {
         if (err instanceof Error && err.name === "AbortError") {
           return;
@@ -275,7 +282,6 @@ export function useTargetConversation({
       targetConversation.isLoading,
       targetConversation.target,
       targetConversation.messages,
-      selectedModelId,
       submittedQuery,
     ]
   );

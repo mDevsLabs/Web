@@ -1,15 +1,18 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { getEurostatData } from "@/lib/plugins/eurostat";
+import { getEurostatData } from "@/lib/plugins/packs/data/eurostat";
 import {
   getGitlabProjectSummary,
   readGitlabFile,
-} from "@/lib/plugins/gitlab-public";
-import { getOpenAlexWork, searchOpenAlexWorks } from "@/lib/plugins/openalex";
-import { fetchPublicJson } from "@/lib/plugins/shared/public-api";
+} from "@/lib/plugins/packs/dev/gitlab-public";
+import {
+  getOpenAlexWork,
+  searchOpenAlexWorks,
+} from "@/lib/plugins/packs/research/openalex";
 import {
   getWikidataEntity,
   searchWikidataEntities,
-} from "@/lib/plugins/wikidata";
+} from "@/lib/plugins/packs/research/wikidata";
+import { fetchPublicJson } from "@/lib/plugins/shared/public-api";
 
 const TOOL_CALL_OPTIONS = {
   abortSignal: new AbortController().signal,

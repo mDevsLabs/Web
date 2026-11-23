@@ -301,9 +301,15 @@ async function resolveUserFromDb(
 
     const userId =
       verifiedPayload?.sub || verifiedPayload?.id || verifiedPayload?.email;
-    if (!userId) return null;
+    const payloadEmail = String(verifiedPayload?.email || "")
+      .trim()
+      .toLowerCase();
+    const payloadUsername = String(verifiedPayload?.username || "")
+      .trim()
+      .toLowerCase();
+    if (!userId && !payloadEmail) return null;
 
-    // 2. Recherche utilisateur dans Neon PostgreSQL
+    // 2. Recherche utilisateur dans Neon PostgreSQL (en excluant les pseudo-comptes systèmes @mai / @bot)
     const users = await sql<
       {
         avatar_url: string | null;
@@ -317,12 +323,20 @@ async function resolveUserFromDb(
     >`
       SELECT id::text AS id, email, username, tier, phone, avatar_url, is_blocked
       FROM users
-      WHERE id::text = ${String(userId)}::text
-         OR (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)}))
-         OR (username IS NOT NULL AND LOWER(username) = LOWER(${String(userId)}))
+      WHERE LOWER(COALESCE(username, '')) NOT IN ('mai', 'bot')
+        AND LOWER(COALESCE(email, '')) <> 'mai@vibe.ai'
+        AND (
+          (${payloadEmail} <> '' AND email IS NOT NULL AND LOWER(email) = ${payloadEmail})
+          OR (${payloadUsername} <> '' AND username IS NOT NULL AND LOWER(username) = ${payloadUsername})
+          OR id::text = ${String(userId)}::text
+          OR (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)}))
+          OR (username IS NOT NULL AND LOWER(username) = LOWER(${String(userId)}))
+        )
       ORDER BY
-        (id::text = ${String(userId)}::text) DESC,
-        (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)})) DESC
+        (${payloadEmail} <> '' AND email IS NOT NULL AND LOWER(email) = ${payloadEmail}) DESC,
+        (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)})) DESC,
+        (${payloadUsername} <> '' AND username IS NOT NULL AND LOWER(username) = ${payloadUsername}) DESC,
+        (id::text = ${String(userId)}::text) DESC
       LIMIT 1
     `;
 

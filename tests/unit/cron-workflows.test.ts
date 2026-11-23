@@ -31,35 +31,41 @@ describe("CRON & Workflows GitHub Actions", () => {
     }
   });
 
-  it("cron-master.yml orchestre l'ensemble des ticks groupés via curl", () => {
+  it("cron-master.yml exécute les ticks directement, sans appeler Vercel", () => {
     const content = readFileSync(join(workflowsDir, "cron-master.yml"), "utf8");
-    expect(content).toContain("curl");
-    expect(content).toContain("/api/cron/");
-    expect(content).toContain('cron: "*/30 * * * *"');
-    expect(content).toContain("CRON_SECRET");
-    expect(content).toContain("APP_URL");
-    expect(content).toContain("schedule");
-    // Le job n'a besoin ni du dépôt ni de Node : pas de checkout ni de setup.
-    expect(content).not.toContain("actions/checkout");
-    expect(content).not.toContain("actions/setup-node");
-    // Le secret ne transite jamais par l'URL.
+    expect(content).toContain('cron: "*/5 * * * *"');
+    expect(content).toContain("scripts/cron/run-direct.ts");
+    expect(content).toContain("--conditions=react-server");
+    expect(content).toContain("--frozen-lockfile");
+    for (const secret of [
+      "DATABASE_URL",
+      "CRON_SECRET",
+      "OPENROUTER_API_KEY",
+    ]) {
+      expect(content).toContain(`secrets.${secret}`);
+    }
+    // Zéro Active CPU Vercel : aucun appel HTTP aux routes cron.
+    expect(content).not.toContain("curl");
+    expect(content).not.toContain("/api/cron/");
+    // Moindre privilège, pas de jeton Git persisté, pas d'annulation en vol.
+    expect(content).toContain("contents: read");
+    expect(content).toContain("persist-credentials: false");
+    expect(content).toContain("cancel-in-progress: false");
     expect(content).not.toMatch(/\?[^\s"]*secret=/i);
   });
 
-  it("cron-master.yml appelle les six ticks avec le bon verbe", () => {
+  it("cron-master.yml propose les six ticks au déclenchement manuel", () => {
     const content = readFileSync(join(workflowsDir, "cron-master.yml"), "utf8");
-    const attendus: [string, "GET" | "POST"][] = [
-      ["agent", "POST"],
-      ["planning", "POST"],
-      ["wakies", "POST"],
-      ["vibe", "GET"],
-      ["notifications", "POST"],
-      ["quizzly", "POST"],
-    ];
-    for (const [tick, verbe] of attendus) {
-      expect(content, `${tick} ${verbe}`).toMatch(
-        new RegExp(`launch\\s+${tick}\\s+${verbe}\\s+\\d+`)
-      );
+    for (const tick of [
+      "all",
+      "agent",
+      "planning",
+      "wakies",
+      "vibe",
+      "notifications",
+      "quizzly",
+    ]) {
+      expect(content, tick).toMatch(new RegExp(`^\\s+- ${tick}$`, "m"));
     }
   });
 

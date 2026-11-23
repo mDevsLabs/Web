@@ -4,13 +4,13 @@ import {
   zodIssuesMessage,
 } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
-import { userPluginUpdateSchema } from "@/lib/plugins/user-plugin-input";
+import { userPluginUpdateSchema } from "@/lib/plugins/core/user-plugin-input";
 import {
   deleteUserPlugin,
   getUserPlugin,
   UserPluginError,
   updateUserPlugin,
-} from "@/lib/plugins/user-plugin-store";
+} from "@/lib/plugins/core/user-plugin-store";
 
 export async function GET(
   _request: Request,

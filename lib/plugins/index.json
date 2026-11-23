@@ -1,289 +1,349 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.10.31",
+  "catalogVersion": "2026.11.23",
   "categories": [
-    {
-      "id": "meteo",
-      "label": "Météo & environnement",
-      "icon": "CloudSun"
-    },
-    {
-      "id": "education",
-      "label": "Éducation & quiz",
-      "icon": "GraduationCap"
-    },
-    {
-      "id": "web",
-      "label": "Web & données",
-      "icon": "Globe"
-    },
-    {
-      "id": "productivite",
-      "label": "Productivité",
-      "icon": "Zap"
-    },
     {
       "id": "dev",
       "label": "Développement",
       "icon": "Code"
     },
-    { "id": "food", "label": "Alimentation", "icon": "Leaf" },
-    { "id": "research", "label": "Recherche", "icon": "Atom" },
-    { "id": "data", "label": "Données", "icon": "BarChart3" },
-    { "id": "culture", "label": "Culture", "icon": "Video" },
-    { "id": "mobilite", "label": "Mobilité", "icon": "Map" },
     {
-      "id": "integrations",
-      "label": "Applications connectées",
-      "icon": "Puzzle"
+      "id": "infra",
+      "label": "Infrastructure & Cloud",
+      "icon": "Cloud"
+    },
+    {
+      "id": "productivite",
+      "label": "Productivité & Projets",
+      "icon": "Briefcase"
+    },
+    {
+      "id": "communication",
+      "label": "Communication",
+      "icon": "MessageSquare"
+    },
+    {
+      "id": "automation",
+      "label": "Automatisation",
+      "icon": "Zap"
+    },
+    {
+      "id": "finance",
+      "label": "Finance & Devises",
+      "icon": "Banknote"
+    },
+    {
+      "id": "web",
+      "label": "Web & Utilitaires",
+      "icon": "Globe"
+    },
+    {
+      "id": "research",
+      "label": "Recherche & Savoir",
+      "icon": "Atom"
+    },
+    {
+      "id": "data",
+      "label": "Données & Analytics",
+      "icon": "BarChart3"
+    },
+    {
+      "id": "mobilite",
+      "label": "Mobilité & Cartes",
+      "icon": "Map"
+    },
+    {
+      "id": "culture",
+      "label": "Culture & Médias",
+      "icon": "Video"
+    },
+    {
+      "id": "meteo",
+      "label": "Météo & Environnement",
+      "icon": "CloudSun"
+    },
+    {
+      "id": "food",
+      "label": "Alimentation",
+      "icon": "Leaf"
     }
   ],
   "plugins": [
     {
-      "id": "weather",
-      "dir": "weather",
-      "entry": "./weather",
-      "manifest": "./weather/index.json"
-    },
-    {
       "id": "air-quality",
-      "dir": "air-quality",
-      "entry": "./air-quality",
-      "manifest": "./air-quality/index.json"
+      "dir": "packs/meteo/air-quality",
+      "entry": "./packs/meteo/air-quality",
+      "manifest": "./packs/meteo/air-quality/index.json"
     },
     {
-      "id": "json-toolbox",
-      "dir": "json-toolbox",
-      "entry": "./json-toolbox",
-      "manifest": "./json-toolbox/index.json"
+      "id": "airtable",
+      "dir": "packs/productivite/airtable",
+      "entry": "./packs/productivite/airtable",
+      "manifest": "./packs/productivite/airtable/index.json"
     },
     {
-      "id": "fr-holidays",
-      "dir": "fr-holidays",
-      "entry": "./fr-holidays",
-      "manifest": "./fr-holidays/index.json"
-    },
-    {
-      "id": "github",
-      "dir": "github",
-      "entry": "./github",
-      "manifest": "./github/index.json"
-    },
-    {
-      "id": "google-maps",
-      "dir": "google-maps",
-      "entry": "./google-maps",
-      "manifest": "./google-maps/index.json"
-    },
-    {
-      "id": "notion",
-      "dir": "notion",
-      "entry": "./notion",
-      "manifest": "./notion/index.json"
-    },
-    {
-      "id": "discord",
-      "dir": "discord",
-      "entry": "./discord",
-      "manifest": "./discord/index.json"
-    },
-    {
-      "id": "vercel",
-      "dir": "vercel",
-      "entry": "./vercel",
-      "manifest": "./vercel/index.json"
-    },
-    {
-      "id": "sentry",
-      "dir": "sentry",
-      "entry": "./sentry",
-      "manifest": "./sentry/index.json"
-    },
-    {
-      "id": "posthog",
-      "dir": "posthog",
-      "entry": "./posthog",
-      "manifest": "./posthog/index.json"
-    },
-    {
-      "id": "linear",
-      "dir": "linear",
-      "entry": "./linear",
-      "manifest": "./linear/index.json"
-    },
-    {
-      "id": "stripe",
-      "dir": "stripe",
-      "entry": "./stripe",
-      "manifest": "./stripe/index.json"
-    },
-    {
-      "id": "resend",
-      "dir": "resend",
-      "entry": "./resend",
-      "manifest": "./resend/index.json"
-    },
-    {
-      "id": "cloudflare",
-      "dir": "cloudflare",
-      "entry": "./cloudflare",
-      "manifest": "./cloudflare/index.json"
-    },
-    {
-      "id": "brave",
-      "dir": "brave",
-      "entry": "./brave",
-      "manifest": "./brave/index.json"
-    },
-    {
-      "id": "mapbox",
-      "dir": "mapbox",
-      "entry": "./mapbox",
-      "manifest": "./mapbox/index.json"
-    },
-    {
-      "id": "exchange-rate",
-      "dir": "exchange-rate",
-      "entry": "./exchange-rate",
-      "manifest": "./exchange-rate/index.json"
-    },
-    {
-      "id": "sonarcloud",
-      "dir": "sonarcloud",
-      "entry": "./sonarcloud",
-      "manifest": "./sonarcloud/index.json"
-    },
-    {
-      "id": "npm",
-      "dir": "npm",
-      "entry": "./npm",
-      "manifest": "./npm/index.json"
-    },
-    {
-      "id": "dockerhub",
-      "dir": "dockerhub",
-      "entry": "./dockerhub",
-      "manifest": "./dockerhub/index.json"
-    },
-    {
-      "id": "brevo",
-      "dir": "brevo",
-      "entry": "./brevo",
-      "manifest": "./brevo/index.json"
-    },
-    {
-      "id": "twilio",
-      "dir": "twilio",
-      "entry": "./twilio",
-      "manifest": "./twilio/index.json"
+      "id": "arxiv",
+      "dir": "packs/research/arxiv",
+      "entry": "./packs/research/arxiv",
+      "manifest": "./packs/research/arxiv/index.json"
     },
     {
       "id": "asana",
-      "dir": "asana",
-      "entry": "./asana",
-      "manifest": "./asana/index.json"
+      "dir": "packs/productivite/asana",
+      "entry": "./packs/productivite/asana",
+      "manifest": "./packs/productivite/asana/index.json"
     },
     {
-      "id": "jira",
-      "dir": "jira",
-      "entry": "./jira",
-      "manifest": "./jira/index.json"
+      "id": "brave",
+      "dir": "packs/web/brave",
+      "entry": "./packs/web/brave",
+      "manifest": "./packs/web/brave/index.json"
     },
     {
-      "id": "upstash",
-      "dir": "upstash",
-      "entry": "./upstash",
-      "manifest": "./upstash/index.json"
+      "id": "brevo",
+      "dir": "packs/communication/brevo",
+      "entry": "./packs/communication/brevo",
+      "manifest": "./packs/communication/brevo/index.json"
     },
     {
-      "id": "neon",
-      "dir": "neon",
-      "entry": "./neon",
-      "manifest": "./neon/index.json"
-    },
-    {
-      "id": "supabase",
-      "dir": "supabase",
-      "entry": "./supabase",
-      "manifest": "./supabase/index.json"
-    },
-    {
-      "id": "zapier",
-      "dir": "zapier",
-      "entry": "./zapier",
-      "manifest": "./zapier/index.json"
-    },
-    {
-      "id": "make",
-      "dir": "make",
-      "entry": "./make",
-      "manifest": "./make/index.json"
-    },
-    {
-      "id": "open-food-facts",
-      "dir": "open-food-facts",
-      "entry": "./open-food-facts",
-      "manifest": "./open-food-facts/index.json"
-    },
-    {
-      "id": "open-library",
-      "dir": "open-library",
-      "entry": "./open-library",
-      "manifest": "./open-library/index.json"
+      "id": "cloudflare",
+      "dir": "packs/infra/cloudflare",
+      "entry": "./packs/infra/cloudflare",
+      "manifest": "./packs/infra/cloudflare/index.json"
     },
     {
       "id": "crossref",
-      "dir": "crossref",
-      "entry": "./crossref",
-      "manifest": "./crossref/index.json"
+      "dir": "packs/research/crossref",
+      "entry": "./packs/research/crossref",
+      "manifest": "./packs/research/crossref/index.json"
     },
     {
-      "id": "world-bank",
-      "dir": "world-bank",
-      "entry": "./world-bank",
-      "manifest": "./world-bank/index.json"
+      "id": "discord",
+      "dir": "packs/communication/discord",
+      "entry": "./packs/communication/discord",
+      "manifest": "./packs/communication/discord/index.json"
     },
     {
-      "id": "tvmaze",
-      "dir": "tvmaze",
-      "entry": "./tvmaze",
-      "manifest": "./tvmaze/index.json"
-    },
-    {
-      "id": "mobilite-fr",
-      "dir": "mobilite-fr",
-      "entry": "./mobilite-fr",
-      "manifest": "./mobilite-fr/index.json"
-    },
-    {
-      "id": "youtube",
-      "dir": "youtube",
-      "entry": "./youtube",
-      "manifest": "./youtube/index.json"
-    },
-    {
-      "id": "wikidata",
-      "dir": "wikidata",
-      "entry": "./wikidata",
-      "manifest": "./wikidata/index.json"
-    },
-    {
-      "id": "gitlab-public",
-      "dir": "gitlab-public",
-      "entry": "./gitlab-public",
-      "manifest": "./gitlab-public/index.json"
+      "id": "dockerhub",
+      "dir": "packs/dev/dockerhub",
+      "entry": "./packs/dev/dockerhub",
+      "manifest": "./packs/dev/dockerhub/index.json"
     },
     {
       "id": "eurostat",
-      "dir": "eurostat",
-      "entry": "./eurostat",
-      "manifest": "./eurostat/index.json"
+      "dir": "packs/data/eurostat",
+      "entry": "./packs/data/eurostat",
+      "manifest": "./packs/data/eurostat/index.json"
+    },
+    {
+      "id": "exchange-rate",
+      "dir": "packs/finance/exchange-rate",
+      "entry": "./packs/finance/exchange-rate",
+      "manifest": "./packs/finance/exchange-rate/index.json"
+    },
+    {
+      "id": "fr-holidays",
+      "dir": "packs/productivite/fr-holidays",
+      "entry": "./packs/productivite/fr-holidays",
+      "manifest": "./packs/productivite/fr-holidays/index.json"
+    },
+    {
+      "id": "github",
+      "dir": "packs/dev/github",
+      "entry": "./packs/dev/github",
+      "manifest": "./packs/dev/github/index.json"
+    },
+    {
+      "id": "gitlab-public",
+      "dir": "packs/dev/gitlab-public",
+      "entry": "./packs/dev/gitlab-public",
+      "manifest": "./packs/dev/gitlab-public/index.json"
+    },
+    {
+      "id": "google-maps",
+      "dir": "packs/mobilite/google-maps",
+      "entry": "./packs/mobilite/google-maps",
+      "manifest": "./packs/mobilite/google-maps/index.json"
+    },
+    {
+      "id": "jira",
+      "dir": "packs/productivite/jira",
+      "entry": "./packs/productivite/jira",
+      "manifest": "./packs/productivite/jira/index.json"
+    },
+    {
+      "id": "json-toolbox",
+      "dir": "packs/dev/json-toolbox",
+      "entry": "./packs/dev/json-toolbox",
+      "manifest": "./packs/dev/json-toolbox/index.json"
+    },
+    {
+      "id": "linear",
+      "dir": "packs/dev/linear",
+      "entry": "./packs/dev/linear",
+      "manifest": "./packs/dev/linear/index.json"
+    },
+    {
+      "id": "make",
+      "dir": "packs/automation/make",
+      "entry": "./packs/automation/make",
+      "manifest": "./packs/automation/make/index.json"
+    },
+    {
+      "id": "mapbox",
+      "dir": "packs/mobilite/mapbox",
+      "entry": "./packs/mobilite/mapbox",
+      "manifest": "./packs/mobilite/mapbox/index.json"
+    },
+    {
+      "id": "mobilite-fr",
+      "dir": "packs/mobilite/mobilite-fr",
+      "entry": "./packs/mobilite/mobilite-fr",
+      "manifest": "./packs/mobilite/mobilite-fr/index.json"
+    },
+    {
+      "id": "neon",
+      "dir": "packs/infra/neon",
+      "entry": "./packs/infra/neon",
+      "manifest": "./packs/infra/neon/index.json"
+    },
+    {
+      "id": "notion",
+      "dir": "packs/productivite/notion",
+      "entry": "./packs/productivite/notion",
+      "manifest": "./packs/productivite/notion/index.json"
+    },
+    {
+      "id": "npm",
+      "dir": "packs/dev/npm",
+      "entry": "./packs/dev/npm",
+      "manifest": "./packs/dev/npm/index.json"
+    },
+    {
+      "id": "open-food-facts",
+      "dir": "packs/food/open-food-facts",
+      "entry": "./packs/food/open-food-facts",
+      "manifest": "./packs/food/open-food-facts/index.json"
+    },
+    {
+      "id": "open-library",
+      "dir": "packs/culture/open-library",
+      "entry": "./packs/culture/open-library",
+      "manifest": "./packs/culture/open-library/index.json"
     },
     {
       "id": "openalex",
-      "dir": "openalex",
-      "entry": "./openalex",
-      "manifest": "./openalex/index.json"
+      "dir": "packs/research/openalex",
+      "entry": "./packs/research/openalex",
+      "manifest": "./packs/research/openalex/index.json"
+    },
+    {
+      "id": "posthog",
+      "dir": "packs/data/posthog",
+      "entry": "./packs/data/posthog",
+      "manifest": "./packs/data/posthog/index.json"
+    },
+    {
+      "id": "resend",
+      "dir": "packs/communication/resend",
+      "entry": "./packs/communication/resend",
+      "manifest": "./packs/communication/resend/index.json"
+    },
+    {
+      "id": "sentry",
+      "dir": "packs/dev/sentry",
+      "entry": "./packs/dev/sentry",
+      "manifest": "./packs/dev/sentry/index.json"
+    },
+    {
+      "id": "slack",
+      "dir": "packs/communication/slack",
+      "entry": "./packs/communication/slack",
+      "manifest": "./packs/communication/slack/index.json"
+    },
+    {
+      "id": "sonarcloud",
+      "dir": "packs/dev/sonarcloud",
+      "entry": "./packs/dev/sonarcloud",
+      "manifest": "./packs/dev/sonarcloud/index.json"
+    },
+    {
+      "id": "stripe",
+      "dir": "packs/finance/stripe",
+      "entry": "./packs/finance/stripe",
+      "manifest": "./packs/finance/stripe/index.json"
+    },
+    {
+      "id": "supabase",
+      "dir": "packs/infra/supabase",
+      "entry": "./packs/infra/supabase",
+      "manifest": "./packs/infra/supabase/index.json"
+    },
+    {
+      "id": "tvmaze",
+      "dir": "packs/culture/tvmaze",
+      "entry": "./packs/culture/tvmaze",
+      "manifest": "./packs/culture/tvmaze/index.json"
+    },
+    {
+      "id": "twilio",
+      "dir": "packs/communication/twilio",
+      "entry": "./packs/communication/twilio",
+      "manifest": "./packs/communication/twilio/index.json"
+    },
+    {
+      "id": "upstash",
+      "dir": "packs/infra/upstash",
+      "entry": "./packs/infra/upstash",
+      "manifest": "./packs/infra/upstash/index.json"
+    },
+    {
+      "id": "vercel",
+      "dir": "packs/infra/vercel",
+      "entry": "./packs/infra/vercel",
+      "manifest": "./packs/infra/vercel/index.json"
+    },
+    {
+      "id": "weather",
+      "dir": "packs/meteo/weather",
+      "entry": "./packs/meteo/weather",
+      "manifest": "./packs/meteo/weather/index.json"
+    },
+    {
+      "id": "web-toolbox",
+      "dir": "packs/web/web-toolbox",
+      "entry": "./packs/web/web-toolbox",
+      "manifest": "./packs/web/web-toolbox/index.json"
+    },
+    {
+      "id": "wikidata",
+      "dir": "packs/research/wikidata",
+      "entry": "./packs/research/wikidata",
+      "manifest": "./packs/research/wikidata/index.json"
+    },
+    {
+      "id": "wikipedia",
+      "dir": "packs/research/wikipedia",
+      "entry": "./packs/research/wikipedia",
+      "manifest": "./packs/research/wikipedia/index.json"
+    },
+    {
+      "id": "world-bank",
+      "dir": "packs/data/world-bank",
+      "entry": "./packs/data/world-bank",
+      "manifest": "./packs/data/world-bank/index.json"
+    },
+    {
+      "id": "youtube",
+      "dir": "packs/culture/youtube",
+      "entry": "./packs/culture/youtube",
+      "manifest": "./packs/culture/youtube/index.json"
+    },
+    {
+      "id": "zapier",
+      "dir": "packs/automation/zapier",
+      "entry": "./packs/automation/zapier",
+      "manifest": "./packs/automation/zapier/index.json"
     }
   ]
 }

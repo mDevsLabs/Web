@@ -6,7 +6,6 @@ import {
   ImageIcon,
   MonitorIcon as Monitor,
   RefreshCwIcon as RefreshCw,
-  SparklesIcon as Sparkles,
   UserIcon as User,
   Volume2Icon as Volume2,
 } from "@mdevs/icons";
@@ -19,7 +18,6 @@ export const ACCOUNT_SECTION_IDS = [
   "usage-cloud",
   "appareils",
   "resets",
-  "upgrade-code",
 ] as const;
 
 export type AccountSectionId = (typeof ACCOUNT_SECTION_IDS)[number];
@@ -36,7 +34,6 @@ const ITEMS: Array<{
   { icon: Cloud, id: "usage-cloud", label: "Stockage Cloud" },
   { icon: Monitor, id: "appareils", label: "Appareils Connectés" },
   { icon: RefreshCw, id: "resets", label: "Réinitialisations" },
-  { icon: Sparkles, id: "upgrade-code", label: "Activer un Code" },
 ];
 
 export function AccountNavigation({

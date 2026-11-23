@@ -23,7 +23,7 @@ export interface WeaponSpec {
   color: number; mobility: number; zoom: number; pellets?:number;model?:string;
 }
 export interface Settings {
-  renderResolution?:import('./graphics-policy.ts').RenderResolution;graphicsVersion?:2;cameraMode?:'first'|'third';cameraDistance?:number;cameraShoulder?:'right'|'left';batterySaver?:boolean;autoClimb?:boolean;autoReload?:boolean;adsSensitivity?:number;reticleScale?:number;joystickDeadzone?:number;motionLevel?:'full'|'reduced'|'off';hitFeedback?:'both'|'visual'|'audio'|'none';hitmarkerEnabled?:boolean;quality: Quality; adaptive: boolean; sensitivity: number; volume: number;
+  avatarUrl?:string;renderResolution?:import('./graphics-policy.ts').RenderResolution;graphicsVersion?:2;cameraMode?:'first'|'third';cameraDistance?:number;cameraShoulder?:'right'|'left';batterySaver?:boolean;autoClimb?:boolean;autoReload?:boolean;adsSensitivity?:number;reticleScale?:number;joystickDeadzone?:number;motionLevel?:'full'|'reduced'|'off';hitFeedback?:'both'|'visual'|'audio'|'none';hitmarkerEnabled?:boolean;quality: Quality; adaptive: boolean; sensitivity: number; volume: number;
   fov: number; invertY: boolean; showFPS: boolean; crosshair: string; callsign: string;
   touchSensitivity:number;autoSprint:boolean;cameraShake:boolean;bindings?:KeyBindings;reticleStyle?:'dot'|'cross'|'circle';adsZoom?:number;touchScale?:number;leftHanded?:boolean;mobileAutoFire?:boolean;mobileAimAssist?:boolean;touchOpacity?:number;toggleAim?:boolean;hitmarkerSound?:boolean;screenEffects?:boolean;reduceMotion?:boolean;grenadePower?:number;
 }

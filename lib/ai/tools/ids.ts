@@ -46,7 +46,7 @@ export type ChatToolId = (typeof TOOL_IDS)[number];
 
 // Identifiants dont l'implémentation vit dans un plugin (lib/plugins/*) et non
 // dans `createChatTools` : ils ne sont disponibles que si le plugin est installé
-// et activé par l'utilisateur, et restent réservés aux forfaits payants.
+// et activé par l'utilisateur (ouverts à tous les forfaits, Free compris).
 export const PLUGIN_PROVIDED_TOOL_IDS = [
   "getWeather",
 ] as const satisfies readonly ChatToolId[];

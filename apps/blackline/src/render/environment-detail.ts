@@ -16,7 +16,7 @@ export function environmentDetails(map:MapData,b:Batch,detail:Batch){
     for(const side of [-1,1])for(let y=.3;y<p.h-.1;y+=1.1)detail.box(.065,.2,.035,p.x+side*(p.w/2-.08),y,z,trim);
     detail.box(.45,.29,.035,p.x+p.w*.32,1.5,z+.055,ochre);detail.box(.25,.04,.014,p.x+p.w*.32,1.5,z+.08,shadow);
     // Roof vents are visual grills on existing solid roof fixtures.
-    for(let i=0;i<2;i++){const rx=p.x+(i?1:-1)*p.w*.22,rz=p.z-p.d*.25;detail.box(.65,.025,.65,rx,p.h+.03,rz,shadow);for(let q=0;q<7;q++)detail.box(.57,.03,.025,rx,p.h+.06,rz-.25+q*.08,trim);}
+    for(let i=0;i<2;i++){const rx=p.x+(i?1:-1)*p.w*.22,rz=p.z-p.d*.25;detail.box(.65,.025,.65,rx,p.h+.03,rz,shadow);detail.box(.69,.018,.69,rx,p.h+.015,rz,metal);for(let q=0;q<7;q++)detail.box(.57,.03,.025,rx,p.h+.06,rz-.25+q*.08,trim);}
   }
   // Flush grates and painted service markings do not obstruct movement.
   for(const side of [-1,1])for(let z=-24;z<=24;z+=12){const x=side*6.2;b.box(.7,.013,.55,x,.035,z,material(0x29332f,.2,.9));for(let i=0;i<6;i++)detail.box(.06,.018,.48,x-.25+i*.1,.046,z,trim);}

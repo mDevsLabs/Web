@@ -1,18 +1,17 @@
-# Connexions OAuth aux applications externes (intégrations)
+# Connexions par jeton personnel aux applications externes (intégrations)
 
 Un **connecteur** relie le compte mAI d'un utilisateur à un service externe
-(Google, GitHub) par OAuth 2.0, et expose ses fonctions comme outils de l'IA.
+(GitHub, Slack, Airtable, Notion, Linear, Sentry, etc.) par **jeton personnel**
+(ou clé API) chiffré côté serveur, et expose ses fonctions comme outils de l'IA.
 À la différence des plugins d'[API publiques](PLUGINS.md), un connecteur lit et
-modifie **les données du compte de l'utilisateur**, avec son jeton, après son
-consentement.
+modifie **les données du compte de l'utilisateur**, avec son jeton.
 
-Deux connecteurs passent par OAuth : **Google** (Drive + Agenda + Gmail, une
-seule connexion) et **GitHub**. **Discord** (jeton de bot) et **Notion**
-(intégration interne) se collent comme Vercel, ainsi que les services du même
-mode dans `lib/integrations/token-catalog.ts`. Le registre est
-conçu pour s'étendre : ajouter un fournisseur ne demande ni de
-toucher au moteur, ni de
-retoucher les mentions `@`, ni de retoucher le rendu.
+Tous les connecteurs intégrés utilisent le mode `authMode: "token"` et sont
+enregistrés dans `lib/integrations/providers.ts` (et `lib/integrations/token-catalog.ts`).
+Aucune variable d'environnement OAuth par fournisseur (`GITHUB_CLIENT_ID`, etc.)
+n'est requise. Le registre est conçu pour s'étendre : ajouter un fournisseur ne
+demande ni de toucher au moteur, ni de retoucher les mentions `@`, ni de
+retoucher le rendu.
 
 ---
 
@@ -20,124 +19,83 @@ retoucher les mentions `@`, ni de retoucher le rendu.
 
 | Couche | Dossier | Rôle |
 | --- | --- | --- |
-| Connecteur | `lib/integrations/` | OAuth : URL d'autorisation, scellement de l'état, échange, rafraîchissement, identité, révocation, stockage des jetons |
-| Plugin | `lib/plugins/<id>/` | Les outils eux-mêmes (schémas, appels d'API, sortie bornée) |
+| Connecteur | `lib/integrations/` | Validation du jeton contre l'API du fournisseur, identité du compte, champs associés, stockage chiffré |
+| Plugin | `lib/plugins/packs/<catégorie>/<id>/` | Les outils eux-mêmes (schémas, appels d'API, sortie bornée) |
 
-Le connecteur ne déclare aucun outil ; le plugin ne sait rien de l'OAuth. Ils se
-rejoignent sur un point unique, déjà prévu par `PluginToolDeps` :
-`secretResolver` (`lib/plugins/types.ts`).
+Le connecteur ne déclare aucun outil ; le plugin ne sait rien du chiffrement ni
+de la table SQL. Ils se rejoignent sur un point unique, prévu par `PluginToolDeps` :
+`secretResolver` (`lib/plugins/core/types.ts`), et `effect` se déclare sur chaque
+outil via `lib/plugins/core/tool-effect.ts`.
 
 ```
-lib/integrations/providers.ts   client-sûr : descripteur, portées, logo, jeton de mention
-lib/integrations/oauth.ts       server-only : authorize, state, exchange, refresh, revoke
-lib/integrations/tokens.ts      server-only : jeton frais, vol en groupe, adaptateur secretResolver
-lib/integrations/repository.ts  server-only : CRUD IntegrationConnection, format au repos
-lib/integrations/status.ts      server-only : projection sans jeton pour l'interface
-lib/integrations/redirect.ts    server-only : URLs de retour du callback
-lib/integrations/logo.tsx       client : rendu du logo d'un outil
-lib/plugins/shared/authorized-api.ts  serveur : appel authentifié borné (GET et POST)
+lib/integrations/providers.ts        client-sûr : descripteur, logo, jeton de mention, authMode: "token"
+lib/integrations/token-catalog.ts    client-sûr : catalogue des connecteurs à jeton et de leurs champs
+lib/integrations/token-fields.ts     client-sûr : validation des champs complémentaires (ex. site Jira, région PostHog)
+lib/integrations/account.ts          server-only : validation de jeton et lecture d'identité (sans OAuth)
+lib/integrations/tokens.ts           server-only : lecture du jeton au repos, adaptateur secretResolver
+lib/integrations/repository.ts       server-only : CRUD IntegrationConnection, format au repos
+lib/integrations/status.ts           server-only : projection sans jeton pour l'interface
+lib/integrations/logo.tsx            client : rendu du logo d'un outil
+lib/plugins/core/oauth-state.ts      server-only : état scellé OAuth réservé aux plugins personnels (`/api/user-plugins/[id]/*`)
+lib/plugins/shared/authorized-api.ts serveur : appel authentifié borné (GET, POST, PUT, PATCH, DELETE)
 ```
 
 **Pourquoi ce partage** : les plugins passent par un catalogue généré
-(`pnpm plugins:gen`) et sont mentionnables par `@`, verrouillés par forfait,
-installables et activables. Recréer ces mécanismes pour les connecteurs aurait
-produit une seconde interface parallèle, divergente dès le premier correctif.
+(`pnpm plugins:gen`) et sont mentionnables par `@`, installables et activables
+dès le forfait Free. Recréer ces mécanismes pour les connecteurs aurait produit
+une seconde interface parallèle, divergente dès le premier correctif.
 
 ---
 
-## 2. Une connexion = un accès = un client
+## 2. Descripteur `IntegrationDescriptor`
 
-Google **regroupe Drive, Agenda et Gmail sous un seul descripteur** : un seul
-client OAuth, un seul écran de consentement, un seul bouton « Déconnecter ». Les
-portées des trois familles sont demandées ensemble (`GOOGLE_SCOPES`,
-`providers.ts`). Les écrire séparément aurait contraint l'utilisateur à trois
-consentements et à trois vérifications Google.
-
-Le champ `IntegrationDescriptor` porte ce qu'il faut pour un nouveau
-fournisseur :
+Le type `IntegrationDescriptor` porte ce qu'il faut pour un fournisseur à jeton :
 
 | Champ | Sens |
 | --- | --- |
-| `envPrefix` | `<PREFIX>_CLIENT_ID` / `<PREFIX>_CLIENT_SECRET`, lus seulement côté serveur |
-| `scopes` / `writeScopes` | portées demandées d'un coup ; portées sans lesquelles aucune écriture n'exécute |
-| `refresh` | `oauth_refresh` (Google : jeton d'une heure, `refresh_token` **tournant**) ou `static` (GitHub : jeton non expirant, mort par révocation) |
-| `hosts` | liste blanche des hôtes d'API de CE fournisseur |
+| `authMode` | `"token"` pour tous les connecteurs intégrés |
+| `token` | configuration de saisie, validation (`validationUrl`, `accountField`) et en-têtes d'appel |
+| `hosts` / `hostSuffixes` | liste blanche des hôtes d'API de CE fournisseur |
 | `mentionToken` | jeton `@` sans espace — la grammaire de Wakies est `@([a-zA-Z0-9_.-]{3,30})` |
 | `monochrome` | nature du logo : repère noir unique, ou marque multicolore |
-| `pkce` | `false` ici : ni Google ni GitHub (OAuth App classique) ne le requièrent |
 
 ---
 
 ## 3. Le flux, et pourquoi telle forme
 
 ```
-GET /api/integration/<provider>/connect     session exigée → 302 vers le fournisseur
-GET /api/integration/<provider>/callback    authentifié par l'« état » scellé
-POST /api/integration/<provider>/disconnect session exigée → révocation + ligne marquée
+POST /api/integration/<provider>/token       session exigée → valide et chiffre le jeton
+POST /api/integration/<provider>/disconnect  session exigée → marque la ligne révoquée
 GET  /api/integration                        liste sûre (aucun jeton)
 GET  /api/integration/<provider>/status      état d'un connecteur
 GET  /api/wakies/integrations                même projection pour le menu `@` de Wakies
 ```
 
-- **L'état porte l'identité.** `{n: nonce, p: provider, r: returnTo, u: userId,
-  x: exp+5min}` est chiffré par le coffre AES-256-GCM (`lib/mcp/encryption.ts`).
-  Un état forgé produit un `decrypt()` en `""` : tag GCM oblige, jamais une
-  donnée partielle. Le compte n'est pas relu au retour, parce que l'utilisateur
-  peut rester une heure sur l'écran de consentement — au-delà de l'`exp` de sa
-  session.
-- **`proxy.ts` laisse passer le seul callback.** Il est self-authentifié par son
-  état, et un 401 JSON affiché en pleine navigation est inexploitable. `connect`,
-  `disconnect` et `status` restent protégés.
-- **Le callback ne rend rien, il redirige.** `?integration=connected&account=…`
-  ou `?integration=error&reason=…`, vers `state.r` par défaut
-  `/tools/plugins/<pluginId>`. Le toast est émis côté client puis l'URL est
-  raturée : sinon un rafraîchissement rejouerait l'annonce.
-- **Ne pas réécrire `export const dynamic = "force-dynamic"`.** Ces routes
-  lisent `cookies()`, `params` et `request.url` : elles sont dynamiques par
-  nature. Et sous `cacheComponents`, Next 16.0.0 a **supprimé** les options de
-  segment `dynamic`, `dynamicParams`, `revalidate` et `fetchCache` — les écrire
-  fait échouer le build (« Ecmascript file had an error » sur la ligne de
-  l'export), comme `node_modules/next/dist/docs/.../route-segment-config/index.md`
-  le consigne.
-- **`returnTo` est validé** (`sanitizeReturnTo`) : seulement une route interne,
-  ni `//hôte` ni `/\hôte`. C'est ce qui empêche le callback de devenir un
-  ouvre-boîte de redirection ouverte.
-- **Nonce en double-submit**, un cookie `httpOnly` par fournisseur. Risque assumé
-  et écrit : le nonce n'est pas persisté côté serveur, donc un replay depuis le
-  *même* navigateur reste possible dix minutes. Le strict single-use demanderait
-  une table d'états ; le jeton qu'il protège est court et l'identité accordée
-  est celle de l'appelant lui-même.
-- **`redirect_uri` est dérivée de la requête** aux deux extrémités, en acceptant
-  les terminaisons `connect` et `callback` : le fournisseur compare les deux
-  chaînes octet à octet, et `basePath` (`/demo`) sort de `request.url`, pas d'une
-  variable.
+- **Le jeton est validé avant chiffrement.** `/api/integration/[provider]/token`
+  appelle `resolveAccount()` (`lib/integrations/account.ts`) contre l'endpoint
+  de vérification du fournisseur ; aucun secret invalide n'est persisté.
+- **L'état OAuth scellé (`lib/plugins/core/oauth-state.ts`)** reste utilisé
+  uniquement par les plugins OAuth personnels créés par les utilisateurs via
+  `/api/user-plugins/[id]/connect` et `/api/user-plugins/[id]/callback`.
 
 ---
 
-## 4. Jetons au repos, et rafraîchissement
+## 4. Jetons au repos
 
 `IntegrationConnection` (migration `0051`) porte une ligne par
 `(userId, provider, providerAccountId)`.
 
-- **Chiffrés** : `accessToken`, `refreshToken`.
+- **Chiffrés** : `accessToken` (qui peut transporter les champs validés via `packCredential`).
 - **En clair, volontairement** : `provider`, `providerAccountId`,
-  `accountEmail`/`accountLabel`, `scopes`, `expiresAt`. La décision de
-  rafraîchir se prend à chaque appel d'outil ; chiffrer ces colonnes ferait du
-  coffre un chemin chaud et empêcherait d'afficher la carte « Connecté » et de
-  dédupliquer sans tout déchiffrer.
+  `accountEmail`/`accountLabel`, `scopes`, `expiresAt`.
 - **Déconnecter n'efface pas** : la ligne survit avec `revokedAt` et un porteur
   vidé. Un `DELETE` ferait revenir un ancien compte au gré d'un cache.
 - **Multi-compte** : le schéma est prêt (`providerAccountId`, `isPrimary`), l'UX
   en v1 reste mono-primaire. Exposer N comptes ajouterait un paramètre
   `accountId` à chaque outil, un sélecteur au menu `@` et une explosion des
   candidats dans la sélection automatique de l'Agent.
-- **Google fait tourner le `refresh_token`.** D'où deux gardes : une seule
-  requête de rafraîchissement par connexion (`tokens.ts`, vol en groupe) et une
-  écriture conditionnée au jeton stocké (`persistRefreshedTokens`). Sans elles,
-  deux appels concurrents écrivent deux paires différentes et l'une est perdue
-  — la connexion meurt sans que rien ne le dise.
 - **Le jeton s'obtient à l'exécution**, jamais à la création des outils : un run
-  d'Agent de quarante minutes ne doit pas voyager avec un jeton d'une heure.
+  d'Agent ne transporte pas le secret en clair dans sa définition d'outils.
 - **Deux issues, un seul canal.** `secretResolver` renvoie `undefined` ⇒ aucun
   compte connecté ⇒ l'outil rend un conseil, échec **permanent**, l'Agent ne
   rejoue pas. Une levée ⇒ coffre ou réseau indisponible ⇒ échec **transitoire**
@@ -150,7 +108,7 @@ GET  /api/wakies/integrations                même projection pour le menu `@` d
 
 Le manifeste d'un plugin déclare ses permissions **pour tous ses outils**, alors
 qu'un connecteur mixte lit et écrit. La distinction se fait donc par outil, avec
-`effect: "read" | "write"` (`lib/plugins/tool-effect.ts`, règle écrite une seule
+`effect: "read" | "write"` (`lib/plugins/core/tool-effect.ts`, règle écrite une seule
 fois).
 
 | Canal | Lecture | Écriture |
@@ -200,19 +158,17 @@ switch.
 
 ## 7. Ajouter un connecteur
 
-1. `lib/integrations/providers.ts` : un `IntegrationDescriptor` (endpoints,
-   portées, politique de rafraîchissement, hôtes, `mentionToken`, `monochrome`,
-   `accessSummary`).
-2. `lib/integrations/repository.ts` : ajouter l'identifiant à l'énumération
-   `provider` de `lib/db/schema.ts`. La colonne est un `varchar` : aucun DDL
-   n'est nécessaire pour un nouveau fournisseur. Un connecteur à jeton
-   personnel n'a pas de client OAuth ; il déclare `authMode: "token"` et
-   l'échange de la route `/token` le valide avant de le chiffrer.
-3. `lib/plugins/<id>/{index.ts,index.json}` : les outils, avec `effect` sur
-   chacun, puis `pnpm plugins:gen && pnpm plugins:check`.
+1. `lib/integrations/providers.ts` et `lib/integrations/token-catalog.ts` :
+   ajouter le descripteur à jeton (`authMode: "token"`, `validationUrl`,
+   hôtes, `mentionToken`, `monochrome`, `accessSummary`).
+2. `lib/db/schema.ts` / `lib/integrations/repository.ts` : `provider` est un
+   `varchar` — aucun DDL n'est nécessaire pour un nouveau fournisseur. L'échange
+   de la route `/token` valide le jeton via `resolveAccount()` avant de le
+   chiffrer.
+3. `lib/plugins/packs/<catégorie>/<id>/{index.ts,index.json}` : les outils,
+   avec `effect` sur chacun, puis enregistrer l'entrée dans `lib/plugins/index.json`
+   et lancer `pnpm plugins:gen && pnpm plugins:check`.
 4. `public/plugins/<id>.svg` : le logo, et le test d'inventaire doit rester vert.
-5. `.env.example` : `<PREFIX>_CLIENT_ID` / `<PREFIX>_CLIENT_SECRET` dans la
-   section « Intégrations externes (OAuth) ».
 
 Ni le moteur, ni les mentions, ni le rendu, ni l'onglet Plugins n'ont à être
 modifiés : ils lisent le registre.
@@ -231,14 +187,14 @@ jetons. Maps n'appelle que `maps.googleapis.com`. YouTube n'appelle que
 Les connexions Drive, Agenda et Gmail déjà enregistrées ne sont plus
 proposées : les lignes restent en base, les outils ont disparu.
 
-### GitHub — OAuth App classique, pas une GitHub App
+### GitHub — jeton personnel (PAT)
 
-Settings → Developer settings → **OAuth Apps**, callback
-`https://<hôte>/api/integration/github/callback`. Une GitHub App exigerait un
-PEM par installation et une signature JWT sans rien apporter de plus pour
-« l'utilisateur connecte ses propres dépôts » ; elle ne devient intéressante que
-pour agir sur une organisation sans accord humain. Portées demandées à
-l'autorisation : `repo`, `public_repo`, `read:user`.
+L'utilisateur crée un **Personal Access Token** sur
+`github.com/settings/tokens` (classique avec `repo` / `read:user` ou fine-grained)
+et le colle dans la fiche du plugin. Le jeton est validé contre `GET /user` avant
+d'être chiffré ; aucune variable `GITHUB_CLIENT_ID` ou `GITHUB_CLIENT_SECRET`
+n'est nécessaire. Les écritures (ouvrir une issue, commenter, créer une pull
+request) ne sont exposées que dans l'Agent après approbation.
 
 ### Discord — jeton de bot collé par l'utilisateur
 
@@ -287,33 +243,25 @@ Aucune de ces clés ne se lit dans l'environnement. Le logo de chacun est
 ### Variables
 
 ```
-MCP_ENCRYPTION_KEY                       OBLIGATOIRE — coffre des jetons ET scellement de l'état
-GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
-MAI_OAUTH_REDIRECT_BASE_URL              optionnel, derrière un proxy qui masque l'hôte
+MCP_ENCRYPTION_KEY                       OBLIGATOIRE — coffre des jetons ET état OAuth des plugins personnels
+MAI_OAUTH_REDIRECT_BASE_URL              optionnel, derrière un proxy qui masque l'hôte (plugins personnels)
 ```
 
-Vercel et les connecteurs à jeton du catalogue ne figurent pas dans cette
-liste : le jeton est stocké chiffré par le coffre, pas lu dans l'environnement.
-
-Les URI de rappel à enregistrer chez les fournisseurs, une par environnement :
-
-```
-https://<hôte>/api/integration/github/callback
-```
+Aucun connecteur intégré ne requiert de couple `*_CLIENT_ID` / `*_CLIENT_SECRET`
+dans l'environnement : tous les jetons sont saisis par l'utilisateur et stockés
+chiffrés dans le coffre.
 
 **`MCP_ENCRYPTION_KEY` est la variable la plus facile à oublier, et son absence
 ne se voit qu'au moment de cliquer sur « Connecter ».** Elle n'est pas
-négociable : sans elle, ni l'« état » OAuth (qui porte l'identité du compte
-qui se connecte) ni les jetons eux-mêmes ne peuvent être chiffrés, et la
-connexion est refusée avec la raison `vault_unconfigured`. Il n'existe **aucun
-repli** — une clé dérivée de `DATABASE_URL` serait devinable par quiconque
-connaît l'URL de la base.
+négociable : sans elle, ni les jetons eux-mêmes ni l'« état » OAuth des plugins
+personnels ne peuvent être chiffrés, et la connexion est refusée avec la raison
+`vault_unconfigured`. Il n'existe **aucun repli** — une clé dérivée de
+`DATABASE_URL` serait devinable par quiconque connaît l'URL de la base.
 
 Deux conséquences à connaître avant un déploiement :
 
 - **Poser la variable dans le MÊME environnement Vercel que l'application
-  Next.** Les variables `*_CLIENT_ID` ne suffisent pas : le coffre est
-  distinct, et l'échec ne se produit qu'à la connexion, pas au démarrage.
+  Next.** L'échec ne se produit qu'à la connexion, pas au démarrage.
 - **Changer la clé rend les jetons existants illisibles.** Les lignes
   `IntegrationConnection` survivent (l'interface affiche encore « Connecté »),
   mais le porteur est muet : l'utilisateur doit reconnecter. Prévoyez-le dans

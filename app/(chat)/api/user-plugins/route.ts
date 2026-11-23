@@ -6,12 +6,12 @@ import {
 } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { enforceChatRateLimit } from "@/lib/chat/auth";
-import { userPluginCreateSchema } from "@/lib/plugins/user-plugin-input";
+import { userPluginCreateSchema } from "@/lib/plugins/core/user-plugin-input";
 import {
   createUserPlugin,
   listUserPlugins,
   UserPluginError,
-} from "@/lib/plugins/user-plugin-store";
+} from "@/lib/plugins/core/user-plugin-store";
 
 export async function GET() {
   const user = await getMaiUser();

@@ -4,6 +4,7 @@
 import {
   type BoundedFetchFailureKind,
   type BoundedFetchOptions,
+  boundedFetch,
   boundedFetchJson,
   DEFAULT_MAX_BYTES,
   DEFAULT_TIMEOUT_MS,
@@ -37,13 +38,14 @@ const ALLOWED_HOSTS = new Set([
   "gitlab.com",
   "ec.europa.eu",
   "api.openalex.org",
+  "export.arxiv.org",
+  "fr.wikipedia.org",
+  "en.wikipedia.org",
+  "es.wikipedia.org",
+  "de.wikipedia.org",
+  "it.wikipedia.org",
 ]);
 
-// Chaque statut doit dire au modèle ce qu'il peut corriger. Les messages
-// d'incident TEMPORAIRE contiennent volontairement « service indisponible »
-// ou « HTTP 5xx » : l'adaptateur Agent en déduit `transient` et rejoue
-// l'appel. Un quota dépassé ou un refus d'accès doit rester `permanent` — ne
-// jamais y glisser ces mots.
 function safeStatusMessage(status: number, retryAfterMs?: number): string {
   if (status === 400) {
     return "Requête rejetée par la source (HTTP 400) : vérifiez les identifiants ou les filtres.";
@@ -73,12 +75,6 @@ function safeStatusMessage(status: number, retryAfterMs?: number): string {
   return `Requête refusée (HTTP ${status}).`;
 }
 
-/**
- * Décrit une panne de transport en français, dans le vocabulaire que l'adaptateur
- * Agent sait classer : exportée pour que les appels authentifiés des connecteurs
- * partagent exactement les mêmes mots, et ne déclarent pas transitoire ce qui est
- * refusé — ou l'inverse.
- */
 export function describeFailure(
   failure: {
     kind: BoundedFetchFailureKind | "json";
@@ -111,23 +107,33 @@ export type PublicApiOptions = Pick<
   "maxBytes" | "retries" | "signal" | "timeoutMs"
 >;
 
+function validatePublicUrl(
+  rawUrl: string
+): { ok: true; url: URL } | { error: string; ok: false } {
+  let url: URL;
+  try {
+    url = new URL(rawUrl);
+  } catch {
+    return { error: "Adresse de source invalide.", ok: false };
+  }
+  if (url.protocol !== "https:" || !ALLOWED_HOSTS.has(url.hostname)) {
+    return { error: "Domaine de source non autorisé.", ok: false };
+  }
+  return { ok: true, url };
+}
+
 export async function fetchPublicJson<T>(
   rawUrl: string,
   headers: Record<string, string> = {},
   options: PublicApiOptions = {}
 ): Promise<PublicApiResult<T>> {
-  let url: URL;
-  try {
-    url = new URL(rawUrl);
-  } catch {
-    return { error: "Adresse de source invalide.", ok: false, url: "" };
-  }
-  if (url.protocol !== "https:" || !ALLOWED_HOSTS.has(url.hostname)) {
-    return { error: "Domaine de source non autorisé.", ok: false, url: "" };
+  const checked = validatePublicUrl(rawUrl);
+  if (!checked.ok) {
+    return { error: checked.error, ok: false, url: "" };
   }
 
   const timeoutMs = options.timeoutMs ?? PUBLIC_API_TIMEOUT_MS;
-  const result = await boundedFetchJson<T>(url, {
+  const result = await boundedFetchJson<T>(checked.url, {
     ...options,
     headers,
     timeoutMs,
@@ -136,10 +142,43 @@ export async function fetchPublicJson<T>(
     return {
       error: describeFailure(result, timeoutMs),
       ok: false,
-      url: url.href,
+      url: checked.url.href,
     };
   }
-  return { data: result.data, ok: true, url: url.href };
+  return { data: result.data, ok: true, url: checked.url.href };
+}
+
+export async function fetchPublicText(
+  rawUrl: string,
+  headers: Record<string, string> = {},
+  options: PublicApiOptions = {}
+): Promise<PublicApiResult<string>> {
+  const checked = validatePublicUrl(rawUrl);
+  if (!checked.ok) {
+    return { error: checked.error, ok: false, url: "" };
+  }
+
+  const timeoutMs = options.timeoutMs ?? PUBLIC_API_TIMEOUT_MS;
+  const result = await boundedFetch(checked.url, {
+    ...options,
+    headers: {
+      Accept: "application/atom+xml, application/xml, text/plain",
+      ...headers,
+    },
+    timeoutMs,
+  });
+  if (!result.ok) {
+    return {
+      error: describeFailure(result, timeoutMs),
+      ok: false,
+      url: checked.url.href,
+    };
+  }
+  return {
+    data: new TextDecoder("utf-8").decode(result.bytes),
+    ok: true,
+    url: checked.url.href,
+  };
 }
 
 export function sourceRef(url: string, title: string) {

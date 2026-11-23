@@ -11,6 +11,13 @@
  * Aucun import `server-only` : le parseur est utilisé dans le navigateur.
  */
 
+/**
+ * Modèle souverain imposé pour toutes les synthèses mAI Search (synthèse globale
+ * et tiroir conversationnel par source), afin de garantir un résultat homogène
+ * sans exposer de sélecteur hétérogène dans l'interface de recherche.
+ */
+export const MAI_SEARCH_SUMMARY_MODEL_ID = "mai-2.5-omni";
+
 export type SummarySourceType = "web" | "news" | "image" | "video" | "target";
 
 /**
@@ -223,7 +230,8 @@ function pushUnique(
  * - les résultats des appels `webSearch` exécutés pendant la génération.
  */
 export function collectSummarySources(params: {
-  initial?: SourceInput[];
+  // Corps client non fiable : chaque élément est vérifié avant lecture.
+  initial?: readonly unknown[];
   target?: SourceInput | null;
   toolResults?: unknown[];
 }): SummarySource[] {
@@ -232,7 +240,9 @@ export function collectSummarySources(params: {
     pushUnique(sources, toSummarySource(params.target, "target"));
   }
   for (const item of params.initial ?? []) {
-    pushUnique(sources, toSummarySource(item, "web"));
+    if (item && typeof item === "object") {
+      pushUnique(sources, toSummarySource(item as SourceInput, "web"));
+    }
   }
   for (const raw of params.toolResults ?? []) {
     const output = (raw as { output?: unknown } | null)?.output;

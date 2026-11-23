@@ -122,6 +122,11 @@ const ROUTES = routesExistantes();
 const SENTINELLE = "z9-SENTINELLE";
 
 const CHEMINS: { attentes: string[]; nom: string; chemin: string }[] = [
+  {
+    attentes: ["POST"],
+    chemin: SITE_API_ROUTES.accountPlan,
+    nom: "accountPlan",
+  },
   { attentes: ["GET"], chemin: SITE_API_ROUTES.devices, nom: "devices" },
   { attentes: ["GET"], chemin: SITE_API_ROUTES.status, nom: "status" },
   {

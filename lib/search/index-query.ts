@@ -26,7 +26,7 @@ import {
   userMemory,
   wakiesConversation,
 } from "@/lib/db/schema";
-import { PLUGIN_MANIFEST_LIST } from "@/lib/plugins/catalog";
+import { PLUGIN_MANIFEST_LIST } from "@/lib/plugins/core/catalog";
 import { getAccessibleProjectIds } from "@/lib/projects/access";
 import {
   PAID_ONLY_SOURCES,

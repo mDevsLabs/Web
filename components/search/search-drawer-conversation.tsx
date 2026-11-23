@@ -19,12 +19,15 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Streamdown } from "streamdown";
-import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import {
   AnswerReasoning,
   SummarySources,
 } from "@/components/search/search-summary-card";
-import type { SummarySource } from "@/lib/search/summary-stream";
+import { formatModelName } from "@/lib/ai/models";
+import {
+  MAI_SEARCH_SUMMARY_MODEL_ID,
+  type SummarySource,
+} from "@/lib/search/summary-stream";
 
 export type SummaryTarget = {
   url: string;
@@ -56,18 +59,14 @@ export interface SearchDrawerConversationProps {
   onClose: () => void;
   onCopyDrawerContent: () => void;
   onFollowupInputChange: (value: string) => void;
-  onModelChange: (modelId: string) => void;
   onSendDrawerToChat: () => void;
   onSendFollowupMessage: (e: React.FormEvent) => void;
-  selectedModelId: string;
   targetConversation: TargetConversationState;
 }
 
 export function SearchDrawerConversation({
   targetConversation,
   onClose,
-  selectedModelId,
-  onModelChange,
   followupInput,
   onFollowupInputChange,
   onSendFollowupMessage,
@@ -144,18 +143,15 @@ export function SearchDrawerConversation({
               </button>
             </div>
 
-            {/* Sous-en-tête : Sélecteur de modèle d'IA & Indicateur outil unique de recherche web */}
+            {/* Sous-en-tête : Modèle souverain imposé & Indicateur outil unique de recherche web */}
             <div className="flex items-center justify-between px-3.5 py-2 bg-muted/10 border-b border-border/40 gap-2">
               <div className="flex items-center gap-1.5 min-w-0">
-                <span className="text-[11px] font-medium text-muted-foreground shrink-0 hidden sm:inline">
+                <span className="text-[11px] font-medium text-muted-foreground shrink-0">
                   Modèle :
                 </span>
-                <ModelSelectorCompact
-                  modal={true}
-                  onModelChange={onModelChange}
-                  selectedModelId={selectedModelId}
-                  side="bottom"
-                />
+                <span className="chip text-[11px] py-0.5 px-2 bg-primary/10 text-primary font-medium truncate">
+                  {formatModelName(MAI_SEARCH_SUMMARY_MODEL_ID).name}
+                </span>
               </div>
 
               <div

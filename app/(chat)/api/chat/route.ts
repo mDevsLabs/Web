@@ -33,10 +33,12 @@ import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import {
   getPluginManifest,
   getReadToolIdsForPluginIds,
-} from "@/lib/plugins/catalog";
-import { createPluginTools, getPluginSystemHints } from "@/lib/plugins/server";
-import { canUsePlugin } from "@/lib/plugins/tier-lock";
-import { customPluginChatTools } from "@/lib/plugins/user-plugin-tools";
+} from "@/lib/plugins/core/catalog";
+import {
+  createPluginTools,
+  getPluginSystemHints,
+} from "@/lib/plugins/core/server";
+import { customPluginChatTools } from "@/lib/plugins/core/user-plugin-tools";
 import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
 
 export const maxDuration = 300;
@@ -190,9 +192,7 @@ export async function POST(request: Request) {
     const enabledPluginIds = pluginInstallations.flatMap((installation) => {
       if (!installation.isEnabled) return [];
       const plugin = getPluginManifest(installation.pluginId);
-      return plugin && canUsePlugin(plugin, ctx.maiUser.tier)
-        ? [plugin.id]
-        : [];
+      return plugin ? [plugin.id] : [];
     });
     // Le canal Chat ne sert que la LECTURE : annoncer au modèle un outil
     // d'écriture que `createPluginTools` n'instancie pas ici le ferait échouer

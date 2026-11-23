@@ -34,9 +34,8 @@ import {
 } from "@/lib/db/queries";
 import { INTEGRATION_PROVIDERS } from "@/lib/integrations/providers";
 import { listActiveConnections } from "@/lib/integrations/repository";
-import { PLUGIN_MANIFEST_LIST } from "@/lib/plugins/catalog";
-import { canUsePlugin } from "@/lib/plugins/tier-lock";
-import { hasReadTool } from "@/lib/plugins/tool-effect";
+import { PLUGIN_MANIFEST_LIST } from "@/lib/plugins/core/catalog";
+import { hasReadTool } from "@/lib/plugins/core/tool-effect";
 import {
   findPage,
   findSpace,
@@ -140,11 +139,11 @@ function correspond(jeton: string, terme: string): boolean {
  */
 export async function suggestMentions(params: {
   q: string;
-  tier: string;
+  tier?: string;
   userEmail?: string;
   userId: string;
 }): Promise<SuggestionMention[]> {
-  const { q, tier, userId } = params;
+  const { q, userId } = params;
   const [installations, serveurs, skills, espaces, wakies, connexions] =
     await Promise.all([
       getPluginInstallationsByUserId({ userId }),
@@ -161,22 +160,19 @@ export async function suggestMentions(params: {
     const installation = installations.find(
       (item) => item.pluginId === manifest.id
     );
-    const horsForfait = !canUsePlugin(manifest, tier);
     const sansLecture = !hasReadTool(manifest);
     suggestions.push({
       badges: installation?.isEnabled ? ["installée"] : [],
       ...jetonDe(manifest.name),
       famille: "plugin",
       id: manifest.id,
-      indisponible: horsForfait
-        ? `Réservé au forfait ${manifest.minTier}.`
-        : installation
-          ? installation.isEnabled
-            ? sansLecture
-              ? "Écriture seule : disponible depuis l'Agent."
-              : undefined
-            : "Désactivée dans vos réglages."
-          : "Non installée sur ce compte.",
+      indisponible: installation
+        ? installation.isEnabled
+          ? sansLecture
+            ? "Écriture seule : disponible depuis l'Agent."
+            : undefined
+          : "Désactivée dans vos réglages."
+        : "Non installée sur ce compte.",
       label: manifest.name,
       persistable: true,
       section: "extensions",

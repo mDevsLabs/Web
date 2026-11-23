@@ -416,7 +416,9 @@ export type ApiRateLimitAction =
   | "mcp_test"
   | "file_upload"
   | "chat_bulk"
-  | "web_search";
+  | "web_search"
+  | "plan_upgrade_code"
+  | "plan_downgrade";
 
 type ApiRateLimitResult =
   | { allowed: true }
@@ -467,6 +469,16 @@ const API_RATE_LIMITS: Record<
   message_execute: {
     ip: { limit: 60, windowSeconds: 3600 },
     user: { limit: 20, windowSeconds: 3600 },
+  },
+  // Retour au forfait Free : protection anti-spam.
+  plan_downgrade: {
+    ip: { limit: 30, windowSeconds: 900 },
+    user: { limit: 10, windowSeconds: 900 },
+  },
+  // Activation d'un code d'upgrade : aligné sur 10 essais / 15 min par compte.
+  plan_upgrade_code: {
+    ip: { limit: 30, windowSeconds: 900 },
+    user: { limit: 10, windowSeconds: 900 },
   },
   // Recherche Web publique : chaque appel engage les clés You.com de la
   // plateforme et plusieurs requêtes sortantes de repli.

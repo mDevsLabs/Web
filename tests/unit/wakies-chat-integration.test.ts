@@ -76,7 +76,7 @@ vi.mock("@/lib/ai/models.server", () => ({
 vi.mock("@/lib/chat/tools", () => ({ createChatTools: mocks.tools }));
 vi.mock("@/lib/chat/mcp", () => ({ loadMcpContext: vi.fn() }));
 vi.mock("@/lib/mcp/chat-tools", () => ({ createMcpChatTools: () => ({}) }));
-vi.mock("@/lib/plugins/server", () => ({ createPluginTools: () => ({}) }));
+vi.mock("@/lib/plugins/core/server", () => ({ createPluginTools: () => ({}) }));
 vi.mock("@/lib/wakies/capabilities", () => ({
   applyIntegrationMentions: async () => ({ issues: [], pluginIds: [] }),
   resolveSelection: mocks.selection,
