@@ -39,9 +39,23 @@ describe("Performance support & migration 0090", () => {
       expect(sql).toContain(indexName);
     }
 
-    const journal = JSON.parse(read("lib/db/migrations/meta/_journal.json"));
-    const lastEntry = journal.entries.at(-1);
-    expect(lastEntry).toEqual({
+    const journal = JSON.parse(
+      read("lib/db/migrations/meta/_journal.json")
+    ) as {
+      entries: Array<{
+        breakpoints: boolean;
+        idx: number;
+        tag: string;
+        version: string;
+        when: number;
+      }>;
+    };
+    // La migration peut ne plus être la dernière du journal : une entrée
+    // postérieure (0091) est légitime. On la repère donc par son tag.
+    const entry = journal.entries.find(
+      (e) => e.tag === "0090_support_perf_indexes"
+    );
+    expect(entry).toEqual({
       breakpoints: true,
       idx: 87,
       tag: "0090_support_perf_indexes",
