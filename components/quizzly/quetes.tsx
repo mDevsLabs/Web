@@ -1,7 +1,12 @@
 "use client";
 
 import { AlertCircleIcon } from "@mdevs/icons";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useAnimate,
+  useReducedMotion,
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
@@ -24,6 +29,153 @@ type Quete = {
   scope: "daily" | "weekly";
   target: number;
 };
+
+type GroupeQuete = {
+  id: "daily" | "weekly";
+  teinte: string;
+  texte: string;
+  titre: string;
+};
+
+type RefusQuete = {
+  key: string;
+  message: string;
+  nonce: number;
+};
+
+function CarteQuete({
+  estFetee,
+  estRefusee,
+  groupe,
+  onReclamer,
+  quete,
+  refus,
+}: {
+  estFetee: boolean;
+  estRefusee: boolean;
+  groupe: GroupeQuete;
+  onReclamer: (quete: Quete) => void;
+  quete: Quete;
+  refus: RefusQuete | null;
+}) {
+  const [carteRef, animer] = useAnimate<HTMLLIElement>();
+  const economieMvt = useReducedMotion();
+  const nonceRefus = estRefusee ? (refus?.nonce ?? 0) : 0;
+
+  useEffect(() => {
+    if (nonceRefus === 0 || !carteRef.current) {
+      return;
+    }
+    const modeEconomie =
+      economieMvt || document.documentElement.dataset.economy === "true";
+    if (modeEconomie) {
+      return;
+    }
+    // Secousse discrète de la carte entière (bordure et liseré solidaires)
+    // sans démontage du bouton ni saut de mise en page.
+    void animer(
+      carteRef.current,
+      { x: [0, -4, 4, -2, 0] },
+      { duration: 0.28, ease: "easeInOut" }
+    );
+  }, [animer, carteRef, economieMvt, nonceRefus]);
+
+  useEffect(() => {
+    if (!estFetee || !carteRef.current) {
+      return;
+    }
+    const modeEconomie =
+      economieMvt || document.documentElement.dataset.economy === "true";
+    if (modeEconomie) {
+      return;
+    }
+    void animer(
+      carteRef.current,
+      { scale: [1, 1.02, 1] },
+      { duration: 0.35, ease: "easeOut" }
+    );
+  }, [animer, carteRef, economieMvt, estFetee]);
+
+  const terminee = quete.progress >= quete.target;
+  const recompense =
+    quete.monnaie === "xp"
+      ? `${quete.reward} XP`
+      : `${quete.reward} gemmes`;
+
+  return (
+    <li
+      className={cn(
+        "surface-card relative overflow-hidden transition-colors",
+        estRefusee && "border-destructive/45 ring-1 ring-destructive/20"
+      )}
+      ref={carteRef}
+    >
+      <div
+        className={cn(
+          "absolute inset-y-0 left-0 w-1.5 transition-colors",
+          estRefusee ? "bg-destructive/80" : groupe.teinte
+        )}
+      />
+      <div className="flex flex-col gap-3">
+        <div className="flex items-start justify-between gap-3 pl-2">
+          <div>
+            <h3 className="text-sm font-semibold">{quete.label}</h3>
+            <p className="text-sm text-muted-foreground">{quete.description}</p>
+          </div>
+          <span className={`shrink-0 text-xs font-semibold ${groupe.texte}`}>
+            {recompense}
+          </span>
+        </div>
+        <div className="flex flex-col gap-1 pl-2">
+          <BarreMesure
+            couleur={groupe.teinte}
+            label={quete.label}
+            max={quete.target}
+            valeur={quete.progress}
+          />
+          <p className="text-xs text-muted-foreground">
+            {Math.min(quete.progress, quete.target)} / {quete.target}
+          </p>
+        </div>
+        <div className="flex flex-col gap-1.5 pl-2">
+          <button
+            aria-disabled={!terminee && !quete.claimed}
+            className={cn(
+              "chip w-fit transition-colors",
+              quete.claimed && "cursor-default opacity-60",
+              !terminee &&
+                !quete.claimed &&
+                "cursor-not-allowed opacity-60 hover:border-border/80 hover:bg-transparent hover:text-muted-foreground"
+            )}
+            data-active={quete.claimed || terminee ? "true" : "false"}
+            disabled={quete.claimed}
+            onClick={() => {
+              onReclamer(quete);
+            }}
+            type="button"
+          >
+            {quete.claimed ? "Réclamée" : "Réclamer"}
+          </button>
+          <AnimatePresence initial={false}>
+            {estRefusee && refus ? (
+              <motion.p
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-1.5 text-xs font-medium text-destructive"
+                exit={{ opacity: 0 }}
+                initial={{ opacity: 0, y: -2 }}
+                role="alert"
+                transition={{ duration: 0.16, ease: "easeOut" }}
+              >
+                <AlertCircleIcon className="size-3.5 shrink-0" />
+                <span>{refus.message}</span>
+              </motion.p>
+            ) : null}
+          </AnimatePresence>
+        </div>
+      </div>
+    </li>
+  );
+}
 
 export function QuetesQuizzly() {
   const resume = useResumeQuizzly();
@@ -66,12 +218,11 @@ export function QuetesQuizzly() {
     }
     minuteurRefus.current = window.setTimeout(() => {
       setRefus((actuel) => (actuel?.key === questKey ? null : actuel));
-    }, 2600);
+    }, 1800);
   }
 
   async function reclamer(quete: Quete) {
     if (quete.claimed) {
-      signalerIndisponible(quete.key, "Cette récompense a déjà été réclamée.");
       return;
     }
     if (quete.progress < quete.target) {
@@ -183,108 +334,19 @@ export function QuetesQuizzly() {
           <ul className="grid gap-3 sm:grid-cols-2">
             {data.quests
               .filter((quete) => quete.scope === groupe.id)
-              .map((quete) => {
-                const terminee = quete.progress >= quete.target;
-                const estRefusee = refus?.key === quete.key;
-                const recompense =
-                  quete.monnaie === "xp"
-                    ? `${quete.reward} XP`
-                    : `${quete.reward} gemmes`;
-                return (
-                  <motion.li
-                    animate={
-                      fete === quete.key
-                        ? { scale: [1, 1.03, 1] }
-                        : { scale: 1 }
-                    }
-                    className={cn(
-                      "surface-card relative overflow-hidden transition-colors",
-                      estRefusee &&
-                        "border-destructive/60 ring-2 ring-destructive/30"
-                    )}
-                    key={quete.key}
-                    layout
-                  >
-                    <motion.div
-                      animate={
-                        estRefusee
-                          ? { x: [0, -8, 8, -6, 6, -3, 3, 0] }
-                          : { x: 0 }
-                      }
-                      className="flex flex-col gap-3"
-                      key={estRefusee ? `refus-${refus.nonce}` : "stable"}
-                      transition={{ duration: 0.42, ease: "easeInOut" }}
-                    >
-                      <div
-                        className={cn(
-                          "absolute inset-y-0 left-0 w-1.5 transition-colors",
-                          estRefusee ? "bg-destructive" : groupe.teinte
-                        )}
-                      />
-                      <div className="flex items-start justify-between gap-3 pl-2">
-                        <div>
-                          <h3 className="text-sm font-semibold">
-                            {quete.label}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {quete.description}
-                          </p>
-                        </div>
-                        <span
-                          className={`shrink-0 text-xs font-semibold ${groupe.texte}`}
-                        >
-                          {recompense}
-                        </span>
-                      </div>
-                      <div className="flex flex-col gap-1 pl-2">
-                        <BarreMesure
-                          couleur={groupe.teinte}
-                          label={quete.label}
-                          max={quete.target}
-                          valeur={quete.progress}
-                        />
-                        <p className="text-xs text-muted-foreground">
-                          {Math.min(quete.progress, quete.target)} /{" "}
-                          {quete.target}
-                        </p>
-                      </div>
-                      <div className="flex flex-col gap-1.5 pl-2">
-                        <button
-                          aria-disabled={!terminee || quete.claimed}
-                          className={cn(
-                            "chip w-fit transition-all",
-                            (!terminee || quete.claimed) &&
-                              "cursor-not-allowed opacity-70 hover:opacity-90"
-                          )}
-                          data-active={
-                            quete.claimed || terminee ? "true" : "false"
-                          }
-                          onClick={() => {
-                            void reclamer(quete);
-                          }}
-                          type="button"
-                        >
-                          {quete.claimed ? "Réclamée" : "Réclamer"}
-                        </button>
-                        <AnimatePresence>
-                          {estRefusee && refus ? (
-                            <motion.p
-                              animate={{ opacity: 1, y: 0 }}
-                              className="flex items-center gap-1.5 text-xs font-medium text-destructive"
-                              exit={{ opacity: 0, y: -4 }}
-                              initial={{ opacity: 0, y: -4 }}
-                              role="alert"
-                            >
-                              <AlertCircleIcon className="size-3.5 shrink-0" />
-                              <span>{refus.message}</span>
-                            </motion.p>
-                          ) : null}
-                        </AnimatePresence>
-                      </div>
-                    </motion.div>
-                  </motion.li>
-                );
-              })}
+              .map((quete) => (
+                <CarteQuete
+                  estFetee={fete === quete.key}
+                  estRefusee={refus?.key === quete.key}
+                  groupe={groupe}
+                  key={quete.key}
+                  onReclamer={(cible) => {
+                    void reclamer(cible);
+                  }}
+                  quete={quete}
+                  refus={refus}
+                />
+              ))}
           </ul>
         </div>
       ))}

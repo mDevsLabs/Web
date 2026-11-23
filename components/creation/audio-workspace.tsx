@@ -28,6 +28,7 @@ import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { VoiceOptionSelector } from "@/components/settings/option-selectors";
 import { useAudioUsage } from "@/hooks/use-settings";
+import { DEFAULT_AUDIO_MODEL } from "@/lib/ai/catalog/media-defaults";
 import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { APP_PRICING_URL } from "@/lib/constants";
@@ -39,6 +40,8 @@ interface SpeechModel {
   id: string;
   name: string;
   provider?: string;
+  supportedFormats?: string[];
+  supportsSpeed?: boolean;
   voices?: string[];
 }
 
@@ -334,12 +337,17 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
         }
       } catch {}
 
-      const payload = {
+      const supportsSpeed = selectedModel?.supportsSpeed !== false;
+      const payload: Record<string, unknown> = {
         input: inputText.trim(),
-        model: selectedModelId || "openai/tts-1",
-        speed,
-        voice: selectedVoice || "flux-alexis-en",
+        model: selectedModelId || models[0]?.id || DEFAULT_AUDIO_MODEL,
       };
+      if (selectedVoice) {
+        payload.voice = selectedVoice;
+      }
+      if (supportsSpeed) {
+        payload.speed = speed;
+      }
 
       const res = await fetch("/api/audio/generations", {
         body: JSON.stringify(payload),
@@ -607,49 +615,51 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
                   </div>
                 </div>
 
-                {/* Paramètres avancés (Vitesse) */}
-                <div>
-                  <button
-                    className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition cursor-pointer"
-                    onClick={() => setShowAdvanced(!showAdvanced)}
-                    type="button"
-                  >
-                    <SlidersHorizontalIcon className="size-3.5" />
-                    <span>
-                      {showAdvanced
-                        ? "Masquer les réglages audio"
-                        : "Réglages de vitesse & débit"}
-                    </span>
-                  </button>
+                {/* Paramètres avancés (Vitesse, uniquement si supportée par le modèle) */}
+                {selectedModel?.supportsSpeed !== false && (
+                  <div>
+                    <button
+                      className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition cursor-pointer"
+                      onClick={() => setShowAdvanced(!showAdvanced)}
+                      type="button"
+                    >
+                      <SlidersHorizontalIcon className="size-3.5" />
+                      <span>
+                        {showAdvanced
+                          ? "Masquer les réglages audio"
+                          : "Réglages de vitesse & débit"}
+                      </span>
+                    </button>
 
-                  {showAdvanced && (
-                    <div className="mt-3 flex flex-col gap-2 rounded-xl border border-border/60 bg-background/50 p-3.5">
-                      <div className="flex items-center justify-between">
-                        <label className="text-xs font-semibold text-foreground">
-                          Vitesse de diction ({speed}x)
-                        </label>
-                        <span className="text-[11px] text-muted-foreground">
-                          {speed < 1
-                            ? "Plus lent"
-                            : speed === 1
-                              ? "Normal"
-                              : "Plus rapide"}
-                        </span>
+                    {showAdvanced && (
+                      <div className="mt-3 flex flex-col gap-2 rounded-xl border border-border/60 bg-background/50 p-3.5">
+                        <div className="flex items-center justify-between">
+                          <label className="text-xs font-semibold text-foreground">
+                            Vitesse de diction ({speed}x)
+                          </label>
+                          <span className="text-[11px] text-muted-foreground">
+                            {speed < 1
+                              ? "Plus lent"
+                              : speed === 1
+                                ? "Normal"
+                                : "Plus rapide"}
+                          </span>
+                        </div>
+                        <input
+                          className="w-full accent-emerald-500"
+                          max={2.0}
+                          min={0.5}
+                          onChange={(e) =>
+                            setSpeed(Number.parseFloat(e.target.value))
+                          }
+                          step={0.1}
+                          type="range"
+                          value={speed}
+                        />
                       </div>
-                      <input
-                        className="w-full accent-emerald-500"
-                        max={2.0}
-                        min={0.5}
-                        onChange={(e) =>
-                          setSpeed(Number.parseFloat(e.target.value))
-                        }
-                        step={0.1}
-                        type="range"
-                        value={speed}
-                      />
-                    </div>
-                  )}
-                </div>
+                    )}
+                  </div>
+                )}
 
                 {/* Bouton de génération & Quota */}
                 <div className="pt-2">

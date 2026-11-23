@@ -3,6 +3,8 @@ import { stdin as input, stdout as output } from "node:process";
 import * as readline from "node:readline/promises";
 import { neon } from "@neondatabase/serverless";
 import { articleBoutique, type ShopKind } from "../lib/quizzly/shop.ts";
+import { openAdminHtml } from "./admin-browser.ts";
+import { renderMenu, resolveCommand } from "./admin-navigation.ts";
 import { runNewsletterStudio, sendEmail } from "./admin-email.ts";
 import { runFormManager } from "./admin-forms.ts";
 import {
@@ -1766,7 +1768,7 @@ async function ajouterArticleQuizzly(rl: readline.Interface) {
     await rl.question(" 💎 Prix en gemmes (défaut: 100) : ")
   ).trim();
 
-  if (isBackOrCancel(prixSaisi)) {
+  if (prixSaisi !== "0" && isBackOrCancel(prixSaisi)) {
     console.log(`\n${c.dim}↩️  Ajout annulé.${c.reset}`);
     return;
   }
@@ -2118,165 +2120,51 @@ export async function runAdminCli() {
   // Console interactive principale
   // ─────────────────────────────────────────────
   const rl = readline.createInterface({ input, output });
+  let filter = "";
   let running = true;
 
   while (running) {
-    console.log("");
-    console.log(
-      `${c.bgPurple}${c.bold}${c.brightWhite} ╔══════════════════════════════════════════════════════════════════════╗ ${c.reset}`
-    );
-    console.log(
-      `${c.bgPurple}${c.bold}${c.brightWhite} ║  🤖 mAI — CONSOLE D'ADMINISTRATION & DE MAINTENANCE CENTRALE 🚀     ║ ${c.reset}`
-    );
-    console.log(
-      `${c.bgPurple}${c.bold}${c.brightWhite} ║  Plateforme d'IA Souveraine • Gestion des Quotas, Accès & Modèles    ║ ${c.reset}`
-    );
-    console.log(
-      `${c.bgPurple}${c.bold}${c.brightWhite} ╚══════════════════════════════════════════════════════════════════════╝ ${c.reset}`
-    );
+    console.log(renderMenu(filter));
+    const raw = (await rl.question("\nmAI admin › ")).trim().toLowerCase();
+    if (raw === "html" || raw === "16") {
+      await openAdminHtml();
+      continue;
+    }
+    if (raw.startsWith("/")) {
+      filter = raw.slice(1);
+      continue;
+    }
+    if (["?", "aide", "help"].includes(raw)) {
+      filter = "";
+      continue;
+    }
+    const choice = resolveCommand(raw) ?? raw;
 
-    console.log(`\n${c.bold}⚡ GESTION DES QUOTAS & CONSOMMATIONS :${c.reset}`);
-    console.log(
-      `  ${c.brightCyan}[1]${c.reset}  🔑 Réinitialiser les quotas d'usage API (mprojects_api_keys)    ${c.dim}(raccourci: 'api')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightCyan}[2]${c.reset}  🧠 Réinitialiser les tokens mAI (weekly_usage)                  ${c.dim}(raccourci: 'mai')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightCyan}[3]${c.reset}  🖼️  Réinitialiser les quotas journaliers d'Images                ${c.dim}(raccourci: 'img')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightCyan}[4]${c.reset}  🎙️  Réinitialiser les quotas audio vocale (weekly_speech_usage)  ${c.dim}(raccourci: 'audio')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightGreen}[5]${c.reset}  ${c.bold}⚡ Réinitialiser TOUS les quotas en 1 clic (API+mAI+Img+Audio) ${c.dim}(raccourci: 'all')${c.reset}`
-    );
-
-    console.log(`\n${c.bold}👥 UTILISATEURS, ACCÈS & ABONNEMENTS :${c.reset}`);
-    console.log(
-      `  ${c.brightMagenta}[6]${c.reset}  🏷️  Gérer les codes d'abonnement (Créer, Lister, Modifier)        ${c.dim}(raccourci: 'codes')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightWhite}[7]${c.reset}  👥 Gérer les comptes clients (Fiche, Forfait, Bloquer, Suppr)   ${c.dim}(raccourci: 'users')${c.reset}`
-    );
-
-    console.log(`\n${c.bold}📢 COMMUNICATION & MARKETING :${c.reset}`);
-    console.log(
-      `  ${c.brightYellow}[8]${c.reset}  📰 Lancer le Studio de Newsletter (Éditeur HTML & Campagnes)    ${c.dim}(raccourci: 'news')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightCyan}[9]${c.reset}  🔔 Gérer les Notifications & Actualités In-App (Broadcast)      ${c.dim}(raccourci: 'notif')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightCyan}[10]${c.reset} 📋 Gérer les formulaires & sondages (Création, Stats, QR)       ${c.dim}(raccourci: 'forms')${c.reset}`
-    );
-
-    console.log(
-      `\n${c.bold}🤖 MODÈLES D'INTELLIGENCE ARTIFICIELLE :${c.reset}`
-    );
-    console.log(
-      `  ${c.brightCyan}[11]${c.reset} 🤖 Gestionnaire des modèles (OpenRouter & CometAPI)              ${c.dim}(raccourci: 'models')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightCyan}[12]${c.reset} 🔄 Synchroniser le catalogue des modèles (Cron manuel)           ${c.dim}(raccourci: 'sync')${c.reset}`
-    );
-
-    console.log(`\n${c.bold}🎮 MODULES SPÉCIAUX & GAMIFICATION :${c.reset}`);
-    console.log(
-      `  ${c.brightMagenta}[13]${c.reset} 🎁 Boutique Quizzly (Articles, Cosmétiques & Boosters)          ${c.dim}(raccourci: 'shop')${c.reset}`
-    );
-    console.log(
-      `  ${c.brightYellow}[14]${c.reset} 💎 Créditer des gemmes et de l'XP (Quizzly)                     ${c.dim}(raccourci: 'credit')${c.reset}`
-    );
-
-    console.log(`\n${c.bold}🛠️  INFRASTRUCTURE & SÉCURITÉ :${c.reset}`);
-    console.log(
-      `  ${c.brightRed}[15]${c.reset} 🚨 Lancer une période de maintenance (Site & APIs verrouillés) ${c.dim}(raccourci: 'maint')${c.reset}`
-    );
-
-    console.log(`\n${c.bold}🚪 NAVIGATION :${c.reset}`);
-    console.log(
-      `  ${c.white}[0]${c.reset}  🚪 Quitter la console d'administration                           ${c.dim}(raccourci: 'q', 'exit')${c.reset}`
-    );
-
-    const rawChoice = (
-      await rl.question(
-        `\n ${c.brightYellow}👉 Votre choix [0-15] ou raccourci : ${c.reset}`
-      )
-    ).trim();
-    const choice = rawChoice.toLowerCase();
-
-    if (choice === "1" || choice === "api" || choice === "reset-api") {
+    if (choice === "1") {
       await resetApiUsage(true);
       await waitEnter(rl);
-    } else if (
-      choice === "2" ||
-      choice === "mai" ||
-      choice === "tokens" ||
-      choice === "weekly"
-    ) {
+    } else if (choice === "2") {
       await resetMaiUsage(true);
       await waitEnter(rl);
-    } else if (
-      choice === "3" ||
-      choice === "img" ||
-      choice === "image" ||
-      choice === "images"
-    ) {
+    } else if (choice === "3") {
       await resetImageUsage();
       await waitEnter(rl);
-    } else if (
-      choice === "4" ||
-      choice === "audio" ||
-      choice === "speech" ||
-      choice === "voix"
-    ) {
+    } else if (choice === "4") {
       await resetAudioUsage(true);
       await waitEnter(rl);
-    } else if (
-      choice === "5" ||
-      choice === "all" ||
-      choice === "tout" ||
-      choice === "reset-all"
-    ) {
+    } else if (choice === "5") {
       await resetAllUsage(true, rl);
       await waitEnter(rl);
-    } else if (
-      choice === "6" ||
-      choice === "codes" ||
-      choice === "code" ||
-      choice === "abonnement"
-    ) {
+    } else if (choice === "6") {
       await runSubscriptionCodeManager(rl);
-    } else if (
-      choice === "7" ||
-      choice === "users" ||
-      choice === "clients" ||
-      choice === "comptes" ||
-      choice === "customers"
-    ) {
+    } else if (choice === "7") {
       await runCustomerAccountManager(rl);
-    } else if (
-      choice === "8" ||
-      choice === "news" ||
-      choice === "newsletter" ||
-      choice === "mail"
-    ) {
+    } else if (choice === "8") {
       await runNewsletterStudio();
       await waitEnter(rl);
-    } else if (
-      choice === "9" ||
-      choice === "notif" ||
-      choice === "notifications" ||
-      choice === "broadcast"
-    ) {
+    } else if (choice === "9") {
       await runNotificationManager(rl);
-    } else if (
-      choice === "10" ||
-      choice === "forms" ||
-      choice === "form" ||
-      choice === "sondages"
-    ) {
+    } else if (choice === "10") {
       try {
         await runFormManager(sql, rl);
       } catch (error) {
@@ -2286,12 +2174,7 @@ export async function runAdminCli() {
         );
       }
       await waitEnter(rl);
-    } else if (
-      choice === "11" ||
-      choice === "models" ||
-      choice === "modeles" ||
-      choice === "catalogue"
-    ) {
+    } else if (choice === "11") {
       try {
         await runModelManager(sql, rl);
       } catch (error) {
@@ -2301,12 +2184,7 @@ export async function runAdminCli() {
         );
       }
       await waitEnter(rl);
-    } else if (
-      choice === "12" ||
-      choice === "sync" ||
-      choice === "cron" ||
-      choice === "update-models"
-    ) {
+    } else if (choice === "12") {
       try {
         await runModelScheduleNow(rl);
       } catch (error) {
@@ -2316,12 +2194,7 @@ export async function runAdminCli() {
         );
       }
       await waitEnter(rl);
-    } else if (
-      choice === "13" ||
-      choice === "shop" ||
-      choice === "boutique" ||
-      choice === "quizzly"
-    ) {
+    } else if (choice === "13") {
       try {
         await runQuizzlyShopManager(rl);
       } catch (error) {
@@ -2331,12 +2204,7 @@ export async function runAdminCli() {
         );
       }
       await waitEnter(rl);
-    } else if (
-      choice === "14" ||
-      choice === "credit" ||
-      choice === "gemmes" ||
-      choice === "xp"
-    ) {
+    } else if (choice === "14") {
       try {
         await runQuizzlyCreditManager(rl);
       } catch (error) {
@@ -2346,12 +2214,7 @@ export async function runAdminCli() {
         );
       }
       await waitEnter(rl);
-    } else if (
-      choice === "15" ||
-      choice === "maint" ||
-      choice === "maintenance" ||
-      choice === "lock"
-    ) {
+    } else if (choice === "15") {
       try {
         await runMaintenanceManager(sql, rl);
       } catch (error) {
@@ -2367,7 +2230,7 @@ export async function runAdminCli() {
         `\n${c.dim}👋 Fermeture de la console d'administration mAI. À bientôt !${c.reset}\n`
       );
     } else {
-      console.log(` ${c.red}⚠️  Choix invalide : « ${rawChoice} ».${c.reset}`);
+      console.log(` ${c.red}⚠️  Choix invalide : « ${raw} ».${c.reset}`);
     }
   }
 

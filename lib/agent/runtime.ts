@@ -8,6 +8,7 @@ import {
   streamText,
   toUIMessageStream,
 } from "ai";
+import { generateTitleFromConversation } from "@/app/(chat)/actions";
 import { recordAgentUsage } from "@/lib/agent/accounting";
 import { remainingBudget } from "@/lib/agent/budget";
 import type { AgentContextResult } from "@/lib/agent/context/build";
@@ -76,8 +77,9 @@ import {
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { expireAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
+import { updateChatTitleById } from "@/lib/db/queries";
 import type { ChatMessage } from "@/lib/types";
-import { generateUUID } from "@/lib/utils";
+import { generateUUID, getTextFromMessage } from "@/lib/utils";
 
 // Runtime Agent : une boucle de tool calling standard, portée par les primitives
 // du SDK AI — streamText multi-steps (stopWhen), sélection d'outils par étape
@@ -197,6 +199,7 @@ export function agentFinalStepToolControl(
 }
 
 export function createAgentStream(params: AgentStreamParams) {
+  let titleAlreadyGenerated = false;
   return createUIMessageStream({
     execute: async ({ writer }) => {
       const state: AgentToolControllerState = {
@@ -881,6 +884,39 @@ export function createAgentStream(params: AgentStreamParams) {
         // au run lui-même.
       }
 
+      if (
+        params.shouldRenameAfterFirst &&
+        params.firstUserMessageForTitle &&
+        !aborted
+      ) {
+        try {
+          const assistantText = ((await result.text.catch(() => "")) || "")
+            .slice(0, 500)
+            .trim();
+          const userText = getTextFromMessage(params.firstUserMessageForTitle);
+          const generatedTitle = await generateTitleFromConversation({
+            assistantText,
+            modelId: params.modelId,
+            sessionToken: params.sessionToken,
+            userId: params.userId,
+            userText,
+          });
+          if (generatedTitle && generatedTitle !== "Nouvelle discussion") {
+            await updateChatTitleById({
+              chatId: params.chatId,
+              title: generatedTitle,
+            });
+            writer.write({
+              data: generatedTitle,
+              type: "data-chat-title",
+            });
+            titleAlreadyGenerated = true;
+          }
+        } catch (titleError) {
+          console.error("Erreur renommage conversation Agent :", titleError);
+        }
+      }
+
       // Synthèse d'observabilité en fin de run : le client affiche durée,
       // tokens et erreur éventuelle sans jamais lire les traces techniques.
       // Lecture via fermeture : `failure` n'est assigné que dans le rappel
@@ -905,8 +941,11 @@ export function createAgentStream(params: AgentStreamParams) {
           finishedMessages: finishedMessages as ChatMessage[],
           firstUserMessageForTitle: params.firstUserMessageForTitle,
           isContinuation: params.isContinuation,
+          modelId: params.modelId,
           runId: params.runId,
+          sessionToken: params.sessionToken,
           shouldRenameAfterFirst: params.shouldRenameAfterFirst,
+          titleAlreadyGenerated,
           userId: params.userId,
         });
       } catch (error) {

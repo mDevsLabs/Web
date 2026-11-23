@@ -2,6 +2,11 @@ import "server-only";
 
 import { and, count, desc, eq, gte, inArray, or, sql } from "drizzle-orm";
 import {
+  DEFAULT_AUDIO_MODEL,
+  DEFAULT_AUDIO_VOICE,
+  DEFAULT_IMAGE_MODEL,
+} from "@/lib/ai/catalog/media-defaults";
+import {
   type MprojectsImageGenerations,
   type MprojectsSpeechGenerations,
   mprojectsImageGenerations,
@@ -375,7 +380,7 @@ export async function reserveDailyImageQuota(params: {
       .values({
         height: params.height ?? 1024,
         imageUrl: "",
-        model: params.model ?? "black-forest-labs/flux-1-schnell",
+        model: params.model ?? DEFAULT_IMAGE_MODEL,
         negativePrompt: params.negativePrompt ?? null,
         prompt: params.prompt,
         status: "pending",
@@ -453,7 +458,7 @@ export async function recordImageGeneration(params: {
     .values({
       height: params.height ?? 1024,
       imageUrl: params.imageUrl,
-      model: params.model ?? "black-forest-labs/flux-1-schnell",
+      model: params.model ?? DEFAULT_IMAGE_MODEL,
       negativePrompt: params.negativePrompt ?? null,
       prompt: params.prompt,
       status: "completed",
@@ -573,14 +578,14 @@ export async function recordSpeechGeneration(params: {
       audioUrl: params.audioUrl ?? null,
       characterCount: params.characterCount ?? params.inputText.length,
       inputText: params.inputText,
-      model: params.model ?? "deepgram/flux-tts:free",
+      model: params.model ?? DEFAULT_AUDIO_MODEL,
       status: "completed",
       title: params.title ?? null,
       tokensCount:
         params.tokensCount ??
         Math.max(1, Math.ceil(params.inputText.length / 3.5)),
       userId: params.userId,
-      voice: params.voice ?? "flux-alexis-en",
+      voice: params.voice ?? DEFAULT_AUDIO_VOICE,
     })
     .returning();
 

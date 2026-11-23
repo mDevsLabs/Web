@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
+import { DEFAULT_IMAGE_MODEL } from "@/lib/ai/catalog/media-defaults";
 import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { APP_PRICING_URL } from "@/lib/constants";
@@ -96,14 +97,17 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
 
   // Initialisation du modèle et taille par défaut
   useEffect(() => {
-    if (userPrefData?.defaultImageModel && !selectedModelId) {
-      setSelectedModelId(userPrefData.defaultImageModel);
-    } else if (models.length > 0 && !selectedModelId) {
-      const defaultMod =
-        models.find((m) => m.id.includes("schnell")) ||
-        models.find((m) => m.id.includes("flux")) ||
-        models[0];
-      setSelectedModelId(defaultMod.id);
+    if (models.length > 0) {
+      const preferred = userPrefData?.defaultImageModel;
+      setSelectedModelId((current) => {
+        if (current && models.some((m) => m.id === current)) {
+          return current;
+        }
+        if (preferred && models.some((m) => m.id === preferred)) {
+          return preferred;
+        }
+        return models[0].id;
+      });
     }
 
     if (userPrefData?.defaultImageSize) {
@@ -116,7 +120,7 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
         setAspectRatio(match.id);
       }
     }
-  }, [models, selectedModelId, userPrefData]);
+  }, [models, userPrefData]);
 
   const selectedModel = useMemo(
     () => models.find((m) => m.id === selectedModelId),
@@ -209,7 +213,7 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
 
       const payload: Record<string, any> = {
         height: currentSize.height,
-        model: selectedModelId || "black-forest-labs/flux-1-schnell",
+        model: selectedModelId || models[0]?.id || DEFAULT_IMAGE_MODEL,
         negative_prompt: negativePrompt.trim() || undefined,
         prompt: prompt.trim(),
         size: `${currentSize.width}x${currentSize.height}`,

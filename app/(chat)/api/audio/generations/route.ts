@@ -1,12 +1,17 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { resolveSpeechModelForRequest } from "@/lib/ai/catalog/media-models";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { enforceApiRateLimit } from "@/lib/api/rate-limit";
 import {
   ALLOWED_AUDIO_FORMATS,
   audioFormatFromMime,
   buildAudioDataUrl,
+  isPcmMimeType,
+  normalizePlayableAudioBinary,
+  parsePcmAudioParams,
   parseRequestedAudioFormat,
   resolveAudioMimeType,
+  wrapPcm16AsWav,
 } from "@/lib/audio/format";
 import { requireUser } from "@/lib/auth/require-user";
 import {
@@ -100,10 +105,10 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const model = readShortString(body.model, "deepgram/flux-tts:free");
-    const voice = readShortString(body.voice, "flux-alexis-en");
-    const responseFormat = parseRequestedAudioFormat(body.response_format);
-    if (!responseFormat) {
+    const requestedModel = readShortString(body.model, "");
+    const requestedVoice = readShortString(body.voice, "");
+    const requestedFormat = parseRequestedAudioFormat(body.response_format);
+    if (!requestedFormat) {
       return errorResponse("invalid_request", {
         details: { allowed: ALLOWED_AUDIO_FORMATS },
         message: `Format audio non pris en charge. Formats autorisés : ${ALLOWED_AUDIO_FORMATS.join(", ")}.`,
@@ -124,10 +129,37 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    const tier = user.tier || "Free";
+    const resolved = await resolveSpeechModelForRequest({
+      allowLegacyFallback: true,
+      requestedFormat,
+      requestedModel,
+      requestedSpeed: speed,
+      requestedVoice,
+      tier,
+    });
+    if (!resolved.ok) {
+      return errorResponse(
+        resolved.status === 403
+          ? "forbidden"
+          : resolved.status === 503
+            ? "service_unavailable"
+            : "invalid_request",
+        {
+          code: resolved.code,
+          message: resolved.message,
+          status: resolved.status,
+        }
+      );
+    }
+
+    const model = resolved.model.id;
+    const voice = resolved.voice;
+    const responseFormat = resolved.responseFormat;
+
     // Réservation atomique et verrouillée du quota Speech hebdomadaire AVANT
     // l'appel externe (BUG-001 & BUG-003) : aucune concurrence ni erreur
     // d'enregistrement post-génération ne peut contourner le quota.
-    const tier = user.tier || "Free";
     const weeklyLimit = getTierSpeechWeeklyLimit(tier);
     const tokensUsed = estimateSpeechTokens(input);
     const reservation = await reserveWeeklySpeechQuota({
@@ -161,10 +193,7 @@ export async function POST(req: NextRequest) {
       openRouterRes = await fetch("https://openrouter.ai/api/v1/audio/speech", {
         body: JSON.stringify({
           input,
-          model,
-          response_format: responseFormat,
-          speed,
-          voice,
+          ...resolved.payload,
         }),
         cache: "no-store",
         headers: {
@@ -224,14 +253,34 @@ export async function POST(req: NextRequest) {
           typeof json?.audioContent === "string" &&
           json.audioContent
         ) {
-          audioUrl = buildAudioDataUrl(json.audioContent, resolvedMimeType);
+          if (isPcmMimeType(resolvedMimeType)) {
+            const wavBytes = wrapPcm16AsWav(
+              Buffer.from(json.audioContent, "base64"),
+              parsePcmAudioParams(
+                typeof json.mime_type === "string" ? json.mime_type : contentType
+              )
+            );
+            resolvedMimeType = "audio/wav";
+            audioUrl = buildAudioDataUrl(
+              Buffer.from(wavBytes).toString("base64"),
+              "audio/wav"
+            );
+          } else {
+            audioUrl = buildAudioDataUrl(json.audioContent, resolvedMimeType);
+          }
         }
       } else {
         const arrayBuf = await openRouterRes.arrayBuffer();
         if (arrayBuf.byteLength > 0) {
+          const normalized = normalizePlayableAudioBinary({
+            bytes: new Uint8Array(arrayBuf),
+            requestedFormat: responseFormat,
+            upstreamContentType: contentType,
+          });
+          resolvedMimeType = normalized.mimeType;
           audioUrl = buildAudioDataUrl(
-            Buffer.from(arrayBuf).toString("base64"),
-            resolvedMimeType
+            Buffer.from(normalized.bytes).toString("base64"),
+            normalized.mimeType
           );
         }
       }

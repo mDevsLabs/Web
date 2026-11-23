@@ -43,6 +43,35 @@ vi.mock("@/lib/api/rate-limit", () => ({
   enforceApiRateLimit: async () => null,
 }));
 
+vi.mock("@/lib/ai/catalog/media-models", () => ({
+  resolveCometImageModelForRequest: async () => ({
+    model: { id: "black-forest-labs/flux-1.1-pro" },
+    ok: true as const,
+  }),
+  resolveSpeechModelForRequest: async (params: {
+    requestedFormat: string;
+    requestedModel?: string | null;
+    requestedSpeed?: number;
+    requestedVoice?: string | null;
+  }) => ({
+    model: {
+      id: params.requestedModel || "heygen/heygen-voice-1-turbo:free",
+      supportedFormats: [params.requestedFormat],
+      supportsSpeed: true,
+      voices: ["nadine"],
+    },
+    ok: true as const,
+    payload: {
+      model: params.requestedModel || "heygen/heygen-voice-1-turbo:free",
+      response_format: params.requestedFormat,
+      speed: params.requestedSpeed ?? 1,
+      voice: params.requestedVoice || "nadine",
+    },
+    responseFormat: params.requestedFormat,
+    voice: params.requestedVoice || "nadine",
+  }),
+}));
+
 vi.mock("@/lib/db/queries/generations", () => ({
   confirmImageGenerationReservation: confirmImageMock,
   estimateSpeechTokens: (text: string) =>

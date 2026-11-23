@@ -1,5 +1,6 @@
 import "server-only";
 
+import { resolveCometImageModelForRequest } from "@/lib/ai/catalog/media-models";
 import { logError } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getUserPreferences } from "@/lib/db/queries";
@@ -60,14 +61,18 @@ export async function generateImageViaMai(params: {
     }
 
     // Préférences utilisateur : lecture directe en base, sans fetch relatif
-    // depuis un module serveur.
-    let targetModel = "black-forest-labs/flux-1-schnell";
+    // depuis un module serveur, puis résolution contre le catalogue CometAPI actif.
     let targetWidth = width;
     let targetHeight = height;
     const prefs = await getUserPreferences(params.userId).catch(() => null);
-    if (prefs?.defaultImageModel) {
-      targetModel = prefs.defaultImageModel;
+    const resolvedModel = await resolveCometImageModelForRequest({
+      allowLegacyFallback: true,
+      requestedModel: prefs?.defaultImageModel,
+    });
+    if (!resolvedModel.ok) {
+      return { error: resolvedModel.message };
     }
+    const targetModel = resolvedModel.model.id;
     if (
       params.request.width === undefined &&
       params.request.height === undefined &&

@@ -13,10 +13,12 @@ import {
 } from "./openrouter-models.ts";
 
 // Deno / Val Town acceptent npm:, tandis que la CLI Bun utilise les dépendances locales.
-const { neon } =
-  typeof Deno === "undefined"
+async function connectDatabase(url: string) {
+  const { neon } = typeof Deno === "undefined"
     ? await import("@neondatabase/serverless")
     : await import("npm:@neondatabase/serverless");
+  return neon(url);
+}
 
 type JsonObject = Record<string, any>;
 
@@ -523,7 +525,7 @@ function env(name: string): string | undefined {
 export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
   const databaseUrl = sql ? undefined : env("DATABASE_URL");
   if (!sql && !databaseUrl) throw new Error("DATABASE_URL est requis.");
-  const db: SqlClient = sql ?? neon(databaseUrl!);
+  const db: SqlClient = sql ?? (await connectDatabase(databaseUrl!));
   const startedAt = new Date().toISOString();
   const apiKey = options.apiKey ?? env("OPENROUTER_API_KEY");
   const headers: Record<string, string> = { Accept: "application/json" };
@@ -689,15 +691,19 @@ export default async function runModelSync() {
   return await updateModels();
 }
 
+async function runFromCli() {
+  const { loadLocalEnv } = await import("./cli-env.ts");
+  loadLocalEnv();
+  await runModelSync();
+}
+
 const invokedFile = process.argv[1];
 if (
   import.meta.url.startsWith("file:") &&
   invokedFile &&
   path.resolve(invokedFile) === fileURLToPath(import.meta.url)
 ) {
-  const { loadLocalEnv } = await import("./cli-env.ts");
-  loadLocalEnv();
-  await runModelSync().catch((error) => {
+  runFromCli().catch((error) => {
     console.error("[updateModels] Échec :", error.message);
     process.exitCode = 1;
   });

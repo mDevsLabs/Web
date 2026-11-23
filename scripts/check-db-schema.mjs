@@ -396,6 +396,8 @@ const REQUIRED_COLUMNS = [
   // ces colonnes — donc à toute ouverture d'un Espace.
   { column: "pinned", table: "WakiesPage" },
   { column: "settings", table: "WakiesPage" },
+  // Migration 0092 : suivi du dernier message pour le tri de la sidebar.
+  { column: "lastMessageAt", table: "Chat" },
 ];
 
 // `mprojects_api_keys` (et sa colonne `key_name`, migration 0040) est
@@ -431,6 +433,8 @@ const REQUIRED_INDEXES = [
   // Migration 0055 : la bibliothèque liste les pages D'UN espace et les trie par
   // épingle ; sans cet index, chaque ouverture d'Espace relit tout `WakiesPage`.
   "WakiesPage_spaceId_pinned_idx",
+  // Migration 0092 : index de pagination historique par épingles et dernier message.
+  "Chat_userId_pinned_lastMessageAt_idx",
 ];
 
 const envFiles =

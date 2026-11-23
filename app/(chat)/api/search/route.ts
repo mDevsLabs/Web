@@ -94,7 +94,7 @@ export async function GET(request: Request) {
             : ilike(chat.title, escapedFull)
         )
       )
-      .orderBy(desc(chat.pinned), desc(chat.createdAt))
+      .orderBy(desc(chat.pinned), desc(chat.lastMessageAt), desc(chat.createdAt))
       .limit(limit);
 
     // Projects by name/description

@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import {
+  DEFAULT_AUDIO_MODEL,
+  DEFAULT_AUDIO_VOICE,
+  DEFAULT_IMAGE_MODEL,
+} from "@/lib/ai/catalog/media-defaults";
 import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { APP_KEYS } from "@/lib/apps/catalog";
@@ -113,14 +118,14 @@ export async function GET() {
       customInstructions: "",
       defaultAgentId: null,
       defaultApp: "mai",
-      defaultAudioModel: "deepgram/flux-tts:free",
+      defaultAudioModel: DEFAULT_AUDIO_MODEL,
       defaultAudioSpeed: 1.0,
-      defaultAudioVoice: "flux-alexis-en",
+      defaultAudioVoice: DEFAULT_AUDIO_VOICE,
       defaultChatModel: null,
       defaultChatVisibility: "private",
       defaultCreationMode: "image",
       defaultDictationLanguage: "auto",
-      defaultImageModel: "black-forest-labs/flux-schnell",
+      defaultImageModel: DEFAULT_IMAGE_MODEL,
       defaultImageSize: "1024x1024",
       defaultTranslationLanguage: "EN",
       enabled: false,

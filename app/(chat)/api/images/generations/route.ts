@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { resolveCometImageModelForRequest } from "@/lib/ai/catalog/media-models";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { enforceApiRateLimit } from "@/lib/api/rate-limit";
 import { requireUser } from "@/lib/auth/require-user";
@@ -11,7 +12,6 @@ import {
 import { getTierImageDailyLimit } from "@/lib/plans/tier-limits";
 import { formatImageSrc } from "@/lib/utils";
 
-const IMAGE_DEFAULT_MODEL = "black-forest-labs/flux-1-schnell";
 const IMAGE_DIMENSION_DEFAULT = 1024;
 const IMAGE_DIMENSION_MIN = 64;
 const IMAGE_DIMENSION_MAX = 4096;
@@ -72,7 +72,21 @@ export async function POST(req: NextRequest) {
       });
     }
     const { height, prompt, width } = parsed.data;
-    const model = parsed.data.model || IMAGE_DEFAULT_MODEL;
+    const resolvedModel = await resolveCometImageModelForRequest({
+      allowLegacyFallback: true,
+      requestedModel: parsed.data.model,
+    });
+    if (!resolvedModel.ok) {
+      return errorResponse(
+        resolvedModel.status === 503 ? "service_unavailable" : "invalid_request",
+        {
+          code: resolvedModel.code,
+          message: resolvedModel.message,
+          status: resolvedModel.status,
+        }
+      );
+    }
+    const model = resolvedModel.model.id;
     const negativePrompt = parsed.data.negative_prompt || undefined;
 
     const cometKey = process.env.COMET_API_KEY?.trim();

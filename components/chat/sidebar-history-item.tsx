@@ -410,6 +410,12 @@ export const ChatItem = memo(PureChatItem, (prevProps, nextProps) => {
   if ((prevProps.chat as any).pinned !== (nextProps.chat as any).pinned) {
     return false;
   }
+  if (
+    String((prevProps.chat as any).lastMessageAt ?? "") !==
+    String((nextProps.chat as any).lastMessageAt ?? "")
+  ) {
+    return false;
+  }
   if ((prevProps.chat as any).agentId !== (nextProps.chat as any).agentId) {
     return false;
   }

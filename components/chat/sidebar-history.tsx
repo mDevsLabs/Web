@@ -1,6 +1,5 @@
 "use client";
 
-import { isToday, isYesterday, subMonths, subWeeks } from "date-fns";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -31,6 +30,7 @@ import {
 } from "@/hooks/revalidate-chat-histories";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { useProjects } from "@/hooks/use-projects";
+import { groupChatsByDate } from "@/lib/chat/history-groups";
 import type { Chat } from "@/lib/db/schema";
 import { forceUnlockDOM, forceUnlockDOMSchedule } from "@/lib/ui/unlock-dom";
 import { fetcher } from "@/lib/utils";
@@ -38,53 +38,12 @@ import { LoaderIcon } from "./icons";
 import { SecureConversationDialog } from "./secure-conversation-dialog";
 import { ChatItem } from "./sidebar-history-item";
 
-type GroupedChats = {
-  today: Chat[];
-  yesterday: Chat[];
-  lastWeek: Chat[];
-  lastMonth: Chat[];
-  older: Chat[];
-};
-
 export type ChatHistory = {
   chats: Chat[];
   hasMore: boolean;
 };
 
 const PAGE_SIZE = 20;
-
-const groupChatsByDate = (chats: Chat[]): GroupedChats => {
-  const now = new Date();
-  const oneWeekAgo = subWeeks(now, 1);
-  const oneMonthAgo = subMonths(now, 1);
-
-  return chats.reduce(
-    (groups, chat) => {
-      const chatDate = new Date(chat.createdAt);
-
-      if (isToday(chatDate)) {
-        groups.today.push(chat);
-      } else if (isYesterday(chatDate)) {
-        groups.yesterday.push(chat);
-      } else if (chatDate > oneWeekAgo) {
-        groups.lastWeek.push(chat);
-      } else if (chatDate > oneMonthAgo) {
-        groups.lastMonth.push(chat);
-      } else {
-        groups.older.push(chat);
-      }
-
-      return groups;
-    },
-    {
-      lastMonth: [],
-      lastWeek: [],
-      older: [],
-      today: [],
-      yesterday: [],
-    } as GroupedChats
-  );
-};
 
 export function getChatHistoryPaginationKey(
   pageIndex: number,
@@ -386,6 +345,25 @@ export function SidebarHistory({
 
                   return (
                     <div className="flex flex-col gap-4">
+                      {groupedChats.pinned.length > 0 && (
+                        <div>
+                          <div className="px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-sidebar-foreground/70">
+                            Épinglés
+                          </div>
+                          {groupedChats.pinned.map((chat) => (
+                            <ChatItem
+                              chat={chat}
+                              isActive={chat.id === id}
+                              key={chat.id}
+                              onDelete={handleShowDeleteDialog}
+                              onManageSecurity={setSecurityChat}
+                              projects={projects}
+                              setOpenMobile={setOpenMobile}
+                            />
+                          ))}
+                        </div>
+                      )}
+
                       {groupedChats.today.length > 0 && (
                         <div>
                           <div className="px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-sidebar-foreground/70">

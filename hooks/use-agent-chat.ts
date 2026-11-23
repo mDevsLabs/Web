@@ -250,6 +250,10 @@ export function useAgentChat({
     id: chatId,
     messages: initialMessages,
     onData: (dataPart) => {
+      if (dataPart.type === "data-chat-title") {
+        mutate(unstable_serialize(getChatHistoryPaginationKey));
+        return;
+      }
       if (
         dataPart.type === "data-agent-run" &&
         dataPart.data.model &&

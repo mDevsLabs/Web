@@ -1,7 +1,15 @@
 import "server-only";
 
+import { resolveSpeechModelForRequest } from "@/lib/ai/catalog/media-models";
 import { logError } from "@/lib/api/error-response";
-import { buildAudioDataUrl, resolveAudioMimeType } from "@/lib/audio/format";
+import {
+  buildAudioDataUrl,
+  isPcmMimeType,
+  normalizePlayableAudioBinary,
+  parsePcmAudioParams,
+  resolveAudioMimeType,
+  wrapPcm16AsWav,
+} from "@/lib/audio/format";
 import { getMaiUser } from "@/lib/auth/session";
 import { getUserPreferences } from "@/lib/db/queries";
 import {
@@ -20,6 +28,8 @@ import { getTierSpeechWeeklyLimit } from "@/lib/plans/tier-limits";
 // de l'appelant via le callback onAudio.
 
 export type AudioGenerationRequest = {
+  model?: string;
+  recordHistory?: boolean;
   speed?: number;
   text: string;
   voice?: string;
@@ -109,34 +119,40 @@ export async function generateAudioViaMai(params: {
       }
     };
 
-    // Préférences utilisateur : lecture directe en base Neon
-    let targetModel = "deepgram/flux-tts:free";
-    let targetVoice = params.request.voice || "flux-alexis-en";
-    let targetSpeed = params.request.speed || 1.0;
+    // Préférences utilisateur : lecture directe en base Neon, puis validation
+    // contre le catalogue Speech réel et le forfait de l'utilisateur.
     const prefs = await getUserPreferences(params.userId).catch(() => null);
-    if (prefs?.defaultAudioModel) {
-      targetModel = prefs.defaultAudioModel;
-    }
-    if (!params.request.voice && prefs?.defaultAudioVoice) {
-      targetVoice = prefs.defaultAudioVoice;
-    }
-    if (!params.request.speed && prefs?.defaultAudioSpeed) {
-      targetSpeed = prefs.defaultAudioSpeed;
-    }
-    const numericSpeed = Number(targetSpeed);
+    const requestedModel = params.request.model || prefs?.defaultAudioModel;
+    const requestedVoice = params.request.voice || prefs?.defaultAudioVoice;
+    const rawSpeed = params.request.speed ?? prefs?.defaultAudioSpeed ?? 1.0;
+    const numericSpeed = Number(rawSpeed);
     const safeSpeed = Number.isFinite(numericSpeed)
       ? Math.min(Math.max(numericSpeed, SPEECH_SPEED_MIN), SPEECH_SPEED_MAX)
       : 1.0;
+
+    const resolved = await resolveSpeechModelForRequest({
+      allowLegacyFallback: true,
+      requestedFormat: "mp3",
+      requestedModel,
+      requestedSpeed: safeSpeed,
+      requestedVoice,
+      tier: user?.tier,
+    });
+    if (!resolved.ok) {
+      await releaseReservation();
+      return { error: resolved.message };
+    }
+
+    const targetModel = resolved.model.id;
+    const targetVoice = resolved.voice;
+    const responseFormat = resolved.responseFormat;
 
     let res: Response;
     try {
       res = await fetch("https://openrouter.ai/api/v1/audio/speech", {
         body: JSON.stringify({
           input: text,
-          model: targetModel,
-          response_format: "mp3",
-          speed: safeSpeed,
-          voice: targetVoice,
+          ...resolved.payload,
         }),
         headers: {
           Authorization: `Bearer ${openRouterApiKey}`,
@@ -156,7 +172,10 @@ export async function generateAudioViaMai(params: {
     // relayé tel quel au modèle ni à l'utilisateur.
     if (!res.ok) {
       await releaseReservation();
-      logError("Erreur amont synthèse vocale", { status: res.status });
+      logError("Erreur amont synthèse vocale", {
+        model: targetModel,
+        status: res.status,
+      });
       return { error: SPEECH_GENERIC_ERROR };
     }
 
@@ -175,23 +194,35 @@ export async function generateAudioViaMai(params: {
         const mimeType = resolveAudioMimeType({
           jsonFormat: data?.format,
           jsonMimeType: data?.mime_type ?? data?.content_type,
-          requestedFormat: "mp3",
+          requestedFormat: responseFormat,
         });
-        audioUrl =
-          data?.audio_url ||
-          (data?.audioContent
-            ? buildAudioDataUrl(data.audioContent, mimeType)
-            : "");
+        if (data?.audio_url) {
+          audioUrl = data.audio_url;
+        } else if (data?.audioContent) {
+          if (isPcmMimeType(mimeType)) {
+            const wavBytes = wrapPcm16AsWav(
+              Buffer.from(data.audioContent, "base64"),
+              parsePcmAudioParams(data.mime_type ?? contentType)
+            );
+            audioUrl = buildAudioDataUrl(
+              Buffer.from(wavBytes).toString("base64"),
+              "audio/wav"
+            );
+          } else {
+            audioUrl = buildAudioDataUrl(data.audioContent, mimeType);
+          }
+        }
       } else {
         const arrayBuf = await res.arrayBuffer();
         if (arrayBuf.byteLength > 0) {
-          const mimeType = resolveAudioMimeType({
-            requestedFormat: "mp3",
+          const normalized = normalizePlayableAudioBinary({
+            bytes: new Uint8Array(arrayBuf),
+            requestedFormat: responseFormat,
             upstreamContentType: contentType,
           });
           audioUrl = buildAudioDataUrl(
-            Buffer.from(arrayBuf).toString("base64"),
-            mimeType
+            Buffer.from(normalized.bytes).toString("base64"),
+            normalized.mimeType
           );
         }
       }
@@ -207,18 +238,20 @@ export async function generateAudioViaMai(params: {
 
     // Le quota est déjà acté avant l'appel externe : l'historique ne peut plus
     // annuler la comptabilisation en cas d'erreur d'écriture.
-    try {
-      await recordSpeechGeneration({
-        audioUrl,
-        characterCount: text.length,
-        inputText: text,
-        model: targetModel,
-        tokensCount: tokensUsed,
-        userId: params.userId,
-        voice: targetVoice,
-      });
-    } catch (historyErr) {
-      logError("Erreur enregistrement audio en base", historyErr);
+    if (params.request.recordHistory !== false) {
+      try {
+        await recordSpeechGeneration({
+          audioUrl,
+          characterCount: text.length,
+          inputText: text,
+          model: targetModel,
+          tokensCount: tokensUsed,
+          userId: params.userId,
+          voice: targetVoice,
+        });
+      } catch (historyErr) {
+        logError("Erreur enregistrement audio en base", historyErr);
+      }
     }
 
     params.onAudio?.(audioUrl);

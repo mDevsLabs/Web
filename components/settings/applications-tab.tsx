@@ -16,6 +16,7 @@ import { SearchSettingsSection } from "@/components/settings/applications/search
 import { VibeSettingsSection } from "@/components/settings/applications/vibe-section";
 import { WakiesSettingsSection } from "@/components/settings/applications/wakies-section";
 import { useTier } from "@/hooks/use-tier";
+import { DEFAULT_AUDIO_VOICE } from "@/lib/ai/catalog/media-defaults";
 import { getTierSearchResultsMax } from "@/lib/plans/tier-limits";
 import { fetcher } from "@/lib/utils";
 
@@ -52,12 +53,7 @@ export function ApplicationsTab() {
         Array.isArray(m.voices) && m.voices.length > 0
     );
     return (
-      firstWithVoices?.voices || [
-        { id: "flux-alexis-fr", name: "Alexis (Français naturel)" },
-        { id: "flux-celeste-fr", name: "Céleste (Français chaleureux)" },
-        { id: "flux-alexis-en", name: "Alexis (Anglais)" },
-        { id: "flux-elena-en", name: "Elena (Anglais doux)" },
-      ]
+      firstWithVoices?.voices || [{ id: DEFAULT_AUDIO_VOICE, name: "Nadine" }]
     );
   }, [audioModelsData]);
 

@@ -310,6 +310,9 @@ export function createChatStream(params: ChatStreamParams) {
             try {
               const generated = await generateTitleFromConversation({
                 assistantText: (text ?? "").slice(0, 500).trim(),
+                modelId: ctx.chatModel,
+                sessionToken: ctx.sessionToken,
+                userId: ctx.userId,
                 userText: getTextFromMessage(
                   ctx.firstUserMessageForTitle as any
                 ),

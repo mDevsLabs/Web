@@ -1,6 +1,10 @@
 import { tool, type UIMessageStreamWriter } from "ai";
 import type { Session } from "next-auth";
 import { z } from "zod";
+import { DEFAULT_PODCAST_VOICES } from "@/lib/ai/catalog/media-defaults";
+import { listSpeechModelsFromDb } from "@/lib/ai/catalog/media-models";
+import { generateAudioViaMai } from "@/lib/ai/generators/audio";
+import { getMaiUser } from "@/lib/auth/session";
 import type { ChatMessage } from "@/lib/types";
 
 type AudioPodcastProps = {
@@ -23,70 +27,32 @@ const segmentSchema = z.object({
     ),
 });
 
-// Synthèse d'un segment via l'API mAI TTS
-async function synthesizeSegment(params: {
-  token: string;
-  userId: string;
-  voice: string;
-  text: string;
-  speed?: number;
-}): Promise<{ audio_url?: string; error?: string }> {
-  const { voice, text, speed } = params;
+// Choisit un modèle accessible ayant au moins 2 voix distinctes pour le débat.
+async function pickModelAndVoices(token: string): Promise<{
+  expert: string;
+  host: string;
+  model?: string;
+}> {
   try {
-    const openRouterApiKey = process.env.OPENROUTER_API_KEY || "";
-    const res = await fetch("https://openrouter.ai/api/v1/audio/speech", {
-      body: JSON.stringify({
-        input: text,
-        model: "deepgram/flux-tts:free",
-        response_format: "mp3",
-        speed: speed ?? 1.0,
-        voice,
-      }),
-      headers: {
-        Authorization: `Bearer ${openRouterApiKey}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://mai.mdevs.fr",
-        "X-Title": "mAI Speech",
-      },
-      method: "POST",
-    });
-    const contentType = res.headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        return {
-          error:
-            data?.error?.message || data?.error || "Erreur de synthèse vocale.",
-        };
-      }
-      const audio_url =
-        data?.audio_url ||
-        (data?.audioContent
-          ? `data:audio/mp3;base64,${data.audioContent}`
-          : "");
-      return audio_url
-        ? { audio_url }
-        : { error: "Aucun flux audio retourné." };
-    }
-    if (res.ok) {
-      const buf = Buffer.from(await res.arrayBuffer());
+    const user = await getMaiUser(token).catch(() => null);
+    const models = await listSpeechModelsFromDb(user?.tier);
+    const multiVoiceModel = models.find((m) => m.voices.length >= 2);
+    if (multiVoiceModel) {
+      const host = multiVoiceModel.voices[1] ?? multiVoiceModel.voices[0];
+      const expert = multiVoiceModel.voices[0];
       return {
-        audio_url: `data:audio/mpeg;base64,${buf.toString("base64")}`,
+        expert,
+        host,
+        model: multiVoiceModel.id,
       };
     }
-    return {
-      error: (await res.text().catch(() => "")) || "Erreur de synthèse vocale.",
-    };
-  } catch (e: any) {
-    return { error: e.message || "Erreur de synthèse vocale." };
+  } catch {
+    // Repli vers le couple par défaut du modèle gratuit.
   }
-}
-
-// Choisit deux voix distinctes disponibles ; repli sur les voix par défaut.
-async function pickVoices(
-  _token: string
-): Promise<{ expert: string; host: string }> {
-  return { expert: "flux-jeanne-fr", host: "flux-alexis-en" };
+  return {
+    expert: DEFAULT_PODCAST_VOICES.expert,
+    host: DEFAULT_PODCAST_VOICES.host,
+  };
 }
 
 export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
@@ -105,9 +71,9 @@ export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
         };
       }
 
-      const voices = await pickVoices(token);
-      const hostVoice = voices.host;
-      const expertVoice = voices.expert;
+      const selection = await pickModelAndVoices(token);
+      const hostVoice = selection.host;
+      const expertVoice = selection.expert;
 
       const id = (globalThis.crypto?.randomUUID?.() ??
         `podcast-${Date.now()}`) as string;
@@ -125,12 +91,16 @@ export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
           break;
         }
         const voice = segment.speaker === "expert" ? expertVoice : hostVoice;
-        const result = await synthesizeSegment({
-          speed,
-          text: segment.text,
-          token,
+        const result = await generateAudioViaMai({
+          request: {
+            model: selection.model,
+            recordHistory: false,
+            speed,
+            text: segment.text,
+            voice,
+          },
+          resolveToken: () => token,
           userId,
-          voice,
         });
         rendered.push({
           audio_url: result.audio_url,

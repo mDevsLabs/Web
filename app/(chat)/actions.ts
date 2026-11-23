@@ -1,12 +1,16 @@
 "use server";
 
-import { generateText, type UIMessage } from "ai";
+import type { UIMessage } from "ai";
 import { cookies } from "next/headers";
 import { auth } from "@/app/(auth)/auth";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { titlePrompt } from "@/lib/ai/prompts";
-import { getTitleModel } from "@/lib/ai/providers";
+import { getLanguageModel } from "@/lib/ai/providers";
+import {
+  buildFallbackTitleFromUserText,
+  generateConversationTitleWithModel,
+} from "@/lib/ai/title-generator";
 import { isChatUnlockedForUser } from "@/lib/chat/security";
 import {
   deleteMessagesByChatIdAfterTimestamp,
@@ -24,70 +28,65 @@ export async function saveChatModelAsCookie(model: string) {
 
 export async function generateTitleFromUserMessage({
   message,
+  modelId,
 }: {
   message: UIMessage;
+  modelId?: string;
 }) {
   const text = getTextFromMessage(message);
-  return generateTitleFromConversation({ assistantText: "", userText: text });
+  return generateTitleFromConversation({
+    assistantText: "",
+    modelId,
+    userText: text,
+  });
 }
 
 export async function generateTitleFromConversation({
-  userText,
   assistantText,
+  modelId,
+  sessionToken,
+  userId,
+  userText,
 }: {
-  userText: string;
   assistantText: string;
+  modelId?: string;
+  sessionToken?: string | null;
+  userId?: string | null;
+  userText: string;
 }) {
   try {
     const { getMaiSessionToken, getMaiUser } = await import(
       "@/lib/auth/session"
     );
-    const [token, user] = await Promise.all([
-      getMaiSessionToken(),
-      getMaiUser(),
-    ]);
+    const resolvedToken = sessionToken ?? (await getMaiSessionToken());
+    const user = await getMaiUser(resolvedToken ?? undefined);
 
-    const fallbackTitle =
-      userText
-        .replace(/^[#*"\s]+/, "")
-        .slice(0, 60)
-        .trim() || "Nouvelle discussion";
+    const fallbackTitle = buildFallbackTitleFromUserText(userText);
 
     // Si pas de session valide ou si le quota est atteint, repli immédiat sans requête IA
-    if (!token || !user || (user.limit > 0 && user.tokensUsed >= user.limit)) {
+    if (
+      !resolvedToken ||
+      !user ||
+      (user.limit > 0 && user.tokensUsed >= user.limit)
+    ) {
       return fallbackTitle;
     }
 
-    // Construire le prompt avec user + 500 chars de l'IA si disponible
-    const combined = assistantText
-      ? `User: ${userText}\nAssistant (début): ${assistantText}`
-      : userText;
-    const { text } = await generateText({
+    const resolvedUserId = userId ?? user.id;
+    return await generateConversationTitleWithModel({
+      assistantText,
       instructions: titlePrompt,
-      model: getTitleModel({
-        sessionToken: token,
-        tier: user.tier,
-        userId: user?.id,
-      }),
-      prompt: combined.slice(0, 2000),
+      modelId,
+      resolveModel: (targetModelId) =>
+        getLanguageModel(targetModelId, {
+          sessionToken: resolvedToken,
+          userId: resolvedUserId,
+        }),
+      userText,
     });
-    const cleaned = text
-      .replace(/^[#*"\s]+/, "")
-      .replace(/["]+$/, "")
-      .trim();
-    // Garde-fou: titre trop long ou vide
-    if (!cleaned || cleaned.length > 60) {
-      return cleaned.slice(0, 60).trim() || fallbackTitle;
-    }
-    return cleaned;
   } catch (err) {
     console.error("Erreur génération titre:", err);
-    return (
-      userText
-        .replace(/^[#*"\s]+/, "")
-        .slice(0, 60)
-        .trim() || "Nouvelle discussion"
-    );
+    return buildFallbackTitleFromUserText(userText);
   }
 }
 

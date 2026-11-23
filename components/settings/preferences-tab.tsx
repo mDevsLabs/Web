@@ -29,6 +29,10 @@ import { Label } from "@/components/ui/label";
 import { useAutosavePreference } from "@/hooks/use-autosave-preference";
 import { useFavoriteApp } from "@/hooks/use-favorite-app";
 import { useSettings } from "@/hooks/use-settings";
+import {
+  DEFAULT_AUDIO_MODEL,
+  DEFAULT_IMAGE_MODEL,
+} from "@/lib/ai/catalog/media-defaults";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
@@ -111,13 +115,11 @@ export function PreferencesTab() {
   // Préférences Outils IA
   const [defaultCreationMode, setDefaultCreationMode] =
     useState<CreationMode>("image");
-  const [defaultImageModel, setDefaultImageModel] = useState<string>(
-    "black-forest-labs/flux-schnell"
-  );
+  const [defaultImageModel, setDefaultImageModel] =
+    useState<string>(DEFAULT_IMAGE_MODEL);
   const [defaultImageSize, setDefaultImageSize] = useState<string>("1024x1024");
-  const [defaultAudioModel, setDefaultAudioModel] = useState<string>(
-    "deepgram/flux-tts:free"
-  );
+  const [defaultAudioModel, setDefaultAudioModel] =
+    useState<string>(DEFAULT_AUDIO_MODEL);
   const [defaultAudioVoice, setDefaultAudioVoice] = useState<string>("");
   const [defaultAudioSpeed, setDefaultAudioSpeed] = useState<number>(1.0);
 

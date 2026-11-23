@@ -63,6 +63,7 @@ export async function saveChat({
       agentId: agentId ?? null,
       customInstructions: customInstructions ?? null,
       id,
+      lastMessageAt: new Date(),
       mode: mode ?? "chat",
       projectId: projectId ?? null,
       skillId: skillId ?? null,
@@ -241,7 +242,7 @@ export async function getChatsByUserId({
 
     const query = (whereCondition?: SQL<unknown>) => {
       const where = whereCondition ? and(whereCondition, baseWhere) : baseWhere;
-      // Pinned first, then createdAt desc
+      // Pinned first, then lastMessageAt desc
       return db
         .select({
           agentColor: agent.color,
@@ -256,6 +257,7 @@ export async function getChatsByUserId({
           isSecure: sql<boolean>`EXISTS (
             SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
           )`,
+          lastMessageAt: chat.lastMessageAt,
           mode: chat.mode,
           pinned: chat.pinned,
           projectId: chat.projectId,
@@ -269,7 +271,7 @@ export async function getChatsByUserId({
         .from(chat)
         .leftJoin(agent, eq(chat.agentId, agent.id))
         .where(where)
-        .orderBy(desc(chat.pinned), desc(chat.createdAt))
+        .orderBy(desc(chat.pinned), desc(chat.lastMessageAt), desc(chat.createdAt))
         .limit(extendedLimit);
     };
 
@@ -284,7 +286,7 @@ export async function getChatsByUserId({
 
       if (selectedChat) {
         filteredChats = await query(
-          sql`(${chat.pinned}, ${chat.createdAt}) > (${selectedChat.pinned}, ${selectedChat.createdAt})`
+          sql`(${chat.pinned}, ${chat.lastMessageAt}) > (${selectedChat.pinned}, ${selectedChat.lastMessageAt})`
         );
       } else {
         // Le chat repère a pu être supprimé : repli gracieux sur le début sans casser SWR.
@@ -299,7 +301,7 @@ export async function getChatsByUserId({
 
       if (selectedChat) {
         filteredChats = await query(
-          sql`(${chat.pinned}, ${chat.createdAt}) < (${selectedChat.pinned}, ${selectedChat.createdAt})`
+          sql`(${chat.pinned}, ${chat.lastMessageAt}) < (${selectedChat.pinned}, ${selectedChat.lastMessageAt})`
         );
       } else {
         // Le chat repère a pu être supprimé : repli gracieux sur le début sans casser SWR.
@@ -609,7 +611,29 @@ export async function bulkUpdateChats({
 export async function saveMessages({ messages }: { messages: DBMessage[] }) {
   try {
     const db = await dbReady();
-    return await db.insert(message).values(messages);
+    const result = await db.insert(message).values(messages);
+
+    // Met à jour `lastMessageAt` avec l'horodatage le plus récent des messages
+    // enregistrés afin que le tri de l'historique reflète le dernier message.
+    const latestByChat = new Map<string, number>();
+    for (const msg of messages) {
+      const ts = msg.createdAt ? new Date(msg.createdAt).getTime() : Date.now();
+      const prev = latestByChat.get(msg.chatId) ?? 0;
+      if (ts > prev) {
+        latestByChat.set(msg.chatId, ts);
+      }
+    }
+    for (const [targetChatId, maxMs] of latestByChat) {
+      const iso = new Date(maxMs).toISOString();
+      await db
+        .update(chat)
+        .set({
+          lastMessageAt: sql`GREATEST(${chat.lastMessageAt}, ${iso}::timestamp)`,
+        })
+        .where(eq(chat.id, targetChatId));
+    }
+
+    return result;
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }

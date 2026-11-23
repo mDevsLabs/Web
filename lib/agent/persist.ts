@@ -21,8 +21,11 @@ export async function persistAgentRunMessages(params: {
   finishedMessages: ChatMessage[];
   firstUserMessageForTitle: ChatMessage | null;
   isContinuation: boolean;
+  modelId?: string;
   runId?: string;
+  sessionToken?: string | null;
   shouldRenameAfterFirst: boolean;
+  titleAlreadyGenerated?: boolean;
   userId?: string;
 }): Promise<void> {
   if (params.runId && params.executionOwner && params.userId) {
@@ -76,7 +79,10 @@ export async function persistAgentRunMessages(params: {
     });
   }
 
-  if (!(params.shouldRenameAfterFirst && params.firstUserMessageForTitle)) {
+  if (
+    params.titleAlreadyGenerated ||
+    !(params.shouldRenameAfterFirst && params.firstUserMessageForTitle)
+  ) {
     return;
   }
 
@@ -90,6 +96,9 @@ export async function persistAgentRunMessages(params: {
     const userText = getTextFromMessage(params.firstUserMessageForTitle);
     const title = await generateTitleFromConversation({
       assistantText,
+      modelId: params.modelId,
+      sessionToken: params.sessionToken,
+      userId: params.userId,
       userText,
     });
     if (title && title !== "Nouvelle discussion") {

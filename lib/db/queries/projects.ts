@@ -399,6 +399,7 @@ export async function getProjectChats({
         isSecure: sql<boolean>`EXISTS (
           SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
         )`,
+        lastMessageAt: chat.lastMessageAt,
         mode: chat.mode,
         ownerVariant: chat.userId,
         pinned: chat.pinned,
@@ -413,7 +414,7 @@ export async function getProjectChats({
       .from(chat)
       .leftJoin(agent, eq(chat.agentId, agent.id))
       .where(and(...conditions))
-      .orderBy(desc(chat.pinned), desc(chat.createdAt))
+      .orderBy(desc(chat.pinned), desc(chat.lastMessageAt), desc(chat.createdAt))
       .limit(Math.min(Math.max(limit, 1), 200));
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });

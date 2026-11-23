@@ -52,14 +52,15 @@ export const updateDocumentPrompt = (
 ${currentContent}`;
 };
 
-export const titlePrompt = `Generate a short chat title (2-5 words) summarizing the user's message.
+export const titlePrompt = `Génère un titre de conversation très court (2 à 5 mots) qui résume l'intention du message.
 
-Output ONLY the title text. No prefixes, no formatting.
+Règles impératives :
+- Rédige le titre dans la MÊME langue que le message de l'utilisateur (en français par défaut si le message est très court ou ambigu).
+- Renvoie UNIQUEMENT le titre brut : aucun guillemet, aucun hashtag, aucun préfixe (« Titre : », « Title: »).
+- N'utilise JAMAIS de titre générique anglais comme « New Conversation ».
 
-Examples:
-- "what's the weather in nyc" → Weather in NYC
-- "help me write an essay about space" → Space Essay Help
-- "hi" → New Conversation
-- "debug my python code" → Python Debugging
-
-Never output hashtags, prefixes like "Title:", or quotes.`;
+Exemples :
+- "quel temps fait-il à Lyon" → Météo à Lyon
+- "salut" → Salutation et premier échange
+- "aide-moi à débugger ce script python" → Débogage script Python
+- "what's the weather in nyc" → Weather in NYC`;

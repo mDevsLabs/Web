@@ -413,6 +413,7 @@ export const chat = pgTable(
     customInstructions: text("customInstructions"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isArchived: boolean("isArchived").notNull().default(false),
+    lastMessageAt: timestamp("lastMessageAt").notNull().defaultNow(),
 
     // Conversation classique (chat) ou exécutée par Agent : évite de dupliquer
     // l'historique, la sidebar et les projets pour le mode Agent.
@@ -450,6 +451,9 @@ export const chat = pgTable(
       table.userId,
       table.pinned
     ),
+    userPinnedLastMessageIdx: index(
+      "Chat_userId_pinned_lastMessageAt_idx"
+    ).on(table.userId, table.pinned, table.lastMessageAt),
     userProjectIdx: index("Chat_userId_projectId_idx").on(
       table.userId,
       table.projectId
@@ -747,13 +751,13 @@ export const mprojectsSpeechGenerations = pgTable(
     createdAt: timestamp("created_at").notNull().defaultNow(),
     id: serial("id").primaryKey().notNull(),
     inputText: text("input_text").notNull(),
-    model: text("model").notNull().default("deepgram/flux-tts:free"),
+    model: text("model").notNull().default("heygen/heygen-voice-1-turbo:free"),
     pinned: boolean("pinned").notNull().default(false),
     status: text("status").notNull().default("completed"),
     title: text("title"),
     tokensCount: integer("tokens_count").notNull().default(0),
     userId: text("user_id").notNull(),
-    voice: text("voice").default("flux-alexis-en"),
+    voice: text("voice").default("nadine"),
   },
   (table) => ({
     createdAtIdx: index("mprojects_speech_generations_created_at_idx").on(
@@ -1057,13 +1061,13 @@ export const userPreferences = pgTable("user_preferences", {
   defaultApp: varchar("defaultApp", { length: 20 }).notNull().default("mai"),
   defaultAudioModel: text("defaultAudioModel")
     .notNull()
-    .default("deepgram/flux-tts:free"),
+    .default("heygen/heygen-voice-1-turbo:free"),
   defaultAudioSpeed: doublePrecision("defaultAudioSpeed")
     .notNull()
     .default(1.0),
   defaultAudioVoice: varchar("defaultAudioVoice", { length: 100 })
     .notNull()
-    .default("flux-alexis-en"),
+    .default("nadine"),
   defaultChatModel: text("defaultChatModel"),
   defaultChatVisibility: varchar("defaultChatVisibility", { length: 20 })
     .notNull()
@@ -1079,7 +1083,7 @@ export const userPreferences = pgTable("user_preferences", {
     .default("auto"),
   defaultImageModel: text("defaultImageModel")
     .notNull()
-    .default("black-forest-labs/flux-schnell"),
+    .default("black-forest-labs/flux-1.1-pro"),
   defaultImageSize: varchar("defaultImageSize", { length: 50 })
     .notNull()
     .default("1024x1024"),
