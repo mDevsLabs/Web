@@ -147,6 +147,14 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
     [dailyLimit, usedToday]
   );
 
+  const imagesPercent = useMemo(
+    () =>
+      dailyLimit > 0
+        ? Math.min(100, Math.round((usedToday / dailyLimit) * 100))
+        : 0,
+    [dailyLimit, usedToday]
+  );
+
   const isQuotaExhausted = quotaRemaining <= 0;
 
   // Gestion de l'upload d'image source
@@ -194,7 +202,7 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
 
     if (isQuotaExhausted) {
       toast.error(
-        `Votre quota journalier est atteint (${usedToday}/${dailyLimit}). Mettez à niveau votre compte pour plus de générations !`
+        `Votre quota journalier de génération d'images est atteint (${imagesPercent}% consommé). Mettez à niveau votre compte pour plus de générations !`
       );
       return;
     }
@@ -205,9 +213,16 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
     try {
       const usageCheck = await fetch("/api/images/usage").then((r) => r.json());
       if (usageCheck.usedToday >= usageCheck.dailyLimit) {
+        const checkPercent =
+          usageCheck.dailyLimit > 0
+            ? Math.min(
+                100,
+                Math.round((usageCheck.usedToday / usageCheck.dailyLimit) * 100)
+              )
+            : 100;
         mutateUsage();
         throw new Error(
-          `Quota journalier épuisé (${usageCheck.usedToday}/${usageCheck.dailyLimit}). Réinitialisation à minuit UTC.`
+          `Quota journalier épuisé (${checkPercent}% consommé). Réinitialisation à minuit UTC.`
         );
       }
 
@@ -375,10 +390,10 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
             <SparklesIcon className="size-4 text-warning" />
             <div className="text-xs">
               <span className="font-semibold text-foreground">
-                {usedToday} / {dailyLimit}
+                {imagesPercent}% consommé
               </span>{" "}
               <span className="text-muted-foreground">
-                générations/j ({plan})
+                · Génération d&apos;images (Forfait {plan})
               </span>
             </div>
           </div>

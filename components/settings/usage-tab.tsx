@@ -221,7 +221,7 @@ export function UsageTab() {
             </div>
             <div className="min-w-0">
               <h3 className="text-base font-semibold text-foreground truncate">
-                Générations d'Images
+                Génération d'images
               </h3>
               <p className="hidden text-xs text-muted-foreground sm:block">
                 Images générées aujourd'hui (quota réinitialisé à minuit UTC)
@@ -231,10 +231,10 @@ export function UsageTab() {
 
           <div className="text-right shrink-0">
             <span className="text-sm font-bold text-foreground">
-              {resolvedImagesUsage.usedToday} / {resolvedImagesUsage.dailyLimit}
+              {imagesPercent}% consommé
             </span>
             <span className="text-xs text-muted-foreground block">
-              images ({imagesPercent}%)
+              Forfait {profile?.tier || "Free"}
             </span>
           </div>
         </div>
@@ -261,7 +261,7 @@ export function UsageTab() {
         </div>
       </div>
 
-      {/* Consommation Synthèse Vocale */}
+      {/* Consommation Création d'audio */}
       <div
         className="surface-card flex flex-col gap-4 scroll-mt-6"
         id="usage-speech"
@@ -273,10 +273,10 @@ export function UsageTab() {
             </div>
             <div className="min-w-0">
               <h3 className="text-base font-semibold text-foreground truncate">
-                Synthèse Vocale
+                Création d'audio
               </h3>
               <p className="hidden text-xs text-muted-foreground sm:block">
-                Tokens consommés pour l'API vocale et la synthèse vocale
+                Consommation hebdomadaire pour la création d'audio
               </p>
             </div>
           </div>

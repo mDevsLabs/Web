@@ -29,7 +29,8 @@ export function ImageUsageSection({
       <div className="flex items-center justify-between gap-3">
         <div>
           <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <ImageIcon className="w-5 h-5 text-purple-600" /> Usage Images
+            <ImageIcon className="w-5 h-5 text-purple-600" /> Génération
+            d&apos;images
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
             Consommation de vos générations d&apos;images quotidiennes sur mAI.
@@ -38,11 +39,11 @@ export function ImageUsageSection({
       </div>
       <QuotaProgress
         dangerAt={100}
-        label="images générées aujourd'hui"
         limit={dailyLimit}
         onRefresh={onRefresh}
         refreshing={refreshing}
         resetLabel={`Réinitialisation automatique : ${formatResetDate(usage?.resetAt)}`}
+        tier={tier}
         tone="image"
         used={usedToday}
       />

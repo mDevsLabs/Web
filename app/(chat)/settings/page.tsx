@@ -238,8 +238,8 @@ function SettingsPageInner() {
           { id: "usage-plan", label: "Forfait actuel" },
           { id: "usage-stats", label: "Statistiques" },
           { id: "usage", label: "Utilisation de l'IA" },
-          { id: "usage-images", label: "Générations d'images" },
-          { id: "usage-speech", label: "Synthèse vocale" },
+          { id: "usage-images", label: "Génération d'images" },
+          { id: "usage-speech", label: "Création d'audio" },
           { id: "usage-cloud", label: "Stockage cloud" },
         ];
       case "notifications":

@@ -204,9 +204,24 @@ export function normalizeProviderKey(rawProvider: string): string {
   if (p === "microsoft" || p === "azure") return "azure";
   if (p === "together" || p === "togetherai") return "togetherai";
   if (p === "fireworks" || p === "fireworks-ai") return "fireworks-ai";
+  if (
+    p === "bfl" ||
+    p === "black-forest-labs" ||
+    p === "blackforestlabs" ||
+    p === "flux"
+  )
+    return "black-forest-labs";
+  if (p === "ideogram" || p === "ideogram-ai" || p === "ideogramai")
+    return "ideogram-ai";
+  if (p === "luma" || p === "luma-ai" || p === "lumaai" || p === "photon")
+    return "luma";
+  if (p === "midjourney" || p === "mj") return "midjourney";
   if (p === "stability" || p === "stability-ai" || p === "stabilityai")
     return "stability-ai";
   if (p === "recraft" || p === "recraft-ai") return "recraft-ai";
+  if (p === "seedream") return "bytedance";
+  if (p === "kling") return "kwaipilot";
+  if (p === "wan") return "qwen";
   if (p === "google-vertex" || p === "google") return "google";
 
   return p || MAI_PROVIDER_KEY;

@@ -365,7 +365,7 @@ export function PageWorkspace({ pageId }: { pageId: string }) {
         {page.canEdit ? (
           <select
             aria-label="Projet"
-            className="field-input h-8 max-w-40 px-2 text-xs"
+            className="field-input h-8 max-w-44 px-2.5 py-0 text-xs leading-normal"
             onChange={(event) => {
               const value = event.target.value;
               void patchMeta({ projectId: value || null });

@@ -7,10 +7,12 @@ import { QuotaProgress } from "./quota-progress";
 
 export function AudioUsageSection({
   usage,
+  tier,
   refreshing,
   onRefresh,
 }: {
   usage: AudioUsageData | null;
+  tier?: string;
   refreshing: boolean;
   onRefresh: () => void | Promise<void>;
 }) {
@@ -21,19 +23,19 @@ export function AudioUsageSection({
     >
       <div>
         <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-          <Volume2 className="w-5 h-5 text-purple-600" /> Usage Audio
+          <Volume2 className="w-5 h-5 text-purple-600" /> Création d&apos;audio
         </h2>
         <p className="text-xs text-slate-500 mt-0.5">
-          Consommation hebdomadaire de tokens de synthèse vocale (TTS).
+          Consommation hebdomadaire pour la création d&apos;audio.
         </p>
       </div>
       {usage ? (
         <QuotaProgress
-          label="tokens"
           limit={usage.weeklyLimit}
           onRefresh={onRefresh}
           refreshing={refreshing}
           resetLabel={`Réinitialisation hebdomadaire : ${formatResetDate(usage.resetAt)}`}
+          tier={usage.plan || tier}
           tone="audio"
           used={usage.tokensUsed}
         />

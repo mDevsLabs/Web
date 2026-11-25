@@ -92,6 +92,222 @@ function isOpenRouterHost(baseUrl: string): boolean {
   }
 }
 
+function isValidUrlCitationAnnotation(item: unknown): boolean {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+  const candidate = item as {
+    type?: unknown;
+    url_citation?: {
+      end_index?: unknown;
+      start_index?: unknown;
+      title?: unknown;
+      url?: unknown;
+    };
+  };
+  return (
+    candidate.type === "url_citation" &&
+    Boolean(candidate.url_citation) &&
+    typeof candidate.url_citation?.url === "string" &&
+    typeof candidate.url_citation?.title === "string" &&
+    typeof candidate.url_citation?.start_index === "number" &&
+    typeof candidate.url_citation?.end_index === "number"
+  );
+}
+
+/**
+ * Normalise un objet JSON issu d'une ligne SSE `data: {...}` d'OpenRouter pour
+ * respecter le schéma Zod strict de `@ai-sdk/openai` (`openaiChatChunkSchema`).
+ *
+ * Plusieurs fournisseurs routés par OpenRouter (Baidu ERNIE, MiniMax, DeepSeek,
+ * Qwen…) émettent `delta.role: ""`, omettent `choices[i].index` ou
+ * `tool_calls[j].index`, ou ajoutent des `annotations` non standard, ce qui
+ * provoquait un rejet immédiat `AI_TypeValidationError` côté SDK avant tout
+ * affichage de réponse.
+ */
+export function normalizeOpenRouterSsePayload(rawPayload: string): string {
+  const trimmed = rawPayload.trim();
+  if (!trimmed || trimmed === "[DONE]") {
+    return rawPayload;
+  }
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(trimmed);
+  } catch {
+    return rawPayload;
+  }
+
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    return rawPayload;
+  }
+
+  const record = parsed as Record<string, unknown>;
+  if (!Array.isArray(record.choices)) {
+    return rawPayload;
+  }
+
+  let mutated = false;
+  const normalizedChoices = record.choices.map((choice, choiceIndex) => {
+    if (!choice || typeof choice !== "object") {
+      return choice;
+    }
+    const nextChoice = { ...(choice as Record<string, unknown>) };
+    if (typeof nextChoice.index !== "number") {
+      nextChoice.index = choiceIndex;
+      mutated = true;
+    }
+
+    if (
+      nextChoice.finish_reason !== undefined &&
+      nextChoice.finish_reason !== null &&
+      typeof nextChoice.finish_reason !== "string"
+    ) {
+      nextChoice.finish_reason = String(nextChoice.finish_reason);
+      mutated = true;
+    }
+
+    if (nextChoice.delta && typeof nextChoice.delta === "object") {
+      const nextDelta = { ...(nextChoice.delta as Record<string, unknown>) };
+
+      if ("role" in nextDelta) {
+        if (
+          nextDelta.role === "" ||
+          nextDelta.role === null ||
+          nextDelta.role === undefined
+        ) {
+          delete nextDelta.role;
+          mutated = true;
+        } else if (nextDelta.role !== "assistant") {
+          nextDelta.role = "assistant";
+          mutated = true;
+        }
+      }
+
+      if (Array.isArray(nextDelta.content)) {
+        nextDelta.content = nextDelta.content
+          .map((part) => {
+            if (typeof part === "string") {
+              return part;
+            }
+            if (
+              part &&
+              typeof part === "object" &&
+              typeof (part as { text?: unknown }).text === "string"
+            ) {
+              return (part as { text: string }).text;
+            }
+            return "";
+          })
+          .join("");
+        mutated = true;
+      }
+
+      if (Array.isArray(nextDelta.tool_calls)) {
+        nextDelta.tool_calls = nextDelta.tool_calls.map((tc, tcIndex) => {
+          if (!tc || typeof tc !== "object") {
+            return tc;
+          }
+          const nextTc = { ...(tc as Record<string, unknown>) };
+          if (typeof nextTc.index !== "number") {
+            nextTc.index = tcIndex;
+            mutated = true;
+          }
+          if (nextTc.type !== undefined && nextTc.type !== "function") {
+            nextTc.type = "function";
+            mutated = true;
+          }
+          return nextTc;
+        });
+      }
+
+      if ("annotations" in nextDelta) {
+        if (Array.isArray(nextDelta.annotations)) {
+          const validAnnotations = nextDelta.annotations.filter(
+            isValidUrlCitationAnnotation
+          );
+          if (validAnnotations.length === 0) {
+            delete nextDelta.annotations;
+            mutated = true;
+          } else if (validAnnotations.length !== nextDelta.annotations.length) {
+            nextDelta.annotations = validAnnotations;
+            mutated = true;
+          }
+        } else if (nextDelta.annotations !== null) {
+          delete nextDelta.annotations;
+          mutated = true;
+        }
+      }
+
+      nextChoice.delta = nextDelta;
+    }
+
+    return nextChoice;
+  });
+
+  if (!mutated) {
+    return rawPayload;
+  }
+
+  return JSON.stringify({
+    ...record,
+    choices: normalizedChoices,
+  });
+}
+
+function normalizeSseLine(line: string): string {
+  const hasCarriageReturn = line.endsWith("\r");
+  const cleanLine = hasCarriageReturn ? line.slice(0, -1) : line;
+  if (!cleanLine.startsWith("data:")) {
+    return line;
+  }
+  const payload = cleanLine.slice(5);
+  const leadingSpace = payload.startsWith(" ") ? " " : "";
+  const normalized = normalizeOpenRouterSsePayload(payload);
+  if (normalized === payload) {
+    return line;
+  }
+  return `data:${leadingSpace}${normalized.trim()}${hasCarriageReturn ? "\r" : ""}`;
+}
+
+export function normalizeOpenRouterSseResponse(response: Response): Response {
+  if (!response.body) {
+    return response;
+  }
+
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  const transformed = response.body.pipeThrough(
+    new TransformStream<Uint8Array, Uint8Array>({
+      flush(controller) {
+        buffer += decoder.decode();
+        if (buffer.length > 0) {
+          controller.enqueue(encoder.encode(normalizeSseLine(buffer)));
+          buffer = "";
+        }
+      },
+      transform(chunk, controller) {
+        buffer += decoder.decode(chunk, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+        if (lines.length === 0) {
+          return;
+        }
+        const output = `${lines.map(normalizeSseLine).join("\n")}\n`;
+        controller.enqueue(encoder.encode(output));
+      },
+    })
+  );
+
+  return new Response(transformed, {
+    headers: response.headers,
+    status: response.status,
+    statusText: response.statusText,
+  });
+}
+
 /**
  * Résout la clé Bearer à utiliser vers OpenRouter.
  *
@@ -221,21 +437,44 @@ export function getLanguageModel(
       }
 
       let nextInit = init;
+      let normalizedBody: Record<string, unknown> | null = null;
+      let isStreamingRequest = false;
       if (typeof init?.body === "string") {
         try {
           const parsed = JSON.parse(init.body) as Record<string, unknown>;
-          const normalized = prepareOpenRouterRequestBody(
+          isStreamingRequest = parsed.stream === true;
+          normalizedBody = prepareOpenRouterRequestBody(
             parsed,
             modelId,
             targetModelId
           );
-          nextInit = { ...init, body: JSON.stringify(normalized) };
+          nextInit = { ...init, body: JSON.stringify(normalizedBody) };
         } catch {
           // Corps non-JSON : transmis tel quel.
         }
       }
 
-      const response = await fetch(urlStr, nextInit);
+      let response = await fetch(urlStr, nextInit);
+      if (
+        response.status === 400 &&
+        normalizedBody &&
+        ("reasoning" in normalizedBody ||
+          "temperature" in normalizedBody ||
+          "top_p" in normalizedBody)
+      ) {
+        const strippedBody = { ...normalizedBody };
+        delete strippedBody.reasoning;
+        delete strippedBody.temperature;
+        delete strippedBody.top_p;
+        console.warn(
+          `[openrouter] retry_without_optional_params requestedModel=${modelId} targetModel=${targetModelId}`
+        );
+        response = await fetch(urlStr, {
+          ...init,
+          body: JSON.stringify(strippedBody),
+        });
+      }
+
       if (!response.ok) {
         const preview = await response
           .clone()
@@ -247,9 +486,22 @@ export function getLanguageModel(
         );
         return response;
       }
+
       // Le provider ignore les blocs de raisonnement : c'est le dernier point
       // où le flux passe intact, donc le seul endroit où les capturer.
-      return reasoningSink ? reasoningSink.attach(response) : response;
+      const withReasoning = reasoningSink
+        ? reasoningSink.attach(response)
+        : response;
+      const contentType = (
+        withReasoning.headers.get("content-type") ?? ""
+      ).toLowerCase();
+      if (
+        contentType.includes("text/event-stream") ||
+        (isStreamingRequest && !contentType.includes("application/json"))
+      ) {
+        return normalizeOpenRouterSseResponse(withReasoning);
+      }
+      return withReasoning;
     },
     headers,
   });

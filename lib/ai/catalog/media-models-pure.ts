@@ -109,6 +109,73 @@ function readStringArray(value: unknown): string[] {
   return out;
 }
 
+export function inferImageModelProvider(
+  modelId: string,
+  rawProvider: string
+): string {
+  const cleanedProvider = rawProvider.trim().toLowerCase();
+  if (
+    cleanedProvider &&
+    cleanedProvider !== "cometapi" &&
+    cleanedProvider !== "openrouter" &&
+    cleanedProvider !== "inconnu" &&
+    cleanedProvider !== "unknown" &&
+    cleanedProvider !== modelId.toLowerCase()
+  ) {
+    return rawProvider.trim();
+  }
+
+  const lowerId = modelId.trim().toLowerCase();
+  if (lowerId.includes("/")) {
+    const prefix = lowerId.split("/")[0];
+    if (prefix && prefix !== "cometapi" && prefix !== "openrouter") {
+      return prefix;
+    }
+  }
+
+  if (lowerId.includes("flux")) return "black-forest-labs";
+  if (lowerId.startsWith("dall-e") || lowerId.startsWith("gpt-image"))
+    return "openai";
+  if (
+    lowerId.includes("stable-diffusion") ||
+    lowerId.startsWith("sdxl") ||
+    lowerId.startsWith("sd3") ||
+    lowerId.startsWith("sd-")
+  ) {
+    return "stability-ai";
+  }
+  if (lowerId.includes("midjourney") || lowerId.startsWith("mj-"))
+    return "midjourney";
+  if (lowerId.includes("recraft")) return "recraft-ai";
+  if (lowerId.includes("ideogram")) return "ideogram-ai";
+  if (lowerId.includes("imagen") || lowerId.includes("gemini")) return "google";
+  if (lowerId.includes("photon") || lowerId.includes("luma")) return "luma";
+  if (lowerId.includes("seedream") || lowerId.includes("doubao"))
+    return "bytedance";
+  if (lowerId.includes("kling") || lowerId.includes("kolors"))
+    return "kwaipilot";
+  if (lowerId.includes("hunyuan")) return "tencent";
+  if (lowerId.includes("qwen") || lowerId.includes("wan")) return "qwen";
+
+  return rawProvider.trim() || "mai";
+}
+
+function formatImageModelDescription(
+  rawDescription: string | undefined,
+  displayName: string
+): string {
+  const trimmed = (rawDescription ?? "").trim();
+  if (
+    !trimmed ||
+    /^mod[èe]le (?:d['’]image|de g[ée]n[ée]ration d['’]images)\s+[a-z0-9._/-]+\.?$/i.test(
+      trimmed
+    )
+  ) {
+    return `Modèle de génération d'images ${displayName}.`;
+  }
+  return trimmed;
+}
+
 /**
  * Construit le catalogue d'images à partir de `openrouter_models` :
  * - uniquement le fournisseur `cometapi`
@@ -134,6 +201,19 @@ export function buildCometImageCatalog(
         features.includes("image-to-image") ||
         features.includes("edits") ||
         eff.id.toLowerCase().includes("kontext");
+      const resolvedProvider = inferImageModelProvider(eff.id, eff.provider);
+      let displayName = normalizeModelDisplayName(eff.id, eff.name);
+      if (
+        resolvedProvider === "midjourney" &&
+        /^v\d+(?:\.\d+)*$/i.test(displayName)
+      ) {
+        displayName = `Midjourney ${displayName}`;
+      }
+      const isFree =
+        typeof model.overrides?.isFree === "boolean"
+          ? model.overrides.isFree
+          : isFreeModelId(eff.id);
+
       return {
         capabilities: {
           async_task: true,
@@ -142,8 +222,7 @@ export function buildCometImageCatalog(
           text_to_image: true,
         },
         created: eff.created,
-        description:
-          eff.description || `Modèle de génération d'images ${eff.name}.`,
+        description: formatImageModelDescription(eff.description, displayName),
         endpoints: supportsEdit
           ? ["/v1/images/generations", "/v1/images/edits"]
           : ["/v1/images/generations"],
@@ -151,11 +230,11 @@ export function buildCometImageCatalog(
         form: "openai-standard",
         fournisseur: "cometapi",
         id: eff.id,
-        isFree: true,
-        name: normalizeModelDisplayName(eff.id, eff.name),
+        isFree,
+        name: displayName,
         object: "model",
-        owned_by: eff.provider,
-        provider: eff.provider,
+        owned_by: resolvedProvider,
+        provider: resolvedProvider,
       };
     });
 

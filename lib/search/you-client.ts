@@ -305,10 +305,19 @@ async function raceFirst<T>(
   if (tentatives.length === 0) {
     return null;
   }
-  // `Promise.any` rejette dès que TOUTES les tentatives ont échoué : on veut
-  // exactement ce comportement, et on récupère la première qui RÉUSSIT.
+  // `Promise.any` résout dès la première promesse tenue, même si sa valeur
+  // vaut `null` : on rejette explicitement les retours vides afin qu'une
+  // clé en échec rapide n'interrompe pas les autres clés encore en vol.
   try {
-    return await Promise.any(tentatives.map((tentative) => tentative()));
+    return await Promise.any(
+      tentatives.map(async (tentative) => {
+        const valeur = await tentative();
+        if (valeur === null || valeur === undefined) {
+          throw new Error("empty_attempt");
+        }
+        return valeur;
+      })
+    );
   } catch {
     return null;
   }
@@ -317,9 +326,11 @@ async function raceFirst<T>(
 /** Points d'entrée du moteur, par ordre de préférence. */
 const YOU_SEARCH_ENDPOINTS = [
   "https://ydc-index.io/v1/search",
-  "https://api.ydc-index.io/v1/search",
-  "https://api.ydc-index.io/search",
+  "https://api.you.com/v1/search",
 ];
+
+const YOU_REQUEST_TIMEOUT_MS = 6000;
+const YOU_RETRY_GET_STATUSES = new Set([400, 405, 422]);
 
 /**
  * Nombre de liens demandés au moteur par UNE requête.
@@ -329,6 +340,9 @@ const YOU_SEARCH_ENDPOINTS = [
  * aujourd'hui de façon fiable — c'est le rythme d'un tour de complément.
  */
 const YOU_MAX_PER_REQUEST = 25;
+
+/** Plafond documenté de `/v1/search` pour le paramètre `count` (1..100). */
+const YOU_API_COUNT_MAX = 100;
 
 /**
  * Nombre de tours de COMPLÉMENT possibles.
@@ -340,6 +354,128 @@ const YOU_MAX_PER_REQUEST = 25;
  */
 const YOU_MAX_FILL_ROUNDS = 4;
 
+type YouWebPayload = {
+  hits: SearchWebHit[];
+  images: SearchImageHit[];
+  news: SearchNewsHit[];
+};
+
+function parseYouWebPayload(data: any, query: string): YouWebPayload | null {
+  if (!data || typeof data !== "object") {
+    return null;
+  }
+
+  const hits: SearchWebHit[] = [];
+  const images: SearchImageHit[] = [];
+  /**
+   * Actualités rendues par le MÊME appel que le Web.
+   *
+   * Elles étaient déjà présentes dans `results.news`, mais fondues dans la
+   * liste web : un titre d'actualité s'affichait alors dans l'onglet
+   * « Tous » sans jamais alimenter l'onglet « Actualités ». Les garder à
+   * part permet de nourrir les deux, sans seconde requête ni délai
+   * supplémentaire.
+   */
+  const youNews: SearchNewsHit[] = [];
+
+  const rawNews = Array.isArray(data.results?.news)
+    ? (data.results.news as Record<string, unknown>[])
+    : Array.isArray(data.news?.results)
+      ? (data.news.results as Record<string, unknown>[])
+      : [];
+  for (const item of rawNews) {
+    const title = String(item.title ?? item.name ?? "").trim();
+    const url = String(item.url ?? item.link ?? "").trim();
+    if (!title || !url) {
+      continue;
+    }
+    const snippet = String(
+      item.description ?? item.snippet ?? item.text ?? ""
+    ).trim();
+    youNews.push({
+      favicon_url: buildFaviconUrl(url),
+      page_age:
+        typeof item.page_age === "string"
+          ? item.page_age
+          : typeof item.published_at === "string"
+            ? item.published_at
+            : undefined,
+      snippet: snippet.slice(0, 400),
+      source:
+        typeof item.source === "string"
+          ? item.source
+          : (() => {
+              try {
+                return new URL(url).hostname;
+              } catch {}
+            })(),
+      title,
+      url,
+    });
+  }
+
+  let rawHits: any[] = [];
+  if (data.results && typeof data.results === "object") {
+    if (Array.isArray(data.results)) {
+      rawHits = data.results;
+    } else {
+      if (Array.isArray(data.results.web)) rawHits.push(...data.results.web);
+      if (Array.isArray(data.results.news)) rawHits.push(...data.results.news);
+    }
+  } else if (Array.isArray(data.hits)) {
+    rawHits = data.hits;
+  } else if (Array.isArray(data.web?.results)) {
+    rawHits = data.web.results;
+  }
+
+  for (const hit of rawHits) {
+    let snippet = "";
+    if (hit.contents?.markdown) {
+      snippet = hit.contents.markdown.slice(0, 300);
+    } else if (Array.isArray(hit.snippets) && hit.snippets.length > 0) {
+      snippet = hit.snippets.join(" ... ");
+    } else {
+      snippet = hit.description || hit.snippet || hit.text || "";
+    }
+
+    const title = hit.title || hit.name || "";
+    const url = hit.url || hit.link || "";
+
+    if (title && url) {
+      hits.push({
+        // L'icône est TOUJOURS reconstruite depuis l'URL du résultat, jamais
+        // reprise du moteur : You.com rend des URL du service S2 de Google,
+        // déprécié, qui répond 404 et n'est plus autorisé par la CSP. Les
+        // reprendre affichait des favicons cassés que le repli local ne
+        // pouvait pas rattraper, puisque l'URL semblait valide.
+        favicon_url: url ? buildFaviconUrl(url) : undefined,
+        page_age: hit.page_age,
+        snippet: snippet.trim(),
+        thumbnail_url: hit.thumbnail_url || hit.image_url,
+        title,
+        url,
+      });
+    }
+
+    // Extraire les images/thumbnails s'il y en a
+    if (hit.thumbnail_url || hit.image_url) {
+      images.push({
+        image_url: hit.image_url || hit.thumbnail_url,
+        page_url: url,
+        thumbnail: hit.thumbnail_url || hit.image_url,
+        title: title || query,
+      });
+    }
+  }
+
+  // Un résultat VIDE n'est pas une réussite : on préfère une autre
+  // tentative qui rendrait des liens. Une réponse qui ne porte QUE des
+  // actualités reste une réussite pour l'onglet éponyme.
+  return hits.length > 0 || youNews.length > 0
+    ? { hits, images, news: youNews }
+    : null;
+}
+
 /**
  * Une requête au moteur, avec UNE clé et UN point d'entrée.
  */
@@ -348,14 +484,11 @@ async function fetchYouWebOnce(
   count: number,
   key: string,
   endpoint: string
-): Promise<{
-  hits: SearchWebHit[];
-  images: SearchImageHit[];
-  news: SearchNewsHit[];
-} | null> {
+): Promise<YouWebPayload | null> {
+  const safeCount = Math.max(1, Math.min(count, YOU_API_COUNT_MAX));
   try {
-    const res = await fetch(endpoint, {
-      body: JSON.stringify({ count, query }),
+    let res = await fetch(endpoint, {
+      body: JSON.stringify({ count: safeCount, query }),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -363,126 +496,34 @@ async function fetchYouWebOnce(
         "X-API-Key": key,
       },
       method: "POST",
-      signal: AbortSignal.timeout(4000),
+      signal: AbortSignal.timeout(YOU_REQUEST_TIMEOUT_MS),
     });
 
-    if (!res.ok) {
-      return null;
-    }
-    const data: any = await res.json().catch(() => null);
-    if (!data) {
-      return null;
-    }
-    const hits: SearchWebHit[] = [];
-    const images: SearchImageHit[] = [];
-    /**
-     * Actualités rendues par le MÊME appel que le Web.
-     *
-     * Elles étaient déjà présentes dans `results.news`, mais fondues dans la
-     * liste web : un titre d'actualité s'affichait alors dans l'onglet
-     * « Tous » sans jamais alimenter l'onglet « Actualités ». Les garder à
-     * part permet de nourrir les deux, sans seconde requête ni délai
-     * supplémentaire.
-     */
-    const youNews: SearchNewsHit[] = [];
-
-    const rawNews = Array.isArray(data.results?.news)
-      ? (data.results.news as Record<string, unknown>[])
-      : Array.isArray(data.news?.results)
-        ? (data.news.results as Record<string, unknown>[])
-        : [];
-    for (const item of rawNews) {
-      const title = String(item.title ?? item.name ?? "").trim();
-      const url = String(item.url ?? item.link ?? "").trim();
-      if (!title || !url) {
-        continue;
-      }
-      const snippet = String(
-        item.description ?? item.snippet ?? item.text ?? ""
-      ).trim();
-      youNews.push({
-        favicon_url: buildFaviconUrl(url),
-        page_age:
-          typeof item.page_age === "string"
-            ? item.page_age
-            : typeof item.published_at === "string"
-              ? item.published_at
-              : undefined,
-        snippet: snippet.slice(0, 400),
-        source:
-          typeof item.source === "string"
-            ? item.source
-            : (() => {
-                try {
-                  return new URL(url).hostname;
-                } catch {}
-              })(),
-        title,
-        url,
+    // Certains comptes ou limites `count` rejettent le POST (400/405/422) :
+    // on retente alors en GET avec un volume borné pour éviter un basculement
+    // inutile vers le repli.
+    if (!res.ok && YOU_RETRY_GET_STATUSES.has(res.status)) {
+      const getCount = Math.min(safeCount, YOU_MAX_PER_REQUEST);
+      const getUrl = `${endpoint}?query=${encodeURIComponent(query)}&count=${getCount}`;
+      res = await fetch(getUrl, {
+        headers: {
+          Accept: "application/json",
+          "User-Agent": "mAI-Search/1.0",
+          "X-API-Key": key,
+        },
+        method: "GET",
+        signal: AbortSignal.timeout(YOU_REQUEST_TIMEOUT_MS),
       });
     }
 
-    let rawHits: any[] = [];
-    if (data.results && typeof data.results === "object") {
-      if (Array.isArray(data.results)) {
-        rawHits = data.results;
-      } else {
-        if (Array.isArray(data.results.web)) rawHits.push(...data.results.web);
-        if (Array.isArray(data.results.news))
-          rawHits.push(...data.results.news);
+    if (!res.ok) {
+      if (res.status !== 404) {
+        console.warn(`[mAI-Search] You.com ${endpoint} -> HTTP ${res.status}`);
       }
-    } else if (Array.isArray(data.hits)) {
-      rawHits = data.hits;
-    } else if (Array.isArray(data.web?.results)) {
-      rawHits = data.web.results;
+      return null;
     }
-
-    for (const hit of rawHits) {
-      let snippet = "";
-      if (hit.contents?.markdown) {
-        snippet = hit.contents.markdown.slice(0, 300);
-      } else if (Array.isArray(hit.snippets) && hit.snippets.length > 0) {
-        snippet = hit.snippets.join(" ... ");
-      } else {
-        snippet = hit.description || hit.snippet || hit.text || "";
-      }
-
-      const title = hit.title || hit.name || "";
-      const url = hit.url || hit.link || "";
-
-      if (title && url) {
-        hits.push({
-          // L'icône est TOUJOURS reconstruite depuis l'URL du résultat, jamais
-          // reprise du moteur : You.com rend des URL du service S2 de Google,
-          // déprécié, qui répond 404 et n'est plus autorisé par la CSP. Les
-          // reprendre affichait des favicons cassés que le repli local ne
-          // pouvait pas rattraper, puisque l'URL semblait valide.
-          favicon_url: url ? buildFaviconUrl(url) : undefined,
-          page_age: hit.page_age,
-          snippet: snippet.trim(),
-          thumbnail_url: hit.thumbnail_url || hit.image_url,
-          title,
-          url,
-        });
-      }
-
-      // Extraire les images/thumbnails s'il y en a
-      if (hit.thumbnail_url || hit.image_url) {
-        images.push({
-          image_url: hit.image_url || hit.thumbnail_url,
-          page_url: url,
-          thumbnail: hit.thumbnail_url || hit.image_url,
-          title: title || query,
-        });
-      }
-    }
-
-    // Un résultat VIDE n'est pas une réussite : on préfère une autre
-    // tentative qui rendrait des liens. Une réponse qui ne porte QUE des
-    // actualités reste une réussite pour l'onglet éponyme.
-    return hits.length > 0 || youNews.length > 0
-      ? { hits, images, news: youNews }
-      : null;
+    const data: any = await res.json().catch(() => null);
+    return parseYouWebPayload(data, query);
   } catch {
     // Erreur ou timeout : un autre tour (ou une autre clé) prendra le
     // relais.
@@ -497,57 +538,58 @@ async function fetchYouWebOnce(
  * rend pas toujours tout ce qu'on lui demande : la stratégie est donc
  * « un tour large, puis des tours de complément ».
  *
- * - Premier tour : la cible ENTIÈRE est demandée, les clés essayées en
- *   parallèle (comportement historique — la première qui répond gagne).
- * - Tours de complément : seulement si le premier tour est revenu court. Le
- *   manque est réparti sur les autres clés, et les requêtes partent EN
- *   PARALLÈLE : le délai reste celui de la plus lente, pas leur somme.
+ * - Premier tour : la cible (plafonnée au max API de 100) est demandée, les
+ *   clés essayées en parallèle (la première qui réussit gagne).
+ * - Tours de complément : seulement si le premier tour a réussi sur un point
+ *   d'entrée mais rendu moins que demandé.
  *
  * Le résultat est tronqué quand même : la réponse porte alors
  * `truncated`, et l'interface dit ce qu'elle a obtenu.
  */
-async function fetchYouWeb(
-  query: string,
-  count = 10
-): Promise<{
-  hits: SearchWebHit[];
-  images: SearchImageHit[];
-  news: SearchNewsHit[];
-}> {
+async function fetchYouWeb(query: string, count = 10): Promise<YouWebPayload> {
   const keys = getYouApiKeys();
   if (keys.length === 0) return { hits: [], images: [], news: [] };
 
   const cible = Math.max(1, Math.min(count, MAI_SEARCH_RESULT_COUNT_MAX));
+  const premierTour = Math.min(cible, YOU_API_COUNT_MAX);
 
   /**
    * Un tour = un point d'entrée, essayé avec TOUTES les clés en parallèle.
    *
-   * Les clés sont réparties sur les tours, et non clonées : une seule clé
-   * qui échoue ne fait pas échouer le tour. Le tour suivant n'est tenté
-   * que si le premier a entièrement échoué.
+   * Une seule clé qui échoue ne fait pas échouer le tour. Le point d'entrée
+   * suivant n'est tenté que si le courant a entièrement échoué.
    */
   const hits: SearchWebHit[] = [];
   const images: SearchImageHit[] = [];
   const news: SearchNewsHit[] = [];
+  let workingEndpoint: string | null = null;
 
   for (const endpoint of YOU_SEARCH_ENDPOINTS) {
     const resultat = await raceFirst(
       keys.map(
-        (key) => async () => fetchYouWebOnce(query, cible, key, endpoint)
+        (key) => async () => fetchYouWebOnce(query, premierTour, key, endpoint)
       )
     );
     if (resultat) {
       hits.push(...resultat.hits);
       images.push(...resultat.images);
       news.push(...resultat.news);
+      workingEndpoint = endpoint;
       break;
     }
   }
 
-  // Le moteur a rendu moins que demandé : on complète, en répartissant le
-  // manque sur les clés disponibles.
+  // Si aucun point d'entrée n'a répondu avec succès, inutile de lancer des
+  // tours de complément : le repli multi-sources prend le relais.
+  if (!workingEndpoint) {
+    return { hits: [], images: [], news: [] };
+  }
+
+  // Le moteur a rendu moins que demandé : on complète sur le point d'entrée
+  // valide, en arrêtant dès qu'un tour n'apporte plus de nouvelles URLs.
+  let uniqueHitsCount = dedupeByUrl(hits).length;
   for (let tour = 1; tour <= YOU_MAX_FILL_ROUNDS; tour++) {
-    const manque = cible - hits.length;
+    const manque = cible - uniqueHitsCount;
     if (manque <= 0) {
       break;
     }
@@ -565,7 +607,7 @@ async function fetchYouWeb(
 
     const complement = await Promise.allSettled(
       clesDuTour.map((cle) =>
-        fetchYouWebOnce(query, parRequete, cle, YOU_SEARCH_ENDPOINTS[0])
+        fetchYouWebOnce(query, parRequete, cle, workingEndpoint)
       )
     );
     for (const resultat of complement) {
@@ -575,6 +617,11 @@ async function fetchYouWeb(
         news.push(...resultat.value.news);
       }
     }
+    const nextUniqueCount = dedupeByUrl(hits).length;
+    if (nextUniqueCount <= uniqueHitsCount) {
+      break;
+    }
+    uniqueHitsCount = nextUniqueCount;
   }
 
   // Les tours de complément redemandent au moteur une partie de ce qu'il a
@@ -780,87 +827,227 @@ async function fetchYouImages(
   return resultat ?? [];
 }
 
-/**
- * Repli multi-sources (Wikipédia, Google News RSS)
- *
- * La langue est celle de l'appelant — celle de la préférence du compte.
- * La détection automatique par accents (l'ancien comportement) n'était
- * qu'un pis-aller : un utilisateur qui a choisi l'anglais veut de l'anglais,
- * même sur une requête accentuée.
- *
- * Wikipédia passe par `lib/search/wikipedia.ts`, comme le chemin principal :
- * le repli interrogeait l'API `opensearch` à côté, avec son propre
- * User-Agent, son propre délai et son propre nettoyage de balisage. Deux
- * chemins pour la même source, c'est deux comportements : le repli perdait
- * les résumés, donc l'interface n'affichait qu'un titre.
- */
-async function fallbackSearch(
-  query: string,
-  lang: MaiSearchLanguage = "fr"
-): Promise<SearchWebHit[]> {
-  const results: SearchWebHit[] = [];
+function decodeHtmlEntities(input: string): string {
+  return input
+    .replace(/<[^>]+>/g, "")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#(\d+);/g, (_, code) =>
+      String.fromCharCode(Number.parseInt(code, 10))
+    )
+    .replace(/&amp;/g, "&")
+    .trim();
+}
 
-  // 1. Wikipédia — même module, mêmes résumés, même cache.
-  const wikiHits = await fetchWikipediaWeb(query, 6, lang);
-  results.push(...wikiHits);
+function unwrapRedirectParam(rawUrl: string, paramName: string): string {
+  try {
+    const parsed = new URL(rawUrl, "https://example.invalid");
+    const target = parsed.searchParams.get(paramName);
+    if (target?.startsWith("http")) {
+      return target;
+    }
+  } catch {}
+  return rawUrl;
+}
 
-  // 2. Google News RSS
-  if (results.length < 5) {
-    try {
-      // Le flux suit la langue demandée : une recherche en anglais sur des
-      // sources françaises ne renvoyait que des titres français, tronqués
-      // par le décalage de région.
-      const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=${lang}&gl=${GOOGLE_NEWS_REGION[lang]}&ceid=${GOOGLE_NEWS_CEID[lang]}`;
-      const res = await fetch(rssUrl, {
-        headers: {
-          Accept: "application/rss+xml, text/xml, */*",
-          "User-Agent": "Mozilla/5.0",
-        },
-        signal: AbortSignal.timeout(3000),
+function parseRssNewsItems(
+  xml: string,
+  limit: number,
+  options?: { unwrapUrlParam?: string }
+): SearchNewsHit[] {
+  const items = xml.split("<item>");
+  const newsHits: SearchNewsHit[] = [];
+
+  for (let i = 1; i < items.length && newsHits.length < limit; i++) {
+    const block = items[i].split("</item>")[0];
+    const titleMatch = block.match(/<title>([\s\S]*?)<\/title>/i);
+    const linkMatch =
+      block.match(/<link>([\s\S]*?)<\/link>/i) ||
+      block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/i);
+    const descMatch = block.match(/<description>([\s\S]*?)<\/description>/i);
+    const pubDateMatch = block.match(/<pubDate>([\s\S]*?)<\/pubDate>/i);
+    const sourceMatch = block.match(/<source[^>]*>([\s\S]*?)<\/source>/i);
+
+    const title = titleMatch
+      ? decodeHtmlEntities(
+          titleMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
+        )
+      : "";
+    let link = linkMatch
+      ? linkMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1").trim()
+      : "";
+    if (link && options?.unwrapUrlParam) {
+      link = unwrapRedirectParam(link, options.unwrapUrlParam);
+    }
+    const snippet = descMatch
+      ? decodeHtmlEntities(
+          descMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
+        )
+      : title;
+    const source = sourceMatch ? decodeHtmlEntities(sourceMatch[1]) : undefined;
+    const page_age = pubDateMatch ? pubDateMatch[1].trim() : undefined;
+
+    if (title && link.startsWith("http")) {
+      newsHits.push({
+        favicon_url: buildFaviconUrl(link),
+        page_age,
+        snippet: snippet || title,
+        source,
+        title,
+        url: link,
       });
-      if (res.ok) {
-        const xml = await res.text();
-        const items = xml.split("<item>");
-        for (let i = 1; i < items.length && results.length < 10; i++) {
-          const block = items[i].split("</item>")[0];
-          const titleMatch = block.match(/<title>([\s\S]*?)<\/title>/i);
-          const linkMatch = block.match(/<link>([\s\S]*?)<\/link>/i);
-          const descMatch = block.match(
-            /<description>([\s\S]*?)<\/description>/i
-          );
-
-          const title = titleMatch
-            ? titleMatch[1]
-                .replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
-                .replace(/<[^>]+>/g, "")
-                .trim()
-            : "";
-          const link = linkMatch
-            ? linkMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1").trim()
-            : "";
-          const snippet = descMatch
-            ? descMatch[1]
-                .replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
-                .replace(/<[^>]+>/g, "")
-                .trim()
-            : title;
-
-          if (title && link) {
-            results.push({
-              favicon_url: buildFaviconUrl(link),
-              snippet,
-              title,
-              url: link,
-            });
-          }
-        }
-      }
-    } catch {
-      // Continue
     }
   }
 
-  return results;
+  return newsHits;
+}
+
+async function fetchDuckDuckGoHtmlWeb(
+  query: string,
+  limit = 15,
+  lang: MaiSearchLanguage = "fr"
+): Promise<SearchWebHit[]> {
+  try {
+    const res = await fetch(
+      `https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`,
+      {
+        headers: {
+          Accept:
+            "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Accept-Language": `${lang}-${GOOGLE_NEWS_REGION[lang]},${lang};q=0.9,en;q=0.8`,
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        },
+        signal: AbortSignal.timeout(3000),
+      }
+    );
+    if (!res.ok) {
+      return [];
+    }
+    const html = await res.text();
+    const blocks = html.split(/class="[^"]*result\b[^"]*"/i).slice(1);
+    const hits: SearchWebHit[] = [];
+
+    for (const block of blocks) {
+      if (hits.length >= limit) {
+        break;
+      }
+      const linkMatch = block.match(
+        /<a[^>]*class="[^"]*result__a[^"]*"[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i
+      );
+      if (!linkMatch) {
+        continue;
+      }
+      let url = unwrapRedirectParam(linkMatch[1], "uddg");
+      if (url.startsWith("//")) {
+        url = `https:${url}`;
+      }
+      if (!url.startsWith("http") || url.includes("duckduckgo.com/y.js")) {
+        continue;
+      }
+      const title = decodeHtmlEntities(linkMatch[2]);
+      if (!title) {
+        continue;
+      }
+      const snippetMatch = block.match(
+        /class="[^"]*result__snippet[^"]*"[^>]*>([\s\S]*?)<\/(?:a|div|span)>/i
+      );
+      const snippet = snippetMatch
+        ? decodeHtmlEntities(snippetMatch[1])
+        : title;
+
+      hits.push({
+        favicon_url: buildFaviconUrl(url),
+        snippet: snippet || title,
+        title,
+        url,
+      });
+    }
+
+    return hits;
+  } catch {
+    return [];
+  }
+}
+
+async function fetchBingNewsWeb(
+  query: string,
+  limit = 8
+): Promise<SearchWebHit[]> {
+  try {
+    const res = await fetch(
+      `https://www.bing.com/news/search?q=${encodeURIComponent(query)}&format=rss`,
+      {
+        headers: {
+          Accept: "application/rss+xml, text/xml, */*",
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        },
+        signal: AbortSignal.timeout(3000),
+      }
+    );
+    if (!res.ok) {
+      return [];
+    }
+    const xml = await res.text();
+    return parseRssNewsItems(xml, limit, { unwrapUrlParam: "url" }).map(
+      (item) => ({
+        favicon_url: item.favicon_url,
+        page_age: item.page_age,
+        snippet: item.snippet,
+        title: item.title,
+        url: item.url,
+      })
+    );
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Repli multi-sources Web (DuckDuckGo HTML, Bing News RSS, Google News RSS,
+ * puis Wikipédia en dernier recours uniquement).
+ *
+ * Les sources généralistes partent en parallèle pour éviter qu'une réponse
+ * encyclopédique suffise à masquer tout le reste du Web quand You.com est
+ * indisponible. Wikipédia reste le dernier filet quand aucune source Web
+ * généraliste n'a répondu.
+ */
+async function fallbackSearch(
+  query: string,
+  lang: MaiSearchLanguage = "fr",
+  limit = 15
+): Promise<SearchWebHit[]> {
+  const safeLimit = Math.max(5, Math.min(limit, 30));
+  const [ddgRes, bingRes, googleRes] = await Promise.allSettled([
+    fetchDuckDuckGoHtmlWeb(query, safeLimit, lang),
+    fetchBingNewsWeb(query, 8),
+    fetchGoogleNews(query, 8, lang),
+  ]);
+
+  const ddgHits = ddgRes.status === "fulfilled" ? ddgRes.value : [];
+  const bingHits = bingRes.status === "fulfilled" ? bingRes.value : [];
+  const googleHits: SearchWebHit[] =
+    googleRes.status === "fulfilled"
+      ? googleRes.value.map((item) => ({
+          favicon_url: item.favicon_url,
+          page_age: item.page_age,
+          snippet: item.snippet,
+          title: item.title,
+          url: item.url,
+        }))
+      : [];
+
+  const generalWeb = dedupeByUrl([...ddgHits, ...bingHits, ...googleHits]);
+  if (generalWeb.length > 0) {
+    return generalWeb.slice(0, safeLimit);
+  }
+
+  // Dernier recours si aucune source généraliste n'a abouti : Wikipédia.
+  return fetchWikipediaWeb(query, 6, lang);
 }
 
 async function fetchGoogleNews(
@@ -879,47 +1066,7 @@ async function fetchGoogleNews(
     });
     if (!res.ok) return [];
     const xml = await res.text();
-    const items = xml.split("<item>");
-    const newsHits: SearchNewsHit[] = [];
-
-    for (let i = 1; i < items.length && newsHits.length < limit; i++) {
-      const block = items[i].split("</item>")[0];
-      const titleMatch = block.match(/<title>([\s\S]*?)<\/title>/i);
-      const linkMatch = block.match(/<link>([\s\S]*?)<\/link>/i);
-      const descMatch = block.match(/<description>([\s\S]*?)<\/description>/i);
-      const pubDateMatch = block.match(/<pubDate>([\s\S]*?)<\/pubDate>/i);
-      const sourceMatch = block.match(/<source[^>]*>([\s\S]*?)<\/source>/i);
-
-      const title = titleMatch
-        ? titleMatch[1]
-            .replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
-            .replace(/<[^>]+>/g, "")
-            .trim()
-        : "";
-      const link = linkMatch
-        ? linkMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1").trim()
-        : "";
-      const snippet = descMatch
-        ? descMatch[1]
-            .replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
-            .replace(/<[^>]+>/g, "")
-            .trim()
-        : title;
-      const source = sourceMatch ? sourceMatch[1].trim() : undefined;
-      const page_age = pubDateMatch ? pubDateMatch[1].trim() : undefined;
-
-      if (title && link) {
-        newsHits.push({
-          favicon_url: buildFaviconUrl(link),
-          page_age,
-          snippet,
-          source,
-          title,
-          url: link,
-        });
-      }
-    }
-    return newsHits;
+    return parseRssNewsItems(xml, limit);
   } catch {
     return [];
   }
@@ -1239,9 +1386,10 @@ export async function executeMaiSearch(params: {
     wantWikipedia
       ? fetchWikipediaWeb(trimmed, count, lang)
       : Promise.resolve([] as SearchWebHit[]),
-    // Repli web : Wikipédia en recherche ouverte, puis le flux d'actualité.
+    // Repli web : sources généralistes (DuckDuckGo, Bing/Google News), puis
+    // Wikipédia en dernier recours.
     wantWeb
-      ? fallbackSearch(trimmed, lang)
+      ? fallbackSearch(trimmed, lang, count)
       : Promise.resolve([] as SearchWebHit[]),
     // Repli images : les vignettes de l'encyclopédie.
     wantImages

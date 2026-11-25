@@ -83,6 +83,7 @@ export const agentRequestBodySchema = z.object({
   skillParams: z.record(z.string().max(80), z.string().max(400)).optional(),
   tasksEnabled: z.boolean().optional(),
   toolMode: z.enum(["auto", "all", "categories"]).optional().default("auto"),
+  truncateAfterMessageId: z.uuid().optional(),
   visibility: z.enum(["public", "private"]).optional().default("private"),
 });
 

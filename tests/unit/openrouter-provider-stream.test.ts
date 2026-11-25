@@ -1,9 +1,15 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
+  normalizeOpenRouterSsePayload,
   prepareOpenRouterRequestBody,
   resolveOpenRouterApiKey,
   resolveOpenRouterModelId,
 } from "@/lib/ai/providers";
+import {
+  formatUserFacingAiError,
+  MAI_SERVER_DIFFICULTIES_MESSAGE,
+} from "@/lib/ai/server-error-message";
+import { ChatbotError } from "@/lib/errors";
 
 const {
   createNotificationMock,
@@ -143,6 +149,34 @@ describe("Routage et normalisation OpenRouter (lib/ai/providers.ts)", () => {
 
     expect(out.messages).toEqual([{ content: "Salut", role: "user" }]);
   });
+
+  it("normalise les chunks SSE OpenRouter non standard (delta.role vide, index absent, annotations)", () => {
+    const rawChunk = JSON.stringify({
+      choices: [
+        {
+          delta: {
+            annotations: [{ custom: "baidu" }],
+            content: "Bonjour !",
+            role: "",
+            tool_calls: [
+              {
+                function: { arguments: "{}", name: "webSearch" },
+                id: "call_1",
+              },
+            ],
+          },
+        },
+      ],
+      id: "gen-ernie-1",
+    });
+
+    const normalized = JSON.parse(normalizeOpenRouterSsePayload(rawChunk));
+    expect(normalized.choices[0].index).toBe(0);
+    expect("role" in normalized.choices[0].delta).toBe(false);
+    expect("annotations" in normalized.choices[0].delta).toBe(false);
+    expect(normalized.choices[0].delta.content).toBe("Bonjour !");
+    expect(normalized.choices[0].delta.tool_calls[0].index).toBe(0);
+  });
 });
 
 describe("Diagnostic d'erreur et protection contre les bulles vides (lib/chat/stream.ts)", () => {
@@ -152,20 +186,43 @@ describe("Diagnostic d'erreur et protection contre les bulles vides (lib/chat/st
     deleteMessagesAfterMessageIdMock.mockClear();
   });
 
-  it("traduit les codes d'erreur OpenRouter (401, 402, 404, 429, 400) en français clair", () => {
-    expect(formatChatStreamError({ statusCode: 401 })).toContain(
-      "Clé API OpenRouter"
+  it("unifie toutes les pannes OpenRouter et serveur sur « Nos serveurs rencontrent des difficultés » tout en préservant les erreurs métier", () => {
+    for (const statusCode of [400, 401, 402, 404, 429, 500, 502, 503]) {
+      expect(formatChatStreamError({ statusCode })).toBe(
+        MAI_SERVER_DIFFICULTIES_MESSAGE
+      );
+    }
+
+    expect(
+      formatUserFacingAiError(new Error("AI_TypeValidationError: delta.role"))
+    ).toBe(MAI_SERVER_DIFFICULTIES_MESSAGE);
+    expect(formatUserFacingAiError(new TypeError("Failed to fetch"))).toBe(
+      MAI_SERVER_DIFFICULTIES_MESSAGE
     );
-    expect(formatChatStreamError({ statusCode: 402 })).toContain(
-      "Crédits OpenRouter insuffisants"
+    expect(
+      formatUserFacingAiError(new ChatbotError("bad_request:database"))
+    ).toBe(MAI_SERVER_DIFFICULTIES_MESSAGE);
+
+    // Préservation des messages métier actionnables (quota, forfait, média)
+    const quotaErr = new ChatbotError("rate_limit:chat", undefined, {
+      apiCode: "quota_exceeded",
+      messageOverride: "Votre quota hebdomadaire est atteint.",
+    });
+    expect(formatUserFacingAiError(quotaErr)).toBe(
+      "Votre quota hebdomadaire est atteint."
     );
-    expect(formatChatStreamError({ statusCode: 404 })).toContain(
-      "pas disponible sur OpenRouter"
-    );
-    expect(formatChatStreamError({ statusCode: 429 })).toContain("429");
-    expect(formatChatStreamError({ statusCode: 400 })).toContain(
-      "paramètres incompatibles"
-    );
+    expect(
+      formatUserFacingAiError({
+        code: "plan_required",
+        message: "Le mode Agent est réservé aux forfaits Plus, Pro et Max.",
+        status: 403,
+      })
+    ).toBe("Le mode Agent est réservé aux forfaits Plus, Pro et Max.");
+    expect(
+      formatUserFacingAiError(
+        new Error("Les images ne sont pas encore prises en charge par Coach.")
+      )
+    ).toBe("Les images ne sont pas encore prises en charge par Coach.");
   });
 
   it("ne persiste pas un message assistant totalement vide après un échec de flux", async () => {

@@ -12,6 +12,7 @@ import { getModelCapabilitiesFor } from "@/lib/ai/registry";
 import { resolveReasoningEffort } from "@/lib/ai/registry/capabilities";
 import { resolveReasoningProviderOptions } from "@/lib/ai/registry/reasoning";
 import { isModelAllowedForTier } from "@/lib/ai/registry/tiers";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
@@ -345,6 +346,9 @@ export async function POST(request: Request) {
           console.error("[quizzly][coach] enregistrement", error);
         }
       },
+      onError: ({ error }) => {
+        console.error("[quizzly][coach] erreur streamText", error);
+      },
       ...(providerOptions ? { providerOptions } : {}),
     });
     return createTextStreamResponse({
@@ -355,10 +359,16 @@ export async function POST(request: Request) {
       stream: toTextStream({ stream: result.stream }),
     });
   } catch (error) {
-    if (error instanceof ChatbotError) {
+    if (
+      error instanceof ChatbotError &&
+      error.surface !== "database" &&
+      error.type !== "offline"
+    ) {
       return error.toResponse();
     }
     console.error("POST /api/quizzly/coach", error);
-    return errorResponse("database_error");
+    return errorResponse("upstream_error", {
+      message: MAI_SERVER_DIFFICULTIES_MESSAGE,
+    });
   }
 }

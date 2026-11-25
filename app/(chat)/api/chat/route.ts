@@ -4,6 +4,7 @@ import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { getModelCapabilitiesFor } from "@/lib/ai/registry";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import { mergeToolHints } from "@/lib/ai/tools/hints";
 import { errorResponse } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
@@ -385,13 +386,22 @@ export async function POST(request: Request) {
       console.error(
         `[chat-api] rejected guard=chatbot_error code=${error.type}:${error.surface} message="${error.message}"`
       );
+      if (error.surface === "database" || error.type === "offline") {
+        return new ChatbotError("offline:chat", undefined, {
+          apiCode: "upstream_error",
+          messageOverride: MAI_SERVER_DIFFICULTIES_MESSAGE,
+        }).toResponse();
+      }
       return error.toResponse();
     }
     console.error(
       `[chat-api] rejected guard=unhandled chatId=${requestBody?.id ?? "inconnu"} errorName=${(error as Error)?.name ?? "Error"}`,
       error
     );
-    return new ChatbotError("offline:chat").toResponse();
+    return new ChatbotError("offline:chat", undefined, {
+      apiCode: "upstream_error",
+      messageOverride: MAI_SERVER_DIFFICULTIES_MESSAGE,
+    }).toResponse();
   }
 }
 

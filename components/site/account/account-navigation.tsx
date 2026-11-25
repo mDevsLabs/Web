@@ -26,9 +26,9 @@ const ITEMS: Array<{
   icon: React.ComponentType<any>;
 }> = [
   { icon: User, id: "profil", label: "Profil & Paramètres" },
-  { icon: ImageIcon, id: "usage-images", label: "Usage Images" },
-  { icon: Volume2, id: "usage-audio", label: "Usage Audio" },
-  { icon: Gauge, id: "usage-mai", label: "Usage mAI" },
+  { icon: ImageIcon, id: "usage-images", label: "Génération d'images" },
+  { icon: Volume2, id: "usage-audio", label: "Création d'audio" },
+  { icon: Gauge, id: "usage-mai", label: "Utilisation de l'IA" },
   { icon: Cloud, id: "usage-cloud", label: "Stockage Cloud" },
   { icon: Monitor, id: "appareils", label: "Appareils Connectés" },
 ];

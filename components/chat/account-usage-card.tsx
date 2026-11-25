@@ -31,6 +31,7 @@ function UsageGauge({
   percent,
   resetLabel,
   right,
+  rightSub,
 }: {
   gradient: string;
   icon: ReactNode;
@@ -39,6 +40,7 @@ function UsageGauge({
   percent: number;
   resetLabel?: string;
   right: string;
+  rightSub?: string;
 }) {
   return (
     <div className="space-y-2 rounded-xl border border-border/40 bg-muted/10 p-3">
@@ -59,7 +61,7 @@ function UsageGauge({
             {right}
           </span>
           <span className="text-[10.5px] text-muted-foreground">
-            {percent}%
+            {rightSub ?? `${percent}%`}
           </span>
         </div>
       </div>
@@ -189,6 +191,7 @@ export function AccountUsageCard({ output, state }: AccountUsageCardProps) {
                 percent={output.ai.percent}
                 resetLabel={formatResetFr(output.ai.resetAt)}
                 right={`${output.ai.percent}% consommé`}
+                rightSub={`Forfait ${output.tier}`}
               />
             )}
 
@@ -196,28 +199,30 @@ export function AccountUsageCard({ output, state }: AccountUsageCardProps) {
               <UsageGauge
                 gradient="bg-gradient-to-r from-purple-500 to-pink-600"
                 icon={<ImageIcon className="size-3.5" />}
-                label="Générations d'images"
+                label="Génération d'images"
                 note="Images générées aujourd'hui"
                 percent={output.images.percent}
                 resetLabel={`${formatResetFr(output.images.resetAt)} (minuit UTC)`}
-                right={`${formatTokensFr(output.images.usedToday)} / ${formatTokensFr(output.images.dailyLimit)}`}
+                right={`${output.images.percent}% consommé`}
+                rightSub={`Forfait ${output.tier}`}
               />
             ) : (
-              <UnavailableRow label="images" />
+              <UnavailableRow label="génération d'images" />
             )}
 
             {output.speech ? (
               <UsageGauge
                 gradient="bg-gradient-to-r from-emerald-500 to-teal-600"
                 icon={<Volume2Icon className="size-3.5" />}
-                label="Synthèse vocale"
+                label="Création d'audio"
                 note="Consommation hebdomadaire audio"
                 percent={output.speech.percent}
                 resetLabel={formatResetFr(output.speech.resetAt)}
                 right={`${output.speech.percent}% consommé`}
+                rightSub={`Forfait ${output.tier}`}
               />
             ) : (
-              <UnavailableRow label="synthèse vocale" />
+              <UnavailableRow label="création d'audio" />
             )}
 
             {output.storage ? (

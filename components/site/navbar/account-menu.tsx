@@ -135,7 +135,7 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                   }}
                 >
                   <Gauge className="w-4 h-4 text-purple-600" />
-                  Usage mAI
+                  Utilisation de l&apos;IA
                 </Link>
                 <Link
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5"
@@ -146,7 +146,7 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                   }}
                 >
                   <ImageIcon className="w-4 h-4 text-purple-600" />
-                  Usage Images
+                  Génération d&apos;images
                 </Link>
                 <Link
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2.5"
@@ -157,7 +157,7 @@ export function AccountMenu({ pathname, account }: AccountMenuProps) {
                   }}
                 >
                   <Volume2 className="w-4 h-4 text-purple-600" />
-                  Usage Audio
+                  Création d&apos;audio
                 </Link>
                 <Link
                   className="w-full px-3.5 py-2.5 rounded-2xl text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 transition-colors flex flex-col gap-1.5 group/storage"

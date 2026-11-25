@@ -3,6 +3,7 @@ import "server-only";
 import { generateTitleFromConversation } from "@/app/(chat)/actions";
 import { getAgentRunById } from "@/lib/db/agent-queries";
 import {
+  deleteMessagesAfterMessageId,
   saveMessages,
   updateChatTitleById,
   updateMessage,
@@ -14,6 +15,31 @@ import { getTextFromMessage } from "@/lib/utils";
 // sont enregistrés séparément ; ce module ne gère que les messages affichés,
 // afin que la reprise après refresh restitue exactement la conversation.
 
+export function isMeaningfulAgentMessage(message: ChatMessage): boolean {
+  if (message.role !== "assistant") {
+    return true;
+  }
+  const parts = message.parts ?? [];
+  return parts.some((part) => {
+    if (part.type === "text") {
+      return Boolean(part.text?.trim());
+    }
+    if (part.type === "reasoning") {
+      return Boolean((part as { text?: string }).text?.trim());
+    }
+    if (part.type === "file") {
+      return true;
+    }
+    if (
+      typeof part.type === "string" &&
+      (part.type.startsWith("tool-") || part.type === "dynamic-tool")
+    ) {
+      return true;
+    }
+    return false;
+  });
+}
+
 export async function persistAgentRunMessages(params: {
   chatId: string;
   executionOwner?: string | null;
@@ -22,10 +48,12 @@ export async function persistAgentRunMessages(params: {
   firstUserMessageForTitle: ChatMessage | null;
   isContinuation: boolean;
   modelId?: string;
+  outcomeStatus?: string;
   runId?: string;
   sessionToken?: string | null;
   shouldRenameAfterFirst: boolean;
   titleAlreadyGenerated?: boolean;
+  truncateAfterMessageId?: string | null;
   userId?: string;
 }): Promise<void> {
   if (params.runId && params.executionOwner && params.userId) {
@@ -33,15 +61,21 @@ export async function persistAgentRunMessages(params: {
       id: params.runId,
       userId: params.userId,
     }).catch(() => null);
-    if (!run || run.executionOwner !== params.executionOwner) return;
+    if (!run || run.executionOwner !== params.executionOwner) {
+      return;
+    }
   }
-  if (params.finishedMessages.length === 0) {
+
+  const nonEmptyMessages = params.finishedMessages.filter(
+    isMeaningfulAgentMessage
+  );
+  if (nonEmptyMessages.length === 0) {
     return;
   }
 
   if (params.isContinuation) {
     await Promise.all(
-      params.finishedMessages.map(async (finishedMessage) => {
+      nonEmptyMessages.map(async (finishedMessage) => {
         const existing = params.existingMessages.find(
           (message) => message.id === finishedMessage.id
         );
@@ -68,7 +102,7 @@ export async function persistAgentRunMessages(params: {
     );
   } else {
     await saveMessages({
-      messages: params.finishedMessages.map((message) => ({
+      messages: nonEmptyMessages.map((message) => ({
         attachments: [],
         chatId: params.chatId,
         createdAt: new Date(),
@@ -80,19 +114,36 @@ export async function persistAgentRunMessages(params: {
   }
 
   if (
+    params.truncateAfterMessageId &&
+    (!params.outcomeStatus || params.outcomeStatus === "completed")
+  ) {
+    await deleteMessagesAfterMessageId({
+      chatId: params.chatId,
+      keepIds: nonEmptyMessages.map((m) => m.id),
+      messageId: params.truncateAfterMessageId,
+    }).catch((err) => {
+      console.error("Erreur troncature après régénération Agent :", err);
+    });
+  }
+
+  if (
     params.titleAlreadyGenerated ||
+    (params.outcomeStatus && params.outcomeStatus !== "completed") ||
     !(params.shouldRenameAfterFirst && params.firstUserMessageForTitle)
   ) {
     return;
   }
 
   try {
-    const assistantMessage = [...params.finishedMessages]
+    const assistantMessage = [...nonEmptyMessages]
       .reverse()
       .find((message) => message.role === "assistant");
     const assistantText = assistantMessage
       ? (getTextFromMessage(assistantMessage) || "").slice(0, 500).trim()
       : "";
+    if (!assistantText) {
+      return;
+    }
     const userText = getTextFromMessage(params.firstUserMessageForTitle);
     const title = await generateTitleFromConversation({
       assistantText,

@@ -88,7 +88,7 @@ export default function AccountPage() {
   const handleRefreshImages = async () => {
     try {
       await dashboard.refreshImages();
-      toast.success("Usage Images actualisé !");
+      toast.success("Génération d'images actualisée !");
     } catch {
       toast.error("Erreur lors de l'actualisation des images.");
     }
@@ -97,7 +97,7 @@ export default function AccountPage() {
   const handleRefreshAudio = async () => {
     try {
       await dashboard.refreshAudio();
-      toast.success("Usage Audio actualisé !");
+      toast.success("Création d'audio actualisée !");
     } catch {
       toast.error("Erreur lors de l'actualisation de l'audio.");
     }
@@ -160,6 +160,7 @@ export default function AccountPage() {
           <AudioUsageSection
             onRefresh={handleRefreshAudio}
             refreshing={dashboard.refreshingAudio}
+            tier={dashboard.user.tier}
             usage={dashboard.audioUsage}
           />
 
@@ -167,6 +168,7 @@ export default function AccountPage() {
             onRefresh={handleRefreshAll}
             percent={dashboard.maiPercent}
             refreshing={dashboard.refreshing}
+            tier={dashboard.user.tier}
             usage={dashboard.usage}
           />
 

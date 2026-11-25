@@ -14,6 +14,7 @@ import {
   normalizeReasoningLevel,
   resolveReasoningProviderOptions,
 } from "@/lib/ai/registry/reasoning";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import type { ChatRequestContext } from "@/lib/chat/context";
 import {
   CHAT_FALLBACK_FINAL_RESPONSE,
@@ -77,44 +78,8 @@ export type ChatStreamParams = {
  * Traduit une erreur de flux fournisseur (OpenRouter / AI SDK) en message
  * lisible côté client, sans exposer de secrets.
  */
-export function formatChatStreamError(error: unknown): string {
-  const err = error as {
-    message?: string;
-    responseBody?: string;
-    statusCode?: number;
-  } | null;
-  const status = typeof err?.statusCode === "number" ? err.statusCode : null;
-  const raw = `${err?.message ?? ""} ${err?.responseBody ?? ""}`.toLowerCase();
-
-  if (
-    status === 401 ||
-    raw.includes("openrouter_api_key") ||
-    raw.includes("user not found") ||
-    raw.includes("invalid api key")
-  ) {
-    return "Clé API OpenRouter absente ou invalide sur le serveur.";
-  }
-  if (
-    status === 402 ||
-    raw.includes("more credits") ||
-    raw.includes("insufficient credits")
-  ) {
-    return "Crédits OpenRouter insuffisants pour ce modèle. Réessayez avec un modèle gratuit ou rechargez le solde OpenRouter.";
-  }
-  if (
-    status === 404 ||
-    raw.includes("no endpoints found") ||
-    raw.includes("not a valid model")
-  ) {
-    return "Ce modèle n'est actuellement pas disponible sur OpenRouter. Essayez un autre modèle.";
-  }
-  if (status === 429 || raw.includes("rate limit")) {
-    return "Le fournisseur IA est momentanément saturé (429). Réessayez dans quelques instants.";
-  }
-  if (status === 400) {
-    return "La requête a été refusée par le fournisseur IA (paramètres incompatibles avec ce modèle).";
-  }
-  return "Une erreur est survenue lors de la génération de la réponse.";
+export function formatChatStreamError(_error: unknown): string {
+  return MAI_SERVER_DIFFICULTIES_MESSAGE;
 }
 
 function hasSubstantiveMessageParts(message: ChatMessage): boolean {
@@ -184,7 +149,13 @@ export function createChatStream(params: ChatStreamParams) {
       // La part est créée avant le premier appel modèle : le collecteur peut
       // écrire dès le premier chunk de raisonnement reçu.
       const reasoningWriter = reasoningSink
-        ? createReasoningChunkWriter(dataStream, `reasoning-${generateUUID()}`)
+        ? createReasoningChunkWriter(
+            dataStream,
+            `reasoning-${generateUUID()}`,
+            {
+              onBeforeFirstPush: () => dataStream.write({ type: "start" }),
+            }
+          )
         : null;
       if (reasoningSink) {
         reasoningSink.onDelta = (text) => reasoningWriter?.push(text);

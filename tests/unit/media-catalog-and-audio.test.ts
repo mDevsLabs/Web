@@ -62,13 +62,34 @@ describe("Catalogue images CometAPI (ordre alphabétique & isolation fournisseur
     makeStoredModel("black-forest-labs/flux-2-dev", { isActive: false }),
   ];
 
-  it("n'expose que les modèles cometapi actifs/disponibles triés alphabétiquement", () => {
-    const catalog = buildCometImageCatalog(mixedModels);
+  it("n'expose que les modèles cometapi actifs/disponibles triés alphabétiquement, avec leur vrai statut payant et leur nom formaté", () => {
+    const catalog = buildCometImageCatalog([
+      ...mixedModels,
+      makeStoredModel("dall-e-3", {
+        description: "Modèle d'image dall-e-3",
+        name: "dall-e-3",
+        provider: "cometapi",
+      }),
+    ]);
     expect(catalog.map((m) => m.id)).toEqual([
+      "dall-e-3",
       "black-forest-labs/flux-1.1-pro",
       "black-forest-labs/flux-dev",
       "black-forest-labs/flux-pro",
     ]);
+
+    const flux11 = catalog.find(
+      (m) => m.id === "black-forest-labs/flux-1.1-pro"
+    );
+    expect(flux11?.isFree).toBe(false);
+    expect(flux11?.name).toBe("Flux 1.1 Pro");
+    expect(flux11?.provider).toBe("black-forest-labs");
+
+    const dalle = catalog.find((m) => m.id === "dall-e-3");
+    expect(dalle?.isFree).toBe(false);
+    expect(dalle?.name).toBe("DALL-E 3");
+    expect(dalle?.provider).toBe("openai");
+    expect(dalle?.description).toBe("Modèle de génération d'images DALL-E 3.");
   });
 
   it("retombe sur le premier modèle alphabétique si omis ou obsolète, mais refuse les modèles hors CometAPI", () => {

@@ -192,7 +192,11 @@ export function registerVibeMAIExecuteRoutes(
       }
       if (!reply) {
         return c.json(
-          { error: "Impossible de régénérer la réponse pour le moment." },
+          {
+            code: "upstream_error",
+            error: "Nos serveurs rencontrent des difficultés",
+            message: "Nos serveurs rencontrent des difficultés",
+          },
           502
         );
       }
@@ -249,7 +253,14 @@ export function registerVibeMAIExecuteRoutes(
       });
     } catch (err: any) {
       console.error("[Vibe API] mAI Regenerate Error:", err);
-      return c.json({ error: "Erreur lors de la régénération." }, 500);
+      return c.json(
+        {
+          code: "internal_error",
+          error: "Nos serveurs rencontrent des difficultés",
+          message: "Nos serveurs rencontrent des difficultés",
+        },
+        500
+      );
     }
   };
   registerMulti(

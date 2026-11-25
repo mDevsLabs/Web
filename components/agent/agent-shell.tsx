@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangleIcon, PanelLeftIcon } from "@mdevs/icons";
+import { AlertTriangleIcon, PanelLeftIcon, RefreshCwIcon } from "@mdevs/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -19,7 +19,7 @@ import { AgentSuggestedActions } from "@/components/agent/agent-suggested-action
 import { AgentChannelBadge } from "@/components/agent/alpha-badge";
 import { HomeModeSwitcher } from "@/components/chat/home-mode-switcher";
 import { useModelCapabilities } from "@/components/chat/input/use-model-capabilities";
-import { PreviewMessage } from "@/components/chat/message";
+import { PreviewMessage, ThinkingMessage } from "@/components/chat/message";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useActiveChat } from "@/hooks/use-active-chat";
@@ -42,6 +42,7 @@ import type {
   ToolExecutionRecord,
 } from "@/lib/agent/types";
 import { normalizeReasoningLevel } from "@/lib/ai/registry/reasoning";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import { downloadChatAsMarkdown } from "@/lib/chat/export-markdown";
 import { apiEndpoints, pagePath } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
@@ -269,9 +270,12 @@ function AgentShellInner() {
 
   const {
     addToolApprovalResponse,
+    clearErrorMessage,
+    errorMessage,
     isLoading,
     messages,
     regenerate,
+    regenerateTruncated,
     sendTask,
     setMessages,
     status,
@@ -317,14 +321,22 @@ function AgentShellInner() {
     );
   }, [history]);
 
+  const isRunning = status === "streaming" || status === "submitted";
+
   const hydratedRunIdRef = useRef<string | null>(null);
   useEffect(() => {
-    if (!history || state.run) {
+    const canReplaceStaleRunning =
+      Boolean(state.run) && !isRunning && state.run?.status === "running";
+    if (!history || (state.run && !canReplaceStaleRunning)) {
       return;
     }
     const runs = (history.runs ?? []) as AgentRunRecord[];
     const lastRun = runs.at(-1);
-    if (!lastRun || hydratedRunIdRef.current === lastRun.id) {
+    if (
+      !lastRun ||
+      (!canReplaceStaleRunning && hydratedRunIdRef.current === lastRun.id) ||
+      (canReplaceStaleRunning && lastRun.status === "running")
+    ) {
       return;
     }
     hydratedRunIdRef.current = lastRun.id;
@@ -364,7 +376,7 @@ function AgentShellInner() {
         .filter((execution) => execution.runId === lastRun.id)
         .map(toToolActivity),
     });
-  }, [history, reset, state.run]);
+  }, [history, isRunning, reset, state.run]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const scrollKey = `${messages.length}:${state.steps.length}`;
@@ -401,7 +413,21 @@ function AgentShellInner() {
     setResumeFromRunId(null);
   };
 
-  const isRunning = status === "streaming" || status === "submitted";
+  const handleRetryLastTurn = () => {
+    for (let i = messages.length - 1; i >= 0; i -= 1) {
+      if (messages[i].role === "user") {
+        const targetUserId = messages[i].id;
+        const removedMessages = messages.slice(i + 1);
+        setMessages((prev) => prev.slice(0, i + 1));
+        regenerateTruncated({
+          removedMessages,
+          targetMessageId: targetUserId,
+        });
+        return;
+      }
+    }
+    regenerate();
+  };
 
   // « Nouvelle discussion » (barre latérale) ne réinitialise que l'état Chat :
   // l'AgentStreamProvider est monté plus bas que le sidebar, il n'était donc
@@ -424,8 +450,9 @@ function AgentShellInner() {
       void stopRun();
     }
     reset();
+    clearErrorMessage();
     setResumeFromRunId(null);
-  }, [isRunning, reset, resetEpoch, stopRun]);
+  }, [clearErrorMessage, isRunning, reset, resetEpoch, stopRun]);
 
   // Hydratation de la conversation : le fetch /api/messages est-il encore en
   // cours ET l'agent est-il inerte ? Un run actif prime toujours — pendant une
@@ -624,6 +651,7 @@ function AgentShellInner() {
                 {messages.map((message, index) => (
                   <PreviewMessage
                     addToolApprovalResponse={addToolApprovalResponse}
+                    allMessages={messages}
                     chatId={chatId}
                     isLoading={
                       status === "streaming" && index === messages.length - 1
@@ -631,6 +659,7 @@ function AgentShellInner() {
                     isReadonly={false}
                     key={message.id}
                     message={message}
+                    onRegenerateTruncated={regenerateTruncated}
                     regenerate={regenerate}
                     requiresScrollPadding={false}
                     setMessages={setMessages}
@@ -638,6 +667,35 @@ function AgentShellInner() {
                     vote={undefined}
                   />
                 ))}
+                {status === "submitted" &&
+                messages.at(-1)?.role !== "assistant" ? (
+                  <ThinkingMessage />
+                ) : null}
+                {!isRunning &&
+                (errorMessage || state.run?.status === "failed") &&
+                !(messages.at(-1)?.parts ?? []).some(
+                  (part) => (part as { type?: string }).type === "error"
+                ) ? (
+                  <div
+                    className="flex items-center justify-between gap-3 rounded-xl border border-destructive/30 bg-destructive/10 px-3.5 py-2.5 text-[13px] text-destructive"
+                    data-testid="agent-error-banner"
+                    role="alert"
+                  >
+                    <span className="min-w-0 break-words">
+                      {errorMessage ??
+                        state.run?.error ??
+                        MAI_SERVER_DIFFICULTIES_MESSAGE}
+                    </span>
+                    <button
+                      className="inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg border border-destructive/30 bg-background/60 px-2.5 py-1 font-medium text-xs text-destructive transition-colors hover:bg-destructive/15"
+                      onClick={handleRetryLastTurn}
+                      type="button"
+                    >
+                      <RefreshCwIcon className="size-3.5" />
+                      Régénérer
+                    </button>
+                  </div>
+                ) : null}
                 {isHydrating && messages.length === 0 ? (
                   <p className="text-xs text-muted-foreground">
                     Chargement de la conversation…

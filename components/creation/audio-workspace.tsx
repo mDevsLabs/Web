@@ -84,10 +84,6 @@ const fetcher = (url: string) =>
     return res.json();
   });
 
-function formatTokens(n: number) {
-  return new Intl.NumberFormat("fr-FR").format(n);
-}
-
 function formatDate(dateStr?: string) {
   if (!dateStr) {
     return "Récemment";
@@ -299,6 +295,9 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
     }
   }, [modelVoices, selectedVoice, userPrefData]);
 
+  const speechPercent =
+    limit > 0 ? Math.min(100, Math.round((tokensUsed / limit) * 100)) : 0;
+
   const isQuotaExhausted = limit > 0 && tokensUsed >= limit;
 
   // Lancement de la synthèse vocale
@@ -312,7 +311,7 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
 
     if (isQuotaExhausted) {
       toast.error(
-        `Votre quota hebdomadaire Speech est atteint (${formatTokens(tokensUsed)}/${formatTokens(limit)} tokens). Mettez à niveau votre compte pour continuer !`
+        `Votre quota hebdomadaire de création d'audio est atteint (${speechPercent}% consommé). Mettez à niveau votre compte pour continuer !`
       );
       return;
     }
@@ -329,8 +328,12 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
         const checkLimit = Number(usageCheck.weeklyLimit ?? 0);
         const checkUsed = Number(usageCheck.tokensUsed ?? 0);
         if (checkLimit > 0 && checkUsed >= checkLimit) {
+          const checkPercent = Math.min(
+            100,
+            Math.round((checkUsed / checkLimit) * 100)
+          );
           toast.error(
-            `Quota hebdomadaire Speech épuisé (${formatTokens(checkUsed)}/${formatTokens(checkLimit)} tokens).`
+            `Quota hebdomadaire de création d'audio épuisé (${checkPercent}% consommé).`
           );
           setIsGenerating(false);
           return;
@@ -453,10 +456,10 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
             <SparklesIcon className="size-4 text-info" />
             <div className="text-xs">
               <span className="font-semibold text-foreground">
-                {formatTokens(tokensUsed)} / {formatTokens(limit)}
+                {speechPercent}% consommé
               </span>{" "}
               <span className="text-muted-foreground">
-                tokens Speech ({plan})
+                · Création d&apos;audio (Forfait {plan})
               </span>
             </div>
           </div>
@@ -696,7 +699,8 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
 
                   {isQuotaExhausted && (
                     <p className="mt-2 text-center text-xs text-warning">
-                      Quota de tokens Speech atteint.{" "}
+                      Quota hebdomadaire de création d&apos;audio atteint (
+                      {speechPercent}% consommé).{" "}
                       <Link
                         className="underline font-semibold"
                         href={APP_PRICING_URL}

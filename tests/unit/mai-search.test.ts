@@ -421,3 +421,163 @@ describe("mAI Search — détection de requête factuelle", () => {
     expect(looksFactual("")).toBe(false);
   });
 });
+
+describe("mAI Search — robustesse You.com et repli généraliste", () => {
+  it("ignore une clé en échec rapide (402) et attend la clé valide plus lente", async () => {
+    process.env.YOU_API_KEY_1 = "cle_epuisee";
+    process.env.YOU_API_KEY_2 = "cle_valide";
+    process.env.YOU_API_KEY_3 = "";
+
+    const fetchMock = vi
+      .spyOn(globalThis, "fetch")
+      .mockImplementation(async (url, init) => {
+        const urlStr = String(url);
+        if (
+          !urlStr.includes("ydc-index.io") &&
+          !urlStr.includes("api.you.com")
+        ) {
+          return new Response("Not Found", { status: 404 });
+        }
+        const cle = (init?.headers as Record<string, string>)?.["X-API-Key"];
+        if (cle === "cle_epuisee") {
+          return new Response(JSON.stringify({ error: "payment_required" }), {
+            status: 402,
+          });
+        }
+        await new Promise((resolve) => setTimeout(resolve, 25));
+        return new Response(
+          JSON.stringify({
+            results: {
+              web: [
+                {
+                  description: "Source You.com valide.",
+                  title: "Résultat You.com",
+                  url: "https://exemple.fr/you-valide",
+                },
+              ],
+            },
+          }),
+          { headers: { "Content-Type": "application/json" }, status: 200 }
+        );
+      });
+
+    const results = await executeMaiSearch({
+      count: 5,
+      query: "Course parallèle échec rapide",
+      sources: ["web"],
+    });
+
+    expect(results.provider).toBe("you.com");
+    expect(
+      results.results.some((r) => r.url === "https://exemple.fr/you-valide")
+    ).toBe(true);
+
+    fetchMock.mockRestore();
+  });
+
+  it("bascule sur GET lorsque POST est rejeté en 422", async () => {
+    process.env.YOU_API_KEY_1 = "cle_get_only";
+    process.env.YOU_API_KEY_2 = "";
+    process.env.YOU_API_KEY_3 = "";
+
+    const fetchMock = vi
+      .spyOn(globalThis, "fetch")
+      .mockImplementation(async (url, init) => {
+        const urlStr = String(url);
+        if (!urlStr.includes("ydc-index.io")) {
+          return new Response("Not Found", { status: 404 });
+        }
+        if ((init?.method || "GET") === "POST") {
+          return new Response("Validation Error", { status: 422 });
+        }
+        return new Response(
+          JSON.stringify({
+            results: {
+              web: [
+                {
+                  description: "Résultat obtenu en GET.",
+                  title: "Réponse GET You.com",
+                  url: "https://exemple.fr/you-get",
+                },
+              ],
+            },
+          }),
+          { headers: { "Content-Type": "application/json" }, status: 200 }
+        );
+      });
+
+    const results = await executeMaiSearch({
+      count: 10,
+      query: "Test repli GET You.com",
+      sources: ["web"],
+    });
+
+    expect(results.provider).toBe("you.com");
+    expect(
+      results.results.some((r) => r.url === "https://exemple.fr/you-get")
+    ).toBe(true);
+
+    fetchMock.mockRestore();
+  });
+
+  it("retourne des résultats Web généralistes en repli lorsque You.com échoue", async () => {
+    process.env.YOU_API_KEY_1 = "";
+    process.env.YOU_API_KEY_2 = "";
+    process.env.YOU_API_KEY_3 = "";
+
+    const fetchMock = vi
+      .spyOn(globalThis, "fetch")
+      .mockImplementation(async (url) => {
+        const urlStr = String(url);
+        if (urlStr.includes("html.duckduckgo.com")) {
+          return new Response(
+            '<div class="result"><a class="result__a" href="https://duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.exemple.fr%2Fanthropic">Site officiel</a><a class="result__snippet">Présentation complète.</a></div>',
+            { headers: { "Content-Type": "text/html" }, status: 200 }
+          );
+        }
+        if (urlStr.includes("action=query") && urlStr.includes("list=search")) {
+          return new Response(
+            JSON.stringify({
+              query: {
+                search: [
+                  { snippet: "Article encyclopédique", title: "Anthropic" },
+                ],
+              },
+            }),
+            { headers: { "Content-Type": "application/json" }, status: 200 }
+          );
+        }
+        if (urlStr.includes("prop=extracts")) {
+          return new Response(
+            JSON.stringify({
+              query: {
+                pages: [
+                  {
+                    extract: "Anthropic est une entreprise d'IA.",
+                    fullurl: "https://fr.wikipedia.org/wiki/Anthropic",
+                    title: "Anthropic",
+                  },
+                ],
+              },
+            }),
+            { headers: { "Content-Type": "application/json" }, status: 200 }
+          );
+        }
+        return new Response("Not Found", { status: 404 });
+      });
+
+    const results = await executeMaiSearch({
+      count: 10,
+      query: "Anthropic repli web",
+      sources: ["web", "wikipedia"],
+    });
+
+    expect(results.provider).toBe("mixed");
+    expect(
+      results.results.some((r) => r.url === "https://docs.exemple.fr/anthropic")
+    ).toBe(true);
+    expect(results.results.some((r) => r.origin === "wikipedia")).toBe(true);
+
+    fetchMock.mockRestore();
+  });
+});

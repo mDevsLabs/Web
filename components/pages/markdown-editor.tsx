@@ -751,7 +751,7 @@ export function MarkdownEditor({
         <div className="ml-auto flex items-center gap-1">
           <input
             aria-label="Rechercher dans la page"
-            className="field-input h-8 w-28 px-2 text-xs"
+            className="field-input h-8 w-28 px-2 py-0 text-xs"
             onChange={(event) => setFindQuery(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === "Enter") {
@@ -764,7 +764,7 @@ export function MarkdownEditor({
           />
           <input
             aria-label="Remplacer par"
-            className="field-input h-8 w-28 px-2 text-xs"
+            className="field-input h-8 w-28 px-2 py-0 text-xs"
             disabled={readOnly}
             onChange={(event) => setReplaceWith(event.target.value)}
             placeholder="Remplacer"

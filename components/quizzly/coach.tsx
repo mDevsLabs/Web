@@ -36,6 +36,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  formatUserFacingAiError,
+  MAI_SERVER_DIFFICULTIES_MESSAGE,
+} from "@/lib/ai/server-error-message";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import {
@@ -452,14 +456,22 @@ export function CoachQuizzly({
         });
         if (!reponse.ok) {
           const corps = (await reponse.json().catch(() => null)) as {
+            code?: string;
+            error?: string;
             message?: string;
           } | null;
-          throw new Error(corps?.message || "Le coach n'a pas pu répondre.");
+          const errMessage = formatUserFacingAiError({
+            code: corps?.code,
+            error: corps?.error,
+            message: corps?.message,
+            status: reponse.status,
+          });
+          throw new Error(errMessage);
         }
         const identifiant = reponse.headers.get(ENTETE_CONVERSATION_COACH);
         const reader = reponse.body?.getReader();
         if (!reader) {
-          throw new Error("Réponse vide.");
+          throw new Error(MAI_SERVER_DIFFICULTIES_MESSAGE);
         }
         const decoder = new TextDecoder();
         let accum = "";
@@ -477,7 +489,7 @@ export function CoachQuizzly({
         accum += decoder.decode();
         const texte = accum.trim();
         if (!texte) {
-          throw new Error("Le coach n'a pas répondu. Réessaie.");
+          throw new Error(MAI_SERVER_DIFFICULTIES_MESSAGE);
         }
         setCourant(null);
         setEpilogue({
@@ -504,11 +516,7 @@ export function CoachQuizzly({
           return;
         }
         setCourant(null);
-        setMessage(
-          raison instanceof Error
-            ? raison.message
-            : "Le coach n'a pas pu répondre."
-        );
+        setMessage(formatUserFacingAiError(raison));
       } finally {
         if (abandon.current === controle) {
           setEnCours(false);

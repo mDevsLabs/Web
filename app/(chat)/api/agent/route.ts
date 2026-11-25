@@ -45,6 +45,7 @@ import {
   isModelAllowedForUser,
   pickDefaultAgentModel,
 } from "@/lib/ai/registry";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import { toAgentToolId } from "@/lib/ai/tools/ids";
 import { errorResponse } from "@/lib/api/error-response";
 import { authenticateChatRequest, enforceChatRateLimit } from "@/lib/chat/auth";
@@ -55,6 +56,7 @@ import {
   claimAgentRunExecution,
   createAgentRun,
   createAgentStep,
+  detachAgentRunMessageId,
   getActiveAgentRunByChatId,
   getAgentRunById,
   getAgentRunByMessageId,
@@ -63,7 +65,11 @@ import {
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { getAnsweredAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
-import { getUserPreferences, saveMessages } from "@/lib/db/queries";
+import {
+  getMessageById,
+  getUserPreferences,
+  saveMessages,
+} from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { describeTools } from "@/lib/prompts/capabilities";
 import type { ChatMessage } from "@/lib/types";
@@ -146,9 +152,19 @@ export async function POST(request: Request) {
 
     // Un rejeu retrouve le run avant le nouveau contrôle de quota : le
     // premier essai a pu consommer le reste du quota après avoir été accepté.
+    // Lors d'une régénération explicite (`truncateAfterMessageId`) ou d'une
+    // relance après échec/arrêt, le `messageId` de l'ancien run terminé est
+    // détaché afin d'autoriser un nouveau run sur ce même message utilisateur.
     const incomingMessageId =
       (body.message as { id?: string } | undefined)?.id ?? null;
     if (incomingMessageId) {
+      const active = await getActiveAgentRunByChatId({ chatId: body.id });
+      if (active && active.userId === auth.userId) {
+        return Response.json(
+          { code: "active_run_conflict", runId: active.id },
+          { status: 409 }
+        );
+      }
       const replay = await getAgentRunByMessageId({
         chatId: body.id,
         messageId: incomingMessageId,
@@ -156,17 +172,22 @@ export async function POST(request: Request) {
       if (replay) {
         if (replay.userId !== auth.userId)
           return errorResponse("access_denied");
-        return Response.json(
-          { code: "existing_run", runId: replay.id, status: replay.status },
-          { status: 409 }
-        );
-      }
-      const active = await getActiveAgentRunByChatId({ chatId: body.id });
-      if (active && active.userId === auth.userId) {
-        return Response.json(
-          { code: "active_run_conflict", runId: active.id },
-          { status: 409 }
-        );
+        const canReRunMessage =
+          Boolean(body.truncateAfterMessageId) ||
+          replay.status === "failed" ||
+          replay.status === "cancelled" ||
+          replay.status === "timed_out";
+        if (canReRunMessage) {
+          await detachAgentRunMessageId({
+            chatId: body.id,
+            messageId: incomingMessageId,
+          });
+        } else {
+          return Response.json(
+            { code: "existing_run", runId: replay.id, status: replay.status },
+            { status: 409 }
+          );
+        }
       }
     }
 
@@ -252,6 +273,7 @@ export async function POST(request: Request) {
       skillId: body.skillId,
       skillParams: body.skillParams,
       tags: ["agent"],
+      truncateAfterMessageId: body.truncateAfterMessageId ?? null,
     });
 
     const memoryContext = await buildMemoryContext({
@@ -658,19 +680,24 @@ export async function POST(request: Request) {
         { status: 409 }
       );
     }
-    if (body.message) {
-      await saveMessages({
-        messages: [
-          {
-            attachments: [],
-            chatId: ctx.id,
-            createdAt: new Date(),
-            id: messageId as string,
-            parts: (body.message as ChatMessage).parts,
-            role: "user",
-          },
-        ],
-      });
+    if (body.message && messageId) {
+      const alreadyStored = await getMessageById({ id: messageId }).catch(
+        () => []
+      );
+      if (alreadyStored.length === 0) {
+        await saveMessages({
+          messages: [
+            {
+              attachments: [],
+              chatId: ctx.id,
+              createdAt: new Date(),
+              id: messageId,
+              parts: (body.message as ChatMessage).parts,
+              role: "user",
+            },
+          ],
+        });
+      }
     }
     if (parentRunId)
       console.info(
@@ -842,6 +869,7 @@ export async function POST(request: Request) {
       tasksEnabled: activeRun?.tasksEnabled ?? oneShotOptions?.tasks === true,
       tier,
       tools: enabledTools,
+      truncateAfterMessageId: body.truncateAfterMessageId ?? null,
 
       userEmail: ctx.userEmail,
       userId: ctx.userId,
@@ -854,7 +882,7 @@ export async function POST(request: Request) {
     }
     console.error("Erreur non gérée dans l'API Agent :", error);
     return errorResponse("internal_error", {
-      message: "Agent a rencontré une erreur inattendue.",
+      message: MAI_SERVER_DIFFICULTIES_MESSAGE,
     });
   }
 }

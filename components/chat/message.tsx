@@ -9,6 +9,10 @@ import {
   type AgentUserInputSubmit,
 } from "@/components/agent/agent-user-input-card";
 import { unwrapAgentToolOutput } from "@/lib/agent/types";
+import {
+  formatUserFacingAiError,
+  MAI_SERVER_DIFFICULTIES_MESSAGE,
+} from "@/lib/ai/server-error-message";
 import type { Vote } from "@/lib/db/schema";
 import { mcpHashedToolLabel } from "@/lib/mcp/provider-tool-label";
 import type {
@@ -409,12 +413,14 @@ function extractToolErrorMessage(
 
 const PurePreviewMessage = ({
   addToolApprovalResponse,
+  allMessages,
   chatId,
   message,
   vote,
   isLoading,
-  setMessages: _setMessages,
+  setMessages,
   regenerate,
+  onRegenerateTruncated,
   isReadonly,
   requiresScrollPadding: _requiresScrollPadding,
   onEdit,
@@ -423,6 +429,7 @@ const PurePreviewMessage = ({
   submitUserInputAnswer,
 }: {
   addToolApprovalResponse: UseChatHelpers<ChatMessage>["addToolApprovalResponse"];
+  allMessages?: ChatMessage[];
   // Réponse à une question Agent: le serveur valide, persiste puis relance le
   // MÊME run. Absent côté Chat, où la clarification reste locale au message.
   submitUserInputAnswer?: AgentUserInputSubmit;
@@ -432,6 +439,10 @@ const PurePreviewMessage = ({
   isLoading: boolean;
   setMessages: UseChatHelpers<ChatMessage>["setMessages"];
   regenerate: UseChatHelpers<ChatMessage>["regenerate"];
+  onRegenerateTruncated?: (params: {
+    removedMessages: ChatMessage[];
+    targetMessageId: string;
+  }) => void;
   isReadonly: boolean;
   requiresScrollPadding: boolean;
   onEdit?: (message: ChatMessage) => void;
@@ -577,12 +588,13 @@ const PurePreviewMessage = ({
     }
 
     if ((type as string) === "error") {
-      const errorText =
+      const errorText = formatUserFacingAiError(
         (part as { errorText?: string }).errorText ||
-        "Une erreur est survenue lors de la génération de la réponse.";
+          MAI_SERVER_DIFFICULTIES_MESSAGE
+      );
       return (
         <div
-          className="flex items-start justify-between gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-[13px] text-red-600 dark:border-red-900 dark:bg-red-950/40 dark:text-red-400"
+          className="flex items-start justify-between gap-3 rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-[13px] text-destructive"
           key={key}
         >
           <span className="min-w-0 break-words">{errorText}</span>
@@ -1528,11 +1540,14 @@ const PurePreviewMessage = ({
 
   const actions = !isReadonly && (
     <MessageActions
+      allMessages={allMessages}
       chatId={chatId}
       isLoading={isLoading}
       key={`action-${message.id}`}
       message={message}
       onEdit={onEdit ? () => onEdit(message) : undefined}
+      onRegenerateTruncated={onRegenerateTruncated}
+      onSetMessages={setMessages}
       vote={vote}
     />
   );

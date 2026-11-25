@@ -30,6 +30,7 @@ describe("writer de réflexion", () => {
     const reasoning = createReasoningChunkWriter(writer, "r1");
     reasoning.push("");
     reasoning.finish();
+    reasoning.push("fragment tardif");
     expect(chunks).toEqual([]);
   });
 

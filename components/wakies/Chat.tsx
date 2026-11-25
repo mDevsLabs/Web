@@ -67,6 +67,7 @@ import {
 import { WAKIES_POLL_MS } from "@/components/wakies/polling";
 import { ReglagesDuFil } from "@/components/wakies/ReglagesDuFil";
 import { WakieChatComposer } from "@/components/wakies/WakieChatComposer";
+import { formatUserFacingAiError } from "@/lib/ai/server-error-message";
 import { resolveWakieModelId } from "@/lib/wakies/model";
 import type { Page } from "@/lib/wakies/pages";
 import { storedMessages } from "@/lib/wakies/shared/messages";
@@ -396,10 +397,22 @@ function WakieChat({
     onError: (erreur) => {
       failure.current = erreur;
       queue.pause();
-      setErreur(
-        erreur.message ||
-          "Le tour n'a pas abouti. Votre conversation est conservée."
+      setMessages((actuels) =>
+        actuels.filter((msg, idx) => {
+          if (idx !== actuels.length - 1 || msg.role !== "assistant") {
+            return true;
+          }
+          return (msg.parts ?? []).some(
+            (part) =>
+              (part.type === "text" && Boolean(part.text?.trim())) ||
+              (part.type === "reasoning" &&
+                Boolean((part as { text?: string }).text?.trim())) ||
+              part.type === "file" ||
+              (typeof part.type === "string" && part.type.startsWith("tool-"))
+          );
+        })
       );
+      setErreur(formatUserFacingAiError(erreur));
     },
     onFinish: () => {
       // Rafraîchir les métadonnées sans effacer le prochain brouillon.

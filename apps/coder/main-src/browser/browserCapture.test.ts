@@ -1,4 +1,13 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+// `browserCapture.ts` importe `electron` au chargement. En CI, pnpm 10 n'exécute
+// pas le postinstall d'Electron (binaire absent) : le paquet lève une erreur dès
+// l'import. Les tests unitaires ne doivent pas dépendre du binaire, on le simule
+// comme dans les autres tests de `main-src`. `fromId` → null = onglet pas prêt.
+vi.mock("electron", () => ({
+  webContents: { fromId: vi.fn(() => null) },
+}));
+
 import {
   addBrowserCaptureExternalRequestForHostId,
   type BrowserCaptureRequestDetail,

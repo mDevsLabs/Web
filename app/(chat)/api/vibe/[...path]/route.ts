@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import {
   errorResponse,
   logError,
@@ -183,7 +184,7 @@ async function handle(
   } catch (error) {
     logError(`Relais Vibe ${method} ${decision.path}`, error);
     return errorResponse("upstream_error", {
-      message: "Le service Vibe est momentanément injoignable.",
+      message: MAI_SERVER_DIFFICULTIES_MESSAGE,
     });
   }
 

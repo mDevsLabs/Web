@@ -1,3 +1,4 @@
+import type { UseChatHelpers } from "@ai-sdk/react";
 import {
   CopyIcon,
   GitForkIcon,
@@ -38,22 +39,35 @@ import {
 } from "./message-translation";
 
 export function PureMessageActions({
+  allMessages,
   chatId,
   message,
   vote,
   isLoading,
   onEdit,
+  onRegenerateTruncated,
+  onSetMessages,
 }: {
+  allMessages?: ChatMessage[];
   chatId: string;
   message: ChatMessage;
   vote: Vote | undefined;
   isLoading: boolean;
   onEdit?: () => void;
+  onRegenerateTruncated?: (params: {
+    removedMessages: ChatMessage[];
+    targetMessageId: string;
+  }) => void;
+  onSetMessages?: UseChatHelpers<ChatMessage>["setMessages"];
 }) {
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const [_, copyToClipboard] = useCopyToClipboard();
-  const { messages, regenerateTruncated, setMessages } = useActiveChat();
+  const activeChat = useActiveChat();
+  const messages = allMessages ?? activeChat.messages;
+  const regenerateTruncated =
+    onRegenerateTruncated ?? activeChat.regenerateTruncated;
+  const setMessages = onSetMessages ?? activeChat.setMessages;
 
   const textFromParts = message.parts
     ?.filter((part) => part.type === "text")
@@ -238,9 +252,10 @@ export function PureMessageActions({
           (m: ChatMessage) => m.id === message.id
         );
       } else {
-        // assistant: find preceding user
+        // assistant: find preceding user (ou dernier message user si bulle éphémère)
         const idx = messages.findIndex((m: ChatMessage) => m.id === message.id);
-        for (let i = idx - 1; i >= 0; i--) {
+        const startIdx = idx >= 0 ? idx - 1 : messages.length - 1;
+        for (let i = startIdx; i >= 0; i--) {
           if (messages[i].role === "user") {
             targetUserId = messages[i].id;
             targetIndex = i;
@@ -276,9 +291,12 @@ export function PureMessageActions({
       // réponse, et l'écran est restauré si la génération échoue (issue #46).
       // Supprimer en base avant de générer détruisait le tour valide à chaque
       // échec de /api/chat.
-      if (targetIndex >= 0 && targetUserId) {
-        const removedMessages = messages.slice(targetIndex + 1);
-        setMessages((prev: ChatMessage[]) => prev.slice(0, targetIndex + 1));
+      if (targetUserId) {
+        const removedMessages =
+          targetIndex >= 0 ? messages.slice(targetIndex + 1) : [];
+        if (targetIndex >= 0) {
+          setMessages((prev: ChatMessage[]) => prev.slice(0, targetIndex + 1));
+        }
         regenerateTruncated({
           removedMessages,
           targetMessageId: targetUserId,
@@ -544,6 +562,15 @@ export const MessageActions = memo(
       return false;
     }
     if (prevProps.chatId !== nextProps.chatId) {
+      return false;
+    }
+    if (prevProps.allMessages?.length !== nextProps.allMessages?.length) {
+      return false;
+    }
+    if (prevProps.onRegenerateTruncated !== nextProps.onRegenerateTruncated) {
+      return false;
+    }
+    if (prevProps.onSetMessages !== nextProps.onSetMessages) {
       return false;
     }
 

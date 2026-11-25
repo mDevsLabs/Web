@@ -207,10 +207,8 @@ export const FALLBACK_MODELS: ChatModel[] = [
     name: "mAI-2-Mini",
     provider: "mdevslabs",
     reasoning: {
-      default_effort: "high",
       default_enabled: true,
       mandatory: false,
-      supported_efforts: ["max", "high", "low"],
     },
     supported_parameters: [
       "temperature",
@@ -367,48 +365,73 @@ export function stripModelNameParentheses(rawName: string): string {
     .trim();
 }
 
-// Nom affichable : retire le préfixe fournisseur ("Poolside: Laguna xs 2.1" ->
-// "Laguna xs 2.1"), le suffixe ":free" et tout commentaire entre parenthèses.
-export function normalizeModelDisplayName(
-  id: string,
-  rawName?: string
-): string {
-  const base =
-    rawName?.trim() && rawName.trim() !== id
-      ? rawName.trim()
-      : formatModelName(id).name;
-  const cleaned = stripModelNameParentheses(
-    base.replace(/^[^:]{1,30}:\s+/, "").replace(/:free/gi, "")
-  );
-  return cleaned || formatModelName(id).name;
+const MODEL_TOKEN_UPPERCASE: Record<string, string> = {
+  ai: "AI",
+  bfl: "BFL",
+  chat: "Chat",
+  dall: "DALL",
+  deepseek: "DeepSeek",
+  ernie: "ERNIE",
+  fp8: "FP8",
+  glm: "GLM",
+  gpt: "GPT",
+  hd: "HD",
+  instruct: "Instruct",
+  it: "IT",
+  llm: "LLM",
+  mai: "mAI",
+  minimax: "MiniMax",
+  ocr: "OCR",
+  qwq: "QwQ",
+  r1: "R1",
+  sd: "SD",
+  sd3: "SD3",
+  "sd3.5": "SD3.5",
+  sdxl: "SDXL",
+  tts: "TTS",
+  vl: "VL",
+  xl: "XL",
+};
+
+function formatSlugToken(token: string): string {
+  const lower = token.toLowerCase();
+  if (MODEL_TOKEN_UPPERCASE[lower]) {
+    return MODEL_TOKEN_UPPERCASE[lower];
+  }
+  if (/^v\d+(?:\.\d+)*$/i.test(token)) {
+    return `V${token.slice(1)}`;
+  }
+  if (/^\d+(?:\.\d+)?[bmk]$/i.test(token)) {
+    return token.toUpperCase();
+  }
+  return token.charAt(0).toUpperCase() + token.slice(1);
 }
 
-export function formatModelName(modelId: string): {
-  name: string;
-  provider: string;
-  isFree: boolean;
-} {
-  const cleanId = modelId.replace(/^~+/, "");
-  const parts = cleanId.split("/");
-  const provider = parts.length > 1 ? parts[0] : "mAI";
-  const rawName = parts.length > 1 ? parts.slice(1).join("/") : cleanId;
-  const isFree = modelId.toLowerCase().includes("free");
-
-  let cleanName = rawName.replace(/:free/gi, "").trim();
+function formatTechnicalModelSlug(rawSlug: string): string {
+  const trimmed = rawSlug.replace(/:free/gi, "").trim();
+  const lower = trimmed.toLowerCase();
 
   // Mappings élégants des modèles courants
   const nameMap: Record<string, string> = {
     "claude-3-5-haiku": "Claude 3.5 Haiku",
     "claude-3-5-sonnet": "Claude 3.5 Sonnet",
+    "dall-e-2": "DALL-E 2",
+    "dall-e-3": "DALL-E 3",
     "deepseek-chat": "DeepSeek Chat",
     "deepseek-r1": "DeepSeek R1",
     "deepseek-v3": "DeepSeek V3",
+    "flux-1-dev": "Flux 1 Dev",
+    "flux-1-pro": "Flux 1 Pro",
+    "flux-1-schnell": "Flux 1 Schnell",
+    "flux-1.1-pro": "Flux 1.1 Pro",
+    "flux-1.1-pro-ultra": "Flux 1.1 Pro Ultra",
     "gemini-1.5-flash": "Gemini 1.5 Flash",
     "gemini-1.5-pro": "Gemini 1.5 Pro",
     "gemini-2.0-flash": "Gemini 2.0 Flash",
     "gemini-2.5-flash": "Gemini 2.5 Flash",
     "gpt-4o": "GPT-4o",
     "gpt-4o-mini": "GPT-4o Mini",
+    "gpt-image-1": "GPT Image 1",
     "llama-3.1-8b-instruct": "Llama 3.1 8B Instruct",
     "llama-3.1-70b-instruct": "Llama 3.1 70B Instruct",
     "llama-3.3-70b-instruct": "Llama 3.3 70B Instruct",
@@ -426,14 +449,86 @@ export function formatModelName(modelId: string): {
     "qwen-2.5-coder-32b-instruct": "Qwen 2.5 Coder 32B",
   };
 
-  if (nameMap[cleanName.toLowerCase()]) {
-    cleanName = nameMap[cleanName.toLowerCase()];
-  } else {
-    cleanName = cleanName
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+  if (nameMap[lower]) {
+    return nameMap[lower];
   }
+
+  // Préserver le tiret de DALL-E avant découpage générique
+  const normalizedDallE = trimmed.replace(/\bdall-e\b/gi, "DALL_E_TOKEN");
+  return normalizedDallE
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((word) =>
+      word === "DALL" ? "DALL" : word === "TOKEN" ? "" : formatSlugToken(word)
+    )
+    .join(" ")
+    .replace(/\bDALL E\b/g, "DALL-E")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+function isRawTechnicalModelSlug(candidate: string, id: string): boolean {
+  if (!candidate) {
+    return true;
+  }
+  const slugFromId =
+    id
+      .replace(/^~+/, "")
+      .replace(/:free$/i, "")
+      .split("/")
+      .slice(1)
+      .join("/") || id.replace(/^~+/, "").replace(/:free$/i, "");
+
+  // Identique au slug technique en minuscules (ex. "flux-1.1-pro", "sdxl")
+  if (
+    candidate === candidate.toLowerCase() &&
+    candidate.toLowerCase() === slugFromId.toLowerCase()
+  ) {
+    return true;
+  }
+
+  // Chaîne technique sans espace, tout en minuscules avec tirets/underscores
+  if (!/\s/.test(candidate) && /^[a-z0-9._-]+$/.test(candidate)) {
+    return candidate.includes("-") || candidate.includes("_");
+  }
+
+  return false;
+}
+
+// Nom affichable : retire le préfixe fournisseur ("Poolside: Laguna xs 2.1" ->
+// "Laguna xs 2.1"), le suffixe ":free", tout commentaire entre parenthèses, et
+// reformate les slugs techniques bruts ("flux-1.1-pro" -> "Flux 1.1 Pro").
+export function normalizeModelDisplayName(
+  id: string,
+  rawName?: string
+): string {
+  const base =
+    rawName?.trim() && rawName.trim() !== id
+      ? rawName.trim()
+      : formatModelName(id).name;
+  const cleaned = stripModelNameParentheses(
+    base.replace(/^[^:]{1,30}:\s+/, "").replace(/:free/gi, "")
+  );
+  if (!cleaned) {
+    return formatModelName(id).name;
+  }
+  if (isRawTechnicalModelSlug(cleaned, id)) {
+    return stripModelNameParentheses(formatTechnicalModelSlug(cleaned));
+  }
+  return cleaned;
+}
+
+export function formatModelName(modelId: string): {
+  name: string;
+  provider: string;
+  isFree: boolean;
+} {
+  const cleanId = modelId.replace(/^~+/, "");
+  const parts = cleanId.split("/");
+  const provider = parts.length > 1 ? parts[0] : "mAI";
+  const rawName = parts.length > 1 ? parts.slice(1).join("/") : cleanId;
+  const isFree = modelId.toLowerCase().includes("free");
+  const cleanName = formatTechnicalModelSlug(rawName);
 
   return {
     isFree,

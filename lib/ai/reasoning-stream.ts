@@ -22,9 +22,20 @@ export type ReasoningChunkWriter = {
   finish: () => void;
 };
 
+export type ReasoningChunkWriterOptions = {
+  /**
+   * Callback exécuté juste avant l'ouverture du premier bloc `reasoning-start`.
+   * Permet d'émettre `{ type: "start" }` sur le flux UI afin d'ancrer l'ID du
+   * message assistant avant que `toUIMessageStream` ne débloque son propre
+   * démarrage (le provider OpenAI retarde `doStream` jusqu'au premier texte).
+   */
+  onBeforeFirstPush?: () => void;
+};
+
 export function createReasoningChunkWriter<TChunk>(
   writer: ChunkWriter<TChunk>,
-  id: string
+  id: string,
+  options?: ReasoningChunkWriterOptions
 ): ReasoningChunkWriter {
   let started = false;
   let finished = false;
@@ -39,11 +50,13 @@ export function createReasoningChunkWriter<TChunk>(
 
   return {
     finish() {
-      if (!started || finished) {
+      if (finished) {
         return;
       }
       finished = true;
-      write({ id, type: "reasoning-end" } as TChunk);
+      if (started) {
+        write({ id, type: "reasoning-end" } as TChunk);
+      }
     },
     push(text) {
       if (finished || !text) {
@@ -51,6 +64,11 @@ export function createReasoningChunkWriter<TChunk>(
       }
       if (!started) {
         started = true;
+        try {
+          options?.onBeforeFirstPush?.();
+        } catch {
+          // Même tolérance que `write` si le flux est déjà refermé.
+        }
         write({ id, type: "reasoning-start" } as TChunk);
       }
       write({ delta: text, id, type: "reasoning-delta" } as TChunk);
