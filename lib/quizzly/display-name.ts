@@ -9,10 +9,12 @@
 import "server-only";
 
 import type { MaiUser } from "@/lib/auth/session";
+import { getMaiSessionToken, invalidateMaiUserCache } from "@/lib/auth/session";
 import {
   getBlacklineSettings,
   saveBlacklineSettings,
 } from "@/lib/blackline/queries";
+import { getRawClient } from "@/lib/db/queries/connection";
 import { normaliserNomAffiche, superposerIndicatif } from "@/lib/quizzly/name";
 import { vibeSql } from "@/lib/vibe/server/db";
 import { resolveVibeIdentity } from "@/lib/vibe/server/identity";
@@ -196,24 +198,79 @@ export async function enregistrerNomAffiche(
     };
   }
   const identite = await resolveVibeIdentity();
-  if (!identite) {
-    return {
-      message: "Le profil Vibe de ce compte est introuvable.",
-      ok: false,
-    };
+  let ecritVibe = false;
+  if (identite) {
+    ecritVibe = await ecrireDisplayName(identite.userId, nom);
   }
-  const ecrit = await ecrireDisplayName(identite.userId, nom);
-  if (!ecrit) {
+
+  // Synchronisation du pseudo sur la table `users` du compte mAI si disponible
+  let ecritCompte = false;
+  try {
+    const sqlHote = getRawClient() ?? vibeSql();
+    if (sqlHote) {
+      const handle = nom
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, "_")
+        .replace(/[^a-z0-9_]/g, "")
+        .slice(0, 30);
+      const targetUserId = identite?.userId || userIdHote;
+      if (
+        handle.length >= 2 &&
+        handle !== "mai" &&
+        handle !== "bot" &&
+        targetUserId
+      ) {
+        const conflits = await sqlHote`
+          SELECT id FROM users
+          WHERE LOWER(username) = ${handle}
+            AND id::text <> ${String(targetUserId)}::text
+          LIMIT 1
+        `.catch(() => [{ id: "conflict" }]);
+        if (conflits.length === 0) {
+          await sqlHote`
+            UPDATE users
+            SET username = ${handle}
+            WHERE id::text = ${String(targetUserId)}::text
+          `.catch(() => {});
+          ecritCompte = true;
+        }
+      }
+    }
+  } catch (erreur) {
+    console.warn("Synchronisation users.username ignorée:", erreur);
+  }
+
+  if (!ecritVibe && !ecritCompte) {
+    if (!identite) {
+      return {
+        message: "Le profil Vibe de ce compte est introuvable.",
+        ok: false,
+      };
+    }
     return {
       message: "Le profil Vibe n'est pas disponible sur cette instance.",
       ok: false,
     };
   }
+
   try {
     const reglages = await getBlacklineSettings(userIdHote);
     await saveBlacklineSettings(userIdHote, superposerIndicatif(reglages, nom));
   } catch (erreur) {
     console.error("Quizzly : indicatif Blackline non recopié", erreur);
   }
+
+  try {
+    const token = await getMaiSessionToken();
+    if (token) {
+      invalidateMaiUserCache(token);
+    }
+  } catch {
+    // Contexte hors requête HTTP
+  }
+
   return { ok: true };
 }

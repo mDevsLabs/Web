@@ -9,7 +9,6 @@
 export type SearchType =
   | "page"
   | "news"
-  | "doc"
   | "model"
   | "project"
   | "download"
@@ -29,7 +28,6 @@ export type SearchEntry = {
 
 export const SEARCH_TYPE_LABELS: Record<SearchType, string> = {
   changelog: "Notes de version",
-  doc: "Documentation",
   download: "Téléchargements",
   model: "Modèles",
   news: "Actualités",
@@ -42,7 +40,6 @@ export const SEARCH_TYPE_ORDER: SearchType[] = [
   "page",
   "model",
   "news",
-  "doc",
   "project",
   "download",
   "changelog",

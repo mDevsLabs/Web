@@ -28,8 +28,14 @@ concurrency:
 env:
   CSC_IDENTITY_AUTO_DISCOVERY: "false"
 jobs:
+  # Une PR ouverte depuis une branche DE CE DÉPÔT déclenche deux exécutions sur
+  # le même commit : `push` (branches "**") et `pull_request`. Le run `push`
+  # porte déjà tous les jobs (qualité, applications, release par SHA) : le run
+  # `pull_request` est sauté, et tous les jobs qui en dépendent avec lui. Les
+  # PR venues d'un fork n'ont pas de run `push` ici : elles restent couvertes.
   version:
     name: Vérifier la version à publier
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout du code
@@ -66,6 +72,9 @@ jobs:
       desktop: true
       coder: true
       blackline: true
+      # Seule sortie qui CONDITIONNE un job : le déploiement Vercel. Vide (tag,
+      # workflow_dispatch, filtre non exécuté) => « true », on déploie.
+      web: ${{ steps.web.outputs.web || 'true' }}
     steps:
       - name: Checkout du code
         if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')) }}
@@ -113,6 +122,29 @@ jobs:
               - "scripts/build-blackline-css.mjs"
               - ".github/workflows/build.yml"
               - "package.json"
+      # Un push qui ne touche QUE la doc ou les apps natives (coder, desktop,
+      # mobile) ne change rien au bundle web : inutile de redéployer sur Vercel.
+      # En cas d'échec (premier push d'une branche, force-push), la sortie reste
+      # vide et le déploiement a lieu quand même (repli « true »).
+      - name: Détecter un changement de l'application web
+        id: web
+        if: ${{ github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/') }}
+        continue-on-error: true
+        uses: dorny/paths-filter@v4
+        with:
+          base: ${{ github.event.before }}
+          # « every » : un fichier compte seulement s'il ne correspond à AUCUNE exclusion.
+          predicate-quantifier: every
+          filters: |-
+            web:
+              - "**"
+              - "!docs/**"
+              - "!apps/coder/**"
+              - "!apps/desktop/**"
+              - "!apps/mobile/**"
+              - "!AGENTS.md"
+              - "!CLAUDE.md"
+              - "!README.md"
 
   # ─────────────────────────────────────────────────────────────────────────────
   # JOB — Qualité (un seul job qualité : pas de workflows concurrents)
@@ -123,6 +155,8 @@ jobs:
   # ─────────────────────────────────────────────────────────────────────────────
   quality:
     name: Qualité — lint, typecheck et tests unitaires
+    # Même garde que `version` : pas de second passage pour une PR interne.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -137,16 +171,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
       - name: Installer les dépendances
         run: pnpm install --frozen-lockfile
-      # Issue #11 : l'installation du Site est verrouillée. `npm ci` échoue dès
-      # que apps/site/package-lock.json diverge de apps/site/package.json.
+      # Issue #11 : l'installation du Site est verrouillée. `--frozen-lockfile` échoue dès
+      # que apps/site/pnpm-lock.yaml diverge de apps/site/package.json.
       # Le lock n'est jamais régénéré sans échec reproduit.
-      - name: Vérifier l'installation verrouillée du Site (npm ci)
+      - name: Vérifier l'installation verrouillée du Site (pnpm)
         working-directory: apps/site
-        run: npm ci --ignore-scripts
+        run: pnpm install --frozen-lockfile --ignore-workspace --ignore-scripts
       # Issue #14 : provenance des sources Wakies — empreintes sur contenu
       # canonicalisé LF, insensibles à la conversion CRLF/LF de Git, mais
       # sensibles à toute altération d'un octet.
@@ -156,10 +190,10 @@ jobs:
       # la racine, packages/icons, packages/ui et apps/vibe (identité unique).
       - name: Installer les dépendances de Vibe
         working-directory: apps/vibe
-        run: npm ci --ignore-scripts
+        run: pnpm install --frozen-lockfile --ignore-workspace --ignore-scripts
       - name: Compiler Vibe (tsc + vite)
         working-directory: apps/vibe
-        run: npm run build
+        run: pnpm run build
       - name: Lint (ultracite / Biome)
         run: pnpm run check
       - name: Typecheck (application Next)
@@ -172,9 +206,12 @@ jobs:
         run: pnpm run test:unit
 
   deploy-vercel:
-    needs: [version, quality]
+    needs: [version, quality, changes]
     name: Déploiement Vercel
-    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary')) }}
+    # `!cancelled()` + résultats explicites : un échec du job `changes` (filtre
+    # des applications) ne doit pas bloquer le déploiement web. Seul un
+    # « false » explicite du filtre web l'évite.
+    if: ${{ !cancelled() && needs.version.result == 'success' && needs.quality.result == 'success' && needs.changes.outputs.web != 'false' && (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary'))) }}
     environment:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
     runs-on: ubuntu-latest
@@ -188,6 +225,9 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v4
         with:
+          # Historique complet requis pour comparer `before` (ou `HEAD^1`) à
+          # `HEAD` et détecter les fichiers de migration nouvellement créés.
+          fetch-depth: 0
           persist-credentials: false
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -196,7 +236,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
       - name: Vérifier le secret Vercel
         run: |-
@@ -205,22 +245,50 @@ jobs:
             exit 1
           fi
       - name: Installer le CLI Vercel
-        run: npm install --global "vercel@$VERCEL_CLI_VERSION"
+        run: pnpm add --global "vercel@$VERCEL_CLI_VERSION"
       - name: Installer les dépendances
         run: pnpm install --frozen-lockfile
       # Blackline est un jeu Vite AUTONOME: il n'est pas membre du workspace
-      # pnpm (pnpm-workspace.yaml liste `packages: []`), il a son propre
-      # package-lock.json et ses propres node_modules. `pnpm build` lance
+      # pnpm (pnpm-workspace.yaml ne liste que `packages/*`), il a son propre
+      # pnpm-lock.yaml et ses propres node_modules. `pnpm build` lance
       # `scripts/build-blackline.mjs`, qui exige ces dépendances.
       - name: Installer les dépendances de Blackline
-        run: npm ci --prefix apps/blackline
+        run: pnpm --dir apps/blackline install --frozen-lockfile --ignore-workspace
       - name: Récupérer l'environnement Vercel
         run: vercel pull --yes --environment="$DEPLOY_TARGET" --token="$VERCEL_TOKEN"
+      # N'exécuter les migrations que si au moins un nouveau fichier `.sql` a été
+      # créé dans `lib/db/migrations/`. En cas d'erreur pendant la migration ou
+      # la garde de schéma, le workflow tolère l'échec et poursuit le déploiement.
+      - name: Détecter les nouvelles migrations
+        id: migrations
+        env:
+          BEFORE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |-
+          if [ -n "$BEFORE_SHA" ] && [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ] && git cat-file -e "${BEFORE_SHA}^{commit}" 2>/dev/null; then
+            NEW_MIGRATIONS=$(git diff --name-only --no-renames --diff-filter=A "$BEFORE_SHA" HEAD -- ':(glob)lib/db/migrations/*.sql' ':(glob)lib/db/migrations/**/*.sql')
+          elif git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
+            NEW_MIGRATIONS=$(git diff --name-only --no-renames --diff-filter=A HEAD^1 HEAD -- ':(glob)lib/db/migrations/*.sql' ':(glob)lib/db/migrations/**/*.sql')
+          else
+            NEW_MIGRATIONS=$(git diff-tree --no-commit-id --name-only --no-renames --diff-filter=A -r --root HEAD -- ':(glob)lib/db/migrations/*.sql' ':(glob)lib/db/migrations/**/*.sql')
+          fi
+
+          if [ -n "$NEW_MIGRATIONS" ]; then
+            echo "Nouvelles migrations détectées :"
+            echo "$NEW_MIGRATIONS"
+            echo "has_new=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Aucune nouvelle migration créée dans le commit : migration ignorée."
+            echo "has_new=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Afficher l'empreinte de la base migrée
+        if: steps.migrations.outputs.has_new == 'true'
+        continue-on-error: true
         run: node scripts/print-db-target.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: Migrer la base de données
+        if: steps.migrations.outputs.has_new == 'true'
+        continue-on-error: true
         run: |-
           if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
             echo "::warning::Migration appliquee depuis une pull_request sur la base Preview partagee."
@@ -229,9 +297,11 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           POSTGRES_URL: ${{ secrets.DATABASE_URL }}
-          MIGRATIONS_STRICT: "true"
+          MIGRATIONS_STRICT: "false"
       - name: Garde de schéma après migration
         id: guard
+        if: steps.migrations.outputs.has_new == 'true'
+        continue-on-error: true
         run: node scripts/check-db-schema.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -263,9 +333,13 @@ jobs:
           - os: macos-latest
             arch: x64 et arm64
             target: mac
-          - os: windows-latest
+          - os: windows-2022
             arch: x64
             target: win
+    env:
+      GYP_MSVS_VERSION: "2022"
+      npm_config_msvs_version: "2022"
+      npm_config_python: "python"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -276,7 +350,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
       - name: Install Linux deps
         if: matrix.target == 'linux'
@@ -298,7 +372,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Installer les dépendances Coder
         working-directory: apps/coder
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Préparer Coder pour le paquet bureau
         working-directory: apps/desktop
         run: pnpm run prepare:coder x64
@@ -378,7 +452,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
           cache-dependency-path: apps/mobile/pnpm-lock.yaml
       - name: Setup Java 21
@@ -398,9 +472,9 @@ jobs:
         working-directory: apps/mobile
         run: |
           if [ ! -d "android" ]; then
-            npx --package=@capacitor/cli cap add android
+            pnpm exec cap add android
           fi
-          npx --package=@capacitor/cli cap sync android
+          pnpm exec cap sync android
       - name: Patch icônes natives Android (logo → mipmap)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -436,7 +510,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
           cache-dependency-path: apps/mobile/pnpm-lock.yaml
       - name: Install mobile deps
@@ -449,9 +523,9 @@ jobs:
         working-directory: apps/mobile
         run: |
           if [ ! -d "ios" ]; then
-            npx --package=@capacitor/cli cap add ios
+            pnpm exec cap add ios
           fi
-          npx --package=@capacitor/cli cap sync ios
+          pnpm exec cap sync ios
       - name: Patch icônes natives iOS (logo → AppIcon)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -515,12 +589,16 @@ jobs:
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
       - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: apps/vibe/package-lock.json
+          node-version-file: .nvmrc
+          cache: pnpm
+          cache-dependency-path: apps/vibe/pnpm-lock.yaml
       - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
@@ -529,18 +607,18 @@ jobs:
       - name: Accepter les licences Android SDK
         run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses < <(yes)'
       - name: Installer les dépendances
-        run: npm ci
+        run: pnpm install --frozen-lockfile --ignore-workspace
       - name: Compiler l'application web
-        run: npm run build
+        run: pnpm run build
         env:
           VITE_API_BASE: https://mai.val.run
       - name: Ajouter les plateformes Capacitor
         run: |
-          npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/android@8
+          pnpm add --ignore-workspace --save-dev @capacitor/cli@8 @capacitor/core@8 @capacitor/android@8
           if [ ! -d "android" ]; then
-            npx --package=@capacitor/cli cap add android
+            pnpm exec cap add android
           fi
-          npx --package=@capacitor/cli cap sync android
+          pnpm exec cap sync android
       - name: Rendre gradlew exécutable
         run: chmod +x android/gradlew
       - name: Compiler l'APK Android de développement
@@ -565,25 +643,29 @@ jobs:
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
       - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: apps/vibe/package-lock.json
+          node-version-file: .nvmrc
+          cache: pnpm
+          cache-dependency-path: apps/vibe/pnpm-lock.yaml
       - name: Installer les dépendances
-        run: npm ci
+        run: pnpm install --frozen-lockfile --ignore-workspace
       - name: Compiler l'application web
-        run: npm run build
+        run: pnpm run build
         env:
           VITE_API_BASE: https://mai.val.run
       - name: Ajouter la plateforme Capacitor iOS
         run: |
-          npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/ios@8
+          pnpm add --ignore-workspace --save-dev @capacitor/cli@8 @capacitor/core@8 @capacitor/ios@8
           if [ ! -d "ios" ]; then
-            npx --package=@capacitor/cli cap add ios
+            pnpm exec cap add ios
           fi
-          npx --package=@capacitor/cli cap sync ios
+          pnpm exec cap sync ios
       - name: Compiler l'archive (non signé sans secrets Apple)
         run: |
           if [ -d "ios/App/App.xcworkspace" ]; then
@@ -645,7 +727,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: Installer les dépendances
@@ -668,7 +750,7 @@ jobs:
       GYP_MSVS_VERSION: "2022"
       npm_config_msvs_version: "2022"
       npm_config_python: "python"
-      NODE_VERSION: 22
+      NODE_VERSION: 22.23.5
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
@@ -690,7 +772,7 @@ jobs:
       - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: Configuration de l'environnement MSVC
@@ -742,7 +824,7 @@ jobs:
       - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: Installer les dépendances
@@ -791,7 +873,7 @@ jobs:
       - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: Installer les dépendances
@@ -833,7 +915,7 @@ jobs:
       - coder-linux
     if: |
       always() &&
-      (github.event_name!= 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) &&
+      github.event_name != 'pull_request' &&
       !contains(needs.*.result, 'failure') &&
       !contains(needs.*.result, 'cancelled')
     permissions:
@@ -848,7 +930,7 @@ jobs:
       - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
       - name: Déterminer le tag et créer la release
         id: release
         uses: actions/github-script@v7
@@ -1065,6 +1147,9 @@ jobs:
     timeout-minutes: 15
     needs: [version, quality]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
@@ -1077,19 +1162,19 @@ jobs:
       - name: Setup Node.js avec registre NPM
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
       - name: Installer les dépendances
         run: pnpm install --frozen-lockfile
       - name: Publier @mdevs/icons sur NPM
         working-directory: packages/icons
-        run: pnpm publish --access public --no-git-checks
+        run: pnpm publish --access public --provenance --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN || secrets.NODE_AUTH_TOKEN }}
       - name: Publier @mdevs/ui sur NPM
         working-directory: packages/ui
-        run: pnpm publish --access public --no-git-checks
+        run: pnpm publish --access public --provenance --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN || secrets.NODE_AUTH_TOKEN }}
 

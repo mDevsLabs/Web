@@ -8,7 +8,7 @@ import {
   MIN_EXTRACT_CHARS,
 } from "@/lib/agent/tools/internal/extract";
 import { type AgentSource, toolFailure, toolSuccess } from "@/lib/agent/types";
-import { MAI_API_URL } from "@/lib/constants";
+import { getUserCloudFiles } from "@/lib/db/queries/storage";
 import {
   isTokenOriginAllowed,
   tokenOriginAllowlist,
@@ -46,21 +46,11 @@ const readFileInputSchema = z
     message: "Fournissez soit 'fileId' (bibliothèque), soit 'url'.",
   });
 
-type CloudFilePayload = {
-  files?: Array<{
-    filename?: string;
-    id?: string;
-    mime_type?: string;
-    original_name?: string;
-    url?: string;
-  }>;
-};
-
-// Résout un fichier de la bibliothèque cloud en URL lisible côté serveur.
-// Aucun endpoint nouveau n'est nécessaire : /cloud/files expose déjà l'URL.
+// Résout un fichier de la bibliothèque cloud en URL lisible côté serveur via Neon.
 async function resolveLibraryFile(params: {
   fileId: string;
-  sessionToken: string;
+  userId: string;
+  sessionToken?: string;
   signal?: AbortSignal;
 }): Promise<{
   error?: string;
@@ -69,19 +59,11 @@ async function resolveLibraryFile(params: {
   url?: string;
 }> {
   try {
-    const response = await fetch(`${MAI_API_URL}/cloud/files`, {
-      cache: "no-store",
-      headers: { Authorization: `Bearer ${params.sessionToken}` },
-      signal: params.signal,
-    });
-    if (!response.ok) {
-      return {
-        error: `Bibliothèque inaccessible (HTTP ${response.status}).`,
-      };
-    }
-    const payload = (await response.json()) as CloudFilePayload;
-    const file = (payload.files ?? []).find(
-      (candidate) => String(candidate.id ?? "") === params.fileId
+    const files = await getUserCloudFiles(params.userId, 200);
+    const file = files.find(
+      (candidate) =>
+        String(candidate.id ?? "") === params.fileId ||
+        candidate.filename === params.fileId
     );
     if (!file?.url) {
       return {
@@ -110,6 +92,7 @@ export const readFileTool = defineTool({
         fileId: input.fileId,
         sessionToken: context.sessionToken,
         signal: context.signal,
+        userId: context.userId,
       });
       if (resolved.error || !resolved.url) {
         return toolFailure(

@@ -7,10 +7,12 @@ const withUserAccessTokenMock = vi.hoisted(() =>
 );
 
 vi.mock("@larksuiteoapi/node-sdk", () => ({
-  Client: vi.fn().mockImplementation(() => ({
-    authen: { oidcRefreshAccessToken: { create: oidcRefreshMock } },
-    request: requestMock,
-  })),
+  Client: vi.fn().mockImplementation(function () {
+    return {
+      authen: { oidcRefreshAccessToken: { create: oidcRefreshMock } },
+      request: requestMock,
+    };
+  }),
   withUserAccessToken: withUserAccessTokenMock,
 }));
 

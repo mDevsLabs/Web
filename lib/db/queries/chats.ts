@@ -17,13 +17,18 @@ import type { VisibilityType } from "@/lib/chat/visibility";
 import { ChatbotError } from "@/lib/errors";
 import {
   agent,
+  agentRun,
+  agentUserInputRequest,
   chat,
   chatSecurity,
   type DBMessage,
+  documentProposal,
   message,
+  scheduledMessage,
   stream,
   vote,
 } from "../schema";
+import { chatHistoryCursorCondition, chatHistoryOrder } from "./chat-cursor";
 import { _rawClient, dbReady, getRawClient } from "./connection";
 
 export async function saveChat({
@@ -59,6 +64,7 @@ export async function saveChat({
       agentId: agentId ?? null,
       customInstructions: customInstructions ?? null,
       id,
+      lastMessageAt: new Date(),
       mode: mode ?? "chat",
       projectId: projectId ?? null,
       skillId: skillId ?? null,
@@ -76,47 +82,209 @@ export async function saveChat({
 export async function deleteChatById({ id }: { id: string }) {
   try {
     const db = await dbReady();
-    await db.delete(chatSecurity).where(eq(chatSecurity.chatId, id));
-    await db.delete(vote).where(eq(vote.chatId, id));
-    await db.delete(message).where(eq(message.chatId, id));
-    await db.delete(stream).where(eq(stream.chatId, id));
-    const [chatsDeleted] = await db
-      .delete(chat)
-      .where(eq(chat.id, id))
-      .returning();
-    return chatsDeleted ?? null;
+    return await db.transaction(async (tx) => {
+      await tx.delete(chatSecurity).where(eq(chatSecurity.chatId, id));
+      await tx.delete(vote).where(eq(vote.chatId, id));
+      await tx.delete(message).where(eq(message.chatId, id));
+      await tx.delete(stream).where(eq(stream.chatId, id));
+      await tx
+        .delete(agentUserInputRequest)
+        .where(eq(agentUserInputRequest.chatId, id));
+      await tx.delete(agentRun).where(eq(agentRun.chatId, id));
+      await tx
+        .update(scheduledMessage)
+        .set({ chatId: null })
+        .where(eq(scheduledMessage.chatId, id));
+      await tx
+        .update(scheduledMessage)
+        .set({ resultChatId: null })
+        .where(eq(scheduledMessage.resultChatId, id));
+      await tx
+        .update(documentProposal)
+        .set({ chatId: null })
+        .where(eq(documentProposal.chatId, id));
+      const [chatsDeleted] = await tx
+        .delete(chat)
+        .where(eq(chat.id, id))
+        .returning();
+      return chatsDeleted ?? null;
+    });
   } catch (error) {
+    console.error(
+      `[deleteChatById] Échec de suppression de la discussion ${id}:`,
+      error
+    );
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
-export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
+export async function deleteAllChatsByUserId({
+  userId,
+  userEmail,
+}: {
+  userId: string;
+  userEmail?: string | null;
+}) {
   try {
     const db = await dbReady();
+    const ownerFilter = chatUserFilter(userId, userEmail);
     const userChats = await db
       .select({ id: chat.id })
       .from(chat)
-      .where(sql`${chat.userId}::text = ${userId}::text`);
+      .where(ownerFilter);
 
     if (userChats.length === 0) {
       return { deletedCount: 0 };
     }
 
     const chatIds = userChats.map((c) => c.id);
-    await db.delete(chatSecurity).where(inArray(chatSecurity.chatId, chatIds));
-    await db.delete(vote).where(inArray(vote.chatId, chatIds));
-    await db.delete(message).where(inArray(message.chatId, chatIds));
-    await db.delete(stream).where(inArray(stream.chatId, chatIds));
+    return await db.transaction(async (tx) => {
+      await tx
+        .delete(chatSecurity)
+        .where(inArray(chatSecurity.chatId, chatIds));
+      await tx.delete(vote).where(inArray(vote.chatId, chatIds));
+      await tx.delete(message).where(inArray(message.chatId, chatIds));
+      await tx.delete(stream).where(inArray(stream.chatId, chatIds));
+      await tx
+        .delete(agentUserInputRequest)
+        .where(inArray(agentUserInputRequest.chatId, chatIds));
+      await tx.delete(agentRun).where(inArray(agentRun.chatId, chatIds));
+      await tx
+        .update(scheduledMessage)
+        .set({ chatId: null })
+        .where(inArray(scheduledMessage.chatId, chatIds));
+      await tx
+        .update(scheduledMessage)
+        .set({ resultChatId: null })
+        .where(inArray(scheduledMessage.resultChatId, chatIds));
+      await tx
+        .update(documentProposal)
+        .set({ chatId: null })
+        .where(inArray(documentProposal.chatId, chatIds));
 
-    const deletedChats = await db
-      .delete(chat)
-      .where(sql`${chat.userId}::text = ${userId}::text`)
-      .returning();
+      const deletedChats = await tx.delete(chat).where(ownerFilter).returning();
 
-    return { deletedCount: deletedChats.length };
+      return { deletedCount: deletedChats.length };
+    });
   } catch (error) {
+    console.error(
+      `[deleteAllChatsByUserId] Échec de suppression de l'historique (${userId}):`,
+      error
+    );
     throw new ChatbotError("bad_request:database", { cause: error });
   }
+}
+
+interface ChatHistoryFilters {
+  includeArchived?: boolean;
+  isArchived?: boolean | null;
+  pinned?: boolean | null;
+  search?: string | null;
+  tag?: string | null;
+}
+
+interface ChatHistoryPageParams {
+  endingBefore: string | null;
+  limit: number;
+  startingAfter: string | null;
+}
+
+const chatHistorySelection = {
+  agentColor: agent.color,
+  agentIcon: agent.icon,
+  agentId: chat.agentId,
+  agentName: agent.name,
+  archivedAt: chat.archivedAt,
+  createdAt: chat.createdAt,
+  customInstructions: chat.customInstructions,
+  id: chat.id,
+  isArchived: chat.isArchived,
+  isSecure: sql<boolean>`EXISTS (
+    SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
+  )`,
+  lastMessageAt: chat.lastMessageAt,
+  mode: chat.mode,
+  pinned: chat.pinned,
+  projectId: chat.projectId,
+  skillId: chat.skillId,
+  tags: chat.tags,
+  temperatureOverride: chat.temperatureOverride,
+  title: chat.title,
+  userId: chat.userId,
+  visibility: chat.visibility,
+};
+
+function chatHistoryFilterConditions({
+  includeArchived = false,
+  isArchived,
+  pinned,
+  search,
+  tag,
+}: ChatHistoryFilters): SQL<unknown>[] {
+  const conditions: SQL<unknown>[] = [];
+  if (isArchived !== undefined && isArchived !== null) {
+    conditions.push(eq(chat.isArchived, isArchived));
+  } else if (!includeArchived) {
+    conditions.push(eq(chat.isArchived, false));
+  }
+  if (pinned !== undefined && pinned !== null) {
+    conditions.push(eq(chat.pinned, pinned));
+  }
+  if (tag) {
+    conditions.push(sql`${tag} = ANY(${chat.tags})`);
+  }
+  if (search) {
+    const escaped = `%${search.replace(/[%_]/g, "\\$&")}%`;
+    conditions.push(sql`${chat.title} ILIKE ${escaped}`);
+  }
+  return conditions;
+}
+
+/**
+ * Page d'historique commune (personnel ou projet). `scope` borne à la fois
+ * les résultats et le repère du curseur : un curseur hors périmètre est
+ * ignoré comme un curseur supprimé (repli gracieux sur la première page).
+ */
+async function listChatHistoryPage({
+  conditions,
+  endingBefore,
+  limit,
+  scope,
+  startingAfter,
+}: ChatHistoryPageParams & {
+  conditions: SQL<unknown>[];
+  scope: SQL<unknown>;
+}) {
+  const db = await dbReady();
+  const where: (SQL<unknown> | undefined)[] = [scope, ...conditions];
+  const cursorId = endingBefore ?? startingAfter;
+
+  if (cursorId) {
+    const [repere] = await db
+      .select({ id: chat.id })
+      .from(chat)
+      .where(and(eq(chat.id, cursorId), scope))
+      .limit(1);
+    if (repere) {
+      where.push(
+        chatHistoryCursorCondition({
+          direction: endingBefore ? "before" : "after",
+          id: cursorId,
+        })
+      );
+    }
+  }
+
+  const rows = await db
+    .select(chatHistorySelection)
+    .from(chat)
+    .leftJoin(agent, eq(chat.agentId, agent.id))
+    .where(and(...where))
+    .orderBy(...chatHistoryOrder)
+    .limit(limit + 1);
+
+  const hasMore = rows.length > limit;
+  return { chats: hasMore ? rows.slice(0, limit) : rows, hasMore };
 }
 
 export async function getChatsByUserId({
@@ -126,141 +294,61 @@ export async function getChatsByUserId({
   startingAfter,
   endingBefore,
   projectId,
-  isArchived,
-  pinned,
-  search,
-  tag,
-  includeArchived = false,
-}: {
-  id: string;
-  userEmail?: string;
-  limit: number;
-  startingAfter: string | null;
-  endingBefore: string | null;
-  projectId?: string | null;
-  isArchived?: boolean | null;
-  pinned?: boolean | null;
-  search?: string | null;
-  tag?: string | null;
-  includeArchived?: boolean;
-}) {
+  ...filters
+}: ChatHistoryFilters &
+  ChatHistoryPageParams & {
+    id: string;
+    userEmail?: string;
+    projectId?: string | null;
+  }) {
   try {
-    const db = await dbReady();
-    const extendedLimit = limit + 1;
-
-    const extraConditions: SQL<unknown>[] = [];
+    const conditions = chatHistoryFilterConditions(filters);
 
     // Project filter: "null" means no project, undefined means no filter
     if (projectId !== undefined) {
       if (projectId === null || projectId === "null" || projectId === "") {
-        extraConditions.push(sql`${chat.projectId} IS NULL`);
+        conditions.push(sql`${chat.projectId} IS NULL`);
       } else {
-        extraConditions.push(sql`${chat.projectId} = ${projectId}::uuid`);
+        conditions.push(sql`${chat.projectId} = ${projectId}::uuid`);
       }
     }
 
-    if (isArchived !== undefined && isArchived !== null) {
-      extraConditions.push(eq(chat.isArchived, isArchived));
-    } else if (!includeArchived) {
-      extraConditions.push(eq(chat.isArchived, false));
-    }
-
-    if (pinned !== undefined && pinned !== null) {
-      extraConditions.push(eq(chat.pinned, pinned));
-    }
-
-    if (tag) {
-      extraConditions.push(sql`${tag} = ANY(${chat.tags})`);
-    }
-
-    if (search) {
-      const escaped = `%${search.replace(/[%_]/g, "\\$&")}%`;
-      extraConditions.push(sql`${chat.title} ILIKE ${escaped}`);
-    }
-
-    const userCondition =
+    const scope =
       userEmail && userEmail !== id
         ? sql`(${chat.userId}::text = ${id}::text OR ${chat.userId}::text = ${userEmail}::text)`
         : sql`${chat.userId}::text = ${id}::text`;
 
-    const baseWhere = and(userCondition, ...extraConditions);
+    return await listChatHistoryPage({
+      conditions,
+      endingBefore,
+      limit,
+      scope,
+      startingAfter,
+    });
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
 
-    const query = (whereCondition?: SQL<unknown>) => {
-      const where = whereCondition ? and(whereCondition, baseWhere) : baseWhere;
-      // Pinned first, then createdAt desc
-      return db
-        .select({
-          agentColor: agent.color,
-          agentIcon: agent.icon,
-          agentId: chat.agentId,
-          agentName: agent.name,
-          archivedAt: chat.archivedAt,
-          createdAt: chat.createdAt,
-          customInstructions: chat.customInstructions,
-          id: chat.id,
-          isArchived: chat.isArchived,
-          isSecure: sql<boolean>`EXISTS (
-            SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
-          )`,
-          mode: chat.mode,
-          pinned: chat.pinned,
-          projectId: chat.projectId,
-          skillId: chat.skillId,
-          tags: chat.tags,
-          temperatureOverride: chat.temperatureOverride,
-          title: chat.title,
-          userId: chat.userId,
-          visibility: chat.visibility,
-        })
-        .from(chat)
-        .leftJoin(agent, eq(chat.agentId, agent.id))
-        .where(where)
-        .orderBy(desc(chat.pinned), desc(chat.createdAt))
-        .limit(extendedLimit);
-    };
-
-    let filteredChats: any[] = [];
-
-    if (startingAfter) {
-      const [selectedChat] = await db
-        .select()
-        .from(chat)
-        .where(eq(chat.id, startingAfter))
-        .limit(1);
-
-      if (selectedChat) {
-        filteredChats = await query(
-          sql`(${chat.pinned}, ${chat.createdAt}) > (${selectedChat.pinned}, ${selectedChat.createdAt})`
-        );
-      } else {
-        // Le chat repère a pu être supprimé : repli gracieux sur le début sans casser SWR.
-        filteredChats = await query();
-      }
-    } else if (endingBefore) {
-      const [selectedChat] = await db
-        .select()
-        .from(chat)
-        .where(eq(chat.id, endingBefore))
-        .limit(1);
-
-      if (selectedChat) {
-        filteredChats = await query(
-          sql`(${chat.pinned}, ${chat.createdAt}) < (${selectedChat.pinned}, ${selectedChat.createdAt})`
-        );
-      } else {
-        // Le chat repère a pu être supprimé : repli gracieux sur le début sans casser SWR.
-        filteredChats = await query();
-      }
-    } else {
-      filteredChats = await query();
-    }
-
-    const hasMore = filteredChats.length > limit;
-
-    return {
-      chats: hasMore ? filteredChats.slice(0, limit) : filteredChats,
-      hasMore,
-    };
+/**
+ * Historique paginé d'un projet partagé (tous auteurs). L'appelant doit avoir
+ * vérifié l'accès au projet (`getProjectAccess`) avant l'appel.
+ */
+export async function getProjectChatHistory({
+  projectId,
+  limit,
+  startingAfter,
+  endingBefore,
+  ...filters
+}: ChatHistoryFilters & ChatHistoryPageParams & { projectId: string }) {
+  try {
+    return await listChatHistoryPage({
+      conditions: chatHistoryFilterConditions(filters),
+      endingBefore,
+      limit,
+      scope: eq(chat.projectId, projectId),
+      startingAfter,
+    });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -455,11 +543,33 @@ export async function bulkUpdateChats({
   }
   const where = and(inArray(chat.id, chatIds), chatUserFilter(userId, email));
   if (action === "delete") {
-    await db.delete(vote).where(inArray(vote.chatId, chatIds));
-    await db.delete(message).where(inArray(message.chatId, chatIds));
-    await db.delete(stream).where(inArray(stream.chatId, chatIds));
-    const deleted = await db.delete(chat).where(where).returning();
-    return { updated: deleted.length };
+    return await db.transaction(async (tx) => {
+      await tx
+        .delete(chatSecurity)
+        .where(inArray(chatSecurity.chatId, chatIds));
+      await tx.delete(vote).where(inArray(vote.chatId, chatIds));
+      await tx.delete(message).where(inArray(message.chatId, chatIds));
+      await tx.delete(stream).where(inArray(stream.chatId, chatIds));
+      await tx
+        .delete(agentUserInputRequest)
+        .where(inArray(agentUserInputRequest.chatId, chatIds));
+      await tx.delete(agentRun).where(inArray(agentRun.chatId, chatIds));
+      await tx
+        .update(scheduledMessage)
+        .set({ chatId: null })
+        .where(inArray(scheduledMessage.chatId, chatIds));
+      await tx
+        .update(scheduledMessage)
+        .set({ resultChatId: null })
+        .where(inArray(scheduledMessage.resultChatId, chatIds));
+      await tx
+        .update(documentProposal)
+        .set({ chatId: null })
+        .where(inArray(documentProposal.chatId, chatIds));
+
+      const deleted = await tx.delete(chat).where(where).returning();
+      return { updated: deleted.length };
+    });
   }
   if (action === "move") {
     if (projectId) {
@@ -533,7 +643,29 @@ export async function bulkUpdateChats({
 export async function saveMessages({ messages }: { messages: DBMessage[] }) {
   try {
     const db = await dbReady();
-    return await db.insert(message).values(messages);
+    const result = await db.insert(message).values(messages);
+
+    // Met à jour `lastMessageAt` avec l'horodatage le plus récent des messages
+    // enregistrés afin que le tri de l'historique reflète le dernier message.
+    const latestByChat = new Map<string, number>();
+    for (const msg of messages) {
+      const ts = msg.createdAt ? new Date(msg.createdAt).getTime() : Date.now();
+      const prev = latestByChat.get(msg.chatId) ?? 0;
+      if (ts > prev) {
+        latestByChat.set(msg.chatId, ts);
+      }
+    }
+    for (const [targetChatId, maxMs] of latestByChat) {
+      const iso = new Date(maxMs).toISOString();
+      await db
+        .update(chat)
+        .set({
+          lastMessageAt: sql`GREATEST(${chat.lastMessageAt}, ${iso}::timestamp)`,
+        })
+        .where(eq(chat.id, targetChatId));
+    }
+
+    return result;
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -554,12 +686,38 @@ export async function updateMessage({
   }
 }
 
-export async function getMessagesByChatId({ id }: { id: string }) {
+export async function getMessagesByChatId({
+  id,
+  limit,
+}: {
+  id: string;
+  /**
+   * Nombre maximal de messages, en gardant les PLUS RÉCENTS.
+   *
+   * `undefined` conserve le contrat historique (tout l'historique), utilisé
+   * par l'interface, les exports et les forks. Le prompt IA, lui, n'a pas
+   * besoin de rejouer des centaines de messages : la borne évite de charger
+   * et de convertir un historique entier à chaque tour.
+   */
+  limit?: number;
+}) {
   if (!id || typeof id !== "string") {
     return [];
   }
   try {
     const db = await dbReady();
+    if (limit && limit > 0) {
+      // Tri décroissant pour prendre la FIN de l'historique, puis remise en
+      // ordre chronologique : le modèle reçoit la conversation dans le bon
+      // sens, et la coupure ne retire que les messages les plus anciens.
+      const recent = await db
+        .select()
+        .from(message)
+        .where(eq(message.chatId, id))
+        .orderBy(desc(message.createdAt))
+        .limit(limit);
+      return recent.reverse();
+    }
     return await db
       .select()
       .from(message)
@@ -966,7 +1124,6 @@ export async function recordTokenUsage({
     return;
   }
 
-  let insertedUsageEventKey: string | null = null;
   try {
     await dbReady();
     if (!_rawClient) {
@@ -987,169 +1144,158 @@ export async function recordTokenUsage({
       return;
     }
 
-    let shouldDebit = true;
-    if (idempotencyKey) {
-      const safeKey = idempotencyKey.slice(0, 256);
-      const safeInputTokens = Math.max(0, Math.floor(inputTokens || 0));
-      const safeOutputTokens = Math.max(0, Math.floor(outputTokens || 0));
-      const safeReasoningTokens = Math.max(0, Math.floor(reasoningTokens || 0));
-      const safeTotalTokens = Math.max(0, Math.floor(actualTotal));
-      // Un `chatId` non uuid (identifiant historique d'une autre forme) doit
-      // faire perdre le lien, pas l'INSERT : on l'écarte plutôt que de laisser
-      // Postgres rejeter l'ensemble de la ligne.
-      const safeChatId =
-        chatId && /^[0-9a-fA-F-]{36}$/.test(chatId) ? chatId : null;
-      // INSERT avec le lien de conversation. Sur une base pas encore migrée en
-      // 0033, Postgres rejette la colonne (42703) et l'on RETOMBE sur l'INSERT
-      // historique : le lien est perdu, pas la ligne. Ce repli est ce qui rend
-      // le déploiement sans risque — un environnement qui traîne une migration
-      // de retard continue d'enregistrer sa consommation au lieu de la
-      // perdre entièrement. La migration 0035 ajoute un TROISIÈME palier, dans
-      // le même ordre : on descend d'un cran à chaque 42703, jamais plus bas.
-      //
-      // `client` est capturé localement : le garde `if (!_rawClient) return`
-      // plus haut ne survit pas à la fermeture, et sans cette capture chaque
-      // requête serait typée `Sql | null`.
-      const client = _rawClient;
-      // Même règle que pour `chatId` : un identifiant de projet mal formé perd
-      // l'attribution, il ne doit pas faire échouer l'INSERT entier.
-      const safeChatProjectId =
-        chatProjectId && /^[0-9a-fA-F-]{36}$/.test(chatProjectId)
-          ? chatProjectId
-          : null;
-      // `chatMode` est une énumération fermée, un cast `::varchar` inutile :
-      // `postgres.js` l'échappe comme une chaîne.
-      const safeChatMode =
-        chatMode === "agent" ? "agent" : chatMode === "chat" ? "chat" : null;
-      const insertWithAttribution = async (
-        includeChatId: boolean,
-        includeAttribution: boolean
-      ) => {
-        if (includeAttribution) {
-          return client`
-            INSERT INTO "UsageEvent" (
-              "id", "userId", "model", "inputTokens", "outputTokens",
-              "reasoningTokens", "totalTokens", "isGhostMode", "chatId",
-              "chatMode", "chatProjectId"
-            )
-            VALUES (
-              ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
-              ${safeOutputTokens}, ${safeReasoningTokens},
-              ${safeTotalTokens}, ${isGhostMode}, ${safeChatId}::uuid,
-              ${safeChatMode}::varchar, ${safeChatProjectId}::uuid
-            )
-            ON CONFLICT ("id") DO NOTHING
-            RETURNING "id"
-          `;
-        }
-        if (includeChatId) {
-          return client`
-            INSERT INTO "UsageEvent" (
-              "id", "userId", "model", "inputTokens", "outputTokens",
-              "reasoningTokens", "totalTokens", "isGhostMode", "chatId"
-            )
-            VALUES (
-              ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
-              ${safeOutputTokens}, ${safeReasoningTokens},
-              ${safeTotalTokens}, ${isGhostMode}, ${safeChatId}::uuid
-            )
-            ON CONFLICT ("id") DO NOTHING
-            RETURNING "id"
-          `;
-        }
-        return client`
-          INSERT INTO "UsageEvent" (
-            "id", "userId", "model", "inputTokens", "outputTokens",
-            "reasoningTokens", "totalTokens", "isGhostMode"
-          )
-          VALUES (
-            ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
-            ${safeOutputTokens}, ${safeReasoningTokens},
-            ${safeTotalTokens}, ${isGhostMode}
-          )
-          ON CONFLICT ("id") DO NOTHING
-          RETURNING "id"
-        `;
-      };
-
-      try {
-        // On ne lit que la LONGUEUR de la liste renvoyée (`ON CONFLICT DO
-        // NOTHING` + `RETURNING`) : le type précis de ligne n'a pas d'intérêt.
-        // Les paliers sont essayés dans l'ordre décroissant de fidélité ; seul
-        // un 42703 (colonne absente) fait descendre d'un cran, toute autre
-        // erreur est réelle et remontée plus bas.
-        const attempts: [boolean, boolean][] = [
-          [true, true],
-          [true, false],
-          [false, false],
-        ];
-        let inserted: unknown[] = [];
-        for (const [withChatId, withAttribution] of attempts) {
-          try {
-            inserted = await insertWithAttribution(withChatId, withAttribution);
-            break;
-          } catch (tierError) {
-            if ((tierError as { code?: string })?.code !== "42703") {
-              throw tierError;
-            }
-          }
-        }
-        shouldDebit = inserted.length > 0;
-        if (shouldDebit) {
-          insertedUsageEventKey = safeKey;
-        }
-      } catch (eventError) {
-        // La table est ajoutée par la migration 0026, `reasoningTokens` par la
-        // 0030, `chatId` par la 0033, l'attribution par la 0035. Tant qu'elles
-        // ne sont pas appliquées, conserver le comptage historique plutôt que
-        // de le perdre.
-        console.warn(
-          "UsageEvent indisponible, comptage direct conservé:",
-          eventError
-        );
-      }
-    }
-
     // weekly_usage.user_id est un INTEGER (table plateforme partagée avec le
     // backend mAI : handleGetUsage passe un integer). On n'y débite que les
     // identifiants numériques (users.id) ; les autres formats (uuid, emails)
     // ne sont pas comptabilisés ici — le quota hebdomadaire reste cohérent.
-    const numericUserId = String(targetUserId).match(/^\d+$/)?.[0];
-    if (shouldDebit && numericUserId) {
-      // 1. Mise à jour ou insertion dans weekly_usage
-      await _rawClient`
-        INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-        VALUES (${Number(numericUserId)}, ${weekStartStr}::date, ${actualTotal})
-        ON CONFLICT (user_id, week_start)
-        DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${actualTotal}
-      `;
-    }
+    const numericUserId = String(targetUserId).match(/^\d+$/)?.[0] ?? null;
 
-    if (shouldDebit) {
-      // 2. Enregistrement dans mprojects_api_logs
-      try {
-        await _rawClient`
-          INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
-          VALUES (
-            ${targetUserId}::text,
-            ${isGhostMode ? `/v1/chat/completions?ghost=true&model=${model}` : `/v1/chat/completions?model=${model}`}::text,
-            'POST',
-            200,
-            1200,
-            NOW()
-          )
-        `;
-      } catch (logErr) {
-        // Repli volontaire (l'usage a déjà été débité) — tracé pour audit.
-        console.warn("Insertion mprojects_api_logs impossible:", logErr);
+    // Sans clé d'idempotence, l'événement reçoit un identifiant neuf : il est
+    // bien enregistré, une seule fois, et le débit reste attaché à CETTE
+    // insertion. Auparavant les appels sans clé n'écrivaient pas UsageEvent.
+    const safeKey = (idempotencyKey ?? crypto.randomUUID()).slice(0, 256);
+    const safeInputTokens = Math.max(0, Math.floor(inputTokens || 0));
+    const safeOutputTokens = Math.max(0, Math.floor(outputTokens || 0));
+    const safeReasoningTokens = Math.max(0, Math.floor(reasoningTokens || 0));
+    const safeTotalTokens = Math.max(0, Math.floor(actualTotal));
+    // Un `chatId` non uuid (identifiant historique d'une autre forme) doit
+    // faire perdre le lien, pas l'INSERT : on l'écarte plutôt que de laisser
+    // Postgres rejeter l'ensemble de la ligne.
+    const safeChatId =
+      chatId && /^[0-9a-fA-F-]{36}$/.test(chatId) ? chatId : null;
+    // Même règle que pour `chatId` : un identifiant de projet mal formé perd
+    // l'attribution, il ne doit pas faire échouer l'INSERT entier.
+    const safeChatProjectId =
+      chatProjectId && /^[0-9a-fA-F-]{36}$/.test(chatProjectId)
+        ? chatProjectId
+        : null;
+    const safeChatMode =
+      chatMode === "agent" ? "agent" : chatMode === "chat" ? "chat" : null;
+    // `client` est capturé localement : le garde `if (!_rawClient) return`
+    // plus haut ne survit pas à la fermeture.
+    const client = _rawClient;
+
+    /**
+     * UN aller-retour pour les deux écritures qui comptent.
+     *
+     * Avant : `UsageEvent`, `weekly_usage`, puis `mprojects_api_logs` — trois
+     * requêtes séquentielles par réponse IA. `mprojects_api_logs` documente
+     * l'API publique et n'était lu par aucune surface de l'hôte : il dupliquait
+     * `UsageEvent` sur le chemin chaud et disparaît. Les deux écritures
+     * restantes partent dans la même requête ; le débit est conditionné à
+     * l'insertion RÉELLE par une CTE, donc un rejeu idempotent ne débite pas
+     * deux fois.
+     */
+    const insertUsage = async (
+      withChatId: boolean,
+      withAttribution: boolean
+    ) => {
+      const columns = [
+        "id",
+        "userId",
+        "model",
+        "inputTokens",
+        "outputTokens",
+        "reasoningTokens",
+        "totalTokens",
+        "isGhostMode",
+      ];
+      const values: (string | number | boolean | null)[] = [
+        safeKey,
+        targetUserId,
+        model,
+        safeInputTokens,
+        safeOutputTokens,
+        safeReasoningTokens,
+        safeTotalTokens,
+        isGhostMode,
+      ];
+      if (withChatId) {
+        columns.push("chatId");
+        values.push(safeChatId);
       }
+      if (withAttribution) {
+        columns.push("chatMode", "chatProjectId");
+        values.push(safeChatMode, safeChatProjectId);
+      }
+      const placeholders = columns.map((column, index) => {
+        const position = `$${index + 1}`;
+        if (column === "chatId" || column === "chatProjectId") {
+          return `${position}::uuid`;
+        }
+        if (column === "chatMode") {
+          return `${position}::varchar`;
+        }
+        return position;
+      });
+      const userIdParam = values.length + 1;
+      const weekParam = values.length + 2;
+      const totalParam = values.length + 3;
+      // `debited` n'est pas relue : une CTE modificatrice s'exécute dès lors
+      // que l'instruction est présente. Le SELECT final renvoie les lignes
+      // réellement insérées, ce qui suffit à savoir si le débit a eu lieu.
+      const query = `WITH inserted AS (
+          INSERT INTO "UsageEvent" (${columns.map((column) => `"${column}"`).join(", ")})
+          VALUES (${placeholders.join(", ")})
+          ON CONFLICT ("id") DO NOTHING
+          RETURNING "id"
+        ), debited AS (
+          INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+          SELECT $${userIdParam}::int, $${weekParam}::date, $${totalParam}::int
+          FROM inserted
+          WHERE $${userIdParam}::int IS NOT NULL
+          ON CONFLICT (user_id, week_start)
+          DO UPDATE SET tokens_used = weekly_usage.tokens_used + $${totalParam}::int
+        )
+        SELECT "id" FROM inserted`;
+      return client.unsafe(query, [
+        ...values,
+        numericUserId ? Number(numericUserId) : null,
+        weekStartStr,
+        safeTotalTokens,
+      ]);
+    };
+
+    try {
+      // La table est ajoutée par la migration 0026, `reasoningTokens` par la
+      // 0030, `chatId` par la 0033, l'attribution par la 0035. On descend d'un
+      // cran à chaque 42703 (colonne absente) : un environnement qui traîne une
+      // migration de retard continue d'enregistrer sa consommation.
+      const attempts: [boolean, boolean][] = [
+        [true, true],
+        [true, false],
+        [false, false],
+      ];
+      for (const [withChatId, withAttribution] of attempts) {
+        try {
+          await insertUsage(withChatId, withAttribution);
+          return;
+        } catch (tierError) {
+          if ((tierError as { code?: string })?.code !== "42703") {
+            throw tierError;
+          }
+        }
+      }
+
+      // Repli ultime : aucune colonne d'attribution n'est disponible. Le quota
+      // hebdomadaire reste débité, comme avant la migration 0026.
+      if (numericUserId) {
+        await client`
+          INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+          VALUES (${Number(numericUserId)}, ${weekStartStr}::date, ${safeTotalTokens})
+          ON CONFLICT (user_id, week_start)
+          DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${safeTotalTokens}
+        `;
+      }
+      console.warn(
+        "UsageEvent indisponible, comptage direct conservé (aucun palier n'a abouti)."
+      );
+    } catch (eventError) {
+      // Une seule instruction atomique : un échec n'a rien écrit, il n'y a
+      // donc rien à compenser.
+      console.error("Erreur recordTokenUsage direct en BDD:", eventError);
     }
   } catch (err) {
-    if (insertedUsageEventKey && _rawClient) {
-      await _rawClient`
-        DELETE FROM "UsageEvent" WHERE "id" = ${insertedUsageEventKey}
-      `.catch(() => {});
-    }
     console.error("Erreur recordTokenUsage direct en BDD:", err);
   }
 }

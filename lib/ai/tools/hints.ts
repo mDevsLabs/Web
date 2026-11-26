@@ -11,7 +11,7 @@ export const TOOL_SYSTEM_HINTS = {
   askUser:
     "askUser (pose de 1 à 10 questions précises et structurées à l'utilisateur avec choix uniques/multiples et option champ libre lorsqu'une demande est incomplète, nécessite des éclaircissements, ou des préférences avant de poursuivre)",
   audioGenerate:
-    "audioGenerate (synthèse vocale : transforme un texte en voix. Exécuter immédiatement avec la voix par défaut 'flux-alexis-en' sans demander le choix de la voix)",
+    "audioGenerate (synthèse vocale : transforme un texte en voix. Exécuter immédiatement avec la voix par défaut configurée sans demander le choix de la voix)",
   audioPodcast:
     "audioPodcast (crée un podcast-débat entre un animateur et une experte : écrire le dialogue en segments vivants de 2 à 4 phrases, accroche à conclusion, puis les synthétiser avec 2 voix distinctes — ne jamais demander de choix de voix)",
   calculator:

@@ -1,15 +1,15 @@
 /**
- * Ordre d'affichage du catalogue de modèles.
+ * Ordre d'affichage et mise en avant du catalogue de modèles.
  *
  * Le catalogue remonte dans l'ordre de la source (base backend, puis alias
  * cloud), qui est un ordre de GESTION, pas un ordre de LECTURE : l'utilisateur
- * voit d'abord des modèles tiers, alors que la famille mAI-2 est celle que la
- * maison met en avant.
+ * voit d'abord des modèles tiers, alors que la gamme mAI-2.5 (et la famille
+ * mAI dans son ensemble) est celle que la maison met en avant.
  *
- * L'ordre d'affichage est donc décidé ici, en un seul endroit, et partagé par
- * le sélecteur de l'hôte (chat, agent, Wakies, création, réglages) et celui
- * du Site officiel : deux listes qui n'affichent pas les mêmes modèles dans
- * le même ordre divergeraient.
+ * L'ordre d'affichage et la liste des modèles recommandés sont donc décidés
+ * ici, en un seul endroit, et partagés par le sélecteur de l'hôte (chat,
+ * agent, Wakies, création, réglages) et celui du Site officiel : deux listes
+ * qui divergeraient afficheraient des badges ou un ordre incohérents.
  *
  * Logique pure : aucun import serveur, aucun état.
  */
@@ -18,23 +18,57 @@ import { MAI_PROVIDER_KEY, resolveProviderKey } from "./provider";
 import type { SharedModel } from "./types";
 
 /**
- * Les deux modèles mAI-2, dans l'ordre où ils doivent apparaître.
+ * Modèles de la génération mAI-2.5, mis en avant et marqués « Recommandé ».
  *
- * mAI-2 d'abord (le modèle phare, le plus capable), puis mAI-2-Mini (le
- * modèle rapide et quotidien). L'ordre est explicite et non alphabétique :
- * « mAI-2 » précède « mAI-2-Mini » par convention, pas par tri.
+ * L'ordre est explicite : Opal (phare), Apex (audit/code), Omni (quotidien).
+ */
+export const MAI_2_5_MODEL_IDS = [
+  "mai-2.5-opal",
+  "mai-2.5-apex",
+  "mai-2.5-omni",
+] as const;
+
+/**
+ * Les deux modèles de la génération précédente mAI-2, conservés juste après
+ * mAI-2.5 mais sans le label « Recommandé ».
+ *
+ * « mAI-2 » précède « mAI-2-Mini » par convention, pas par tri alphabétique.
  */
 export const MAI_2_MODEL_IDS = ["mai-2", "mai-2-mini"] as const;
 
+/** Ordre de mise en avant des modèles phares mAI dans les listes. */
+const FEATURED_MAI_MODEL_IDS = [
+  ...MAI_2_5_MODEL_IDS,
+  ...MAI_2_MODEL_IDS,
+] as const;
+
+function stripMaiPrefix(modelId: string): string {
+  return (modelId || "").toLowerCase().replace(/^mdevslabs\//, "");
+}
+
 /**
- * Le modèle appartient-il à la famille mAI-2 ?
+ * Le modèle porte-t-il le label « Recommandé » ?
  *
- * La comparaison ignore le préfixe fournisseur (`mdevslabs/mai-2`) : le même
- * modèle est publié sous deux écritures selon la source, et il doit rester
- * en tête dans les deux cas.
+ * Seule la génération mAI-2.5 (Opal, Apex, Omni) est recommandée ; la
+ * génération précédente mAI-2 / mAI-2-Mini n'est plus mise en avant par ce
+ * badge. La comparaison ignore le préfixe fournisseur (`mdevslabs/...`).
+ */
+export function isRecommendedModelId(modelId: string): boolean {
+  const id = stripMaiPrefix(modelId);
+  return (MAI_2_5_MODEL_IDS as readonly string[]).includes(id);
+}
+
+export function isRecommendedModel(model: SharedModel): boolean {
+  return isRecommendedModelId(model.id);
+}
+
+/**
+ * Le modèle appartient-il à la génération mAI-2 (`mai-2` ou `mai-2-mini`) ?
+ *
+ * La comparaison ignore le préfixe fournisseur (`mdevslabs/mai-2`).
  */
 export function isMai2ModelId(modelId: string): boolean {
-  const id = (modelId || "").toLowerCase().replace(/^mdevslabs\//, "");
+  const id = stripMaiPrefix(modelId);
   return (MAI_2_MODEL_IDS as readonly string[]).includes(id);
 }
 
@@ -43,14 +77,13 @@ export function isMai2Model(model: SharedModel): boolean {
 }
 
 /**
- * Rang d'un modèle dans la famille mAI-2 (0 pour mAI-2, 1 pour mAI-2-Mini).
+ * Rang d'affichage d'un modèle phare mAI (0..2 pour mAI-2.5, 3..4 pour mAI-2).
  *
- * Un modèle hors famille vaut un rang très élevé : il passe donc après les
- * deux, sans être pour autant pénalisé.
+ * Tout autre modèle vaut `Number.MAX_SAFE_INTEGER` et passe donc après.
  */
-function mai2Rank(modelId: string): number {
-  const id = (modelId || "").toLowerCase().replace(/^mdevslabs\//, "");
-  const index = (MAI_2_MODEL_IDS as readonly string[]).indexOf(id);
+export function featuredMaiRank(modelId: string): number {
+  const id = stripMaiPrefix(modelId);
+  const index = (FEATURED_MAI_MODEL_IDS as readonly string[]).indexOf(id);
   return index === -1 ? Number.MAX_SAFE_INTEGER : index;
 }
 
@@ -59,9 +92,10 @@ function mai2Rank(modelId: string): number {
  *
  * Trois règles, dans cet ordre :
  *
- * 1. La famille mAI-2 ouvre la liste, mAI-2 avant mAI-2-Mini.
- * 2. Le groupe mAI suit immédiatement, ses autres modèles conservant leur
- *    ordre d'origine.
+ * 1. La génération mAI-2.5 (Opal, Apex, Omni) ouvre la liste, suivie de
+ *    mAI-2 puis mAI-2-Mini.
+ * 2. Les autres modèles du groupe mAI suivent immédiatement, dans leur ordre
+ *    d'origine.
  * 3. Le reste du catalogue garde l'ordre de la source — c'est le seul ordre
  *    qu'on ne connaît pas et qu'il ne faut donc pas réinventer.
  *
@@ -69,13 +103,13 @@ function mai2Rank(modelId: string): number {
  * rang conservent leur position relative, donc l'ordre de la source.
  */
 export function sortModelsForDisplay(models: SharedModel[]): SharedModel[] {
-  const mai2: SharedModel[] = [];
+  const featured: SharedModel[] = [];
   const autresMai: SharedModel[] = [];
   const tiers: SharedModel[] = [];
 
   for (const model of models) {
-    if (isMai2Model(model)) {
-      mai2.push(model);
+    if (featuredMaiRank(model.id) !== Number.MAX_SAFE_INTEGER) {
+      featured.push(model);
     } else if (resolveProviderKey(model) === MAI_PROVIDER_KEY) {
       autresMai.push(model);
     } else {
@@ -83,17 +117,17 @@ export function sortModelsForDisplay(models: SharedModel[]): SharedModel[] {
     }
   }
 
-  mai2.sort((a, b) => mai2Rank(a.id) - mai2Rank(b.id));
+  featured.sort((a, b) => featuredMaiRank(a.id) - featuredMaiRank(b.id));
 
-  return [...mai2, ...autresMai, ...tiers];
+  return [...featured, ...autresMai, ...tiers];
 }
 
 /**
  * Regroupe les modèles par fournisseur, dans l'ordre d'affichage.
  *
  * Le groupe mAI ouvre la liste : c'est le fournisseur recommandé, et il
- * contient la famille mAI-2. Les autres groupes suivent dans l'ordre de
- * leur première apparition.
+ * contient les gammes mAI-2.5 puis mAI-2. Les autres groupes suivent dans
+ * l'ordre de leur première apparition.
  */
 export function groupModelsByProvider(
   models: SharedModel[]

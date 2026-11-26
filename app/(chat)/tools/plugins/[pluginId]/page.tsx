@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { getMaiUser } from "@/lib/auth/session";
 import { getPluginInstallationsByUserId } from "@/lib/db/queries";
-import { getPluginManifest } from "@/lib/plugins/catalog";
-import { canUsePlugin } from "@/lib/plugins/tier-lock";
+import { getPluginManifest } from "@/lib/plugins/core/catalog";
 import PluginDetailClient from "./plugin-detail-client";
 
 export const metadata: Metadata = {
@@ -15,12 +14,10 @@ export const metadata: Metadata = {
 // depuis la vignette d'un plugin installé sur la page Plugins.
 export default async function PluginDetailPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ pluginId: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const [{ pluginId }, queries] = await Promise.all([params, searchParams]);
+  const { pluginId } = await params;
   const [user, manifest] = await Promise.all([
     getMaiUser(),
     Promise.resolve(getPluginManifest(pluginId)),
@@ -43,7 +40,6 @@ export default async function PluginDetailPage({
     );
   }
 
-  const locked = !canUsePlugin(manifest, user?.tier);
   let installed = false;
   let enabled = false;
   let installedVersion: string | null = null;
@@ -62,20 +58,7 @@ export default async function PluginDetailPage({
       enabled={enabled}
       installed={installed}
       installedVersion={installedVersion}
-      locked={locked}
       manifest={manifest}
-      notice={{
-        account: first(queries.account),
-        installation: first(queries.installation),
-        outcome: first(queries.integration),
-        provider: first(queries.provider),
-        reason: first(queries.reason),
-      }}
     />
   );
-}
-
-/** Un query param peut arriver dupliqué ; on ne garde que sa première valeur. */
-function first(value: string | string[] | undefined): string | undefined {
-  return Array.isArray(value) ? value[0] : value;
 }

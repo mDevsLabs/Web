@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
 import { isProductionEnvironment } from "@/lib/constants";
+import { isEncryptionConfigured } from "@/lib/mcp/encryption";
 import {
   callbackUriFor,
   newNonce,
@@ -9,9 +10,8 @@ import {
   STATE_TTL_MS,
   sealState,
   stateCookieName,
-} from "@/lib/integrations/oauth";
-import { isEncryptionConfigured } from "@/lib/mcp/encryption";
-import { getUserPlugin } from "@/lib/plugins/user-plugin-store";
+} from "@/lib/plugins/core/oauth-state";
+import { getUserPlugin } from "@/lib/plugins/core/user-plugin-store";
 
 const PROVIDER_KEY = "userplugin";
 

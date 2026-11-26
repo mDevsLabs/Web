@@ -1,62 +1,38 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { upstreamJson } from "@/lib/api/upstream";
-import { getMaiSessionToken } from "@/lib/auth/session";
+import { listSpeechVoicesFromDb } from "@/lib/ai/catalog/media-models";
+import { logError } from "@/lib/api/error-response";
+import { getMaiUser } from "@/lib/auth/session";
+import { ModelAccessError } from "@/openrouter-models";
 
 export async function GET(_req: NextRequest) {
-  const token = await getMaiSessionToken();
-  const result = await upstreamJson({ path: "/v1/audio/voices", token });
+  try {
+    const user = await getMaiUser();
+    const data = await listSpeechVoicesFromDb(user?.tier);
 
-  if (result.ok) {
-    return NextResponse.json(result.data);
+    return NextResponse.json(
+      {
+        data,
+        object: "list",
+      },
+      {
+        headers: {
+          "Cache-Control": "private, max-age=60, stale-while-revalidate=120",
+        },
+      }
+    );
+  } catch (error) {
+    logError("Erreur API audio/voices", error);
+    const status = error instanceof ModelAccessError ? error.status : 503;
+    return NextResponse.json(
+      {
+        data: [],
+        error: {
+          code: "catalog_unavailable",
+          message: "Le catalogue des voix est indisponible.",
+        },
+        object: "list",
+      },
+      { status }
+    );
   }
-
-  // Voix par défaut
-  return NextResponse.json({
-    data: [
-      {
-        description: "Voix féminine chaleureuse, naturelle et claire.",
-        gender: "female",
-        id: "flux-alexis-en",
-        language: "fr/en",
-        name: "Alexis",
-      },
-      {
-        description: "Voix masculine posée, fluide et professionnelle.",
-        gender: "male",
-        id: "flux-michael-en",
-        language: "fr/en",
-        name: "Michael",
-      },
-      {
-        description: "Voix féminine expressive, vive et dynamique.",
-        gender: "female",
-        id: "flux-stacy-en",
-        language: "fr/en",
-        name: "Stacy",
-      },
-      {
-        description:
-          "Voix masculine profonde, idéale pour narration & podcast.",
-        gender: "male",
-        id: "flux-sam-en",
-        language: "fr/en",
-        name: "Sam",
-      },
-      {
-        description: "Voix féminine moderne, douce et mélodieuse.",
-        gender: "female",
-        id: "flux-asteria-en",
-        language: "fr/en",
-        name: "Asteria",
-      },
-      {
-        description: "Voix masculine cinématique, intense et charismatique.",
-        gender: "male",
-        id: "flux-orion-en",
-        language: "fr/en",
-        name: "Orion",
-      },
-    ],
-    object: "list",
-  });
 }

@@ -170,7 +170,7 @@ function PureMessages({
       {searchOpen && (
         <div className="sticky top-0 z-20 flex items-center gap-2 bg-card/95 backdrop-blur-md border-b border-border/40 px-3 py-2 shadow-sm">
           <div className="relative flex-1 max-w-md">
-            <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+            <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 z-10 -translate-y-1/2 size-4 text-muted-foreground" />
             <input
               autoFocus
               className="w-full h-8 rounded-xl border border-border/60 bg-muted/30 pl-8 pr-3 text-[16px] md:text-sm outline-none focus:ring-2 focus:ring-primary/20"
@@ -286,7 +286,8 @@ function PureMessages({
                   chatId={chatId}
                   isCurrentMatch={isCurrentMatchMsg}
                   isLoading={
-                    status === "streaming" && messages.length - 1 === index
+                    (status === "streaming" || status === "submitted") &&
+                    messages.length - 1 === index
                   }
                   isReadonly={isReadonly}
                   message={message}

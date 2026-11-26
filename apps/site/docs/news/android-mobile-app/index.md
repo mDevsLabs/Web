@@ -21,7 +21,7 @@ Cette version mobile permet d'accéder à votre assistant tout en préservant l'
 L'application est distribuée sous la forme d'un paquet d'installation APK au sein d'une archive compressée.
 
 1. **Télécharger l'application mobile** : [mAI-Android.zip](https://upload.fs.fr/i4Bw0kQXk7.zip)
-2. **Consulter le guide complet d'installation** : [Documentation Android](/docs?doc=guide-application-android)
+2. **Accéder à tous les téléchargements** : [Page Téléchargements](/downloads)
 
 Pour procéder à l'installation, décompressez l'archive puis ouvrez le fichier APK sur votre appareil Android, après avoir activé l'autorisation d'installation depuis des sources externes dans vos paramètres système.
 

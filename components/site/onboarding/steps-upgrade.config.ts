@@ -18,7 +18,7 @@ export const UPGRADE_STEPS: StepDef[] = [
   },
   {
     description:
-      "Tokens, requêtes, images et stockage Cloud viennent de bondir. Et les modèles payants :free → premium sont maintenant accessibles.",
+      "Tokens mAI, synthèse audio, images et stockage Cloud viennent de bondir avec votre nouveau forfait.",
     icon: Gauge,
     id: "quotas-up",
     title: "Nouvelles limites",
@@ -28,7 +28,7 @@ export const UPGRADE_STEPS: StepDef[] = [
     ctaAction: "goModels",
     ctaLabel: "Explorer les modèles",
     description:
-      "Parcours le hub modèles ou crée une clé dédiée à ton nouveau forfait.",
+      "Parcours le catalogue des modèles ou retrouve tes nouveaux plafonds sur ton espace compte.",
     icon: Rocket,
     id: "next",
     title: "À toi de jouer",

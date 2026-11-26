@@ -1,6 +1,6 @@
 {
   "name": "@mdevs/ui",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "React and TypeScript Liquid Glass components with independent domain APIs",
   "type": "module",
   "license": "MIT",
@@ -35,6 +35,11 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mDevsLabs/Web.git",
+    "directory": "packages/ui"
   },
   "exports": {
     ".": {

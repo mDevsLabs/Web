@@ -1,7 +1,6 @@
 import "server-only";
 
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
-import { upstreamJson } from "@/lib/api/upstream";
 import { recordTokenUsage } from "@/lib/db/queries";
 
 // Décompte des tokens : Agent réutilise exactement le quota hebdomadaire du
@@ -80,38 +79,6 @@ export async function recordAgentUsage(params: {
       })
     );
   });
-
-  // Noter `chatId` (migration 0033) n'a de sens que pour les appelants qui
-  // fournissent une `idempotencyKey` : `recordTokenUsage` n'insère une ligne
-  // `UsageEvent` que dans ce cas. Le sélecteur de modèle, le routeur LLM et la
-  // compaction de contexte appellent bien `recordAgentUsage`, mais SANS clé —
-  // ils débitent le quota hebdomadaire et ne laissent aucune ligne événementielle.
-  // Leur consommation n'apparaît donc dans aucune série de la page Statistiques,
-  // par construction ; le commenter évite qu'on leur ajoute un `chatId` en
-  // croyant améliorer la restitution.
-  //
-  // Notification best-effort de l'endpoint de journalisation amont. Le total
-  // part déjà décomposé : le proxy ne doit pas recomposer et risquer un double
-  // comptage de la réflexion.
-  try {
-    await upstreamJson({
-      body: {
-        inputTokens,
-        isGhostMode: false,
-        model: params.model,
-        outputTokens,
-        reasoningTokens,
-        tokensUsed: totalTokens,
-      },
-      method: "POST",
-      path: "/log-usage",
-      timeoutMs: 3000,
-      token: params.sessionToken,
-    });
-  } catch {
-    // Le décompte local a déjà été appliqué : un échec de journalisation ne
-    // doit jamais interrompre un run.
-  }
 
   return { inputTokens, outputTokens, reasoningTokens, totalTokens };
 }

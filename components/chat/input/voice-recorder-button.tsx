@@ -94,7 +94,7 @@ export function VoiceRecorderButton({
   return (
     <Button
       className={cn(
-        "h-9 w-9 rounded-full border p-1.5 sm:h-8 sm:w-8",
+        "h-11 w-11 rounded-full border p-1.5 sm:h-8 sm:w-8",
         isListening
           ? "animate-pulse border-destructive/30 bg-destructive/10 text-destructive"
           : "border-border/40 text-foreground hover:bg-muted",

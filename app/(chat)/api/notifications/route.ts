@@ -11,10 +11,55 @@ import {
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import {
+  replicateVibeNotifications,
+  replicateWakiesNotifications,
+} from "@/lib/notifications/replication";
+import {
   isNotificationOrigin,
   NOTIFICATION_TYPES,
   type NotificationType,
 } from "@/lib/notifications/types";
+
+export const maxDuration = 15;
+
+// Réplication à la demande (sans CRON en arrière-plan) : bornée par utilisateur
+// à un passage toutes les 5 minutes pour éviter d'éveiller les sources à chaque
+// ouverture ou revalidation de la cloche.
+const REPLICATION_THROTTLE_MS = 5 * 60_000;
+const REPLICATION_CACHE_MAX_ENTRIES = 1000;
+const lastReplicationByUser = new Map<string, number>();
+
+async function maybeReplicateForUser(
+  userId: string,
+  email?: string | null
+): Promise<void> {
+  const now = Date.now();
+  const lastAt = lastReplicationByUser.get(userId);
+  if (lastAt !== undefined && now - lastAt < REPLICATION_THROTTLE_MS) {
+    return;
+  }
+  if (lastReplicationByUser.size >= REPLICATION_CACHE_MAX_ENTRIES) {
+    const oldest = lastReplicationByUser.keys().next().value as
+      | string
+      | undefined;
+    if (oldest) {
+      lastReplicationByUser.delete(oldest);
+    }
+  }
+  lastReplicationByUser.set(userId, now);
+
+  try {
+    await Promise.allSettled([
+      replicateWakiesNotifications(userId),
+      email ? replicateVibeNotifications(email) : Promise.resolve(0),
+    ]);
+  } catch (err) {
+    console.warn(
+      "[notifications] Réplication à la demande partielle :",
+      err instanceof Error ? err.message : err
+    );
+  }
+}
 
 const notificationSchema = z.object({
   body: z.string().max(500).nullish(),
@@ -60,6 +105,9 @@ export async function GET(request: Request) {
         .map((valeur) => valeur.trim())
         .filter(isNotificationOrigin)
     : undefined;
+  if (!unreadOnly && offset === 0) {
+    await maybeReplicateForUser(userId, session.user.email);
+  }
   const notifications = await getNotificationsByUserId({
     limit,
     offset,

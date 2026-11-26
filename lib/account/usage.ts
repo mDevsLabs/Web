@@ -1,12 +1,16 @@
 import "server-only";
 
-import { upstreamJson } from "@/lib/api/upstream";
 import type { MaiUser } from "@/lib/auth/session";
+import {
+  countTodayImageGenerations,
+  getUtcWeekStart,
+  getWeeklySpeechUsage,
+} from "@/lib/db/queries/generations";
+import { getUserCloudStorage } from "@/lib/db/queries/storage";
 import {
   getTierChatWeeklyLimit,
   getTierImageDailyLimit,
   getTierSpeechWeeklyLimit,
-  getTierStorageBytes,
 } from "@/lib/plans/tier-limits";
 
 export type AiUsage = {
@@ -49,10 +53,9 @@ export type UsageBundle = {
   warnings: string[];
 };
 
-// Agrège forfait + usage + quotas depuis le backend Val Town.
-// Un endpoint en échec renseigne `warnings` sans faire échouer l'ensemble.
+// Agrège forfait + usage + quotas directement depuis Neon PostgreSQL.
 export async function fetchUsageBundle({
-  sessionToken,
+  sessionToken: _sessionToken,
   fallbackUser,
 }: {
   sessionToken: string;
@@ -60,94 +63,84 @@ export async function fetchUsageBundle({
 }): Promise<UsageBundle> {
   const warnings: string[] = [];
 
-  // Un endpoint en échec renseigne `warnings` sans faire échouer l'ensemble :
-  // l'interface affiche alors des quotas partiels plutôt qu'un écran vide.
-  const fetchJson = async <T>(
-    path: string,
-    label: string
-  ): Promise<T | null> => {
-    const result = await upstreamJson<T>({
-      path,
-      timeoutMs: 8000,
-      token: sessionToken,
-    });
-    if (!result.ok) {
-      warnings.push(label);
-      return null;
+  const userTier = fallbackUser?.tier || "Free";
+  const userId = fallbackUser?.id || "";
+
+  const now = new Date();
+  const monday = getUtcWeekStart(now);
+  const nextMonday = new Date(monday.getTime() + 7 * 86_400_000);
+  const nextMidnight = new Date(
+    Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate() + 1,
+      0,
+      0,
+      0
+    )
+  ).toISOString();
+
+  let cloudData: Awaited<ReturnType<typeof getUserCloudStorage>> | null = null;
+  let usedImagesToday = 0;
+  let speechTokens = 0;
+  let speechRequests = 0;
+
+  if (userId) {
+    try {
+      const [storage, imagesCount, speech] = await Promise.all([
+        getUserCloudStorage(userId, userTier),
+        countTodayImageGenerations(userId),
+        // Tolérant : une lecture Speech en échec ne masque pas le reste.
+        getWeeklySpeechUsage([
+          userId,
+          fallbackUser?.email,
+          fallbackUser?.username,
+        ]).catch(() => null),
+      ]);
+      cloudData = storage;
+      usedImagesToday = imagesCount;
+      if (speech) {
+        speechTokens = speech.tokensUsed;
+        speechRequests = speech.requestsCount;
+      } else {
+        warnings.push("speech");
+      }
+    } catch {
+      warnings.push("métriques");
     }
-    return result.data;
-  };
-
-  const [usageData, imagesData, cloudData, speechData] = await Promise.all([
-    fetchJson<Record<string, any>>("/usage", "forfait"),
-    fetchJson<Record<string, any>>("/v1/images/usage", "images"),
-    fetchJson<Record<string, any>>("/cloud/storage", "stockage"),
-    fetchJson<Record<string, any>>("/v1/speech/usage", "synthèse vocale"),
-  ]);
-
-  const userTier = usageData?.tier || fallbackUser?.tier || "Free";
-  const fallbackTier = fallbackUser?.tier || userTier;
+  }
 
   const result: UsageBundle = {
     aiUsage: {
-      limit: Number(
-        usageData?.limit ||
-          fallbackUser?.limit ||
-          getTierChatWeeklyLimit(fallbackTier)
-      ),
-      resetAt: usageData?.resetAt || fallbackUser?.resetAt,
+      limit: Number(fallbackUser?.limit || getTierChatWeeklyLimit(userTier)),
+      resetAt: fallbackUser?.resetAt || nextMonday.toISOString(),
       tier: userTier,
-      tokensUsed: Number(
-        usageData?.tokensUsed ?? fallbackUser?.tokensUsed ?? 0
-      ),
+      tokensUsed: Number(fallbackUser?.tokensUsed ?? 0),
     },
     cloudUsage: cloudData
       ? {
-          bytesLimit: Number(
-            cloudData.bytes_limit || getTierStorageBytes(userTier)
-          ),
-          bytesUsed: Number(cloudData.bytes_used || 0),
-          filesCount: Number(cloudData.files_count || 0),
-          overLimit: Boolean(cloudData.over_limit),
-          percentUsed: Number(cloudData.percent_used || 0),
-          tier: cloudData.tier || userTier,
+          bytesLimit: cloudData.bytes_limit,
+          bytesUsed: cloudData.bytes_used,
+          filesCount: cloudData.files_count,
+          overLimit: cloudData.over_limit,
+          percentUsed: cloudData.percent_used,
+          tier: cloudData.tier,
         }
       : null,
-    imagesUsage: imagesData
-      ? {
-          dailyLimit: imagesData.dailyLimit ?? null,
-          plan: imagesData.plan || userTier,
-          resetAt: imagesData.resetAt,
-          usedToday: imagesData.usedToday ?? null,
-        }
-      : null,
-    speechUsage: speechData
-      ? {
-          limit: Number(
-            speechData.limit ||
-              speechData.weeklyLimit ||
-              usageData?.speechLimit ||
-              getTierSpeechWeeklyLimit(speechData.plan || userTier)
-          ),
-          requestsCount: Number(speechData.requestsCount || 0),
-          resetAt: speechData.resetAt || usageData?.resetAt,
-          tier: speechData.plan || userTier,
-          tokensUsed: Number(
-            speechData.tokensUsed ?? usageData?.speechTokensUsed ?? 0
-          ),
-        }
-      : usageData?.speechTokensUsed === undefined
-        ? null
-        : {
-            limit: Number(
-              usageData?.speechLimit || getTierSpeechWeeklyLimit(userTier)
-            ),
-            requestsCount: 0,
-            resetAt: usageData?.resetAt,
-            tier: userTier,
-            tokensUsed: Number(usageData?.speechTokensUsed || 0),
-          },
-    user: usageData ?? fallbackUser ?? null,
+    imagesUsage: {
+      dailyLimit: getTierImageDailyLimit(userTier),
+      plan: userTier,
+      resetAt: nextMidnight,
+      usedToday: usedImagesToday,
+    },
+    speechUsage: {
+      limit: getTierSpeechWeeklyLimit(userTier),
+      requestsCount: speechRequests,
+      resetAt: nextMonday.toISOString(),
+      tier: userTier,
+      tokensUsed: speechTokens,
+    },
+    user: fallbackUser ?? null,
     warnings,
   };
 

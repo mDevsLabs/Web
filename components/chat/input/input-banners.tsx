@@ -37,34 +37,44 @@ export function GhostBanner({
 
 export function QuotaBanner({
   costPercent,
-  costAiUsed,
-  costAiLimit,
-  liveSessionTokens,
+  tierLabel,
 }: {
   costPercent: number;
-  costAiUsed: number;
-  costAiLimit: number;
-  liveSessionTokens: number;
+  costAiUsed?: number;
+  costAiLimit?: number;
+  liveSessionTokens?: number;
+  tierLabel?: string;
 }) {
+  const isDanger = costPercent >= 90;
+  const isWarn = costPercent >= 75 && !isDanger;
   return (
     <div
-      className={`flex items-center gap-2 px-2.5 py-1.5 rounded-xl border text-[11px] ${costPercent >= 90 ? "bg-red-500/10 border-red-500/30 text-red-600" : costPercent >= 75 ? "bg-amber-500/10 border-amber-500/30 text-amber-600" : "bg-muted/30 border-border/40 text-muted-foreground"}`}
+      className={`flex items-center gap-2 px-2.5 py-1.5 rounded-xl border text-[11px] ${
+        isDanger
+          ? "bg-destructive/10 border-destructive/30 text-destructive"
+          : isWarn
+            ? "bg-warning/10 border-warning/30 text-warning"
+            : "bg-muted/30 border-border/40 text-muted-foreground"
+      }`}
     >
-      <span className="font-semibold flex items-center gap-1">
-        {costPercent >= 90 ? (
-          <TriangleAlertIcon className="size-3.5 shrink-0" />
-        ) : null}
-        {costPercent >= 90 ? "Quota mAI à " : "Quota mAI: "}
-        {costPercent}%
+      <span className="font-semibold flex items-center gap-1.5">
+        {isDanger ? <TriangleAlertIcon className="size-3.5 shrink-0" /> : null}
+        Usage hebdomadaire{tierLabel ? ` (${tierLabel})` : ""} : {costPercent}%
       </span>
-      <span className="font-mono text-[10px]">
-        {costAiUsed}/{costAiLimit} tokens
-      </span>
-      <span className="hidden sm:inline">
-        {liveSessionTokens > 0 ? `(+${liveSessionTokens} cette session)` : ""}
-      </span>
-      <span className="ml-auto hidden sm:inline text-[10px]">
-        {costPercent >= 90 ? "Mise à niveau recommandée" : ""}
+      <div className="hidden sm:block h-1.5 w-16 overflow-hidden rounded-full bg-muted/60">
+        <div
+          className={`h-full rounded-full transition-all duration-300 ${
+            isDanger ? "bg-destructive" : isWarn ? "bg-warning" : "bg-primary"
+          }`}
+          style={{ width: `${Math.min(100, costPercent)}%` }}
+        />
+      </div>
+      <span className="ml-auto text-[10px]">
+        {costPercent >= 100
+          ? "Limite atteinte"
+          : costPercent >= 90
+            ? "Mise à niveau recommandée"
+            : "Renouvelé lundi"}
       </span>
     </div>
   );

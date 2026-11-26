@@ -51,10 +51,6 @@ Authorization: Bearer mai-free-A1B2C-DEF45678
 
 ---
 
-## 5. Référence console
+## 5. Archive technique
 
-Consultez la rubrique **[Gestion des Clés API](/account/keys)** de la console pour générer, révoquer ou consulter l\'état de vos clés.
-
----
-
-*Document mis à jour conformément aux spécifications de sécurité de l\'API mAI V2. Pour toute question technique, référez-vous à la documentation des points de terminaison.*
+*Archive historique — Spécification d'époque des clés API v2 (fin de service API programmée en décembre 2026).*

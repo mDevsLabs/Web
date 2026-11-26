@@ -16,6 +16,7 @@ import { MemoriesScreen } from "@/components/wakies/MemoriesScreen";
 import { MonProfilCard } from "@/components/wakies/MonProfilCard";
 import { Onboarding } from "@/components/wakies/Onboarding";
 import { openPageLink } from "@/components/wakies/page-navigation";
+import { WAKIES_POLL_MS } from "@/components/wakies/polling";
 import { ResultPane } from "@/components/wakies/ResultPane";
 import { SpaceWorkspace } from "@/components/wakies/SpaceWorkspace";
 import { TasksActivityScreen } from "@/components/wakies/TasksActivityScreen";
@@ -366,7 +367,7 @@ function WakiesWorkspaceContent({
             e instanceof Error ? e.message : "Impossible de joindre le serveur."
           );
       },
-      refreshInterval: 5000,
+      refreshInterval: WAKIES_POLL_MS,
       revalidateOnFocus: true,
     }
   );
@@ -436,7 +437,7 @@ function WakiesWorkspaceContent({
     load();
     const timer = setInterval(() => {
       if (document.visibilityState === "visible" && navigator.onLine) load();
-    }, 30_000);
+    }, 120_000);
     return () => {
       active = false;
       clearInterval(timer);
@@ -464,6 +465,9 @@ function WakiesWorkspaceContent({
   const wakie =
     workspace?.wakies.find((item) => item.id === selectedWakie) ??
     workspace?.wakies[0];
+  const espaceSelectionne =
+    workspace?.spaces.find((item) => item.id === spaceId) ??
+    workspace?.spaces[0];
   const thread = workspace?.conversations.find(
     (item) => item.id === selectedThread && item.wakieId === wakie?.id
   );
@@ -765,32 +769,64 @@ function WakiesWorkspaceContent({
             onMemories={() => setView("memories")}
           />
         ) : view === "space" ? (
-          <SpaceWorkspace
-            key={spaceId}
-            onCreateWakie={() => setDialog({ spaceId, type: "wakie" })}
-            onDirty={setDirtyPage}
-            onPage={(id) => openPage(spaceId, id)}
-            onRefresh={refresh}
-            onSchedule={(conversationId) =>
-              setDialog({ conversationId, type: "schedule" })
-            }
-            onSettings={() => ouvrirReglages()}
-            onThread={async (id) => {
-              const target = workspace.conversations.find((t) => t.id === id);
-              if (target) {
-                if (!(await setView("chat"))) return;
-                setSelectedWakie(target.wakieId);
-                setSelectedThread(id);
+          espaceSelectionne ? (
+            <SpaceWorkspace
+              key={espaceSelectionne.id}
+              onCreateWakie={() =>
+                setDialog({ spaceId: espaceSelectionne.id, type: "wakie" })
               }
-            }}
-            pageId={pageId}
-            paused={state.settings.paused}
-            space={
-              workspace.spaces.find((s) => s.id === spaceId) ??
-              workspace.spaces[0]
-            }
-            workspace={workspace}
-          />
+              onDirty={setDirtyPage}
+              onPage={(id) => openPage(espaceSelectionne.id, id)}
+              onRefresh={refresh}
+              onSchedule={(conversationId) =>
+                setDialog({ conversationId, type: "schedule" })
+              }
+              onSettings={() => ouvrirReglages()}
+              onThread={async (id) => {
+                const target = workspace.conversations.find((t) => t.id === id);
+                if (target) {
+                  if (!(await setView("chat"))) return;
+                  setSelectedWakie(target.wakieId);
+                  setSelectedThread(id);
+                }
+              }}
+              pageId={pageId}
+              paused={state.settings.paused}
+              space={espaceSelectionne}
+              workspace={workspace}
+            />
+          ) : (
+            <main
+              aria-label="Documents de l’Espace"
+              className="spaces-surface library"
+            >
+              <div className="library-empty">
+                <h2>Aucun Espace pour l’instant</h2>
+                <p>
+                  Créez un Espace pour organiser vos pages et vos documents.
+                </p>
+                <div
+                  className="today-hero-actions"
+                  style={{ justifyContent: "center" }}
+                >
+                  <Button
+                    onClick={() => setDialog({ type: "space" })}
+                    type="button"
+                    variant="solid"
+                  >
+                    Créer un Espace
+                  </Button>
+                  <Button
+                    onClick={() => void setView("today")}
+                    type="button"
+                    variant="outline"
+                  >
+                    Retour à Aujourd’hui
+                  </Button>
+                </div>
+              </div>
+            </main>
+          )
         ) : view === "chat" ? (
           <div className={`chat-workspace ${pane ? "split" : ""}`}>
             <div className="chat-column">
@@ -966,13 +1002,17 @@ function WakiesWorkspaceContent({
             <ResultPane
               computersAvailable={workspace.setup.computers === true}
               defaultWakieId={
-                view === "space"
+                view === "space" && espaceSelectionne
                   ? (workspace.wakies.find((candidate) =>
-                      candidate.spaceIds.includes(spaceId)
+                      candidate.spaceIds.includes(espaceSelectionne.id)
                     )?.id ?? wakie.id)
                   : wakie.id
               }
-              key={view === "space" ? spaceId : wakie.id}
+              key={
+                view === "space"
+                  ? (espaceSelectionne?.id ?? "no-space")
+                  : wakie.id
+              }
               onClose={() => setPane(false)}
               wakieState="idle"
               wakies={workspace.wakies}

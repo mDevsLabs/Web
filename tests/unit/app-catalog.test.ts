@@ -21,22 +21,19 @@ describe("catalogue des applications", () => {
     ]);
   });
 
-  it("expose le menu des applications dans son ordre d'affichage", () => {
-    // Le menu n'est PAS `APP_ORDER` : il glisse le CLI entre Coder et
-    // Blackline. Un seul endroit décrit cet ordre, et les trois rendus du
-    // menu le consomment.
-    expect(
-      APP_MENU_ORDER.map((entry) =>
-        entry.kind === "cli" ? "cli" : entry.entry.key
-      )
-    ).toEqual(["mai", "site", "vibe", "code", "cli", "blackline", "quizzly"]);
+  it("expose le menu des applications dans son ordre d'affichage sans CLI", () => {
+    expect(APP_MENU_ORDER.map((entry) => entry.entry.key)).toEqual([
+      "mai",
+      "site",
+      "vibe",
+      "code",
+      "blackline",
+      "quizzly",
+    ]);
   });
 
-  it("ne déclare le CLI qu'une seule fois dans le menu", () => {
-    const cles = APP_MENU_ORDER.map((entry) =>
-      entry.kind === "cli" ? "cli" : entry.entry.key
-    );
-    expect(cles.filter((cle) => cle === "cli")).toHaveLength(1);
+  it("retombe sur mAI pour une ancienne préférence cli", () => {
+    expect(normalizeAppKey("cli")).toBe("mai");
   });
 
   it("pointe chaque application vers sa route d'entrée", () => {

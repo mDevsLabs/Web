@@ -7,10 +7,17 @@ import {
   isAdminUser,
   SUPPORT_ATTACHMENT_LIMITS,
   type SupportAttachment,
+  type SupportDashboardResult,
+  type SupportDashboardStats,
   type SupportMessage,
   type SupportTicket,
+  type SupportTicketDetailsResult,
   type SupportTicketStatus,
+  type SupportTicketsListResult,
 } from "@/app/(chat)/site/actions/support-utils";
+import type { SupportStatsResult } from "@/components/site/support/stats/stats-types";
+import { getMaiUser } from "@/lib/auth/session";
+import { dbReady, getRawClient } from "@/lib/db/queries/connection";
 import {
   type SupportTicketEmailPayload,
   sendSupportTicketCreatedEmail,
@@ -18,12 +25,52 @@ import {
 } from "@/lib/site/email";
 import { getSessionIdentity } from "@/lib/site/session-auth";
 
-function getSql() {
+type SupportSql = (
+  strings: TemplateStringsArray,
+  ...values: unknown[]
+) => Promise<Record<string, any>[]>;
+
+const UUID_REGEX =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+const PRIORITY_LABELS: Record<string, string> = {
+  high: "Haute",
+  low: "Faible",
+  medium: "Normale",
+  urgent: "Critique / Urgent",
+};
+
+const PRIORITY_COLORS: Record<string, string> = {
+  high: "#f97316",
+  low: "#3b82f6",
+  medium: "#10b981",
+  urgent: "#ef4444",
+};
+
+async function getSql(): Promise<SupportSql> {
+  await dbReady();
+  const raw = getRawClient();
+  if (raw) {
+    return raw as unknown as SupportSql;
+  }
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) {
     throw new Error("La variable d'environnement DATABASE_URL est manquante.");
   }
-  return neon(databaseUrl);
+  return neon(databaseUrl) as unknown as SupportSql;
+}
+
+function parseCount(value: unknown): number {
+  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
+  const parsed = Number.parseInt(String(value ?? "0"), 10);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function computeAvgResolutionHours(value: unknown): number | null {
+  if (value === null || value === undefined) return null;
+  const parsed = Number.parseFloat(String(value));
+  if (!Number.isFinite(parsed)) return null;
+  return Math.round(parsed * 10) / 10;
 }
 
 function getAppUrl(): string {
@@ -46,9 +93,9 @@ function mapTicketRow(r: any): SupportTicket {
     id: r.id,
     is_archived: !!r.is_archived,
     message_count:
-      r.message_count === undefined
+      r.message_count === undefined || r.message_count === null
         ? undefined
-        : Number.parseInt(r.message_count || "0", 10),
+        : Number.parseInt(String(r.message_count), 10),
     metadata: r.metadata,
     priority: r.priority,
     project: r.project,
@@ -111,13 +158,24 @@ const AUTH_REQUIRED = {
 };
 
 /**
- * Identité serveur : dérivée du JWT de session signé, jamais des paramètres fournis par le client.
+ * Identité serveur : utilise le cache session `getMaiUser()` pour éviter un aller-retour SQL `users`,
+ * avec repli sécurisé sur `users` uniquement si le profil complet n'est pas en cache.
  */
-async function getRequiredSupportUser(
-  sql: any
-): Promise<SupportSessionUser | null> {
+async function resolveSupportUserFast(): Promise<SupportSessionUser | null> {
+  const maiUser = await getMaiUser();
+  if (maiUser?.id && maiUser.email) {
+    const email = maiUser.email.trim().toLowerCase();
+    return {
+      email,
+      id: String(maiUser.id),
+      isAdmin: isAdminUser(email),
+      name: String(maiUser.username || email || "Utilisateur"),
+      tier: String(maiUser.tier || "Free"),
+    };
+  }
   const identity = await getSessionIdentity();
   if (!identity) return null;
+  const sql = await getSql();
   const rows = await sql`
     SELECT id, email, username, tier FROM users WHERE id::text = ${identity.userId}::text LIMIT 1
   `;
@@ -132,6 +190,80 @@ async function getRequiredSupportUser(
     isAdmin: isAdminUser(email),
     name: String(r.username || email || "Utilisateur"),
     tier: String(r.tier || "Free"),
+  };
+}
+
+function mapDashboardTicketRow(r: Record<string, any>): SupportTicket {
+  return mapTicketRow({
+    ...r,
+    description: "",
+    metadata: {},
+  });
+}
+
+async function computeTicketAggregations(
+  sql: SupportSql,
+  me: SupportSessionUser
+): Promise<SupportDashboardStats> {
+  const rows = me.isAdmin
+    ? await sql`
+        SELECT
+          COUNT(*) FILTER (WHERE is_archived = FALSE)::int AS total,
+          COUNT(*)::int AS total_with_archived,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'open')::int AS open_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'in_progress')::int AS in_progress_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'reopened')::int AS reopened_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'waiting_user')::int AS waiting_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'resolved')::int AS resolved_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'closed')::int AS closed_count,
+          COUNT(*) FILTER (WHERE is_archived = TRUE)::int AS archived_count,
+          AVG(EXTRACT(EPOCH FROM (resolved_at - created_at)) / 3600)
+            FILTER (WHERE resolved_at IS NOT NULL) AS avg_hours
+        FROM support_tickets
+      `
+    : await sql`
+        SELECT
+          COUNT(*) FILTER (WHERE is_archived = FALSE)::int AS total,
+          COUNT(*)::int AS total_with_archived,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'open')::int AS open_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'in_progress')::int AS in_progress_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'reopened')::int AS reopened_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'waiting_user')::int AS waiting_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'resolved')::int AS resolved_count,
+          COUNT(*) FILTER (WHERE is_archived = FALSE AND status = 'closed')::int AS closed_count,
+          COUNT(*) FILTER (WHERE is_archived = TRUE)::int AS archived_count,
+          AVG(EXTRACT(EPOCH FROM (resolved_at - created_at)) / 3600)
+            FILTER (WHERE resolved_at IS NOT NULL) AS avg_hours
+        FROM support_tickets
+        WHERE (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})
+      `;
+
+  const agg = rows[0] ?? {};
+  const total = parseCount(agg.total);
+  const totalWithArchived = parseCount(agg.total_with_archived);
+  const open = parseCount(agg.open_count);
+  const inProgress = parseCount(agg.in_progress_count);
+  const reopened = parseCount(agg.reopened_count);
+  const waiting = parseCount(agg.waiting_count);
+  const resolved = parseCount(agg.resolved_count);
+  const closed = parseCount(agg.closed_count);
+  const archived = parseCount(agg.archived_count);
+  const resolutionRate =
+    total > 0 ? Math.round(((resolved + closed) / total) * 100) : null;
+  const avgResolutionHours = computeAvgResolutionHours(agg.avg_hours);
+
+  return {
+    archived,
+    avgResolutionHours,
+    closed,
+    inProgress,
+    open,
+    reopened,
+    resolutionRate,
+    resolved,
+    total,
+    totalWithArchived,
+    waiting,
   };
 }
 
@@ -161,9 +293,9 @@ export async function createSupportTicket(data: {
   attachmentIds?: string[]; // ids de support_ticket_attachments pré-uploadés (optionnel)
 }) {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    const me = await resolveSupportUserFast();
     if (!me) return AUTH_REQUIRED;
+    const sql = await getSql();
 
     if (!data.title?.trim() || !data.description?.trim()) {
       return {
@@ -304,6 +436,101 @@ export async function createSupportTicket(data: {
  * Récupère les tickets d'un utilisateur (ou tous pour l'admin)
  * - is_archived filtré par défaut (archived masqué sauf status=archived)
  */
+export async function getSupportDashboardData(): Promise<SupportDashboardResult> {
+  try {
+    const me = await resolveSupportUserFast();
+    if (!me) {
+      return {
+        activeCount: 0,
+        activeTickets: [],
+        authenticated: false,
+        historyTickets: [],
+        isAdmin: false,
+        stats: null,
+        success: true,
+      };
+    }
+    const sql = await getSql();
+
+    const [stats, activeRows, historyRows] = await Promise.all([
+      computeTicketAggregations(sql, me),
+      me.isAdmin
+        ? sql`
+            SELECT
+              id, ticket_number, user_id, user_email, user_name, user_tier,
+              title, category, project, priority, status, is_archived,
+              created_at, updated_at, resolved_at, archived_at
+            FROM support_tickets
+            WHERE is_archived = FALSE
+              AND status IN ('open', 'in_progress', 'waiting_user', 'reopened')
+            ORDER BY updated_at DESC
+            LIMIT 6
+          `
+        : sql`
+            SELECT
+              id, ticket_number, user_id, user_email, user_name, user_tier,
+              title, category, project, priority, status, is_archived,
+              created_at, updated_at, resolved_at, archived_at
+            FROM support_tickets
+            WHERE (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})
+              AND is_archived = FALSE
+              AND status IN ('open', 'in_progress', 'waiting_user', 'reopened')
+            ORDER BY updated_at DESC
+            LIMIT 6
+          `,
+      me.isAdmin
+        ? sql`
+            SELECT
+              id, ticket_number, user_id, user_email, user_name, user_tier,
+              title, category, project, priority, status, is_archived,
+              created_at, updated_at, resolved_at, archived_at
+            FROM support_tickets
+            WHERE is_archived = FALSE
+              AND status NOT IN ('open', 'in_progress', 'waiting_user', 'reopened')
+            ORDER BY updated_at DESC
+            LIMIT 8
+          `
+        : sql`
+            SELECT
+              id, ticket_number, user_id, user_email, user_name, user_tier,
+              title, category, project, priority, status, is_archived,
+              created_at, updated_at, resolved_at, archived_at
+            FROM support_tickets
+            WHERE (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})
+              AND is_archived = FALSE
+              AND status NOT IN ('open', 'in_progress', 'waiting_user', 'reopened')
+            ORDER BY updated_at DESC
+            LIMIT 8
+          `,
+    ]);
+
+    return {
+      activeCount:
+        stats.open + stats.inProgress + stats.reopened + stats.waiting,
+      activeTickets: activeRows.map(mapDashboardTicketRow),
+      authenticated: true,
+      historyTickets: historyRows.map(mapDashboardTicketRow),
+      isAdmin: me.isAdmin,
+      stats,
+      success: true,
+    };
+  } catch (error: any) {
+    console.error("Erreur lors du chargement du dashboard support:", error);
+    return {
+      activeCount: 0,
+      activeTickets: [],
+      authenticated: true,
+      error:
+        error?.message ||
+        "Impossible de charger le centre de support pour le moment.",
+      historyTickets: [],
+      isAdmin: false,
+      stats: null,
+      success: false,
+    };
+  }
+}
+
 export async function getTicketsList({
   status,
   project,
@@ -314,162 +541,76 @@ export async function getTicketsList({
   project?: string;
   priority?: string;
   search?: string;
-}) {
+}): Promise<SupportTicketsListResult> {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    const me = await resolveSupportUserFast();
     if (!me) return { ...AUTH_REQUIRED, tickets: [] };
+    const sql = await getSql();
     const isAdmin = me.isAdmin;
 
-    let rows: any[] = [];
-
-    // Normaliser status : 'all' = tout sauf archived par défaut
     const effectiveStatus = status || "all";
+    const isArchived = effectiveStatus === "archived";
+    const hasStatus = !isArchived && effectiveStatus !== "all";
+    const statusValue = hasStatus ? effectiveStatus : "";
+    const hasProject = Boolean(project && project !== "all");
+    const projectValue = hasProject && project ? project : "";
+    const hasPriority = Boolean(priority && priority !== "all");
+    const priorityValue = hasPriority && priority ? priority : "";
+    const trimmedSearch = (search || "").trim();
+    const hasSearch = trimmedSearch.length > 0;
+    const searchLike = `%${trimmedSearch}%`;
 
-    if (isAdmin) {
-      if (effectiveStatus === "archived") {
-        rows = await sql`
-          SELECT 
+    const rows = isAdmin
+      ? await sql`
+          SELECT
             t.*,
-            (SELECT COUNT(*) FROM support_ticket_messages m WHERE m.ticket_id = t.id) as message_count
+            COALESCE(mc.cnt, 0) AS message_count
           FROM support_tickets t
-          WHERE t.is_archived = TRUE
-          AND (
-            ${!project || project === "all"} OR t.project = ${project || ""}
-          )
-          AND (
-            ${!priority || priority === "all"} OR t.priority = ${priority || ""}
-          )
-          AND (
-            ${!search} OR 
-            t.title ILIKE ${"%" + (search || "") + "%"} OR 
-            t.user_name ILIKE ${"%" + (search || "") + "%"} OR 
-            t.user_email ILIKE ${"%" + (search || "") + "%"} OR 
-            t.ticket_number::text = ${search || ""}
-          )
+          LEFT JOIN LATERAL (
+            SELECT COUNT(*)::int AS cnt
+            FROM support_ticket_messages m
+            WHERE m.ticket_id = t.id
+          ) mc ON TRUE
+          WHERE t.is_archived = ${isArchived}
+            AND (${!hasStatus}::boolean OR t.status = ${statusValue})
+            AND (${!hasProject}::boolean OR t.project = ${projectValue})
+            AND (${!hasPriority}::boolean OR t.priority = ${priorityValue})
+            AND (
+              ${!hasSearch}::boolean
+              OR t.title ILIKE ${searchLike}
+              OR t.user_name ILIKE ${searchLike}
+              OR t.user_email ILIKE ${searchLike}
+              OR t.ticket_number::text = ${trimmedSearch}
+            )
           ORDER BY t.updated_at DESC
-        `;
-      } else if (effectiveStatus === "all") {
-        rows = await sql`
-          SELECT 
+        `
+      : await sql`
+          SELECT
             t.*,
-            (SELECT COUNT(*) FROM support_ticket_messages m WHERE m.ticket_id = t.id) as message_count
+            COALESCE(mc.cnt, 0) AS message_count
           FROM support_tickets t
-          WHERE t.is_archived = FALSE
-          AND (
-            ${!project || project === "all"} OR t.project = ${project || ""}
-          )
-          AND (
-            ${!priority || priority === "all"} OR t.priority = ${priority || ""}
-          )
-          AND (
-            ${!search} OR 
-            t.title ILIKE ${"%" + (search || "") + "%"} OR 
-            t.user_name ILIKE ${"%" + (search || "") + "%"} OR 
-            t.user_email ILIKE ${"%" + (search || "") + "%"} OR 
-            t.ticket_number::text = ${search || ""}
-          )
-          ORDER BY t.updated_at DESC
-        `;
-      } else {
-        rows = await sql`
-          SELECT 
-            t.*,
-            (SELECT COUNT(*) FROM support_ticket_messages m WHERE m.ticket_id = t.id) as message_count
-          FROM support_tickets t
-          WHERE t.status = ${effectiveStatus}
-          AND t.is_archived = FALSE
-          AND (
-            ${!project || project === "all"} OR t.project = ${project || ""}
-          )
-          AND (
-            ${!priority || priority === "all"} OR t.priority = ${priority || ""}
-          )
-          AND (
-            ${!search} OR 
-            t.title ILIKE ${"%" + (search || "") + "%"} OR 
-            t.user_name ILIKE ${"%" + (search || "") + "%"} OR 
-            t.user_email ILIKE ${"%" + (search || "") + "%"} OR 
-            t.ticket_number::text = ${search || ""}
-          )
-          ORDER BY t.updated_at DESC
-        `;
-      }
-    } else {
-      // User non-admin : toujours filtré par ownership
-      if (effectiveStatus === "archived") {
-        rows = await sql`
-          SELECT 
-            t.*,
-            (SELECT COUNT(*) FROM support_ticket_messages m WHERE m.ticket_id = t.id) as message_count
-          FROM support_tickets t
+          LEFT JOIN LATERAL (
+            SELECT COUNT(*)::int AS cnt
+            FROM support_ticket_messages m
+            WHERE m.ticket_id = t.id
+          ) mc ON TRUE
           WHERE (t.user_id = ${me.id} OR t.user_id = ${me.email} OR t.user_email = ${me.email})
-          AND t.is_archived = TRUE
-          AND (
-            ${!project || project === "all"} OR t.project = ${project || ""}
-          )
-          AND (
-            ${!priority || priority === "all"} OR t.priority = ${priority || ""}
-          )
-          AND (
-            ${!search} OR 
-            t.title ILIKE ${"%" + (search || "") + "%"} OR 
-            t.ticket_number::text = ${search || ""}
-          )
+            AND t.is_archived = ${isArchived}
+            AND (${!hasStatus}::boolean OR t.status = ${statusValue})
+            AND (${!hasProject}::boolean OR t.project = ${projectValue})
+            AND (${!hasPriority}::boolean OR t.priority = ${priorityValue})
+            AND (
+              ${!hasSearch}::boolean
+              OR t.title ILIKE ${searchLike}
+              OR t.ticket_number::text = ${trimmedSearch}
+            )
           ORDER BY t.updated_at DESC
         `;
-      } else if (effectiveStatus === "all") {
-        rows = await sql`
-          SELECT 
-            t.*,
-            (SELECT COUNT(*) FROM support_ticket_messages m WHERE m.ticket_id = t.id) as message_count
-          FROM support_tickets t
-          WHERE (t.user_id = ${me.id} OR t.user_id = ${me.email} OR t.user_email = ${me.email})
-          AND t.is_archived = FALSE
-          AND (
-            ${!project || project === "all"} OR t.project = ${project || ""}
-          )
-          AND (
-            ${!priority || priority === "all"} OR t.priority = ${priority || ""}
-          )
-          AND (
-            ${!search} OR 
-            t.title ILIKE ${"%" + (search || "") + "%"} OR 
-            t.ticket_number::text = ${search || ""}
-          )
-          ORDER BY t.updated_at DESC
-        `;
-      } else {
-        rows = await sql`
-          SELECT 
-            t.*,
-            (SELECT COUNT(*) FROM support_ticket_messages m WHERE m.ticket_id = t.id) as message_count
-          FROM support_tickets t
-          WHERE (t.user_id = ${me.id} OR t.user_id = ${me.email} OR t.user_email = ${me.email})
-          AND t.status = ${effectiveStatus}
-          AND t.is_archived = FALSE
-          AND (
-            ${!project || project === "all"} OR t.project = ${project || ""}
-          )
-          AND (
-            ${!priority || priority === "all"} OR t.priority = ${priority || ""}
-          )
-          AND (
-            ${!search} OR 
-            t.title ILIKE ${"%" + (search || "") + "%"} OR 
-            t.ticket_number::text = ${search || ""}
-          )
-          ORDER BY t.updated_at DESC
-        `;
-      }
-    }
-
-    const tickets: SupportTicket[] = rows.map((r) => mapTicketRow(r));
 
     return {
       isAdmin,
       success: true,
-      tickets,
+      tickets: rows.map((r) => mapTicketRow(r)),
     };
   } catch (error: any) {
     console.error("Erreur lors de la récupération des tickets:", error);
@@ -484,11 +625,16 @@ export async function getTicketsList({
 /**
  * Récupère le détail d'un ticket, messages et pièces jointes
  */
-export async function getTicketDetails(ticketId: string) {
+export async function getTicketDetails(
+  ticketId: string
+): Promise<SupportTicketDetailsResult> {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    if (!UUID_REGEX.test(ticketId)) {
+      return { error: "Ticket introuvable.", success: false };
+    }
+    const me = await resolveSupportUserFast();
     if (!me) return AUTH_REQUIRED;
+    const sql = await getSql();
     const isAdmin = me.isAdmin;
 
     const ticketRows = await sql`
@@ -509,30 +655,23 @@ export async function getTicketDetails(ticketId: string) {
       };
     }
 
-    const messagesRows = await sql`
-      SELECT * FROM support_ticket_messages
-      WHERE ticket_id = ${ticketId}::uuid
-      ORDER BY created_at ASC
-    `;
-
-    // Attachments du ticket (table peut ne pas exister avant migration v2)
-    let attachmentsRows: any[] = [];
-    try {
-      attachmentsRows = await sql`
+    const [messagesRows, attachmentsRows] = await Promise.all([
+      sql`
+        SELECT * FROM support_ticket_messages
+        WHERE ticket_id = ${ticketId}::uuid
+        ORDER BY created_at ASC
+      `,
+      sql`
         SELECT * FROM support_ticket_attachments
         WHERE ticket_id = ${ticketId}::uuid
         ORDER BY created_at ASC
-      `;
-    } catch {
-      attachmentsRows = [];
-    }
+      `.catch(() => [] as Record<string, any>[]),
+    ]);
 
     const ticket: SupportTicket = mapTicketRow(r);
-
     const messages: SupportMessage[] = messagesRows.map((m) =>
       mapMessageRow(m)
     );
-
     const attachments: SupportAttachment[] = attachmentsRows.map((a) =>
       mapAttachmentRow(a)
     );
@@ -541,8 +680,12 @@ export async function getTicketDetails(ticketId: string) {
     const attachmentsByMessage = new Map<string, SupportAttachment[]>();
     for (const a of attachments) {
       const mid = a.message_id || "__ticket__";
-      if (!attachmentsByMessage.has(mid)) attachmentsByMessage.set(mid, []);
-      attachmentsByMessage.get(mid)!.push(a);
+      const bucket = attachmentsByMessage.get(mid);
+      if (bucket) {
+        bucket.push(a);
+      } else {
+        attachmentsByMessage.set(mid, [a]);
+      }
     }
     const messagesWithAttachments: SupportMessage[] = messages.map((m) => ({
       ...m,
@@ -584,9 +727,9 @@ export async function addTicketResponse({
   attachmentIds?: string[];
 }) {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    const me = await resolveSupportUserFast();
     if (!me) return AUTH_REQUIRED;
+    const sql = await getSql();
     const isAdmin = me.isAdmin;
     const role = isAdmin ? "admin" : "user";
     const senderId = me.id;
@@ -870,9 +1013,9 @@ export async function updateTicketTitle({
   newTitle: string;
 }) {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    const me = await resolveSupportUserFast();
     if (!me) return AUTH_REQUIRED;
+    const sql = await getSql();
     const trimmed = newTitle.trim();
     if (trimmed.length < 3 || trimmed.length > 120) {
       return {
@@ -917,9 +1060,9 @@ export async function archiveTicket({
   archive: boolean;
 }) {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    const me = await resolveSupportUserFast();
     if (!me) return AUTH_REQUIRED;
+    const sql = await getSql();
     const rows =
       await sql`SELECT * FROM support_tickets WHERE id = ${ticketId}::uuid LIMIT 1`;
     if (rows.length === 0)
@@ -967,9 +1110,9 @@ export async function archiveTicket({
  */
 export async function deleteTicket({ ticketId }: { ticketId: string }) {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    const me = await resolveSupportUserFast();
     if (!me) return AUTH_REQUIRED;
+    const sql = await getSql();
     const rows =
       await sql`SELECT * FROM support_tickets WHERE id = ${ticketId}::uuid LIMIT 1`;
     if (rows.length === 0)
@@ -1012,7 +1155,7 @@ export async function purgeInactiveTickets(): Promise<{
   error?: string;
 }> {
   try {
-    const sql = getSql();
+    const sql = await getSql();
     const res = await sql`SELECT purge_inactive_support_tickets() as deleted`;
     const deletedCount = Number.parseInt(res[0]?.deleted || "0", 10);
     return { deletedCount, success: true };
@@ -1025,155 +1168,120 @@ export async function purgeInactiveTickets(): Promise<{
 /**
  * Récupère les statistiques complètes de support pour le dashboard
  */
-export async function getSupportStats() {
+export async function getSupportStats(): Promise<SupportStatsResult> {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    const me = await resolveSupportUserFast();
     if (!me) return AUTH_REQUIRED;
+    const sql = await getSql();
     const isAdmin = me.isAdmin;
 
-    // Si admin -> stats globales (hors archivés pour les KPIs actifs). Si utilisateur -> ses stats propres
-    const filterUser = isAdmin
-      ? sql`WHERE is_archived = FALSE`
-      : sql`WHERE (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email}) AND is_archived = FALSE`;
-    const filterUserAll = isAdmin
-      ? sql``
-      : sql`WHERE (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})`;
+    const [agg, breakdownRows, timelineRows] = await Promise.all([
+      computeTicketAggregations(sql, me),
+      isAdmin
+        ? sql`
+            SELECT
+              GROUPING(project)::int AS g_project,
+              GROUPING(priority)::int AS g_priority,
+              GROUPING(category)::int AS g_category,
+              project,
+              priority,
+              category,
+              COUNT(*)::int AS count
+            FROM support_tickets
+            WHERE is_archived = FALSE
+            GROUP BY GROUPING SETS ((project), (priority), (category))
+          `
+        : sql`
+            SELECT
+              GROUPING(project)::int AS g_project,
+              GROUPING(priority)::int AS g_priority,
+              GROUPING(category)::int AS g_category,
+              project,
+              priority,
+              category,
+              COUNT(*)::int AS count
+            FROM support_tickets
+            WHERE (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})
+              AND is_archived = FALSE
+            GROUP BY GROUPING SETS ((project), (priority), (category))
+          `,
+      isAdmin
+        ? sql`
+            SELECT
+              TO_CHAR(DATE(created_at), 'DD/MM') AS date_label,
+              COUNT(*)::int AS total_created,
+              COUNT(*) FILTER (WHERE status IN ('resolved', 'closed'))::int AS total_resolved
+            FROM support_tickets
+            WHERE created_at >= NOW() - INTERVAL '14 days'
+            GROUP BY DATE(created_at), TO_CHAR(DATE(created_at), 'DD/MM')
+            ORDER BY DATE(created_at) ASC
+          `
+        : sql`
+            SELECT
+              TO_CHAR(DATE(created_at), 'DD/MM') AS date_label,
+              COUNT(*)::int AS total_created,
+              COUNT(*) FILTER (WHERE status IN ('resolved', 'closed'))::int AS total_resolved
+            FROM support_tickets
+            WHERE (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})
+              AND created_at >= NOW() - INTERVAL '14 days'
+            GROUP BY DATE(created_at), TO_CHAR(DATE(created_at), 'DD/MM')
+            ORDER BY DATE(created_at) ASC
+          `,
+    ]);
 
-    // 1. Comptages globaux (filtrés archivés exclus pour total actif, mais total inclut archivés via second query)
-    const totalRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets ${filterUser}`;
-    const totalWithArchivedRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets ${filterUserAll}`;
-    const openRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets WHERE status = 'open' ${isAdmin ? sql`AND is_archived = FALSE` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email}) AND is_archived = FALSE`}`;
-    const inProgressRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets WHERE status = 'in_progress' ${isAdmin ? sql`AND is_archived = FALSE` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email}) AND is_archived = FALSE`}`;
-    const reopenedRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets WHERE status = 'reopened' ${isAdmin ? sql`AND is_archived = FALSE` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email}) AND is_archived = FALSE`}`;
-    const waitingRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets WHERE status = 'waiting_user' ${isAdmin ? sql`AND is_archived = FALSE` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email}) AND is_archived = FALSE`}`;
-    const resolvedRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets WHERE status = 'resolved' ${isAdmin ? sql`AND is_archived = FALSE` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email}) AND is_archived = FALSE`}`;
-    const closedRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets WHERE status = 'closed' ${isAdmin ? sql`AND is_archived = FALSE` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email}) AND is_archived = FALSE`}`;
-    const archivedRow =
-      await sql`SELECT COUNT(*) as count FROM support_tickets WHERE is_archived = TRUE ${isAdmin ? sql`` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})`}`;
+    const byProject: { name: string; value: number }[] = [];
+    const byPriority: {
+      color: string;
+      key: string;
+      name: string;
+      value: number;
+    }[] = [];
+    const byCategory: { name: string; value: number }[] = [];
 
-    const total = Number.parseInt(totalRow[0]?.count || "0", 10);
-    const totalWithArchived = Number.parseInt(
-      totalWithArchivedRow[0]?.count || "0",
-      10
-    );
-    const open = Number.parseInt(openRow[0]?.count || "0", 10);
-    const inProgress = Number.parseInt(inProgressRow[0]?.count || "0", 10);
-    const reopened = Number.parseInt(reopenedRow[0]?.count || "0", 10);
-    const waiting = Number.parseInt(waitingRow[0]?.count || "0", 10);
-    const resolved = Number.parseInt(resolvedRow[0]?.count || "0", 10);
-    const closed = Number.parseInt(closedRow[0]?.count || "0", 10);
-    const archived = Number.parseInt(archivedRow[0]?.count || "0", 10);
+    for (const r of breakdownRows) {
+      const value = parseCount(r.count);
+      if (parseCount(r.g_project) === 0 && r.project !== null) {
+        byProject.push({ name: String(r.project), value });
+      } else if (parseCount(r.g_priority) === 0 && r.priority !== null) {
+        const key = String(r.priority);
+        byPriority.push({
+          color: PRIORITY_COLORS[key] || "#8b5cf6",
+          key,
+          name: PRIORITY_LABELS[key] || key,
+          value,
+        });
+      } else if (parseCount(r.g_category) === 0 && r.category !== null) {
+        byCategory.push({ name: String(r.category), value });
+      }
+    }
 
-    const resolutionRate =
-      total > 0 ? Math.round(((resolved + closed) / total) * 100) : 100;
-
-    // 2. Temps moyen de résolution (en heures)
-    const avgTimeRow = await sql`
-      SELECT AVG(EXTRACT(EPOCH FROM (resolved_at - created_at)) / 3600) as avg_hours
-      FROM support_tickets
-      WHERE resolved_at IS NOT NULL ${isAdmin ? sql`` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})`}
-    `;
-    const avgResolutionHours = avgTimeRow[0]?.avg_hours
-      ? Math.round(Number.parseFloat(avgTimeRow[0].avg_hours) * 10) / 10
-      : 2.4;
-
-    // 3. Répartition par projet
-    const projectRows = await sql`
-      SELECT project, COUNT(*) as count
-      FROM support_tickets
-      ${filterUser}
-      GROUP BY project
-      ORDER BY count DESC
-    `;
-    const byProject = projectRows.map((r) => ({
-      name: r.project,
-      value: Number.parseInt(r.count, 10),
-    }));
-
-    // 4. Répartition par priorité
-    const priorityRows = await sql`
-      SELECT priority, COUNT(*) as count
-      FROM support_tickets
-      ${filterUser}
-      GROUP BY priority
-    `;
-    const priorityLabels: Record<string, string> = {
-      high: "Haute",
-      low: "Faible",
-      medium: "Normale",
-      urgent: "Critique / Urgent",
-    };
-    const priorityColors: Record<string, string> = {
-      high: "#f97316",
-      low: "#3b82f6",
-      medium: "#10b981",
-      urgent: "#ef4444",
-    };
-    const byPriority = priorityRows.map((r) => ({
-      color: priorityColors[r.priority] || "#8b5cf6",
-      key: r.priority,
-      name: priorityLabels[r.priority] || r.priority,
-      value: Number.parseInt(r.count, 10),
-    }));
-
-    // 5. Répartition par section / catégorie
-    const categoryRows = await sql`
-      SELECT category, COUNT(*) as count
-      FROM support_tickets
-      ${filterUser}
-      GROUP BY category
-      ORDER BY count DESC
-    `;
-    const byCategory = categoryRows.map((r) => ({
-      name: r.category,
-      value: Number.parseInt(r.count, 10),
-    }));
-
-    // 6. Évolution des tickets sur les 14 derniers jours
-    const timelineRows = await sql`
-      SELECT 
-        TO_CHAR(DATE(created_at), 'DD/MM') as date_label,
-        COUNT(*) as total_created,
-        COUNT(CASE WHEN status IN ('resolved', 'closed') THEN 1 END) as total_resolved
-      FROM support_tickets
-      WHERE created_at >= NOW() - INTERVAL '14 days' ${isAdmin ? sql`` : sql`AND (user_id = ${me.id} OR user_id = ${me.email} OR user_email = ${me.email})`}
-      GROUP BY DATE(created_at), TO_CHAR(DATE(created_at), 'DD/MM')
-      ORDER BY DATE(created_at) ASC
-    `;
+    byProject.sort((a, b) => b.value - a.value);
+    byCategory.sort((a, b) => b.value - a.value);
 
     const timeline = timelineRows.map((r) => ({
-      crees: Number.parseInt(r.total_created, 10),
-      date: r.date_label,
-      resolus: Number.parseInt(r.total_resolved, 10),
+      crees: parseCount(r.total_created),
+      date: String(r.date_label ?? ""),
+      resolus: parseCount(r.total_resolved),
     }));
 
     return {
       isAdmin,
       stats: {
-        archived,
-        avgResolutionHours,
+        archived: agg.archived,
+        avgResolutionHours: agg.avgResolutionHours,
         byCategory,
         byPriority,
         byProject,
-        closed,
-        inProgress,
-        open,
-        reopened,
-        resolutionRate,
-        resolved,
+        closed: agg.closed,
+        inProgress: agg.inProgress,
+        open: agg.open,
+        reopened: agg.reopened,
+        resolutionRate: agg.resolutionRate,
+        resolved: agg.resolved,
         timeline,
-        total,
-        totalWithArchived,
-        waiting,
+        total: agg.total,
+        totalWithArchived: agg.totalWithArchived,
+        waiting: agg.waiting,
       },
       success: true,
     };
@@ -1191,9 +1299,12 @@ export async function getSupportStats() {
  */
 export async function getTicketAttachments(ticketId: string) {
   try {
-    const sql = getSql();
-    const me = await getRequiredSupportUser(sql);
+    if (!UUID_REGEX.test(ticketId)) {
+      return { attachments: [], error: "Ticket introuvable.", success: false };
+    }
+    const me = await resolveSupportUserFast();
     if (!me) return { ...AUTH_REQUIRED, attachments: [] };
+    const sql = await getSql();
     const ticketRows =
       await sql`SELECT user_id, user_email FROM support_tickets WHERE id = ${ticketId}::uuid LIMIT 1`;
     if (ticketRows.length === 0)

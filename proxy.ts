@@ -23,6 +23,29 @@ export async function proxy(request: NextRequest) {
     return new Response("pong", { status: 200 });
   }
 
+  // BotID (Vercel) : le script de vérification du SDK client est servi sous ce
+  // préfixe fixe via les rewrites `beforeFiles` de withBotId. Le middleware
+  // s'exécutant AVANT les rewrites, toute interception ici (redirect /login)
+  // casse le chargement du script et fait rejeter les Server Actions protégées
+  // (POST /login, /register) avant même l'appel à l'API.
+  // Vérifié AVANT la lecture de maintenance pour ne pas réveiller Neon.
+  const BOTID_PREFIX = "/149e9513-01fa-4fb0-aad4-566afd725d1b/";
+  if (
+    pathname.startsWith(BOTID_PREFIX) ||
+    pathname.startsWith(`${base}${BOTID_PREFIX}`)
+  ) {
+    return NextResponse.next();
+  }
+
+  // Fichiers statiques visuels déjà exemptés de maintenance : inutile de lire Neon.
+  if (
+    !pathname.startsWith("/api/") &&
+    !pathname.startsWith(`${base}/api/`) &&
+    /\.(?:png|jpg|jpeg|gif|webp|svg|ico|woff2?|ttf|eot)$/i.test(pathname)
+  ) {
+    return NextResponse.next();
+  }
+
   // ─────────────────────────────────────────────
   // 🔒 VÉRIFICATION DE LA PÉRIODE DE MAINTENANCE
   // ─────────────────────────────────────────────
@@ -81,21 +104,6 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL(`${base}/`, request.url));
   }
 
-  // BotID (Vercel) : le script de vérification du SDK client est servi sous ce
-  // préfixe fixe via les rewrites `beforeFiles` de withBotId. Le middleware
-  // s'exécutant AVANT les rewrites, toute interception ici (redirect /login)
-  // casse le chargement du script et fait rejeter les Server Actions protégées
-  // (POST /login, /register) avant même l'appel à l'API.
-  const BOTID_PREFIX = "/149e9513-01fa-4fb0-aad4-566afd725d1b/";
-  if (
-    pathname.startsWith(BOTID_PREFIX) ||
-    pathname.startsWith(
-      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${BOTID_PREFIX}`
-    )
-  ) {
-    return NextResponse.next();
-  }
-
   if (pathname === "/changelog") {
     return NextResponse.next();
   }
@@ -132,20 +140,6 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Le callback OAuth s'authentifie par son état scellé, pas par la session :
-  // le compte est EN TRAIN d'être connecté, et l'écran de consentement peut
-  // rester ouvert plus longtemps que l'`exp` du jeton de session. Le traiter
-  // comme une route privée affichrait un 401 JSON en pleine navigation
-  // utilisateur — une page que l'utilisateur ne peut pas interpréter.
-  // `connect`, `disconnect` et `status` restent protégés : ce sont des appels
-  // XHR de notre propre interface, qui doivent répondre 401.
-  if (
-    pathname.startsWith("/api/integration/") &&
-    pathname.endsWith("/callback")
-  ) {
-    return NextResponse.next();
-  }
-
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");
@@ -172,7 +166,6 @@ export async function proxy(request: NextRequest) {
     pathname === "/favicon.ico" ||
     pathname === "/favicon.png" ||
     pathname === "/logo.png" ||
-    pathname === "/preview.png" ||
     pathname.startsWith("/images/") ||
     pathname.startsWith("/icons/") ||
     pathname.startsWith("/demo-assets/") ||

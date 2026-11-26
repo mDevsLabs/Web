@@ -1,0 +1,46 @@
+{
+  "author": "mAI",
+  "category": "communication",
+  "description": "Reliez un bot Slack par jeton (xoxb-…) : l'IA liste vos salons, lit les messages et fils de discussion, et peut envoyer un message dans l'Agent après votre approbation.",
+  "icon": { "src": "/plugins/slack.svg", "type": "image" },
+  "id": "slack",
+  "name": "Slack",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["slack", "messagerie", "salons", "équipe", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les salons publics et privés Slack accessibles au bot.",
+      "effect": "read",
+      "id": "slackListChannels",
+      "label": "Salons Slack",
+      "systemHint": "L'identifiant du salon (C…) sert à lire l'historique ou envoyer un message."
+    },
+    {
+      "description": "Lit les derniers messages d'un salon Slack.",
+      "effect": "read",
+      "id": "slackReadMessages",
+      "label": "Messages Slack",
+      "systemHint": "Citez le timestamp (ts) si l'utilisateur veut consulter un fil de réponses."
+    },
+    {
+      "description": "Lit les réponses d'un fil de discussion Slack.",
+      "effect": "read",
+      "id": "slackGetThread",
+      "label": "Fil de discussion Slack",
+      "systemHint": "Requiert l'identifiant du salon et le timestamp du message parent."
+    },
+    {
+      "description": "Envoie un message dans un salon Slack (Agent uniquement, approbation requise).",
+      "effect": "write",
+      "id": "slackSendMessage",
+      "label": "Envoyer un message Slack",
+      "systemHint": "Écriture visible des membres : annoncez le salon et le texte avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

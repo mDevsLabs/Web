@@ -459,6 +459,46 @@ export async function getMcpServerSecrets({
     );
 }
 
+/**
+ * Lit uniquement les noms de clés et types (`serverId`, `kind`, `key`) des
+ * secrets chiffrés d'un utilisateur, sans jamais charger `encryptedValue`.
+ */
+export async function getMcpServerSecretKeysByUserId(userId: string) {
+  const db = await dbReady();
+  return db
+    .select({
+      key: mcpServerSecret.key,
+      kind: mcpServerSecret.kind,
+      serverId: mcpServerSecret.serverId,
+    })
+    .from(mcpServerSecret)
+    .where(eq(mcpServerSecret.userId, userId));
+}
+
+export async function deleteMcpServerSecret({
+  serverId,
+  userId,
+  kind,
+  key,
+}: {
+  serverId: string;
+  userId: string;
+  kind: "env" | "auth" | "header";
+  key: string;
+}) {
+  const db = await dbReady();
+  await db
+    .delete(mcpServerSecret)
+    .where(
+      and(
+        eq(mcpServerSecret.serverId, serverId),
+        eq(mcpServerSecret.userId, userId),
+        eq(mcpServerSecret.kind, kind),
+        eq(mcpServerSecret.key, key)
+      )
+    );
+}
+
 export async function setMcpServerSecrets({
   serverId,
   userId,

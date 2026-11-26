@@ -17,17 +17,13 @@ export default defineConfig({
     tailwindcss(),
   ],
   resolve: {
-    // @mdevs/icons et @mdevs/ui sont liés via `file:../../packages/*`
-    // (symlinks npm, cf. package-lock.json `"link": true`). Sans
-    // preserveSymlinks, Rolldown résout leurs pairs (`react`,
-    // `react/jsx-runtime`) depuis `packages/*/` au lieu de
-    // `apps/vibe/node_modules/` — où seul `npm ci` a installé les
-    // dépendances en CI — et le build échoue sur :
-    // « Rolldown failed to resolve import "react/jsx-runtime" from
-    // ".../packages/icons/dist/create-icon.js" ».
-    // dedupe évite les doublons de React une fois les liens préservés.
+    // Sous pnpm, les dépendances transitives (ex. react-router pour
+    // react-router-dom) et les pairs des paquets file: (@mdevs/icons,
+    // @mdevs/ui) vivent dans le store virtuel (.pnpm/). Déréférencer les
+    // symlinks est indispensable pour que Rolldown les résolve depuis
+    // leur chemin réel, comme `preserveSymlinks: false` dans tsconfig.app.json.
     dedupe: ['react', 'react-dom'],
-    preserveSymlinks: true,
+    preserveSymlinks: false,
   },
   server: {
     port: 3000,

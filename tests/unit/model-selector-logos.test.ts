@@ -60,14 +60,21 @@ describe("catalogue des logos de modèles", () => {
     const expectations: Record<string, string> = {
       alibaba: "/models/qwen-alibaba.svg",
       amazon: "/models/amazon-bedrock.svg",
+      bfl: "/models/black-forest-labs.svg",
+      "black-forest-labs": "/models/black-forest-labs.svg",
       doubao: "/models/bytedance-seed.svg",
       granite: "/models/ibm-granite.svg",
       grok: "https://models.dev/logos/xai.svg",
+      ideogram: "/models/ideogram-ai.svg",
       kimi: "https://models.dev/logos/moonshotai.svg",
       laguna: "https://models.dev/logos/poolside.svg",
       llama: "/models/meta-llama.svg",
+      luma: "/models/luma.svg",
       mAI: "/models/mai.svg",
       mdevslabs: "/models/mai.svg",
+      midjourney: "/models/midjourney.svg",
+      recraft: "/models/recraft-ai.svg",
+      stabilityai: "/models/stability-ai.svg",
       yi: "https://models.dev/logos/01-ai.svg",
     };
     for (const [alias, attendu] of Object.entries(expectations)) {

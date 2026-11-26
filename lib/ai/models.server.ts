@@ -1,117 +1,215 @@
 import "server-only";
 
-import { upstreamJson } from "@/lib/api/upstream";
-import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { getUserApiKey } from "@/lib/db/api-keys";
+import { isPaidTier } from "@/lib/auth/plan";
+import { getMaiUser } from "@/lib/auth/session";
+import { dbReady, getRawClient } from "@/lib/db/queries/connection";
+import {
+  effectiveModel,
+  getModelCatalog,
+  isFreeModelId,
+  isPublicChatModel,
+  type SqlClient,
+  type StoredModel,
+} from "@/openrouter-models";
 import {
   type ChatModel,
   FALLBACK_MODELS,
   formatModelName,
+  isBatchModelId,
   normalizeModelDisplayName,
 } from "./models";
+import { MAI_BACKING_MODELS } from "./providers";
 
-function mapCatalogModels(rawList: unknown): ChatModel[] {
-  if (!Array.isArray(rawList) || rawList.length === 0) {
-    return FALLBACK_MODELS;
-  }
+function isFreeMaiCloudModelId(modelId: string): boolean {
+  const normalized = modelId
+    .toLowerCase()
+    .trim()
+    .replace(/^mdevslabs\//, "");
+  return (
+    normalized === "mai-2" ||
+    normalized === "mai-2-mini" ||
+    normalized === "mai-2.5-omni"
+  );
+}
 
-  return rawList.map((m: any) => {
-    const { name, provider, isFree } = formatModelName(m.id);
-    const displayName = normalizeModelDisplayName(m.id, m.name);
-    return {
-      architecture: m.architecture,
-      description: m.description || `Modèle ${provider}`,
-      id: m.id,
-      isFree: m.isFree === undefined ? isFree : m.isFree,
-      maxContext: m.maxContext || m.context_length || 128_000,
-      maxOutput: m.maxOutput || 4096,
-      name: displayName || name,
-      provider,
-      // Capacités de réflexion déclarées par le fournisseur. Sans ce champ,
-      // le registre retomberait sur ses heuristiques par nom de modèle et
-      // proposerait des niveaux d'effort qu'aucun modèle n'accepte.
-      reasoning: m.reasoning ?? null,
-      supported_parameters: m.supported_parameters,
-    };
+function mapStoredModelToChatModel(stored: StoredModel): ChatModel {
+  const eff = effectiveModel(stored);
+  const fallbackFmt = formatModelName(eff.id);
+  const displayName = normalizeModelDisplayName(eff.id, eff.name);
+  const explicitIsFree =
+    typeof stored.overrides?.isFree === "boolean"
+      ? stored.overrides.isFree
+      : undefined;
+  const isFree =
+    explicitIsFree ??
+    (isFreeModelId(eff.id) ||
+      isFreeMaiCloudModelId(eff.id) ||
+      fallbackFmt.isFree);
+
+  return {
+    architecture: eff.architecture,
+    description: eff.description || `Modèle ${eff.owned_by || eff.provider}`,
+    id: eff.id,
+    isFree,
+    maxContext: eff.maxContext || 128_000,
+    ...(typeof eff.maxOutput === "number" && eff.maxOutput > 0
+      ? { maxOutput: eff.maxOutput }
+      : {}),
+    name: displayName || fallbackFmt.name,
+    provider: eff.provider || fallbackFmt.provider,
+    reasoning: (eff.reasoning as ChatModel["reasoning"]) ?? null,
+    supported_parameters: eff.supported_parameters,
+  };
+}
+
+function buildSovereignModels(byId: Map<string, StoredModel>): ChatModel[] {
+  const sovereignTemplates = FALLBACK_MODELS.filter(
+    (model) => model.provider === "mdevslabs"
+  );
+
+  return sovereignTemplates.map((template) => {
+    const directRow = byId.get(template.id);
+    if (directRow && isPublicChatModel(directRow)) {
+      const mapped = mapStoredModelToChatModel(directRow);
+      return {
+        ...mapped,
+        isFree: template.isFree ?? mapped.isFree,
+        provider: "mdevslabs",
+      };
+    }
+
+    const backendId = MAI_BACKING_MODELS[template.id.toLowerCase()];
+    const backendRow = backendId ? byId.get(backendId) : undefined;
+    if (backendRow && isPublicChatModel(backendRow)) {
+      const eff = effectiveModel(backendRow);
+      return {
+        ...template,
+        maxContext: eff.maxContext || template.maxContext,
+        maxOutput: eff.maxOutput || template.maxOutput,
+        reasoning: template.reasoning?.supported_efforts?.length
+          ? template.reasoning
+          : ((eff.reasoning as ChatModel["reasoning"]) ?? template.reasoning),
+        supported_parameters:
+          Array.isArray(eff.supported_parameters) &&
+          eff.supported_parameters.length > 0
+            ? eff.supported_parameters
+            : template.supported_parameters,
+      };
+    }
+
+    return template;
   });
 }
 
-type CachedCatalog = {
-  expiresAt: number;
+function filterChatModelsByAccess(
+  models: readonly ChatModel[],
+  paid: boolean
+): ChatModel[] {
+  const filtered = models.filter(
+    (model) =>
+      !isBatchModelId(model.id) &&
+      (paid ||
+        Boolean(model.isFree) ||
+        isFreeModelId(model.id) ||
+        isFreeMaiCloudModelId(model.id))
+  );
+  return filtered.length > 0
+    ? filtered
+    : FALLBACK_MODELS.filter(
+        (m) => paid || Boolean(m.isFree) || isFreeMaiCloudModelId(m.id)
+      );
+}
+
+async function readNeonChatCatalog(): Promise<{
   models: ChatModel[];
-};
-const CATALOG_CACHE = new Map<string, CachedCatalog>();
-const CATALOG_CACHE_TTL_MS = 60_000;
-
-async function readCatalogModels(params: {
-  headers: Record<string, string>;
-  token: string | null;
-}): Promise<ChatModel[] | null> {
-  const cacheKey = `${params.token || "anonymous"}:${params.headers["x-user-id"] || "none"}`;
-  const cached = CATALOG_CACHE.get(cacheKey);
-  const now = Date.now();
-  if (cached && now < cached.expiresAt) {
-    return cached.models;
-  }
-
-  const result = await upstreamJson<{ data?: unknown }>({
-    headers: params.headers,
-    next: { revalidate: 60, tags: ["catalog-models"] },
-    path: "/v1/models",
-    token: params.token,
-  });
-  if (!result.ok) {
-    if (cached) {
-      return cached.models;
-    }
+  sql: SqlClient;
+} | null> {
+  if (!process.env.DATABASE_URL?.trim()) {
     return null;
   }
-  const mapped = mapCatalogModels(result.data.data || []);
-  CATALOG_CACHE.set(cacheKey, {
-    expiresAt: now + CATALOG_CACHE_TTL_MS,
-    models: mapped,
-  });
-  return mapped;
+
+  try {
+    await dbReady();
+    const raw = getRawClient();
+    if (!raw) {
+      return null;
+    }
+    const sql = raw as unknown as SqlClient;
+    const catalog = await getModelCatalog(sql);
+
+    const dbChatModels = catalog.models
+      .filter((model) => isPublicChatModel(model) && !isBatchModelId(model.id))
+      .map(mapStoredModelToChatModel);
+
+    const sovereignModels = buildSovereignModels(catalog.byId);
+
+    const seen = new Set<string>();
+    const combined: ChatModel[] = [];
+
+    for (const model of [...sovereignModels, ...dbChatModels]) {
+      if (!model.id || isBatchModelId(model.id) || seen.has(model.id)) {
+        continue;
+      }
+      seen.add(model.id);
+      combined.push(model);
+    }
+
+    return combined.length > 0 ? { models: combined, sql } : null;
+  } catch {
+    return null;
+  }
 }
 
-export async function fetchUserModels(): Promise<ChatModel[]> {
+export async function buildCatalogModelsFromStored(
+  storedModels: StoredModel[],
+  tier?: string | null
+): Promise<ChatModel[]> {
+  const byId = new Map(storedModels.map((m) => [m.id, m]));
+  const dbChatModels = storedModels
+    .filter((model) => isPublicChatModel(model) && !isBatchModelId(model.id))
+    .map(mapStoredModelToChatModel);
+  const sovereignModels = buildSovereignModels(byId);
+
+  const seen = new Set<string>();
+  const combined: ChatModel[] = [];
+  for (const model of [...sovereignModels, ...dbChatModels]) {
+    if (!model.id || isBatchModelId(model.id) || seen.has(model.id)) {
+      continue;
+    }
+    seen.add(model.id);
+    combined.push(model);
+  }
+
+  const paid = isPaidTier(tier);
+  return filterChatModelsByAccess(
+    combined.length > 0 ? combined : FALLBACK_MODELS,
+    paid
+  );
+}
+
+export async function fetchUserModels(
+  userOverride?: { tier?: string | null } | null
+): Promise<ChatModel[]> {
   try {
-    const user = await getMaiUser();
-    let authHeader = "";
+    const [neonCatalog, user] = await Promise.all([
+      readNeonChatCatalog(),
+      userOverride === undefined
+        ? getMaiUser().catch(() => null)
+        : Promise.resolve(userOverride),
+    ]);
 
-    if (user?.id) {
-      const apiKey = await getUserApiKey(user.id);
-      if (apiKey) {
-        authHeader = `Bearer ${apiKey}`;
-      }
+    if (neonCatalog) {
+      return filterChatModelsByAccess(
+        neonCatalog.models,
+        isPaidTier(user?.tier)
+      );
     }
 
-    if (!authHeader) {
-      const token = await getMaiSessionToken();
-      if (token) {
-        authHeader = `Bearer ${token}`;
-      }
+    if (user) {
+      return filterChatModelsByAccess(FALLBACK_MODELS, isPaidTier(user.tier));
     }
 
-    const headers: Record<string, string> = {};
-    if (authHeader) {
-      headers.Authorization = authHeader;
-    }
-    if (user?.id) {
-      headers["x-user-id"] = user.id;
-    }
-
-    const models = await readCatalogModels({
-      headers,
-      // `authHeader` est déjà préfixé par « Bearer » : c'est une clé API
-      // personnelle pour les comptes qui en ont une, sinon le jeton de session.
-      token: authHeader ? authHeader.replace(/^Bearer\s+/i, "") : null,
-    });
-
-    // Un catalogue illisible ne doit pas casser le sélecteur de modèle : on
-    // retombe sur la liste embarquée, qui est la seule source disponible hors
-    // ligne. Le repli est le comportement attendu ici, pas une erreur.
-    return models ?? FALLBACK_MODELS;
+    return FALLBACK_MODELS;
   } catch (err) {
     console.error("Erreur fetchUserModels:", err);
     return FALLBACK_MODELS;
@@ -119,24 +217,29 @@ export async function fetchUserModels(): Promise<ChatModel[]> {
 }
 
 /**
- * Catalogue pour un tick sans cookie. La planification n'a que la clé API
- * du compte et son identifiant : `fetchUserModels` lirait une session
- * absente et retomberait sur la liste embarquée, qui ne connaît pas Flint.
+ * Catalogue pour un tick sans cookie (planification, exécution différée) :
+ * résout directement le forfait du compte depuis la table `users` sur Neon.
  */
 export async function fetchModelsForUser(params: {
   apiKey: string | null;
   userId: string;
 }): Promise<ChatModel[]> {
   try {
-    const headers: Record<string, string> = {};
-    if (params.userId) {
-      headers["x-user-id"] = params.userId;
+    const neonCatalog = await readNeonChatCatalog();
+    if (!neonCatalog) {
+      return FALLBACK_MODELS;
     }
-    const models = await readCatalogModels({
-      headers,
-      token: params.apiKey,
-    });
-    return models ?? FALLBACK_MODELS;
+
+    let tier: string | null = null;
+    if (params.userId?.trim()) {
+      const rows =
+        await neonCatalog.sql`SELECT tier FROM users WHERE id::text = ${params.userId}::text OR email = ${params.userId}::text OR username = ${params.userId}::text LIMIT 1`.catch(
+          () => []
+        );
+      tier = typeof rows[0]?.tier === "string" ? rows[0].tier : null;
+    }
+
+    return filterChatModelsByAccess(neonCatalog.models, isPaidTier(tier));
   } catch (err) {
     console.error("Erreur fetchModelsForUser:", err);
     return FALLBACK_MODELS;

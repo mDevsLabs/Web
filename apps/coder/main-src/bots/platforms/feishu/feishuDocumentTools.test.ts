@@ -8,7 +8,7 @@ function mockClient(request: ReturnType<typeof vi.fn>): FeishuApiClient {
     canRefresh: false,
     hasUserToken: false,
     lark: null as unknown as FeishuApiClient["lark"],
-    request,
+    request: request as unknown as FeishuApiClient["request"],
     userAccessToken: "",
   };
 }

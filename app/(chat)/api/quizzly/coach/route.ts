@@ -1,4 +1,9 @@
-import { createTextStreamResponse, streamText, toTextStream } from "ai";
+import {
+  createTextStreamResponse,
+  type ModelMessage,
+  streamText,
+  toTextStream,
+} from "ai";
 import { z } from "zod";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
@@ -7,6 +12,7 @@ import { getModelCapabilitiesFor } from "@/lib/ai/registry";
 import { resolveReasoningEffort } from "@/lib/ai/registry/capabilities";
 import { resolveReasoningProviderOptions } from "@/lib/ai/registry/reasoning";
 import { isModelAllowedForTier } from "@/lib/ai/registry/tiers";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
@@ -17,8 +23,10 @@ import { ChatbotError } from "@/lib/errors";
 import {
   assemblerTentatives,
   blocsCompteCoach,
+  COACH_IMAGES_NON_SUPPORTEES,
   COACH_INTENTS,
   COACH_MESSAGE_MAX,
+  coachAttachmentsSchema,
   messagesPourModele,
   messageVisibleCoach,
   preparerEchangeCoach,
@@ -33,6 +41,7 @@ import {
   messageEchecFil,
   ouvrirConversationCoach,
   poursuivreConversationCoach,
+  rafraichirPiecesJointesCoach,
 } from "@/lib/quizzly/coach-store";
 import { origineConfiance } from "@/lib/quizzly/http";
 import { libelleLigue } from "@/lib/quizzly/leagues";
@@ -46,6 +55,7 @@ export const maxDuration = 60;
 
 const corpsSchema = z
   .object({
+    attachments: coachAttachmentsSchema.optional(),
     conversationId: z.string().uuid().optional(),
     intent: z.enum(COACH_INTENTS).optional(),
     questionId: z.string().max(8).optional(),
@@ -108,9 +118,21 @@ export async function GET() {
     return errorResponse("auth_required");
   }
   try {
-    const { charge, contexte } = await contexteDuCompte(session.userId);
+    const [{ charge, contexte }, catalogue, prefs] = await Promise.all([
+      contexteDuCompte(session.userId),
+      fetchUserModels().catch(() => []),
+      getUserPreferences(session.userId).catch(() => null),
+    ]);
+    const effectiveModelId = resoudreModeleCoach({
+      autorise: (id) => isModelAllowedForTier(id, session.user.tier),
+      catalogueIds: catalogue.map((modele) => modele.id),
+      fallback: DEFAULT_CHAT_MODEL,
+      preferred: prefs?.defaultChatModel,
+      stored: charge.modelId,
+    });
     return Response.json(
       {
+        effectiveModelId,
         misses: vuesErreurs(contexte.tentatives),
         modelId: charge.modelId,
         passedCount: contexte.passedCount,
@@ -155,14 +177,48 @@ export async function POST(request: Request) {
         message: zodIssuesMessage(parsed.error),
       });
     }
-    const { charge, contexte } = await contexteDuCompte(session.userId);
+    const [{ charge, contexte }, catalogue, prefs, memoryContext] =
+      await Promise.all([
+        contexteDuCompte(session.userId, {
+          sheetId: parsed.data.sheetId,
+          sheetTitle: parsed.data.sheetTitle,
+        }),
+        fetchUserModels().catch(() => []),
+        getUserPreferences(session.userId).catch(() => null),
+        buildMemoryContext({
+          effectiveAgentId: null,
+          effectiveProjectId: null,
+          isGhostMode: false,
+          tier: session.user.tier,
+          userId: session.userId,
+        }).catch(() => null),
+      ]);
+    const modelId = resoudreModeleCoach({
+      autorise: (id) => isModelAllowedForTier(id, session.user.tier),
+      catalogueIds: catalogue.map((modele) => modele.id),
+      fallback: DEFAULT_CHAT_MODEL,
+      preferred: prefs?.defaultChatModel,
+      stored: charge.modelId,
+    });
+    const capabilities = getModelCapabilitiesFor(
+      modelId,
+      catalogue.length > 0 ? catalogue : undefined
+    );
+    const supportsImages = Boolean(capabilities.image || capabilities.vision);
+    const attachments = parsed.data.attachments ?? [];
+    if (attachments.length > 0 && !supportsImages) {
+      return errorResponse("invalid_request", {
+        message: COACH_IMAGES_NON_SUPPORTEES,
+      });
+    }
     const tour = parsed.data.conversationId
       ? await (async () => {
-          const suivi = texteSuivi(parsed.data.text);
+          const suivi = texteSuivi(parsed.data.text, attachments.length);
           if (!suivi.ok) {
             return { message: suivi.message, ok: false as const };
           }
           return poursuivreConversationCoach({
+            attachments,
             id: parsed.data.conversationId as string,
             text: suivi.text,
             userId: session.userId,
@@ -171,6 +227,7 @@ export async function POST(request: Request) {
       : await (async () => {
           const intent = parsed.data.intent ?? "chat";
           const visible = messageVisibleCoach({
+            attachments,
             contexte,
             intent,
             questionId: parsed.data.questionId,
@@ -181,6 +238,7 @@ export async function POST(request: Request) {
             return { message: visible.message, ok: false as const };
           }
           return ouvrirConversationCoach({
+            attachments,
             intent,
             questionId:
               intent === "explain" ? (parsed.data.questionId ?? null) : null,
@@ -211,17 +269,6 @@ export async function POST(request: Request) {
         message: "Le coach n'a pas pu préparer cette demande.",
       });
     }
-    const [catalogue, prefs, memoryContext] = await Promise.all([
-      fetchUserModels().catch(() => []),
-      getUserPreferences(session.userId).catch(() => null),
-      buildMemoryContext({
-        effectiveAgentId: null,
-        effectiveProjectId: null,
-        isGhostMode: false,
-        tier: session.user.tier,
-        userId: session.userId,
-      }).catch(() => null),
-    ]);
     const memoryString = memoryContext ? joinMemoryBlocks(memoryContext) : null;
     const personal = blocsCompteCoach({
       instructions: prefs?.customInstructions ?? null,
@@ -229,17 +276,6 @@ export async function POST(request: Request) {
       memory: memoryString,
     });
     const system = promptCoachAvecCompte(pret.system, personal);
-    const modelId = resoudreModeleCoach({
-      autorise: (id) => isModelAllowedForTier(id, session.user.tier),
-      catalogueIds: catalogue.map((modele) => modele.id),
-      fallback: DEFAULT_CHAT_MODEL,
-      preferred: prefs?.defaultChatModel,
-      stored: charge.modelId,
-    });
-    const capabilities = getModelCapabilitiesFor(
-      modelId,
-      catalogue.length > 0 ? catalogue : undefined
-    );
     const effort = resolveReasoningEffort({
       capabilities,
       preferred: prefs?.reasoningLevel,
@@ -254,13 +290,38 @@ export async function POST(request: Request) {
       userId: session.userId,
     });
     const conversationId = tour.conversation.id;
+    const fenetre = await rafraichirPiecesJointesCoach(
+      messagesPourModele(tour.messages),
+      session.userId
+    );
+    const messagesModele: ModelMessage[] = fenetre.map((message) => {
+      if (
+        message.role === "user" &&
+        supportsImages &&
+        message.attachments.length > 0
+      ) {
+        return {
+          content: [
+            { text: message.text, type: "text" as const },
+            ...message.attachments.map((piece) => ({
+              data: new URL(piece.url),
+              filename: piece.name,
+              mediaType: piece.contentType,
+              type: "file" as const,
+            })),
+          ],
+          role: "user" as const,
+        };
+      }
+      return {
+        content: message.text,
+        role: message.role,
+      };
+    });
     const result = streamText({
       abortSignal: request.signal,
       instructions: `${system}\n\n${pret.faits}`,
-      messages: messagesPourModele(tour.messages).map((message) => ({
-        content: message.text,
-        role: message.role,
-      })),
+      messages: messagesModele,
       model,
       onEnd: async ({ text, totalUsage }) => {
         try {
@@ -285,6 +346,9 @@ export async function POST(request: Request) {
           console.error("[quizzly][coach] enregistrement", error);
         }
       },
+      onError: ({ error }) => {
+        console.error("[quizzly][coach] erreur streamText", error);
+      },
       ...(providerOptions ? { providerOptions } : {}),
     });
     return createTextStreamResponse({
@@ -295,10 +359,16 @@ export async function POST(request: Request) {
       stream: toTextStream({ stream: result.stream }),
     });
   } catch (error) {
-    if (error instanceof ChatbotError) {
+    if (
+      error instanceof ChatbotError &&
+      error.surface !== "database" &&
+      error.type !== "offline"
+    ) {
       return error.toResponse();
     }
     console.error("POST /api/quizzly/coach", error);
-    return errorResponse("database_error");
+    return errorResponse("upstream_error", {
+      message: MAI_SERVER_DIFFICULTIES_MESSAGE,
+    });
   }
 }

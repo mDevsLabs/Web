@@ -1,13 +1,19 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { getAirQuality, getAirQualityOutlook } from "@/lib/plugins/air-quality";
 import {
   compareEurostatCountries,
   getEurostatData,
-} from "@/lib/plugins/eurostat";
-import { jsonToolbox } from "@/lib/plugins/json-toolbox";
+} from "@/lib/plugins/packs/data/eurostat";
+import { jsonToolbox } from "@/lib/plugins/packs/dev/json-toolbox";
+import {
+  getAirQuality,
+  getAirQualityOutlook,
+} from "@/lib/plugins/packs/meteo/air-quality";
+import { compareWeather, getWeather } from "@/lib/plugins/packs/meteo/weather";
+import {
+  getWikidataEntities,
+  getWikidataEntity,
+} from "@/lib/plugins/packs/research/wikidata";
 import { fetchPublicJson } from "@/lib/plugins/shared/public-api";
-import { compareWeather, getWeather } from "@/lib/plugins/weather";
-import { getWikidataEntities, getWikidataEntity } from "@/lib/plugins/wikidata";
 
 const TOOL_CALL_OPTIONS = {
   abortSignal: new AbortController().signal,

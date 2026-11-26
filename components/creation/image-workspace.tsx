@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
+import { DEFAULT_IMAGE_MODEL } from "@/lib/ai/catalog/media-defaults";
 import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { APP_PRICING_URL } from "@/lib/constants";
@@ -96,14 +97,17 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
 
   // Initialisation du modèle et taille par défaut
   useEffect(() => {
-    if (userPrefData?.defaultImageModel && !selectedModelId) {
-      setSelectedModelId(userPrefData.defaultImageModel);
-    } else if (models.length > 0 && !selectedModelId) {
-      const defaultMod =
-        models.find((m) => m.id.includes("schnell")) ||
-        models.find((m) => m.id.includes("flux")) ||
-        models[0];
-      setSelectedModelId(defaultMod.id);
+    if (models.length > 0) {
+      const preferred = userPrefData?.defaultImageModel;
+      setSelectedModelId((current) => {
+        if (current && models.some((m) => m.id === current)) {
+          return current;
+        }
+        if (preferred && models.some((m) => m.id === preferred)) {
+          return preferred;
+        }
+        return models[0].id;
+      });
     }
 
     if (userPrefData?.defaultImageSize) {
@@ -116,7 +120,7 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
         setAspectRatio(match.id);
       }
     }
-  }, [models, selectedModelId, userPrefData]);
+  }, [models, userPrefData]);
 
   const selectedModel = useMemo(
     () => models.find((m) => m.id === selectedModelId),
@@ -140,6 +144,14 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
 
   const quotaRemaining = useMemo(
     () => Math.max(0, dailyLimit - usedToday),
+    [dailyLimit, usedToday]
+  );
+
+  const imagesPercent = useMemo(
+    () =>
+      dailyLimit > 0
+        ? Math.min(100, Math.round((usedToday / dailyLimit) * 100))
+        : 0,
     [dailyLimit, usedToday]
   );
 
@@ -190,7 +202,7 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
 
     if (isQuotaExhausted) {
       toast.error(
-        `Votre quota journalier est atteint (${usedToday}/${dailyLimit}). Mettez à niveau votre compte pour plus de générations !`
+        `Votre quota journalier de génération d'images est atteint (${imagesPercent}% consommé). Mettez à niveau votre compte pour plus de générations !`
       );
       return;
     }
@@ -201,15 +213,22 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
     try {
       const usageCheck = await fetch("/api/images/usage").then((r) => r.json());
       if (usageCheck.usedToday >= usageCheck.dailyLimit) {
+        const checkPercent =
+          usageCheck.dailyLimit > 0
+            ? Math.min(
+                100,
+                Math.round((usageCheck.usedToday / usageCheck.dailyLimit) * 100)
+              )
+            : 100;
         mutateUsage();
         throw new Error(
-          `Quota journalier épuisé (${usageCheck.usedToday}/${usageCheck.dailyLimit}). Réinitialisation à minuit UTC.`
+          `Quota journalier épuisé (${checkPercent}% consommé). Réinitialisation à minuit UTC.`
         );
       }
 
       const payload: Record<string, any> = {
         height: currentSize.height,
-        model: selectedModelId || "black-forest-labs/flux-1-schnell",
+        model: selectedModelId || models[0]?.id || DEFAULT_IMAGE_MODEL,
         negative_prompt: negativePrompt.trim() || undefined,
         prompt: prompt.trim(),
         size: `${currentSize.width}x${currentSize.height}`,
@@ -371,10 +390,10 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
             <SparklesIcon className="size-4 text-warning" />
             <div className="text-xs">
               <span className="font-semibold text-foreground">
-                {usedToday} / {dailyLimit}
+                {imagesPercent}% consommé
               </span>{" "}
               <span className="text-muted-foreground">
-                générations/j ({plan})
+                · Génération d&apos;images (Forfait {plan})
               </span>
             </div>
           </div>

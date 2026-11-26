@@ -1,9 +1,9 @@
 "use client";
 
-import { GaugeIcon as Gauge, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
-import { motion } from "motion/react";
+import { GaugeIcon as Gauge } from "@mdevs/icons";
 
-import { formatResetDate, formatTokens } from "./account-utils";
+import { formatResetDate } from "./account-utils";
+import { QuotaProgress } from "./quota-progress";
 
 interface MaiUsage {
   limit: number;
@@ -13,11 +13,13 @@ interface MaiUsage {
 
 export function MaiUsageSection({
   usage,
+  tier,
   percent,
   refreshing,
   onRefresh,
 }: {
   usage: MaiUsage | null;
+  tier?: string;
   percent: number;
   refreshing: boolean;
   onRefresh: () => void | Promise<void>;
@@ -29,53 +31,24 @@ export function MaiUsageSection({
     >
       <div>
         <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-          <Gauge className="w-5 h-5 text-purple-600" /> Usage mAI
+          <Gauge className="w-5 h-5 text-purple-600" /> Utilisation de l&apos;IA
         </h2>
+        <p className="text-xs text-slate-500 mt-0.5">
+          Consommation calculée sur vos invites et réponses générées.
+        </p>
       </div>
 
       {usage ? (
-        <>
-          <div className="flex items-end justify-between gap-3 text-sm">
-            <p className="text-slate-600">
-              <span className="font-bold text-slate-900">
-                {formatTokens(usage.tokensUsed)}
-              </span>{" "}
-              / {formatTokens(usage.limit)} tokens
-            </p>
-            <div className="flex items-center gap-2">
-              <p className="font-semibold text-slate-900">{percent}%</p>
-              <button
-                aria-label="Actualiser l'usage mAI"
-                className="p-2 rounded-xl border border-slate-200 hover:bg-white/80 text-slate-600 transition-colors disabled:opacity-50 cursor-pointer"
-                disabled={refreshing}
-                onClick={onRefresh}
-                title="Actualiser"
-                type="button"
-              >
-                <RefreshCw
-                  className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`}
-                />
-              </button>
-            </div>
-          </div>
-          <div className="w-full bg-slate-200/80 rounded-full h-3 overflow-hidden">
-            <motion.div
-              animate={{ width: `${percent}%` }}
-              className={`h-full rounded-full ${
-                percent >= 90
-                  ? "bg-red-500"
-                  : percent >= 70
-                    ? "bg-amber-500"
-                    : "bg-gradient-to-r from-purple-500 to-blue-500"
-              }`}
-              initial={{ width: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            />
-          </div>
-          <p className="text-xs text-slate-500">
-            Réinitialisation hebdomadaire : {formatResetDate(usage.resetAt)}
-          </p>
-        </>
+        <QuotaProgress
+          limit={usage.limit}
+          onRefresh={onRefresh}
+          percentOverride={percent}
+          refreshing={refreshing}
+          resetLabel={`Réinitialisation hebdomadaire : ${formatResetDate(usage.resetAt)}`}
+          tier={tier}
+          tone="purple"
+          used={usage.tokensUsed}
+        />
       ) : (
         <div className="flex items-center justify-between gap-3">
           <p className="text-sm text-slate-500">

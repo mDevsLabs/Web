@@ -1,16 +1,16 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { logError } from "@/lib/api/error-response";
+import { internalUrl } from "@/lib/integrations/redirect";
 import {
   callbackUriFor,
   openState,
   stateCookieName,
-} from "@/lib/integrations/oauth";
-import { internalUrl } from "@/lib/integrations/redirect";
+} from "@/lib/plugins/core/oauth-state";
 import {
   getUserPlugin,
   readPluginSecret,
   storeOauthAccessToken,
-} from "@/lib/plugins/user-plugin-store";
+} from "@/lib/plugins/core/user-plugin-store";
 import { validateAndResolveUrl } from "@/lib/web/ssrf";
 
 function pluginReturn(

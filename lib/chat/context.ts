@@ -15,7 +15,6 @@ import {
   getProjectById,
   getProjectFilesForInjection,
   getSkillById,
-  getSkillsByUserId,
   getUserModelPreferences,
   saveChat,
   saveMessages,
@@ -178,19 +177,6 @@ export async function buildChatContext(
   // contexte projet est simplement neutralisé (garde stricte conservée pour la
   // création et le déplacement explicites plus bas).
   const effectiveProjectId = (chat as any)?.projectId || projectId;
-  if (effectiveProjectId) {
-    const projectOwned = await getProjectById({
-      id: effectiveProjectId,
-      userEmail: maiUser.email,
-      userId,
-    }).catch(() => null);
-    if (!projectOwned) {
-      console.warn(
-        `[chat-access] project_context_unavailable mode=${mode ?? "chat"} action=skip_project_context`
-      );
-      projectId = null;
-    }
-  }
   let projectCustomInstructions: string | null = null;
   let projectDefaultModel: string | null = null;
 
@@ -201,17 +187,25 @@ export async function buildChatContext(
         userEmail: maiUser.email,
         userId,
       });
-      if (proj?.customInstructions) {
-        projectCustomInstructions = proj.customInstructions;
-      }
-      if (proj?.defaultModel) {
-        projectDefaultModel = proj.defaultModel;
+      if (proj) {
+        if (proj.customInstructions) {
+          projectCustomInstructions = proj.customInstructions;
+        }
+        if (proj.defaultModel) {
+          projectDefaultModel = proj.defaultModel;
+        }
+      } else {
+        console.warn(
+          `[chat-access] project_context_unavailable mode=${mode ?? "chat"} action=skip_project_context`
+        );
+        projectId = null;
       }
     } catch (error: unknown) {
       console.error(
         "[chat:context] Impossible de charger les métadonnées du projet :",
         error
       );
+      projectId = null;
     }
   }
 
@@ -256,6 +250,9 @@ export async function buildChatContext(
   let agentDefaultModel: string | null = null;
   let agentSkillIds: string[] = [];
   let agentSkillInstructions: string[] = [];
+  let loadedAgentSkills: NonNullable<
+    Awaited<ReturnType<typeof getSkillById>>
+  >[] = [];
   let agentMcpServerIds: string[] = [];
   let agentTemperature: number | null = null;
   let agentTopP: number | null = null;
@@ -281,8 +278,11 @@ export async function buildChatContext(
               getSkillById({ id: skillId, userId }).catch(() => null)
             )
           );
-          agentSkillInstructions = skills
-            .map((skill) => skill?.instructions?.trim())
+          loadedAgentSkills = skills.filter(
+            (skill): skill is NonNullable<typeof skill> => skill !== null
+          );
+          agentSkillInstructions = loadedAgentSkills
+            .map((skill) => skill.instructions?.trim())
             .filter((instructions): instructions is string =>
               Boolean(instructions)
             );
@@ -300,12 +300,9 @@ export async function buildChatContext(
       );
     }
   }
-  if (agentSkillIds.length > 0) {
+  if (loadedAgentSkills.length > 0) {
     try {
-      const ownedSkills = await getSkillsByUserId({ userId });
-      const selectedAgentSkills = ownedSkills.filter((skill) =>
-        agentSkillIds.includes(skill.id)
-      );
+      const selectedAgentSkills = loadedAgentSkills;
       const filtresAgent: (Record<string, string[] | null> | null)[] = [];
       for (const agentSkill of selectedAgentSkills) {
         if (Array.isArray(agentSkill.tools)) {
@@ -399,7 +396,12 @@ export async function buildChatContext(
       );
       throw new ChatbotError("forbidden:chat");
     }
-    messagesFromDb = await getMessagesByChatId({ id });
+    // Le contexte envoyé au modèle est borné aux 200 derniers messages. Une
+    // conversation très longue n'a pas besoin de rejouer tout son historique
+    // à chaque tour : le chargement et la conversion de `parts` JSON coûtent
+    // du CPU et de l'I/O pour des messages que le modèle ne lirait qu'en
+    // partie. L'interface, elle, continue de tout charger pour l'affichage.
+    messagesFromDb = await getMessagesByChatId({ id, limit: 200 });
     // Renommer seulement si c'est la première interaction : soit aucun message
     // en base, soit le seul message présent EST le message entrant — le cas
     // d'une régénération du premier tour, où le message utilisateur reste en

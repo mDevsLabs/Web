@@ -1,1 +1,1 @@
-export { PluginIcon as SkillTemplateIcon } from "@/lib/plugins/icon";
+export { PluginIcon as SkillTemplateIcon } from "@/lib/plugins/core/icon";

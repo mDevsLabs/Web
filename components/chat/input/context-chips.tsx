@@ -6,8 +6,8 @@ import { AgentIcon } from "@/components/agents/agent-icon";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
-import { getPluginByToolId } from "@/lib/plugins/catalog";
-import { PluginIcon } from "@/lib/plugins/icon";
+import { getPluginByToolId } from "@/lib/plugins/core/catalog";
+import { PluginIcon } from "@/lib/plugins/core/icon";
 import { tokenForPendingTool } from "./mention-utils";
 
 export function ProjectChip({

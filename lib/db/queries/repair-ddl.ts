@@ -278,10 +278,10 @@ export async function ensureCoreAndAuthTables(
     "defaultAgentId" uuid,
     "defaultChatModel" text,
     "defaultChatVisibility" varchar(20) DEFAULT 'private' NOT NULL,
-    "defaultImageModel" text DEFAULT 'black-forest-labs/flux-schnell' NOT NULL,
+    "defaultImageModel" text DEFAULT 'black-forest-labs/flux-1.1-pro' NOT NULL,
     "defaultImageSize" varchar(50) DEFAULT '1024x1024' NOT NULL,
-    "defaultAudioModel" text DEFAULT 'deepgram/flux-tts:free' NOT NULL,
-    "defaultAudioVoice" varchar(100) DEFAULT 'flux-alexis-en' NOT NULL,
+    "defaultAudioModel" text DEFAULT 'heygen/heygen-voice-1-turbo:free' NOT NULL,
+    "defaultAudioVoice" varchar(100) DEFAULT 'nadine' NOT NULL,
     "defaultAudioSpeed" double precision DEFAULT 1.0 NOT NULL,
     "ghostMemoryEnabled" boolean DEFAULT false NOT NULL,
     "showAgentChatIcons" boolean DEFAULT true NOT NULL,
@@ -310,16 +310,16 @@ export async function ensureCoreAndAuthTables(
     client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultChatVisibility" varchar(20) DEFAULT 'private' NOT NULL`
   );
   await run(
-    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultImageModel" text DEFAULT 'black-forest-labs/flux-schnell' NOT NULL`
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultImageModel" text DEFAULT 'black-forest-labs/flux-1.1-pro' NOT NULL`
   );
   await run(
     client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultImageSize" varchar(50) DEFAULT '1024x1024' NOT NULL`
   );
   await run(
-    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAudioModel" text DEFAULT 'deepgram/flux-tts:free' NOT NULL`
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAudioModel" text DEFAULT 'heygen/heygen-voice-1-turbo:free' NOT NULL`
   );
   await run(
-    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAudioVoice" varchar(100) DEFAULT 'flux-alexis-en' NOT NULL`
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAudioVoice" varchar(100) DEFAULT 'nadine' NOT NULL`
   );
   await run(
     client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAudioSpeed" double precision DEFAULT 1.0 NOT NULL`
@@ -477,6 +477,9 @@ export async function ensureChatAndProjectTables(
     client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "temperatureOverride" double precision`
   );
   await run(client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "agentId" uuid`);
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "lastMessageAt" timestamp DEFAULT now() NOT NULL`
+  );
   await run(client`ALTER TABLE "Chat" DROP COLUMN IF EXISTS "modeId"`);
 
   await run(

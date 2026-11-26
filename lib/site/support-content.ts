@@ -13,9 +13,9 @@ export const SUPPORT_CONTENT_CATEGORIES = [
     label: "Compte & accès",
   },
   {
-    description: "Clés, requêtes, quotas et inférence",
-    id: "api",
-    label: "API & modèles",
+    description: "Modèles cloud, Ollama, quotas et inférence",
+    id: "models",
+    label: "Modèles & quotas",
   },
   {
     description: "Vibe, Web, Pulse, CLI et Coder",
@@ -74,30 +74,21 @@ export const SUPPORT_FAQS = [
   },
   {
     answer:
-      "Les clés sont gérées depuis votre espace développeur. Si une clé est compromise, révoquez-la immédiatement puis créez-en une nouvelle avant de reprendre vos appels.",
-    category: "api",
-    id: "api-key",
-    keywords: ["clé", "api", "token", "révoquer", "secret"],
-    link: { external: false, href: "/account/keys", label: "Gérer mes clés" },
-    question: "Où créer ou révoquer une clé d'API ?",
-  },
-  {
-    answer:
-      "Un 429 indique généralement une limite de débit ou un quota atteint. Attendez la fenêtre indiquée dans la réponse, puis vérifiez votre consommation dans le compte avant de réessayer.",
-    category: "api",
+      "Un quota atteint (tokens mAI, audio ou images quotidiennes) limite temporairement les générations jusqu'à la prochaine réinitialisation automatique. Vous pouvez consulter l'ensemble de vos compteurs et réinitialisations disponibles depuis votre espace compte.",
+    category: "models",
     id: "quota",
-    keywords: ["429", "quota", "limite", "débit", "rate limit"],
+    keywords: ["quota", "limite", "débit", "tokens", "images"],
     link: {
       external: false,
-      href: "/docs?doc=6-erreurs-et-limites",
-      label: "Lire le guide des quotas",
+      href: "/account#usage-mai",
+      label: "Consulter mes quotas",
     },
-    question: "Comment vérifier un quota ou une erreur 429 ?",
+    question: "Comment vérifier mes quotas d'utilisation ?",
   },
   {
     answer:
-      "Oui. Les modèles mAI peuvent être exécutés localement avec Ollama ou appelés depuis l'API cloud. Choisissez le mode adapté à votre matériel et à vos exigences de confidentialité.",
-    category: "api",
+      "Oui. Les modèles mAI-1 / 1.2 / 1.5 peuvent être exécutés localement avec Ollama, tandis que les gammes mAI-2 et mAI-2.5 sont accessibles dans le cloud sur mAI Web et nos applications.",
+    category: "models",
     id: "local-or-cloud",
     keywords: ["local", "cloud", "ollama", "modèle", "inférence"],
     link: { external: false, href: "/models", label: "Découvrir les modèles" },
@@ -105,14 +96,14 @@ export const SUPPORT_FAQS = [
   },
   {
     answer:
-      "Commencez par le guide de l'application pour découvrir les espaces de travail, puis consultez les exemples d'intégration avant de brancher vos propres données.",
+      "Accédez à votre espace de discussion mAI Web pour utiliser nos modèles et agents autonomes, ou retrouvez toutes les applications bureau, navigateur et CLI sur la page Téléchargements.",
     category: "apps",
     id: "web-guide",
     keywords: ["web", "application", "démarrage", "guide"],
     link: {
       external: false,
-      href: "/docs?doc=app-web",
-      label: "Guide de l'application Web",
+      href: "/downloads",
+      label: "Téléchargements & applications",
     },
     question: "Par où commencer avec mAI Web ?",
   },
@@ -155,34 +146,24 @@ export const SUPPORT_FAQS = [
 
 export const SUPPORT_GUIDES = [
   {
-    category: "api",
+    category: "models",
     description:
-      "Comprendre les endpoints, les formats et le parcours d'une première requête.",
-    href: "/docs?doc=1-introduction",
-    id: "api-introduction",
-    keywords: ["api", "introduction", "endpoint", "requête"],
-    readTime: "5 min",
-    title: "Premiers pas avec l'API",
-  },
-  {
-    category: "api",
-    description:
-      "Utiliser une clé de manière sûre et diagnostiquer les erreurs d'accès.",
-    href: "/docs?doc=2-authentification",
-    id: "api-auth",
-    keywords: ["api", "authentification", "clé", "token"],
-    readTime: "7 min",
-    title: "Authentification de l'API",
-  },
-  {
-    category: "api",
-    description:
-      "Lire les réponses de limite et planifier un appel sans interruption.",
-    href: "/docs?doc=6-erreurs-et-limites",
-    id: "api-quotas",
-    keywords: ["quota", "limite", "429", "débit"],
+      "Comparer les modèles cloud mAI-2 / mAI-2.5 et les modèles locaux Ollama.",
+    href: "/models",
+    id: "models-catalog",
+    keywords: ["modèles", "opal", "apex", "omni", "ollama"],
     readTime: "4 min",
-    title: "Quotas et limites d'appel",
+    title: "Catalogue des modèles mAI",
+  },
+  {
+    category: "models",
+    description:
+      "Suivre votre consommation hebdomadaire (mAI, Audio, Images et Cloud) et réinitialiser vos compteurs.",
+    href: "/account",
+    id: "account-quotas",
+    keywords: ["quota", "limite", "compte", "réinitialisation"],
+    readTime: "3 min",
+    title: "Gérer ses quotas & forfaits",
   },
   {
     category: "apps",
@@ -197,52 +178,42 @@ export const SUPPORT_GUIDES = [
   {
     category: "apps",
     description:
-      "Un guide rapide des parcours et des intégrations disponibles dans Web.",
-    href: "/docs?doc=app-web",
-    id: "app-web",
-    keywords: ["web", "application", "intégration"],
-    readTime: "6 min",
-    title: "Utiliser mAI Web",
-  },
-  {
-    category: "apps",
-    description:
-      "Découvrir les vues et les indicateurs de suivi disponibles dans Pulse.",
-    href: "/docs?doc=app-pulse",
-    id: "app-pulse",
-    keywords: ["pulse", "application", "tableau de bord"],
+      "Découvrir les projets de l'écosystème mAI (Web, Pulse, CLI, Coder, Wakies).",
+    href: "/projects",
+    id: "apps-ecosystem",
+    keywords: ["web", "pulse", "coder", "écosystème"],
     readTime: "5 min",
-    title: "Utiliser mAI Pulse",
+    title: "Découvrir les projets mAI",
   },
   {
     category: "apps",
     description:
-      "Installer l'outil en ligne de commande et vérifier une première exécution.",
-    href: "/docs?doc=app-cli",
-    id: "app-cli",
-    keywords: ["cli", "terminal", "installation", "ligne de commande"],
-    readTime: "8 min",
-    title: "Installer et utiliser la CLI",
+      "Télécharger mAI CLI, Coder, les extensions et les modèles locaux.",
+    href: "/downloads",
+    id: "app-downloads",
+    keywords: ["cli", "terminal", "installation", "téléchargement"],
+    readTime: "4 min",
+    title: "Installer nos applications & CLI",
   },
   {
-    category: "apps",
+    category: "models",
     description:
-      "Relier votre environnement de développement et préparer vos premiers changements.",
-    href: "/docs?doc=app-coder",
-    id: "app-coder",
-    keywords: ["coder", "code", "configuration", "développement"],
-    readTime: "7 min",
-    title: "Configuration de Coder",
-  },
-  {
-    category: "api",
-    description:
-      "Paramétrer une génération d'image et lire les erreurs de quota ou de format.",
-    href: "/docs?doc=image-generation",
+      "Suivre vos générations d'images quotidiennes et comparer les plafonds par forfait.",
+    href: "/account#usage-images",
     id: "images",
-    keywords: ["image", "génération", "visuel", "modèle"],
-    readTime: "6 min",
-    title: "Générer des images",
+    keywords: ["image", "génération", "visuel", "quota"],
+    readTime: "3 min",
+    title: "Quotas de génération d'images",
+  },
+  {
+    category: "incident",
+    description:
+      "Consulter l'historique des dernières versions et améliorations publiées.",
+    href: "/changelog",
+    id: "changelog",
+    keywords: ["changelog", "versions", "notes", "mises à jour"],
+    readTime: "3 min",
+    title: "Notes de version mAI",
   },
   {
     category: "incident",

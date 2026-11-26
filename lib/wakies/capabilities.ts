@@ -47,10 +47,12 @@ import {
   type IntegrationDescriptor,
 } from "@/lib/integrations/providers";
 import { listActiveConnections } from "@/lib/integrations/repository";
-import { getPluginByToolId, getPluginManifest } from "@/lib/plugins/catalog";
-import { getToolIdsForPluginIds } from "@/lib/plugins/server";
-import { canUsePlugin, pluginTierMessage } from "@/lib/plugins/tier-lock";
-import { hasReadTool, toolEffect } from "@/lib/plugins/tool-effect";
+import {
+  getPluginByToolId,
+  getPluginManifest,
+} from "@/lib/plugins/core/catalog";
+import { getToolIdsForPluginIds } from "@/lib/plugins/core/server";
+import { hasReadTool, toolEffect } from "@/lib/plugins/core/tool-effect";
 
 /** Raison pour laquelle une capacité demandée n'est pas utilisable. */
 export type CapacityIssue = {
@@ -115,15 +117,11 @@ function raisonDeRefusPlugin(
   demande: string,
   params: {
     installations: readonly PluginInstallation[];
-    tier: string;
   }
 ): string | null {
   const manifest = getPluginManifest(demande);
   if (!manifest) {
     return "Cette extension n'existe pas dans le catalogue.";
-  }
-  if (!canUsePlugin(manifest, params.tier)) {
-    return pluginTierMessage(manifest);
   }
   const installation = params.installations.find(
     (item) => item.pluginId === demande
@@ -171,7 +169,7 @@ const MENTIONS_DE_CONNECTEUR: ReadonlyMap<string, IntegrationDescriptor> =
  */
 export async function applyIntegrationMentions(params: {
   nomsMentionnes: readonly string[];
-  tier: string;
+  tier?: string;
   userId: string;
 }): Promise<{ issues: CapacityIssue[]; pluginIds: string[] }> {
   const demandes = params.nomsMentionnes
@@ -206,7 +204,6 @@ export async function applyIntegrationMentions(params: {
     }
     const refus = raisonDeRefusPlugin(descriptor.pluginId, {
       installations,
-      tier: params.tier,
     });
     if (refus) {
       issues.push({ id: descriptor.pluginId, kind: "plugin", raison: refus });
@@ -313,7 +310,6 @@ export async function resolveSelection(params: {
     for (const demande of demandesPlugin) {
       const refus = raisonDeRefusPlugin(demande, {
         installations,
-        tier: params.tier,
       });
       if (refus) {
         issues.push({ id: demande, kind: "plugin", raison: refus });

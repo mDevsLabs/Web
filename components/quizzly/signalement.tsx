@@ -77,7 +77,10 @@ export function FormulaireSignalement({
       ) : (
         <Dialog onOpenChange={setOuvert} open={ouvert}>
           <DialogTrigger asChild>
-            <button className="chip w-fit" type="button">
+            <button
+              className="chip min-h-11 w-fit touch-manipulation sm:min-h-0"
+              type="button"
+            >
               Signaler
             </button>
           </DialogTrigger>

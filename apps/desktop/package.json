@@ -1,6 +1,6 @@
 {
   "name": "@mdevs/desktop",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "mAI Desktop – Application Electron pour https://mai-officiel.vercel.app",
   "author": "mAI",
   "private": true,
@@ -162,10 +162,10 @@
     "node-pty": "^1.1.0"
   },
   "devDependencies": {
-    "@types/node": "^24.19.1",
-    "electron": "^44.5.1",
-    "electron-builder": "^26.17.0",
+    "@types/node": "^24.19.2",
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0",
     "esbuild": "^0.28.2",
-    "typescript": "^5.9.3"
+    "typescript": "~6.0.3"
   }
 }

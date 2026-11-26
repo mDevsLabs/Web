@@ -35,6 +35,7 @@ import { MaiReasoning } from "@/components/vibe/mai/MaiReasoning";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
 import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { formatUserFacingAiError } from "@/lib/ai/server-error-message";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
 import type { MAITool } from "@/lib/vibe/data/maiTools";
 import { useAvailableMAITools } from "@/lib/vibe/hooks/useAvailableMAITools";
@@ -262,7 +263,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       haptics.error();
       NotificationService.showInAppToast(
         "Régénération",
-        err?.message || "La régénération de la réponse a échoué.",
+        formatUserFacingAiError(err),
         "error"
       );
     } finally {
@@ -332,7 +333,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
    * listes ne proposes pas des modèles différents.
    */
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || MODEL_CATALOG_REFRESH_INTERVAL <= 0) return;
     const timer = setInterval(() => {
       void ApiService.getModels()
         .then((res) => {
@@ -598,7 +599,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       }
     } catch (err: any) {
       const errorMsg: MessageItem = {
-        content: ` Une erreur est survenue: ${err.message || "Impossible de joindre mAI"}`,
+        content: formatUserFacingAiError(err),
         id: generateMessageId(),
         sender: "assistant",
         timestamp: formatCurrentTime(),
@@ -666,9 +667,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         onPostCreated();
       }
     } catch (err: any) {
-      pushAssistant(
-        ` Erreur lors de l'exécution de « ${tool.name}»: ${err.message || "réessayez plus tard."}`
-      );
+      pushAssistant(formatUserFacingAiError(err));
     } finally {
       setIsApproving(false);
     }

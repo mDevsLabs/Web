@@ -1,4 +1,4 @@
-import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
+import { isLucideIconName } from "@/lib/plugins/core/icon-allowlist";
 import type { McpTemplateDefinition } from "./types";
 
 // Catalogue des modèles MCP — SOURCE DE VÉRITÉ UNIQUE.
@@ -20,19 +20,17 @@ import type { McpTemplateDefinition } from "./types";
 export const MCP_TEMPLATES: McpTemplateDefinition[] = [
   {
     manifest: {
-      activation: "requires_vetted_stdio",
-      args: "-y @modelcontextprotocol/server-brave-search",
+      activation: "ready",
       author: "mAI",
       authType: "bearer",
       category: "web",
-      command: "npx",
       credentials: [
         {
           docsUrl: "https://api-dashboard.search.brave.com/api-keys",
           instructions:
             "Inscrivez-vous sur le tableau de bord Brave Search, choisissez l'offre « Data for Search » (palier gratuit disponible), puis « API Keys » → « Create Key » et copiez la clé. Renseignez-la dans le champ « Clé API Brave Search » de la fiche du serveur : elle est chiffrée côté serveur et injectée uniquement au moment de l'appel.",
-          key: "BRAVE_API_KEY",
-          kind: "env",
+          key: "token",
+          kind: "auth",
           label: "Clé API Brave Search",
           required: true,
         },
@@ -54,8 +52,9 @@ export const MCP_TEMPLATES: McpTemplateDefinition[] = [
         "5. La clé est chiffrée côté serveur (AES-256-GCM) et n'est jamais exposée au navigateur.",
       ],
       tags: ["Recherche", "Web", "Brave"],
-      transport: "stdio",
-      verifiedAt: "2026-09-14",
+      transport: "http",
+      url: "https://mcp.search.brave.com/mcp",
+      verifiedAt: "2026-09-25",
     },
   },
   {
@@ -139,11 +138,21 @@ export const MCP_TEMPLATES: McpTemplateDefinition[] = [
   },
   {
     manifest: {
-      activation: "requires_oauth_flow",
+      activation: "ready",
       author: "mAI",
-      authType: "oauth2",
+      authType: "bearer",
       category: "collab",
-      credentials: [],
+      credentials: [
+        {
+          docsUrl: "https://api.slack.com/apps",
+          instructions:
+            "Ouvrez https://api.slack.com/apps, sélectionnez ou créez votre application Slack → « OAuth & Permissions », ajoutez les scopes Bot Token nécessaires (channels:read, channels:history, groups:read, groups:history, chat:write), installez l'application sur votre espace de travail et copiez le « Bot User OAuth Token » (xoxb-…) dans le champ ci-dessous.",
+          key: "token",
+          kind: "auth",
+          label: "Jeton Bot OAuth Slack (xoxb-…)",
+          required: true,
+        },
+      ],
       description:
         "Rechercher dans Slack, lire les canaux et envoyer des messages via le serveur MCP distant officiel de Slack.",
       docsUrl: "https://docs.slack.dev/ai/slack-mcp-server",
@@ -154,14 +163,16 @@ export const MCP_TEMPLATES: McpTemplateDefinition[] = [
       readOnly: false,
       requireApproval: "write_only",
       setupInstructions: [
-        "1. Le serveur MCP officiel de Slack (https://mcp.slack.com/mcp) authentifie les clients via OAuth 2.0, avec validation par un administrateur de l'espace de travail.",
-        "2. mAI Web n'implémente pas encore de flux OAuth interactif : ce modèle est documenté mais son installation est refusée pour le moment.",
-        "3. En attendant, utilisez les serveurs MCP de votre choix via l'écran avancé /mcp, ou les Skills et plugins natifs.",
+        "1. Ouvrez https://api.slack.com/apps et créez ou sélectionnez une application pour votre espace de travail.",
+        "2. Dans « OAuth & Permissions », accordez les scopes Bot Token (channels:read, channels:history, groups:read, groups:history, chat:write).",
+        "3. Installez l'application sur votre workspace et copiez le « Bot User OAuth Token » (xoxb-…).",
+        "4. Installez ce modèle MCP puis collez le jeton dans la fiche du serveur (chiffré AES-256-GCM côté serveur).",
+        "5. Les lectures de canaux et fils sont automatiques ; l'envoi de messages demande votre approbation.",
       ],
       tags: ["Slack", "Messages", "Équipe"],
       transport: "http",
       url: "https://mcp.slack.com/mcp",
-      verifiedAt: "2026-09-14",
+      verifiedAt: "2026-09-25",
     },
   },
   {

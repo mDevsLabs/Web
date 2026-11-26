@@ -112,7 +112,7 @@ export function BoutiqueQuizzly() {
       {/* En-tête avec compteurs */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-blue-100 pb-5 dark:border-blue-900/30">
         <div>
-          <h1 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl dark:text-white">
+          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
             Boutique & Récompenses
           </h1>
           <p className="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-400">
@@ -193,7 +193,7 @@ export function BoutiqueQuizzly() {
                     {fete === article.id && (
                       <motion.span
                         animate={{ opacity: 1, y: -8 }}
-                        className="absolute -top-2 right-0 rounded-full bg-blue-600 px-2.5 py-1 text-xs font-black text-white shadow-md shadow-blue-500/30"
+                        className="absolute -top-2 right-0 rounded-full bg-blue-600 px-2.5 py-1 text-xs font-extrabold text-white shadow-md shadow-blue-500/30"
                         exit={{ opacity: 0 }}
                         initial={{ opacity: 0, y: 8 }}
                       >

@@ -31,7 +31,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [targetEmail, setTargetEmail] = useState("");
   const [otpCode, setOtpCode] = useState("");
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(true);
   const [returnTo, setReturnTo] = useState("/");
   // Une destination explicite (redirectUrl/next) prime sur le menu favori :
   // on ne redirige vers l'application préférée QUE pour une entrée neutre.
@@ -135,15 +135,6 @@ export default function LoginPage() {
     // Le cache local répond instantanément ; resolveFavoriteAppAfterLogin
     // rattrape par la base si le cache est absent ou périmé.
     const favorite = await resolveFavoriteAppAfterLogin();
-    // Le favori CLI n'a pas de page : on ouvre le terminal local, puis on
-    // retombe sur mAI pour ne jamais laisser l'utilisateur sur un écran vide.
-    if (favorite === "cli") {
-      try {
-        await window.maiDesktop?.openCli?.();
-      } catch {
-        // Le CLI est un confort : son échec ne bloque pas la connexion.
-      }
-    }
     const favoritePath = favoriteAppToPath(favorite);
     router.push(favoritePath);
     router.refresh();

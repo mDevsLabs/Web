@@ -1,5 +1,10 @@
 import "server-only";
 import { eq } from "drizzle-orm";
+import {
+  DEFAULT_AUDIO_MODEL,
+  DEFAULT_AUDIO_VOICE,
+  DEFAULT_IMAGE_MODEL,
+} from "@/lib/ai/catalog/media-defaults";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 import { normalizeAppKey } from "@/lib/apps/catalog";
 import { normalizeCreationMode } from "@/lib/creation/mode";
@@ -42,9 +47,9 @@ export async function getUserPreferences(userId: string) {
         customInstructions: row.customInstructions || "",
         defaultAgentId: row.defaultAgentId || null,
         defaultApp: normalizeAppKey(row.defaultApp),
-        defaultAudioModel: row.defaultAudioModel || "deepgram/flux-tts:free",
+        defaultAudioModel: row.defaultAudioModel || DEFAULT_AUDIO_MODEL,
         defaultAudioSpeed: row.defaultAudioSpeed ?? 1.0,
-        defaultAudioVoice: row.defaultAudioVoice || "flux-alexis-en",
+        defaultAudioVoice: row.defaultAudioVoice || DEFAULT_AUDIO_VOICE,
         defaultChatModel: row.defaultChatModel || null,
         defaultChatVisibility:
           (row.defaultChatVisibility as "private" | "public") || "private",
@@ -54,8 +59,7 @@ export async function getUserPreferences(userId: string) {
         defaultDictationLanguage: normalizeDictationLanguage(
           row.defaultDictationLanguage
         ),
-        defaultImageModel:
-          row.defaultImageModel || "black-forest-labs/flux-schnell",
+        defaultImageModel: row.defaultImageModel || DEFAULT_IMAGE_MODEL,
         defaultImageSize: row.defaultImageSize || "1024x1024",
         defaultTranslationLanguage:
           normalizeTranslationTarget(row.defaultTranslationLanguage) ??
@@ -90,14 +94,14 @@ export async function getUserPreferences(userId: string) {
     customInstructions: legacy.customInstructions ?? "",
     defaultAgentId: null,
     defaultApp: "mai",
-    defaultAudioModel: "deepgram/flux-tts:free",
+    defaultAudioModel: DEFAULT_AUDIO_MODEL,
     defaultAudioSpeed: 1.0,
-    defaultAudioVoice: "flux-alexis-en",
+    defaultAudioVoice: DEFAULT_AUDIO_VOICE,
     defaultChatModel: null,
     defaultChatVisibility: "private" as const,
     defaultCreationMode: "image" as const,
     defaultDictationLanguage: AUTO_DICTATION_LANGUAGE,
-    defaultImageModel: "black-forest-labs/flux-schnell",
+    defaultImageModel: DEFAULT_IMAGE_MODEL,
     defaultImageSize: "1024x1024",
     defaultTranslationLanguage: DEFAULT_TRANSLATION_TARGET,
     enabled: legacy.customInstructionsEnabled,
@@ -191,12 +195,12 @@ async function upsertLegacyUserPreferences(
       ${data.customInstructions ?? ""},
       ${data.enabled ?? false},
       ${data.defaultAgentId ?? null}::uuid,
-      ${data.defaultAudioModel ?? "deepgram/flux-tts:free"},
+      ${data.defaultAudioModel ?? DEFAULT_AUDIO_MODEL},
       ${data.defaultAudioSpeed ?? 1.0},
-      ${data.defaultAudioVoice ?? "flux-alexis-en"},
+      ${data.defaultAudioVoice ?? DEFAULT_AUDIO_VOICE},
       ${data.defaultChatModel ?? null},
       ${data.defaultChatVisibility ?? "private"},
-      ${data.defaultImageModel ?? "black-forest-labs/flux-schnell"},
+      ${data.defaultImageModel ?? DEFAULT_IMAGE_MODEL},
       ${data.defaultImageSize ?? "1024x1024"},
       ${data.temperature ?? 0.7},
       ${data.topP ?? 0.9},
@@ -278,17 +282,16 @@ export async function upsertUserPreferences(
           // zod de la route ; ici on borne quand même la écriture : une valeur
           // inattendue vaut « mai », comme un tier illisible vaut free.
           defaultApp: normalizeAppKey(data.defaultApp),
-          defaultAudioModel: data.defaultAudioModel ?? "deepgram/flux-tts:free",
+          defaultAudioModel: data.defaultAudioModel ?? DEFAULT_AUDIO_MODEL,
           defaultAudioSpeed: data.defaultAudioSpeed ?? 1.0,
-          defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
+          defaultAudioVoice: data.defaultAudioVoice ?? DEFAULT_AUDIO_VOICE,
           defaultChatModel: data.defaultChatModel ?? null,
           defaultChatVisibility: data.defaultChatVisibility ?? "private",
           defaultCreationMode: normalizeCreationMode(data.defaultCreationMode),
           defaultDictationLanguage: normalizeDictationLanguage(
             data.defaultDictationLanguage
           ),
-          defaultImageModel:
-            data.defaultImageModel ?? "black-forest-labs/flux-schnell",
+          defaultImageModel: data.defaultImageModel ?? DEFAULT_IMAGE_MODEL,
           defaultImageSize: data.defaultImageSize ?? "1024x1024",
           defaultTemperature: data.temperature ?? 0.7,
           defaultTopP: data.topP ?? 0.9,

@@ -16,14 +16,7 @@ import {
   useSettings,
 } from "@/hooks/use-settings";
 import { APP_PRICING_URL } from "@/lib/constants";
-import {
-  getTierChatWeeklyLimit,
-  getTierStorageBytes,
-} from "@/lib/plans/tier-limits";
-
-function formatTokens(n: number) {
-  return new Intl.NumberFormat("fr-FR").format(n);
-}
+import { getTierStorageBytes } from "@/lib/plans/tier-limits";
 
 function formatBytes(bytes: number) {
   if (!bytes || bytes === 0) return "0 Mo";
@@ -91,7 +84,6 @@ export function UsageTab() {
       )
     : 0;
 
-  const aiLimitFallback = getTierChatWeeklyLimit(profile?.tier);
   const storageLimitFallback = getTierStorageBytes(profile?.tier);
 
   const currentTierKey = (profile?.tier || "free").toLowerCase().trim();
@@ -128,7 +120,7 @@ export function UsageTab() {
           </div>
           <p className="text-xs text-muted-foreground mt-1">
             {profile?.tier === "Free"
-              ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || aiLimitFallback)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || storageLimitFallback)} de stockage cloud.`
+              ? `Accès gratuit avec quotas hebdomadaires renouvelés le lundi et ${formatBytes(cloudUsage?.bytesLimit || storageLimitFallback)} de stockage cloud.`
               : "Forfait premium débloqué avec quotas étendus et modèles avancés."}
           </p>
         </div>
@@ -187,11 +179,10 @@ export function UsageTab() {
 
           <div className="text-right">
             <span className="text-sm font-bold text-foreground">
-              {formatTokens(aiUsage?.tokensUsed || 0)} /{" "}
-              {formatTokens(aiUsage?.limit || aiLimitFallback)}
+              {aiPercent}% consommé
             </span>
             <span className="text-xs text-muted-foreground block">
-              tokens ({aiPercent}%)
+              Forfait {profile?.tier || "Free"}
             </span>
           </div>
         </div>
@@ -230,7 +221,7 @@ export function UsageTab() {
             </div>
             <div className="min-w-0">
               <h3 className="text-base font-semibold text-foreground truncate">
-                Générations d'Images
+                Génération d'images
               </h3>
               <p className="hidden text-xs text-muted-foreground sm:block">
                 Images générées aujourd'hui (quota réinitialisé à minuit UTC)
@@ -240,10 +231,10 @@ export function UsageTab() {
 
           <div className="text-right shrink-0">
             <span className="text-sm font-bold text-foreground">
-              {resolvedImagesUsage.usedToday} / {resolvedImagesUsage.dailyLimit}
+              {imagesPercent}% consommé
             </span>
             <span className="text-xs text-muted-foreground block">
-              images ({imagesPercent}%)
+              Forfait {profile?.tier || "Free"}
             </span>
           </div>
         </div>
@@ -270,7 +261,7 @@ export function UsageTab() {
         </div>
       </div>
 
-      {/* Consommation Synthèse Vocale */}
+      {/* Consommation Création d'audio */}
       <div
         className="surface-card flex flex-col gap-4 scroll-mt-6"
         id="usage-speech"
@@ -282,21 +273,20 @@ export function UsageTab() {
             </div>
             <div className="min-w-0">
               <h3 className="text-base font-semibold text-foreground truncate">
-                Synthèse Vocale
+                Création d'audio
               </h3>
               <p className="hidden text-xs text-muted-foreground sm:block">
-                Tokens consommés pour l'API vocale et la synthèse vocale
+                Consommation hebdomadaire pour la création d'audio
               </p>
             </div>
           </div>
 
           <div className="text-right shrink-0">
             <span className="text-sm font-bold text-foreground">
-              {formatTokens(resolvedSpeechUsage.tokensUsed)} /{" "}
-              {formatTokens(resolvedSpeechUsage.limit)}
+              {speechPercent}% consommé
             </span>
             <span className="text-xs text-muted-foreground block">
-              tokens ({speechPercent}%)
+              Forfait {profile?.tier || "Free"}
             </span>
           </div>
         </div>

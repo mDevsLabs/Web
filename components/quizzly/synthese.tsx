@@ -98,11 +98,11 @@ export function SyntheseQuizzly() {
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
           <GraduationCapIcon className="size-5" />
-          <span className="text-xs font-black uppercase tracking-wider">
+          <span className="text-xs font-extrabold uppercase tracking-wider">
             Espace Révision & Synthèse
           </span>
         </div>
-        <h1 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl dark:text-white">
+        <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
           Fiches de Synthèse & Essentiels du Cours
         </h1>
         <p className="max-w-3xl text-sm font-medium text-slate-600 dark:text-slate-300">
@@ -145,7 +145,7 @@ export function SyntheseQuizzly() {
               return (
                 <button
                   className={cn(
-                    "cursor-pointer rounded-full px-3.5 py-1 text-xs font-bold transition-all",
+                    "min-h-11 cursor-pointer touch-manipulation rounded-full px-3.5 py-1 text-xs font-bold transition-all sm:min-h-0",
                     actif
                       ? "bg-blue-600 text-white shadow-xs"
                       : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
@@ -172,7 +172,7 @@ export function SyntheseQuizzly() {
               return (
                 <button
                   className={cn(
-                    "inline-flex cursor-pointer items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-bold transition-all",
+                    "inline-flex min-h-11 cursor-pointer touch-manipulation items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-bold transition-all sm:min-h-0",
                     actif
                       ? "bg-blue-600 text-white shadow-xs"
                       : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
@@ -234,7 +234,7 @@ export function SyntheseQuizzly() {
                       ))}
                     </div>
 
-                    <h2 className="text-lg font-black text-slate-900 dark:text-white">
+                    <h2 className="text-lg font-extrabold text-slate-900 dark:text-white">
                       {fiche.title}
                     </h2>
                     <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
@@ -245,7 +245,7 @@ export function SyntheseQuizzly() {
                   {/* Formule clé / Règle d'or mise en valeur */}
                   {fiche.formulaOrRule && (
                     <div className="rounded-2xl border border-blue-100 bg-linear-to-r from-blue-50/70 to-indigo-50/50 p-3 sm:p-4 text-left lg:max-w-md shrink-0 dark:border-blue-900/50 dark:from-blue-950/40 dark:to-indigo-950/30">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-blue-400">
                         Règle d'or / Formule clé
                       </span>
                       <p className="mt-1 font-mono text-xs sm:text-sm font-bold text-blue-900 dark:text-blue-100">

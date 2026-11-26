@@ -391,18 +391,6 @@ export async function updateUserByAdmin(
   // Application en base de données
   if (targetTier) {
     await sql`UPDATE users SET tier = ${targetTier} WHERE id = ${user.id};`;
-    const TIER_REQUEST_LIMITS: Record<string, number> = {
-      Free: 500,
-      Max: 10_000,
-      Plus: 1500,
-      Pro: 3000,
-    };
-    const reqLimit = TIER_REQUEST_LIMITS[targetTier] || 500;
-    await sql`
-      UPDATE mprojects_api_keys
-      SET plan = ${targetTier}, max_limit = ${reqLimit}
-      WHERE user_id = ${user.id}::text OR user_id = ${user.username} OR user_id = ${user.email};
-    `.catch(() => {});
   }
 
   if (targetUsername) {
@@ -411,11 +399,6 @@ export async function updateUserByAdmin(
       UPDATE profiles
       SET display_name = ${targetUsername}
       WHERE user_id = ${user.id} AND (display_name IS NULL OR display_name = ${user.username});
-    `.catch(() => {});
-    await sql`
-      UPDATE mprojects_api_keys
-      SET user_id = ${targetUsername}
-      WHERE user_id = ${user.username};
     `.catch(() => {});
   }
 

@@ -51,7 +51,7 @@ export async function setMaiSessionToken(token: string) {
 type SessionCacheEntry = { user: MaiUser | null; expiresAt: number };
 
 const userCache = new Map<string, SessionCacheEntry>();
-const CACHE_TTL_MS = 120_000; // 2 minutes de cache en mémoire
+const CACHE_TTL_MS = 300_000; // 5 minutes de cache en mémoire
 const CACHE_DENIED_TTL_MS = 30_000; // refus : fenêtre courte, le temps qu'une
 //                                    reconnexion (cookie neuf) prenne effet
 const CACHE_LOCAL_FALLBACK_TTL_MS = 15_000; // panne réseau : on réessaie vite
@@ -275,7 +275,151 @@ export type MaiSessionResolution =
 const inFlightResolutions = new Map<string, Promise<MaiSessionResolution>>();
 const REMOTE_AUTH_TIMEOUT_MS = 10_000;
 
-// Résolution de l'identité par l'API distante. C'est elle qui a émis le jeton :
+async function resolveUserFromDb(
+  token: string,
+  verifiedPayload: any | null
+): Promise<MaiSessionResolution | null> {
+  // Dans les tests unitaires hermétiques où fetch est stubbé pour tester l'API distante,
+  // ne pas interroger Neon (le driver serverless utilise fetch, qui serait intercepté).
+  if (process.env.VITEST && !process.env.TEST_WITH_REAL_DB) {
+    return null;
+  }
+
+  try {
+    const { dbReady, getRawClient } = await import("@/lib/db/queries");
+    await dbReady();
+    const sql = getRawClient();
+    if (!sql) return null;
+
+    const userId =
+      verifiedPayload?.sub || verifiedPayload?.id || verifiedPayload?.email;
+    const payloadEmail = String(verifiedPayload?.email || "")
+      .trim()
+      .toLowerCase();
+    const payloadUsername = String(verifiedPayload?.username || "")
+      .trim()
+      .toLowerCase();
+    if (!userId && !payloadEmail) return null;
+
+    // Semaine courante : elle entre dans la requête unique ci-dessous.
+    const now = new Date();
+    const day = now.getUTCDay();
+    const diff = now.getUTCDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(
+      Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), diff)
+    );
+    const weekStartStr = monday.toISOString().split("T")[0];
+    const nextMonday = new Date(monday.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+    /**
+     * UNE requête, trois lectures : révocation, compte, consommation.
+     *
+     * Les trois étaient séquentielles (blacklist, users, weekly_usage) : trois
+     * allers-retours Neon à chaque session non cachée, donc à chaque instance
+     * froide. Ici la consommation est une sous-requête corrélée : elle ne coûte
+     * pas un aller-retour de plus. Si `weekly_usage` manque (base neuve), la
+     * requête échoue et la résolution délègue à l'API émettrice, qui reste
+     * l'autorité — jamais un refus inventé.
+     *
+     * `numeric_id` ne caste que les identifiants numériques : un uuid ou un
+     * e-mail ne doit pas faire échouer l'expression.
+     */
+    const rows = await sql<
+      {
+        avatar_url: string | null;
+        email: string | null;
+        id: string | null;
+        is_blocked: boolean | null;
+        phone: string | null;
+        revoked: boolean;
+        tier: string | null;
+        tokens_used: number | string;
+        username: string | null;
+      }[]
+    >`
+      WITH revoked AS (
+        SELECT 1 AS hit FROM token_blacklist WHERE token = ${token} LIMIT 1
+      ), candidate AS (
+        SELECT
+          id::text AS id,
+          email,
+          username,
+          tier,
+          phone,
+          avatar_url,
+          is_blocked,
+          CASE WHEN id::text ~ '^[0-9]+$' THEN id::text::bigint END AS numeric_id
+        FROM users
+        WHERE LOWER(COALESCE(username, '')) NOT IN ('mai', 'bot')
+          AND LOWER(COALESCE(email, '')) <> 'mai@vibe.ai'
+          AND (
+            (${payloadEmail} <> '' AND email IS NOT NULL AND LOWER(email) = ${payloadEmail})
+            OR (${payloadUsername} <> '' AND username IS NOT NULL AND LOWER(username) = ${payloadUsername})
+            OR id::text = ${String(userId)}::text
+            OR (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)}))
+            OR (username IS NOT NULL AND LOWER(username) = LOWER(${String(userId)}))
+          )
+        ORDER BY
+          (${payloadEmail} <> '' AND email IS NOT NULL AND LOWER(email) = ${payloadEmail}) DESC,
+          (email IS NOT NULL AND LOWER(email) = LOWER(${String(userId)})) DESC,
+          (${payloadUsername} <> '' AND username IS NOT NULL AND LOWER(username) = ${payloadUsername}) DESC,
+          (id::text = ${String(userId)}::text) DESC
+        LIMIT 1
+      )
+      SELECT
+        (SELECT count(*) FROM revoked) > 0 AS revoked,
+        candidate.id,
+        candidate.email,
+        candidate.username,
+        candidate.tier,
+        candidate.phone,
+        candidate.avatar_url,
+        candidate.is_blocked,
+        COALESCE((
+          SELECT wu.tokens_used
+          FROM weekly_usage wu
+          WHERE wu.user_id = candidate.numeric_id
+            AND wu.week_start = ${weekStartStr}::date
+          LIMIT 1
+        ), 0)::bigint AS tokens_used
+      FROM (SELECT 1) AS one
+      LEFT JOIN candidate ON TRUE
+    `;
+
+    const row = rows[0];
+    if (!row || row.revoked) {
+      return { status: "refused" };
+    }
+    if (!row.id) {
+      // Non trouvé dans la base locale Neon : déléguer à l'API distante / repli
+      return null;
+    }
+    if (row.is_blocked === true) {
+      return { status: "refused" };
+    }
+
+    const tier = row.tier || "Free";
+    return {
+      status: "ok",
+      user: {
+        avatarUrl: row.avatar_url || null,
+        email: row.email || "",
+        id: row.id,
+        limit: getTierChatWeeklyLimit(tier),
+        phone: row.phone || "",
+        resetAt: nextMonday.toISOString(),
+        tier,
+        tokensUsed: Number(row.tokens_used || 0),
+        username: row.username || "Utilisateur",
+        weekStart: weekStartStr,
+      },
+    };
+  } catch {
+    return null;
+  }
+}
+
+// Résolution de l'identité par la base locale ou l'API distante. C'est elle qui a émis le jeton :
 // seule elle peut dire s'il est encore valide, si le compte est bloqué et quel
 // est le forfait actuel. Le payload local n'est consulté qu'en repli technique
 // lorsque l'API est injoignable, et jamais s'il a déjà été refusé.
@@ -289,6 +433,12 @@ async function resolveUserFromApi(
   }
 
   const resolutionPromise = (async (): Promise<MaiSessionResolution> => {
+    // 1. Accès direct prioritaire à Neon PostgreSQL
+    const dbResolution = await resolveUserFromDb(token, verifiedPayload);
+    if (dbResolution) {
+      return dbResolution;
+    }
+
     try {
       const controller = new AbortController();
       const timeout = setTimeout(

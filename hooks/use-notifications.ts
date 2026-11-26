@@ -71,17 +71,15 @@ export type NotificationsResponse = {
 };
 
 export function useNotifications(limit = 20) {
-  // VEILLE : pendant qu'une activité lourde tourne (Blackline), le
-  // rafraîchissement périodique s'arrête. `refreshInterval: 0` le désactive
-  // chez SWR — la liste reste affichée, elle ne se rafraîchit simplement plus
-  // tant que personne ne la regarde.
-  const { isVeille } = useEconomy();
+  // VEILLE ou onglet masqué : pendant qu'une activité lourde tourne ou que
+  // l'onglet est caché, le rafraîchissement périodique s'arrête.
+  const { isTabHidden, isVeille } = useEconomy();
   return useSWR<NotificationsResponse>(
     `/api/notifications?limit=${limit}`,
     fetcher,
     {
       dedupingInterval: 60_000,
-      refreshInterval: isVeille ? 0 : 180_000,
+      refreshInterval: isVeille || isTabHidden ? 0 : 600_000,
       revalidateOnFocus: false,
     }
   );
@@ -98,12 +96,12 @@ export function useNotificationsByOrigin(
   origin: NotificationOrigin | "all",
   limit = 20
 ) {
-  const { isVeille } = useEconomy();
+  const { isTabHidden, isVeille } = useEconomy();
   const query =
     origin === "all" ? `?limit=${limit}` : `?limit=${limit}&origins=${origin}`;
   return useSWR<NotificationsResponse>(`/api/notifications${query}`, fetcher, {
     dedupingInterval: 60_000,
-    refreshInterval: isVeille ? 0 : 180_000,
+    refreshInterval: isVeille || isTabHidden ? 0 : 300_000,
     revalidateOnFocus: false,
   });
 }

@@ -1,6 +1,6 @@
 {
   "name": "@mdevs/icons",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Minimal responsive 24px React SVG icons with Lucide attribution",
   "type": "module",
   "license": "MIT",
@@ -29,6 +29,11 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mDevsLabs/Web.git",
+    "directory": "packages/icons"
   },
   "exports": {
     ".": {

@@ -5,6 +5,8 @@ import {
   SearchIcon,
 } from "@mdevs/icons";
 import type React from "react";
+import type { McpLogDto, McpServerDto } from "@/lib/mcp/dto";
+import type { McpTemplateCredential } from "@/lib/mcp-templates/types";
 
 // Catalogue MCP servi par /api/mcp/templates : il provient du catalogue statique
 // (lib/mcp-templates), source de vérité unique.
@@ -12,8 +14,11 @@ export type McpTemplateRow = {
   activation: "ready" | "requires_oauth_flow" | "requires_vetted_stdio";
   args: string;
   authType: string;
+  category?: string;
   command: string;
+  credentials?: McpTemplateCredential[];
   description: string;
+  docsUrl?: string;
   icon: string;
   id: string;
   minTier: string;
@@ -35,32 +40,32 @@ export const STORE_CONNECTORS: ReadonlyArray<{
   tint: string;
 }> = [
   {
-    color: "text-violet-600 dark:text-violet-400",
+    color: "text-primary",
     highlight: "Docs & bases Notion",
     icon: FileTextIcon,
     templateId: "notion",
-    tint: "bg-violet-500/10",
+    tint: "bg-primary/10",
   },
   {
-    color: "text-orange-600 dark:text-orange-400",
+    color: "text-warning",
     highlight: "Recherche web privée",
     icon: SearchIcon,
     templateId: "brave-search",
-    tint: "bg-orange-500/10",
+    tint: "bg-warning/10",
   },
   {
-    color: "text-cyan-600 dark:text-cyan-400",
+    color: "text-info",
     highlight: "PostgreSQL hébergé",
     icon: DatabaseIcon,
     templateId: "supabase",
-    tint: "bg-cyan-500/10",
+    tint: "bg-info/10",
   },
   {
-    color: "text-sky-600 dark:text-sky-400",
+    color: "text-success",
     highlight: "Paiements & factures",
     icon: CreditCardIcon,
     templateId: "stripe",
-    tint: "bg-sky-500/10",
+    tint: "bg-success/10",
   },
 ];
 
@@ -82,8 +87,14 @@ export const MCP_APPROVALS = [
 export type McpTransport = (typeof MCP_TRANSPORTS)[number];
 export type McpAuthType = (typeof MCP_AUTH_TYPES)[number];
 export type ApprovalPolicy = (typeof MCP_APPROVALS)[number];
-export type McpServerItem = any;
-export type McpLogItem = any;
+export type McpServerItem = McpServerDto;
+export type McpLogItem = McpLogDto;
+
+export type McpEnvPair = {
+  k: string;
+  v: string;
+  configured?: boolean;
+};
 
 export function pickOption<T extends readonly string[]>(
   options: T,

@@ -5,12 +5,14 @@ import { motion } from "motion/react";
 
 interface QuotaProgressProps {
   dangerAt?: number;
-  label: string;
+  label?: string;
   limit: number;
   onRefresh?: () => void;
+  percentOverride?: number;
   refreshing?: boolean;
   resetLabel?: string;
   showSummary?: boolean;
+  tier?: string;
   tone?: "purple" | "image" | "audio" | "cloud";
   used: number;
 }
@@ -25,16 +27,21 @@ const TONES = {
 export function QuotaProgress({
   used,
   limit,
-  label,
+  label: _label,
+  percentOverride,
   resetLabel,
   refreshing = false,
   onRefresh,
+  tier,
   tone = "purple",
   dangerAt = 90,
   showSummary = true,
 }: QuotaProgressProps) {
   const safeLimit = Math.max(1, limit);
-  const percent = Math.min(100, Math.round((used / safeLimit) * 100));
+  const percent =
+    typeof percentOverride === "number"
+      ? Math.min(100, Math.max(0, Math.round(percentOverride)))
+      : Math.min(100, Math.round((used / safeLimit) * 100));
   const danger = percent >= dangerAt;
   const warning = !danger && percent >= 70;
 
@@ -42,17 +49,14 @@ export function QuotaProgress({
     <div className="space-y-2">
       {showSummary && (
         <div className="flex items-end justify-between gap-3 text-sm">
-          <p className="text-slate-600">
-            <span className="font-bold text-slate-900">
-              {used.toLocaleString("fr-FR")}
-            </span>{" "}
-            / {limit.toLocaleString("fr-FR")} {label}
+          <p className="text-xs font-medium text-slate-500">
+            Forfait {tier || "Free"}
           </p>
           <div className="flex items-center gap-2">
             <p
               className={`font-semibold ${danger ? "text-red-600" : "text-slate-900"}`}
             >
-              {percent}%
+              {percent}% consommé
             </p>
             {onRefresh && (
               <button

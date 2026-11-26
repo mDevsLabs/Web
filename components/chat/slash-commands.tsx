@@ -97,7 +97,7 @@ export const slashCommands: SlashCommand[] = [
   },
   {
     action: "usage",
-    description: "Paramètres → Consommation (Usage mAI)",
+    description: "Paramètres → Consommation (Utilisation de l'IA)",
     icon: <ZapIcon className="size-3.5" />,
     name: "usage",
   },

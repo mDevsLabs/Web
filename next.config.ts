@@ -392,9 +392,27 @@ const nextConfig: NextConfig = {
     },
     incomingRequests: false,
   },
+  // Poids des fonctions Vercel. Le traceur suit les lectures dynamiques
+  // (`path.join(process.cwd(), …)`) jusqu'à des dossiers entiers. Aucune route
+  // ne lit `docs/` racine, les applications natives ni les tests à l'exécution.
+  // Les clés sont comparées en « contient » par Next (collect-build-traces.js) :
+  // `/*` vise toutes les routes, `/site` toutes celles du Site (pages et
+  // `/api/site/**`). Le curriculum reste tracé pour les routes Quizzly, seules
+  // à le lire (lib/quizzly/load.ts).
+  outputFileTracingExcludes: {
+    "/*": [
+      "./.github/**",
+      "./apps/coder/**",
+      "./apps/desktop/**",
+      "./apps/mobile/**",
+      "./docs/**",
+      "./tests/**",
+    ],
+    "/site": ["./lib/quizzly/curriculum/**"],
+  },
   // Les pages du Site lisent leur contenu sur le système de fichiers à
-  // l'exécution : les actualités (lib/site/news.ts), la documentation
-  // (lib/site/docs.ts) et les journaux de version (lib/site/changelog.ts).
+  // l'exécution : les actualités (lib/site/news.ts), les fiches modèles
+  // (lib/site/models.ts) et les journaux de version (lib/site/changelog.ts).
   // Sans ces entrées, un build tracé (standalone) les oublierait et les
   // pages seraient vides. Les clés sont triées : Biome l'exige.
   outputFileTracingIncludes: {
@@ -403,7 +421,9 @@ const nextConfig: NextConfig = {
     "/site/changelog": ["./apps/site/docs/*/changelog/CHANGELOG.md"],
     "/site/changelog/mai": ["./apps/site/docs/*/changelog/CHANGELOG.md"],
     "/site/changelog/msearch": ["./apps/site/docs/*/changelog/CHANGELOG.md"],
-    "/site/docs": ["./apps/site/docs/documentation/**"],
+    // Fiches des modèles (lib/site/models.ts), lues à l'exécution.
+    "/site/models": ["./apps/site/docs/*/README.md"],
+    "/site/models/[id]": ["./apps/site/docs/*/README.md"],
     "/site/news": ["./apps/site/docs/news/**"],
     "/site/news/[slug]": ["./apps/site/docs/news/**"],
   },

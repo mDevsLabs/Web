@@ -1,53 +1,60 @@
 // AUTO-GÉNÉRÉ par `scripts/gen-plugin-catalog.ts` — ne pas éditer à la main.
 // Safe côté client : n'importe que des manifestes JSON (aucun outil IA).
-import airQualityPluginManifest from "./air-quality/index.json";
-import asanaPluginManifest from "./asana/index.json";
-import bravePluginManifest from "./brave/index.json";
-import brevoPluginManifest from "./brevo/index.json";
-import cloudflarePluginManifest from "./cloudflare/index.json";
-import crossrefPluginManifest from "./crossref/index.json";
-import discordPluginManifest from "./discord/index.json";
-import dockerhubPluginManifest from "./dockerhub/index.json";
-import eurostatPluginManifest from "./eurostat/index.json";
-import exchangeRatePluginManifest from "./exchange-rate/index.json";
-import frHolidaysPluginManifest from "./fr-holidays/index.json";
-import githubPluginManifest from "./github/index.json";
-import gitlabPublicPluginManifest from "./gitlab-public/index.json";
-import googleMapsPluginManifest from "./google-maps/index.json";
-import jiraPluginManifest from "./jira/index.json";
-import jsonToolboxPluginManifest from "./json-toolbox/index.json";
-import linearPluginManifest from "./linear/index.json";
-import makePluginManifest from "./make/index.json";
-import mapboxPluginManifest from "./mapbox/index.json";
-import mobiliteFrPluginManifest from "./mobilite-fr/index.json";
-import neonPluginManifest from "./neon/index.json";
-import notionPluginManifest from "./notion/index.json";
-import npmPluginManifest from "./npm/index.json";
-import openFoodFactsPluginManifest from "./open-food-facts/index.json";
-import openLibraryPluginManifest from "./open-library/index.json";
-import openalexPluginManifest from "./openalex/index.json";
-import posthogPluginManifest from "./posthog/index.json";
-import resendPluginManifest from "./resend/index.json";
-import sentryPluginManifest from "./sentry/index.json";
-import sonarcloudPluginManifest from "./sonarcloud/index.json";
-import stripePluginManifest from "./stripe/index.json";
-import supabasePluginManifest from "./supabase/index.json";
-import tvmazePluginManifest from "./tvmaze/index.json";
-import twilioPluginManifest from "./twilio/index.json";
-import upstashPluginManifest from "./upstash/index.json";
-import vercelPluginManifest from "./vercel/index.json";
-import weatherPluginManifest from "./weather/index.json";
-import wikidataPluginManifest from "./wikidata/index.json";
-import worldBankPluginManifest from "./world-bank/index.json";
-import youtubePluginManifest from "./youtube/index.json";
-import zapierPluginManifest from "./zapier/index.json";
+import airQualityPluginManifest from "./packs/meteo/air-quality/index.json";
+import airtablePluginManifest from "./packs/productivite/airtable/index.json";
+import arxivPluginManifest from "./packs/research/arxiv/index.json";
+import asanaPluginManifest from "./packs/productivite/asana/index.json";
+import bravePluginManifest from "./packs/web/brave/index.json";
+import brevoPluginManifest from "./packs/communication/brevo/index.json";
+import cloudflarePluginManifest from "./packs/infra/cloudflare/index.json";
+import crossrefPluginManifest from "./packs/research/crossref/index.json";
+import discordPluginManifest from "./packs/communication/discord/index.json";
+import dockerhubPluginManifest from "./packs/dev/dockerhub/index.json";
+import eurostatPluginManifest from "./packs/data/eurostat/index.json";
+import exchangeRatePluginManifest from "./packs/finance/exchange-rate/index.json";
+import frHolidaysPluginManifest from "./packs/productivite/fr-holidays/index.json";
+import githubPluginManifest from "./packs/dev/github/index.json";
+import gitlabPublicPluginManifest from "./packs/dev/gitlab-public/index.json";
+import googleMapsPluginManifest from "./packs/mobilite/google-maps/index.json";
+import jiraPluginManifest from "./packs/productivite/jira/index.json";
+import jsonToolboxPluginManifest from "./packs/dev/json-toolbox/index.json";
+import linearPluginManifest from "./packs/dev/linear/index.json";
+import makePluginManifest from "./packs/automation/make/index.json";
+import mapboxPluginManifest from "./packs/mobilite/mapbox/index.json";
+import mobiliteFrPluginManifest from "./packs/mobilite/mobilite-fr/index.json";
+import neonPluginManifest from "./packs/infra/neon/index.json";
+import notionPluginManifest from "./packs/productivite/notion/index.json";
+import npmPluginManifest from "./packs/dev/npm/index.json";
+import openFoodFactsPluginManifest from "./packs/food/open-food-facts/index.json";
+import openLibraryPluginManifest from "./packs/culture/open-library/index.json";
+import openalexPluginManifest from "./packs/research/openalex/index.json";
+import posthogPluginManifest from "./packs/data/posthog/index.json";
+import resendPluginManifest from "./packs/communication/resend/index.json";
+import sentryPluginManifest from "./packs/dev/sentry/index.json";
+import slackPluginManifest from "./packs/communication/slack/index.json";
+import sonarcloudPluginManifest from "./packs/dev/sonarcloud/index.json";
+import stripePluginManifest from "./packs/finance/stripe/index.json";
+import supabasePluginManifest from "./packs/infra/supabase/index.json";
+import tvmazePluginManifest from "./packs/culture/tvmaze/index.json";
+import twilioPluginManifest from "./packs/communication/twilio/index.json";
+import upstashPluginManifest from "./packs/infra/upstash/index.json";
+import vercelPluginManifest from "./packs/infra/vercel/index.json";
+import weatherPluginManifest from "./packs/meteo/weather/index.json";
+import webToolboxPluginManifest from "./packs/web/web-toolbox/index.json";
+import wikidataPluginManifest from "./packs/research/wikidata/index.json";
+import wikipediaPluginManifest from "./packs/research/wikipedia/index.json";
+import worldBankPluginManifest from "./packs/data/world-bank/index.json";
+import youtubePluginManifest from "./packs/culture/youtube/index.json";
+import zapierPluginManifest from "./packs/automation/zapier/index.json";
 import rootCatalog from "./index.json";
-import type { PluginCategory, PluginManifest } from "./types";
+import type { PluginCategory, PluginManifest } from "./core/types";
 
 export const PLUGIN_CATEGORIES = rootCatalog.categories as PluginCategory[];
 
 export const PLUGIN_MANIFESTS = [
   airQualityPluginManifest,
+  airtablePluginManifest,
+  arxivPluginManifest,
   asanaPluginManifest,
   bravePluginManifest,
   brevoPluginManifest,
@@ -76,6 +83,7 @@ export const PLUGIN_MANIFESTS = [
   posthogPluginManifest,
   resendPluginManifest,
   sentryPluginManifest,
+  slackPluginManifest,
   sonarcloudPluginManifest,
   stripePluginManifest,
   supabasePluginManifest,
@@ -84,7 +92,9 @@ export const PLUGIN_MANIFESTS = [
   upstashPluginManifest,
   vercelPluginManifest,
   weatherPluginManifest,
+  webToolboxPluginManifest,
   wikidataPluginManifest,
+  wikipediaPluginManifest,
   worldBankPluginManifest,
   youtubePluginManifest,
   zapierPluginManifest,

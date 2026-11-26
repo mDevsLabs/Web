@@ -2,21 +2,13 @@ import { describe, expect, it } from "vitest";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 describe("Routes API Site (SITE_API_ROUTES)", () => {
-  it("définit des chemins d'API tous préfixés par /api/site/", () => {
-    expect(SITE_API_ROUTES.devKeys).toBe("/api/site/dev-keys");
-    expect(SITE_API_ROUTES.devKey("key_123")).toBe(
-      "/api/site/dev-keys/key_123"
-    );
-    expect(SITE_API_ROUTES.apiExecutor).toBe("/api/site/account/api-executor");
+  it("définit uniquement les routes conservées et toutes préfixées par /api/site/", () => {
+    expect(SITE_API_ROUTES.accountPlan).toBe("/api/site/v1/plan");
     expect(SITE_API_ROUTES.devices).toBe("/api/site/v1/devices");
     expect(SITE_API_ROUTES.device("dev_456")).toBe(
       "/api/site/v1/devices/dev_456"
     );
     expect(SITE_API_ROUTES.devicesOthers).toBe("/api/site/v1/devices/others");
-    expect(SITE_API_ROUTES.models).toBe("/api/site/v1/models");
-    expect(SITE_API_ROUTES.modelsAudio).toBe("/api/site/v1/models/audio");
-    expect(SITE_API_ROUTES.modelsImages).toBe("/api/site/v1/models/images");
-    expect(SITE_API_ROUTES.modelsMai).toBe("/api/site/v1/models/mai");
     expect(SITE_API_ROUTES.status).toBe("/api/site/v1/status");
     expect(SITE_API_ROUTES.supportUpload).toBe("/api/site/support/upload");
     expect(SITE_API_ROUTES.githubActivity()).toBe("/api/site/github/activity");
@@ -29,5 +21,13 @@ describe("Routes API Site (SITE_API_ROUTES)", () => {
     expect(SITE_API_ROUTES.githubStats("owner/repo")).toBe(
       "/api/site/github/stats?repo=owner%2Frepo"
     );
+
+    const record = SITE_API_ROUTES as Record<string, unknown>;
+    expect(record.devKeys).toBeUndefined();
+    expect(record.apiExecutor).toBeUndefined();
+    expect(record.models).toBeUndefined();
+    expect(record.modelsAudio).toBeUndefined();
+    expect(record.modelsImages).toBeUndefined();
+    expect(record.modelsMai).toBeUndefined();
   });
 });

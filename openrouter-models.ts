@@ -79,11 +79,18 @@ function displayProvider(model: StoredModel): string {
     .replace(/^([a-z])/i, (letter) => letter.toUpperCase());
 }
 
+function stripParenthesesFromModelName(name: string): string {
+  return name
+    .replace(/\s*\([^)]*\)/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 function displayModelName(name: unknown, modelId: string): string {
   if (typeof name !== "string") return modelId;
   const match = name.match(/^\s*([^:]+?)\s*:\s*(.+?)\s*$/);
-  if (match && providerFromName(name, modelId)) return match[2].trim();
-  return name;
+  const raw = match && providerFromName(name, modelId) ? match[2].trim() : name;
+  return stripParenthesesFromModelName(raw) || raw.trim();
 }
 
 export function supportsOutput(model: StoredModel, modality: string): boolean {
@@ -510,7 +517,7 @@ export interface ModelCatalog {
 
 // Cache bref et requête partagée : pas d'appel OpenRouter sur le chemin des requêtes.
 // Pas de catalogue périmé en cas de panne : une activation ne doit pas être contournée.
-const CACHE_TTL_MS = 10_000;
+const CACHE_TTL_MS = 600_000;
 const cache = new WeakMap<
   SqlClient,
   {
@@ -589,11 +596,16 @@ export async function requireChatModel(
       "Un identifiant de modèle valide est requis."
     );
   }
-  if (!paid && !aliasBackend && !isFreeModelId(requested)) {
+  const isFreeMaiCloud =
+    requested === "mai-2" ||
+    requested === "mai-2-mini" ||
+    requested === "mai-2.5-omni";
+
+  if (!paid && !isFreeMaiCloud && !isFreeModelId(requested)) {
     throw new ModelAccessError(
       403,
       "model_access_denied",
-      "Le forfait Free autorise uniquement les modèles :free et les alias mAI cloud."
+      "Le forfait Free autorise uniquement les modèles :free et les modèles mAI gratuits (mAI-2, mAI-2-Mini, mAI-2.5-Omni). Les modèles mAI-2.5 Opal et Apex nécessitent un forfait Plus, Pro ou Max."
     );
   }
   const catalog = await getModelCatalog(sql);

@@ -5,9 +5,9 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { Button } from "@/components/ui/button";
-import { PluginIcon } from "@/lib/plugins/icon";
-import type { PluginIconRef } from "@/lib/plugins/types";
-import type { UserPluginView } from "@/lib/plugins/user-plugin-input";
+import { PluginIcon } from "@/lib/plugins/core/icon";
+import type { PluginIconRef } from "@/lib/plugins/core/types";
+import type { UserPluginView } from "@/lib/plugins/core/user-plugin-input";
 import { cn, fetcher } from "@/lib/utils";
 
 type UserPluginsResponse = { plugins: UserPluginView[] };

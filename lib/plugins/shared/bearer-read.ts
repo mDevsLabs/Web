@@ -6,7 +6,7 @@ import type {
   IntegrationProviderId,
 } from "@/lib/integrations/providers";
 import { buildRequestAuth } from "@/lib/integrations/request-auth";
-import type { PluginToolDeps } from "../types";
+import type { PluginToolDeps } from "../core/types";
 import {
   type AuthorizedResult,
   bearerFor,

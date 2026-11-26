@@ -6,14 +6,13 @@ import type {
 import type { TokenFieldSpec } from "./token-fields";
 
 /**
- * Quinze connecteurs à jeton. Le registre OAuth les étale ; les outils vivent
- * dans `lib/plugins/<id>`.
+ * Connecteurs à jeton personnel. Les outils correspondants vivent dans
+ * `lib/plugins/packs/<categorie>/<id>`.
  */
 
 type TokenFactory = (input: {
   accessSummary: string;
   account: IntegrationAccountConfig;
-  envPrefix: IntegrationDescriptor["envPrefix"];
   fields?: readonly TokenFieldSpec[];
   helpUrl: string;
   hostSuffixes?: readonly string[];
@@ -30,6 +29,41 @@ export function extraTokenProviders(
   return [
     tokenProvider({
       accessSummary:
+        "Salons, messages et fils de discussion Slack accessibles à votre bot, et envoi de message dans l'Agent après approbation. Le jeton se révoque depuis votre application Slack.",
+      account: {
+        expect: { equals: "true", path: "ok" },
+        idField: "user_id",
+        labelFallback: "Workspace Slack",
+        labelFields: ["user", "team"],
+        method: "POST",
+        url: "https://slack.com/api/auth.test",
+      },
+      helpUrl: "https://api.slack.com/apps",
+      hosts: ["slack.com"],
+      id: "slack",
+      label: "Slack",
+      mentionToken: "Slack",
+      placeholder: "Jeton Bot Slack (xoxb-…)",
+    }),
+    tokenProvider({
+      accessSummary:
+        "Bases, tables et enregistrements Airtable accessibles à votre jeton personnel, avec création de fiche dans l'Agent après approbation. Le jeton se révoque depuis votre compte Airtable.",
+      account: {
+        emailField: "email",
+        idField: "id",
+        labelFallback: "Compte Airtable",
+        labelFields: ["email"],
+        url: "https://api.airtable.com/v0/meta/whoami",
+      },
+      helpUrl: "https://airtable.com/create/tokens",
+      hosts: ["api.airtable.com"],
+      id: "airtable",
+      label: "Airtable",
+      mentionToken: "Airtable",
+      placeholder: "Jeton personnel Airtable (pat…)",
+    }),
+    tokenProvider({
+      accessSummary:
         "Recherche web et actualités Brave. L'API est consultative : aucun contenu n'est publié. Le jeton se révoque depuis le tableau Brave Search.",
       account: {
         auth: { kind: "header", name: "X-Subscription-Token" },
@@ -39,7 +73,6 @@ export function extraTokenProviders(
         labelFields: [],
         url: "https://api.search.brave.com/res/v1/web/search?q=ping&count=1",
       },
-      envPrefix: "BRAVE",
       helpUrl: "https://api-dashboard.search.brave.com/app/keys",
       hosts: ["api.search.brave.com"],
       id: "brave",
@@ -58,7 +91,6 @@ export function extraTokenProviders(
         labelFields: [],
         url: "https://api.mapbox.com/search/geocode/v6/forward?q=Paris&limit=1",
       },
-      envPrefix: "MAPBOX",
       helpUrl: "https://account.mapbox.com/access-tokens/",
       hosts: ["api.mapbox.com"],
       id: "mapbox",
@@ -78,7 +110,6 @@ export function extraTokenProviders(
         labelFields: [],
         url: "https://maps.googleapis.com/maps/api/geocode/json?address=Paris",
       },
-      envPrefix: "GOOGLE_MAPS",
       helpUrl: "https://console.cloud.google.com/apis/credentials",
       hosts: ["maps.googleapis.com"],
       id: "google-maps",
@@ -97,7 +128,6 @@ export function extraTokenProviders(
         labelFields: [],
         url: "https://www.googleapis.com/youtube/v3/videos?part=id&id=jNQXAC9IVRw",
       },
-      envPrefix: "YOUTUBE",
       helpUrl: "https://console.cloud.google.com/apis/credentials",
       hosts: ["www.googleapis.com"],
       id: "youtube",
@@ -117,7 +147,6 @@ export function extraTokenProviders(
         labelFields: [],
         url: "https://v6.exchangerate-api.com/v6/{token}/latest/EUR",
       },
-      envPrefix: "EXCHANGE_RATE",
       helpUrl: "https://www.exchangerate-api.com/docs/overview",
       hosts: ["v6.exchangerate-api.com"],
       id: "exchange-rate",
@@ -134,7 +163,6 @@ export function extraTokenProviders(
         labelFields: ["name", "login"],
         url: "https://sonarcloud.io/api/users/current",
       },
-      envPrefix: "SONARCLOUD",
       helpUrl: "https://sonarcloud.io/account/security",
       hosts: ["sonarcloud.io"],
       id: "sonarcloud",
@@ -150,7 +178,6 @@ export function extraTokenProviders(
         labelFields: ["username"],
         url: "https://registry.npmjs.org/-/whoami",
       },
-      envPrefix: "NPM",
       helpUrl: "https://www.npmjs.com/settings/~/tokens",
       hosts: ["registry.npmjs.org"],
       id: "npm",
@@ -172,7 +199,6 @@ export function extraTokenProviders(
         },
         url: "https://hub.docker.com/v2/users/{seg:username}/",
       },
-      envPrefix: "DOCKERHUB",
       fields: [
         {
           id: "username",
@@ -199,7 +225,6 @@ export function extraTokenProviders(
         labelFields: ["companyName", "email"],
         url: "https://api.brevo.com/v3/account",
       },
-      envPrefix: "BREVO",
       helpUrl: "https://app.brevo.com/settings/keys/api",
       hosts: ["api.brevo.com"],
       id: "brevo",
@@ -216,7 +241,6 @@ export function extraTokenProviders(
         labelFields: ["friendly_name"],
         url: "https://api.twilio.com/2010-04-01/Accounts/{seg:accountSid}.json",
       },
-      envPrefix: "TWILIO",
       fields: [
         {
           id: "accountSid",
@@ -243,7 +267,6 @@ export function extraTokenProviders(
         responsePath: "data",
         url: "https://app.asana.com/api/1.0/users/me",
       },
-      envPrefix: "ASANA",
       helpUrl: "https://app.asana.com/0/my-apps",
       hosts: ["app.asana.com"],
       id: "asana",
@@ -261,7 +284,6 @@ export function extraTokenProviders(
         labelFields: ["displayName", "emailAddress"],
         url: "https://{seg:site}/rest/api/3/myself",
       },
-      envPrefix: "JIRA",
       fields: [
         {
           id: "email",
@@ -300,7 +322,6 @@ export function extraTokenProviders(
         method: "POST",
         url: "{origin:restOrigin}/",
       },
-      envPrefix: "UPSTASH",
       fields: [
         {
           id: "restOrigin",
@@ -327,7 +348,6 @@ export function extraTokenProviders(
         labelFields: ["name", "email"],
         url: "https://console.neon.tech/api/v2/users/me",
       },
-      envPrefix: "NEON",
       helpUrl: "https://console.neon.tech/app/settings/api-keys",
       hosts: ["console.neon.tech"],
       id: "neon",
@@ -344,7 +364,6 @@ export function extraTokenProviders(
         labelFields: ["username", "primary_email"],
         url: "https://api.supabase.com/v1/profile",
       },
-      envPrefix: "SUPABASE",
       helpUrl: "https://supabase.com/dashboard/account/tokens",
       hosts: ["api.supabase.com"],
       id: "supabase",
@@ -362,7 +381,6 @@ export function extraTokenProviders(
         labelFields: [],
         url: "https://api.zapier.com/v2/zaps?limit=1",
       },
-      envPrefix: "ZAPIER",
       helpUrl:
         "https://docs.zapier.com/powered-by-zapier/authentication/methods/user-access-token",
       hosts: ["api.zapier.com"],
@@ -382,7 +400,6 @@ export function extraTokenProviders(
         labelFields: ["name", "email"],
         url: "https://{seg:zone}.make.com/api/v2/users/me",
       },
-      envPrefix: "MAKE",
       fields: [
         {
           id: "zone",

@@ -785,6 +785,28 @@ export function registerVibeMAIChatRoutes(
             }
           }
         }
+
+        if (!providerResponded) {
+          if (maiReservation.estimated > 0 && !maiReservation.settled) {
+            maiReservation.settled = true;
+            try {
+              await settleWeeklyTokens(
+                sql,
+                userId,
+                weekStartStr,
+                -maiReservation.estimated
+              );
+            } catch {}
+          }
+          return c.json(
+            {
+              code: "upstream_error",
+              error: "Nos serveurs rencontrent des difficultés",
+              message: "Nos serveurs rencontrent des difficultés",
+            },
+            502
+          );
+        }
       } else if (toolResult?.success) {
         reply = formatToolReply(toolToRun, toolResult.result, username);
       } else if (toolResult && !toolResult.success) {
@@ -884,7 +906,14 @@ export function registerVibeMAIChatRoutes(
         } catch {}
       }
       console.error("[Vibe API] mAI Chat Error:", err);
-      return c.json({ error: "Erreur lors de la conversation avec mAI." }, 500);
+      return c.json(
+        {
+          code: "internal_error",
+          error: "Nos serveurs rencontrent des difficultés",
+          message: "Nos serveurs rencontrent des difficultés",
+        },
+        500
+      );
     }
   };
 

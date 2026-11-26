@@ -1,4 +1,3 @@
-import { HttpsProxyAgent } from "https-proxy-agent";
 import OpenAI from "openai";
 import { stripLegacyToolCallMarkup } from "../agent/legacyToolCallFromText.js";
 import type { ShellSettings } from "../settingsStore.js";
@@ -10,6 +9,7 @@ import {
   applyOpenAIProviderIdentity,
   prependProviderIdentitySystemPrompt,
 } from "./providerIdentity.js";
+import { buildSdkProxyFetchOptions } from "./proxyFetch.js";
 import { buildOpenAIUserContent } from "./resolvedUserSerialize.js";
 import { llmSdkResponseHeadTimeoutMs } from "./sdkResponseHeadTimeoutMs.js";
 import type { SendableMessage } from "./sendResolved.js";
@@ -66,10 +66,10 @@ export async function streamOpenAICompatible(
   const proxyRaw =
     (options.requestProxyUrl?.trim() || settings.openAI?.proxyUrl?.trim()) ??
     "";
-  let httpAgent: InstanceType<typeof HttpsProxyAgent> | undefined;
+  let proxyFetchOptions: ReturnType<typeof buildSdkProxyFetchOptions> = {};
   if (proxyRaw) {
     try {
-      httpAgent = new HttpsProxyAgent(proxyRaw);
+      proxyFetchOptions = buildSdkProxyFetchOptions(proxyRaw);
     } catch {
       handlers.onError(
         "Adresse du proxy invalide. Veuillez vérifier le format du proxy HTTP dans Paramètres → Modèles."
@@ -86,7 +86,7 @@ export async function streamOpenAICompatible(
         apiKey: key,
         baseURL,
         dangerouslyAllowBrowser: false,
-        httpAgent,
+        ...proxyFetchOptions,
         maxRetries: 0,
         timeout: llmSdkResponseHeadTimeoutMs(),
       },

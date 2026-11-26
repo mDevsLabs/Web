@@ -47,10 +47,10 @@ export function useQuotaMeter() {
   useEffect(() => {
     if (quotaKnown && costPercent >= 90 && costAiLimit > 0) {
       toast.error(
-        `Tu as utilisé ${costPercent}% de ton quota mAI (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens) — mise à niveau recommandée.`
+        `Tu as utilisé ${costPercent}% de ton quota mAI — mise à niveau recommandée.`
       );
     }
-  }, [costPercent, costAiUsed, costAiLimit, quotaKnown]);
+  }, [costPercent, costAiLimit, quotaKnown]);
 
   return {
     costAiLimit,

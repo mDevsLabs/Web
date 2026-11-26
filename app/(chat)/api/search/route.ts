@@ -94,7 +94,11 @@ export async function GET(request: Request) {
             : ilike(chat.title, escapedFull)
         )
       )
-      .orderBy(desc(chat.pinned), desc(chat.createdAt))
+      .orderBy(
+        desc(chat.pinned),
+        desc(chat.lastMessageAt),
+        desc(chat.createdAt)
+      )
       .limit(limit);
 
     // Projects by name/description
@@ -191,34 +195,22 @@ export async function GET(request: Request) {
       };
     });
 
-    // Files from MAI cloud - proxy and filter
+    // Files from Neon cloud storage - direct query and filter
     let files: any[] = [];
     try {
-      const sessionModule = await import("@/lib/auth/session");
-      const token = await sessionModule.getMaiSessionToken();
-      if (token) {
-        const { MAI_API_URL } = await import("@/lib/constants");
-        const res = await fetch(`${MAI_API_URL}/cloud/files`, {
-          cache: "no-store",
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        if (res.ok) {
-          const data = await res.json();
-          const allFiles: any[] = data.files || [];
-          const _lower = q.toLowerCase();
-          files = allFiles
-            .filter((f: any) => {
-              const name = (f.original_name || "").toLowerCase();
-              const mime = (f.mime_type || "").toLowerCase();
-              return tokens.every(
-                (tok) =>
-                  name.includes(tok.toLowerCase()) ||
-                  mime.includes(tok.toLowerCase())
-              );
-            })
-            .slice(0, limit);
-        }
-      }
+      const { getUserCloudFiles } = await import("@/lib/db/queries/storage");
+      const allFiles = await getUserCloudFiles(maiUser.id || "", 200);
+      files = allFiles
+        .filter((f: any) => {
+          const name = (f.original_name || "").toLowerCase();
+          const mime = (f.mime_type || "").toLowerCase();
+          return tokens.every(
+            (tok) =>
+              name.includes(tok.toLowerCase()) ||
+              mime.includes(tok.toLowerCase())
+          );
+        })
+        .slice(0, limit);
     } catch {
       files = [];
     }

@@ -2,10 +2,8 @@
 
 import {
   GaugeIcon as Gauge,
-  KeyRoundIcon as KeyRound,
   LayersIcon as Layers,
   RocketIcon as Rocket,
-  ShieldAlertIcon as ShieldAlert,
   SparklesIcon as Sparkles,
 } from "@mdevs/icons";
 import type { StepDef } from "./types";
@@ -13,7 +11,7 @@ import type { StepDef } from "./types";
 export const MAIN_STEPS: StepDef[] = [
   {
     description:
-      "Ton compte est prêt. En 90 secondes, découvre comment exploiter clés API et modèles.",
+      "Ton compte est prêt. En 90 secondes, découvre les modèles, tes quotas et l'écosystème mAI.",
     icon: Sparkles,
     id: "welcome",
     title: "Bienvenue",
@@ -21,40 +19,28 @@ export const MAIN_STEPS: StepDef[] = [
   },
   {
     description:
-      "Une clé = un secret unique affiché une seule fois. Il reste côté serveur et seul son préfixe public est renvoyé à l'interface. Révoque ou régénère la clé à tout moment.",
-    icon: KeyRound,
-    id: "keys-system",
-    title: "Ta clé API",
-    titleAccent: "le système",
-    // Pas d'exemple de clé, explication système uniquement
-  },
-  {
-    description:
-      "Le catalogue /account/models regroupe Texte, Images, Audio et mAI locaux souverains. Filtre par contexte, outils, laboratoire et copie l'ID en un clic.",
+      "Le catalogue /models rassemble nos modèles cloud mAI-2 / mAI-2.5 et nos modèles open-weights exécutables en local via Ollama.",
     icon: Layers,
     id: "models-hub",
-    title: "Hub Modèles",
-    titleAccent: "4 univers",
+    title: "Catalogue Modèles",
+    titleAccent: "Cloud & Local",
   },
   {
     description:
-      "Tokens hebdo, requêtes mensuelles, images/jour et stockage Cloud — tout est détaillé dans /account. Chaque upgrade multiplie tes limites.",
+      "Tokens hebdomadaires mAI, audio TTS, images par jour et stockage Cloud — tout est détaillé dans /account. Chaque forfait supérieur augmente tes limites.",
     icon: Gauge,
     id: "quotas",
     title: "Tes quotas",
     titleAccent: "en clair",
   },
   {
-    ctaAction: "goKeys",
-    ctaLabel: "Créer ma première clé",
+    ctaAction: "goAccount",
+    ctaLabel: "Ouvrir mon compte",
     description:
-      "Crée ta première clé API ou explore le catalogue des modèles. Docs, Discord et support sont à portée de main.",
+      "Consulte ton espace compte ou explore le catalogue des modèles. Le support et les applications sont accessibles à tout moment.",
     icon: Rocket,
     id: "finish",
-    title: "Prêt à builder",
-    titleAccent: "just build.",
+    title: "Prêt à démarrer",
+    titleAccent: "sur mAI.",
   },
 ];
-
-// Icône secondaire pour le shard ShieldAlert sur step keys-system (explication sécurité)
-export const KEYS_EXTRA_ICON = ShieldAlert;

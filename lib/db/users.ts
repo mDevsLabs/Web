@@ -21,7 +21,7 @@ type TierCacheEntry = {
 };
 
 const tierCache = new Map<string, TierCacheEntry>();
-const TIER_CACHE_TTL_MS = 60_000; // 1 minute : équilibre fraîcheur / charge SQL
+const TIER_CACHE_TTL_MS = 180_000; // 3 minutes : équilibre fraîcheur / charge SQL
 const TIER_CACHE_MAX_ENTRIES = 10_000; // garde-fou mémoire par instance
 
 function cacheKey(userId: string): string {

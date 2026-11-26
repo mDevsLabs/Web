@@ -1,6 +1,11 @@
 import { createHash } from "node:crypto";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import {
+  getCachedSettings,
+  invalidateSettingsCache,
+  setCachedSettings,
+} from "@/lib/account/settings-cache";
 import { fetchUsageBundle } from "@/lib/account/usage";
 import {
   errorResponse,
@@ -8,12 +13,12 @@ import {
   logError,
   normalizeUpstreamError,
 } from "@/lib/api/error-response";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   getMaiSessionToken,
   getMaiUser,
   invalidateMaiUserCache,
 } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 import {
   fetchRemoteImage,
   parseRemoteImageUrl,
@@ -39,9 +44,6 @@ const updateProfileSchema = z
     username: z.string().max(64).optional(),
   })
   .strict();
-
-const settingsCache = new Map<string, { data: any; expiresAt: number }>();
-const SETTINGS_CACHE_TTL_MS = 180_000; // 3 minutes de cache
 
 // Hachage canonique d'une source confirmée : la carte renvoie ce hachage, la
 // route le recalcule — une confirmation ne vaut que pour CETTE image exacte.
@@ -156,45 +158,43 @@ async function readAttachmentImage(rawUrl: string): Promise<
   }
 }
 
-// Relais vers l'endpoint mAI /upload-avatar avec le token de session côté
-// serveur (aucun secret ne transite par le client).
+// Enregistrement de l'avatar utilisateur dans Neon.
 async function uploadAvatarToMai(params: {
   bytes: Uint8Array;
   contentType: string;
   filename: string;
   token: string;
+  userId: string;
 }): Promise<
   | { ok: true; payload: Record<string, unknown> }
   | { error: unknown; ok: false; status: number }
 > {
-  const blob = new Blob([new Uint8Array(params.bytes)], {
-    type: params.contentType,
-  });
-  const formData = new FormData();
-  formData.append("avatar", blob, params.filename);
-
   try {
-    const res = await fetch(`${MAI_API_URL}/upload-avatar`, {
-      body: formData,
-      headers: { Authorization: `Bearer ${params.token}` },
-      method: "POST",
-    });
-    const data: unknown = await res.json().catch(() => null);
-    if (!res.ok) {
-      return { error: data, ok: false, status: res.status };
+    let avatarUrl = "";
+    try {
+      const { put } = await import("@vercel/blob");
+      const blob = await put(
+        `avatars/${params.userId}-${Date.now()}-${params.filename}`,
+        Buffer.from(params.bytes),
+        { access: "public", contentType: params.contentType }
+      );
+      avatarUrl = blob.url;
+    } catch {
+      avatarUrl = `data:${params.contentType};base64,${Buffer.from(params.bytes).toString("base64")}`;
     }
-    if (
-      !data ||
-      typeof data !== "object" ||
-      (data as Record<string, unknown>).success !== true
-    ) {
-      // Amont OK mais réponse inattendue : échec explicite, on n'affirme
-      // jamais que l'avatar a changé.
-      return { error: data, ok: false, status: res.status };
+
+    const { setUserAvatar } = await import("@/lib/auth/server-auth");
+    const saved = await setUserAvatar(params.userId, avatarUrl);
+    if (!saved) {
+      return {
+        error: { message: "Impossible d'enregistrer l'avatar." },
+        ok: false,
+        status: 500,
+      };
     }
-    return { ok: true, payload: data as Record<string, unknown> };
+    return { ok: true, payload: { avatarUrl, success: true } };
   } catch (err) {
-    return { error: err, ok: false, status: 502 };
+    return { error: err, ok: false, status: 500 };
   }
 }
 
@@ -208,9 +208,11 @@ export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const force = url.searchParams.get("force") === "true";
 
-  const cached = settingsCache.get(token);
-  if (cached && Date.now() < cached.expiresAt && !force) {
-    return NextResponse.json(cached.data);
+  if (!force) {
+    const cached = getCachedSettings(token);
+    if (cached) {
+      return NextResponse.json(cached);
+    }
   }
 
   try {
@@ -220,10 +222,7 @@ export async function GET(req: NextRequest) {
       sessionToken: token,
     });
 
-    settingsCache.set(token, {
-      data: result,
-      expiresAt: Date.now() + SETTINGS_CACHE_TTL_MS,
-    });
+    setCachedSettings(token, result);
 
     return NextResponse.json(result);
   } catch (error) {
@@ -241,7 +240,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Invalider le cache lors d'une mutation
-  settingsCache.delete(token);
+  invalidateSettingsCache(token);
 
   const contentType = req.headers.get("content-type") || "";
 
@@ -319,12 +318,19 @@ export async function POST(req: NextRequest) {
         });
       }
 
+      const auth = await requireUser(token);
+      if (!auth) {
+        return errorResponse("auth_required", { message: "Non authentifié." });
+      }
+      const { userId } = auth;
+
       const ext = sniffedType.split("/")[1] || "jpg";
       const upload = await uploadAvatarToMai({
         bytes,
         contentType: sniffedType,
         filename: `avatar.${ext}`,
         token,
+        userId,
       });
       if (!upload.ok) {
         const payload = normalizeUpstreamError(
@@ -349,6 +355,12 @@ export async function POST(req: NextRequest) {
   // Cas 1 : Téléversement d'avatar (Multipart)
   if (contentType.includes("multipart/form-data")) {
     try {
+      const auth = await requireUser(token);
+      if (!auth) {
+        return errorResponse("auth_required", { message: "Non authentifié." });
+      }
+      const { userId } = auth;
+
       const formData = await req.formData();
       const avatarFile = formData.get("avatar");
       if (!avatarFile || !(avatarFile instanceof File)) {
@@ -357,24 +369,47 @@ export async function POST(req: NextRequest) {
         });
       }
 
-      const uploadFormData = new FormData();
-      uploadFormData.append("avatar", avatarFile);
-
-      const res = await fetch(`${MAI_API_URL}/upload-avatar`, {
-        body: uploadFormData,
-        headers: { Authorization: `Bearer ${token}` },
-        method: "POST",
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        const payload = normalizeUpstreamError(data, res.status);
-        return NextResponse.json(payload, { status: payload.status });
+      if (avatarFile.size > REMOTE_IMAGE_MAX_BYTES) {
+        return errorResponse("payload_too_large", {
+          message: "Image trop volumineuse (max 10 Mo).",
+        });
       }
-      // Invalider aussi le cache utilisateur (avatarUrl stale jusqu'à 2 min).
+
+      // Arbitre : magic bytes réels. Le nom et le type déclarés par le
+      // navigateur ne font pas foi (SVG et contenus actifs refusés), et
+      // l'extension stockée découle du type détecté, jamais du nom envoyé.
+      const bytes = new Uint8Array(await avatarFile.arrayBuffer());
+      const sniffed = sniffImageMime(bytes);
+      if (!sniffed) {
+        return errorResponse("unsupported_media_type", {
+          message: "Format non pris en charge (JPEG, PNG, WebP ou GIF).",
+        });
+      }
+      const ext = sniffed.split("/")[1] || "jpg";
+      let avatarUrl = "";
+      try {
+        const { put } = await import("@vercel/blob");
+        const blob = await put(
+          `avatars/${userId}-${Date.now()}.${ext}`,
+          Buffer.from(bytes),
+          { access: "public", contentType: sniffed }
+        );
+        avatarUrl = blob.url;
+      } catch {
+        const buffer = Buffer.from(bytes);
+        avatarUrl = `data:${sniffed};base64,${buffer.toString("base64")}`;
+      }
+
+      const { setUserAvatar } = await import("@/lib/auth/server-auth");
+      const saved = await setUserAvatar(userId, avatarUrl);
+      if (!saved) {
+        return errorResponse("internal_error", {
+          message: "Impossible d'enregistrer l'avatar.",
+        });
+      }
       invalidateMaiUserCache(token);
 
-      return NextResponse.json(data);
+      return NextResponse.json({ avatarUrl, success: true });
     } catch (err) {
       logError("Erreur upload avatar", err);
       return errorResponse("internal_error", {
@@ -385,13 +420,6 @@ export async function POST(req: NextRequest) {
 
   // Cas 2 : Modification des informations du profil (JSON)
   try {
-    // Le corps était relayé tel quel à `/update-profile`, sans aucune
-    // validation : cette route est un proxy aveugle. Seuls les champs que le
-    // backend sait traiter sont transmis, ce qui empêche d'injecter une clé
-    // inattendue (`tier`, `id`, `password_hash`) dans une mise à jour de profil.
-    // Les longueurs suivent les bornes que le backend applique déjà ; les règles
-    // de format (mot de passe, email) restent son domaine, il répond avec un
-    // message précis que l'on préserve.
     const raw = jsonBody;
     const parsed = updateProfileSchema.safeParse(raw);
     if (!parsed.success) {
@@ -405,48 +433,54 @@ export async function POST(req: NextRequest) {
     }
     const body = parsed.data;
 
-    // Vérification du code OTP de changement d'e-mail
+    // Confirmation du changement d'e-mail : session vérifiée d'abord, puis code
+    // OTP consommé et adresse appliquée au compte de la session uniquement.
     if (body.action === "verify_new_email") {
-      const res = await fetch(`${MAI_API_URL}/verify-new-email`, {
-        body: JSON.stringify({ code: body.code, email: body.email }),
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        const payload = normalizeUpstreamError(data, res.status);
-        return NextResponse.json(payload, { status: payload.status });
+      const emailAuth = await requireUser(token);
+      if (!emailAuth) {
+        return errorResponse("auth_required", { message: "Non authentifié." });
       }
-      return NextResponse.json(data);
+      const { confirmUserEmailChange } = await import("@/lib/auth/server-auth");
+      const confirmation = await confirmUserEmailChange({
+        code: body.code || "",
+        email: body.email || "",
+        userId: emailAuth.userId,
+      });
+      if (!confirmation.success) {
+        return errorResponse("invalid_request", {
+          message: confirmation.error,
+        });
+      }
+      invalidateMaiUserCache(token);
+      return NextResponse.json({ email: confirmation.email, success: true });
     }
 
-    // Mise à jour classique du profil
-    const res = await fetch(`${MAI_API_URL}/update-profile`, {
-      body: JSON.stringify(body),
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      method: "POST",
+    const auth = await requireUser(token);
+    if (!auth) {
+      return errorResponse("auth_required", { message: "Non authentifié." });
+    }
+    const { userId } = auth;
+
+    const { updateUserProfile } = await import("@/lib/auth/server-auth");
+    const updateResult = await updateUserProfile({
+      body,
+      userId,
     });
-
-    const data = await res.json();
-    if (!res.ok) {
-      // Préserver le message précis du backend (mot de passe incorrect,
-      // username/téléphone pris…) sinon normalizeUpstreamError le génériqueise.
-      const upstreamMessage = extractUpstreamMessage(data);
-      const payload = normalizeUpstreamError(
-        data,
-        res.status,
-        upstreamMessage ? { message: upstreamMessage } : {}
-      );
-      return NextResponse.json(payload, { status: payload.status });
+    if (!updateResult.success) {
+      return errorResponse("invalid_request", {
+        message: updateResult.error,
+      });
     }
+
     invalidateMaiUserCache(token);
-    return NextResponse.json(data);
+    // Changement d'e-mail : rien n'est appliqué avant la saisie du code envoyé
+    // à la nouvelle adresse — l'interface attend ce statut pour l'afficher.
+    return NextResponse.json({
+      success: true,
+      ...(updateResult.status
+        ? { email: updateResult.email, status: updateResult.status }
+        : {}),
+    });
   } catch (err) {
     logError("Erreur update profil", err);
     return errorResponse("internal_error", {

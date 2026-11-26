@@ -1,6 +1,6 @@
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
-import { getPluginByToolId } from "@/lib/plugins/catalog";
-import type { PluginManifest } from "@/lib/plugins/types";
+import { getPluginByToolId } from "@/lib/plugins/core/catalog";
+import type { PluginManifest } from "@/lib/plugins/core/types";
 
 const MENTION_FALLBACK_RE =
   /(^|[^\p{L}\p{N}_])@([\p{L}\p{N}_-]+)(?:[ \t\u00a0])?$/u;

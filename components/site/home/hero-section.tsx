@@ -7,7 +7,6 @@ import {
   LayersIcon as Layers,
   ShieldCheckIcon as ShieldCheck,
   SparklesIcon as Sparkles,
-  TerminalIcon as Terminal,
 } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Link from "@/components/site/router";
@@ -51,8 +50,7 @@ export function HeroSection() {
           transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
         >
           Découvrez la plateforme unifiée mAI, nos modèles d&apos;IA de pointe,
-          notre moteur d&apos;agents autonomes et notre API souveraine haute
-          performance.
+          notre moteur d&apos;agents autonomes et nos applications dédiées.
         </motion.p>
 
         {/* Boutons d'Action */}
@@ -73,25 +71,25 @@ export function HeroSection() {
             </motion.button>
           </Link>
 
-          <Link className="w-full sm:w-auto" href="/docs">
+          <Link className="w-full sm:w-auto" href="/downloads">
             <motion.button
               className="w-full sm:w-auto px-8 py-4 rounded-2xl md:rounded-full bg-white/60 backdrop-blur-md border border-slate-200 text-slate-900 font-bold flex items-center justify-center gap-2.5 hover:bg-white/90 hover:border-purple-300 transition-all shadow-sm"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.96 }}
             >
               <Sparkles className="w-5 h-5 text-purple-600" />
-              Centre de Documentation
+              Télécharger les Applications
             </motion.button>
           </Link>
 
-          <Link className="w-full sm:w-auto" href="/docs">
+          <Link className="w-full sm:w-auto" href="/projects">
             <motion.button
               className="w-full sm:w-auto px-6 py-4 rounded-2xl md:rounded-full bg-white/30 backdrop-blur-md border border-white/60 text-slate-700 font-medium flex items-center justify-center gap-2 hover:bg-white/60 transition-all"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.96 }}
             >
-              <Terminal className="w-4 h-4" />
-              Documentation
+              <Layers className="w-4 h-4" />
+              Écosystème
             </motion.button>
           </Link>
         </motion.div>

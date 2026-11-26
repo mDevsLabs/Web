@@ -1,8 +1,8 @@
-import { HttpsProxyAgent } from "https-proxy-agent";
 import OpenAI from "openai";
 import { getSettings, type UserLlmProvider } from "../settingsStore.js";
 import { formatLlmSdkError } from "./formatLlmSdkError.js";
 import { applyOpenAIProviderIdentity } from "./providerIdentity.js";
+import { buildSdkProxyFetchOptions } from "./proxyFetch.js";
 
 const OPENAI_COMPAT_FALLBACK_API_KEY = "async-local";
 
@@ -53,11 +53,11 @@ export async function discoverProviderModels(
     };
   }
 
-  let httpAgent: InstanceType<typeof HttpsProxyAgent> | undefined;
+  let proxyFetchOptions: ReturnType<typeof buildSdkProxyFetchOptions> = {};
   const proxyRaw = provider.proxyUrl?.trim();
   if (proxyRaw) {
     try {
-      httpAgent = new HttpsProxyAgent(proxyRaw);
+      proxyFetchOptions = buildSdkProxyFetchOptions(proxyRaw);
     } catch {
       return {
         message:
@@ -74,7 +74,7 @@ export async function discoverProviderModels(
         {
           apiKey: provider.apiKey?.trim() || OPENAI_COMPAT_FALLBACK_API_KEY,
           baseURL: provider.baseURL?.trim() || undefined,
-          httpAgent,
+          ...proxyFetchOptions,
           maxRetries: 0,
           timeout: 30_000,
         },

@@ -8,7 +8,6 @@ import {
   FileTextIcon as FileText,
   FolderIcon as Folder,
   GlobeIcon as Globe,
-  KeyIcon as Key,
   LockIcon as Lock,
   MapPinIcon as MapPin,
   ScaleIcon as Scale,
@@ -49,12 +48,12 @@ export default function TermsPage() {
         </h1>
 
         <p className="text-slate-500 font-light mb-8 text-base md:text-lg">
-          Dernière mise à jour : 23 août 2026. Bienvenue sur{" "}
+          Dernière mise à jour : 22 novembre 2026. Bienvenue sur{" "}
           <strong>mAI</strong>, une plateforme conçue et opérée par{" "}
           <strong>mDevsLabs</strong>. Les présentes Conditions Générales
           d'Utilisation (CGU) régissent l'accès, l'inscription et l'exploitation
-          des services mAI, des modèles d'intelligence artificielle, du stockage
-          Cloud et de l'API mAI.
+          des services mAI, des modèles d'intelligence artificielle et du
+          stockage Cloud.
         </p>
 
         {/* Bannière récapitulative des piliers */}
@@ -81,13 +80,12 @@ export default function TermsPage() {
               1. Acceptation des Conditions &amp; Création de Compte
             </h2>
             <p className="leading-relaxed font-light">
-              La création d&apos;un compte utilisateur sur mAI, l&apos;obtention
-              d&apos;une clé API ou l&apos;interaction avec nos services
-              implique l&apos;acceptation expresse et sans réserve des présentes
-              conditions. L&apos;utilisateur confirme être âgé d&apos;au moins
-              15 ans ou détenir l&apos;autorisation légale nécessaire. Si vous
-              n&apos;acceptez pas l&apos;ensemble de ces termes, vous devez vous
-              abstenir d&apos;utiliser notre plateforme et nos API.
+              La création d&apos;un compte utilisateur sur mAI ou l&apos;accès à
+              nos services implique l&apos;acceptation expresse et sans réserve
+              des présentes conditions. L&apos;utilisateur confirme être âgé
+              d&apos;au moins 15 ans ou détenir l&apos;autorisation légale
+              nécessaire. Si vous n&apos;acceptez pas l&apos;ensemble de ces
+              termes, vous devez vous abstenir d&apos;utiliser notre plateforme.
             </p>
           </section>
 
@@ -109,11 +107,10 @@ export default function TermsPage() {
                 </strong>
                 <p className="text-slate-600 text-xs leading-relaxed">
                   L&apos;ensemble des bases de données relationnelles
-                  (PostgreSQL Neon), comptes utilisateurs, clés d&apos;API,
-                  métadonnées et journaux de requêtes sont situés dans des
-                  datacenters au sein de l&apos;Union Européenne (Francfort,
-                  Allemagne), sous conformité intégrale avec le RGPD (Règlement
-                  2016/679).
+                  (PostgreSQL Neon), comptes utilisateurs, métadonnées et
+                  préférences applicatives sont situés dans des datacenters au
+                  sein de l&apos;Union Européenne (Francfort, Allemagne), sous
+                  conformité intégrale avec le RGPD (Règlement 2016/679).
                 </p>
               </div>
               <div className="p-3.5 bg-white/70 rounded-2xl border border-slate-200 space-y-1">
@@ -131,22 +128,19 @@ export default function TermsPage() {
             </div>
           </section>
 
-          {/* Section 3 : Utilisation des Clés API, Quotas & ZDR */}
+          {/* Section 3 : Gestion des Forfaits, Quotas & ZDR */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
-              <Key className="w-5 h-5 text-blue-500" />
-              3. Utilisation de l&apos;API mAI, Clés d&apos;Accès &amp; Priorité
-              Zero Data Retention (ZDR)
+              <Cpu className="w-5 h-5 text-blue-500" />
+              3. Accès à la Plateforme, Quotas &amp; Priorité Zero Data
+              Retention (ZDR)
             </h2>
             <p className="leading-relaxed font-light">
-              <strong>Clés API Sécurisées</strong> : Chaque clé API (format{" "}
-              <code className="bg-purple-50 px-1.5 py-0.5 rounded text-purple-700 font-mono text-xs">
-                mp-...
-              </code>
-              ) est strictement confidentielle. Vous êtes juridiquement
-              responsable de l&apos;ensemble des requêtes effectuées avec vos
-              identifiants d&apos;API. En cas de compromission, vous devez
-              révoquer votre clé immédiatement depuis votre espace client.
+              <strong>Sécurité des Comptes</strong> : Vos identifiants et
+              sessions d&apos;accès à la plateforme mAI sont strictement
+              confidentiels. Vous êtes responsable de l&apos;ensemble des
+              actions effectuées depuis votre compte et pouvez gérer vos
+              appareils connectés à tout moment depuis votre espace client.
             </p>
 
             <div className="space-y-3 pt-2">
@@ -159,13 +153,10 @@ export default function TermsPage() {
                     Compte Free (Gratuit)
                   </span>
                   <span className="text-slate-600 mt-1 block">
-                    500 requêtes / semaine. Les appels à l&apos;API{" "}
-                    <code className="bg-slate-100 px-1 rounded font-mono text-[11px]">
-                      /v1/chat/completions
-                    </code>{" "}
-                    sont autorisés sur les modèles gratuits{" "}
-                    <code className="text-purple-600 font-bold">:free</code> et
-                    les modèles Flux pour les images.
+                    Accès aux services mAI dans la limite des quotas
+                    hebdomadaires et journaliers du forfait gratuit (tokens mAI,
+                    génération d&apos;images, audio TTS et stockage Cloud 10
+                    Go).
                   </span>
                 </div>
                 <div className="p-3 bg-white/70 rounded-2xl border border-slate-200">
@@ -173,10 +164,10 @@ export default function TermsPage() {
                     Comptes Plus, Pro &amp; Max
                   </span>
                   <span className="text-slate-600 mt-1 block">
-                    Accès complet à tous les modèles (locaux mAI et modèles
-                    Cloud partenaires) dans la limite des quotas alloués (1 500,
-                    3 000 et 7 500 requêtes/semaine). Débits prioritaires et
-                    bande passante dédiée.
+                    Accès étendu aux modèles Cloud mAI (dont mAI-2.5-Opal et
+                    mAI-2.5-Apex), aux agents autonomes et à des plafonds
+                    augmentés de génération d&apos;images, d&apos;audio TTS et
+                    de stockage Cloud.
                   </span>
                 </div>
               </div>
@@ -190,11 +181,11 @@ export default function TermsPage() {
               <p>
                 mDevsLabs priorise et garantit une politique absolue de{" "}
                 <strong>Zero Data Retention (ZDR)</strong> : vos invites
-                (prompts), documents injectés et résultats générés via
-                l&apos;API mAI sont traités en mémoire volatile éphémère et{" "}
+                (prompts), documents injectés et résultats générés sur la
+                plateforme mAI sont traités en mémoire volatile éphémère et{" "}
                 <strong>
-                  ne sont jamais stockés de manière persistante ni utilisés pour
-                  réentraîner des modèles d&apos;intelligence artificielle
+                  ne sont jamais utilisés pour réentraîner des modèles
+                  d&apos;intelligence artificielle
                 </strong>
                 . Vos données restent votre propriété exclusive.
               </p>
@@ -208,17 +199,17 @@ export default function TermsPage() {
               4. Usages Interdits &amp; Politique de Bonne Conduite (AUP)
             </h2>
             <p className="leading-relaxed font-light">
-              L'accès à l'API et aux services mAI est conditionné au respect des
-              règles de bonne conduite. Sont expressément prohibés :
+              L'accès aux services mAI est conditionné au respect des règles de
+              bonne conduite. Sont expressément prohibés :
             </p>
             <ul className="list-disc list-inside space-y-1.5 ml-4 text-sm font-light">
               <li>
-                Le contournement des mécanismes de quota, de facturation ou de
+                Le contournement des mécanismes de quota, d'abonnement ou de
                 limitation de débit (Rate Limiting)
               </li>
               <li>
-                La revente, redistribution ou sous-location non autorisée de
-                clés API
+                La revente, redistribution ou sous-location non autorisée des
+                accès à la plateforme
               </li>
               <li>
                 L'exécution d'attaques par déni de service (DDoS), de scan de
@@ -230,7 +221,7 @@ export default function TermsPage() {
                 intellectuelle tiers
               </li>
               <li>
-                L'utilisation de l'API pour des activités illégales ou
+                L'utilisation de la plateforme pour des activités illégales ou
                 frauduleuses
               </li>
             </ul>
@@ -245,14 +236,15 @@ export default function TermsPage() {
             <p className="leading-relaxed font-light text-sm">
               <strong>Contenus Utilisateur</strong> : Vous conservez tous les
               droits de propriété intellectuelle sur les textes, données et
-              fichiers que vous soumettez à l'API mAI ainsi que sur les
-              résultats générés, sous réserve du respect des lois applicables.
+              fichiers que vous soumettez sur la plateforme mAI ainsi que sur
+              les résultats générés, sous réserve du respect des lois
+              applicables.
             </p>
             <p className="leading-relaxed font-light text-sm mt-2">
               <strong>Plateforme &amp; Marques</strong> : Tous les éléments
               composant la plateforme mAI (codes sources, marques mDevsLabs /
-              mAI, interfaces, architectures et documentations) demeurent la
-              propriété exclusive de mDevsLabs.
+              mAI, interfaces, architectures) demeurent la propriété exclusive
+              de mDevsLabs.
             </p>
           </section>
 
@@ -264,7 +256,7 @@ export default function TermsPage() {
             </h2>
             <p className="leading-relaxed font-light text-sm">
               Nous mettons en œuvre tous les moyens raisonnables pour assurer
-              une disponibilité continue de l'API mAI (objectif de 99,9%).
+              une disponibilité continue des services mAI (objectif de 99,9 %).
               Toutefois, mDevsLabs ne pourra être tenue pour responsable des
               éventuelles interruptions de service nécessaires pour la
               maintenance technique, les mises à jour de sécurité ou résultant
@@ -282,10 +274,9 @@ export default function TermsPage() {
             <p className="leading-relaxed font-light text-sm">
               Vous pouvez résilier votre compte mAI à tout moment via les
               paramètres de votre profil. mDevsLabs se réserve le droit de
-              révoquer immédiatement une clé API ou de suspendre un compte en
-              cas d'abus caractérisé, de non-respect des présentes CGU ou
-              d'activité présentant un risque pour la sécurité de
-              l'infrastructure.
+              révoquer immédiatement vos accès ou de suspendre un compte en cas
+              d'abus caractérisé, de non-respect des présentes CGU ou d'activité
+              présentant un risque pour la sécurité de l'infrastructure.
             </p>
           </section>
 

@@ -131,29 +131,29 @@ export function CommunitySection() {
         </h3>
 
         <p className="text-slate-300 text-xs sm:text-sm max-w-lg mb-6 font-light">
-          Obtenez votre clé API, explorez nos modèles multimodaux ou installez
-          mAI CLI en quelques secondes.
+          Créez votre compte mAI, explorez nos modèles multimodaux ou installez
+          nos applications en quelques secondes.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-          <Link className="w-full sm:w-auto" href="/account/keys">
+          <Link className="w-full sm:w-auto" href="/models">
             <motion.span
               className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-gradient-to-r from-purple-500 to-blue-600 font-bold text-xs sm:text-sm text-white flex items-center justify-center gap-2 shadow-md hover:shadow-purple-500/25 transition-all"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
             >
-              Gérer mes Clés API
+              Explorer les Modèles
               <ArrowRight className="w-4 h-4" />
             </motion.span>
           </Link>
 
-          <Link className="w-full sm:w-auto" href="/docs">
+          <Link className="w-full sm:w-auto" href="/downloads">
             <motion.span
               className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 font-bold text-xs sm:text-sm text-white flex items-center justify-center gap-2 transition-all"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
             >
-              Consulter la Documentation
+              Applications &amp; Téléchargements
             </motion.span>
           </Link>
         </div>

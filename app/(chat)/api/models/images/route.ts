@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { normalizeModelDisplayName } from "@/lib/ai/models";
-import { errorResponse } from "@/lib/api/error-response";
-import { upstreamJson } from "@/lib/api/upstream";
+import { listCometImageModelsFromDb } from "@/lib/ai/catalog/media-models";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import { ModelAccessError } from "@/openrouter-models";
 
 export async function GET() {
   const token = await getMaiSessionToken();
@@ -10,25 +10,27 @@ export async function GET() {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
-  const result = await upstreamJson<{ data?: any[] }>({
-    next: { revalidate: 60, tags: ["images-models"] },
-    path: "/v1/models/images",
-    token,
-  });
-  if (!result.ok) {
-    return NextResponse.json(result.payload, { status: result.payload.status });
+  try {
+    const models = await listCometImageModelsFromDb();
+    return NextResponse.json(
+      { data: models, models, object: "list" },
+      {
+        headers: {
+          "Cache-Control": "private, max-age=600, stale-while-revalidate=1800",
+        },
+      }
+    );
+  } catch (error) {
+    logError("Erreur API models/images", error);
+    const status = error instanceof ModelAccessError ? error.status : 503;
+    return NextResponse.json(
+      {
+        error: {
+          code: "catalog_unavailable",
+          message: "Le catalogue des modèles d'images est indisponible.",
+        },
+      },
+      { status }
+    );
   }
-
-  const data = result.data ?? {};
-  if (Array.isArray(data.data)) {
-    data.data = data.data.map((m: any) => ({
-      ...m,
-      name: normalizeModelDisplayName(m.id, m.name || m.id),
-    }));
-  }
-  return NextResponse.json(data, {
-    headers: {
-      "Cache-Control": "private, max-age=60, stale-while-revalidate=120",
-    },
-  });
 }

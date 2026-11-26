@@ -1,6 +1,5 @@
 "use client";
 
-import { isToday, isYesterday, subMonths, subWeeks } from "date-fns";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -31,19 +30,13 @@ import {
 } from "@/hooks/revalidate-chat-histories";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { useProjects } from "@/hooks/use-projects";
+import { groupChatsByDate } from "@/lib/chat/history-groups";
 import type { Chat } from "@/lib/db/schema";
+import { forceUnlockDOM, forceUnlockDOMSchedule } from "@/lib/ui/unlock-dom";
 import { fetcher } from "@/lib/utils";
 import { LoaderIcon } from "./icons";
 import { SecureConversationDialog } from "./secure-conversation-dialog";
 import { ChatItem } from "./sidebar-history-item";
-
-type GroupedChats = {
-  today: Chat[];
-  yesterday: Chat[];
-  lastWeek: Chat[];
-  lastMonth: Chat[];
-  older: Chat[];
-};
 
 export type ChatHistory = {
   chats: Chat[];
@@ -51,39 +44,6 @@ export type ChatHistory = {
 };
 
 const PAGE_SIZE = 20;
-
-const groupChatsByDate = (chats: Chat[]): GroupedChats => {
-  const now = new Date();
-  const oneWeekAgo = subWeeks(now, 1);
-  const oneMonthAgo = subMonths(now, 1);
-
-  return chats.reduce(
-    (groups, chat) => {
-      const chatDate = new Date(chat.createdAt);
-
-      if (isToday(chatDate)) {
-        groups.today.push(chat);
-      } else if (isYesterday(chatDate)) {
-        groups.yesterday.push(chat);
-      } else if (chatDate > oneWeekAgo) {
-        groups.lastWeek.push(chat);
-      } else if (chatDate > oneMonthAgo) {
-        groups.lastMonth.push(chat);
-      } else {
-        groups.older.push(chat);
-      }
-
-      return groups;
-    },
-    {
-      lastMonth: [],
-      lastWeek: [],
-      older: [],
-      today: [],
-      yesterday: [],
-    } as GroupedChats
-  );
-};
 
 export function getChatHistoryPaginationKey(
   pageIndex: number,
@@ -145,15 +105,16 @@ export function SidebarHistory({
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [securityChat, setSecurityChat] = useState<Chat | null>(null);
 
-  // Sécurité anti-gel Radix UI : s'assurer que pointer-events n'est jamais bloqué
+  // Sécurité anti-gel Radix UI : s'assurer que pointer-events et le DOM ne restent jamais bloqués
   useEffect(() => {
-    if (!showDeleteDialog && typeof document !== "undefined") {
-      const timer = setTimeout(() => {
-        if (document.body.style.pointerEvents === "none") {
-          document.body.style.pointerEvents = "";
-        }
-      }, 50);
-      return () => clearTimeout(timer);
+    if (!showDeleteDialog) {
+      if (
+        typeof document !== "undefined" &&
+        document.body.style.pointerEvents === "none"
+      ) {
+        document.body.style.pointerEvents = "";
+      }
+      forceUnlockDOMSchedule();
     }
   }, [showDeleteDialog]);
 
@@ -165,6 +126,7 @@ export function SidebarHistory({
       ) {
         document.body.style.pointerEvents = "";
       }
+      forceUnlockDOM();
     },
     []
   );
@@ -203,11 +165,11 @@ export function SidebarHistory({
     if (typeof document !== "undefined") {
       document.body.style.pointerEvents = "";
     }
+    forceUnlockDOMSchedule();
 
-    // 2. Si c'est la discussion active, réinitialiser l'état et naviguer immédiatement
+    // 2. Si c'est la discussion active, réinitialiser l'état immédiatement
     if (isCurrentChat) {
       resetChat();
-      router.replace("/");
     }
 
     // 3. Retirer immédiatement la discussion de l'affichage (mise à jour optimiste)
@@ -224,12 +186,12 @@ export function SidebarHistory({
       { revalidate: false }
     );
 
-    // 4. Exécuter l'appel réseau
+    // 4. Exécuter l'appel réseau avec keepalive: true pour garantir son acheminement
     void (async () => {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatToDelete}`,
-          { method: "DELETE" }
+          { keepalive: true, method: "DELETE" }
         );
         if (!res.ok) {
           toast.error("Erreur lors de la suppression");
@@ -237,6 +199,9 @@ export function SidebarHistory({
           return;
         }
         toast.success("Discussion supprimée");
+        if (isCurrentChat) {
+          router.replace("/");
+        }
         await revalidateChatHistories();
       } catch {
         toast.error("Erreur lors de la suppression");
@@ -250,6 +215,7 @@ export function SidebarHistory({
         ) {
           document.body.style.pointerEvents = "";
         }
+        forceUnlockDOMSchedule();
       }
     })();
   }, [deleteId, mutate, pathname, resetChat, router]);
@@ -379,6 +345,25 @@ export function SidebarHistory({
 
                   return (
                     <div className="flex flex-col gap-4">
+                      {groupedChats.pinned.length > 0 && (
+                        <div>
+                          <div className="px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-sidebar-foreground/70">
+                            Épinglés
+                          </div>
+                          {groupedChats.pinned.map((chat) => (
+                            <ChatItem
+                              chat={chat}
+                              isActive={chat.id === id}
+                              key={chat.id}
+                              onDelete={handleShowDeleteDialog}
+                              onManageSecurity={setSecurityChat}
+                              projects={projects}
+                              setOpenMobile={setOpenMobile}
+                            />
+                          ))}
+                        </div>
+                      )}
+
                       {groupedChats.today.length > 0 && (
                         <div>
                           <div className="px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-sidebar-foreground/70">
@@ -500,6 +485,7 @@ export function SidebarHistory({
             if (typeof document !== "undefined") {
               document.body.style.pointerEvents = "";
             }
+            forceUnlockDOMSchedule();
           }
         }}
         open={showDeleteDialog}
@@ -513,10 +499,19 @@ export function SidebarHistory({
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Annuler</AlertDialogCancel>
+            <AlertDialogCancel
+              onClick={() => {
+                forceUnlockDOMSchedule();
+              }}
+            >
+              Annuler
+            </AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              onClick={handleDelete}
+              onClick={(e) => {
+                e.preventDefault();
+                handleDelete();
+              }}
             >
               Supprimer
             </AlertDialogAction>

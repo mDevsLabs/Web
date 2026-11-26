@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR, { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
@@ -17,6 +17,7 @@ import type {
   ToolExecutionRecord,
 } from "@/lib/agent/types";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
+import { formatUserFacingAiError } from "@/lib/ai/server-error-message";
 import { clearInFlightChat, markInFlightChat } from "@/lib/chat/in-flight";
 import { apiEndpoints, apiUrl } from "@/lib/client/api-endpoints";
 import type { Attachment, ChatMessage } from "@/lib/types";
@@ -196,6 +197,28 @@ async function fetchAgentMessages(
   return (await response.json()) as AgentChatPayload;
 }
 
+function isEmptyAssistantBubble(message: ChatMessage): boolean {
+  if (message.role !== "assistant") {
+    return false;
+  }
+  const parts = message.parts ?? [];
+  return !parts.some((part) => {
+    if (part.type === "text") {
+      return Boolean(part.text?.trim());
+    }
+    if (part.type === "reasoning") {
+      return Boolean((part as { text?: string }).text?.trim());
+    }
+    if (part.type === "file" || (part as { type?: string }).type === "error") {
+      return true;
+    }
+    return (
+      typeof part.type === "string" &&
+      (part.type.startsWith("tool-") || part.type === "dynamic-tool")
+    );
+  });
+}
+
 export function useAgentChat({
   chatId,
   isNewChat,
@@ -212,6 +235,19 @@ export function useAgentChat({
   const { applyDataPart, state: streamState } = useAgentStream();
   const { setWaitingStatus } = useDataStream();
   const { mutate } = useSWRConfig();
+
+  const [errorState, setErrorState] = useState<{
+    chatId: string;
+    message: string;
+  } | null>(null);
+  const errorMessage =
+    errorState?.chatId === chatId ? errorState.message : null;
+  const pendingTruncationRef = useRef<{
+    chatId: string;
+    removed: ChatMessage[];
+  } | null>(null);
+  const streamStateRef = useRef(streamState);
+  streamStateRef.current = streamState;
 
   const optionsRef = useRef<AgentRequestOptions>(EMPTY_OPTIONS);
   const modelIdRef = useRef(modelId);
@@ -250,6 +286,10 @@ export function useAgentChat({
     id: chatId,
     messages: initialMessages,
     onData: (dataPart) => {
+      if (dataPart.type === "data-chat-title") {
+        mutate(unstable_serialize(getChatHistoryPaginationKey));
+        return;
+      }
       if (
         dataPart.type === "data-agent-run" &&
         dataPart.data.model &&
@@ -266,16 +306,47 @@ export function useAgentChat({
       applyDataPart(dataPart);
     },
     onError: (error) => {
+      const message = formatUserFacingAiError(error);
+      setErrorState({ chatId, message });
+
+      const pendingTruncation = pendingTruncationRef.current;
+      pendingTruncationRef.current = null;
+      setMessages((current) => {
+        const withoutEmptyAssistant = current.filter(
+          (item, idx) =>
+            !(idx === current.length - 1 && isEmptyAssistantBubble(item))
+        );
+        if (
+          pendingTruncation &&
+          pendingTruncation.chatId === chatId &&
+          pendingTruncation.removed.length > 0
+        ) {
+          return [...withoutEmptyAssistant, ...pendingTruncation.removed];
+        }
+        return withoutEmptyAssistant;
+      });
+
+      const currentRun = streamStateRef.current.run;
+      applyDataPart({
+        data: {
+          ...(currentRun ?? {
+            model: modelIdRef.current,
+            reasoningLevel: optionsRef.current.reasoningLevel ?? "medium",
+            runId: generateUUID(),
+          }),
+          error: message,
+          status: "failed",
+        },
+        type: "data-agent-run",
+      });
+
       // Un retry peut retrouver un run déjà créé : la base restaure sa
       // timeline même si le transport a perdu la réponse initiale.
       mutate(apiEndpoints.agentRunsForChat(chatId));
-      const message =
-        error instanceof Error && error.message
-          ? error.message.slice(0, 300)
-          : "Agent a rencontré une erreur inattendue.";
       toast.error(message);
     },
     onFinish: () => {
+      pendingTruncationRef.current = null;
       mutate(unstable_serialize(getChatHistoryPaginationKey));
       // Fin de run : l'historique persisté (timeline, usage, actions
       // suggérées) est revalidé — le flux ne sert qu'aux mises à jour live.
@@ -352,6 +423,7 @@ export function useAgentChat({
   if (hydratedForChatIdRef.current !== chatId) {
     hydratedForChatIdRef.current = chatId;
     locallyCreatedChatIdRef.current = null;
+    pendingTruncationRef.current = null;
   }
 
   // Chargement initial d'une conversation existante : une seule fois par chat.
@@ -402,8 +474,10 @@ export function useAgentChat({
   }, [chatId, initialMessages, isNewChat, resumeStream]);
 
   useEffect(() => {
-    if (status === "ready" || status === "error") {
+    if (status === "submitted" || status === "ready" || status === "error") {
       setWaitingStatus(undefined);
+    }
+    if (status === "ready" || status === "error") {
       clearInFlightChat(chatId);
     }
   }, [chatId, status, setWaitingStatus]);
@@ -420,6 +494,8 @@ export function useAgentChat({
       resumeFromRunId?: string;
       text: string;
     }) => {
+      setErrorState(null);
+      pendingTruncationRef.current = null;
       const requestOptions = options ?? optionsRef.current;
       if (options) {
         // Le transport lit optionsRef pendant la préparation de la requête.
@@ -568,13 +644,37 @@ export function useAgentChat({
     }
   }, [runId, stop]);
 
+  const regenerateTruncated = useCallback(
+    ({
+      removedMessages,
+      targetMessageId,
+    }: {
+      removedMessages: ChatMessage[];
+      targetMessageId: string;
+    }) => {
+      setErrorState(null);
+      pendingTruncationRef.current = { chatId, removed: removedMessages };
+      locallyCreatedChatIdRef.current = chatId;
+      markInFlightChat(chatId);
+      regenerate({ body: { truncateAfterMessageId: targetMessageId } });
+    },
+    [chatId, regenerate]
+  );
+
+  const clearErrorMessage = useCallback(() => {
+    setErrorState(null);
+  }, []);
+
   return {
     addToolApprovalResponse,
     chatId,
+    clearErrorMessage,
+    errorMessage,
     hasHistory: initialMessages.length > 0,
     isLoading: isNewChat ? false : isLoading,
     messages,
     regenerate,
+    regenerateTruncated,
     runId,
     sendTask,
     setMessages,

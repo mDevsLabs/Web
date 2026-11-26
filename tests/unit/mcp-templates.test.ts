@@ -14,7 +14,7 @@ import {
   splitTemplateArgs,
   templateRequiresConfiguration,
 } from "@/lib/mcp-templates/install";
-import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
+import { isLucideIconName } from "@/lib/plugins/core/icon-allowlist";
 
 // Le catalogue MCP est une source de vérité statique : ces tests garantissent
 // qu'aucun modèle ne peut être fictif, exposé sans documentation, ni porter un
@@ -121,6 +121,7 @@ describe("Catalogue de modèles MCP", () => {
       "gitlab",
       "notion",
       "brave-search",
+      "slack",
       "supabase",
       "stripe",
       "airtable",
@@ -129,9 +130,7 @@ describe("Catalogue de modèles MCP", () => {
       const template = getMcpTemplate(id);
       expect(template, `modèle ${id} absent du catalogue`).toBeDefined();
       expect(template?.activation).toBe(
-        ["notion", "brave-search", "stripe"].includes(id)
-          ? "requires_vetted_stdio"
-          : "ready"
+        ["notion", "stripe"].includes(id) ? "requires_vetted_stdio" : "ready"
       );
     }
     expect(getMcpTemplate("modele-qui-nexiste-pas")).toBeUndefined();

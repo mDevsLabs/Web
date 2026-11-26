@@ -85,7 +85,7 @@ export function ProjectPages({ projectId }: { projectId: string }) {
           <div className="flex gap-2">
             <select
               aria-label="Rattacher une page existante"
-              className="field-input h-8 flex-1 px-2 text-xs"
+              className="field-input h-8 flex-1 px-2.5 py-0 text-xs leading-normal"
               onChange={(event) => setAttachId(event.target.value)}
               value={attachId}
             >

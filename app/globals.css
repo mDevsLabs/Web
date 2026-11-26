@@ -1,3 +1,4 @@
+@layer theme, base, wakies-base, mdevs, components, utilities;
 @import "tailwindcss";
 @import "katex/dist/katex.min.css";
 
@@ -402,6 +403,66 @@
   animation: q-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@keyframes q-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15%,
+  45% {
+    transform: rotate(14deg);
+  }
+  30%,
+  60% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes q-heart-lost {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.45);
+    filter: drop-shadow(0 0 6px var(--q-heart));
+  }
+  55% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes q-correct-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* `animate-wiggle` était utilisé sans keyframe : il ne faisait rien. */
+@utility animate-wiggle {
+  transform-origin: 70% 70%;
+  animation: q-wiggle 1.8s ease-in-out 0.4s 2;
+}
+
+@utility q-heart-lost {
+  animation: q-heart-lost 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility q-correct-pop {
+  animation: q-correct-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @utility q-pulse-blue {
   animation: q-pulse-blue 2s infinite;
 }
@@ -425,7 +486,10 @@
   .quizzly-root .q-float,
   .quizzly-root .q-shake,
   .quizzly-root .q-pop,
-  .quizzly-root .q-pulse-blue {
+  .quizzly-root .q-pulse-blue,
+  .quizzly-root .q-heart-lost,
+  .quizzly-root .q-correct-pop,
+  .quizzly-root .animate-wiggle {
     animation: none;
   }
 }
@@ -481,11 +545,11 @@ html.dark .md-root {
 @layer base {
   body {
     position: relative;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   html {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1,
@@ -860,6 +924,38 @@ html[data-economy="true"] *::after {
   overflow: hidden;
 }
 
+/*
+ * Hiérarchie d'empilement unifiée pour les modales, tiroirs et popovers Radix.
+ *
+ * `@mdevs/ui/styles.css` est importé après `globals.css` dans `app/layout.tsx`,
+ * donc sa couche `@layer mdevs` (`.md-overlay { z-index: 1000 }`, `.md-menu` /
+ * `.md-popover { z-index: 1002 }`) prime sur `@layer utilities` (`z-50`).
+ * Sans ces règles hors couche, `AlertDialogOverlay` (1000) peignait AU-DESSUS
+ * de `AlertDialogContent` (50) et bloquait tous les clics en grisant l'écran.
+ */
+[data-slot="dialog-overlay"],
+[data-slot="alert-dialog-overlay"],
+[data-slot="sheet-overlay"] {
+  z-index: 1050;
+}
+
+[data-slot="dialog-content"],
+[data-slot="alert-dialog-content"],
+[data-slot="sheet-content"] {
+  z-index: 1051;
+}
+
+[data-slot="dropdown-menu-content"],
+[data-slot="dropdown-menu-sub-content"],
+[data-slot="popover-content"],
+[data-slot="select-content"] {
+  z-index: 1060;
+}
+
+[data-slot="tooltip-content"] {
+  z-index: 1070;
+}
+
 /**
  * Case de la carte de chaleur d'activité.
  *
@@ -914,7 +1010,11 @@ html[data-economy="true"] *::after {
 /** Champ de saisie Liquid Glass : le focus est porté par l'anneau, pas par la bordure. */
 @utility field-input {
   box-shadow: inset 0 1px 0 var(--md-highlight);
-  @apply w-full rounded-lg border border-border/80 bg-background/85 px-3 py-2.5 text-sm outline-none transition-all backdrop-blur-sm;
+  @apply w-full rounded-lg border border-border/80 bg-background/85 text-sm outline-none transition-all backdrop-blur-sm;
+  :where(&) {
+    padding-inline: 0.75rem;
+    padding-block: 0.625rem;
+  }
   &:focus-visible {
     border-color: color-mix(in oklab, var(--foreground) 30%, var(--border));
     box-shadow:

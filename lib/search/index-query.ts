@@ -4,9 +4,8 @@ import { and, desc, eq, ilike, inArray, or, type SQL, sql } from "drizzle-orm";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { isPaidTier } from "@/lib/auth/plan";
-import { getMaiSessionToken } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 import { getDb } from "@/lib/db/queries";
+import { getUserCloudFiles } from "@/lib/db/queries/storage";
 import {
   agent,
   agentRun,
@@ -27,7 +26,7 @@ import {
   userMemory,
   wakiesConversation,
 } from "@/lib/db/schema";
-import { PLUGIN_MANIFEST_LIST } from "@/lib/plugins/catalog";
+import { PLUGIN_MANIFEST_LIST } from "@/lib/plugins/core/catalog";
 import { getAccessibleProjectIds } from "@/lib/projects/access";
 import {
   PAID_ONLY_SOURCES,
@@ -951,7 +950,7 @@ const audioSource: SourceResolver = {
       capped: rows.length === ctx.limit,
       hits: rows.map((row) => ({
         href: "/audio",
-        id: row.id,
+        id: String(row.id),
         meta: toDate(row.createdAt),
         source: "audio" as const,
         subtitle: [row.model, row.voice].filter(Boolean).join(" · "),
@@ -972,31 +971,53 @@ type UpstreamModel = {
   provider?: string;
 };
 
-/** Liste de modèles au format OpenAI, telle que la renvoie l'amont. */
-async function listUpstreamModels(
-  path: string
-): Promise<UpstreamModel[] | null> {
-  try {
-    const token = await getMaiSessionToken();
-    if (!token) {
-      return null;
-    }
-    const response = await fetch(`${MAI_API_URL}${path}`, {
-      cache: "no-store",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (!response.ok) {
-      return null;
-    }
-    const payload = (await response.json()) as { data?: unknown };
-    if (!Array.isArray(payload?.data)) {
-      return null;
-    }
-    return payload.data as UpstreamModel[];
-  } catch {
-    return null;
-  }
-}
+const STATIC_IMAGE_MODELS: UpstreamModel[] = [
+  {
+    description: "Modèle ultra-rapide par Black Forest Labs",
+    id: "black-forest-labs/flux-1-schnell",
+    name: "FLUX.1 Schnell",
+    provider: "Black Forest Labs",
+  },
+  {
+    description: "Modèle phare de synthèse photoréaliste par Black Forest Labs",
+    id: "black-forest-labs/flux-1-dev",
+    name: "FLUX.1 Dev",
+    provider: "Black Forest Labs",
+  },
+  {
+    description: "Modèle de génération d'images et design par Recraft",
+    id: "recraft-v3",
+    name: "Recraft V3",
+    provider: "Recraft",
+  },
+  {
+    description: "Modèle DALL-E 3 par OpenAI",
+    id: "dall-e-3",
+    name: "DALL-E 3",
+    provider: "OpenAI",
+  },
+];
+
+const STATIC_AUDIO_MODELS: UpstreamModel[] = [
+  {
+    description: "Modèle de synthèse vocale (TTS) par Deepgram",
+    id: "deepgram/flux-tts:free",
+    name: "Deepgram Flux TTS",
+    provider: "Deepgram",
+  },
+  {
+    description: "Modèle de synthèse vocale OpenAI",
+    id: "openai/tts-1",
+    name: "OpenAI TTS-1",
+    provider: "OpenAI",
+  },
+  {
+    description: "Modèle de synthèse vocale haute définition OpenAI",
+    id: "openai/tts-1-hd",
+    name: "OpenAI TTS-1 HD",
+    provider: "OpenAI",
+  },
+];
 
 const modelSource: SourceResolver = {
   key: "model",
@@ -1020,15 +1041,7 @@ const modelSource: SourceResolver = {
       title: model.name,
     });
 
-    // Le catalogue texte passe par la même fonction que le sélecteur de modèle,
-    // et les deux autres par l'amont, avec le même jeton de session que leurs
-    // routes BFF. Un catalogue est une liste, pas une base : le total est donc
-    // EXACT, et « charger plus » n'a rien à apporter.
-    const [textModels, imageModels, audioModels] = await Promise.all([
-      fetchUserModels().catch(() => []),
-      listUpstreamModels("/v1/models/images"),
-      listUpstreamModels("/v1/models/speech"),
-    ]);
+    const [textModels] = await Promise.all([fetchUserModels().catch(() => [])]);
 
     const hits: SearchHit[] = [
       ...textModels
@@ -1040,7 +1053,7 @@ const modelSource: SourceResolver = {
             "texte"
           )
         ),
-      ...(imageModels ?? []).filter(matches).map((model) =>
+      ...STATIC_IMAGE_MODELS.filter(matches).map((model) =>
         toHit(
           {
             ...model,
@@ -1050,7 +1063,7 @@ const modelSource: SourceResolver = {
           "image"
         )
       ),
-      ...(audioModels ?? []).filter(matches).map((model) =>
+      ...STATIC_AUDIO_MODELS.filter(matches).map((model) =>
         toHit(
           {
             ...model,
@@ -1121,21 +1134,10 @@ type CloudFile = {
  * source non indexable, et la raison pour laquelle elle n'a pas de curseur —
  * son total est la longueur de la liste.
  */
-async function listCloudFiles(): Promise<CloudFile[]> {
+async function listCloudFiles(userId: string): Promise<CloudFile[]> {
   try {
-    const token = await getMaiSessionToken();
-    if (!token) {
-      return [];
-    }
-    const response = await fetch(`${MAI_API_URL}/cloud/files`, {
-      cache: "no-store",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (!response.ok) {
-      return [];
-    }
-    const payload = (await response.json()) as { files?: CloudFile[] };
-    return payload.files ?? [];
+    const files = await getUserCloudFiles(userId, 200);
+    return files as unknown as CloudFile[];
   } catch {
     return [];
   }
@@ -1143,8 +1145,8 @@ async function listCloudFiles(): Promise<CloudFile[]> {
 
 const cloudFileSource: SourceResolver = {
   key: "file",
-  search: async (_ctx, terms) => {
-    const files = await listCloudFiles();
+  search: async (ctx, terms) => {
+    const files = await listCloudFiles(ctx.user.id || "");
     const lower = terms.map((term) => term.raw.toLowerCase());
     const hits = files
       .filter((file) => {
@@ -1392,12 +1394,20 @@ const vibeSource: SourceResolver = {
 
     try {
       const searchTerm = terms[0]?.like || "%";
+      // `posts` ne porte que `author_id` : le pseudo vient de `users`. L'ancienne
+      // requête lisait une colonne `author_username` inexistante (42703, avalé
+      // par le catch) et la source Vibe renvoyait toujours zéro résultat. Seules
+      // les publications publiques et publiées sont cherchables : la recherche
+      // d'un compte ne doit jamais exposer le contenu privé d'un autre.
       const rows = await sql`
-        SELECT id, content, author_username, created_at,
-               count(*) OVER () as total_count
-        FROM posts
-        WHERE content ILIKE ${searchTerm}
-        ORDER BY created_at DESC
+        SELECT p.id, p.content, u.username AS author_username, p.created_at,
+               count(*) OVER () AS total_count
+        FROM posts p
+        LEFT JOIN users u ON u.id = p.author_id
+        WHERE p.content ILIKE ${searchTerm}
+          AND p.visibility::text = 'public'
+          AND p.status = 'published'
+        ORDER BY p.created_at DESC
         LIMIT ${ctx.limit}
         OFFSET ${ctx.offset}
       `;

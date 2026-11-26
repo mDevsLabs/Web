@@ -78,7 +78,9 @@ export const WorkspaceTopbar: React.FC<WorkspaceTopbarProps> = ({
     <div className="breadcrumbs">
       <span>
         {view === "space"
-          ? workspace.spaces.find((space) => space.id === spaceId)?.name
+          ? (workspace.spaces.find((space) => space.id === spaceId)?.name ??
+            workspace.spaces[0]?.name ??
+            "Espaces")
           : "Wakies"}
       </span>
       <span>/</span>

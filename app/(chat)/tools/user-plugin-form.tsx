@@ -6,8 +6,8 @@ import { toast } from "sonner";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { LUCIDE_ICON_NAMES } from "@/lib/plugins/icon-allowlist";
-import type { UserPluginView } from "@/lib/plugins/user-plugin-input";
+import { LUCIDE_ICON_NAMES } from "@/lib/plugins/core/icon-allowlist";
+import type { UserPluginView } from "@/lib/plugins/core/user-plugin-input";
 
 type Kind = "mcp" | "oauth";
 

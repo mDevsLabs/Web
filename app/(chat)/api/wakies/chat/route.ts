@@ -23,6 +23,7 @@ import {
   filterModelsForTier,
   isModelAllowedForTier,
 } from "@/lib/ai/registry/tiers";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import { MCP_TOOL_SENTINEL } from "@/lib/ai/tools/ids";
 import { errorResponse } from "@/lib/api/error-response";
 import { isPaidTier } from "@/lib/auth/plan";
@@ -34,14 +35,14 @@ import {
 import { loadMcpContext } from "@/lib/chat/mcp";
 import { buildMemoryContext } from "@/lib/chat/memory";
 import { createChatTools } from "@/lib/chat/tools";
-import { MAI_API_URL, MAI_UPGRADE_URL } from "@/lib/constants";
+import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { getUserMcpPrefs, recordTokenUsage } from "@/lib/db/queries";
 import { getUserPreferences } from "@/lib/db/queries/users";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import { createMcpChatTools } from "@/lib/mcp/chat-tools";
 import { toMcpRuntimePreferences } from "@/lib/mcp/policy";
 import { getWakiesQuota } from "@/lib/plans/tier-limits";
-import { createPluginTools } from "@/lib/plugins/server";
+import { createPluginTools } from "@/lib/plugins/core/server";
 import {
   lireProfilVibeBref,
   resumeProfilPourPrompt,
@@ -636,11 +637,11 @@ export async function POST(request: Request) {
     );
   } catch (error) {
     await finishChatTurn(auth.userId, reservation.id, "failed");
-    return errorResponse("invalid_request", {
-      message:
-        error instanceof Error && error.name === "WakiesAttachmentError"
-          ? error.message
-          : "Impossible de préparer la conversation. Réessayez dans quelques instants.",
+    if (error instanceof Error && error.name === "WakiesAttachmentError") {
+      return errorResponse("invalid_request", { message: error.message });
+    }
+    return errorResponse("upstream_error", {
+      message: MAI_SERVER_DIFFICULTIES_MESSAGE,
     });
   }
   try {
@@ -815,7 +816,10 @@ export async function POST(request: Request) {
         const reasoningSink = createReasoningDetailsSink();
         const reasoningWriter = createReasoningChunkWriter(
           writer,
-          `reasoning-${reservation.responseId}-${repondant.wakieId}`
+          `reasoning-${reservation.responseId}-${repondant.wakieId}`,
+          {
+            onBeforeFirstPush: () => writer.write({ type: "start" }),
+          }
         );
         reasoningSink.onDelta = (text) => reasoningWriter.push(text);
         const model = getLanguageModel(modelId, {
@@ -894,37 +898,6 @@ export async function POST(request: Request) {
               );
             }
 
-            // Notification du compteur côté API mAI, comme `/api/chat` : la base
-            // Next n'est pas la seule à tenir le quota du compte.
-            try {
-              const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
-                body: JSON.stringify({
-                  idempotencyKey: usageEventKey,
-                  inputTokens,
-                  isGhostMode: false,
-                  model: modelId,
-                  outputTokens,
-                  reasoningTokens,
-                  tokensUsed: totalTokens,
-                }),
-                headers: {
-                  Authorization: `Bearer ${auth.sessionToken}`,
-                  "Content-Type": "application/json",
-                },
-                method: "POST",
-                signal: AbortSignal.timeout(10_000),
-              });
-              if (!logRes.ok) {
-                console.error(
-                  "[wakies-chat][API log-usage] Status:",
-                  logRes.status,
-                  await logRes.text()
-                );
-              }
-            } catch (logErr) {
-              console.error("[wakies-chat] Erreur décompte log-usage:", logErr);
-            }
-
             // Overlay de session pour le compteur du client : la valeur serveur
             // est mise en cache 180 s, donc un compteur qui ne verrait qu'elle
             // semblerait immobile pendant plusieurs tours.
@@ -948,13 +921,19 @@ export async function POST(request: Request) {
             }
           },
           onError() {
+            streamFailed = true;
             reasoningWriter.finish();
           },
           stopWhen: stepCountIs(8),
           system: promptDuTour(wakieDuTour),
           tools: { ...outils, ...outilsReaction, ...outilsPage },
         });
-        writer.merge(result.toUIMessageStream({ sendReasoning: true }));
+        writer.merge(
+          result.toUIMessageStream({
+            onError: () => MAI_SERVER_DIFFICULTIES_MESSAGE,
+            sendReasoning: true,
+          })
+        );
       } // fin du for sur les répondants
     },
     // Identifiant de réponse EXPLICITE : sans lui, l'AI SDK émet un chunk
@@ -1010,7 +989,7 @@ export async function POST(request: Request) {
         () => {}
       );
       console.error("[wakies-chat] erreur de flux:", erreur);
-      return "La réponse n'a pas pu être terminée. Votre conversation est conservée.";
+      return MAI_SERVER_DIFFICULTIES_MESSAGE;
     },
   });
 

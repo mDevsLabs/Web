@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   collectSummarySources,
   createThinkSplitter,
+  formatSummarySourceCitations,
   mergeStreamText,
   readSummaryStream,
+  type SummarySource,
   type SummaryStreamEvent,
   stripThinkTags,
 } from "@/lib/search/summary-stream";
@@ -105,5 +107,43 @@ describe("séparation réflexion / réponse", () => {
     expect(mergeStreamText("Bonjour", " le monde")).toBe("Bonjour le monde");
     expect(mergeStreamText("Bonjour.", ".")).toBe("Bonjour..");
     expect(mergeStreamText("encore ", "encore ")).toBe("encore encore ");
+  });
+
+  it("transforme les citations [Source n] en titres entre parenthèses avec hyperliens", () => {
+    const sources: SummarySource[] = [
+      {
+        domain: "fr.wikipedia.org",
+        id: "1",
+        origin: "wikipedia",
+        title: "Élection présidentielle française de 2027",
+        type: "web",
+        url: "https://fr.wikipedia.org/wiki/Presidentielle_2027",
+      },
+      {
+        domain: "vie-publique.fr",
+        id: "2",
+        origin: "web",
+        title: "Calendrier électoral",
+        type: "web",
+        url: "https://www.vie-publique.fr/calendrier",
+      },
+      {
+        domain: "lemonde.fr",
+        id: "3",
+        origin: "web",
+        title: "Analyse politique",
+        type: "web",
+        url: "https://www.lemonde.fr/analyse",
+      },
+    ];
+
+    expect(
+      formatSummarySourceCitations(
+        "Le scrutin approche [Source 1] et les dates sont connues [Sources 1 et 2]. Synthèse globale [Sources 1 à 3].",
+        sources
+      )
+    ).toBe(
+      "Le scrutin approche ([Élection présidentielle française de 2027](https://fr.wikipedia.org/wiki/Presidentielle_2027)) et les dates sont connues ([Élection présidentielle française de 2027](https://fr.wikipedia.org/wiki/Presidentielle_2027), [Calendrier électoral](https://www.vie-publique.fr/calendrier)). Synthèse globale ([Élection présidentielle française de 2027](https://fr.wikipedia.org/wiki/Presidentielle_2027), [Calendrier électoral](https://www.vie-publique.fr/calendrier), [Analyse politique](https://www.lemonde.fr/analyse))."
+    );
   });
 });

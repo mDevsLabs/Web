@@ -1,2 +1,6 @@
 packages:
   - "packages/*"
+
+# Node.js imposé aux scripts pnpm (même valeur que .nvmrc, vérifiée par
+# tests/unit/node-version-pin.test.ts). pnpm le télécharge s'il manque.
+useNodeVersion: 22.23.5

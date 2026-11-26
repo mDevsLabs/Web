@@ -59,8 +59,9 @@ function telecharger(nom: string, contenu: string, type: string) {
 }
 
 /** Une page sans réglage écrit vaut `null` en base : le rendu par défaut. */
-function reglagesDe(page: Page) {
-  return pageSettings.parse(page.settings ?? {});
+function reglagesDe(page: Page): PageSettings {
+  const parsed = pageSettings.safeParse(page.settings ?? {});
+  return parsed.success ? parsed.data : { icon: null, large: false };
 }
 
 export function SpaceLibrary({

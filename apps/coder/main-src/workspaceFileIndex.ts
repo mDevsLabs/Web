@@ -3,7 +3,7 @@ import * as fs from "node:fs";
 import * as fsp from "node:fs/promises";
 import * as path from "node:path";
 import { promisify } from "node:util";
-import chokidar from "chokidar";
+import chokidar, { type FSWatcher } from "chokidar";
 import {
   clearWorkspaceSymbolIndexForRoot,
   indexWorkspaceSourceFile,
@@ -75,7 +75,7 @@ type FileIndexBucket = {
   sortedPathsSnapshot: string[] | null;
   /** basename 前两字符（小写）→ 路径；与 relPathSet 同步，在快照失效时清空 */
   basenameTwoCharBuckets: Map<string, Set<string>> | null;
-  watcher: chokidar.FSWatcher | null;
+  watcher: FSWatcher | null;
   inFlightRefresh: Promise<string[]> | null;
   refCount: number;
 };

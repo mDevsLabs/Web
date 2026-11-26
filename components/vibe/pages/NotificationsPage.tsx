@@ -206,7 +206,7 @@ export const NotificationsPage: React.FC<{
     // Temps réel via SSE : chaque notification est poussée par le serveur et
     // rediffusée en 'vibe:notification_received' (realtimeService).
     // L'intervalle ne sert que de filet de sécurité léger.
-    const interval = setInterval(fetchNotifications, 60_000);
+    const interval = setInterval(fetchNotifications, 300_000);
     const handleNotif = () => fetchNotifications();
     window.addEventListener("vibe:notification_received", handleNotif);
     window.addEventListener("vibe:feed_refresh", handleNotif);

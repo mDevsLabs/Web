@@ -1,7 +1,6 @@
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { HttpsProxyAgent } from "https-proxy-agent";
 import OpenAI from "openai";
 import { resolveProviderIdentityWithOverride } from "../../../src/providerIdentitySettings.js";
 import { runCodexOAuthResponseText } from "../../llm/codexOAuthAdapter.js";
@@ -16,6 +15,7 @@ import {
   providerIdentityForOAuthAuth,
 } from "../../llm/providerIdentity.js";
 import { ensureFreshOAuthAuthForRequest } from "../../llm/providerOAuthLogin.js";
+import { buildSdkProxyFetchOptions } from "../../llm/proxyFetch.js";
 import {
   openAICompatibleEffectiveTemperature,
   resolveRequestedTemperature,
@@ -352,8 +352,6 @@ async function extractSkillWithRuntimeModel(
         });
         return parseJsonResponse(text);
       }
-      const proxyRaw = runtime.requestProxyUrl?.trim() ?? "";
-      const httpAgent = proxyRaw ? new HttpsProxyAgent(proxyRaw) : undefined;
       const identitySettings: ShellSettings = {
         providerIdentity: runtime.providerIdentity,
       };
@@ -362,7 +360,7 @@ async function extractSkillWithRuntimeModel(
           apiKey: runtime.requestApiKey,
           baseURL: runtime.requestBaseURL,
           dangerouslyAllowBrowser: false,
-          httpAgent,
+          ...buildSdkProxyFetchOptions(runtime.requestProxyUrl),
         })
       );
       const resp = await client.chat.completions.create({
@@ -422,7 +420,6 @@ async function extractSkillWithRuntimeModel(
           identitySettings,
           SKILL_EXTRACTION_SYSTEM_PROMPT
         ),
-        temperature: 0,
         ...(anthropicMetadata ? { metadata: anthropicMetadata } : {}),
         messages: [{ content: userPrompt, role: "user" }],
       });

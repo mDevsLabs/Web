@@ -30,8 +30,11 @@ sont un **autre runtime**, déployé sur Val Town, hors du `tsconfig.json` : les
 modifier ne déclenche ni typecheck ni build, et un build Next réussi ne valide
  rien sur Val Town.
 
-`cron.ts`, à la racine, est le seul ordonnanceur des quatre ticks
-`app/api/cron/**`. Ne pas introduire de second ordonnanceur.
+Les six ticks `app/api/cron/**` sont planifiés par un bail commun (table
+`cron_ticks`, `lib/cron/ticks.ts`) que partagent GitHub Actions
+(`cron-master.yml`, 30 min), Vercel Cron (`/api/cron/daily`) et les ticks
+paresseux (`lib/cron/lazy.ts`). `cron.ts`, à la racine, est un déclencheur
+Val Town optionnel à désactiver. Ne pas introduire d'ordonnanceur hors de ce bail.
 
 ## Démarrer
 

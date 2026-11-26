@@ -4,24 +4,18 @@ import {
   CloudIcon as Cloud,
   GaugeIcon as Gauge,
   ImageIcon,
-  KeyRoundIcon as KeyRound,
   MonitorIcon as Monitor,
-  RefreshCwIcon as RefreshCw,
-  SparklesIcon as Sparkles,
   UserIcon as User,
   Volume2Icon as Volume2,
 } from "@mdevs/icons";
 
 export const ACCOUNT_SECTION_IDS = [
   "profil",
-  "usage-api",
   "usage-images",
   "usage-audio",
   "usage-mai",
   "usage-cloud",
   "appareils",
-  "resets",
-  "upgrade-code",
 ] as const;
 
 export type AccountSectionId = (typeof ACCOUNT_SECTION_IDS)[number];
@@ -32,14 +26,11 @@ const ITEMS: Array<{
   icon: React.ComponentType<any>;
 }> = [
   { icon: User, id: "profil", label: "Profil & Paramètres" },
-  { icon: KeyRound, id: "usage-api", label: "Usage API" },
-  { icon: ImageIcon, id: "usage-images", label: "Usage Images" },
-  { icon: Volume2, id: "usage-audio", label: "Usage Audio" },
-  { icon: Gauge, id: "usage-mai", label: "Usage mAI" },
+  { icon: ImageIcon, id: "usage-images", label: "Génération d'images" },
+  { icon: Volume2, id: "usage-audio", label: "Création d'audio" },
+  { icon: Gauge, id: "usage-mai", label: "Utilisation de l'IA" },
   { icon: Cloud, id: "usage-cloud", label: "Stockage Cloud" },
   { icon: Monitor, id: "appareils", label: "Appareils Connectés" },
-  { icon: RefreshCw, id: "resets", label: "Réinitialisations" },
-  { icon: Sparkles, id: "upgrade-code", label: "Activer un Code" },
 ];
 
 export function AccountNavigation({

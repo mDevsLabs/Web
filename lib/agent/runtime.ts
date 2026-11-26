@@ -8,6 +8,7 @@ import {
   streamText,
   toUIMessageStream,
 } from "ai";
+import { generateTitleFromConversation } from "@/app/(chat)/actions";
 import { recordAgentUsage } from "@/lib/agent/accounting";
 import { remainingBudget } from "@/lib/agent/budget";
 import type { AgentContextResult } from "@/lib/agent/context/build";
@@ -58,10 +59,13 @@ import type {
   ReasoningLevel,
   RegisteredAgentTool,
 } from "@/lib/agent/types";
-import { resolveModelMaxOutput } from "@/lib/ai/models";
 import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { createReasoningChunkWriter } from "@/lib/ai/reasoning-stream";
 import { resolveReasoningProviderOptions } from "@/lib/ai/registry/reasoning";
+import {
+  formatStreamProviderError,
+  MAI_SERVER_DIFFICULTIES_MESSAGE,
+} from "@/lib/ai/server-error-message";
 import {
   getStreamContext,
   isModelStreamActivity,
@@ -77,8 +81,9 @@ import {
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { expireAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
+import { updateChatTitleById } from "@/lib/db/queries";
 import type { ChatMessage } from "@/lib/types";
-import { generateUUID } from "@/lib/utils";
+import { generateUUID, getTextFromMessage } from "@/lib/utils";
 
 // Runtime Agent : une boucle de tool calling standard, portée par les primitives
 // du SDK AI — streamText multi-steps (stopWhen), sélection d'outils par étape
@@ -145,6 +150,7 @@ export type AgentStreamParams = {
   task: string;
   tier?: string;
   tools: RegisteredAgentTool[];
+  truncateAfterMessageId?: string | null;
   userEmail: string;
   userId: string;
 };
@@ -198,6 +204,8 @@ export function agentFinalStepToolControl(
 }
 
 export function createAgentStream(params: AgentStreamParams) {
+  let titleAlreadyGenerated = false;
+  let completedOutcomeStatus: AgentRunStatus = "running";
   return createUIMessageStream({
     execute: async ({ writer }) => {
       const state: AgentToolControllerState = {
@@ -243,7 +251,9 @@ export function createAgentStream(params: AgentStreamParams) {
       // La réflexion est réinjectée dans le flux UI, au même titre que Chat et
       // Wakies. Le collecteur est branché sur le provider par la route.
       const reasoningWriter = params.reasoningSink
-        ? createReasoningChunkWriter(writer, `reasoning-${generateId()}`)
+        ? createReasoningChunkWriter(writer, `reasoning-${generateId()}`, {
+            onBeforeFirstPush: () => writer.write({ type: "start" }),
+          })
         : null;
       if (params.reasoningSink) {
         params.reasoningSink.onDelta = (text) => reasoningWriter?.push(text);
@@ -433,7 +443,6 @@ export function createAgentStream(params: AgentStreamParams) {
           params.context.instructions,
           pendingReorientations
         ),
-        maxOutputTokens: resolveModelMaxOutput(params.modelId),
         maxRetries: params.budget.maxRetries,
         messages: params.context.messages,
         model: params.model,
@@ -444,24 +453,14 @@ export function createAgentStream(params: AgentStreamParams) {
         onChunk({ chunk }) {
           if (isModelStreamActivity(chunk) && !accountingStarted) {
             accountingStarted = true;
-            writer.write({
-              data: {
-                message: "Agent travaille…",
-                modelId: params.modelId,
-                modelName: params.modelId,
-                phase: "thinking",
-              },
-              transient: true,
-              type: "data-waiting-status",
-            });
           }
         },
         onError: async ({ error }) => {
           reasoningWriter?.finish();
-          failure =
-            error instanceof Error
-              ? error.message.slice(0, 400)
-              : "Erreur inconnue du runtime Agent.";
+          console.error("Erreur du modèle en mode Agent :", error);
+          const userError = formatStreamProviderError(error);
+          failure = userError;
+          emitRun("failed", { error: userError });
         },
         onFinish: async ({ usage }) => {
           reasoningWriter?.finish();
@@ -697,6 +696,12 @@ export function createAgentStream(params: AgentStreamParams) {
 
       writer.merge(
         toUIMessageStream({
+          onError: (error) => {
+            const userError = formatStreamProviderError(error);
+            failure = userError;
+            emitRun("failed", { error: userError });
+            return userError;
+          },
           // Protocole aligné sur le Chat : les parts de raisonnement fournis
           // par le provider (jamais fabriqués) transitent quand le modèle les
           // déclare. Sans part, l'UI n'affiche aucun panneau vide : le rendu
@@ -755,6 +760,7 @@ export function createAgentStream(params: AgentStreamParams) {
               : productLimitReached
                 ? "timed_out"
                 : "completed";
+      completedOutcomeStatus = finalStatus;
 
       if (finalStatus === "completed") {
         try {
@@ -883,6 +889,42 @@ export function createAgentStream(params: AgentStreamParams) {
         // au run lui-même.
       }
 
+      if (
+        params.shouldRenameAfterFirst &&
+        params.firstUserMessageForTitle &&
+        !aborted &&
+        !failure
+      ) {
+        try {
+          const assistantText = (
+            (await Promise.resolve(result.text).catch(() => "")) || ""
+          )
+            .slice(0, 500)
+            .trim();
+          const userText = getTextFromMessage(params.firstUserMessageForTitle);
+          const generatedTitle = await generateTitleFromConversation({
+            assistantText,
+            modelId: params.modelId,
+            sessionToken: params.sessionToken,
+            userId: params.userId,
+            userText,
+          });
+          if (generatedTitle && generatedTitle !== "Nouvelle discussion") {
+            await updateChatTitleById({
+              chatId: params.chatId,
+              title: generatedTitle,
+            });
+            writer.write({
+              data: generatedTitle,
+              type: "data-chat-title",
+            });
+            titleAlreadyGenerated = true;
+          }
+        } catch (titleError) {
+          console.error("Erreur renommage conversation Agent :", titleError);
+        }
+      }
+
       // Synthèse d'observabilité en fin de run : le client affiche durée,
       // tokens et erreur éventuelle sans jamais lire les traces techniques.
       // Lecture via fermeture : `failure` n'est assigné que dans le rappel
@@ -907,8 +949,13 @@ export function createAgentStream(params: AgentStreamParams) {
           finishedMessages: finishedMessages as ChatMessage[],
           firstUserMessageForTitle: params.firstUserMessageForTitle,
           isContinuation: params.isContinuation,
+          modelId: params.modelId,
+          outcomeStatus: completedOutcomeStatus,
           runId: params.runId,
+          sessionToken: params.sessionToken,
           shouldRenameAfterFirst: params.shouldRenameAfterFirst,
+          titleAlreadyGenerated,
+          truncateAfterMessageId: params.truncateAfterMessageId ?? null,
           userId: params.userId,
         });
       } catch (error) {
@@ -930,7 +977,7 @@ export function createAgentStream(params: AgentStreamParams) {
         }).catch(() => {});
       }
       console.error("Erreur de streaming Agent :", error);
-      return "Agent a rencontré une erreur pendant l'exécution. Les étapes déjà réalisées restent visibles.";
+      return MAI_SERVER_DIFFICULTIES_MESSAGE;
     },
     originalMessages: params.isContinuation
       ? params.existingMessages

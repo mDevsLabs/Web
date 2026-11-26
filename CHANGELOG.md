@@ -1,5 +1,23 @@
 # Notes de version
 
+## 0.9.5
+
+### Nouveautés
+
+* **Introducing mAI-2.5** : nous introduisons notre nouvelle génération de modèles : mAI-2.5 Opal, Apex et Omni !
+* **Suivi de l’utilisation** : dans les conversations, une jauge exprime la consommation en pourcentage du forfait plutôt qu’en nombre de jetons par message. Elle se remet à zéro chaque lundi à 00:00 UTC. L’API publique mAI n’impose plus de quota de requêtes distinct.
+* **Changement de forfait** : depuis la page des tarifs, vous pouvez activer un forfait avec un code ou revenir au forfait Free sans code.
+
+### Améliorations
+
+* **Historique des conversations** : les conversations épinglées restent à part ; les autres sont classées selon la date du dernier message. Si la génération du titre échoue, le texte du message sert de titre de secours.
+* **Tâches planifiées** : l’Agent, le planning, Wakies, Vibe, les notifications et Quizzly partagent un mécanisme qui empêche deux déclencheurs de lancer le même traitement pour un même créneau.
+* **Migrations** : mAI gère directement les connexions en base de données, sans passer par Val Town.
+
+### Corrections
+
+* **Corrections diverses** : déploiement de nombreuses corrections majeures
+
 ## 0.9.4
 
 ### Nouveautés

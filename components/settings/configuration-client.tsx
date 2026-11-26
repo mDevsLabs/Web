@@ -127,7 +127,7 @@ export function ConfigurationSection() {
       icon: command.icon ?? "zap",
       kind: command.kind as "slash" | "mention",
       name: command.name,
-      payload: ((command.payload ?? {}) as CommandPayloadForm) ?? {},
+      payload: (command.payload ?? {}) as CommandPayloadForm,
       trigger: command.trigger,
     });
     setEditorOpen(true);

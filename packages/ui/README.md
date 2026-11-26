@@ -1,6 +1,6 @@
 # @mdevs/ui
 
-Bibliothèque React et TypeScript de composants d'interface. Version **0.9.3** :
+Bibliothèque React et TypeScript de composants d'interface. Version **0.9.5** :
 **132 primitives** et **1 080 composants métier** repartis en **108 domaines**,
 chaque domaine exposant dix familles d'affichage et un modèle typé.
 

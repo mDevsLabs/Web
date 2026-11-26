@@ -9,8 +9,8 @@ import {
   toChatToolId,
 } from "@/lib/ai/tools/ids";
 import { MCP_TEMPLATE_LIST } from "@/lib/mcp-templates/catalog";
-import { PLUGIN_TOOL_IDS } from "@/lib/plugins/catalog";
-import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
+import { PLUGIN_TOOL_IDS } from "@/lib/plugins/core/catalog";
+import { isLucideIconName } from "@/lib/plugins/core/icon-allowlist";
 import {
   buildSkillTemplateEntries,
   filterSkillTemplates,

@@ -3,7 +3,11 @@ import { resolveModelMaxOutput } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
-import { getModelCapabilitiesFor } from "@/lib/ai/registry";
+import {
+  getModelCapabilitiesFor,
+  resolveReasoningEffort,
+} from "@/lib/ai/registry";
+import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import { mergeToolHints } from "@/lib/ai/tools/hints";
 import { errorResponse } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
@@ -33,10 +37,12 @@ import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import {
   getPluginManifest,
   getReadToolIdsForPluginIds,
-} from "@/lib/plugins/catalog";
-import { createPluginTools, getPluginSystemHints } from "@/lib/plugins/server";
-import { canUsePlugin } from "@/lib/plugins/tier-lock";
-import { customPluginChatTools } from "@/lib/plugins/user-plugin-tools";
+} from "@/lib/plugins/core/catalog";
+import {
+  createPluginTools,
+  getPluginSystemHints,
+} from "@/lib/plugins/core/server";
+import { customPluginChatTools } from "@/lib/plugins/core/user-plugin-tools";
 import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
 
 export const maxDuration = 300;
@@ -179,18 +185,22 @@ export async function POST(request: Request) {
             [] as Awaited<ReturnType<typeof getPluginInstallationsByUserId>>
           )
         : getPluginInstallationsByUserId({ userId: ctx.userId }),
-      fetchUserModels(),
+      fetchUserModels(ctx.maiUser),
     ]);
-    const toolsSupported = getModelCapabilitiesFor(ctx.chatModel, models).tools;
+    const modelCapabilities = getModelCapabilitiesFor(ctx.chatModel, models);
+    const toolsSupported = modelCapabilities.tools;
+    const reasoningSupported = modelCapabilities.reasoning;
+    const resolvedReasoning = resolveReasoningEffort({
+      capabilities: modelCapabilities,
+      preferred: ctx.reasoningLevel,
+    });
 
     // 4. Plugins installés et activés pour l'utilisateur : seuls leurs outils
     // peuvent être instanciés, même si le client les mentionne.
     const enabledPluginIds = pluginInstallations.flatMap((installation) => {
       if (!installation.isEnabled) return [];
       const plugin = getPluginManifest(installation.pluginId);
-      return plugin && canUsePlugin(plugin, ctx.maiUser.tier)
-        ? [plugin.id]
-        : [];
+      return plugin ? [plugin.id] : [];
     });
     // Le canal Chat ne sert que la LECTURE : annoncer au modèle un outil
     // d'écriture que `createPluginTools` n'instancie pas ici le ferait échouer
@@ -215,19 +225,40 @@ export async function POST(request: Request) {
       ctx.userDefaultTemp ??
       undefined;
     const effectiveTopP = ctx.agentTopP ?? ctx.userDefaultTopP ?? undefined;
+    // Ne pas imposer un max_tokens démesuré (128k–384k) par défaut vers
+    // OpenRouter : cela provoque des rejets 400 (dépassement modèle) ou 402
+    // (crédits réservés d'avance). On n'envoie `maxOutputTokens` que lorsqu'un
+    // bot/agent définit explicitement un plafond, borné à la limite réelle du modèle.
     const effectiveMaxTokens =
-      ctx.agentMaxTokens ?? resolveModelMaxOutput(ctx.chatModel);
+      ctx.agentMaxTokens !== null && ctx.agentMaxTokens !== undefined
+        ? Math.min(
+            ctx.agentMaxTokens,
+            resolveModelMaxOutput(ctx.chatModel, models)
+          )
+        : undefined;
 
     // 6. Initialiser le modèle de langage mAI. Le collecteur est propre à la
     // requête : deux conversations concurrentes ne partagent jamais leur
     // raisonnement.
     const reasoningSink = createReasoningDetailsSink();
-    const model = getLanguageModel(ctx.chatModel, {
-      apiKey: ctx.userApiKey,
-      reasoningSink,
-      sessionToken: ctx.sessionToken,
-      userId: ctx.maiUser.id,
-    });
+    let model: ReturnType<typeof getLanguageModel>;
+    try {
+      model = getLanguageModel(ctx.chatModel, {
+        apiKey: ctx.userApiKey,
+        reasoningSink,
+        sessionToken: ctx.sessionToken,
+        userId: ctx.maiUser.id,
+      });
+    } catch (providerError) {
+      const msg =
+        providerError instanceof Error
+          ? providerError.message
+          : "Fournisseur IA non configuré.";
+      console.error(`[chat-api] provider_init_failed message="${msg}"`);
+      return errorResponse("service_unavailable", {
+        message: msg,
+      });
+    }
 
     // 6. Flux : MCP + outils + streamText (préparés à l'intérieur du stream)
     const stream = createChatStream({
@@ -345,7 +376,9 @@ export async function POST(request: Request) {
           toolsSupported: true,
         };
       },
+      reasoningEffort: resolvedReasoning.effort,
       reasoningSink,
+      reasoningSupported,
     });
 
     return createChatStreamResponse({
@@ -361,50 +394,73 @@ export async function POST(request: Request) {
       console.error(
         `[chat-api] rejected guard=chatbot_error code=${error.type}:${error.surface} message="${error.message}"`
       );
+      if (error.surface === "database" || error.type === "offline") {
+        return new ChatbotError("offline:chat", undefined, {
+          apiCode: "upstream_error",
+          messageOverride: MAI_SERVER_DIFFICULTIES_MESSAGE,
+        }).toResponse();
+      }
       return error.toResponse();
     }
     console.error(
       `[chat-api] rejected guard=unhandled chatId=${requestBody?.id ?? "inconnu"} errorName=${(error as Error)?.name ?? "Error"}`,
       error
     );
-    return new ChatbotError("offline:chat").toResponse();
+    return new ChatbotError("offline:chat", undefined, {
+      apiCode: "upstream_error",
+      messageOverride: MAI_SERVER_DIFFICULTIES_MESSAGE,
+    }).toResponse();
   }
 }
 
 export async function DELETE(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get("id");
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
 
-  if (!id) {
-    return new ChatbotError("bad_request:api").toResponse();
+    if (!id) {
+      return new ChatbotError("bad_request:api").toResponse();
+    }
+
+    const session = await requireUser();
+    if (!session) {
+      return new ChatbotError("unauthorized:chat").toResponse();
+    }
+    const { userId, user } = session;
+
+    const chat = await getChatById({ id });
+    if (!chat) {
+      // Idempotence : si la conversation a déjà été supprimée, renvoyer 200
+      return Response.json({ id, success: true }, { status: 200 });
+    }
+
+    const isOwner =
+      chatOwnerMatches({
+        chatUserId: chat.userId,
+        email: user.email,
+        userId,
+        username: (user as { username?: string | null }).username ?? null,
+      }) ||
+      (user.email && chat.userId === user.email) ||
+      (user.id && chat.userId === user.id);
+
+    if (!isOwner) {
+      console.warn(
+        `[chat-api] DELETE refusé : l'utilisateur ${userId} (${user.email}) n'est pas propriétaire de la discussion ${id} (propriétaire: ${chat.userId})`
+      );
+      return new ChatbotError("forbidden:chat").toResponse();
+    }
+
+    const deletedChat = await deleteChatById({ id });
+    return Response.json(deletedChat ?? { id, success: true }, { status: 200 });
+  } catch (error) {
+    if (error instanceof ChatbotError) {
+      console.error(
+        `[chat-api] DELETE error code=${error.type}:${error.surface} message="${error.message}"`
+      );
+      return error.toResponse();
+    }
+    console.error("[chat-api] DELETE unexpected error:", error);
+    return new ChatbotError("offline:chat").toResponse();
   }
-
-  const session = await requireUser();
-  if (!session) {
-    return new ChatbotError("unauthorized:chat").toResponse();
-  }
-  const { userId, user } = session;
-
-  const chat = await getChatById({ id });
-  if (!chat) {
-    // Idempotence : si la conversation a déjà été supprimée, renvoyer 200
-    return Response.json({ id, success: true }, { status: 200 });
-  }
-
-  const isOwner =
-    chatOwnerMatches({
-      chatUserId: chat.userId,
-      email: user.email,
-      userId,
-      username: (user as { username?: string | null }).username ?? null,
-    }) ||
-    (user.email && chat.userId === user.email) ||
-    (user.id && chat.userId === user.id);
-
-  if (!isOwner) {
-    return new ChatbotError("forbidden:chat").toResponse();
-  }
-
-  const deletedChat = await deleteChatById({ id });
-  return Response.json(deletedChat ?? { id, success: true }, { status: 200 });
 }

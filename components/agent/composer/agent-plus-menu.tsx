@@ -37,7 +37,7 @@ export function AgentPlusMenu({
         <button
           aria-label="Ajouter un contexte ou une capacité"
           className={cn(
-            "flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40",
+            "flex size-11 shrink-0 cursor-pointer touch-manipulation items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40 sm:size-8",
             className
           )}
           data-testid="agent-plus-menu"
@@ -47,7 +47,12 @@ export function AgentPlusMenu({
           <PlusIcon className="size-5" />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-72" side="top">
+      <DropdownMenuContent
+        align="start"
+        className="w-72 max-w-[calc(100vw-1rem)]"
+        collisionPadding={12}
+        side="top"
+      >
         <DropdownMenuLabel>Ajouter à la tâche</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {AGENT_COMPOSER_ACTIONS.map((action) => {

@@ -11,9 +11,6 @@
 // unitaires. Aucun import server-only ici — la logique est pure, les chemins
 // sont des constantes statiques.
 
-// `cli` n'est pas une application web : c'est une entrée du « Menu favori »
-// qui ouvre le terminal local de l'application de bureau. Elle vit donc dans
-// le catalogue (clé persistée) sans entrer dans APP_ORDER (menu du logo).
 export const APP_KEYS = [
   "mai",
   "site",
@@ -21,7 +18,6 @@ export const APP_KEYS = [
   "code",
   "blackline",
   "quizzly",
-  "cli",
 ] as const;
 export type AppKey = (typeof APP_KEYS)[number];
 
@@ -53,15 +49,6 @@ export const APP_CATALOG: Record<AppKey, AppCatalogEntry> = {
     // Jeu 3D embarqué : la page hôte monte le bundle statique du jeu.
     path: "/blackline",
     pathPrefix: "/blackline",
-  },
-  cli: {
-    description: "mAI dans un terminal local (application de bureau)",
-    key: "cli",
-    label: "CLI",
-    // Aucune route web : la redirection post-login ouvre le terminal puis
-    // retombe sur mAI si la fonction n'est pas disponible.
-    path: "/",
-    pathPrefix: "/",
   },
   code: {
     description: "L'outil de codage pour IA",
@@ -116,33 +103,21 @@ export const APP_ORDER: AppCatalogEntry[] = [
 /**
  * Entrée du menu des applications.
  *
- * Le menu n'affiche pas que des applications web : le CLI s'y glisse entre
- * Coder et Blackline. Modéliser ce cas ici, plutôt que dans chaque composant
- * qui rend le menu, évite que les trois rendus (le sélecteur commun, le logo
- * de la barre latérale et le nom « mAI ») divergent.
+ * Modéliser cette liste ici, plutôt que dans chaque composant qui rend le menu,
+ * évite que les trois rendus (le sélecteur commun, le logo de la barre latérale
+ * et le nom « mAI ») divergent.
  */
-export type AppMenuEntry =
-  | { entry: AppCatalogEntry; kind: "app" }
-  | { kind: "cli" };
+export type AppMenuEntry = { entry: AppCatalogEntry; kind: "app" };
 
 /**
- * Ordre d'affichage du MENU des applications : mAI, Site, Vibe, Coder, CLI,
+ * Ordre d'affichage du MENU des applications : mAI, Site, Vibe, Coder,
  * Blackline, Quizzly.
- *
- * Le CLI est une entrée de menu, pas une application web : il ouvre le
- * terminal local de l'application de bureau, et il n'a pas de route.
- *
- * Blackline passe APRÈS lui. Le jeu est une distraction — c'est exactement ce
- * pour quoi il a été retiré de la liste de navigation de la barre latérale,
- * où il était redondant avec le menu des applications. Quizzly suit Blackline :
- * même menu, pas la barre latérale du chat.
  */
 export const APP_MENU_ORDER: AppMenuEntry[] = [
   { entry: APP_CATALOG.mai, kind: "app" },
   { entry: APP_CATALOG.site, kind: "app" },
   { entry: APP_CATALOG.vibe, kind: "app" },
   { entry: APP_CATALOG.code, kind: "app" },
-  { kind: "cli" },
   { entry: APP_CATALOG.blackline, kind: "app" },
   { entry: APP_CATALOG.quizzly, kind: "app" },
 ];

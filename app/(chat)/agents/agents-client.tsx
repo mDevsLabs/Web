@@ -439,7 +439,7 @@ export default function AgentsClient() {
           {activeTab === "agents" && (
             <div className="flex items-center gap-2">
               <div className="relative w-full sm:w-64">
-                <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+                <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 z-10 -translate-y-1/2 size-3.5 text-muted-foreground" />
                 <Input
                   aria-label="Rechercher un bot"
                   className="h-8 pl-8 text-xs bg-muted/40"

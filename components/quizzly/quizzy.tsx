@@ -75,9 +75,11 @@ function useMouvementReduit(): boolean {
 }
 
 export function Quizzy({
+  className,
   pose,
   taille = "compact",
 }: {
+  className?: string;
   pose: QuizzyPose;
   taille?: "compact" | "score";
 }) {
@@ -100,8 +102,9 @@ export function Quizzy({
     <img
       alt={LEGENDES[pose]}
       className={cn(
-        "pointer-events-none shrink-0 object-contain motion-safe:quizzy-pop",
-        compact ? "h-24 w-24 sm:h-32 sm:w-32" : "h-32 w-32 sm:h-40 sm:w-40"
+        "pointer-events-none shrink-0 object-contain motion-safe:quizzy-pop select-none",
+        compact ? "h-24 w-24 sm:h-32 sm:w-32" : "h-32 w-32 sm:h-40 sm:w-40",
+        className
       )}
       decoding="async"
       fetchPriority={compact ? "low" : "auto"}

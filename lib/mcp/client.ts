@@ -1,6 +1,11 @@
 import type { ChildProcessWithoutNullStreams } from "node:child_process";
 import { safeFetchText } from "@/lib/web/safe-fetch";
 import {
+  callBuiltinBridgeTool,
+  listBuiltinBridgeTools,
+  resolveBuiltinHttpBridge,
+} from "./builtin-http-bridge";
+import {
   assertMcpRuntimeEnabled,
   checkAllowStdio,
   type McpRuntimePolicyInput,
@@ -676,6 +681,10 @@ export async function fetchMcpTools(
 
   const targetUrl = config.url;
   if (!targetUrl) throw new Error("URL manquante pour le serveur MCP");
+  const builtinBridge = resolveBuiltinHttpBridge(config);
+  if (builtinBridge) {
+    return listBuiltinBridgeTools(builtinBridge, config);
+  }
   const headers = buildMcpHeaders(config);
   try {
     const result = await sendHttpJsonRpc<{ tools?: McpToolDefinition[] }>(
@@ -757,6 +766,16 @@ export async function callMcpTool(
 
   const targetUrl = config.url;
   if (!targetUrl) throw new Error("URL du serveur MCP manquante");
+  const builtinBridge = resolveBuiltinHttpBridge(config);
+  if (builtinBridge) {
+    return callBuiltinBridgeTool(
+      builtinBridge,
+      config,
+      toolName,
+      args,
+      timeout
+    );
+  }
   return sendHttpJsonRpc<McpToolCallResult>(
     targetUrl,
     req,

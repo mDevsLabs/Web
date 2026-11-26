@@ -1,9 +1,12 @@
 import { createCipheriv, createHash, randomBytes } from "node:crypto";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
+  extractMcpSecretKeys,
+  groupMcpSecretKeysByServerId,
   redactArgument,
   sanitizeUrlForClient,
   toMcpServerDto,
+  toMcpServerDtoList,
 } from "@/lib/mcp/dto";
 import {
   decrypt,
@@ -194,5 +197,27 @@ describe("DTO MCP — aucun secret ne sort de l'API", () => {
     expect(toMcpServerDto({ args: [1, null, "ok"] }).args).toEqual(["ok"]);
     expect(sanitizeUrlForClient("pas une url")).toBeNull();
     expect(sanitizeUrlForClient(null)).toBeNull();
+  });
+
+  it("fusionne les clés de secrets chiffrés (sans valeurs) dans secretKeys", () => {
+    const map = groupMcpSecretKeysByServerId([
+      { key: "token", kind: "auth", serverId: "srv-1" },
+      { key: "API_KEY", kind: "env", serverId: "srv-1" },
+      { key: "X-Custom", kind: "header", serverId: "srv-1" },
+    ]);
+    const list = toMcpServerDtoList(
+      [{ ...row, authConfig: {}, env: {}, headers: {}, id: "srv-1" }],
+      map
+    );
+    expect(list[0]?.secretKeys).toEqual({
+      auth: ["token"],
+      env: ["API_KEY"],
+      header: ["X-Custom"],
+    });
+    expect(extractMcpSecretKeys([{ key: "token", kind: "auth" }])).toEqual({
+      auth: ["token"],
+      env: [],
+      header: [],
+    });
   });
 });

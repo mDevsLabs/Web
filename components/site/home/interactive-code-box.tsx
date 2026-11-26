@@ -8,23 +8,10 @@ import {
 import { useState } from "react";
 
 export function InteractiveCodeBox() {
-  const [activeTab, setActiveTab] = useState<"cli" | "ollama" | "api" | "sdk">(
-    "cli"
-  );
+  const [activeTab, setActiveTab] = useState<"cli" | "ollama">("cli");
   const [copied, setCopied] = useState(false);
 
   const snippets = {
-    api: {
-      code: `curl -X POST https://mai-devs.vercel.app/api/v1/chat/completions \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "model": "mai-1.5-apex",
-    "messages": [{"role": "user", "content": "Rédige une fonction TypeScript optimisée"}]
-  }'`,
-      language: "bash",
-      title: "Appeler l'API mAI (Compatible OpenAI)",
-    },
     cli: {
       code: `# npm install -g mai-cli
 
@@ -44,20 +31,6 @@ ollama run mDevsLabs/mAI-1.5-Apex
 ollama run mDevsLabs/mAI-1.5-Light`,
       language: "bash",
       title: "Exécuter un modèle local via Ollama",
-    },
-    sdk: {
-      code: `import { mAI } from "@mdevs/mai-sdk";
-
-const client = new mAI({ apiKey: process.env.MAI_API_KEY });
-
-const completion = await client.chat.completions.create({
-  model: "mai-1.5-apex",
-  messages: [{ role: "user", content: "Optimise cette fonction TypeScript" }],
-});
-
-console.log(completion.choices[0].message.content);`,
-      language: "typescript",
-      title: "Intégrer avec le SDK TypeScript officiel",
     },
   };
 
@@ -83,7 +56,7 @@ console.log(completion.choices[0].message.content);`,
             </div>
             <span className="text-xs font-mono font-bold text-slate-400 flex items-center gap-1.5">
               <Terminal className="w-3.5 h-3.5 text-purple-400" />
-              Quickstart Terminal & API
+              Quickstart Terminal &amp; Modèles Locaux
             </span>
           </div>
 
@@ -93,8 +66,6 @@ console.log(completion.choices[0].message.content);`,
               [
                 { id: "cli", label: "mAI CLI" },
                 { id: "ollama", label: "Ollama" },
-                { id: "api", label: "API cURL" },
-                { id: "sdk", label: "SDK TypeScript" },
               ] as const
             ).map((tab) => (
               <button

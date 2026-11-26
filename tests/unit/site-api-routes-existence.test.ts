@@ -124,33 +124,15 @@ const SENTINELLE = "z9-SENTINELLE";
 const CHEMINS: { attentes: string[]; nom: string; chemin: string }[] = [
   {
     attentes: ["POST"],
-    chemin: SITE_API_ROUTES.apiExecutor,
-    nom: "apiExecutor",
+    chemin: SITE_API_ROUTES.accountPlan,
+    nom: "accountPlan",
   },
-  { attentes: ["GET"], chemin: SITE_API_ROUTES.devKeys, nom: "devKeys" },
   { attentes: ["GET"], chemin: SITE_API_ROUTES.devices, nom: "devices" },
-  { attentes: ["GET"], chemin: SITE_API_ROUTES.models, nom: "models" },
-  {
-    attentes: ["GET"],
-    chemin: SITE_API_ROUTES.modelsAudio,
-    nom: "modelsAudio",
-  },
-  {
-    attentes: ["GET"],
-    chemin: SITE_API_ROUTES.modelsImages,
-    nom: "modelsImages",
-  },
-  { attentes: ["GET"], chemin: SITE_API_ROUTES.modelsMai, nom: "modelsMai" },
   { attentes: ["GET"], chemin: SITE_API_ROUTES.status, nom: "status" },
   {
     attentes: ["POST"],
     chemin: SITE_API_ROUTES.supportUpload,
     nom: "supportUpload",
-  },
-  {
-    attentes: ["DELETE", "PUT"],
-    chemin: SITE_API_ROUTES.devKey(SENTINELLE),
-    nom: "devKey(id)",
   },
   {
     attentes: ["DELETE", "PUT"],
@@ -225,7 +207,7 @@ describe("Site — le registre ne promet aucune route fantôme", () => {
     // Une clé sans consommateur est un contrat que personne ne teste et que la
     // prochaine revue prendra pour une route.
     const cles = Object.keys(SITE_API_ROUTES);
-    expect(cles.length).toBeGreaterThan(10);
+    expect(cles.length).toBeGreaterThanOrEqual(8);
     for (const cle of cles) {
       expect(
         SOURCES_SITE.includes(`SITE_API_ROUTES.${cle}`),

@@ -10,11 +10,19 @@ import "server-only";
 import { and, asc, count, desc, eq } from "drizzle-orm";
 import { dbReady, getDb } from "@/lib/db/queries";
 import { quizzlyCoachConversation, quizzlyCoachMessage } from "@/lib/db/schema";
+import { signBlobPathForUser } from "@/lib/files/blob-access";
+import {
+  blobPathnameFromUrl,
+  isBlobPathnameOwnedBy,
+  isVercelBlobUrl,
+} from "@/lib/files/blob-path";
 import {
   COACH_CONVERSATIONS_MAX,
   COACH_MESSAGES_EPINGLES_MAX,
   COACH_MESSAGES_MAX,
+  type CoachAttachment,
   type CoachIntent,
+  normaliserPiecesJointesCoach,
   texteMessageEnregistrable,
   titreDepuisTexte,
   titreEnregistrable,
@@ -41,6 +49,7 @@ export type ConversationVue = {
 };
 
 export type MessageVue = {
+  attachments: CoachAttachment[];
   createdAt: string;
   id: string;
   pinned: boolean;
@@ -88,6 +97,7 @@ function vueConversation(ligne: LigneConversation): ConversationVue {
 
 function vueMessage(ligne: LigneMessage): MessageVue {
   return {
+    attachments: normaliserPiecesJointesCoach(ligne.attachments),
     createdAt: ligne.createdAt.toISOString(),
     id: ligne.id,
     pinned: ligne.pinned,
@@ -95,6 +105,43 @@ function vueMessage(ligne: LigneMessage): MessageVue {
     role: lireRole(ligne.role),
     text: ligne.text,
   };
+}
+
+/**
+ * Les URL signées Vercel Blob expirent après 10 min : on réémet une URL
+ * fraîche pour chaque pièce jointe appartenant au compte avant rendu ou envoi
+ * au modèle.
+ */
+export async function rafraichirPiecesJointesCoach(
+  messages: readonly MessageVue[],
+  userId: string
+): Promise<MessageVue[]> {
+  return Promise.all(
+    messages.map(async (message) => {
+      if (message.attachments.length === 0) {
+        return message;
+      }
+      const attachments = await Promise.all(
+        message.attachments.map(async (piece) => {
+          if (!isVercelBlobUrl(piece.url) && !piece.pathname) {
+            return piece;
+          }
+          const pathname =
+            (piece.pathname && isBlobPathnameOwnedBy(piece.pathname, userId)
+              ? piece.pathname
+              : null) ?? blobPathnameFromUrl(piece.url);
+          if (!pathname || !isBlobPathnameOwnedBy(pathname, userId)) {
+            return piece;
+          }
+          const signed = await signBlobPathForUser(pathname, userId).catch(
+            () => null
+          );
+          return signed ? { ...piece, pathname, url: signed } : piece;
+        })
+      );
+      return { ...message, attachments };
+    })
+  );
 }
 
 export async function listerConversationsCoach(
@@ -143,11 +190,15 @@ export async function lireConversationCoach(
     .orderBy(asc(quizzlyCoachMessage.createdAt));
   return {
     conversation: vueConversation(conversation),
-    messages: messages.map(vueMessage),
+    messages: await rafraichirPiecesJointesCoach(
+      messages.map(vueMessage),
+      userId
+    ),
   };
 }
 
 export async function ouvrirConversationCoach(params: {
+  attachments?: CoachAttachment[];
   intent: CoachIntent;
   questionId: string | null;
   quizId: string | null;
@@ -184,6 +235,7 @@ export async function ouvrirConversationCoach(params: {
     const [message] = await tx
       .insert(quizzlyCoachMessage)
       .values({
+        attachments: params.attachments ?? [],
         conversationId: conversation.id,
         role: "user",
         text: params.text,
@@ -202,6 +254,7 @@ export async function ouvrirConversationCoach(params: {
 }
 
 export async function poursuivreConversationCoach(params: {
+  attachments?: CoachAttachment[];
   id: string;
   text: string;
   userId: string;
@@ -234,6 +287,7 @@ export async function poursuivreConversationCoach(params: {
     }
     const maintenant = new Date();
     await tx.insert(quizzlyCoachMessage).values({
+      attachments: params.attachments ?? [],
       conversationId: params.id,
       role: "user",
       text: params.text,

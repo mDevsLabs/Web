@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
+import { resolveAccount } from "@/lib/integrations/account";
 import { packCredential } from "@/lib/integrations/credential-envelope";
-import { resolveAccount } from "@/lib/integrations/oauth";
 import { getIntegrationProvider } from "@/lib/integrations/providers";
 import { storeConnection } from "@/lib/integrations/repository";
 import {
@@ -113,17 +113,7 @@ export async function POST(
       : token;
 
   try {
-    const identity = await resolveAccount(
-      descriptor,
-      {
-        accessToken: stored,
-        expiresAt: null,
-        idToken: null,
-        refreshToken: null,
-        scopes: descriptor.scopes.join(" "),
-      },
-      { clientId: "", clientSecret: "" }
-    );
+    const identity = await resolveAccount(descriptor, stored);
     if (!identity) {
       // Le fournisseur a répondu, mais sans identité exploitable : le jeton est
       // invalide ou n'a pas les droits minimaux. Ne rien stocker.
@@ -142,7 +132,7 @@ export async function POST(
       provider: descriptor.id,
       providerAccountId: identity.providerAccountId,
       refreshToken: null,
-      scopes: descriptor.scopes.join(" "),
+      scopes: "",
       userId: auth.userId,
     });
 

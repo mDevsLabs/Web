@@ -89,6 +89,29 @@ export async function getAgentRunByMessageId(params: {
   return row ?? null;
 }
 
+/**
+ * Détache `messageId` d'un run terminé (`completed`, `failed`, `cancelled`,
+ * `timed_out`) afin de libérer l'index unique `(chatId, messageId)` lors d'une
+ * régénération explicite ou d'une relance après erreur. L'historique du run
+ * précédent reste conservé en base.
+ */
+export async function detachAgentRunMessageId(params: {
+  chatId: string;
+  messageId: string;
+}): Promise<void> {
+  const db = await dbReady();
+  await db
+    .update(agentRun)
+    .set({ messageId: null })
+    .where(
+      and(
+        eq(agentRun.chatId, params.chatId),
+        eq(agentRun.messageId, params.messageId),
+        sql`${agentRun.status} NOT IN ('queued', 'running', 'waiting_for_tool', 'waiting_for_approval', 'waiting_for_user')`
+      )
+    );
+}
+
 // Réservation d'exécution atomique. La lease dépasse la limite HTTP (300 s)
 // et sera libérée par le runtime à la clôture, y compris en attente utilisateur.
 export async function claimAgentRunExecution(params: {

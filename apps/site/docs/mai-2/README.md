@@ -8,7 +8,7 @@ mAI-2 est présenté dans le catalogue comme un modèle cloud accessible avec l�
 | Contexte déclaré | 1 000 000 tokens |
 | Sortie maximale déclarée | 384 000 tokens |
 | Entrée image | Oui |
-| Licence indiquée | MIT |
+| Licence indiquée | Propriétaire |
 | Date de sortie indiquée | 25 octobre 2026 |
 
 ## Appel API

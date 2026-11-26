@@ -51,10 +51,12 @@ import {
 } from "@/lib/planning/recurrence";
 import { deriveScheduleToolMode } from "@/lib/planning/tool-mode";
 import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
-import { getPluginManifest } from "@/lib/plugins/catalog";
-import { createPluginTools, getPluginSystemHints } from "@/lib/plugins/server";
-import { canUsePlugin } from "@/lib/plugins/tier-lock";
-import { customPluginChatTools } from "@/lib/plugins/user-plugin-tools";
+import { getPluginManifest } from "@/lib/plugins/core/catalog";
+import {
+  createPluginTools,
+  getPluginSystemHints,
+} from "@/lib/plugins/core/server";
+import { customPluginChatTools } from "@/lib/plugins/core/user-plugin-tools";
 import { buildChatSystemPrompt } from "@/lib/prompts/chat";
 import {
   composePersonalInstructions,
@@ -366,15 +368,13 @@ export async function executeScheduledMessage(scheduledId: string) {
     const pluginInstallations = await getPluginInstallationsByUserId({
       userId,
     });
-    const persistedTier = await getPersistedTier({ userId });
-    const tier = persistedTier.ok ? persistedTier.tier : "free";
     const enabledPluginIds =
       toolMode === "none"
         ? []
         : pluginInstallations.flatMap((installation) => {
             if (!installation.isEnabled) return [];
             const plugin = getPluginManifest(installation.pluginId);
-            return plugin && canUsePlugin(plugin, tier) ? [plugin.id] : [];
+            return plugin ? [plugin.id] : [];
           });
     // La planification n'est pas un canal interactif: `createPluginTools` n'y
     // sert que la lecture des connecteurs. Une écriture planifiée relève de

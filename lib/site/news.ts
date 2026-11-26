@@ -157,10 +157,23 @@ function readArticle(slug: string): NewsArticle | null {
   }
 }
 
-/** Tous les articles, y compris les articles masqués (visibility: hidden). */
-export function getAllNewsArticles(): NewsArticle[] {
+/**
+ * Articles lus et parsés une seule fois par processus.
+ *
+ * `getNewsArticles()` est appelé par le layout `/site` à chaque requête ; les
+ * relire et re-parser le disque (JSON + Markdown par article) ne pouvait rien
+ * apprendre avant le déploiement suivant. `null` distingue « pas encore lu »
+ * d'un dossier réellement vide.
+ */
+let cachedArticles: NewsArticle[] | null = null;
+
+function loadAllNewsArticles(): NewsArticle[] {
+  if (cachedArticles) {
+    return cachedArticles;
+  }
   if (!fs.existsSync(newsDirectory)) {
-    return [];
+    cachedArticles = [];
+    return cachedArticles;
   }
 
   const articles: NewsArticle[] = [];
@@ -170,7 +183,13 @@ export function getAllNewsArticles(): NewsArticle[] {
   }
 
   // Tri par date décroissante (format ISO ou comparaison de chaînes simple).
-  return articles.sort((a, b) => b.date.localeCompare(a.date));
+  cachedArticles = articles.sort((a, b) => b.date.localeCompare(a.date));
+  return cachedArticles;
+}
+
+/** Tous les articles, y compris les articles masqués (visibility: hidden). */
+export function getAllNewsArticles(): NewsArticle[] {
+  return loadAllNewsArticles();
 }
 
 /** Articles visibles dans les listes (les articles `hidden` sont exclus). */
@@ -181,10 +200,7 @@ export function getNewsArticles(): NewsArticle[] {
 }
 
 export function getNewsArticle(slug: string): NewsArticle | null {
-  if (!fs.existsSync(newsDirectory)) {
-    return null;
-  }
-  return readArticle(slug);
+  return loadAllNewsArticles().find((article) => article.slug === slug) ?? null;
 }
 
 /** Catégories uniques des articles visibles, triées alphabétiquement. */

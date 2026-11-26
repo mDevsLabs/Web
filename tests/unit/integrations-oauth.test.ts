@@ -1,24 +1,18 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
-  buildAuthorizeUrl,
   callbackUriFor,
   newNonce,
   openState,
-  readCredentials,
   sanitizeReturnTo,
   sealState,
   stateCookieName,
   stateCookiePath,
-} from "@/lib/integrations/oauth";
-import {
-  getIntegrationProvider,
-  hasWriteScope,
-} from "@/lib/integrations/providers";
+} from "@/lib/plugins/core/oauth-state";
 
 /**
- * Le scellement de l'état OAuth et l'URI de rappel sont les deux pièces qui
- * transforment un redirect en authentification : ce fichier les teste sans
- * réseau, sans base et sans écran de consentement.
+ * Le scellement de l'état OAuth et l'URI de rappel restent utilisés par les
+ * plugins OAuth personnels (`/api/user-plugins/[id]/connect` et `callback`) :
+ * ce fichier les teste sans réseau, sans base et sans écran de consentement.
  */
 
 const ENV_KEYS = [
@@ -26,10 +20,6 @@ const ENV_KEYS = [
   "MCP_ENCRYPTION_KEY_ID",
   "MCP_ENCRYPTION_PREVIOUS_KEYS",
   "MCP_ENCRYPTION_ALLOW_LEGACY_DERIVED_KEY",
-  "GOOGLE_CLIENT_ID",
-  "GOOGLE_CLIENT_SECRET",
-  "GITHUB_CLIENT_ID",
-  "GITHUB_CLIENT_SECRET",
   "MAI_OAUTH_REDIRECT_BASE_URL",
 ] as const;
 
@@ -54,75 +44,75 @@ afterEach(() => {
   }
 });
 
-const github = getIntegrationProvider("github")!;
-
 describe("sealState / openState", () => {
-  it("fait voyager l'identité, la page de retour et l'installation différée", () => {
+  it("fait voyager l'identité, la page de retour et l'identifiant de plugin", () => {
     const nonce = newNonce();
     const state = sealState({
-      i: "github",
+      i: "custom-1",
       n: nonce,
-      p: "github",
-      r: "/tools/plugins/github",
+      p: "custom-1",
+      r: "/tools/plugins",
       u: "user-1",
       x: Date.now() + 60_000,
     });
-    const opened = openState(state, { nonce, provider: "github" });
+    const opened = openState(state, { nonce, provider: "custom-1" });
     expect(opened).toMatchObject({
-      i: "github",
+      i: "custom-1",
       n: nonce,
-      p: "github",
-      r: "/tools/plugins/github",
+      p: "custom-1",
+      r: "/tools/plugins",
       u: "user-1",
     });
   });
 
-  it("rejecte un état forgé, sans le déchiffrer partiellement", () => {
+  it("rejette un état forgé, sans le déchiffrer partiellement", () => {
     expect(
-      openState("mai1.v0.Zm9v", { nonce: newNonce(), provider: "github" })
+      openState("mai1.v0.Zm9v", { nonce: newNonce(), provider: "custom-1" })
     ).toBeNull();
     expect(
-      openState("pas-un-état", { nonce: newNonce(), provider: "github" })
+      openState("pas-un-état", { nonce: newNonce(), provider: "custom-1" })
     ).toBeNull();
   });
 
-  it("rejecte un cookie de nonce absent ou différent", () => {
+  it("rejette un cookie de nonce absent ou différent", () => {
     const nonce = newNonce();
     const state = sealState({
       n: nonce,
-      p: "github",
+      p: "custom-1",
       r: "/chat/1",
       u: "user-1",
       x: Date.now() + 60_000,
     });
     expect(
-      openState(state, { nonce: undefined, provider: "github" })
+      openState(state, { nonce: undefined, provider: "custom-1" })
     ).toBeNull();
-    expect(openState(state, { nonce: "autre", provider: "github" })).toBeNull();
+    expect(
+      openState(state, { nonce: "autre", provider: "custom-1" })
+    ).toBeNull();
   });
 
-  it("rejecte un état expiré", () => {
+  it("rejette un état expiré", () => {
     const nonce = newNonce();
     const state = sealState({
       n: nonce,
-      p: "github",
+      p: "custom-1",
       r: "/chat/1",
       u: "user-1",
       x: Date.now() - 1,
     });
-    expect(openState(state, { nonce, provider: "github" })).toBeNull();
+    expect(openState(state, { nonce, provider: "custom-1" })).toBeNull();
   });
 
   it("refuse qu'un état d'un fournisseur déverrouille la connexion d'un autre", () => {
     const nonce = newNonce();
     const state = sealState({
       n: nonce,
-      p: "github",
+      p: "custom-1",
       r: "/chat/1",
       u: "user-1",
       x: Date.now() + 60_000,
     });
-    expect(openState(state, { nonce, provider: "notion" })).toBeNull();
+    expect(openState(state, { nonce, provider: "custom-2" })).toBeNull();
   });
 
   it("échoue franchement sans coffre configuré", () => {
@@ -130,26 +120,26 @@ describe("sealState / openState", () => {
     expect(() =>
       sealState({
         n: "n",
-        p: "github",
+        p: "custom-1",
         r: "/chat/1",
         u: "user-1",
         x: Date.now() + 60_000,
       })
     ).toThrow(/MCP_ENCRYPTION_KEY/);
     expect(
-      openState("mai1.v0.AAA", { nonce: "n", provider: "github" })
+      openState("mai1.v0.AAA", { nonce: "n", provider: "custom-1" })
     ).toBeNull();
   });
 
   it("isole le nonce par fournisseur : deux onglets ne s'écrasent pas", () => {
-    expect(stateCookieName("github")).toBe("mai_oauth_nonce-github");
-    expect(stateCookieName("github")).not.toBe(stateCookieName("notion"));
+    expect(stateCookieName("custom-1")).toBe("mai_oauth_nonce-custom-1");
+    expect(stateCookieName("custom-1")).not.toBe(stateCookieName("custom-2"));
   });
 
   it("place et efface le nonce sur le chemin public, basePath compris", () => {
-    expect(stateCookiePath()).toBe("/api/integration");
-    expect(stateCookiePath("/demo")).toBe("/demo/api/integration");
-    expect(stateCookiePath("/demo/")).toBe("/demo/api/integration");
+    expect(stateCookiePath()).toBe("/api/user-plugins");
+    expect(stateCookiePath("/demo")).toBe("/demo/api/user-plugins");
+    expect(stateCookiePath("/demo/")).toBe("/demo/api/user-plugins");
   });
 });
 
@@ -166,52 +156,24 @@ describe("sanitizeReturnTo", () => {
   });
 });
 
-describe("buildAuthorizeUrl", () => {
-  const params = {
-    clientId: "client-id",
-    redirectUri: "https://mai.example/api/integration/github/callback",
-    state: "état-scellé",
-  };
-
-  it("n'invente à GitHub aucun paramètre de refresh", () => {
-    const url = new URL(
-      buildAuthorizeUrl(github, {
-        ...params,
-        redirectUri: "https://mai.example/api/integration/github/callback",
-      })
-    );
-    expect(url.origin).toBe("https://github.com");
-    expect(url.searchParams.has("access_type")).toBe(false);
-    expect(url.searchParams.has("prompt")).toBe(false);
-    expect(url.searchParams.get("scope")).toBe("repo public_repo read:user");
-  });
-
-  it("n'ajoute pas de PKCE", () => {
-    const url = new URL(buildAuthorizeUrl(github, params));
-    expect(github.pkce).toBe(false);
-    expect(url.searchParams.has("code_challenge")).toBe(false);
-    expect(url.searchParams.get("state")).toBe("état-scellé");
-  });
-});
-
 describe("callbackUriFor", () => {
   it("conserve l'origine et le basePath tels que reçus", () => {
     expect(
       callbackUriFor({
-        requestUrl: "https://mai.example/demo/api/integration/github/connect",
+        requestUrl:
+          "https://mai.example/demo/api/user-plugins/custom-1/connect",
       })
-    ).toBe("https://mai.example/demo/api/integration/github/callback");
+    ).toBe("https://mai.example/demo/api/user-plugins/custom-1/callback");
   });
 
   it("suit le protocole réellement perçu derrière un proxy", () => {
-    // `x-forwarded-proto` peut arriver avec ou sans deux-points, et en liste.
     for (const protocol of ["https", "https:", "https, http"]) {
       expect(
         callbackUriFor({
           protocol,
-          requestUrl: "http://127.0.0.1:3000/api/integration/github/connect",
+          requestUrl: "http://127.0.0.1:3000/api/user-plugins/custom-1/connect",
         })
-      ).toBe("https://127.0.0.1:3000/api/integration/github/callback");
+      ).toBe("https://127.0.0.1:3000/api/user-plugins/custom-1/callback");
     }
   });
 
@@ -219,9 +181,9 @@ describe("callbackUriFor", () => {
     process.env.MAI_OAUTH_REDIRECT_BASE_URL = "http://localhost:3000";
     expect(
       callbackUriFor({
-        requestUrl: "https://mai.example/api/integration/github/connect",
+        requestUrl: "https://mai.example/api/user-plugins/custom-1/connect",
       })
-    ).toBe("http://localhost:3000/api/integration/github/callback");
+    ).toBe("http://localhost:3000/api/user-plugins/custom-1/callback");
   });
 
   it("ne fabrique pas une URI hors du flux", () => {
@@ -229,31 +191,5 @@ describe("callbackUriFor", () => {
       callbackUriFor({ requestUrl: "https://mai.example/api/plugins" })
     ).toBeNull();
     expect(callbackUriFor({ requestUrl: "pas une url" })).toBeNull();
-  });
-});
-
-describe("readCredentials", () => {
-  it("reste muet tant que le couple d'identifiants n'est pas complet", () => {
-    expect(readCredentials(github)).toBeNull();
-    process.env.GITHUB_CLIENT_ID = "id";
-    expect(readCredentials(github)).toBeNull();
-    process.env.GITHUB_CLIENT_SECRET = "secret";
-    expect(readCredentials(github)).toEqual({
-      clientId: "id",
-      clientSecret: "secret",
-    });
-  });
-
-  it("ignore un couple d'identifiants qui n'est pas celui de GitHub", () => {
-    process.env.GOOGLE_CLIENT_ID = "google-id";
-    process.env.GOOGLE_CLIENT_SECRET = "google-secret";
-    expect(readCredentials(github)).toBeNull();
-  });
-});
-
-describe("portées d'écriture", () => {
-  it("lit les portées GitHub séparées par des virgules", () => {
-    expect(hasWriteScope(github, "repo,read:user")).toBe(true);
-    expect(hasWriteScope(github, "read:user")).toBe(false);
   });
 });

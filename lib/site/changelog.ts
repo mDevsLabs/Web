@@ -20,52 +20,53 @@ export type ChangelogsByProject = {
   mSearchRaw?: string;
 };
 
+/**
+ * Contenu figé au premier rendu du processus.
+ *
+ * Les changelogs sont des fichiers versionnés avec le build : les relire et
+ * les re-parser à chaque requête (`/site`, `/changelog`) ne pouvait rien
+ * apprendre de neuf avant le déploiement suivant. Un nouveau processus (ou un
+ * redéploiement) repart de zéro.
+ */
+let cachedChangelogs: ChangelogsByProject | null = null;
+
 export function getChangelogs(): ChangelogsByProject {
-  const mAIPath = path.join(
-    process.cwd(),
-    "apps/site/docs/mai/changelog/CHANGELOG.md"
-  );
-  let mAIRaw = "";
-  if (fs.existsSync(mAIPath)) {
-    mAIRaw = fs.readFileSync(mAIPath, "utf8");
+  if (cachedChangelogs) {
+    return cachedChangelogs;
   }
 
-  const mSearchPath = path.join(
-    process.cwd(),
-    "apps/site/docs/msearch/changelog/CHANGELOG.md"
-  );
-  let mSearchRaw = "";
-  if (fs.existsSync(mSearchPath)) {
-    mSearchRaw = fs.readFileSync(mSearchPath, "utf8");
-  }
+  const readRaw = (folder: string): string => {
+    const filePath = path.join(
+      process.cwd(),
+      `apps/site/docs/${folder}/changelog/CHANGELOG.md`
+    );
+    return fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf8") : "";
+  };
 
-  const result: ChangelogsByProject = {
-    mAI: parseChangelog("mai", "mAI", "text-purple-600", "bg-purple-50"),
+  const mAIRaw = readRaw("mai");
+  const mSearchRaw = readRaw("msearch");
+
+  cachedChangelogs = {
+    mAI: parseChangelog(mAIRaw, "mAI", "text-purple-600", "bg-purple-50"),
     mAIRaw,
     mSearch: parseChangelog(
-      "msearch",
+      mSearchRaw,
       "mSearch",
       "text-blue-600",
       "bg-blue-50"
     ),
     mSearchRaw,
   };
-  return result;
+  return cachedChangelogs;
 }
 
 function parseChangelog(
-  folder: string,
+  fileContents: string,
   projectName: string,
   color: string,
   bgColor: string
 ): ChangelogEntry[] {
-  const filePath = path.join(
-    process.cwd(),
-    `apps/site/docs/${folder}/changelog/CHANGELOG.md`
-  );
-  if (!fs.existsSync(filePath)) return [];
-
-  const fileContents = fs.readFileSync(filePath, "utf8");
+  if (!fileContents) return [];
 
   // Split by ## or ### at the start of a line
   const sections = fileContents.split(/^##+\s+/m).filter(Boolean);

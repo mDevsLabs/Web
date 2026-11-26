@@ -25,6 +25,7 @@ import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { useSharedDraft } from "@/hooks/use-shared-draft";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { formatUserFacingAiError } from "@/lib/ai/server-error-message";
 import {
   ACCOUNT_PROFILE_TOOL,
   isProfileAwaiting,
@@ -133,44 +134,10 @@ export function ActiveChatProvider({
   const searchParams = useSearchParams();
   const { setDataStream, setWaitingStatus } = useDataStream();
 
-  const getAiErrorMessage = useCallback((error: unknown) => {
-    const candidate = error as {
-      apiCode?: string;
-      status?: number;
-      statusCode?: number;
-      message?: string;
-    };
-    const message = candidate?.message ?? String(error ?? "");
-    const apiCode = candidate?.apiCode ?? null;
-    const code =
-      candidate?.status ??
-      candidate?.statusCode ??
-      Number(message.match(/\b(403|429|5\d\d|4\d\d)\b/)?.[1]);
-
-    if (apiCode === "quota_exceeded") {
-      return "Quota atteint : mettez à niveau votre forfait pour continuer.";
-    }
-    if (apiCode === "rate_limited") {
-      return "Trop de requêtes, réessayez dans quelques instants !";
-    }
-    if (
-      apiCode === "plan_required" ||
-      apiCode === "access_denied" ||
-      apiCode === "model_access_denied" ||
-      apiCode === "bot_detected"
-    ) {
-      return "Accès refusé pour cette requête.";
-    }
-    if (apiCode === "service_unavailable" || apiCode === "upstream_error") {
-      return "Le service mAI est momentanément indisponible, réessayez plus tard !";
-    }
-    if (code === 403) return "Code 403 : Quota atteint !";
-    if (code === 429)
-      return "Code 429 : Serveurs surchargés, réessayer plus tard !";
-    if (Number.isInteger(code) && code > 0)
-      return `Code ${code} : Une erreur est survenue !`;
-    return "Une erreur est survenue lors de la génération de la réponse.";
-  }, []);
+  const getAiErrorMessage = useCallback(
+    (error: unknown) => formatUserFacingAiError(error),
+    []
+  );
   const { mutate } = useSWRConfig();
   const pendingProjectIdRef = useRef<string | null>(null);
 
@@ -636,6 +603,27 @@ export function ActiveChatProvider({
           });
         }
       }
+      // Retirer une bulle assistant entièrement vide laissée par un échec de
+      // stream avant le premier token (évite l'icône étoiles seule figée).
+      setMessages((current) => {
+        const last = current.at(-1);
+        if (last?.role !== "assistant") {
+          return current;
+        }
+        const parts = Array.isArray(last.parts) ? last.parts : [];
+        const hasVisible = parts.some(
+          (part: any) =>
+            (part?.type === "text" &&
+              typeof part.text === "string" &&
+              part.text.trim().length > 0) ||
+            (part?.type === "reasoning" &&
+              typeof part.text === "string" &&
+              part.text.trim().length > 0) ||
+            part?.type === "file" ||
+            (typeof part?.type === "string" && part.type.startsWith("tool-"))
+        );
+        return hasVisible ? current : current.slice(0, -1);
+      });
       if (error.message?.includes("AI Gateway requires a valid credit card")) {
         setShowCreditCardAlert(true);
       } else {

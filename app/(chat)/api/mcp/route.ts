@@ -3,13 +3,20 @@ import { errorResponse, logError } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   createMcpServer,
+  getMcpServerSecretKeysByUserId,
+  getMcpServerSecrets,
   getMcpServersByUserId,
   getMcpStats,
   getUserMcpPrefs,
   updateMcpServer,
 } from "@/lib/db/queries";
 import { fetchMcpTools, validateMcpConfig } from "@/lib/mcp/client";
-import { toMcpServerDto, toMcpServerDtoList } from "@/lib/mcp/dto";
+import {
+  extractMcpSecretKeys,
+  groupMcpSecretKeysByServerId,
+  toMcpServerDto,
+  toMcpServerDtoList,
+} from "@/lib/mcp/dto";
 import { isEncryptionConfigured } from "@/lib/mcp/encryption";
 import {
   assertMcpRuntimeEnabled,
@@ -84,15 +91,17 @@ export async function GET() {
   }
   const userId = user.id || user.email;
 
-  const [servers, stats] = await Promise.all([
+  const [servers, stats, secretKeyRows] = await Promise.all([
     getMcpServersByUserId({ userId }),
     getMcpStats({ userId }),
+    getMcpServerSecretKeysByUserId(userId).catch(() => []),
   ]);
+  const secretKeysByServerId = groupMcpSecretKeysByServerId(secretKeyRows);
 
   return Response.json({
     // DTO redacté : les colonnes sensibles (authConfig/env/headers) ne
     // repartent jamais vers le client, même si la base en contient encore.
-    servers: toMcpServerDtoList(servers),
+    servers: toMcpServerDtoList(servers, secretKeysByServerId),
     stats,
   });
 }
@@ -254,7 +263,14 @@ export async function POST(request: Request) {
       });
     }
 
-    return Response.json(toMcpServerDto(created), { status: 201 });
+    const secretRows = await getMcpServerSecrets({
+      serverId: created.id,
+      userId,
+    }).catch(() => []);
+    return Response.json(
+      toMcpServerDto(created, extractMcpSecretKeys(secretRows)),
+      { status: 201 }
+    );
   } catch (err: unknown) {
     if (err instanceof z.ZodError) {
       const issues = err.issues

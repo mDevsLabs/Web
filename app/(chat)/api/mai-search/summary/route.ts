@@ -1,25 +1,24 @@
 import { streamText } from "ai";
-import {
-  DEFAULT_CHAT_MODEL,
-  formatModelName,
-  resolveModelMaxOutput,
-} from "@/lib/ai/models";
+import { formatModelName, resolveModelMaxOutput } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import {
-  normalizeReasoningLevel,
+  getModelCapabilitiesFor,
+  resolveReasoningEffort,
   resolveReasoningProviderOptions,
-} from "@/lib/ai/registry/reasoning";
-import { isModelAllowedForTier } from "@/lib/ai/registry/tiers";
+} from "@/lib/ai/registry";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { buildMemoryContext, joinMemoryBlocks } from "@/lib/chat/memory";
-import { MAI_API_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries/chats";
 import { updateSearchQuerySummary } from "@/lib/db/queries/search-history";
 import { getUserPreferences } from "@/lib/db/queries/users";
+import {
+  extractSummarySearchResults,
+  resolveSummaryModelId,
+} from "@/lib/search/summary-config";
 import {
   blocsCompteSynthese,
   promptSyntheseAvecCompte,
@@ -28,6 +27,7 @@ import {
   collectSummarySources,
   createThinkSplitter,
   encodeSummaryEvent,
+  MAI_SEARCH_SUMMARY_MODEL_ID,
   stripThinkTags,
 } from "@/lib/search/summary-stream";
 
@@ -66,17 +66,11 @@ export async function POST(request: Request) {
     const query = typeof body.query === "string" ? body.query.trim() : "";
     const searchId =
       typeof body.searchId === "string" ? body.searchId : undefined;
-    const requestedModelId =
-      typeof body.modelId === "string" && body.modelId.trim()
-        ? body.modelId.trim()
-        : undefined;
     const length =
       body.length === "short" || body.length === "long"
         ? body.length
         : "normal";
-    const searchResults = Array.isArray(body.searchResults)
-      ? body.searchResults
-      : [];
+    const searchResults = extractSummarySearchResults(body);
     const target: SummaryTarget | undefined =
       body.target && typeof body.target === "object" ? body.target : undefined;
     const incomingMessages: SummaryMessage[] = Array.isArray(body.messages)
@@ -92,56 +86,39 @@ export async function POST(request: Request) {
       return new Response("Requête manquante", { status: 400 });
     }
 
-    // Résolution de l'utilisateur et de son modèle
+    // Résolution de l'utilisateur et du modèle souverain imposé pour mAI Search
     const session = await requireUser();
-    const [preferences, memoryContext] = session
-      ? await Promise.all([
-          getUserPreferences(session.userId).catch(() => null),
-          buildMemoryContext({
+    const [preferences, memoryContext, catalogue] = await Promise.all([
+      session
+        ? getUserPreferences(session.userId).catch(() => null)
+        : Promise.resolve(null),
+      session
+        ? buildMemoryContext({
             effectiveAgentId: null,
             effectiveProjectId: null,
             isGhostMode: false,
             tier: session.user.tier,
             userId: session.userId,
-          }),
-        ])
-      : [null, null];
-    let modelId = requestedModelId || DEFAULT_CHAT_MODEL;
+          })
+        : Promise.resolve(null),
+      fetchUserModels().catch(() => []),
+    ]);
 
-    if (!requestedModelId && preferences?.defaultChatModel) {
-      modelId = preferences.defaultChatModel;
-    }
-
-    /**
-     * LE MODÈLE DEMANDÉ EST VALIDÉ, PAS DÉSIGNÉ.
-     *
-     * Le corps de la requête portait un `modelId` que le serveur utilisait
-     * tel quel. Un appel direct pouvait donc demander N'IMPORTE QUEL
-     * identifiant de modèle — y compris un modèle que le compte n'a pas
-     * droit d'utiliser, ou un identifiant qui n'existe pas.
-     *
-     * La règle est celle du mode Agent (`app/(chat)/api/agent/route.ts`) :
-     * le modèle demandé n'est retenu que s'il EXISTE dans le catalogue du
-     * compte et s'il est autorisé pour son forfait. Sinon, on retombe sur
-     * le modèle par défaut du compte, puis sur le modèle produit.
-     */
-    if (requestedModelId) {
-      const catalogue = await fetchUserModels().catch(() => []);
-      const existe = catalogue.some((model) => model.id === requestedModelId);
-      const autorise = isModelAllowedForTier(
-        requestedModelId,
-        session?.user.tier ?? "free"
-      );
-      if (!existe || !autorise) {
-        const prefere = preferences?.defaultChatModel;
-        const repli =
-          prefere &&
-          isModelAllowedForTier(prefere, session?.user.tier ?? "free")
-            ? prefere
-            : DEFAULT_CHAT_MODEL;
-        modelId = repli;
-      }
-    }
+    const modelId = resolveSummaryModelId({
+      catalogue,
+      tier: session?.user.tier ?? "free",
+    });
+    const capabilities = getModelCapabilitiesFor(
+      modelId,
+      catalogue.length > 0 ? catalogue : undefined
+    );
+    const effort = resolveReasoningEffort({
+      capabilities,
+      preferred: preferences?.reasoningLevel,
+    });
+    const providerOptions = effort.effort
+      ? resolveReasoningProviderOptions(effort.effort)
+      : undefined;
 
     const followUp = Boolean(target) || incomingMessages.length > 0;
     const summarySources = sourcesForSummary(searchResults);
@@ -287,42 +264,7 @@ N'utilise aucune connaissance extérieure aux extraits.`;
         const totalTokens =
           usage?.totalTokens ?? inputTokens + outputTokens + reasoningTokens;
 
-        // 1. Journalisation obligatoire dans l'endpoint API mAI /log-usage
-        try {
-          const logPayload = {
-            inputTokens,
-            isGhostMode: false,
-            model: modelId,
-            outputTokens,
-            reasoningTokens,
-            tokensUsed: totalTokens,
-          };
-
-          const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
-            body: JSON.stringify(logPayload),
-            headers: {
-              ...(sessionToken
-                ? { Authorization: `Bearer ${sessionToken}` }
-                : {}),
-              "Content-Type": "application/json",
-            },
-            method: "POST",
-          });
-
-          if (!logRes.ok) {
-            console.warn(
-              "[mAI-Search-Summary] Notification /log-usage statut HTTP:",
-              logRes.status
-            );
-          }
-        } catch (logErr) {
-          console.error(
-            "[mAI-Search-Summary] Erreur lors de l'enregistrement dans /log-usage:",
-            logErr
-          );
-        }
-
-        // 2. Enregistrement local en base de données si utilisateur connecté
+        // Enregistrement direct en base de données si utilisateur connecté
         if (session?.userId && totalTokens > 0) {
           try {
             await recordTokenUsage({
@@ -347,9 +289,7 @@ N'utilise aucune connaissance extérieure aux extraits.`;
         // `onFinish` peut partir avant que les derniers deltas de réflexion
         // aient été accumulés.
       },
-      providerOptions: resolveReasoningProviderOptions(
-        normalizeReasoningLevel(preferences?.reasoningLevel)
-      ),
+      ...(providerOptions ? { providerOptions } : {}),
       stopWhen: ({ steps }: any) => {
         const lastStep = steps.at(-1);
         if (lastStep?.toolCalls && lastStep.toolCalls.length > 0) {
@@ -468,9 +408,9 @@ N'utilise aucune connaissance extérieure aux extraits.`;
         "Content-Type": "text/event-stream; charset=utf-8",
         "X-Model-Id": modelId,
         "X-Model-Name": formatModelName(modelId).name,
-        ...(requestedModelId && modelId !== requestedModelId
-          ? { "X-Model-Substituted": "1" }
-          : {}),
+        ...(modelId === MAI_SEARCH_SUMMARY_MODEL_ID
+          ? {}
+          : { "X-Model-Substituted": "1" }),
       },
     });
   } catch (error: any) {

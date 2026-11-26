@@ -20,21 +20,18 @@
  * un silence.
  */
 
-/** Intervalle de revalidation du catalogue de modèles (10 minutes). */
-export const MODEL_CATALOG_REFRESH_INTERVAL = 600_000;
+/**
+ * Intervalle de revalidation du catalogue de modèles : 0 (désactivé).
+ * Le catalogue est rafraîchi au montage initial et à la sélection d'un modèle,
+ * sans réveiller périodiquement Vercel/Neon sur les onglets inactifs.
+ */
+export const MODEL_CATALOG_REFRESH_INTERVAL = 0;
 
 /** Sources de catalogue exposées par l'hôte mAI (routes Next). */
 export const MODEL_CATALOG_ENDPOINTS = {
   chat: "/api/models",
   images: "/api/models/images",
   speech: "/api/models/speech",
-} as const;
-
-/** Sources de catalogue exposées par le Site officiel (routes BFF). */
-export const SITE_MODEL_CATALOG_ENDPOINTS = {
-  chat: "/api/site/v1/models",
-  images: "/api/site/v1/models/images",
-  speech: "/api/site/v1/models/audio",
 } as const;
 
 export type ModelCatalogSource = keyof typeof MODEL_CATALOG_ENDPOINTS;
@@ -48,15 +45,8 @@ export function modelCatalogKey(path: string): string {
 }
 
 /**
- * Toutes les clés de catalogue, hôte et Site confondues.
- *
- * La revalidation globale passe par cette liste : changer de modèle dans le
- * sélecteur de l'hôte doit aussi rafraîchir le catalogue affiché par le
- * playground du Site, et réciproquement. Les deux lisent le même backend
- * (`/v1/models` filtré par le tier) : un catalogue périmé d'un côté l'est
- * forcément de l'autre.
+ * Toutes les clés de catalogue de l'hôte mAI.
  */
-export const MODEL_CATALOG_SWR_KEYS: readonly string[] = [
-  ...Object.values(MODEL_CATALOG_ENDPOINTS),
-  ...Object.values(SITE_MODEL_CATALOG_ENDPOINTS),
-].map(modelCatalogKey);
+export const MODEL_CATALOG_SWR_KEYS: readonly string[] = Object.values(
+  MODEL_CATALOG_ENDPOINTS
+).map(modelCatalogKey);

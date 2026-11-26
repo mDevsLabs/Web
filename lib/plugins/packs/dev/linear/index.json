@@ -1,0 +1,46 @@
+{
+  "author": "mAI",
+  "category": "dev",
+  "description": "Reliez Linear par clé API personnelle : l'IA liste vos équipes, lit et recherche vos issues, et peut créer un ticket dans l'Agent après votre approbation.",
+  "icon": { "src": "/plugins/linear.svg", "type": "image" },
+  "id": "linear",
+  "name": "Linear",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["linear", "issues", "roadmap", "projet", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les équipes Linear du compte.",
+      "effect": "read",
+      "id": "linearListTeams",
+      "label": "Équipes Linear",
+      "systemHint": "La clé d'équipe (key) sert à parler d'un espace, l'identifiant sert aux filtres."
+    },
+    {
+      "description": "Liste les issues Linear récentes, filtrables par un mot du titre.",
+      "effect": "read",
+      "id": "linearListIssues",
+      "label": "Issues Linear",
+      "systemHint": "Citez l'identifiant lisible (ENG-123) et l'URL, pas seulement le titre."
+    },
+    {
+      "description": "Lit le détail complet d'une issue Linear (description, priorité, assigné, état).",
+      "effect": "read",
+      "id": "linearGetIssue",
+      "label": "Détail d'une issue Linear",
+      "systemHint": "Accepte l'identifiant lisible (ENG-123) ou l'UUID de l'issue."
+    },
+    {
+      "description": "Crée une issue Linear dans une équipe (Agent uniquement, approbation requise).",
+      "effect": "write",
+      "id": "linearCreateIssue",
+      "label": "Créer une issue Linear",
+      "systemHint": "Annoncez l'équipe cible, le titre et la description avant approbation."
+    }
+  ],
+  "version": "1.1.0"
+}

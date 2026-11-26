@@ -6,14 +6,15 @@
  * L'ordre est le produit, pas une décoration. Wakies est une messagerie
  * d'intelligences artificielles : les trois premières entrées sont donc ce
  * qu'on y fait — parler (Messages), trouver des Wakies (Amis), dire qui l'on
- * est (Mon profil). Le reste — Activité, Objectifs, Travail, Aujourd'hui,
+ * est (Mon profil). Le reste — Activité, Objectifs, Aujourd'hui,
  * Mémoires — est l'espace de travail, sous un intitulé
  * explicite, et n'est plus ce qu'on voit en premier.
  *
  * « Idées » a disparu de cette liste : le moteur de suggestions d'OpenMuse
  * n'est pas branché, et une entrée de navigation qui n'ouvre sur rien est un
  * mensonge d'interface. L'écran reste dans le code, l'entrée n'est plus
- * proposée.
+ * proposée. « Travail » a également été retiré : chaque Espace s'ouvre
+ * directement depuis la liste « ESPACES » du rail ou depuis Aujourd'hui.
  *
  * Les classes CSS internes (`muse-*`) sont conservées : elles n'apparaissent
  * pas dans l'interface, et les renommer toucherait des milliers de règles
@@ -23,7 +24,6 @@
 import {
   type ActivityIcon,
   BookOpenIcon,
-  FolderIcon,
   ListChecksIcon,
   MessageCircleIcon,
   SquareCheckIcon,
@@ -65,7 +65,6 @@ const sections: ReadonlyArray<{
   { groupe: "messagerie", icon: UserIcon, id: "profil", label: "Mon profil" },
   { groupe: "travail", icon: ListChecksIcon, id: "tasks", label: "Activité" },
   { groupe: "travail", icon: SquareCheckIcon, id: "goals", label: "Objectifs" },
-  { groupe: "travail", icon: FolderIcon, id: "space", label: "Travail" },
   { groupe: "travail", icon: SunIcon, id: "today", label: "Aujourd’hui" },
   { groupe: "travail", icon: BookOpenIcon, id: "memories", label: "Mémoires" },
 ];

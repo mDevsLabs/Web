@@ -24,7 +24,7 @@ import {
   toolExecution,
   usageEvent,
 } from "@/lib/db/schema";
-import { getPluginByToolId } from "@/lib/plugins/catalog";
+import { getPluginByToolId } from "@/lib/plugins/core/catalog";
 import { toNumber } from "@/lib/stats/sql-helpers";
 import {
   bucketKey,

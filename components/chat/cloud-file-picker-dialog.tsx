@@ -124,7 +124,7 @@ export function CloudFilePickerDialog({
 
         {/* Barre de recherche */}
         <div className="relative">
-          <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+          <SearchIcon className="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 size-4 text-muted-foreground" />
           <Input
             className="h-9 pl-9 pr-3 rounded-xl border-border/60 bg-muted/30 text-xs"
             onChange={(e) => setSearchQuery(e.target.value)}

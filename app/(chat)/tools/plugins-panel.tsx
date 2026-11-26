@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  CheckIcon,
-  Loader2Icon,
-  LockIcon,
-  PlusIcon,
-  Trash2Icon,
-} from "@mdevs/icons";
+import { CheckIcon, Loader2Icon, PlusIcon, Trash2Icon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
@@ -15,9 +9,9 @@ import useSWR from "swr";
 import { Button } from "@/components/ui/button";
 import { getIntegrationByPluginId } from "@/lib/integrations/providers";
 import type { IntegrationStatus } from "@/lib/integrations/status";
-import { PLUGIN_CATEGORIES } from "@/lib/plugins/catalog";
-import { PluginIcon } from "@/lib/plugins/icon";
-import type { PluginCatalogEntry } from "@/lib/plugins/types";
+import { PLUGIN_CATEGORIES } from "@/lib/plugins/core/catalog";
+import { PluginIcon } from "@/lib/plugins/core/icon";
+import type { PluginCatalogEntry } from "@/lib/plugins/core/types";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { confirmInApp } from "@/lib/ui/app-dialog";
@@ -26,6 +20,7 @@ import { PersonalPlugins } from "./personal-plugins";
 
 type PluginsResponse = { plugins: PluginCatalogEntry[] };
 type IntegrationsResponse = { integrations: IntegrationStatus[] };
+type AccessFilter = "all" | "instant" | "token";
 
 export default function PluginsPanel({
   searchQuery = "",
@@ -37,9 +32,6 @@ export default function PluginsPanel({
     "/api/plugins",
     fetcher
   );
-  // Les connecteurs portent en plus un état de compte : un plugin « activé »
-  // mais non connecté ne peut rien lire, et la vignette doit le dire ici plutôt
-  // que de surprendre au premier message.
   const { data: integrationData, isLoading: isIntegrationLoading } =
     useSWR<IntegrationsResponse>("/api/integration", fetcher);
   const connectedByPlugin = useMemo(() => {
@@ -51,19 +43,15 @@ export default function PluginsPanel({
   }, [integrationData]);
   const plugins = useMemo(() => data?.plugins ?? [], [data]);
   const [category, setCategory] = useState<string | null>(null);
+  const [accessFilter, setAccessFilter] = useState<AccessFilter>("all");
   const [busyPluginId, setBusyPluginId] = useState<string | null>(null);
-  // Rangée d'actions globale : on y porte le bouton « Gérer le catalogue ».
   const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
   }, []);
 
-  // `GET /api/plugins` renvoie déjà le catalogue complet (manifestes + état
-  // d'installation + verrou de forfait) : aucune fusion locale à refaire, une
-  // seule logique de catalogue.
   const entries: PluginCatalogEntry[] = plugins;
-
   const installed = entries.filter((p) => p.installed);
 
   async function runAction(
@@ -96,26 +84,7 @@ export default function PluginsPanel({
     const connector = getIntegrationByPluginId(plugin.id);
     const connection = connectedByPlugin.get(plugin.id);
     if (connector && !connection?.connected) {
-      // Un connecteur à jeton n'a pas d'écran de consentement : la route
-      // `connect` le refuserait, et l'utilisateur atterrirait sur une erreur
-      // au lieu du formulaire. On l'envoie sur la fiche, qui porte le champ.
-      if (connector.authMode === "token") {
-        router.push(`/tools/plugins/${plugin.id}`);
-        return;
-      }
-      if (connection && !connection.vaultConfigured) {
-        toast.error(
-          "Le coffre de secrets n'est pas configuré sur cette instance : la connexion externe est impossible pour le moment."
-        );
-        return;
-      }
-      const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-      const returnTo = `${basePath}/tools/plugins/${plugin.id}`;
-      const connectHref = `${basePath}/api/integration/${connector.id}/connect?returnTo=${encodeURIComponent(
-        returnTo
-      )}&intent=install`;
-      setBusyPluginId(plugin.id);
-      window.location.assign(connectHref);
+      router.push(`/tools/plugins/${plugin.id}`);
       return;
     }
     runAction(
@@ -158,27 +127,31 @@ export default function PluginsPanel({
     );
   };
 
-  // Le clic sur une vignette ouvre la page dédiée du plugin (version,
-  // description, actions) — plus aucune fenêtre contextuelle ici.
   const openPluginPage = (plugin: PluginCatalogEntry) => {
     router.push(`/tools/plugins/${plugin.id}`);
   };
 
-  // Recherche globale : filtrage par catégorie + correspondance, puis tri par
-  // pertinence (nom > description > tags) et alphabétiquement.
   const filtered = useMemo(() => {
-    const matching = entries.filter(
-      (plugin) =>
-        (!category || plugin.category === category) &&
-        matchesQuery(searchQuery, {
-          primary: plugin.name,
-          secondary: [
-            plugin.description,
-            plugin.tools.map((tool) => tool.label).join(", "),
-          ],
-          tags: plugin.tags,
-        })
-    );
+    const matching = entries.filter((plugin) => {
+      if (category && plugin.category !== category) {
+        return false;
+      }
+      const hasConnector = Boolean(getIntegrationByPluginId(plugin.id));
+      if (accessFilter === "instant" && hasConnector) {
+        return false;
+      }
+      if (accessFilter === "token" && !hasConnector) {
+        return false;
+      }
+      return matchesQuery(searchQuery, {
+        primary: plugin.name,
+        secondary: [
+          plugin.description,
+          plugin.tools.map((tool) => tool.label).join(", "),
+        ],
+        tags: plugin.tags,
+      });
+    });
     return sortByRelevance(matching, searchQuery, (plugin) => ({
       primary: plugin.name,
       secondary: [
@@ -187,7 +160,7 @@ export default function PluginsPanel({
       ],
       tags: plugin.tags,
     }));
-  }, [entries, searchQuery, category]);
+  }, [entries, searchQuery, category, accessFilter]);
 
   const sortedInstalled = useMemo(
     () =>
@@ -204,7 +177,6 @@ export default function PluginsPanel({
 
   return (
     <div className="flex w-full flex-col gap-8">
-      {/* Rangée d'actions globale (recherche dans l'en-tête de la page). */}
       {actionsAnchor
         ? createPortal(
             <div className="flex flex-wrap items-center gap-2">
@@ -249,7 +221,6 @@ export default function PluginsPanel({
                   >
                     <PluginIcon className="size-6" icon={plugin.icon} />
                   </button>
-                  {/* Action tactile visible sur mobile ; sur desktop, la fiche plugin expose la même action. */}
                   <button
                     aria-label={`Désinstaller ${plugin.name}`}
                     className="absolute -top-2 -right-2 z-10 flex size-8 items-center justify-center rounded-full border border-border/60 bg-background text-muted-foreground shadow-sm transition hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer sm:hidden"
@@ -274,51 +245,86 @@ export default function PluginsPanel({
         </section>
       ) : null}
 
-      {/* Catégories */}
-      <section
-        aria-label="Catégories de plugins"
-        className="flex max-w-full items-center gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0"
-      >
-        <button
-          aria-pressed={category === null}
-          className={cn(
-            "min-h-11 shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
-            category === null
-              ? "border-primary/40 bg-primary/10 text-primary"
-              : "border-border/60 text-muted-foreground hover:text-foreground"
-          )}
-          onClick={() => setCategory(null)}
-          type="button"
+      {/* Filtres : mode d'accès + catégories métier */}
+      <section className="flex flex-col gap-3">
+        <div
+          aria-label="Mode d'accès"
+          className="flex flex-wrap items-center gap-2"
         >
-          Toutes
-        </button>
-        {PLUGIN_CATEGORIES.map((cat) => (
+          {(
+            [
+              { id: "all", label: "Tous les accès" },
+              { id: "instant", label: "Sans clé (prêts à l'emploi)" },
+              { id: "token", label: "Avec jeton personnel" },
+            ] as const
+          ).map((mode) => (
+            <button
+              aria-pressed={accessFilter === mode.id}
+              className={cn(
+                "min-h-9 shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition-colors cursor-pointer",
+                accessFilter === mode.id
+                  ? "border-foreground/30 bg-foreground/10 text-foreground"
+                  : "border-border/60 text-muted-foreground hover:text-foreground"
+              )}
+              key={mode.id}
+              onClick={() => setAccessFilter(mode.id)}
+              type="button"
+            >
+              {mode.label}
+            </button>
+          ))}
+        </div>
+
+        <div
+          aria-label="Catégories de plugins"
+          className="flex max-w-full items-center gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0"
+        >
           <button
-            aria-pressed={category === cat.id}
+            aria-pressed={category === null}
             className={cn(
-              "flex shrink-0 items-center gap-1.5 whitespace-nowrap min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
-              category === cat.id
+              "min-h-11 shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
+              category === null
                 ? "border-primary/40 bg-primary/10 text-primary"
                 : "border-border/60 text-muted-foreground hover:text-foreground"
             )}
-            key={cat.id}
-            onClick={() => setCategory(cat.id)}
+            onClick={() => setCategory(null)}
             type="button"
           >
-            <PluginIcon
-              className="size-3.5"
-              icon={{ name: cat.icon, type: "lucide" }}
-            />
-            {cat.label}
+            Toutes
           </button>
-        ))}
+          {PLUGIN_CATEGORIES.map((cat) => (
+            <button
+              aria-pressed={category === cat.id}
+              className={cn(
+                "flex shrink-0 items-center gap-1.5 whitespace-nowrap min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
+                category === cat.id
+                  ? "border-primary/40 bg-primary/10 text-primary"
+                  : "border-border/60 text-muted-foreground hover:text-foreground"
+              )}
+              key={cat.id}
+              onClick={() => setCategory(cat.id)}
+              type="button"
+            >
+              <PluginIcon
+                className="size-3.5"
+                icon={{ name: cat.icon, type: "lucide" }}
+              />
+              {cat.label}
+            </button>
+          ))}
+        </div>
       </section>
 
       {/* Catalogue */}
       <section className="flex flex-col gap-3">
-        <h3 className="text-sm font-semibold text-foreground">
-          Tous les plugins
-        </h3>
+        <div className="flex items-baseline justify-between gap-2">
+          <h3 className="text-sm font-semibold text-foreground">
+            Tous les plugins
+          </h3>
+          <span className="text-xs text-muted-foreground">
+            {filtered.length} disponible{filtered.length > 1 ? "s" : ""}
+          </span>
+        </div>
         {filtered.length === 0 ? (
           <p className="py-10 text-center text-sm text-muted-foreground">
             Aucun plugin ne correspond à votre recherche.
@@ -362,22 +368,18 @@ export default function PluginsPanel({
                           />
                           {connector.connected
                             ? `Connecté${connector.accountLabel ? ` — ${connector.accountLabel}` : ""}`
-                            : connector.configured
-                              ? "Aucun compte connecté"
-                              : "Non activé sur cette instance"}
+                            : "Jeton personnel requis"}
                         </span>
-                      ) : null}
+                      ) : (
+                        <span className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                          <span className="size-1.5 rounded-full bg-success/70" />
+                          Sans clé · {plugin.tools.length} outil
+                          {plugin.tools.length > 1 ? "s" : ""}
+                        </span>
+                      )}
                     </span>
                   </button>
-                  {plugin.locked ? (
-                    <span
-                      className="flex shrink-0 items-center gap-1 rounded-full border border-warning/40 bg-warning/10 px-2.5 py-1 text-[11px] font-semibold text-warning"
-                      title={`Réservé au forfait ${plugin.minTier} : l'installation est refusée par le serveur.`}
-                    >
-                      <LockIcon className="size-3" />
-                      {plugin.minTier.toUpperCase()}
-                    </span>
-                  ) : plugin.installed ? (
+                  {plugin.installed ? (
                     <Button
                       className="size-9 shrink-0 rounded-full"
                       disabled={isBusy}
@@ -407,8 +409,8 @@ export default function PluginsPanel({
                       }
                       onClick={() => handleInstall(plugin)}
                       title={
-                        connectorDescriptor
-                          ? `Se connecter à ${connectorDescriptor.label} puis installer`
+                        connectorDescriptor && !connector?.connected
+                          ? `Configurer le jeton ${connectorDescriptor.label}`
                           : "Installer"
                       }
                       variant="ghost"

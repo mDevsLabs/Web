@@ -11,22 +11,32 @@ import {
 } from "@/lib/integrations/token-fields";
 
 const TOKEN_IDS = [
+  "airtable",
   "asana",
   "brave",
   "brevo",
+  "cloudflare",
+  "discord",
   "dockerhub",
   "exchange-rate",
+  "github",
   "jira",
+  "linear",
   "make",
   "mapbox",
   "neon",
-  "npm",
-  "sonarcloud",
-  "supabase",
-  "discord",
   "notion",
+  "npm",
+  "posthog",
+  "resend",
+  "sentry",
+  "slack",
+  "sonarcloud",
+  "stripe",
+  "supabase",
   "twilio",
   "upstash",
+  "vercel",
   "zapier",
 ] as const;
 
@@ -93,6 +103,15 @@ describe("connecteurs à jeton", () => {
       { restOrigin: "https://Ma-Base.upstash.io/chemin" }
     );
     expect(upstash.ok).toBe(false);
+
+    const posthogSpecs =
+      INTEGRATION_PROVIDERS.find((item) => item.id === "posthog")?.token
+        ?.fields ?? [];
+    expect(validateTokenFields(posthogSpecs, { region: "EU" })).toEqual({
+      fields: { region: "eu" },
+      ok: true,
+    });
+    expect(validateTokenFields(posthogSpecs, { region: "ap" }).ok).toBe(false);
   });
 
   it("transporte les champs avec le jeton et laisse un jeton simple intact", () => {

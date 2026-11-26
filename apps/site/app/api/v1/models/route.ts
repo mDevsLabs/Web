@@ -7,7 +7,12 @@ export const runtime = 'nodejs';
 
 function isPublicModel(model: any): boolean {
   const id = String(model?.id || '').toLowerCase();
-  return id === 'mai-2' || id === 'mai-2-mini' || id.includes(':free');
+  return (
+    id === 'mai-2' ||
+    id === 'mai-2-mini' ||
+    id === 'mai-2.5-omni' ||
+    id.includes(':free')
+  );
 }
 
 function catalogUnavailable(): NextResponse<OpenAIErrorResponse> {

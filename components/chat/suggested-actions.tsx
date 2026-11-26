@@ -48,7 +48,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
     (suggestion: string) => {
       if (isQuotaExhausted) {
         toast.error(
-          `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Mettez à niveau votre forfait pour continuer !`
+          "Votre limite hebdomadaire d'usage mAI est atteinte (100%). Mettez à niveau votre forfait pour continuer !"
         );
         return;
       }
@@ -62,7 +62,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
         role: "user",
       });
     },
-    [chatId, sendMessage, isQuotaExhausted, costAiUsed, costAiLimit]
+    [chatId, sendMessage, isQuotaExhausted]
   );
 
   const displayedList =

@@ -28,28 +28,10 @@ export type AppDownload = {
   };
 };
 
+export const WEB_RELEASE_URL =
+  "https://github.com/mDevsLabs/Web/releases/latest";
+
 export const OFFICIAL_APPS: AppDownload[] = [
-  {
-    description:
-      "Publiez, échangez en messages privés et créez avec mAI intégré. Installez l'application mobile pour rester connecté à vos cercles et à vos collections.",
-    iconKey: "messages-square",
-    id: "vibe",
-    name: "mAI Vibe",
-    platforms: [
-      {
-        device: "google",
-        label: "Android",
-        url: "https://github.com/mDevsLabs/Vibe/releases/latest",
-      },
-      {
-        device: "apple",
-        label: "iOS",
-        url: "https://github.com/mDevsLabs/Vibe/releases/latest",
-      },
-    ],
-    releaseUrl: "https://github.com/mDevsLabs/Vibe/releases/latest",
-    tagline: "Le réseau social mAI, sur le web, Android et iOS.",
-  },
   {
     description:
       "Accédez à la puissance de mAI avec accélération matérielle locale, multi-fenêtres et synchronisation complète de vos sessions.",
@@ -58,112 +40,81 @@ export const OFFICIAL_APPS: AppDownload[] = [
     name: "mAI Desktop",
     platforms: [
       {
-        device: "microsoft",
-        label: "Windows",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
-      },
-      {
         device: "apple",
         label: "macOS",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
+        url: WEB_RELEASE_URL,
+      },
+      {
+        device: "microsoft",
+        label: "Windows",
+        url: WEB_RELEASE_URL,
       },
       {
         device: "linux",
         label: "Linux",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
+        url: WEB_RELEASE_URL,
       },
       {
         device: "google",
         label: "Android",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
+        url: WEB_RELEASE_URL,
       },
       {
         device: "apple",
         label: "iOS",
-        url: "https://github.com/mDevsLabs/Desktop/releases/latest",
+        url: WEB_RELEASE_URL,
       },
     ],
-    releaseUrl: "https://github.com/mDevsLabs/Desktop/releases/latest",
+    releaseUrl: WEB_RELEASE_URL,
     tagline:
       "L'application native pour votre poste de travail et appareils mobiles.",
   },
   {
     description:
-      "Interface web réactive et progressive pour échanger avec vos modèles, générer du code et synchroniser vos projets dans le Cloud.",
-    iconKey: "globe",
-    id: "web",
-    name: "mAI Web",
+      "Atelier de développement natif combinant agent IA autonome, éditeur Monaco, terminaux PTY intégrés, gestion Git et support MCP.",
+    iconKey: "code-2",
+    id: "coder",
+    name: "mAI Coder",
     platforms: [
-      {
-        device: "microsoft",
-        label: "Windows",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
-      },
       {
         device: "apple",
         label: "macOS",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
+        url: WEB_RELEASE_URL,
+      },
+      {
+        device: "microsoft",
+        label: "Windows",
+        url: WEB_RELEASE_URL,
       },
       {
         device: "linux",
         label: "Linux",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
+        url: WEB_RELEASE_URL,
       },
+    ],
+    releaseUrl: WEB_RELEASE_URL,
+    tagline: "L'IDE IA autonome pour macOS, Windows et Linux.",
+  },
+  {
+    description:
+      "Réseau social avec IA intégrée : publiez, échangez en messages privés et créez avec mAI nativement. Installez l'application mobile pour rester connecté à vos cercles et à vos collections.",
+    iconKey: "users",
+    id: "vibe",
+    name: "mAI Vibe",
+    platforms: [
       {
         device: "google",
         label: "Android",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
+        url: WEB_RELEASE_URL,
       },
       {
         device: "apple",
         label: "iOS",
-        url: "https://github.com/mDevsLabs/Web/releases/latest",
+        url: WEB_RELEASE_URL,
       },
     ],
-    releaseUrl: "https://github.com/mDevsLabs/Web/releases/latest",
-    tagline:
-      "L'assistant IA Web direct, accessible depuis n'importe quel navigateur.",
-  },
-  {
-    description:
-      "Outil CLI professionnel ultra-rapide pour développeurs : analyse de code, scripts automatisés et pipelines CI/CD.",
-    iconKey: "terminal",
-    id: "cli",
-    name: "mAI CLI",
-    releaseUrl: "https://github.com/mDevsLabs/CLI/releases/latest",
-    tagline:
-      "Discussions et sessions de codage assistées directement dans votre terminal.",
-    terminalCommand: {
-      command: "npm install -g @mdevs/mai-cli",
-      key: "cli-npm",
-      label: "mAI CLI (npm)",
-    },
-  },
-  {
-    description:
-      "Ensemble d'extensions pour navigateurs et éditeurs (VS Code) pour invoquer mAI instantanément dans votre contexte de travail.",
-    iconKey: "cpu",
-    id: "pulse",
-    name: "mAI Pulse",
-    platforms: [
-      {
-        device: "microsoft",
-        label: "Windows",
-        url: "https://github.com/mDevsLabs/Pulse/releases/latest",
-      },
-      {
-        device: "apple",
-        label: "macOS",
-        url: "https://github.com/mDevsLabs/Pulse/releases/latest",
-      },
-      {
-        device: "linux",
-        label: "Linux",
-        url: "https://github.com/mDevsLabs/Pulse/releases/latest",
-      },
-    ],
-    releaseUrl: "https://github.com/mDevsLabs/Pulse/releases/latest",
-    tagline: "L'IA intégrée directement dans vos outils du quotidien.",
+    releaseUrl: WEB_RELEASE_URL,
+    tagline: "Le réseau social mAI sur Android et iOS.",
   },
 ];
 

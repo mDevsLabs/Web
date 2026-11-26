@@ -45,6 +45,7 @@ import { MaiReasoning } from "@/components/vibe/mai/MaiReasoning";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
 import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { formatUserFacingAiError } from "@/lib/ai/server-error-message";
 import {
   buildMAIConversationJSON,
   buildMAIConversationMarkdown,
@@ -284,12 +285,12 @@ export const MAIStudioPage: React.FC = () => {
   /**
    * Rafraîchissement automatique de la liste de repli.
    *
-   * Le `ModelDropdown` recharge déjà `/api/models` toutes les 10 minutes;
+   * Le `ModelDropdown` recharge déjà `/api/models` à la demande ;
    * cette liste-ci n'est que le repli affiché avant que le catalogue du
-   * sélecteur ne réponde. Elle suit la même cadence, pour que les deux
-   * listes ne proposent pas des modèles différents.
+   * sélecteur ne réponde. Désactivé si `MODEL_CATALOG_REFRESH_INTERVAL <= 0`.
    */
   useEffect(() => {
+    if (MODEL_CATALOG_REFRESH_INTERVAL <= 0) return;
     const timer = setInterval(() => {
       void ApiService.getModels()
         .then((res) => {
@@ -751,7 +752,7 @@ export const MAIStudioPage: React.FC = () => {
       refreshQuotas();
     } catch (err: any) {
       const errorMsg: ChatMessage = {
-        content: ` Erreur: ${err.message || "Impossible de joindre mAI."}`,
+        content: formatUserFacingAiError(err),
         id: (Date.now() + 1).toString(),
         sender: "mai",
         time: new Date().toLocaleTimeString("fr-FR", {
@@ -822,9 +823,7 @@ export const MAIStudioPage: React.FC = () => {
       pushMaiMsg(res.reply, res.toolExecuted, res.toolCalls);
       refreshQuotas();
     } catch (err: any) {
-      pushMaiMsg(
-        ` Erreur lors de l'exécution de « ${tool.name}»: ${err.message || "réessayez plus tard."}`
-      );
+      pushMaiMsg(formatUserFacingAiError(err));
     } finally {
       setIsApproving(false);
     }
@@ -880,7 +879,7 @@ export const MAIStudioPage: React.FC = () => {
       haptics.error();
       NotificationService.showInAppToast(
         "Régénération",
-        err?.message || "La régénération de la réponse a échoué.",
+        formatUserFacingAiError(err),
         "error"
       );
     } finally {

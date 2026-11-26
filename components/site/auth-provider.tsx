@@ -9,8 +9,11 @@ import {
   useMemo,
   useState,
 } from "react";
+import { mutate } from "swr";
+import { MODEL_CATALOG_SWR_KEYS } from "@/lib/ai/model-catalog";
 import { purgeLegacyAuthStorage } from "@/lib/site/auth-storage";
 import {
+  downgradeToFree as apiDowngradeToFree,
   login as apiLogin,
   logout as apiLogout,
   register as apiRegister,
@@ -62,6 +65,7 @@ type AuthContextValue = {
   logout: () => void;
   refreshUsage: () => Promise<MaiUsage | null>;
   refreshCloudStorage: () => Promise<MaiCloudStorageUsage | null>;
+  switchToFreePlan: () => Promise<string>;
   verifyUpgradeCode: (code: string) => Promise<string>;
   updateProfile: (params: {
     username?: string;
@@ -89,7 +93,7 @@ export function AuthProvider({
   const [cloudStorage, setCloudStorage] = useState<MaiCloudStorageUsage | null>(
     null
   );
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [authenticated, setAuthenticated] = useState(Boolean(initialUser));
 
   const applyUsage = useCallback((data: MaiUsage) => {
@@ -242,17 +246,38 @@ export function AuthProvider({
     dropSession();
   }, [dropSession]);
 
+  const syncPlanTransition = useCallback(
+    async (nextTier: string) => {
+      setUser((prev) => (prev ? { ...prev, tier: nextTier } : prev));
+      setUsage((prev) => (prev ? { ...prev, tier: nextTier } : prev));
+      await refreshUsage();
+      void mutate("/api/settings");
+      for (const catalogKey of MODEL_CATALOG_SWR_KEYS) {
+        void mutate(catalogKey);
+      }
+      return nextTier;
+    },
+    [refreshUsage]
+  );
+
   const verifyUpgradeCode = useCallback(
     async (code: string) => {
       const res = await apiVerifyCode(code);
       if (!res.success) {
         throw new Error("Code d'upgrade invalide.");
       }
-      await refreshUsage();
-      return res.tier || "Free";
+      return syncPlanTransition(res.tier || "Free");
     },
-    [refreshUsage]
+    [syncPlanTransition]
   );
+
+  const switchToFreePlan = useCallback(async () => {
+    const res = await apiDowngradeToFree();
+    if (!res.success) {
+      throw new Error("Impossible de revenir au forfait Free.");
+    }
+    return syncPlanTransition(res.tier || "Free");
+  }, [syncPlanTransition]);
 
   const updateProfile = useCallback(
     async (params: {
@@ -290,6 +315,7 @@ export function AuthProvider({
       refreshCloudStorage,
       refreshUsage,
       register,
+      switchToFreePlan,
       updateProfile,
       uploadAvatar,
       usage,
@@ -311,6 +337,7 @@ export function AuthProvider({
       logout,
       refreshUsage,
       refreshCloudStorage,
+      switchToFreePlan,
       verifyUpgradeCode,
       updateProfile,
       uploadAvatar,

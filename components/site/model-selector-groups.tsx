@@ -29,13 +29,14 @@ import {
   ModelSelectorTrigger,
 } from "@/components/site/model-selector";
 import { ModelSelectorLogo } from "@/lib/ai/model-selector/logo";
-import { isMai2Model } from "@/lib/ai/model-selector/order";
+import { isRecommendedModel } from "@/lib/ai/model-selector/order";
 import {
   MAI_PROVIDER_KEY,
   resolveProviderKey,
 } from "@/lib/ai/model-selector/provider";
 import { RecommendedBadge } from "@/lib/ai/model-selector/recommended-badge";
 import type { SharedModel } from "@/lib/ai/model-selector/types";
+import { isBatchModelId } from "@/lib/ai/models";
 import { cn } from "@/lib/utils";
 
 /** Un groupe d'options, avec son titre affiché dans la liste. */
@@ -86,9 +87,18 @@ export function SiteModelSelector({
   const [search, setSearch] = useState("");
   const [isManualRefreshing, setIsManualRefreshing] = useState(false);
 
-  const allModels = useMemo(
-    () => groups.flatMap((group) => group.models),
+  const visibleGroups = useMemo(
+    () =>
+      groups.map((group) => ({
+        ...group,
+        models: group.models.filter((model) => !isBatchModelId(model.id)),
+      })),
     [groups]
+  );
+
+  const allModels = useMemo(
+    () => visibleGroups.flatMap((group) => group.models),
+    [visibleGroups]
   );
 
   const selectedModel = useMemo(
@@ -99,7 +109,7 @@ export function SiteModelSelector({
   const filteredGroups = useMemo(() => {
     const query = normalize(search.trim());
     return (
-      groups
+      visibleGroups
         .map((group) => ({
           heading: group.heading,
           models: query
@@ -121,7 +131,7 @@ export function SiteModelSelector({
         // (Ollama, Cloud) ne montre que ce qui est réellement disponible.
         .filter((group) => group.models.length > 0)
     );
-  }, [groups, search]);
+  }, [search, visibleGroups]);
 
   const handleRefresh = useCallback(async () => {
     setIsManualRefreshing(true);
@@ -227,7 +237,7 @@ export function SiteModelSelector({
                       <div className="flex min-w-0 flex-col pr-2">
                         <div className="flex items-center gap-1.5 min-w-0">
                           <ModelSelectorName>{model.name}</ModelSelectorName>
-                          {isMai2Model(model) ? (
+                          {isRecommendedModel(model) ? (
                             <RecommendedBadge variant="site" />
                           ) : null}
                         </div>

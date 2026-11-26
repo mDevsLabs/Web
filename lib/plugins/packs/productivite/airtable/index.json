@@ -1,0 +1,46 @@
+{
+  "author": "mAI",
+  "category": "productivite",
+  "description": "Reliez Airtable par jeton personnel : l'IA liste vos bases, inspecte les schémas de tables, lit les enregistrements et peut créer une fiche dans l'Agent après approbation.",
+  "icon": { "src": "/plugins/airtable.svg", "type": "image" },
+  "id": "airtable",
+  "name": "Airtable",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["airtable", "base de données", "tableur", "crm", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les bases Airtable accessibles au jeton connecté.",
+      "effect": "read",
+      "id": "airtableListBases",
+      "label": "Bases Airtable",
+      "systemHint": "L'identifiant (app…) sert à explorer les tables ou lire les enregistrements."
+    },
+    {
+      "description": "Liste les tables et les champs d'une base Airtable.",
+      "effect": "read",
+      "id": "airtableGetBaseSchema",
+      "label": "Schéma d'une base Airtable",
+      "systemHint": "Inspectez les noms de champs avant de créer ou filtrer des enregistrements."
+    },
+    {
+      "description": "Lit les enregistrements d'une table Airtable, avec filtre ou limite.",
+      "effect": "read",
+      "id": "airtableListRecords",
+      "label": "Enregistrements Airtable",
+      "systemHint": "Résumez les champs pertinents au lieu de recopier tout le JSON brut."
+    },
+    {
+      "description": "Crée un enregistrement dans une table Airtable (Agent uniquement, approbation requise).",
+      "effect": "write",
+      "id": "airtableCreateRecord",
+      "label": "Créer une fiche Airtable",
+      "systemHint": "Vérifiez les noms exacts des colonnes via le schéma avant de proposer l'écriture."
+    }
+  ],
+  "version": "1.0.0"
+}

@@ -53,50 +53,22 @@ export async function GET(req: NextRequest) {
 
   const auth = authResult.auth;
   const isPublic = auth.mode === "public";
-  const headers: Record<string, string> = { Accept: "application/json" };
-  if (auth.mode === "bearer") {
-    headers.Authorization = `Bearer ${auth.token}`;
-  } else if (auth.mode === "session") {
-    headers.Authorization = `Bearer ${auth.secretKey}`;
-  }
 
   try {
-    // `NEXT_PUBLIC_*` est inliné dans le bundle client par Next.js : l'utiliser
-    // comme cible de routage serveur expose l'URL dans le JS et invite à la
-    // configurer côté client. Les autres routes codent l'upstream en dur.
-    const backendUrl = (process.env.MAI_API_URL || "https://mai.val.run").replace(/\/$/, "");
-    const res = await fetch(`${backendUrl}/v1/models/speech`, {
-      headers,
-      ...(isPublic ? { next: { revalidate: 300 } } : { cache: "no-store" }),
-    });
-
-    if (res.ok) {
-      const data = redactApiSecretJson(
-        await res.json(),
-        auth.mode === "bearer" ? auth.token : auth.mode === "session" ? auth.secretKey : null,
-      );
-      if (data && Array.isArray(data.data) && data.data.length > 0) {
-        return catalogResponse(data, isPublic);
-      }
-    }
-
-    if (!isPublic) {
-      return catalogResponse(
-        { error: { code: "catalog_unavailable", message: "Le catalogue audio est temporairement indisponible." } },
-        false,
-        { status: 502 },
-      );
-    }
-
-    // Fallback public uniquement.
     const orRes = await fetch("https://openrouter.ai/api/v1/models?output_modalities=speech", {
       next: { revalidate: 300 },
     });
     if (orRes.ok) {
       const orJson = await orRes.json();
       const rawList = Array.isArray(orJson.data) ? orJson.data : [];
-      const freeSpeechModels = rawList
-        .filter((model: any) => model && model.id && model.id.toLowerCase().includes(":free"))
+      const speechModels = rawList
+        .filter((model: any) => {
+          if (!model || !model.id) return false;
+          if (isPublic) {
+            return model.id.toLowerCase().includes(":free");
+          }
+          return true;
+        })
         .map((model: any) => ({
           architecture: model.architecture || {
             input_modalities: ["text"],
@@ -120,20 +92,13 @@ export async function GET(req: NextRequest) {
           ],
         }));
 
-      if (freeSpeechModels.length > 0) {
-        return catalogResponse({ data: freeSpeechModels, object: "list" }, true);
+      if (speechModels.length > 0) {
+        return catalogResponse({ data: speechModels, object: "list" }, isPublic);
       }
     }
 
-    return catalogResponse({ data: FALLBACK_AUDIO_MODELS, object: "list" }, true);
+    return catalogResponse({ data: FALLBACK_AUDIO_MODELS, object: "list" }, isPublic);
   } catch {
-    if (!isPublic) {
-      return catalogResponse(
-        { error: { code: "catalog_unavailable", message: "Le catalogue audio est temporairement indisponible." } },
-        false,
-        { status: 502 },
-      );
-    }
-    return catalogResponse({ data: FALLBACK_AUDIO_MODELS, object: "list" }, true);
+    return catalogResponse({ data: FALLBACK_AUDIO_MODELS, object: "list" }, isPublic);
   }
 }

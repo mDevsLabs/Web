@@ -44,7 +44,7 @@ function TooltipContent({
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={cn(
-          "md-root md-tooltip origin-(--radix-tooltip-content-transform-origin)",
+          "md-root md-tooltip z-[1070] origin-(--radix-tooltip-content-transform-origin)",
           className
         )}
         {...mdevsScopeProps(theme)}

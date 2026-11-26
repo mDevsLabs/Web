@@ -230,22 +230,19 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
     close();
   }, [state.flow, close]);
 
-  const handleGoKeys = useCallback(() => {
+  const handleGoAccount = useCallback(() => {
     if (state.flow === "main") markMainCompleted();
     if (state.flow === "upgrade") markUpgradeCompleted();
     close();
     // slight delay to allow exit animation
-    window.setTimeout(
-      () => router.push("/account/keys?onboarding=create"),
-      180
-    );
+    window.setTimeout(() => router.push("/account"), 180);
   }, [state.flow, close, router]);
 
   const handleGoModels = useCallback(() => {
     if (state.flow === "main") markMainCompleted();
     if (state.flow === "upgrade") markUpgradeCompleted();
     close();
-    window.setTimeout(() => router.push("/account/models"), 180);
+    window.setTimeout(() => router.push("/models"), 180);
   }, [state.flow, close, router]);
 
   const value = useMemo<Ctx>(
@@ -260,7 +257,7 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
         context={context}
         flow={(state.flow as Flow) ?? "main"}
         onComplete={handleComplete}
-        onGoKeys={handleGoKeys}
+        onGoAccount={handleGoAccount}
         onGoModels={handleGoModels}
         onNext={handleNext}
         onPrev={handlePrev}

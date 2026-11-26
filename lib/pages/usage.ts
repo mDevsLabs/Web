@@ -1,7 +1,6 @@
 import "server-only";
 
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
-import { MAI_API_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries/chats";
 
 export async function recordPageTokenUsage(params: {
@@ -46,29 +45,4 @@ export async function recordPageTokenUsage(params: {
     userEmail: params.userEmail,
     userId: params.userId,
   });
-  if (!params.sessionToken) {
-    return;
-  }
-  try {
-    const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
-      body: JSON.stringify({
-        inputTokens,
-        isGhostMode: false,
-        model: params.model,
-        outputTokens,
-        reasoningTokens,
-        tokensUsed: totalTokens,
-      }),
-      headers: {
-        Authorization: `Bearer ${params.sessionToken}`,
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-    if (!logRes.ok) {
-      console.error("[pages][log-usage]", logRes.status);
-    }
-  } catch (error) {
-    console.error("[pages][log-usage]", error);
-  }
 }

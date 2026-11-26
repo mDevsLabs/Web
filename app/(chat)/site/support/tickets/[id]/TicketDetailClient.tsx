@@ -3,7 +3,6 @@
 import {
   AlertCircleIcon as AlertCircle,
   ArrowLeftIcon as ArrowLeft,
-  Loader2Icon as Loader2,
   RefreshCwIcon as RefreshCw,
 } from "@mdevs/icons";
 import {
@@ -27,10 +26,12 @@ import {
   type SupportAttachment,
   type SupportMessage,
   type SupportTicket,
+  type SupportTicketDetailsResult,
   type SupportTicketStatus,
 } from "@/app/(chat)/site/actions/support-utils";
 import { useAuth } from "@/components/site/auth-provider";
 import Link, { useSiteRouter as useRouter } from "@/components/site/router";
+import { TicketDetailSkeleton } from "@/components/site/support/SupportSkeletons";
 import { TicketDetailHeader } from "@/components/site/support/ticket-detail/TicketDetailHeader";
 import { TicketReplyComposer } from "@/components/site/support/ticket-detail/TicketReplyComposer";
 import { TicketTimeline } from "@/components/site/support/ticket-detail/TicketTimeline";
@@ -38,22 +39,45 @@ import type { TicketReplyStatus } from "@/components/site/support/ticket-detail/
 import { useTicketDetailAttachments } from "@/components/site/support/ticket-detail/useTicketDetailAttachments";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 
-export default function TicketDetailClient({ ticketId }: { ticketId: string }) {
+export default function TicketDetailClient({
+  ticketId,
+  initialDetails = null,
+}: {
+  ticketId: string;
+  initialDetails?: SupportTicketDetailsResult | null;
+}) {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
   const router = useRouter();
-  const [ticket, setTicket] = useState<SupportTicket | null>(null);
-  const [messages, setMessages] = useState<SupportMessage[]>([]);
-  const [attachments, setAttachments] = useState<SupportAttachment[]>([]);
-  const [loading, setLoading] = useState(true);
+  const seededTicket =
+    initialDetails?.success && initialDetails.ticket
+      ? initialDetails.ticket
+      : null;
+  const [ticket, setTicket] = useState<SupportTicket | null>(seededTicket);
+  const [messages, setMessages] = useState<SupportMessage[]>(
+    initialDetails?.success && initialDetails.messages
+      ? initialDetails.messages
+      : []
+  );
+  const [attachments, setAttachments] = useState<SupportAttachment[]>(
+    initialDetails?.success && initialDetails.attachments
+      ? initialDetails.attachments
+      : []
+  );
+  const [loading, setLoading] = useState(!initialDetails);
   const [replyText, setReplyText] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState<TicketReplyStatus>("");
+  const [selectedStatus, setSelectedStatus] = useState<TicketReplyStatus>(
+    seededTicket?.status ?? ""
+  );
   const [submitting, setSubmitting] = useState(false);
   const [showDiagnostics, setShowDiagnostics] = useState(false);
   const [isAiGenerated, setIsAiGenerated] = useState(false);
   const [editingTitle, setEditingTitle] = useState(false);
-  const [titleDraft, setTitleDraft] = useState("");
+  const [titleDraft, setTitleDraft] = useState(seededTicket?.title ?? "");
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const isAdmin = isAdminUser(user?.email);
+  const skipInitialLoadRef = useRef(Boolean(initialDetails));
+  const isAdmin =
+    isAuthenticated &&
+    (isAdminUser(user?.email) || Boolean(initialDetails?.isAdmin));
 
   const loadTicket = useCallback(async () => {
     if (!user) return;
@@ -77,8 +101,13 @@ export default function TicketDetailClient({ ticketId }: { ticketId: string }) {
   }, [ticketId, user]);
 
   useEffect(() => {
-    if (!authLoading && isAuthenticated) void loadTicket();
-    else if (!authLoading && !isAuthenticated) setLoading(false);
+    if (authLoading) return;
+    if (skipInitialLoadRef.current) {
+      skipInitialLoadRef.current = false;
+      return;
+    }
+    if (isAuthenticated) void loadTicket();
+    else setLoading(false);
   }, [authLoading, isAuthenticated, loadTicket]);
 
   useEffect(() => {
@@ -263,17 +292,7 @@ export default function TicketDetailClient({ ticketId }: { ticketId: string }) {
   };
 
   if (authLoading || loading) {
-    return (
-      <div className="flex items-center justify-center rounded-3xl border border-black/5 bg-white py-32">
-        <div className="flex items-center gap-3 text-sm font-medium text-slate-500">
-          <Loader2
-            aria-hidden="true"
-            className="h-5 w-5 animate-spin text-purple-600"
-          />
-          <span>Chargement du dossier…</span>
-        </div>
-      </div>
-    );
+    return <TicketDetailSkeleton />;
   }
 
   if (!ticket) {

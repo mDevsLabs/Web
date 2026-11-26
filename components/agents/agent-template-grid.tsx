@@ -45,7 +45,7 @@ export function AgentTemplateGrid({
       <div className="flex flex-col gap-3">
         <div className="flex flex-col sm:flex-row sm:items-center gap-2">
           <div className="relative w-full sm:w-72">
-            <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+            <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 z-10 -translate-y-1/2 size-3.5 text-muted-foreground" />
             <Input
               aria-label="Rechercher un type de bot"
               className="h-8 pl-8 text-xs bg-muted/40"

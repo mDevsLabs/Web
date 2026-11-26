@@ -413,6 +413,7 @@ export const chat = pgTable(
     customInstructions: text("customInstructions"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isArchived: boolean("isArchived").notNull().default(false),
+    lastMessageAt: timestamp("lastMessageAt").notNull().defaultNow(),
 
     // Conversation classique (chat) ou exécutée par Agent : évite de dupliquer
     // l'historique, la sidebar et les projets pour le mode Agent.
@@ -449,6 +450,11 @@ export const chat = pgTable(
     userPinnedIdx: index("Chat_userId_pinned_idx").on(
       table.userId,
       table.pinned
+    ),
+    userPinnedLastMessageIdx: index("Chat_userId_pinned_lastMessageAt_idx").on(
+      table.userId,
+      table.pinned,
+      table.lastMessageAt
     ),
     userProjectIdx: index("Chat_userId_projectId_idx").on(
       table.userId,
@@ -717,7 +723,6 @@ export type UserTotp = InferSelectModel<typeof userTotp>;
 export const weeklySpeechUsage = pgTable(
   "weekly_speech_usage",
   {
-    id: serial("id").primaryKey().notNull(),
     requestsCount: integer("requests_count").notNull().default(0),
     tokensUsed: bigint("tokens_used", { mode: "number" }).notNull().default(0),
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
@@ -725,6 +730,7 @@ export const weeklySpeechUsage = pgTable(
     weekStart: date("week_start").notNull(),
   },
   (table) => ({
+    pk: primaryKey({ columns: [table.userId, table.weekStart] }),
     userIdIdx: index("weekly_speech_usage_user_id_idx").on(table.userId),
     userWeekUnique: uniqueIndex("weekly_speech_usage_user_week_idx").on(
       table.userId,
@@ -745,15 +751,15 @@ export const mprojectsSpeechGenerations = pgTable(
     audioUrl: text("audio_url"),
     characterCount: integer("character_count").notNull().default(0),
     createdAt: timestamp("created_at").notNull().defaultNow(),
-    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    id: serial("id").primaryKey().notNull(),
     inputText: text("input_text").notNull(),
-    model: text("model").notNull().default("deepgram/flux-tts:free"),
+    model: text("model").notNull().default("heygen/heygen-voice-1-turbo:free"),
     pinned: boolean("pinned").notNull().default(false),
     status: text("status").notNull().default("completed"),
     title: text("title"),
     tokensCount: integer("tokens_count").notNull().default(0),
     userId: text("user_id").notNull(),
-    voice: text("voice").default("flux-alexis-en"),
+    voice: text("voice").default("nadine"),
   },
   (table) => ({
     createdAtIdx: index("mprojects_speech_generations_created_at_idx").on(
@@ -813,7 +819,7 @@ export const mprojectsApiKeys = pgTable(
   {
     apiKey: text("api_key").notNull(),
     createdAt: timestamp("created_at").defaultNow(),
-    id: serial("id").primaryKey(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
     isActive: boolean("is_active").default(true),
     keyName: text("key_name"),
     lastUsedAt: timestamp("last_used_at"),
@@ -1057,13 +1063,13 @@ export const userPreferences = pgTable("user_preferences", {
   defaultApp: varchar("defaultApp", { length: 20 }).notNull().default("mai"),
   defaultAudioModel: text("defaultAudioModel")
     .notNull()
-    .default("deepgram/flux-tts:free"),
+    .default("heygen/heygen-voice-1-turbo:free"),
   defaultAudioSpeed: doublePrecision("defaultAudioSpeed")
     .notNull()
     .default(1.0),
   defaultAudioVoice: varchar("defaultAudioVoice", { length: 100 })
     .notNull()
-    .default("flux-alexis-en"),
+    .default("nadine"),
   defaultChatModel: text("defaultChatModel"),
   defaultChatVisibility: varchar("defaultChatVisibility", { length: 20 })
     .notNull()
@@ -1079,7 +1085,7 @@ export const userPreferences = pgTable("user_preferences", {
     .default("auto"),
   defaultImageModel: text("defaultImageModel")
     .notNull()
-    .default("black-forest-labs/flux-schnell"),
+    .default("black-forest-labs/flux-1.1-pro"),
   defaultImageSize: varchar("defaultImageSize", { length: 50 })
     .notNull()
     .default("1024x1024"),
@@ -1373,6 +1379,7 @@ export const integrationConnection = pgTable(
     // toute façon rejeté par `getIntegrationProvider`.
     provider: varchar("provider", {
       enum: [
+        "airtable",
         "asana",
         "brave",
         "brevo",
@@ -1392,6 +1399,7 @@ export const integrationConnection = pgTable(
         "posthog",
         "resend",
         "sentry",
+        "slack",
         "sonarcloud",
         "stripe",
         "supabase",
@@ -3260,6 +3268,18 @@ export type QuizzlyCoachConversation = InferSelectModel<
 export const quizzlyCoachMessage = pgTable(
   "QuizzlyCoachMessage",
   {
+    attachments: jsonb("attachments")
+      .$type<
+        Array<{
+          contentType: string;
+          name: string;
+          pathname?: string;
+          size?: number;
+          url: string;
+        }>
+      >()
+      .notNull()
+      .default([]),
     conversationId: uuid("conversationId").notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
@@ -3316,3 +3336,43 @@ export const maintenanceWindow = pgTable(
 );
 
 export type MaintenanceWindow = InferSelectModel<typeof maintenanceWindow>;
+
+// ─────────────────────────────────────────────
+// Codes de vérification OTP (Migration Val Town SQLite -> Neon PostgreSQL)
+// ─────────────────────────────────────────────
+export const verificationCodes = pgTable(
+  "verification_codes",
+  {
+    action: text("action").notNull(),
+    attempts: integer("attempts").notNull().default(0),
+    code: text("code").notNull(),
+    email: text("email").notNull(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  },
+  (table) => ({
+    emailIdx: index("verification_codes_email_idx").on(table.email),
+    pk: primaryKey({ columns: [table.email, table.action] }),
+  })
+);
+
+export type VerificationCode = InferSelectModel<typeof verificationCodes>;
+
+// ─────────────────────────────────────────────
+// Ticks CRON « paresseux » (bail atomique, sans ordonnanceur externe)
+// ─────────────────────────────────────────────
+// Une ligne par tick (agent, planning, wakies, vibe, notifications, quizzly).
+// `nextRunAt` = prochaine échéance ; `leaseUntil` = bail posé par l'instance
+// qui exécute le tick (un seul porteur à la fois, repris à l'expiration).
+// Voir lib/cron/lazy.ts.
+export const cronTicks = pgTable("cron_ticks", {
+  lastError: text("last_error"),
+  lastFinishedAt: timestamp("last_finished_at", { withTimezone: true }),
+  lastStartedAt: timestamp("last_started_at", { withTimezone: true }),
+  leaseUntil: timestamp("lease_until", { withTimezone: true }),
+  name: text("name").primaryKey(),
+  nextRunAt: timestamp("next_run_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type CronTickRow = InferSelectModel<typeof cronTicks>;

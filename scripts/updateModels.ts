@@ -13,10 +13,13 @@ import {
 } from "./openrouter-models.ts";
 
 // Deno / Val Town acceptent npm:, tandis que la CLI Bun utilise les dépendances locales.
-const { neon } =
-  typeof Deno === "undefined"
-    ? await import("@neondatabase/serverless")
-    : await import("npm:@neondatabase/serverless");
+async function connectDatabase(url: string) {
+  const { neon } =
+    typeof Deno === "undefined"
+      ? await import("@neondatabase/serverless")
+      : await import("npm:@neondatabase/serverless");
+  return neon(url);
+}
 
 type JsonObject = Record<string, any>;
 
@@ -405,9 +408,11 @@ export async function fetchCometImageModels(
   fetcher: typeof fetch = fetch,
   signal?: AbortSignal
 ): Promise<JsonObject[]> {
-  const cometKey = apiKey || env("COMET_API_KEY");
+  const cometKey = (apiKey ?? env("COMET_API_KEY"))?.trim();
   if (!cometKey) {
-    return FALLBACK_COMET_IMAGE_MODELS;
+    throw new Error(
+      "COMET_API_KEY est requis pour synchroniser les modèles d'images CometAPI (refus d'écraser le catalogue avec des modèles de repli)."
+    );
   }
 
   try {
@@ -523,7 +528,7 @@ function env(name: string): string | undefined {
 export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
   const databaseUrl = sql ? undefined : env("DATABASE_URL");
   if (!sql && !databaseUrl) throw new Error("DATABASE_URL est requis.");
-  const db: SqlClient = sql ?? neon(databaseUrl!);
+  const db: SqlClient = sql ?? (await connectDatabase(databaseUrl!));
   const startedAt = new Date().toISOString();
   const apiKey = options.apiKey ?? env("OPENROUTER_API_KEY");
   const headers: Record<string, string> = { Accept: "application/json" };
@@ -599,6 +604,12 @@ export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
   const result = modelsToPersist.length
     ? await persistModels(db, modelsToPersist, startedAt)
     : { retired: 0, skipped: true, upserted: 0 };
+
+  if (!result.skipped && result.upserted === 0) {
+    throw new Error(
+      "La synchronisation des modèles n'a mis à jour aucune entrée (upserted = 0)."
+    );
+  }
 
   if (!result.skipped) {
     await applyModelConflictWrites(db, resolutions);
@@ -689,15 +700,19 @@ export default async function runModelSync() {
   return await updateModels();
 }
 
+async function runFromCli() {
+  const { loadLocalEnv } = await import("./cli-env.ts");
+  loadLocalEnv();
+  await runModelSync();
+}
+
 const invokedFile = process.argv[1];
 if (
   import.meta.url.startsWith("file:") &&
   invokedFile &&
   path.resolve(invokedFile) === fileURLToPath(import.meta.url)
 ) {
-  const { loadLocalEnv } = await import("./cli-env.ts");
-  loadLocalEnv();
-  await runModelSync().catch((error) => {
+  runFromCli().catch((error) => {
     console.error("[updateModels] Échec :", error.message);
     process.exitCode = 1;
   });

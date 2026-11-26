@@ -93,10 +93,56 @@ function boundedInteger(
 }
 
 /** Noms de clés uniquement — jamais les valeurs. */
-function keyNames(value: unknown): string[] {
-  return Object.keys(asRecord(value))
-    .map((key) => redactMcpText(key, 120))
-    .sort();
+function keyNames(value: unknown, extra: readonly string[] = []): string[] {
+  const keys = new Set<string>();
+  for (const key of Object.keys(asRecord(value))) {
+    const clean = redactMcpText(key, 120);
+    if (clean) keys.add(clean);
+  }
+  for (const key of extra) {
+    const clean = redactMcpText(key, 120);
+    if (clean) keys.add(clean);
+  }
+  return [...keys].sort();
+}
+
+/**
+ * Regroupe les descripteurs de clés (sans valeurs) par `serverId` pour
+ * alimenter `toMcpServerDtoList` sans requête N+1.
+ */
+export function groupMcpSecretKeysByServerId(
+  rows: ReadonlyArray<{ serverId: string; kind: string; key: string }>
+): Map<string, McpSecretKeys> {
+  const map = new Map<string, McpSecretKeys>();
+  for (const row of rows) {
+    if (!row.serverId || !row.key) continue;
+    let bucket = map.get(row.serverId);
+    if (!bucket) {
+      bucket = { auth: [], env: [], header: [] };
+      map.set(row.serverId, bucket);
+    }
+    if (row.kind === "auth" || row.kind === "env" || row.kind === "header") {
+      bucket[row.kind].push(row.key);
+    }
+  }
+  return map;
+}
+
+/**
+ * Extrait `McpSecretKeys` depuis une liste de lignes `mcp_server_secret`
+ * d'un seul serveur.
+ */
+export function extractMcpSecretKeys(
+  rows: ReadonlyArray<{ kind: string; key: string }>
+): McpSecretKeys {
+  const keys: McpSecretKeys = { auth: [], env: [], header: [] };
+  for (const row of rows) {
+    if (!row.key) continue;
+    if (row.kind === "auth" || row.kind === "env" || row.kind === "header") {
+      keys[row.kind].push(row.key);
+    }
+  }
+  return keys;
 }
 
 /**
@@ -177,7 +223,10 @@ export function sanitizeUrlForClient(
 }
 
 /** Convertit une ligne `McpServer` en DTO sans secret. */
-export function toMcpServerDto(row: unknown): McpServerDto {
+export function toMcpServerDto(
+  row: unknown,
+  extraSecretKeys?: Partial<McpSecretKeys>
+): McpServerDto {
   const record = asRecord(row);
   const authConfig = asRecord(record.authConfig);
   const args = Array.isArray(record.args)
@@ -214,9 +263,9 @@ export function toMcpServerDto(row: unknown): McpServerDto {
         ? record.requireApproval
         : "write_only",
     secretKeys: {
-      auth: keyNames(authConfig),
-      env: keyNames(record.env),
-      header: keyNames(record.headers),
+      auth: keyNames(authConfig, extraSecretKeys?.auth),
+      env: keyNames(record.env, extraSecretKeys?.env),
+      header: keyNames(record.headers, extraSecretKeys?.header),
     },
     templateId:
       typeof record.templateId === "string" ? record.templateId : null,
@@ -237,11 +286,20 @@ export function toMcpServerDto(row: unknown): McpServerDto {
 }
 
 /** Idem, sur une collection (les non-objets sont écartés, jamais renvoyés bruts). */
-export function toMcpServerDtoList(rows: unknown): McpServerDto[] {
+export function toMcpServerDtoList(
+  rows: unknown,
+  secretKeysByServerId?: Map<string, Partial<McpSecretKeys>>
+): McpServerDto[] {
   if (!Array.isArray(rows)) return [];
   return rows
     .filter((row) => Boolean(row) && typeof row === "object")
-    .map((row) => toMcpServerDto(row));
+    .map((row) => {
+      const id = safeString(asRecord(row).id);
+      return toMcpServerDto(
+        row,
+        id ? secretKeysByServerId?.get(id) : undefined
+      );
+    });
 }
 
 /** DTO redacted d'un journal MCP, compatible avec les champs historiques. */

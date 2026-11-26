@@ -372,6 +372,32 @@ export async function listUsersWithWakies(): Promise<string[]> {
 }
 
 /**
+ * Comptes dont des alertes Wakies récentes ne sont pas encore répliquées dans
+ * `Notification` (curseur = plus grand `seq` déjà répliqué, comme
+ * `getMaxReplicatedWakiesSeq`). Une seule requête remplace le balayage de tous
+ * les comptes (2 requêtes par compte) : un tick sans nouveauté sort aussitôt.
+ *
+ * Fenêtre de 30 jours : au-delà, une alerte jamais répliquée est obsolète et
+ * ne vaut plus une notification (le tick tourne au moins une fois par jour).
+ */
+export async function listUsersWithPendingWakiesNotifications(): Promise<
+  string[]
+> {
+  await dbReady();
+  const lignes = (await getDb().execute(sql`
+    SELECT DISTINCT wn."userId" AS "userId"
+    FROM "WakiesNotification" wn
+    WHERE wn."createdAt" > now() - interval '30 days'
+      AND wn."seq" > COALESCE((
+        SELECT max(CASE WHEN n."sourceId" ~ '^[0-9]+$' THEN n."sourceId"::bigint END)
+        FROM "Notification" n
+        WHERE n."userId" = wn."userId" AND n."origin" = 'wakies'
+      ), 0)
+  `)) as unknown as Array<{ userId: string }>;
+  return Array.from(lignes, (ligne) => ligne.userId);
+}
+
+/**
  * Découvre UNIQUEMENT les comptes ayant des tâches dues ou en file.
  * Évite le scan séquentiel de tous les comptes lors des ticks cron.
  */

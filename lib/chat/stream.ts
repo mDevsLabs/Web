@@ -12,8 +12,13 @@ import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { createReasoningChunkWriter } from "@/lib/ai/reasoning-stream";
 import {
   normalizeReasoningLevel,
+  type ReasoningLevel,
   resolveReasoningProviderOptions,
 } from "@/lib/ai/registry/reasoning";
+import {
+  classifyModelProviderError,
+  MAI_SERVER_DIFFICULTIES_MESSAGE,
+} from "@/lib/ai/server-error-message";
 import type { ChatRequestContext } from "@/lib/chat/context";
 import {
   CHAT_FALLBACK_FINAL_RESPONSE,
@@ -31,7 +36,7 @@ import {
   chatModelToolParams,
   hasArtifactChatTool,
 } from "@/lib/chat/tool-policy";
-import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
+import { isProductionEnvironment } from "@/lib/constants";
 import {
   createNotification,
   createStreamId,
@@ -67,9 +72,40 @@ export type ChatStreamParams = {
   effectiveTemperature?: number;
   effectiveTopP?: number;
   effectiveMaxTokens?: number;
+  /** Capacité de réflexion déclarée pour ce modèle. */
+  reasoningSupported?: boolean;
+  /** Effort de réflexion déjà recadré sur `supported_efforts` du modèle. */
+  reasoningEffort?: ReasoningLevel | null;
   /** Collecteur branché sur le flux du provider (voir `lib/ai/providers.ts`). */
   reasoningSink?: ReasoningDetailsSink;
 };
+
+/**
+ * Traduit une erreur de flux fournisseur (OpenRouter / AI SDK) en message
+ * lisible côté client, sans exposer de secrets.
+ */
+export function formatChatStreamError(error: unknown): string {
+  return classifyModelProviderError(error) ?? MAI_SERVER_DIFFICULTIES_MESSAGE;
+}
+
+function hasSubstantiveMessageParts(message: ChatMessage): boolean {
+  const parts = Array.isArray(message.parts) ? message.parts : [];
+  return parts.some((part: any) => {
+    if (!part || typeof part !== "object") {
+      return false;
+    }
+    if (part.type === "text" || part.type === "reasoning") {
+      return typeof part.text === "string" && part.text.trim().length > 0;
+    }
+    if (part.type === "file") {
+      return true;
+    }
+    if (typeof part.type === "string" && part.type.startsWith("tool-")) {
+      return true;
+    }
+    return part.type === "dynamic-tool";
+  });
+}
 
 export function createChatStream(params: ChatStreamParams) {
   const {
@@ -80,6 +116,8 @@ export function createChatStream(params: ChatStreamParams) {
     effectiveTemperature,
     effectiveTopP,
     effectiveMaxTokens,
+    reasoningEffort,
+    reasoningSupported,
     reasoningSink,
   } = params;
 
@@ -118,7 +156,13 @@ export function createChatStream(params: ChatStreamParams) {
       // La part est créée avant le premier appel modèle : le collecteur peut
       // écrire dès le premier chunk de raisonnement reçu.
       const reasoningWriter = reasoningSink
-        ? createReasoningChunkWriter(dataStream, `reasoning-${generateUUID()}`)
+        ? createReasoningChunkWriter(
+            dataStream,
+            `reasoning-${generateUUID()}`,
+            {
+              onBeforeFirstPush: () => dataStream.write({ type: "start" }),
+            }
+          )
         : null;
       if (reasoningSink) {
         reasoningSink.onDelta = (text) => reasoningWriter?.push(text);
@@ -180,13 +224,22 @@ export function createChatStream(params: ChatStreamParams) {
         ...(effectiveMaxTokens !== undefined && effectiveMaxTokens !== null
           ? { maxOutputTokens: effectiveMaxTokens }
           : {}),
-        ...(ctx.reasoningLevel
-          ? {
-              providerOptions: resolveReasoningProviderOptions(
-                normalizeReasoningLevel(ctx.reasoningLevel)
-              ),
-            }
-          : {}),
+        ...(reasoningEffort === undefined
+          ? ctx.reasoningLevel &&
+            reasoningSupported !== false &&
+            normalizeReasoningLevel(ctx.reasoningLevel) !== "none"
+            ? {
+                providerOptions: resolveReasoningProviderOptions(
+                  normalizeReasoningLevel(ctx.reasoningLevel)
+                ),
+              }
+            : {}
+          : reasoningEffort && reasoningEffort !== "none"
+            ? {
+                providerOptions:
+                  resolveReasoningProviderOptions(reasoningEffort),
+              }
+            : {}),
         onAbort() {
           reasoningWriter?.finish();
         },
@@ -195,8 +248,12 @@ export function createChatStream(params: ChatStreamParams) {
             markModelActive();
           }
         },
-        onError() {
+        onError({ error }) {
           reasoningWriter?.finish();
+          console.error(
+            `[chat-stream] streamText error chatId=${ctx.id} model=${ctx.chatModel}:`,
+            error
+          );
         },
         onFinish: async ({ text, usage }) => {
           reasoningWriter?.finish();
@@ -218,7 +275,6 @@ export function createChatStream(params: ChatStreamParams) {
             dataStream,
             email: ctx.userEmail,
             isGhostMode: ctx.isGhostMode,
-            sessionToken: ctx.sessionToken,
             usage: usage as any,
             usageEventKey,
             userId: ctx.userId,
@@ -239,6 +295,9 @@ export function createChatStream(params: ChatStreamParams) {
             try {
               const generated = await generateTitleFromConversation({
                 assistantText: (text ?? "").slice(0, 500).trim(),
+                modelId: ctx.chatModel,
+                sessionToken: ctx.sessionToken,
+                userId: ctx.userId,
                 userText: getTextFromMessage(
                   ctx.firstUserMessageForTitle as any
                 ),
@@ -268,6 +327,13 @@ export function createChatStream(params: ChatStreamParams) {
 
       dataStream.merge(
         toUIMessageStream({
+          onError: (error) => {
+            console.error(
+              `[chat-stream] toUIMessageStream error chatId=${ctx.id} model=${ctx.chatModel}:`,
+              error
+            );
+            return formatChatStreamError(error);
+          },
           sendReasoning: true,
           stream: result.stream,
         })
@@ -310,7 +376,7 @@ export function createChatStream(params: ChatStreamParams) {
     },
     onError: (error) => {
       console.error("Erreur Stream AI:", error);
-      return "Une erreur est survenue lors de la génération de la réponse.";
+      return formatChatStreamError(error);
     },
     originalMessages: ctx.isToolApprovalFlow ? ctx.uiMessages : undefined,
   });
@@ -325,7 +391,6 @@ async function handleTokenAccounting(params: {
   chatModel: string;
   email: string;
   isGhostMode: boolean;
-  sessionToken: string;
   usageEventKey: string;
   userId: string;
 }): Promise<void> {
@@ -338,7 +403,6 @@ async function handleTokenAccounting(params: {
     chatModel,
     email,
     isGhostMode,
-    sessionToken,
     usageEventKey,
     userId,
   } = params;
@@ -372,37 +436,6 @@ async function handleTokenAccounting(params: {
       userEmail: email,
       userId,
     });
-
-    // 2. Notification de l'endpoint API mAI log-usage
-    try {
-      const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
-        body: JSON.stringify({
-          inputTokens,
-          isGhostMode,
-          model: chatModel,
-          outputTokens,
-          reasoningTokens,
-          tokensUsed: totalTokens,
-        }),
-        headers: {
-          Authorization: `Bearer ${sessionToken}`,
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
-
-      if (!logRes.ok) {
-        const errText = await logRes.text();
-        console.error(
-          "[API log-usage] Status:",
-          logRes.status,
-          "Response:",
-          errText
-        );
-      }
-    } catch (logErr) {
-      console.error("Erreur décompte log-usage:", logErr);
-    }
 
     // 3. Diffusion en direct au client via le flux
     try {
@@ -489,16 +522,26 @@ export async function persistStreamEnd(
       })
     );
   } else if (finishedMessages.length > 0) {
-    await saveMessages({
-      messages: finishedMessages.map((currentMessage) => ({
-        attachments: [],
-        chatId: ctx.id,
-        createdAt: new Date(),
-        id: currentMessage.id,
-        parts: currentMessage.parts,
-        role: currentMessage.role,
-      })),
-    });
+    // Ne jamais persister une bulle assistant totalement vide créée avant une
+    // erreur amont (Photo 3 : icône étoiles seule). Les réponses partielles qui
+    // contiennent déjà du texte ou un outil restent persistées.
+    const persistableMessages = finishedMessages.filter(
+      (currentMessage) =>
+        currentMessage.role !== "assistant" ||
+        hasSubstantiveMessageParts(currentMessage)
+    );
+    if (persistableMessages.length > 0) {
+      await saveMessages({
+        messages: persistableMessages.map((currentMessage) => ({
+          attachments: [],
+          chatId: ctx.id,
+          createdAt: new Date(),
+          id: currentMessage.id,
+          parts: currentMessage.parts,
+          role: currentMessage.role,
+        })),
+      });
+    }
 
     // Le renommage auto n'est PLUS ici : il est fait dans `streamText.onFinish`
     // (au-dessus), tant que le flux est ouvert, pour pouvoir émettre la part

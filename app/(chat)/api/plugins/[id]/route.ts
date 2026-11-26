@@ -11,12 +11,10 @@ import {
   setPluginEnabled,
   uninstallPlugin,
 } from "@/lib/db/queries";
-import { buildCatalogEntries, getPluginManifest } from "@/lib/plugins/catalog";
 import {
-  canUsePlugin,
-  pluginTierMessage,
-  withTierLock,
-} from "@/lib/plugins/tier-lock";
+  buildCatalogEntries,
+  getPluginManifest,
+} from "@/lib/plugins/core/catalog";
 
 const patchPluginSchema = z.object({
   isEnabled: z.boolean(),
@@ -38,15 +36,12 @@ export async function DELETE(
     await uninstallPlugin({ pluginId: id, userId });
     const installations = await getPluginInstallationsByUserId({ userId });
     return Response.json({
-      plugins: withTierLock(
-        buildCatalogEntries(
-          installations.map((i) => ({
-            isEnabled: i.isEnabled,
-            pluginId: i.pluginId,
-            version: i.version,
-          }))
-        ),
-        user.tier
+      plugins: buildCatalogEntries(
+        installations.map((i) => ({
+          isEnabled: i.isEnabled,
+          pluginId: i.pluginId,
+          version: i.version,
+        }))
       ),
     });
   } catch (error) {
@@ -77,13 +72,6 @@ export async function PATCH(
     await enforceChatRateLimit(request, userId);
     const json = await request.json();
     const parsed = patchPluginSchema.parse(json);
-    // Réactiver un plugin hors forfait est refusé côté serveur ; la
-    // désactivation, elle, reste toujours permise.
-    if (parsed.isEnabled && !canUsePlugin(manifest, user.tier)) {
-      return errorResponse("plan_required", {
-        message: pluginTierMessage(manifest),
-      });
-    }
     const updated = await setPluginEnabled({
       isEnabled: parsed.isEnabled,
       pluginId: id,
@@ -96,15 +84,12 @@ export async function PATCH(
     }
     const installations = await getPluginInstallationsByUserId({ userId });
     return Response.json({
-      plugins: withTierLock(
-        buildCatalogEntries(
-          installations.map((i) => ({
-            isEnabled: i.isEnabled,
-            pluginId: i.pluginId,
-            version: i.version,
-          }))
-        ),
-        user.tier
+      plugins: buildCatalogEntries(
+        installations.map((i) => ({
+          isEnabled: i.isEnabled,
+          pluginId: i.pluginId,
+          version: i.version,
+        }))
       ),
     });
   } catch (error) {

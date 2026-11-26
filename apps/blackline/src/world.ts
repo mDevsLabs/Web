@@ -31,15 +31,14 @@ export class World {
     this.scene.background=new T.Color(theme.fog);
     const concrete=noiseTexture('concrete',13),metal=noiseTexture('metal',71),sand=noiseTexture('sand',24);this.textures.push(concrete,metal,sand);this.facadeTexture=concrete.clone();this.facadeTexture.repeat.set(1,1);this.textures.push(this.facadeTexture);concrete.repeat.set(18,16);sand.repeat.set(22,20);
     const height=new Uint8Array(256*256*4),grain=seeded(319);for(let y=0;y<256;y++)for(let x=0;x<256;x++){const i=(y*256+x)*4,value=x%64<2||y%128<2?80:168+Math.round(grain()*35);height[i]=height[i+1]=height[i+2]=value;height[i+3]=255;}this.relief=new T.DataTexture(height,256,256);this.relief.wrapS=this.relief.wrapT=T.RepeatWrapping;this.relief.generateMipmaps=true;this.relief.magFilter=T.LinearFilter;this.relief.minFilter=T.LinearMipmapLinearFilter;this.relief.anisotropy=8;this.relief.needsUpdate=true;this.textures.push(this.relief);
-    const groundRelief=this.relief.clone();groundRelief.repeat.set(80,70);this.textures.push(groundRelief);
-    const groundMaps=environmentMaps(harbor?'asphalt':'sand'),groundNormal=groundMaps.normal.clone(),groundRough=groundMaps.roughness.clone();groundNormal.repeat.set(40,34);groundRough.repeat.copy(groundNormal.repeat);this.textures.push(groundNormal,groundRough);
-    const groundMat=new T.MeshStandardMaterial({map:harbor?concrete:sand,color:theme.ground,normalMap:groundNormal,normalScale:new T.Vector2(.4,.4),roughnessMap:groundRough,roughness:harbor?.82:1,metalness:harbor?.12:0});this.owned.push(groundMat);
+    const groundMaps=environmentMaps(harbor?'asphalt':'sand'),groundNormal=groundMaps.normal.clone(),groundRough=groundMaps.roughness.clone();groundNormal.repeat.set(42,36);groundRough.repeat.copy(groundNormal.repeat);this.textures.push(groundNormal,groundRough);
+    const groundMat=new T.MeshStandardMaterial({map:harbor?concrete:sand,color:theme.ground,normalMap:groundNormal,normalScale:new T.Vector2(.52,.52),roughnessMap:groundRough,roughness:harbor?.8:1,metalness:harbor?.14:0});this.owned.push(groundMat);
     const ground=new T.Mesh(new T.PlaneGeometry(220,180),groundMat);ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;this.root.add(ground);
     const skyMat=skyMaterial(harbor);skyMat.uniforms.top.value.setHex(theme.top);skyMat.uniforms.bottom.value.setHex(theme.horizon);this.sky=skyMat;this.owned.push(skyMat);const sky=new T.Mesh(new T.SphereGeometry(450,28,16),skyMat);sky.position.y=-5;this.root.add(sky);
-    const hemi=new T.HemisphereLight(harbor?0xbfd9df:0xc6d7dd,harbor?0x434d41:0x726047,1.55);this.root.add(hemi);
-    const sun=new T.DirectionalLight(theme.sun,this.map.id==='forest'?2.5:harbor?3.2:4.2);sun.position.copy(SUN_POSITION);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-this.map.width*.6,right:this.map.width*.6,top:this.map.depth*.65,bottom:-this.map.depth*.65,near:1,far:220});sun.shadow.normalBias=.025;sun.shadow.bias=-.0002;this.root.add(sun);
+    const hemi=new T.HemisphereLight(harbor?0xc2dce2:0xc9d9df,harbor?0x455043:0x756349,1.62);this.root.add(hemi);
+    const sun=new T.DirectionalLight(theme.sun,this.map.id==='forest'?2.65:harbor?3.35:4.3);sun.position.copy(SUN_POSITION);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-this.map.width*.6,right:this.map.width*.6,top:this.map.depth*.65,bottom:-this.map.depth*.65,near:1,far:220});sun.shadow.normalBias=.022;sun.shadow.bias=-.00018;this.root.add(sun);
     const road=material(harbor?0x303b3e:0x675f51,.1,.87),paint=material(0xbbad75,.05,.85),dark=material(0x29332f,.2,.9),concreteMat=material(harbor?0x7a827d:0xa1957f,.05,.95);
-    const asphalt=environmentMaps('asphalt');road.map=asphalt.color;road.normalMap=asphalt.normal;road.normalScale.setScalar(.35);road.roughnessMap=asphalt.roughness;
+    const asphalt=environmentMaps('asphalt');road.map=asphalt.color;road.normalMap=asphalt.normal;road.normalScale.setScalar(.44);road.roughnessMap=asphalt.roughness;
     b.box(this.map.width-2,.017,12,0,.014,0,road,0,0,true);b.box(11,.017,this.map.depth-2,0,.015,0,road,0,0,true);
     for(let x=-this.map.width/2+4;x<this.map.width/2;x+=7){b.box(3,.018,.13,x,.038,-5,paint);b.box(3,.018,.13,x,.038,5,paint);}for(let z=-this.map.depth/2+5;z<this.map.depth/2-1;z+=7){b.box(.13,.019,3,-4.5,.04,z,paint);b.box(.13,.019,3,4.5,.04,z,paint);}
     for(let i=0;i<8;i++){b.box(4,.02,.45,-.2,.04,27+i*.8,paint);b.box(4,.02,.45,.2,.04,-27-i*.8,paint);}
@@ -52,7 +51,8 @@ export class World {
     }
     // Fine steel fence diagonals are batched instead of individual draw calls.
     for(const side of [-1,1])for(let x=-this.map.width/2;x<this.map.width/2;x+=1.1){b.box(.012,3.4,.012,x,1.7,side*(this.map.depth/2+.85),dark,0,.2);b.box(.012,3.4,.012,x+.5,1.7,side*(this.map.depth/2+.85),dark,0,-.2);}
-    for(const [x,z]of [[-27,4],[27,-4],[-10,-16],[10,16]] as const){b.cylinder(.095,7,x,3.5,z,dark);b.box(1.3,.1,.16,x+.45,6.85,z,dark);const lampMat=new T.MeshStandardMaterial({color:0xffdcad,emissive:0xffc785,emissiveIntensity:3});this.owned.push(lampMat);b.box(.7,.065,.22,x+.8,6.78,z,lampMat);const lamp=new T.PointLight(0xffd5a0,6,14,2);lamp.position.set(x+.8,6.65,z);this.root.add(lamp);}
+    const lampMat=new T.MeshStandardMaterial({color:0xffdcad,emissive:0xffc785,emissiveIntensity:3.4});this.owned.push(lampMat);
+    for(const [x,z]of [[-27,4],[27,-4],[-10,-16],[10,16]] as const){b.cylinder(.095,7,x,3.5,z,dark);b.cylinder(.16,.55,x,.275,z,concreteMat);b.box(1.3,.1,.16,x+.45,6.85,z,dark);b.box(.7,.065,.22,x+.8,6.78,z,lampMat);}
     for(let i=0;i<55;i++){const x=(rand()-.5)*83,z=(rand()-.5)*67;const r=rand()*.5+.08;b.box(r,.014,r*.7,x,.033,z,material(i%2?0x726f60:0x414943));}
     for(let x=-40;x<40;x+=10){b.box(1.8,.09,.65,x,.07,34,concreteMat);for(let j=0;j<8;j++)b.box(.1,.017,.5,x-.7+j*.2,.124,34,dark);}
     if(harbor){

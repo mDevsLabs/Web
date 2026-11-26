@@ -10,14 +10,13 @@ import {
   KeyRoundIcon,
   Loader2Icon,
   LockIcon,
-  LogInIcon,
   PlusIcon,
   RefreshCwIcon,
   ShieldCheckIcon,
   Trash2Icon,
   UnlinkIcon,
 } from "@mdevs/icons";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR, { useSWRConfig } from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -27,9 +26,9 @@ import { IntegrationLogo } from "@/lib/integrations/logo";
 import { getIntegrationByPluginId } from "@/lib/integrations/providers";
 import type { IntegrationStatus } from "@/lib/integrations/status";
 import { validateTokenFields } from "@/lib/integrations/token-fields";
-import { getCategoryLabel } from "@/lib/plugins/catalog";
-import { PluginIcon } from "@/lib/plugins/icon";
-import type { PluginManifest } from "@/lib/plugins/types";
+import { getCategoryLabel } from "@/lib/plugins/core/catalog";
+import { PluginIcon } from "@/lib/plugins/core/icon";
+import type { PluginManifest } from "@/lib/plugins/core/types";
 import { cn, fetcher } from "@/lib/utils";
 
 function networkLabel(manifest: PluginManifest): string {
@@ -59,26 +58,6 @@ type PermissionRow = {
   label: string;
   tone: "default" | "positive" | "warning" | "danger";
   value: string;
-};
-
-/**
- * Motifs de refus renvoyés par le callback, dits à l'utilisateur en français.
- * Chaque motif correspond à une sortie réelle de `callback/route.ts` — un motif
- * inconnu retombe sur une phrase générique plutôt que sur un silence.
- */
-const OAUTH_FAILURE_MESSAGES: Record<string, string> = {
-  exchange_failed:
-    "Le fournisseur n'a pas reconnu ce code. Recommencez la connexion.",
-  not_configured: `Ce connecteur n'est pas activé sur cette instance (identifiants d'application manquants).`,
-  plan_required: "Le forfait actuel ne permet pas d'installer ce plugin.",
-  provider_denied:
-    "Connexion annulée : les accès demandés n'ont pas été accordés.",
-  state_invalid:
-    "Cette connexion a expiré ou a été entamée depuis un autre navigateur. Relancez-la.",
-  tier_unavailable:
-    "Impossible de vérifier votre forfait. Le compte externe n'a pas été installé ; vous pourrez réessayer.",
-  vault_unconfigured:
-    "Le coffre de secrets n'est pas configuré sur cette instance : les jetons ne peuvent être ni scellés ni stockés. La variable MCP_ENCRYPTION_KEY doit être posée côté serveur, puis l'application redémarrée.",
 };
 
 function permissionRows(manifest: PluginManifest): PermissionRow[] {
@@ -137,23 +116,12 @@ export default function PluginDetailClient({
   enabled,
   installed,
   installedVersion,
-  locked,
   manifest,
-  notice,
 }: {
   enabled: boolean;
   installed: boolean;
   installedVersion: string | null;
-  locked: boolean;
   manifest: PluginManifest;
-  /** Issue du retour OAuth, passée par la page : une seule fois, puis effacée. */
-  notice?: {
-    account?: string;
-    installation?: string;
-    outcome?: string;
-    provider?: string;
-    reason?: string;
-  };
 }) {
   const { mutate: mutatePlugins } = useSWRConfig();
   const [isBusy, setIsBusy] = useState(false);
@@ -167,8 +135,6 @@ export default function PluginDetailClient({
   const risk = riskLabel(manifest);
   const permissions = permissionRows(manifest);
 
-  // Un connecteur est un plugin comme un autre, avec une étape de plus : le
-  // compte externe. Le descripteur est dérivé du manifeste, jamais dupliqué.
   const connector = useMemo(
     () => getIntegrationByPluginId(manifest.id),
     [manifest.id]
@@ -185,25 +151,6 @@ export default function PluginDetailClient({
     (item) => item.pluginId === manifest.id
   );
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  // Un connecteur à jeton personnel n'a pas d'écran de consentement : le
-  // bouton « Connecter » ne doit pas renvoyer vers une route OAuth inexistante.
-  const connectHref =
-    connector?.authMode === "oauth"
-      ? `${basePath}/api/integration/${connector.id}/connect?returnTo=${encodeURIComponent(
-          `${basePath}/tools/plugins/${manifest.id}`
-        )}`
-      : null;
-  const installConnectHref = connectHref
-    ? `${connectHref}&intent=install`
-    : null;
-
-  // La navigation est un geste explicite : un bouton déclenche la même chose
-  // qu'un lien, sans dépendre d'un `href` qui n'existe pas en mode jeton.
-  const startConnection = useCallback(() => {
-    if (connectHref) {
-      window.location.assign(connectHref);
-    }
-  }, [connectHref]);
 
   const runAction = async (
     action: () => Promise<Response>,
@@ -253,23 +200,6 @@ export default function PluginDetailClient({
   }, [manifest.id]);
 
   const handleInstall = () => {
-    if (
-      connector?.authMode === "oauth" &&
-      !connection?.connected &&
-      installConnectHref
-    ) {
-      // Sans coffre, la connexion ne peut pas aboutir : on ne renvoie pas
-      // l'utilisateur vers l'écran de consentement pour un échec certain.
-      if (!connection?.vaultConfigured) {
-        toast.error(
-          "Le coffre de secrets n'est pas configuré sur cette instance : la connexion externe est impossible pour le moment."
-        );
-        return;
-      }
-      setIsBusy(true);
-      window.location.assign(installConnectHref);
-      return;
-    }
     runAction(
       () =>
         fetch("/api/plugins", {
@@ -310,11 +240,6 @@ export default function PluginDetailClient({
     );
   };
 
-  /**
-   * Enregistrement d'un jeton personnel (Vercel). Le jeton part une seule fois
-   * vers la route, qui le valide puis le chiffre : il n'est jamais renvoyé au
-   * client, ni journalisé, ni conservé dans un état global.
-   */
   const handleSaveToken = async () => {
     if (!connector?.token) {
       return;
@@ -356,6 +281,7 @@ export default function PluginDetailClient({
       }
       setTokenDraft("");
       setFieldDrafts({});
+      setIsTokenFormOpen(false);
       await mutateIntegrations();
       toast.success(
         payload?.accountLabel
@@ -395,80 +321,6 @@ export default function PluginDetailClient({
       setIsDisconnecting(false);
     }
   };
-
-  // Le callback revient par navigation, l'issue en query. On l'annonce une fois,
-  // puis on rature l'URL : sinon chaque rafraîchissement rejouerait le toast, et
-  // un lien collé dans un nouvel onglet annoncerait une connexion en cours.
-  const consumedNotice = useRef<string | null>(null);
-  useEffect(() => {
-    const signature = notice?.outcome
-      ? [
-          notice.outcome,
-          notice.provider ?? "",
-          notice.reason ?? "",
-          notice.installation ?? "",
-        ].join("|")
-      : null;
-    if (!signature || consumedNotice.current === signature) {
-      return;
-    }
-    consumedNotice.current = signature;
-
-    const label = connector?.label ?? manifest.name;
-    if (notice?.outcome === "connected") {
-      if (notice.installation === "installed") {
-        toast.success(
-          `${label} connecté et ${manifest.name} installé — mentionnez-le avec @${manifest.name} dans le chat.`
-        );
-      } else {
-        toast.success(
-          `${label} connecté${notice.account ? ` — ${notice.account}` : ""}.`
-        );
-        if (notice.installation) {
-          toast.error(
-            notice.installation === "plan_required"
-              ? OAUTH_FAILURE_MESSAGES.plan_required
-              : notice.installation === "tier_unavailable"
-                ? OAUTH_FAILURE_MESSAGES.tier_unavailable
-                : "Le compte est connecté, mais le plugin n'a pas pu être installé. Réessayez depuis cette fiche.",
-            { duration: 9000 }
-          );
-        }
-      }
-    } else if (notice?.outcome === "error") {
-      toast.error(
-        OAUTH_FAILURE_MESSAGES[notice.reason ?? ""] ??
-          "La connexion a échoué pour une raison inattendue.",
-        { duration: 9000 }
-      );
-    }
-
-    const url = new URL(window.location.href);
-    for (const name of [
-      "integration",
-      "provider",
-      "account",
-      "reason",
-      "installation",
-    ]) {
-      url.searchParams.delete(name);
-    }
-    window.history.replaceState(
-      null,
-      "",
-      `${url.pathname}${url.search}${url.hash}`
-    );
-    void mutateIntegrations();
-    void mutatePlugins("/api/plugins");
-    void refreshInstallations();
-  }, [
-    connector,
-    manifest.name,
-    mutateIntegrations,
-    mutatePlugins,
-    notice,
-    refreshInstallations,
-  ]);
 
   return (
     <div className="flex min-h-0 flex-1 flex-col bg-background text-foreground">
@@ -523,17 +375,6 @@ export default function PluginDetailClient({
               </span>
               <span
                 className={cn(
-                  "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase",
-                  locked
-                    ? "bg-warning/10 text-warning"
-                    : "bg-primary/10 text-primary"
-                )}
-              >
-                {locked ? <LockIcon className="size-3" /> : null}
-                {manifest.minTier}
-              </span>
-              <span
-                className={cn(
                   "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold",
                   risk.tone === "high"
                     ? "bg-destructive/10 text-destructive"
@@ -555,19 +396,9 @@ export default function PluginDetailClient({
                 {manifest.description}
               </p>
             </div>
-
-            {locked ? (
-              <div className="flex items-start gap-3 rounded-2xl border border-warning/25 bg-warning/10 p-3 text-sm text-foreground">
-                <LockIcon className="mt-0.5 size-4 shrink-0" />
-                <p>
-                  Installation réservée au forfait {manifest.minTier}. Le
-                  serveur refusera toute installation avec un forfait inférieur.
-                </p>
-              </div>
-            ) : null}
           </section>
 
-          {/* ─── Connexion au compte externe ─────────────────────────────── */}
+          {/* ─── Connexion par jeton personnel ───────────────────────────── */}
           {connector ? (
             <section className="flex flex-col gap-4 rounded-3xl border border-border/60 bg-card p-5 shadow-sm sm:p-6">
               <div className="flex items-start gap-3">
@@ -594,12 +425,6 @@ export default function PluginDetailClient({
                 )}
               </div>
 
-              {/*
-                L'état de connexion est une requête réseau : sans ce garde,
-                la fiche affiche « Non connecté » et aucun bouton pendant le
-                chargement — exactement le symptôme qui faisait croire à une
-                configuration cassée. Un chargement se dit, il ne se tait pas.
-              */}
               {isIntegrationLoading ? (
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Loader2Icon className="size-4 animate-spin" />
@@ -644,64 +469,9 @@ export default function PluginDetailClient({
                         "—"}
                     </span>
                   </div>
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <span className="text-muted-foreground">Autorités</span>
-                    <span className="font-medium">
-                      {connection.scopes.length} accordées
-                    </span>
-                  </div>
-                  {connection.expiresAt ? (
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <span className="text-muted-foreground">
-                        {connector.authMode === "token"
-                          ? "Vérifié le"
-                          : "Jeton renouvelable jusqu'au"}
-                      </span>
-                      <span className="font-medium">
-                        {new Date(connection.expiresAt).toLocaleDateString(
-                          "fr-FR"
-                        )}
-                      </span>
-                    </div>
-                  ) : null}
                 </div>
               ) : null}
 
-              {connection && !connection.configured ? (
-                <div className="flex flex-col gap-1 text-sm leading-6 text-muted-foreground">
-                  <p>
-                    Ce connecteur n'est pas activé sur cette instance : les
-                    identifiants de l'application {connector.label} manquent
-                    côté serveur.
-                  </p>
-                  {connection.missingEnv.length > 0 ? (
-                    <p>
-                      Variables manquantes :{" "}
-                      <code className="font-mono text-xs text-foreground">
-                        {connection.missingEnv.join(", ")}
-                      </code>
-                    </p>
-                  ) : null}
-                </div>
-              ) : null}
-
-              {connection?.warnings.map((warning) => (
-                <div
-                  className="flex items-start gap-3 rounded-2xl border border-warning/25 bg-warning/10 p-3 text-sm"
-                  key={warning}
-                >
-                  <AlertTriangleIcon className="mt-0.5 size-4 shrink-0 text-warning" />
-                  <p className="text-muted-foreground leading-6">{warning}</p>
-                </div>
-              ))}
-
-              {/*
-                Le coffre absent se voit ICI, avant le clic, et non dans un
-                toast d'erreur : l'utilisateur n'a aucun moyen de corriger une
-                variable d'environnement, et « Connecter » qui échoue sans
-                raison lisible est pire que « Connecter » qui est désactivé avec
-                la cause.
-              */}
               {connection && !connection.vaultConfigured ? (
                 <div className="flex items-start gap-3 rounded-2xl border border-warning/25 bg-warning/10 p-3 text-sm">
                   <LockIcon className="mt-0.5 size-4 shrink-0 text-warning" />
@@ -720,94 +490,8 @@ export default function PluginDetailClient({
                 </div>
               ) : null}
 
-              {connection?.connected && !connection.canWrite ? (
-                <p className="text-sm leading-6 text-warning">
-                  Les accès en écriture n'ont pas été accordés : la lecture
-                  reste disponible, les actions d'écriture seront refusées.
-                </p>
-              ) : null}
-
-              {connector.authMode === "oauth" ? (
+              {connection?.connected ? (
                 <div className="flex flex-wrap items-center gap-2">
-                  {connection?.connected ? (
-                    <>
-                      <Button
-                        disabled={isDisconnecting}
-                        onClick={handleDisconnect}
-                        size="sm"
-                        type="button"
-                        variant="outline"
-                      >
-                        {isDisconnecting ? (
-                          <Loader2Icon className="size-4 animate-spin" />
-                        ) : (
-                          <UnlinkIcon className="size-4" />
-                        )}
-                        Déconnecter
-                      </Button>
-                      <Button
-                        onClick={startConnection}
-                        size="sm"
-                        type="button"
-                        variant="outline"
-                      >
-                        <ShieldCheckIcon className="size-4" />
-                        Mettre à jour les accès
-                      </Button>
-                      <Button
-                        onClick={() => void mutateIntegrations()}
-                        size="sm"
-                        type="button"
-                        variant="ghost"
-                      >
-                        <RefreshCwIcon className="size-4" />
-                        Réessayer
-                      </Button>
-                    </>
-                  ) : connection === undefined ? (
-                    /*
-                      Un état INCONNU n'est pas un état « non connecté ». Le
-                      dire explicitement évite de conclure à une panne de
-                      configuration pendant une simple requête en vol.
-                    */
-                    <Button disabled size="sm" type="button">
-                      <Loader2Icon className="size-4 animate-spin" />
-                      Chargement…
-                    </Button>
-                  ) : connection.configured && connection.vaultConfigured ? (
-                    <Button onClick={startConnection} size="sm" type="button">
-                      <LogInIcon className="size-4" />
-                      Connecter {connector.label}
-                    </Button>
-                  ) : (
-                    <>
-                      <Button disabled size="sm" type="button">
-                        <AlertTriangleIcon className="size-4" />
-                        Configuration incomplète
-                      </Button>
-                      <Button
-                        onClick={() => void mutateIntegrations()}
-                        size="sm"
-                        type="button"
-                        variant="ghost"
-                      >
-                        <RefreshCwIcon className="size-4" />
-                        Réessayer
-                      </Button>
-                    </>
-                  )}
-                </div>
-              ) : null}
-
-              {/*
-                Un jeton personnel ne s'obtient pas par une redirection : sans
-                ce formulaire, la fiche décrirait une connexion qu'aucun
-                bouton ne permet. Il n'est proposé QUE si le coffre existe :
-                stocker un jeton sans clé de chiffrement le laisserait en
-                clair en base.
-              */}
-              {connector.authMode === "token" ? (
-                connection?.connected ? (
                   <Button
                     disabled={isDisconnecting}
                     onClick={handleDisconnect}
@@ -822,123 +506,112 @@ export default function PluginDetailClient({
                     )}
                     Supprimer le jeton
                   </Button>
-                ) : connection?.vaultConfigured ? (
-                  isTokenFormOpen ? (
-                    <div className="flex flex-col gap-3 rounded-2xl border border-border/60 bg-muted/20 p-4">
-                      <div className="space-y-1">
-                        <p className="text-sm font-medium">
-                          Coller un jeton personnel
-                        </p>
-                        <p className="text-sm leading-6 text-muted-foreground">
-                          Le jeton est validé chez {connector.label}, puis
-                          chiffré sur le serveur. Il n'est jamais renvoyé au
-                          navigateur ni écrit dans un journal.{" "}
-                          <a
-                            className="underline underline-offset-2"
-                            href={connector.token?.helpUrl}
-                            rel="noreferrer"
-                            target="_blank"
-                          >
-                            Créer un jeton chez {connector.label}
-                          </a>
-                        </p>
-                      </div>
-                      {/* Un <form> plutôt qu'un bouton : Entrée doit enregistrer,
-                        et le gestionnaire de mots de passe ne doit pas
-                        s'inviter sur un champ de jeton. */}
-                      <form
-                        className="flex flex-col gap-3"
-                        onSubmit={(event) => {
-                          event.preventDefault();
-                          void handleSaveToken();
-                        }}
-                      >
-                        {connector.token?.fields?.map((field) => (
-                          <label
-                            className="flex flex-col gap-1 text-sm"
-                            key={field.id}
-                          >
-                            <span>{field.label}</span>
-                            <Input
-                              autoComplete="off"
-                              disabled={isSavingToken}
-                              maxLength={300}
-                              onChange={(event) =>
-                                setFieldDrafts((current) => ({
-                                  ...current,
-                                  [field.id]: event.target.value,
-                                }))
-                              }
-                              placeholder={field.placeholder}
-                              spellCheck={false}
-                              type={field.secret ? "password" : "text"}
-                              value={fieldDrafts[field.id] ?? ""}
-                            />
-                          </label>
-                        ))}
-                        <div className="flex flex-col gap-2 sm:flex-row">
+                </div>
+              ) : connection?.vaultConfigured ? (
+                isTokenFormOpen ? (
+                  <div className="flex flex-col gap-3 rounded-2xl border border-border/60 bg-muted/20 p-4">
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium">
+                        Coller un jeton personnel
+                      </p>
+                      <p className="text-sm leading-6 text-muted-foreground">
+                        Le jeton est validé chez {connector.label}, puis chiffré
+                        sur le serveur. Il n'est jamais renvoyé au navigateur ni
+                        écrit dans un journal.{" "}
+                        <a
+                          className="underline underline-offset-2"
+                          href={connector.token.helpUrl}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Créer un jeton chez {connector.label}
+                        </a>
+                      </p>
+                    </div>
+                    <form
+                      className="flex flex-col gap-3"
+                      onSubmit={(event) => {
+                        event.preventDefault();
+                        void handleSaveToken();
+                      }}
+                    >
+                      {connector.token.fields?.map((field) => (
+                        <label
+                          className="flex flex-col gap-1 text-sm"
+                          key={field.id}
+                        >
+                          <span>{field.label}</span>
                           <Input
                             autoComplete="off"
-                            className="font-mono text-xs"
                             disabled={isSavingToken}
-                            maxLength={connector.token?.maxLength}
+                            maxLength={300}
                             onChange={(event) =>
-                              setTokenDraft(event.target.value)
+                              setFieldDrafts((current) => ({
+                                ...current,
+                                [field.id]: event.target.value,
+                              }))
                             }
-                            placeholder={connector.token?.placeholder}
+                            placeholder={field.placeholder}
                             spellCheck={false}
-                            type="password"
-                            value={tokenDraft}
+                            type={field.secret ? "password" : "text"}
+                            value={fieldDrafts[field.id] ?? ""}
                           />
-                          <div className="flex gap-2">
-                            <Button
-                              disabled={isSavingToken || !tokenDraft.trim()}
-                              size="sm"
-                              type="submit"
-                            >
-                              {isSavingToken ? (
-                                <Loader2Icon className="size-4 animate-spin" />
-                              ) : (
-                                <KeyRoundIcon className="size-4" />
-                              )}
-                              Enregistrer
-                            </Button>
-                            <Button
-                              disabled={isSavingToken}
-                              onClick={() => {
-                                setTokenDraft("");
-                                setFieldDrafts({});
-                                setIsTokenFormOpen(false);
-                              }}
-                              size="sm"
-                              type="button"
-                              variant="ghost"
-                            >
-                              Annuler
-                            </Button>
-                          </div>
+                        </label>
+                      ))}
+                      <div className="flex flex-col gap-2 sm:flex-row">
+                        <Input
+                          autoComplete="off"
+                          className="font-mono text-xs"
+                          disabled={isSavingToken}
+                          maxLength={connector.token.maxLength}
+                          onChange={(event) =>
+                            setTokenDraft(event.target.value)
+                          }
+                          placeholder={connector.token.placeholder}
+                          spellCheck={false}
+                          type="password"
+                          value={tokenDraft}
+                        />
+                        <div className="flex gap-2">
+                          <Button
+                            disabled={isSavingToken || !tokenDraft.trim()}
+                            size="sm"
+                            type="submit"
+                          >
+                            {isSavingToken ? (
+                              <Loader2Icon className="size-4 animate-spin" />
+                            ) : (
+                              <KeyRoundIcon className="size-4" />
+                            )}
+                            Enregistrer
+                          </Button>
+                          <Button
+                            disabled={isSavingToken}
+                            onClick={() => {
+                              setTokenDraft("");
+                              setFieldDrafts({});
+                              setIsTokenFormOpen(false);
+                            }}
+                            size="sm"
+                            type="button"
+                            variant="ghost"
+                          >
+                            Annuler
+                          </Button>
                         </div>
-                      </form>
-                    </div>
-                  ) : (
-                    <Button
-                      onClick={() => setIsTokenFormOpen(true)}
-                      size="sm"
-                      type="button"
-                    >
-                      <KeyRoundIcon className="size-4" />
-                      Enregistrer un jeton
-                    </Button>
-                  )
-                ) : null
-              ) : null}
-
-              {connection?.connected && connector.id === "github" ? (
-                <p className="text-xs leading-5 text-muted-foreground">
-                  GitHub peut réutiliser l'autorisation existante si les droits
-                  demandés n'ont pas changé. Une nouvelle demande sera affichée
-                  lorsque les accès requis évoluent.
-                </p>
+                      </div>
+                    </form>
+                  </div>
+                ) : (
+                  <Button
+                    onClick={() => setIsTokenFormOpen(true)}
+                    size="sm"
+                    type="button"
+                  >
+                    <KeyRoundIcon className="size-4" />
+                    Enregistrer un jeton
+                  </Button>
+                )
               ) : null}
 
               <p className="text-xs leading-5 text-muted-foreground">
@@ -1158,13 +831,8 @@ export default function PluginDetailClient({
           {state.installed ? (
             <>
               <Button
-                disabled={isBusy || (locked && !state.enabled)}
+                disabled={isBusy}
                 onClick={handleToggleEnabled}
-                title={
-                  locked && !state.enabled
-                    ? `Forfait ${manifest.minTier} requis pour réactiver ce plugin.`
-                    : undefined
-                }
                 type="button"
                 variant="outline"
               >
@@ -1196,21 +864,12 @@ export default function PluginDetailClient({
             </>
           ) : (
             <Button
-              disabled={
-                isBusy || locked || Boolean(connector && isIntegrationLoading)
-              }
+              disabled={isBusy || Boolean(connector && isIntegrationLoading)}
               onClick={handleInstall}
-              title={
-                locked
-                  ? `Forfait ${manifest.minTier} requis pour installer ce plugin.`
-                  : undefined
-              }
               type="button"
             >
               {isBusy ? (
                 <Loader2Icon className="size-4 animate-spin" />
-              ) : locked ? (
-                <LockIcon className="size-4" />
               ) : (
                 <PlusIcon className="size-4" />
               )}

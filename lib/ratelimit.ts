@@ -30,6 +30,35 @@ function getClient() {
 const MAX_MESSAGES_PER_USER = 50;
 const MAX_MESSAGES_PER_IP = 20;
 
+// Repli en mémoire borné (évite d'interroger Neon à chaque message lorsque
+// Redis est absent, en cours d'initialisation ou en erreur).
+function enforceMemoryChatRateLimit(
+  ip: string | undefined,
+  userId?: string
+): void {
+  const now = Date.now();
+  if (userId) {
+    const userCheck = checkMemoryBucket(
+      `chat:user:${userId}`,
+      { limit: MAX_MESSAGES_PER_USER, windowSeconds: TTL_SECONDS },
+      now
+    );
+    if (!userCheck.allowed) {
+      throw new ChatbotError("rate_limit:chat");
+    }
+  }
+  if (ip) {
+    const ipCheck = checkMemoryBucket(
+      `chat:ip:${ip}`,
+      { limit: MAX_MESSAGES_PER_IP, windowSeconds: TTL_SECONDS },
+      now
+    );
+    if (!ipCheck.allowed) {
+      throw new ChatbotError("rate_limit:chat");
+    }
+  }
+}
+
 export async function checkIpRateLimit(
   ip: string | undefined,
   userId?: string
@@ -43,36 +72,8 @@ export async function checkIpRateLimit(
   const redis = getClient();
   const hasRedis = !!redis?.isReady;
 
-  // Fallback DB si Redis indisponible: compteur messages dernière heure
-  const fallbackDbCheck = async (uid?: string, ipAddr?: string) => {
-    try {
-      const { getMessageCountByUserId } = await import("./db/queries");
-      if (uid) {
-        const c = await getMessageCountByUserId({
-          differenceInHours: 1,
-          id: uid,
-        });
-        if (c >= MAX_MESSAGES_PER_USER) {
-          throw new ChatbotError("rate_limit:chat");
-        }
-      } else if (ipAddr && !uid) {
-        // Sans user, on ne peut pas fallback efficacement, on laisse passer (mais IP Redis manquant = fail open limité)
-      }
-    } catch (e) {
-      if (e instanceof ChatbotError) {
-        throw e;
-      }
-      console.warn(
-        "[ratelimit] Échec du repli DB pour le rate limit:",
-        e instanceof Error ? e.message : e
-      );
-    }
-  };
-
   if (!hasRedis) {
-    if (userId) {
-      await fallbackDbCheck(userId);
-    }
+    enforceMemoryChatRateLimit(ip, userId);
     return;
   }
 
@@ -159,13 +160,10 @@ export async function checkIpRateLimit(
       throw error;
     }
     console.warn(
-      "[ratelimit] Échec Redis pour le rate limit chat, repli DB:",
+      "[ratelimit] Échec Redis pour le rate limit chat, repli mémoire:",
       error instanceof Error ? error.message : error
     );
-    // Fallback DB en cas d'erreur Redis
-    if (userId) {
-      await fallbackDbCheck(userId);
-    }
+    enforceMemoryChatRateLimit(ip, userId);
   }
 }
 
@@ -416,7 +414,9 @@ export type ApiRateLimitAction =
   | "mcp_test"
   | "file_upload"
   | "chat_bulk"
-  | "web_search";
+  | "web_search"
+  | "plan_upgrade_code"
+  | "plan_downgrade";
 
 type ApiRateLimitResult =
   | { allowed: true }
@@ -467,6 +467,16 @@ const API_RATE_LIMITS: Record<
   message_execute: {
     ip: { limit: 60, windowSeconds: 3600 },
     user: { limit: 20, windowSeconds: 3600 },
+  },
+  // Retour au forfait Free : protection anti-spam.
+  plan_downgrade: {
+    ip: { limit: 30, windowSeconds: 900 },
+    user: { limit: 10, windowSeconds: 900 },
+  },
+  // Activation d'un code d'upgrade : aligné sur 10 essais / 15 min par compte.
+  plan_upgrade_code: {
+    ip: { limit: 30, windowSeconds: 900 },
+    user: { limit: 10, windowSeconds: 900 },
   },
   // Recherche Web publique : chaque appel engage les clés You.com de la
   // plateforme et plusieurs requêtes sortantes de repli.

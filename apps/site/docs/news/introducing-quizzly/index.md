@@ -52,7 +52,6 @@ Un bon outil de révision est un outil dans lequel on revient volontiers. Nous a
 - **Amis** : ajoutez vos camarades, suivez vos avancées respectives et partagez votre progression.
 
 - [Page du projet](/projects/quizzly)
-- [Documentation](/docs?doc=app-quizzly)
 
 ---
 
@@ -108,5 +107,5 @@ Cette version candidate pose les fondations de Quizzly, mais le catalogue et l'a
    - Référentiels pédagogiques et programmes scolaires du Collège (6ème à 3ème) et du Lycée (Seconde à Terminale), publiés au Bulletin Officiel de l'Éducation Nationale (BOEN) et sur Éduscol.
 3. **Suite mAI & Dépôt officiel** :
    - Dépôt public mDevsLabs : [github.com/mDevsLabs/Web](https://github.com/mDevsLabs/Web)
-   - Documentation de Quizzly : [Documentation mAI](/docs?doc=app-quizzly)
+   - Fiche projet Quizzly : [Quizzly](/projects/quizzly)
 

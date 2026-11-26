@@ -28,6 +28,72 @@ type ModelCardData = {
   serieBg: string;
 };
 
+const models25: ModelCardData[] = [
+  {
+    id: "mai-2.5-opal",
+    name: "mAI-2.5-Opal",
+    num: "01",
+    badge: "Cloud • Texte + images • 1M",
+    description:
+      "Le fleuron absolu de la génération mAI-2.5. Puissance cognitive maximale, raisonnement approfondi (thinking), ingénierie logicielle avancée et utilisation autonome de l'ordinateur.",
+    tagline: "Le fleuron de l'intelligence cognitive et du computer use.",
+    cloud: true,
+    vision: true,
+    context: "1M tokens",
+    releaseDate: "19/11/2026",
+    bannerImage: "/mai-2.5-opal/mAI-2.5-Opal.png",
+    squareImage: "/mai-2.5-opal/icon.png",
+    color: "from-indigo-500 via-purple-500 to-pink-500",
+    shadowHover: "hover:shadow-[0_8px_32px_0_rgba(168,85,247,0.25)]",
+    borderHover: "hover:border-purple-500/40",
+    tags: ["Cloud (API mAI)", "Contexte 1M", "Thinking & Tools", "Flagship", "Computer Use"],
+    serieColor: "text-purple-600",
+    serieBg: "bg-purple-500/10 border-purple-500/20",
+  },
+  {
+    id: "mai-2.5-apex",
+    name: "mAI-2.5-Apex",
+    num: "02",
+    badge: "Cloud • Texte + images • 1M",
+    description:
+      "L'alliance de la rigueur analytique sans compromis et de très hautes performances. Conçu pour le code critique, l'audit de sécurité, les mathématiques et les missions d'ingénierie.",
+    tagline: "Rigueur analytique absolue et haute performance.",
+    cloud: true,
+    vision: true,
+    context: "1M tokens",
+    releaseDate: "19/11/2026",
+    bannerImage: "/mai-2.5-apex/mAI-2.5-Apex.png",
+    squareImage: "/mai-2.5-apex/icon.png",
+    color: "from-amber-500 to-rose-600",
+    shadowHover: "hover:shadow-[0_8px_32px_0_rgba(245,158,11,0.25)]",
+    borderHover: "hover:border-amber-500/40",
+    tags: ["Cloud (API mAI)", "Contexte 1M", "Rigueur & Sécurité", "High Perf"],
+    serieColor: "text-amber-600",
+    serieBg: "bg-amber-500/10 border-amber-500/20",
+  },
+  {
+    id: "mai-2.5-omni",
+    name: "mAI-2.5-Omni",
+    num: "03",
+    badge: "Cloud • Texte + images • 1M",
+    description:
+      "La version polyvalente, fluide et ultra-réactive de la génération 2.5. Conçu pour motoriser toutes les tâches du quotidien avec une latence minimale et une grande intelligence pratique.",
+    tagline: "Polyvalence quotidienne, vitesse d'exécution et productivité.",
+    cloud: true,
+    vision: true,
+    context: "1M tokens",
+    releaseDate: "19/11/2026",
+    bannerImage: "/mai-2.5-omni/mAI-2.5-Omni.png",
+    squareImage: "/mai-2.5-omni/icon.png",
+    color: "from-cyan-500 via-sky-500 to-blue-600",
+    shadowHover: "hover:shadow-[0_8px_32px_0_rgba(6,182,212,0.25)]",
+    borderHover: "hover:border-cyan-400/40",
+    tags: ["Cloud (API mAI)", "Contexte 1M", "Ultra-rapide", "Quotidien"],
+    serieColor: "text-cyan-600",
+    serieBg: "bg-cyan-500/10 border-cyan-500/20",
+  },
+];
+
 const models2: ModelCardData[] = [
   {
     id: "mai-2",
@@ -390,6 +456,30 @@ export default function ModelsPage() {
           <PageSearch type="model" placeholder="Rechercher un modèle…" />
         </motion.div>
       </div>
+
+      {/* ─── Section mAI-2.5 (Nouvelle Génération Cloud) ─────────────── */}
+      <motion.section
+        id="mai-2.5"
+        className="scroll-mt-24"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+      >
+        <div className="mb-3">
+          <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
+            Série <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-amber-500 to-cyan-500">mAI-2.5</span>
+          </h2>
+          <p className="text-slate-500 text-sm font-light mt-1 max-w-2xl">
+            La toute nouvelle génération mAI dans le cloud : avancées décisives sur le raisonnement (thinking), le codage de pointe et l&apos;utilisation autonome de l&apos;ordinateur (computer use).
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
+          {models25.map((model, index) => (
+            <ModelCard key={model.id} model={model} index={index} />
+          ))}
+        </div>
+      </motion.section>
 
       {/* ─── Section mAI-2 (Génération cloud) ───────────────────────── */}
       <motion.section

@@ -23,6 +23,6 @@ L'API v2 intègre un contrôle de débit par adresse IP et par compte afin d'ass
 - **Pro** : 3 000 requêtes / semaine
 - **Max** : 7 500 requêtes / semaine
 
-Consultez la rubrique [Gestion des Clés API](/account/keys) de la console pour initier vos intégrations.
+*Archive historique — Annonce de lancement de l'API v2 (service API programmé pour arrêt en décembre 2026 au profit de l'écosystème applicatif mAI).*
 
 

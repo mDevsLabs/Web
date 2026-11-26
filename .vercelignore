@@ -1,0 +1,31 @@
+# Exclusions Vercel pour les déploiements depuis les sources et en mode précompilé.
+# Ne pas ignorer les fichiers lus par `pnpm build` ni ceux référencés par
+# les fonctions dans `.vercel/output` lors de `vercel deploy --prebuilt`.
+# apps/blackline, apps/site, apps/vibe, apps/wakies, lib/quizzly/curriculum
+# et CHANGELOG.md doivent rester disponibles.
+
+# Applications natives et éditeur : builds séparés (Electron, Capacitor).
+apps/coder/
+apps/desktop/
+apps/mobile/
+
+# Documentation interne à la racine uniquement ; conserver apps/site/docs/.
+/docs/
+
+# Tests et rapports : jamais lus à l'exécution.
+tests/
+playwright-report/
+test-results/
+coverage/
+
+# Outillage local et CI.
+.github/
+.husky/
+.freebuff/
+.agents/
+*.log
+*.tsbuildinfo
+
+# Dépendances et caches : reconstruits par Vercel.
+node_modules/
+.next/

@@ -1,6 +1,10 @@
 import {
+  ActivityIcon,
+  CopyIcon,
   CpuIcon,
   Edit2Icon,
+  KeyIcon,
+  Loader2Icon,
   MoreVerticalIcon,
   PlusIcon,
   RefreshCwIcon,
@@ -10,6 +14,7 @@ import {
   WrenchIcon,
   ZapIcon,
 } from "@mdevs/icons";
+import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,9 +24,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { McpServer } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
-import type { McpTemplateRow } from "./mcp-types";
+import type { McpServerItem, McpTemplateRow } from "./mcp-types";
+
+function formatRelativeDate(value: Date | string | null | undefined): string {
+  if (!value) return "Jamais synchronisé";
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return "Jamais synchronisé";
+  const diffMin = Math.round((Date.now() - date.getTime()) / 60_000);
+  if (diffMin < 1) return "Synchronisé à l'instant";
+  if (diffMin < 60) return `Synchro il y a ${diffMin} min`;
+  const diffHours = Math.round(diffMin / 60);
+  if (diffHours < 24) return `Synchro il y a ${diffHours} h`;
+  return `Synchro le ${date.toLocaleDateString("fr-FR")}`;
+}
 
 export function McpServersTab({
   isLoading,
@@ -31,23 +47,109 @@ export function McpServersTab({
   handleNewServer,
   handleToggleEnabled,
   handleRefreshTools,
+  handleQuickTestServer,
+  handleDuplicateServer,
+  testingServerId,
+  refreshingServerId,
   setIsInspectingTools,
   handleEditServer,
-  setSkillToDelete,
+  setServerToDelete,
 }: {
   isLoading: boolean;
-  servers: McpServer[];
+  servers: McpServerItem[];
   installableTemplates: McpTemplateRow[];
-  filteredServers: McpServer[];
+  filteredServers: McpServerItem[];
   handleNewServer: (tpl?: McpTemplateRow) => void;
-  handleToggleEnabled: (s: McpServer) => void;
-  handleRefreshTools: (s: McpServer) => void;
-  setIsInspectingTools: (s: McpServer | null) => void;
-  handleEditServer: (s: McpServer) => void;
-  setSkillToDelete: (s: McpServer | null) => void;
+  handleToggleEnabled: (s: McpServerItem) => void;
+  handleRefreshTools: (s: McpServerItem) => void;
+  handleQuickTestServer?: (s: McpServerItem) => void;
+  handleDuplicateServer?: (s: McpServerItem) => void;
+  testingServerId?: string | null;
+  refreshingServerId?: string | null;
+  setIsInspectingTools: (s: McpServerItem | null) => void;
+  handleEditServer: (s: McpServerItem) => void;
+  setServerToDelete: (s: McpServerItem | null) => void;
 }) {
+  const [statusFilter, setStatusFilter] = useState<
+    "all" | "active" | "inactive"
+  >("all");
+  const [transportFilter, setTransportFilter] = useState<string>("all");
+
+  const visibleServers = useMemo(
+    () =>
+      filteredServers.filter((s) => {
+        if (statusFilter === "active" && !s.isEnabled) return false;
+        if (statusFilter === "inactive" && s.isEnabled) return false;
+        if (transportFilter !== "all" && s.transport !== transportFilter) {
+          return false;
+        }
+        return true;
+      }),
+    [filteredServers, statusFilter, transportFilter]
+  );
+
+  const activeCount = servers.filter((s) => s.isEnabled).length;
+  const transports = useMemo(
+    () => [...new Set(servers.map((s) => s.transport).filter(Boolean))],
+    [servers]
+  );
+
   return (
-    <div>
+    <div className="space-y-4">
+      {!isLoading && servers.length > 0 && (
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <button
+              className="chip text-xs"
+              data-active={statusFilter === "all"}
+              onClick={() => setStatusFilter("all")}
+              type="button"
+            >
+              Tous ({servers.length})
+            </button>
+            <button
+              className="chip text-xs"
+              data-active={statusFilter === "active"}
+              onClick={() => setStatusFilter("active")}
+              type="button"
+            >
+              Actifs ({activeCount})
+            </button>
+            <button
+              className="chip text-xs"
+              data-active={statusFilter === "inactive"}
+              onClick={() => setStatusFilter("inactive")}
+              type="button"
+            >
+              Inactifs ({servers.length - activeCount})
+            </button>
+          </div>
+          {transports.length > 1 && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <button
+                className="chip text-[11px]"
+                data-active={transportFilter === "all"}
+                onClick={() => setTransportFilter("all")}
+                type="button"
+              >
+                Tous transports
+              </button>
+              {transports.map((t) => (
+                <button
+                  className="chip text-[11px] uppercase"
+                  data-active={transportFilter === t}
+                  key={t}
+                  onClick={() => setTransportFilter(t)}
+                  type="button"
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[1, 2, 3].map((i) => (
@@ -59,7 +161,7 @@ export function McpServersTab({
         </div>
       ) : servers.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-12 text-center max-w-2xl mx-auto">
-          <div className="size-16 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
+          <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4">
             <CpuIcon className="size-8" />
           </div>
           <h2 className="text-xl font-bold mb-2">
@@ -108,32 +210,42 @@ export function McpServersTab({
             <span>Configurer un serveur personnalisé</span>
           </Button>
         </div>
-      ) : filteredServers.length === 0 ? (
+      ) : visibleServers.length === 0 ? (
         <div className="py-12 text-center text-muted-foreground text-sm">
-          Aucun serveur ne correspond à votre recherche.
+          Aucun serveur ne correspond aux filtres sélectionnés.
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredServers.map((s) => {
-            const toolsCount = (s.toolsCache as any[])?.length || 0;
+          {visibleServers.map((s) => {
+            const toolsList = (s.toolsCache as Array<{ name: string }>) || [];
+            const toolsCount = toolsList.length;
             const overrides =
-              ((s as any).toolOverrides as Record<string, any>) ?? {};
-            const enabledCount = ((s.toolsCache as any[]) || []).filter(
+              (s.toolOverrides as Record<string, { enabled?: boolean }>) ?? {};
+            const enabledCount = toolsList.filter(
               (t) => overrides[t.name]?.enabled !== false
             ).length;
+            const secretCount =
+              (s.secretKeys?.auth?.length ?? 0) +
+              (s.secretKeys?.env?.length ?? 0) +
+              (s.secretKeys?.header?.length ?? 0);
+            const missingAuthSecret =
+              s.authType !== "none" && secretCount === 0;
+            const isTestingThis = testingServerId === s.id;
+            const isRefreshingThis = refreshingServerId === s.id;
+
             return (
               <div
                 className={cn(
                   "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md relative group",
                   s.isEnabled
                     ? "border-border/60"
-                    : "border-border/40 opacity-70 bg-muted/20"
+                    : "border-border/40 opacity-75 bg-muted/20"
                 )}
                 key={s.id}
               >
                 <div className="flex items-start justify-between gap-2 mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="size-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="size-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-xs shrink-0">
                       <ServerIcon className="size-5" />
                     </div>
                     <div className="min-w-0">
@@ -143,9 +255,9 @@ export function McpServersTab({
                         </h3>
                         <span
                           className={cn(
-                            "size-2 rounded-full",
+                            "size-2 rounded-full shrink-0",
                             s.isEnabled
-                              ? "bg-emerald-500"
+                              ? "bg-success"
                               : "bg-muted-foreground/40"
                           )}
                           title={s.isEnabled ? "Actif" : "Inactif"}
@@ -158,76 +270,124 @@ export function McpServersTab({
                       </p>
                     </div>
                   </div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        className="size-7 p-0 text-muted-foreground hover:text-foreground"
-                        variant="ghost"
-                      >
-                        <MoreVerticalIcon className="size-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      align="end"
-                      className="w-48"
-                      collisionPadding={12}
-                      side="bottom"
-                      sideOffset={6}
+                  <div className="flex items-center gap-1 shrink-0">
+                    <button
+                      aria-label={
+                        s.isEnabled
+                          ? `Désactiver ${s.name}`
+                          : `Activer ${s.name}`
+                      }
+                      className={cn(
+                        "rounded-full border px-2 py-0.5 text-[10px] font-semibold transition-colors cursor-pointer",
+                        s.isEnabled
+                          ? "border-success/30 bg-success/10 text-success hover:bg-success/20"
+                          : "border-border/60 bg-muted/40 text-muted-foreground hover:text-foreground"
+                      )}
+                      onClick={() => handleToggleEnabled(s)}
+                      type="button"
                     >
-                      <DropdownMenuItem
-                        className="gap-2 cursor-pointer text-xs"
-                        onClick={() => handleToggleEnabled(s)}
+                      {s.isEnabled ? "Actif" : "Inactif"}
+                    </button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          className="size-7 p-0 text-muted-foreground hover:text-foreground"
+                          variant="ghost"
+                        >
+                          <MoreVerticalIcon className="size-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent
+                        align="end"
+                        className="w-48"
+                        collisionPadding={12}
+                        side="bottom"
+                        sideOffset={6}
                       >
-                        <ZapIcon className="size-3.5" />
-                        <span>{s.isEnabled ? "Désactiver" : "Activer"}</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        className="gap-2 cursor-pointer text-xs"
-                        onClick={() => handleRefreshTools(s)}
-                      >
-                        <RefreshCwIcon className="size-3.5" />
-                        <span>Synchroniser les outils</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        className="gap-2 cursor-pointer text-xs"
-                        onClick={() => setIsInspectingTools(s)}
-                      >
-                        <WrenchIcon className="size-3.5" />
-                        <span>Gérer les outils ({toolsCount})</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        className="gap-2 cursor-pointer text-xs"
-                        onClick={() => handleEditServer(s)}
-                      >
-                        <Edit2Icon className="size-3.5" />
-                        <span>Modifier</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                        className="gap-2 cursor-pointer text-xs text-destructive focus:text-destructive"
-                        onClick={() => setSkillToDelete(s)}
-                      >
-                        <Trash2Icon className="size-3.5" />
-                        <span>Supprimer</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                        <DropdownMenuItem
+                          className="gap-2 cursor-pointer text-xs"
+                          onClick={() => handleToggleEnabled(s)}
+                        >
+                          <ZapIcon className="size-3.5" />
+                          <span>{s.isEnabled ? "Désactiver" : "Activer"}</span>
+                        </DropdownMenuItem>
+                        {handleQuickTestServer && (
+                          <DropdownMenuItem
+                            className="gap-2 cursor-pointer text-xs"
+                            onClick={() => handleQuickTestServer(s)}
+                          >
+                            <ActivityIcon className="size-3.5" />
+                            <span>Tester la connexion</span>
+                          </DropdownMenuItem>
+                        )}
+                        <DropdownMenuItem
+                          className="gap-2 cursor-pointer text-xs"
+                          onClick={() => handleRefreshTools(s)}
+                        >
+                          <RefreshCwIcon className="size-3.5" />
+                          <span>Synchroniser les outils</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          className="gap-2 cursor-pointer text-xs"
+                          onClick={() => setIsInspectingTools(s)}
+                        >
+                          <WrenchIcon className="size-3.5" />
+                          <span>Gérer les outils ({toolsCount})</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          className="gap-2 cursor-pointer text-xs"
+                          onClick={() => handleEditServer(s)}
+                        >
+                          <Edit2Icon className="size-3.5" />
+                          <span>Modifier</span>
+                        </DropdownMenuItem>
+                        {handleDuplicateServer && (
+                          <DropdownMenuItem
+                            className="gap-2 cursor-pointer text-xs"
+                            onClick={() => handleDuplicateServer(s)}
+                          >
+                            <CopyIcon className="size-3.5" />
+                            <span>Dupliquer</span>
+                          </DropdownMenuItem>
+                        )}
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem
+                          className="gap-2 cursor-pointer text-xs text-destructive focus:text-destructive"
+                          onClick={() => setServerToDelete(s)}
+                        >
+                          <Trash2Icon className="size-3.5" />
+                          <span>Supprimer</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                 </div>
+
                 <div className="flex items-center gap-1.5 flex-wrap mb-2 text-[10.5px] text-muted-foreground">
                   <span
                     className={cn(
-                      (s as any).uptimeStatus === "online"
-                        ? "text-emerald-600 dark:text-emerald-400"
-                        : "text-amber-600 dark:text-amber-400"
+                      s.uptimeStatus === "online"
+                        ? "text-success"
+                        : "text-warning"
                     )}
                   >
-                    ● {(s as any).uptimeStatus ?? "unknown"}
+                    ● {s.uptimeStatus || "unknown"}
                   </span>
                   <span>·</span>
                   <span>
-                    {enabledCount}/{toolsCount} actifs
+                    {enabledCount}/{toolsCount} outils actifs
                   </span>
+                  {s.callCount > 0 && (
+                    <>
+                      <span>·</span>
+                      <span>
+                        {s.callCount} appel{s.callCount > 1 ? "s" : ""} (
+                        {s.avgLatencyMs} ms)
+                      </span>
+                    </>
+                  )}
                 </div>
+
                 <div className="flex items-center gap-1.5 flex-wrap mb-3">
                   <Badge
                     className="text-[10px] uppercase font-semibold px-2 py-0.5"
@@ -236,57 +396,89 @@ export function McpServersTab({
                     {s.transport}
                   </Badge>
                   <Badge
-                    className="text-[10px] px-2 py-0.5"
+                    className={cn(
+                      "text-[10px] px-2 py-0.5 gap-1",
+                      missingAuthSecret &&
+                        "border-warning/30 bg-warning/10 text-warning"
+                    )}
                     variant={s.authType === "none" ? "outline" : "secondary"}
                   >
                     {s.authType === "none"
                       ? "Pas d'auth"
-                      : `Auth: ${s.authType}`}
+                      : missingAuthSecret
+                        ? `Auth ${s.authType} manquante`
+                        : `Auth: ${s.authType}`}
                   </Badge>
+                  {secretCount > 0 && (
+                    <Badge
+                      className="text-[10px] px-2 py-0.5 gap-1 border-success/30 bg-success/10 text-success"
+                      variant="outline"
+                    >
+                      <KeyIcon className="size-2.5" />
+                      {secretCount} secret{secretCount > 1 ? "s" : ""}
+                    </Badge>
+                  )}
                   <Badge
                     className={cn(
                       "text-[10px] px-2 py-0.5",
                       s.requireApproval === "ask_permission"
-                        ? "bg-amber-500/10 text-amber-600 border-amber-500/30"
-                        : s.requireApproval === "write_only"
-                          ? "bg-sky-500/10 text-sky-600 border-sky-500/30"
-                          : "bg-emerald-500/10 text-emerald-600 border-emerald-500/30"
+                        ? "bg-warning/10 text-warning border-warning/30"
+                        : s.requireApproval === "always_allow"
+                          ? "bg-success/10 text-success border-success/30"
+                          : "bg-info/10 text-info border-info/30"
                     )}
                     variant="outline"
                   >
                     <ShieldCheckIcon className="size-2.5 mr-1" />
-                    {s.requireApproval === "ask_permission"
-                      ? "Toujours demander"
-                      : s.requireApproval === "write_only"
-                        ? "Accord écriture"
-                        : "Auto-approuvé"}
-                  </Badge>
-                  <Badge className="text-[10px] px-2 py-0.5" variant="outline">
-                    ⏱ {(s as any).timeoutMs ?? 15_000}ms ·{" "}
-                    {(s as any).rateLimitPerMin ?? 60}/min
+                    {s.requireApproval}
                   </Badge>
                 </div>
-                <div className="pt-2 border-t border-border/40 mt-auto flex items-center justify-between text-xs text-muted-foreground">
-                  <button
-                    className="hover:underline flex items-center gap-1 text-[11px] font-medium text-foreground"
-                    onClick={() => setIsInspectingTools(s)}
-                    type="button"
-                  >
-                    <WrenchIcon className="size-3 text-primary" />
-                    <span>
-                      {enabledCount}/{toolsCount} outil(s) actif(s)
-                    </span>
-                  </button>
-                  <Button
-                    aria-label="Synchroniser les outils"
-                    className="h-6 w-6 p-0"
-                    onClick={() => handleRefreshTools(s)}
-                    size="sm"
-                    title="Synchroniser les outils"
-                    variant="ghost"
-                  >
-                    <RefreshCwIcon className="size-3" />
-                  </Button>
+
+                <div className="mt-auto pt-2.5 border-t border-border/40 flex items-center justify-between gap-1.5">
+                  <span className="text-[10px] text-muted-foreground truncate">
+                    {formatRelativeDate(s.lastSyncAt)}
+                  </span>
+                  <div className="flex items-center gap-1 shrink-0">
+                    {handleQuickTestServer && s.transport !== "stdio" && (
+                      <Button
+                        className="h-7 px-2 text-[11px]"
+                        disabled={isTestingThis}
+                        onClick={() => handleQuickTestServer(s)}
+                        size="sm"
+                        title="Tester la connexion"
+                        variant="ghost"
+                      >
+                        {isTestingThis ? (
+                          <Loader2Icon className="size-3 animate-spin" />
+                        ) : (
+                          "Tester"
+                        )}
+                      </Button>
+                    )}
+                    <Button
+                      className="h-7 px-2 text-[11px]"
+                      disabled={isRefreshingThis}
+                      onClick={() => handleRefreshTools(s)}
+                      size="sm"
+                      title="Synchroniser les outils"
+                      variant="ghost"
+                    >
+                      <RefreshCwIcon
+                        className={cn(
+                          "size-3",
+                          isRefreshingThis && "animate-spin"
+                        )}
+                      />
+                    </Button>
+                    <Button
+                      className="h-7 px-2 text-[11px]"
+                      onClick={() => setIsInspectingTools(s)}
+                      size="sm"
+                      variant="outline"
+                    >
+                      Outils ({toolsCount})
+                    </Button>
+                  </div>
                 </div>
               </div>
             );

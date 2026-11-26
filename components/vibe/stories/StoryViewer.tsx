@@ -2,6 +2,13 @@ import type React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { StoryRing } from "@/components/vibe/stories/StoryRing";
+import {
+  isBadgeSticker,
+  resolveEffectiveStoryStyle,
+  resolveStoryBackground,
+  resolveStoryFilter,
+  resolveStoryTextConfig,
+} from "@/components/vibe/stories/story-styles";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import type {
@@ -18,7 +25,7 @@ import type {
  * haptique) avec deux écarts assumés:
  *
  * 1. Le portail se rend dans `.vibe-root`, et non dans `document.body`. MediaLightbox
- * Sort du conteneur: il perd les tokens de thème de `vibe.css`. Un lecteur de
+ * sort du conteneur: il perd les tokens de thème de `vibe.css`. Un lecteur de
  * stories est un lecteur de thème, il doit rester dans le conteneur.
  * 2. La vidéo est muette et `playsInline`. Sans `muted`, l'autoplay est refusé par
  * le navigateur — les vidéos de post sont interactives, une story ne l'est pas.
@@ -27,7 +34,8 @@ import type {
  * courant ⇒ auteur suivant, swipe vertical ⇒ changer d'auteur, `Escape` fermer.
  *
  * Une story SANS média est une story de texte: elle compte pour un item, rendu
- * sur un canevas à part. Stickers et sondage se superposent aux deux formes.
+ * sur un canevas à part. Stickers, mise en forme (`StoryStyle`) et sondage se
+ * superposent aux deux formes.
  */
 
 /** Durée d'affichage d'une photo ou d'un texte; une vidéo avance à la fin. */
@@ -36,7 +44,7 @@ const TICK_MS = 50;
 /** Seuil de swipe, identique à MediaLightbox.tsx:95-104 pour une gesture cohérente. */
 const SWIPE_THRESHOLD_PX = 60;
 
-const REACTIONS = ["", "", ""] as const;
+const REACTIONS = ["❤️", "🔥", "😮"] as const;
 
 type Item = { media: StoryMedia | null; story: Story };
 
@@ -268,6 +276,26 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     Boolean(auteur?.isMine) || (etatSondage?.myVote ?? null) !== null;
   const montrerResultats = sondageVerrouille;
 
+  // Résolution de la mise en forme visuelle (serveur ou cache local de repli)
+  const storyStyle = resolveEffectiveStoryStyle(courant.story);
+  const presetFond = resolveStoryBackground(storyStyle?.backgroundId);
+  const filtreMedia = resolveStoryFilter(storyStyle?.filterId);
+  const mediaContain = storyStyle?.mediaContain ?? true;
+  const mediaMirror = Boolean(storyStyle?.mediaMirror);
+  const textConfig = resolveStoryTextConfig(
+    storyStyle ??
+      (courant.media
+        ? {
+            textAlign: "center",
+            textPosition: "bottom",
+            textStyle: "translucent",
+          }
+        : { textAlign: "center", textPosition: "center", textStyle: "clean" })
+  );
+  const captionText = courant.story.caption?.trim() || "";
+  const canvasBackground =
+    !courant.media || mediaContain ? presetFond.preview : "#000000";
+
   return createPortal(
     <div
       className="vibe-story-viewer fixed inset-0 z-[90] flex flex-col bg-zinc-950"
@@ -359,39 +387,66 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
       </div>
 
       {/* Média, canevas de texte, stickers, légende et sondage. */}
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden bg-zinc-100 vibe-dark:bg-black">
+      <div
+        className="relative flex flex-1 items-center justify-center overflow-hidden"
+        style={{
+          background: canvasBackground,
+          color: "#ffffff",
+        }}
+      >
         {estVideo ? (
           <video
             autoPlay
-            className="h-full w-full object-contain"
+            className={`h-full w-full ${
+              mediaContain ? "object-contain" : "object-cover"
+            } ${mediaMirror ? "-scale-x-100" : ""}`}
             key={identiteCourante}
             muted
             onEnded={avancer}
             playsInline
             ref={videoRef}
             src={courant.media?.url}
+            style={{ filter: filtreMedia.filter }}
           />
         ) : courant.media ? (
           <img
             alt={courant.media.altText || "Story"}
-            className="h-full w-full object-contain"
+            className={`h-full w-full ${
+              mediaContain ? "object-contain" : "object-cover"
+            } ${mediaMirror ? "-scale-x-100" : ""}`}
             key={identiteCourante}
             src={courant.media.url}
+            style={{ filter: filtreMedia.filter }}
           />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-800 px-8">
-            <p className="max-h-full overflow-hidden text-balance text-center text-2xl font-semibold leading-snug text-white">
-              {courant.story.caption}
-            </p>
+        ) : null}
+
+        {/* Légende stylisée (positionnée selon le style de la story) */}
+        {captionText ? (
+          <div
+            className={`absolute inset-x-6 ${textConfig.posClass} pointer-events-none z-10`}
+          >
+            <div
+              className={`${textConfig.bgBoxClass} ${textConfig.alignClass}`}
+              style={textConfig.bgBoxStyle}
+            >
+              <p
+                className={`${textConfig.fontClass} text-balance ${
+                  courant.media ? "text-base sm:text-lg" : "text-xl sm:text-2xl"
+                } leading-snug`}
+                style={textConfig.textColorStyle}
+              >
+                {captionText}
+              </p>
+            </div>
           </div>
-        )}
+        ) : null}
 
         {/* Stickers: positions relatives posées à la publication. */}
         {courant.story.stickers.map((sticker, index) => {
-          const estBadge = /[a-zA-Z0-9]/.test(sticker.emoji);
+          const estBadge = isBadgeSticker(sticker.emoji);
           return (
             <span
-              className={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 ${
+              className={`pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-1/2 ${
                 estBadge ? "vibe-story-badge shadow-xl" : "text-4xl drop-shadow"
               }`}
               key={`${sticker.emoji}-${index}`}
@@ -405,75 +460,84 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           );
         })}
 
-        {/* Légende et sondage empilés en bas, pour ne pas se recouvrir. Une
-            story de texte porte déjà sa légende au centre du canevas. */}
-        {(courant.media && courant.story.caption) ||
-        (sondage && etatSondage) ? (
-          <div className="absolute inset-x-4 bottom-4 space-y-2">
-            {courant.media && courant.story.caption ? (
-              <p className="rounded-xl bg-zinc-950/70 px-3 py-2 text-center text-sm text-white backdrop-blur-sm">
-                {courant.story.caption}
+        {/* Sondage interactif */}
+        {sondage && etatSondage ? (
+          <div className="absolute inset-x-4 bottom-4 z-20 space-y-2">
+            <div
+              className="rounded-2xl p-3 backdrop-blur-sm border"
+              style={{
+                backgroundColor: "rgba(9, 9, 11, 0.88)",
+                borderColor: "rgba(255, 255, 255, 0.15)",
+                color: "#ffffff",
+              }}
+            >
+              <p className="text-xs font-semibold" style={{ color: "#ffffff" }}>
+                {sondage.question}
               </p>
-            ) : null}
-            {sondage && etatSondage ? (
-              <div className="rounded-2xl bg-zinc-950/85 p-3 backdrop-blur-sm">
-                <p className="text-xs font-semibold text-white">
-                  {sondage.question}
-                </p>
-                <div className="mt-2 space-y-1.5">
-                  {sondage.options.map((option, index) => {
-                    const choisi = etatSondage.myVote === index;
-                    const compteur = Number(etatSondage.counts[index] || 0);
-                    const part =
-                      etatSondage.total > 0
-                        ? Math.round((compteur / etatSondage.total) * 100)
-                        : 0;
-                    return (
-                      <button
-                        className={`relative block w-full overflow-hidden rounded-xl border px-3 py-1.5 text-left text-xs transition ${
-                          choisi
-                            ? "border-white/60 text-white"
-                            : "border-white/20 text-white/80 hover:border-white/40"
-                        }`}
-                        key={`${option}-${index}`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (!sondageVerrouille) voter(index);
-                        }}
-                        onPointerDown={(e) => e.stopPropagation()}
-                        onPointerUp={(e) => e.stopPropagation()}
-                        type="button"
-                      >
+              <div className="mt-2 space-y-1.5">
+                {sondage.options.map((option, index) => {
+                  const choisi = etatSondage.myVote === index;
+                  const compteur = Number(etatSondage.counts[index] || 0);
+                  const part =
+                    etatSondage.total > 0
+                      ? Math.round((compteur / etatSondage.total) * 100)
+                      : 0;
+                  return (
+                    <button
+                      className="relative block w-full overflow-hidden rounded-xl border px-3 py-1.5 text-left text-xs transition"
+                      key={`${option}-${index}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (!sondageVerrouille) voter(index);
+                      }}
+                      onPointerDown={(e) => e.stopPropagation()}
+                      onPointerUp={(e) => e.stopPropagation()}
+                      style={{
+                        borderColor: choisi
+                          ? "rgba(255, 255, 255, 0.65)"
+                          : "rgba(255, 255, 255, 0.22)",
+                        color: choisi ? "#ffffff" : "rgba(255, 255, 255, 0.85)",
+                      }}
+                      type="button"
+                    >
+                      {montrerResultats ? (
+                        <span
+                          className="absolute inset-y-0 left-0"
+                          style={{
+                            backgroundColor: "rgba(255, 255, 255, 0.18)",
+                            width: `${part}%`,
+                          }}
+                        />
+                      ) : null}
+                      <span className="relative flex items-center justify-between gap-2">
+                        <span className="truncate">{option}</span>
                         {montrerResultats ? (
                           <span
-                            className="absolute inset-y-0 left-0 bg-zinc-500/30"
-                            style={{ width: `${part}%` }}
-                          />
+                            className="shrink-0"
+                            style={{ color: "rgba(255, 255, 255, 0.65)" }}
+                          >
+                            {part}%
+                          </span>
                         ) : null}
-                        <span className="relative flex items-center justify-between gap-2">
-                          <span className="truncate">{option}</span>
-                          {montrerResultats ? (
-                            <span className="shrink-0 text-white/60">
-                              {part}%
-                            </span>
-                          ) : null}
-                          {choisi ? <span className="shrink-0">✓</span> : null}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-                <p className="mt-2 text-[10px] text-white/50">
-                  {etatSondage.total} vote
-                  {etatSondage.total > 1 ? "s" : ""}
-                  {auteur?.isMine
-                    ? " · sondage de votre story"
-                    : etatSondage.myVote === null
-                      ? " · touchez une option"
-                      : ""}
-                </p>
+                        {choisi ? <span className="shrink-0">✓</span> : null}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
-            ) : null}
+              <p
+                className="mt-2 text-[10px]"
+                style={{ color: "rgba(255, 255, 255, 0.55)" }}
+              >
+                {etatSondage.total} vote
+                {etatSondage.total > 1 ? "s" : ""}
+                {auteur?.isMine
+                  ? " · sondage de votre story"
+                  : etatSondage.myVote === null
+                    ? " · touchez une option"
+                    : ""}
+              </p>
+            </div>
           </div>
         ) : null}
       </div>

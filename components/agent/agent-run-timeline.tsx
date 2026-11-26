@@ -130,7 +130,7 @@ const RUN_STATUS_BADGES: Record<
   },
   failed: {
     className: "border-destructive/30 bg-destructive/10 text-destructive",
-    label: "Échec",
+    label: "Erreur",
   },
   queued: {
     className: "border-border/60 text-muted-foreground",
@@ -255,7 +255,12 @@ function RunSummary({ run }: { run: AgentRunEvent }) {
         </span>
       ) : null}
       {run.error ? (
-        <span className="text-destructive">Erreur : {run.error}</span>
+        <span
+          className="rounded-full border border-destructive/30 bg-destructive/10 px-2 py-0.5 font-medium text-[11px] text-destructive"
+          data-testid="agent-run-error-label"
+        >
+          {run.error}
+        </span>
       ) : null}
     </div>
   );

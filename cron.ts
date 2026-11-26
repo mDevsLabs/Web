@@ -7,6 +7,18 @@ import { fileURLToPath } from "node:url";
  * cron.ts — les ticks planifiés de l'hôte Next, déclenchés par Val Town
  * ============================================================================
  *
+ * STATUT : DÉCLENCHEUR OPTIONNEL — À DÉSACTIVER CÔTÉ VAL TOWN
+ *
+ * L'ordonnancement de production repose désormais sur trois sources qui
+ * partagent le même bail atomique (table Neon `cron_ticks`) :
+ *   - GitHub Actions `cron-master.yml` (toutes les 30 minutes, simple `curl`) ;
+ *   - Vercel Cron `/api/cron/daily` (1 passage/jour, plan Hobby) ;
+ *   - les ticks paresseux, déclenchés par la cloche de notifications.
+ * Laisser ce val tourner en parallèle ne casse rien (les routes réservent
+ * leurs occurrences de façon atomique) mais paie deux fois les mêmes ticks :
+ * désactive son déclencheur CRON dans Val Town. Le fichier est conservé comme
+ * référence du contrat HTTP (verbes, budgets) et comme secours manuel.
+ *
  * POURQUOI UN VAL PLUTÔT QUE LE WORKFLOW GITHUB
  *
  * `.github/workflows/cron-tasks.yml` — supprimé — ne faisait qu'une chose :
@@ -26,7 +38,7 @@ import { fileURLToPath } from "node:url";
  *      montrent la réponse JSON de chaque route, tick par tick, au lieu d'un
  *      `::error::` dans un run de workflow.
  *
- * LES QUATRE TICKS (identiques à ceux du workflow)
+ * LES SIX TICKS (identiques à ceux de `cron-master.yml`)
  *
  *   • /api/cron/agent    — scheduler Agent       POST  maxDuration 300 s
  *   • /api/cron/planning — messages planifiés    POST  maxDuration 300 s

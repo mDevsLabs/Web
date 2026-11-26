@@ -287,7 +287,7 @@ export function BlacklineSettingsSection() {
             note="8K exige beaucoup de mémoire vidéo : la cadence réelle dépend du GPU."
             onChange={(valeur) => maj("renderResolution", valeur)}
             options={[
-              { label: "Auto · budget de l'appareil", valeur: "auto" },
+              { label: "Auto · densité de l'écran", valeur: "auto" },
               { label: "Écran · pixels natifs", valeur: "native" },
               { label: "Full HD · 1920 × 1080", valeur: "1080p" },
               { label: "QHD · 2560 × 1440", valeur: "1440p" },

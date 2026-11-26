@@ -1,14 +1,26 @@
 import { type NextRequest, NextResponse } from "next/server";
-import {
-  errorResponse,
-  logError,
-  normalizeUpstreamError,
-} from "@/lib/api/error-response";
+import { resolveSpeechModelForRequest } from "@/lib/ai/catalog/media-models";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { enforceApiRateLimit } from "@/lib/api/rate-limit";
-import { upstreamJson } from "@/lib/api/upstream";
-import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
-import { getUserApiKey } from "@/lib/db/api-keys";
+import {
+  ALLOWED_AUDIO_FORMATS,
+  audioFormatFromMime,
+  buildAudioDataUrl,
+  isPcmMimeType,
+  normalizePlayableAudioBinary,
+  parsePcmAudioParams,
+  parseRequestedAudioFormat,
+  resolveAudioMimeType,
+  wrapPcm16AsWav,
+} from "@/lib/audio/format";
+import { requireUser } from "@/lib/auth/require-user";
+import {
+  estimateSpeechTokens,
+  recordSpeechGeneration,
+  releaseWeeklySpeechQuota,
+  reserveWeeklySpeechQuota,
+} from "@/lib/db/queries/generations";
+import { getTierSpeechWeeklyLimit } from "@/lib/plans/tier-limits";
 
 // Un corps de synthèse vocale se mesure en kilo-octets, pas en méga-octets :
 // lire au-delà de ce plafond coûte de la mémoire pour un envoi qui sera refusé.
@@ -19,6 +31,7 @@ const SPEECH_BODY_MAX_BYTES = 64 * 1024;
 const SPEECH_INPUT_MAX_LENGTH = 5000;
 const SPEECH_SPEED_MIN = 0.25;
 const SPEECH_SPEED_MAX = 4;
+const SPEECH_FIELD_MAX_LENGTH = 120;
 
 async function readBoundedJson(request: Request): Promise<unknown> {
   const declared = Number(request.headers.get("content-length") ?? "0");
@@ -36,35 +49,32 @@ async function readBoundedJson(request: Request): Promise<unknown> {
   }
 }
 
+function readShortString(value: unknown, fallback: string): string {
+  if (typeof value !== "string") {
+    return fallback;
+  }
+  const trimmed = value.trim();
+  return trimmed && trimmed.length <= SPEECH_FIELD_MAX_LENGTH
+    ? trimmed
+    : fallback;
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const user = await getMaiUser();
-    let authHeader = "";
-
-    if (user?.id) {
-      const apiKey = await getUserApiKey(user.id);
-      if (apiKey) {
-        authHeader = `Bearer ${apiKey}`;
-      }
-    }
-
-    if (!authHeader) {
-      const token = await getMaiSessionToken();
-      if (token) {
-        authHeader = `Bearer ${token}`;
-      }
-    }
-
-    if (!authHeader) {
+    // Session vérifiée obligatoire : la simple présence d'un cookie suffisait
+    // auparavant à déclencher un appel payé avec la clé de la plateforme.
+    const auth = await requireUser();
+    if (!auth) {
       return errorResponse("auth_required", {
         message: "Non authentifié. Veuillez vous connecter.",
       });
     }
+    const { user, userId } = auth;
 
     const limited = await enforceApiRateLimit({
       action: "audio_generation",
       request: req,
-      userId: user ? user.id || user.email : null,
+      userId,
     });
     if (limited) {
       return limited;
@@ -79,13 +89,14 @@ export async function POST(req: NextRequest) {
       });
     }
     const body = parsed as Record<string, unknown>;
-    const input = body.input || body.prompt || body.text || "";
+    const rawInput = body.input || body.prompt || body.text || "";
 
-    if (!input || typeof input !== "string" || !input.trim()) {
+    if (typeof rawInput !== "string" || !rawInput.trim()) {
       return errorResponse("invalid_request", {
         message: "Le texte à synthétiser est obligatoire.",
       });
     }
+    const input = rawInput.trim();
 
     if (input.length > SPEECH_INPUT_MAX_LENGTH) {
       return errorResponse("invalid_request", {
@@ -94,9 +105,15 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const model = body.model || "deepgram/flux-tts:free";
-    const voice = body.voice || "flux-alexis-en";
-    const response_format = body.response_format || "mp3";
+    const requestedModel = readShortString(body.model, "");
+    const requestedVoice = readShortString(body.voice, "");
+    const requestedFormat = parseRequestedAudioFormat(body.response_format);
+    if (!requestedFormat) {
+      return errorResponse("invalid_request", {
+        details: { allowed: ALLOWED_AUDIO_FORMATS },
+        message: `Format audio non pris en charge. Formats autorisés : ${ALLOWED_AUDIO_FORMATS.join(", ")}.`,
+      });
+    }
 
     // `Number("abc")` vaut NaN et traversait le calcul de quota. On borne
     // explicitement, et une valeur illisible retombe sur le défaut.
@@ -105,118 +122,219 @@ export async function POST(req: NextRequest) {
       ? Math.min(Math.max(rawSpeed, SPEECH_SPEED_MIN), SPEECH_SPEED_MAX)
       : 1.0;
 
-    // Pré-contrôle de quota Speech, purement informatif : le backend applique la
-    // limite de toute façon, donc une panne de cette lecture ne doit pas
-    // bloquer une synthèse légitime.
-    const usage = await upstreamJson<{
-      tokensUsed?: number;
-      weeklyLimit?: number;
-    }>({ path: "/v1/audio/usage", token: authHeader });
-    if (usage.ok) {
-      const weeklyLimit = Number(usage.data.weeklyLimit ?? 0);
-      const tokensUsed = Number(usage.data.tokensUsed ?? 0);
-      const estimatedTokens = Math.max(1, Math.ceil(input.trim().length / 3.5));
-      if (
-        weeklyLimit > 0 &&
-        (tokensUsed >= weeklyLimit ||
-          tokensUsed + estimatedTokens > weeklyLimit)
-      ) {
-        return errorResponse("quota_exceeded", {
-          details: { limit: weeklyLimit, used: tokensUsed },
-          message: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
-        });
-      }
-    } else {
-      console.warn(
-        "Pré-contrôle de quota audio indisponible, la décision revient à l'amont :",
-        usage.payload.message
-      );
+    const openRouterApiKey = process.env.OPENROUTER_API_KEY;
+    if (!openRouterApiKey) {
+      return errorResponse("service_unavailable", {
+        message: "La synthèse vocale n'est pas configurée.",
+      });
     }
 
-    // Cette route n'utilise pas `upstreamJson` : l'amont peut renvoyer du JSON OU
-    // un flux binaire audio, selon le fournisseur. Le client amont normalise le
-    // JSON et son erreur ; la branche binaire reste gérée ici, sur le même
-    // `fetch` mais avec un délai de génération.
-    const maiRes = await fetch(`${MAI_API_URL}/v1/audio/speech`, {
-      body: JSON.stringify({
-        format: "json",
-        input: input.trim(),
-        model,
-        response_format,
-        return_json: true,
-        speed,
-        voice,
-      }),
-      cache: "no-store",
-      headers: {
-        Accept: "application/json",
-        Authorization: authHeader,
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      signal: AbortSignal.timeout(60_000),
+    const tier = user.tier || "Free";
+    const resolved = await resolveSpeechModelForRequest({
+      allowLegacyFallback: true,
+      requestedFormat,
+      requestedModel,
+      requestedSpeed: speed,
+      requestedVoice,
+      tier,
+    });
+    if (!resolved.ok) {
+      const apiCode =
+        resolved.status === 403
+          ? "model_access_denied"
+          : resolved.status === 404
+            ? "not_found"
+            : resolved.status === 503
+              ? "service_unavailable"
+              : "invalid_request";
+      return errorResponse(apiCode, {
+        details: { reason: resolved.code },
+        message: resolved.message,
+        status: resolved.status,
+      });
+    }
+
+    const model = resolved.model.id;
+    const voice = resolved.voice;
+    const responseFormat = resolved.responseFormat;
+
+    // Réservation atomique et verrouillée du quota Speech hebdomadaire AVANT
+    // l'appel externe (BUG-001 & BUG-003) : aucune concurrence ni erreur
+    // d'enregistrement post-génération ne peut contourner le quota.
+    const weeklyLimit = getTierSpeechWeeklyLimit(tier);
+    const tokensUsed = estimateSpeechTokens(input);
+    const reservation = await reserveWeeklySpeechQuota({
+      tokens: tokensUsed,
+      userId,
+      userKeys: [user.id, user.email, user.username],
+      weeklyLimit,
+    });
+    if (!reservation.ok) {
+      return errorResponse("quota_exceeded", {
+        details: { limit: reservation.limit, used: reservation.used },
+        message:
+          "Votre quota hebdomadaire de synthèse vocale est épuisé. Réinitialisation lundi à minuit UTC.",
+      });
+    }
+
+    const releaseReservation = async () => {
+      try {
+        await releaseWeeklySpeechQuota({
+          tokens: tokensUsed,
+          userId,
+          weekStart: reservation.weekStart,
+        });
+      } catch (releaseErr) {
+        logError("Erreur libération réservation quota Speech", releaseErr);
+      }
+    };
+
+    let openRouterRes: Response;
+    try {
+      openRouterRes = await fetch("https://openrouter.ai/api/v1/audio/speech", {
+        body: JSON.stringify({
+          input,
+          ...resolved.payload,
+        }),
+        cache: "no-store",
+        headers: {
+          Authorization: `Bearer ${openRouterApiKey}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "https://mai.mdevs.fr",
+          "X-Title": "mAI Speech",
+        },
+        method: "POST",
+        signal: AbortSignal.timeout(60_000),
+      });
+    } catch (fetchErr) {
+      await releaseReservation();
+      throw fetchErr;
+    }
+
+    // Le détail de l'erreur amont reste dans les journaux serveur : il n'est
+    // jamais relayé tel quel au navigateur.
+    if (!openRouterRes.ok) {
+      await releaseReservation();
+      const upstreamDetail = await openRouterRes.text().catch(() => "");
+      logError(
+        "Erreur amont audio/generations",
+        new Error(
+          `HTTP ${openRouterRes.status}: ${upstreamDetail.slice(0, 500)}`
+        )
+      );
+      return errorResponse("upstream_error", {
+        message: "Le service de synthèse vocale a renvoyé une erreur.",
+      });
+    }
+
+    const contentType = openRouterRes.headers.get("content-type") || "";
+    let audioUrl = "";
+    let resolvedMimeType = resolveAudioMimeType({
+      requestedFormat: responseFormat,
+      upstreamContentType: contentType,
     });
 
-    // Si le serveur a renvoyé du JSON
-    const contentType = maiRes.headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {
-      const json = await maiRes.json().catch(() => null);
-      if (!maiRes.ok) {
-        const payload = normalizeUpstreamError(json, maiRes.status);
-        return NextResponse.json(payload, { status: payload.status });
-      }
-      // Réponse announced JSON mais corps illisible : on n'indexe pas `null`.
-      if (!json || typeof json !== "object") {
-        return errorResponse("upstream_error", {
-          message: "Réponse inattendue du service de synthèse vocale.",
+    try {
+      if (contentType.includes("application/json")) {
+        const json = (await openRouterRes.json().catch(() => null)) as {
+          audio_url?: unknown;
+          audioContent?: unknown;
+          content_type?: unknown;
+          format?: unknown;
+          mime_type?: unknown;
+        } | null;
+        resolvedMimeType = resolveAudioMimeType({
+          jsonFormat: json?.format,
+          jsonMimeType: json?.mime_type ?? json?.content_type,
+          requestedFormat: responseFormat,
         });
+        if (typeof json?.audio_url === "string" && json.audio_url) {
+          audioUrl = json.audio_url;
+        } else if (
+          typeof json?.audioContent === "string" &&
+          json.audioContent
+        ) {
+          if (isPcmMimeType(resolvedMimeType)) {
+            const wavBytes = wrapPcm16AsWav(
+              Buffer.from(json.audioContent, "base64"),
+              parsePcmAudioParams(
+                typeof json.mime_type === "string"
+                  ? json.mime_type
+                  : contentType
+              )
+            );
+            resolvedMimeType = "audio/wav";
+            audioUrl = buildAudioDataUrl(
+              Buffer.from(wavBytes).toString("base64"),
+              "audio/wav"
+            );
+          } else {
+            audioUrl = buildAudioDataUrl(json.audioContent, resolvedMimeType);
+          }
+        }
+      } else {
+        const arrayBuf = await openRouterRes.arrayBuffer();
+        if (arrayBuf.byteLength > 0) {
+          const normalized = normalizePlayableAudioBinary({
+            bytes: new Uint8Array(arrayBuf),
+            requestedFormat: responseFormat,
+            upstreamContentType: contentType,
+          });
+          resolvedMimeType = normalized.mimeType;
+          audioUrl = buildAudioDataUrl(
+            Buffer.from(normalized.bytes).toString("base64"),
+            normalized.mimeType
+          );
+        }
       }
-      return NextResponse.json({
-        audio_url:
-          json.audio_url ||
-          (json.audioContent
-            ? `data:audio/mp3;base64,${json.audioContent}`
-            : ""),
-        character_count: json.character_count || input.length,
-        created: json.created || Math.floor(Date.now() / 1000),
-        id: json.id || `audio_${Date.now()}`,
-        model: json.model || model,
-        success: true,
-        text: input.trim(),
-        tokens_used: json.tokens_used || Math.ceil(input.length / 3.5),
-        usage: json.usage,
-        voice,
+    } catch (readErr) {
+      await releaseReservation();
+      throw readErr;
+    }
+
+    // Une réponse sans audio était annoncée comme un succès : on libère la
+    // réservation et on renvoie une erreur explicite.
+    if (!audioUrl) {
+      await releaseReservation();
+      return errorResponse("upstream_error", {
+        message: "Aucun flux audio n'a été retourné.",
       });
     }
 
-    // Si le serveur a renvoyé un flux binaire audio brut
-    if (maiRes.ok) {
-      const arrayBuf = await maiRes.arrayBuffer();
-      const buffer = Buffer.from(arrayBuf);
-      const base64 = buffer.toString("base64");
-      const mime = response_format === "wav" ? "audio/wav" : "audio/mpeg";
-      const audioUrl = `data:${mime};base64,${base64}`;
-
-      return NextResponse.json({
-        audio_url: audioUrl,
-        character_count: input.length,
-        created: Math.floor(Date.now() / 1000),
-        id: `audio_${Date.now()}`,
-        model,
-        success: true,
-        text: input.trim(),
-        tokens_used: Math.ceil(input.length / 3.5),
-        voice,
-      });
-    }
-
-    const errText = await maiRes.text().catch(() => "");
-    const payload = normalizeUpstreamError(
-      errText ? { error: errText } : null,
-      maiRes.status,
-      { message: "Erreur lors de la synthèse vocale." }
+    const resolvedFormat = audioFormatFromMime(
+      resolvedMimeType,
+      responseFormat
     );
-    return NextResponse.json(payload, { status: payload.status });
+
+    // Le quota est déjà durablement réservé et confirmé avant la réponse.
+    // L'historique reste enregistré sans pouvoir annuler la comptabilisation.
+    try {
+      await recordSpeechGeneration({
+        audioUrl,
+        characterCount: input.length,
+        inputText: input,
+        model,
+        tokensCount: tokensUsed,
+        userId,
+        voice,
+      });
+    } catch (historyErr) {
+      logError("Erreur enregistrement historique audio", historyErr);
+    }
+
+    return NextResponse.json({
+      audio_url: audioUrl,
+      character_count: input.length,
+      created: Math.floor(Date.now() / 1000),
+      format: resolvedFormat,
+      id: `audio_${Date.now()}`,
+      mime_type: resolvedMimeType,
+      model,
+      success: true,
+      text: input,
+      tokens_used: tokensUsed,
+      voice,
+    });
   } catch (error: unknown) {
     logError("Erreur API audio/generations", error);
     return errorResponse("internal_error", {

@@ -121,10 +121,23 @@ const REQUIRED_TABLES = [
   "QuizzlyShopItem",
   // Migration 0085 : fenêtres de maintenance et verrouillage du site.
   "MaintenanceWindow",
+  // Migration 0087 : codes de vérification OTP (migration Val Town SQLite vers Neon).
+  "verification_codes",
+  // Tables d'authentification et de sessions Neon.
+  "users",
+  "connected_devices",
+  "token_blacklist",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  // Table `users` : garde contre le drift `password` vs `password_hash`.
+  { column: "id", table: "users" },
+  { column: "email", table: "users" },
+  { column: "username", table: "users" },
+  { column: "password_hash", table: "users" },
+  { column: "tier", table: "users" },
+  { column: "is_blocked", table: "users" },
   // Migration 0086 : code d'accès / bypass de maintenance.
   { column: "accessCode", table: "MaintenanceWindow" },
   // Migration 0072 : le verrou de révision et le rattachement projet sont
@@ -159,6 +172,7 @@ const REQUIRED_COLUMNS = [
   { column: "userId", table: "QuizzlyCoachConversation" },
   { column: "pinned", table: "QuizzlyCoachConversation" },
   { column: "text", table: "QuizzlyCoachMessage" },
+  { column: "attachments", table: "QuizzlyCoachMessage" },
   { column: "conversationId", table: "QuizzlyCoachMessage" },
   { column: "userId", table: "QuizzlyCoachMessage" },
   { column: "role", table: "QuizzlyCoachMessage" },
@@ -382,6 +396,8 @@ const REQUIRED_COLUMNS = [
   // ces colonnes — donc à toute ouverture d'un Espace.
   { column: "pinned", table: "WakiesPage" },
   { column: "settings", table: "WakiesPage" },
+  // Migration 0092 : suivi du dernier message pour le tri de la sidebar.
+  { column: "lastMessageAt", table: "Chat" },
 ];
 
 // `mprojects_api_keys` (et sa colonne `key_name`, migration 0040) est
@@ -417,6 +433,8 @@ const REQUIRED_INDEXES = [
   // Migration 0055 : la bibliothèque liste les pages D'UN espace et les trie par
   // épingle ; sans cet index, chaque ouverture d'Espace relit tout `WakiesPage`.
   "WakiesPage_spaceId_pinned_idx",
+  // Migration 0092 : index de pagination historique par épingles et dernier message.
+  "Chat_userId_pinned_lastMessageAt_idx",
 ];
 
 const envFiles =

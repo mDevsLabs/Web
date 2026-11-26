@@ -2,34 +2,18 @@ import { extraTokenProviders } from "./token-catalog";
 import type { TokenFieldSpec } from "./token-fields";
 
 /**
- * Registre des applications externes connectables par OAuth ou par jeton.
+ * Registre des applications externes connectables par jeton personnel.
  *
- * Un descripteur = UN accès. GitHub est le consentement OAuth. Discord, Notion,
- * Vercel, Google Maps et YouTube suivent la même règle : un fournisseur, une
- * connexion. Maps et YouTube ne lisent pas le compte Google : chacun reçoit
- * la clé API que l'utilisateur colle, et ne peut appeler que son hôte.
+ * Un descripteur = UN accès par fournisseur. L'utilisateur colle son jeton
+ * (et les champs éventuels associés) dans la fiche du plugin ; le tout est
+ * validé sur l'API du fournisseur puis chiffré avec `MCP_ENCRYPTION_KEY`.
  *
  * Ce module est volontairement **sûr côté client** : aucune lecture
- * d'environnement, aucun import `server-only`. La fiche plugin, le menu `@` et
- * le rendu des logos partagent ainsi le même descripteur que les routes ; les
- * secrets (`<prefix>_CLIENT_ID`, `<prefix>_CLIENT_SECRET`) sont relus côté
- * serveur par `lib/integrations/oauth.ts`.
- *
- * Deux modes d'authentification coexistent :
- *
- *  - `oauth` : le compte est relié par consentement. C'est le cas de GitHub.
- *  - `token` : l'utilisateur colle un jeton personnel. C'est le cas de Vercel
- *    (son OAuth public ne donne que l'identité), de Discord (jeton de bot) et
- *    de Notion (intégration interne). Le jeton est chiffré et stocké comme un
- *    jeton OAuth ; il n'apparaît jamais côté client.
- *
- * Ajouter une application = ajouter un descripteur ici, un dossier de plugin
- * dans `lib/plugins/`, un logo dans `public/plugins/`, puis régénérer le
- * catalogue. Le moteur, les mentions et le rendu n'ont pas à savoir de quel
- * fournisseur vient un outil.
+ * d'environnement, aucun import `server-only`.
  */
 
 export type IntegrationProviderId =
+  | "airtable"
   | "asana"
   | "brave"
   | "brevo"
@@ -49,6 +33,7 @@ export type IntegrationProviderId =
   | "posthog"
   | "resend"
   | "sentry"
+  | "slack"
   | "sonarcloud"
   | "stripe"
   | "supabase"
@@ -58,51 +43,8 @@ export type IntegrationProviderId =
   | "youtube"
   | "zapier";
 
-export type IntegrationAuthMode = "oauth" | "token";
+export type IntegrationAuthMode = "token";
 
-export type IntegrationRefreshPolicy =
-  | {
-      /** Marge avant expiration à laquelle on rafraîchit : Google coupe à 3600 s. */
-      policy: "oauth_refresh";
-      refreshLeadMs: number;
-      /** Google/Discord font tourner le `refresh_token` : l'ancien meurt. */
-      rotatesRefreshToken: boolean;
-    }
-  | {
-      /** GitHub/Vercel délivrent un jeton non expirant : une révocation l'éteint. */
-      detectRevocation: true;
-      policy: "static";
-    };
-
-export type IntegrationRevokeMode =
-  /** GitHub : endpoint d'app, Basic auth + corps JSON. */
-  | "oauth_app_grant"
-  /** Google et Vercel : le jeton passe en query string ou en formulaire. */
-  | "token_query"
-  /** Discord : formulaire, identifiants du client dans le corps. */
-  | "token_form_credentials"
-  /** Notion : Basic auth + JSON, avec en-têtes propres au fournisseur. */
-  | "token_json_basic";
-
-export type IntegrationRevoke = {
-  endpoint: string;
-  /** En-têtes supplémentaires exigés par l'endpoint de révocation. */
-  headers?: Record<string, string>;
-  mode: IntegrationRevokeMode;
-};
-
-/**
- * Identité du compte, lue sur une API après l'échange de token.
- *
- * Les fournisseurs ne nomment pas leurs champs de la même manière : GitHub rend
- * `login`, Discord `global_name`/`username`, Vercel `username`. Cette
- * configuration évite un `if (provider === …)` dans chaque route.
- */
-/**
- * Comment le jeton est présenté à l'API. Les noms d'en-tête et de paramètre
- * sont bornés dans `request-auth.ts` : le descripteur ne peut pas inventer
- * un en-tête `Cookie` ou un paramètre arbitraire.
- */
 export type IntegrationHttpAuth =
   | { kind: "basic"; userField: string }
   | { kind: "bearer" }
@@ -122,7 +64,7 @@ export type IntegrationAccountConfig = {
   body?: string;
   /**
    * La réponse n'est une identité que si ce champ vaut exactement `equals`
-   * (PING Upstash, `result: success` d'ExchangeRate).
+   * (PING Upstash, `result: success` d'ExchangeRate, `ok: true` Slack).
    */
   expect?: { equals: string; path: string };
   /**
@@ -148,18 +90,8 @@ export type IntegrationAccountConfig = {
   url: string;
 };
 
-/**
- * Identité déjà présente dans la réponse du token (Notion) : inutile d'appeler
- * une API supplémentaire, et l'`id_token` n'existe pas.
- */
-export type IntegrationTokenIdentity = {
-  emailPath?: string;
-  idField: string;
-  labelField: string;
-};
-
 export type IntegrationTokenInput = {
-  /** Renseignements exigés en plus du secret (SID, site, zone…). */
+  /** Renseignements exigés en plus du secret (SID, site, zone, région…). */
   fields?: readonly TokenFieldSpec[];
   helpUrl: string;
   /** Longueur bornée avant même l'appel de validation. */
@@ -169,53 +101,11 @@ export type IntegrationTokenInput = {
 };
 
 export type IntegrationDescriptor = {
-  /** Identité du compte, ou `null` quand l'`id_token` / le token suffit. */
-  account: IntegrationAccountConfig | null;
+  /** Identité du compte vérifiée lors de l'enregistrement du jeton. */
+  account: IntegrationAccountConfig;
   /** Ce que la connexion ouvre, en une phrase, pour la fiche du plugin. */
   accessSummary: string;
   authMode: IntegrationAuthMode;
-  /** Paramètres ajoutés à l'URL d'autorisation (Google, Notion). */
-  authorizeParams?: Record<string, string>;
-  authorizeUrl: string | null;
-  /** Préfixe des variables d'environnement : `<prefix>_CLIENT_ID`, `<prefix>_CLIENT_SECRET`. */
-  envPrefix:
-    | "ASANA"
-    | "BRAVE"
-    | "BREVO"
-    | "CLOUDFLARE"
-    | "DISCORD"
-    | "DOCKERHUB"
-    | "EXCHANGE_RATE"
-    | "GITHUB"
-    | "GOOGLE_MAPS"
-    | "JIRA"
-    | "LINEAR"
-    | "MAKE"
-    | "MAPBOX"
-    | "NEON"
-    | "NOTION"
-    | "NPM"
-    | "POSTHOG"
-    | "RESEND"
-    | "SENTRY"
-    | "SONARCLOUD"
-    | "STRIPE"
-    | "SUPABASE"
-    | "TWILIO"
-    | "UPSTASH"
-    | "VERCEL"
-    | "YOUTUBE"
-    | "ZAPIER";
-  /**
-   * Logo servi ailleurs que `public/plugins/<id>.svg`. Absent : le fichier
-   * porte le même nom que l'identifiant du connecteur.
-   */
-  logoPath?: string;
-  /**
-   * Variables qui ne conditionnent pas la connexion mais une capacité.
-   * Leur absence est un avertissement, jamais un blocage du consentement.
-   */
-  extraEnv?: readonly string[];
   /**
    * Hôtes d'API autorisés pour CE fournisseur. Liste blanche dure, dans la
    * discipline de `lib/plugins/shared/public-api.ts` : un outil ne suit jamais
@@ -228,57 +118,33 @@ export type IntegrationDescriptor = {
    */
   hostSuffixes?: readonly string[];
   id: IntegrationProviderId;
-  /** Identité déjà présente dans la réponse du token (Notion). */
-  identityFromToken?: IntegrationTokenIdentity;
   label: string;
   /** Le logo est-il un repère monochrome ? `true` → rendu CSS mask + currentColor. */
   monochrome: boolean;
-  /** Jeton de mention sans espace : `@([a-zA-Z0-9_.-]{3,30})` est la grammaire de Wakies. */
+  /** Logo servi ailleurs que `public/plugins/<id>.svg`. */
+  logoPath?: string;
+  /** Jeton de mention sans espace : `@([a-zA-Z0-9_.-]{3,30})`. */
   mentionToken: string;
   /** Dossier de plugin qui porte les outils de ce connecteur. */
   pluginId: string;
-  /** Aucun des fournisseurs de ce lot ne demande PKCE. */
-  pkce: false;
-  refresh: IntegrationRefreshPolicy;
-  revoke: IntegrationRevoke | null;
-  /** Toutes les portées demandées d'un coup : un seul écran de consentement. */
-  scopes: readonly string[];
   /** Mode jeton : formulaire de saisie présenté dans la fiche du plugin. */
-  token?: IntegrationTokenInput;
-  /** Placement des identifiants du client à l'échange de token. */
-  tokenAuth: "basic" | "body";
-  /** Encodage du corps de l'échange de token. */
-  tokenEncoding: "form" | "json";
-  /** En-têtes supplémentaires exigés par l'endpoint de token (Notion). */
-  tokenHeaders?: Record<string, string>;
-  tokenUrl: string | null;
-  /**
-   * Portées sans lesquelles AUCUNE écriture n'est possible, vérifiées en bloc
-   * pour l'affichage de la fiche. Un outil d'écriture compare la sienne — si
-   * le fournisseur n'utilise pas de portées (Notion), la liste reste vide et
-   * c'est la capacité configurée chez lui qui tranche.
-   */
-  writeScopes: readonly string[];
+  token: IntegrationTokenInput;
 };
 
 /**
- * Version d'API Notion. Elle est exigée par TOUS les appels, y compris
- * l'échange et la révocation de token : sans elle, Notion répond 400.
+ * Version d'API Notion. Elle est exigée par TOUS les appels.
  */
 export const NOTION_API_VERSION = "2026-03-11";
 
 export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
   {
     accessSummary:
-      "Vos dépôts, privés compris, avec leurs issues et leurs pull requests.",
-    // L'échange de code ne rend ni `sub` ni email : `GET /user` est la seule
-    // source d'identité, et elle porte l'identifiant numérique qui déduplique.
+      "Vos dépôts, privés compris, leur code, branches, commits, issues et pull requests. Les actions d'écriture passent par l'Agent après votre approbation. Le jeton personnel se révoque depuis les paramètres GitHub.",
     account: {
       emailField: "email",
       headers: {
         Accept: "application/vnd.github+json",
-        // GitHub refuse les appels sans User-Agent (403), y compris GET /user
-        // qui identifie le compte au retour du consentement.
+        // GitHub refuse les appels sans User-Agent (403).
         "User-Agent": "mAI-Web/1.0",
         "X-GitHub-Api-Version": "2022-11-28",
       },
@@ -287,28 +153,19 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       method: "GET",
       url: "https://api.github.com/user",
     },
-    authMode: "oauth",
-    authorizeUrl: "https://github.com/login/oauth/authorize",
-    envPrefix: "GITHUB",
+    authMode: "token",
     hosts: ["api.github.com"],
     id: "github",
     label: "GitHub",
     mentionToken: "GitHub",
-    // Le Octocat officiel n'existe qu'en monochrome : en `<img>` nu, il
-    // disparaît sur un fond sombre.
     monochrome: true,
-    pkce: false,
     pluginId: "github",
-    refresh: { detectRevocation: true, policy: "static" },
-    revoke: {
-      endpoint: "https://api.github.com/applications/:clientId/grant",
-      mode: "oauth_app_grant",
+    token: {
+      helpUrl: "https://github.com/settings/tokens?type=beta",
+      maxLength: 300,
+      minLength: 20,
+      placeholder: "Jeton personnel GitHub (github_pat_… ou ghp_…)",
     },
-    scopes: ["repo", "public_repo", "read:user"],
-    tokenAuth: "body",
-    tokenEncoding: "form",
-    tokenUrl: "https://github.com/login/oauth/access_token",
-    writeScopes: ["repo"],
   },
   {
     accessSummary:
@@ -325,29 +182,18 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       url: "https://discord.com/api/v10/users/@me",
     },
     authMode: "token",
-    authorizeUrl: null,
-    envPrefix: "DISCORD",
     hosts: ["discord.com"],
     id: "discord",
     label: "Discord",
     mentionToken: "Discord",
-    // La marque Discord est blurple : elle reste lisible sur les deux thèmes.
     monochrome: false,
-    pkce: false,
     pluginId: "discord",
-    refresh: { detectRevocation: true, policy: "static" },
-    revoke: null,
-    scopes: [],
     token: {
       helpUrl: "https://discord.com/developers/applications",
       maxLength: 200,
       minLength: 20,
       placeholder: "Jeton de bot Discord",
     },
-    tokenAuth: "body",
-    tokenEncoding: "form",
-    tokenUrl: null,
-    writeScopes: [],
   },
   {
     accessSummary:
@@ -364,28 +210,18 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       url: "https://api.notion.com/v1/users/me",
     },
     authMode: "token",
-    authorizeUrl: null,
-    envPrefix: "NOTION",
     hosts: ["api.notion.com"],
     id: "notion",
     label: "Notion",
     mentionToken: "Notion",
     monochrome: true,
-    pkce: false,
     pluginId: "notion",
-    refresh: { detectRevocation: true, policy: "static" },
-    revoke: null,
-    scopes: [],
     token: {
       helpUrl: "https://www.notion.so/profile/integrations",
       maxLength: 200,
       minLength: 20,
       placeholder: "Jeton d'intégration Notion",
     },
-    tokenAuth: "body",
-    tokenEncoding: "form",
-    tokenUrl: null,
-    writeScopes: [],
   },
   {
     accessSummary:
@@ -396,37 +232,26 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       idField: "id",
       labelFields: ["username", "name"],
       method: "GET",
-      // `GET /v2/user` enveloppe le compte dans `user`.
       responsePath: "user",
       url: "https://api.vercel.com/v2/user",
     },
     authMode: "token",
-    authorizeUrl: null,
-    envPrefix: "VERCEL",
     hosts: ["api.vercel.com"],
     id: "vercel",
     label: "Vercel",
     mentionToken: "Vercel",
     monochrome: true,
-    pkce: false,
     pluginId: "vercel",
-    refresh: { detectRevocation: true, policy: "static" },
-    revoke: null,
-    scopes: [],
     token: {
       helpUrl: "https://vercel.com/account/tokens",
       maxLength: 500,
       minLength: 10,
       placeholder: "Jeton personnel Vercel",
     },
-    tokenAuth: "body",
-    tokenEncoding: "form",
-    tokenUrl: null,
-    writeScopes: [],
   },
   tokenProvider({
     accessSummary:
-      "Organisations, projets et issues Sentry, en lecture seule. Le jeton se révoque depuis les paramètres du compte Sentry.",
+      "Organisations, projets et issues Sentry (avec le dernier événement), en lecture seule. Le jeton se révoque depuis les paramètres du compte Sentry.",
     account: {
       emailField: "email",
       idField: "id",
@@ -434,7 +259,6 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       responsePath: "user",
       url: "https://sentry.io/api/0/",
     },
-    envPrefix: "SENTRY",
     helpUrl: "https://sentry.io/settings/account/api/auth-tokens/",
     hosts: ["sentry.io"],
     id: "sentry",
@@ -444,17 +268,25 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
   }),
   tokenProvider({
     accessSummary:
-      "Projets et feature flags PostHog (hôte US), en lecture seule. Le jeton personnel se révoque depuis les réglages du compte PostHog.",
+      "Projets, feature flags et insights PostHog (US ou EU), en lecture seule. Le jeton personnel se révoque depuis les réglages du compte PostHog.",
     account: {
       emailField: "email",
       idField: "id",
       labelFallback: "Compte PostHog",
       labelFields: ["email", "first_name"],
-      url: "https://us.posthog.com/api/users/@me/",
+      url: "https://{seg:region}.posthog.com/api/users/@me/",
     },
-    envPrefix: "POSTHOG",
+    fields: [
+      {
+        id: "region",
+        kind: "posthog-region",
+        label: "Région PostHog",
+        placeholder: "us ou eu",
+        secret: false,
+      },
+    ],
     helpUrl: "https://us.posthog.com/settings/user-api-keys",
-    hosts: ["us.posthog.com"],
+    hosts: ["us.posthog.com", "eu.posthog.com"],
     id: "posthog",
     label: "PostHog",
     mentionToken: "PostHog",
@@ -462,7 +294,7 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
   }),
   tokenProvider({
     accessSummary:
-      "Équipes et issues Linear, en lecture seule. La clé personnelle se révoque depuis les réglages de sécurité Linear.",
+      "Équipes et issues Linear, avec création d'issue dans l'Agent après approbation. La clé personnelle se révoque depuis les réglages de sécurité Linear.",
     account: {
       body: JSON.stringify({
         query: "{ viewer { id name email } }",
@@ -475,7 +307,6 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       responsePath: "data.viewer",
       url: "https://api.linear.app/graphql",
     },
-    envPrefix: "LINEAR",
     helpUrl: "https://linear.app/settings/account/security",
     hosts: ["api.linear.app"],
     id: "linear",
@@ -485,7 +316,7 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
   }),
   tokenProvider({
     accessSummary:
-      "Clients, paiements et abonnements Stripe, en lecture seule. Aucune opération financière n'est exposée. La clé se révoque depuis le tableau de bord Stripe.",
+      "Clients, factures, paiements et abonnements Stripe, en lecture seule. Aucune opération financière n'est exposée. La clé se révoque depuis le tableau de bord Stripe.",
     account: {
       emailField: "email",
       idField: "id",
@@ -493,7 +324,6 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       labelFields: ["business_profile.name", "email"],
       url: "https://api.stripe.com/v1/account",
     },
-    envPrefix: "STRIPE",
     helpUrl: "https://dashboard.stripe.com/apikeys",
     hosts: ["api.stripe.com"],
     id: "stripe",
@@ -511,7 +341,6 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       labelFields: [],
       url: "https://api.resend.com/domains",
     },
-    envPrefix: "RESEND",
     helpUrl: "https://resend.com/api-keys",
     hosts: ["api.resend.com"],
     id: "resend",
@@ -521,7 +350,7 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
   }),
   tokenProvider({
     accessSummary:
-      "Zones et enregistrements DNS Cloudflare, en lecture seule. Le jeton d'API se révoque depuis le profil Cloudflare.",
+      "Zones, enregistrements DNS et Workers Cloudflare, en lecture seule. Le jeton d'API se révoque depuis le profil Cloudflare.",
     account: {
       idFallback: "cloudflare",
       idField: "accountId",
@@ -530,7 +359,6 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       responsePath: "result",
       url: "https://api.cloudflare.com/client/v4/user/tokens/verify",
     },
-    envPrefix: "CLOUDFLARE",
     helpUrl: "https://dash.cloudflare.com/profile/api-tokens",
     hosts: ["api.cloudflare.com"],
     id: "cloudflare",
@@ -546,7 +374,6 @@ function tokenProvider(
     IntegrationDescriptor,
     | "accessSummary"
     | "account"
-    | "envPrefix"
     | "hostSuffixes"
     | "hosts"
     | "id"
@@ -563,8 +390,6 @@ function tokenProvider(
     accessSummary: input.accessSummary,
     account: input.account,
     authMode: "token",
-    authorizeUrl: null,
-    envPrefix: input.envPrefix,
     hostSuffixes: input.hostSuffixes,
     hosts: input.hosts,
     id: input.id,
@@ -572,11 +397,7 @@ function tokenProvider(
     logoPath: input.logoPath,
     mentionToken: input.mentionToken,
     monochrome: true,
-    pkce: false,
     pluginId: input.id,
-    refresh: { detectRevocation: true, policy: "static" },
-    revoke: null,
-    scopes: [],
     token: {
       fields: input.fields,
       helpUrl: input.helpUrl,
@@ -584,10 +405,6 @@ function tokenProvider(
       minLength: 8,
       placeholder: input.placeholder,
     },
-    tokenAuth: "body",
-    tokenEncoding: "form",
-    tokenUrl: null,
-    writeScopes: [],
   };
 }
 
@@ -610,21 +427,4 @@ export function getIntegrationByPluginId(
   pluginId: string
 ): IntegrationDescriptor | undefined {
   return PROVIDERS_BY_PLUGIN_ID.get(pluginId);
-}
-
-export function splitGrantedScopes(grantedScopes: string): Set<string> {
-  // GitHub sépare par des virgules, un consentement OAuth classique par des espaces.
-  return new Set(grantedScopes.split(/[\s,]+/).filter(Boolean));
-}
-
-/** Le consentement accordé laisse-t-il passer TOUTES les écritures du connecteur ? */
-export function hasWriteScope(
-  descriptor: IntegrationDescriptor,
-  grantedScopes: string
-): boolean {
-  if (descriptor.writeScopes.length === 0) {
-    return true;
-  }
-  const granted = splitGrantedScopes(grantedScopes);
-  return descriptor.writeScopes.every((scope) => granted.has(scope));
 }

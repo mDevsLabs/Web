@@ -1,7 +1,12 @@
+import type { UseChatHelpers } from "@ai-sdk/react";
 import {
+  CopyIcon,
   GitForkIcon,
+  PencilIcon,
   RefreshCwIcon,
   Share2Icon,
+  ThumbsDownIcon,
+  ThumbsUpIcon,
   Volume2Icon,
   VolumeXIcon,
 } from "@mdevs/icons";
@@ -27,7 +32,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { CopyIcon, PencilEditIcon, ThumbDownIcon, ThumbUpIcon } from "./icons";
 import {
   MessageTranslateMenu,
   MessageTranslationBlock,
@@ -35,22 +39,35 @@ import {
 } from "./message-translation";
 
 export function PureMessageActions({
+  allMessages,
   chatId,
   message,
   vote,
   isLoading,
   onEdit,
+  onRegenerateTruncated,
+  onSetMessages,
 }: {
+  allMessages?: ChatMessage[];
   chatId: string;
   message: ChatMessage;
   vote: Vote | undefined;
   isLoading: boolean;
   onEdit?: () => void;
+  onRegenerateTruncated?: (params: {
+    removedMessages: ChatMessage[];
+    targetMessageId: string;
+  }) => void;
+  onSetMessages?: UseChatHelpers<ChatMessage>["setMessages"];
 }) {
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const [_, copyToClipboard] = useCopyToClipboard();
-  const { messages, regenerateTruncated, setMessages } = useActiveChat();
+  const activeChat = useActiveChat();
+  const messages = allMessages ?? activeChat.messages;
+  const regenerateTruncated =
+    onRegenerateTruncated ?? activeChat.regenerateTruncated;
+  const setMessages = onSetMessages ?? activeChat.setMessages;
 
   const textFromParts = message.parts
     ?.filter((part) => part.type === "text")
@@ -235,9 +252,10 @@ export function PureMessageActions({
           (m: ChatMessage) => m.id === message.id
         );
       } else {
-        // assistant: find preceding user
+        // assistant: find preceding user (ou dernier message user si bulle éphémère)
         const idx = messages.findIndex((m: ChatMessage) => m.id === message.id);
-        for (let i = idx - 1; i >= 0; i--) {
+        const startIdx = idx >= 0 ? idx - 1 : messages.length - 1;
+        for (let i = startIdx; i >= 0; i--) {
           if (messages[i].role === "user") {
             targetUserId = messages[i].id;
             targetIndex = i;
@@ -273,9 +291,12 @@ export function PureMessageActions({
       // réponse, et l'écran est restauré si la génération échoue (issue #46).
       // Supprimer en base avant de générer détruisait le tour valide à chaque
       // échec de /api/chat.
-      if (targetIndex >= 0 && targetUserId) {
-        const removedMessages = messages.slice(targetIndex + 1);
-        setMessages((prev: ChatMessage[]) => prev.slice(0, targetIndex + 1));
+      if (targetUserId) {
+        const removedMessages =
+          targetIndex >= 0 ? messages.slice(targetIndex + 1) : [];
+        if (targetIndex >= 0) {
+          setMessages((prev: ChatMessage[]) => prev.slice(0, targetIndex + 1));
+        }
         regenerateTruncated({
           removedMessages,
           targetMessageId: targetUserId,
@@ -348,23 +369,23 @@ export function PureMessageActions({
         <div className="flex items-center gap-0.5">
           {onEdit ? (
             <Action
-              className="size-7 text-muted-foreground/50 hover:text-foreground"
+              className="size-7 text-muted-foreground/75 hover:text-foreground"
               data-testid="message-edit-button"
               onClick={onEdit}
               tooltip="Modifier"
             >
-              <PencilEditIcon />
+              <PencilIcon className="size-4" />
             </Action>
           ) : null}
           <Action
-            className="size-7 text-muted-foreground/50 hover:text-foreground"
+            className="size-7 text-muted-foreground/75 hover:text-foreground"
             onClick={handleCopy}
             tooltip="Copier"
           >
-            <CopyIcon />
+            <CopyIcon className="size-4" />
           </Action>
           <Action
-            className="size-7 text-muted-foreground/50 hover:text-foreground"
+            className="size-7 text-muted-foreground/75 hover:text-foreground"
             onClick={handleRegenerate}
             tooltip={`Régénérer (${regenerateMode})`}
           >
@@ -374,7 +395,7 @@ export function PureMessageActions({
             <DropdownMenuTrigger asChild>
               <button
                 aria-label="Partager"
-                className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
+                className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/75 hover:text-foreground hover:bg-muted/40"
                 type="button"
               >
                 <Share2Icon className="size-4" />
@@ -415,15 +436,15 @@ export function PureMessageActions({
     <div className="flex flex-col gap-2">
       <Actions className="-ml-0.5 opacity-100 md:opacity-0 md:transition-opacity md:duration-150 md:group-hover/message:opacity-100">
         <Action
-          className="text-muted-foreground/50 hover:text-foreground"
+          className="size-7 text-muted-foreground/75 hover:text-foreground"
           onClick={handleCopy}
           tooltip="Copier"
         >
-          <CopyIcon />
+          <CopyIcon className="size-4" />
         </Action>
 
         <Action
-          className="text-muted-foreground/50 hover:text-foreground"
+          className="size-7 text-muted-foreground/75 hover:text-foreground"
           onClick={handleRegenerate}
           tooltip={`Régénérer (${regenerateMode})`}
         >
@@ -440,7 +461,7 @@ export function PureMessageActions({
           <DropdownMenuTrigger asChild>
             <button
               aria-label="Partager"
-              className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
+              className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/75 hover:text-foreground hover:bg-muted/40"
               type="button"
             >
               <Share2Icon className="size-4" />
@@ -474,7 +495,7 @@ export function PureMessageActions({
         </DropdownMenu>
 
         <Action
-          className="text-muted-foreground/50 hover:text-foreground"
+          className="size-7 text-muted-foreground/75 hover:text-foreground"
           onClick={handleSpeak}
           tooltip={isSpeaking ? "Stop" : "Écouter"}
         >
@@ -486,7 +507,7 @@ export function PureMessageActions({
         </Action>
 
         <Action
-          className="text-muted-foreground/50 hover:text-foreground"
+          className="size-7 text-muted-foreground/75 hover:text-foreground"
           onClick={handleFork}
           tooltip="Brancher (fork)"
         >
@@ -494,23 +515,31 @@ export function PureMessageActions({
         </Action>
 
         <Action
-          className="text-muted-foreground/50 hover:text-foreground"
+          className={`size-7 ${
+            vote?.isUpvoted
+              ? "text-foreground disabled:opacity-100"
+              : "text-muted-foreground/75 hover:text-foreground"
+          }`}
           data-testid="message-upvote"
           disabled={vote?.isUpvoted}
           onClick={handleUpvote}
           tooltip="Bonne réponse"
         >
-          <ThumbUpIcon />
+          <ThumbsUpIcon className="size-4" />
         </Action>
 
         <Action
-          className="text-muted-foreground/50 hover:text-foreground"
+          className={`size-7 ${
+            vote && !vote.isUpvoted
+              ? "text-foreground disabled:opacity-100"
+              : "text-muted-foreground/75 hover:text-foreground"
+          }`}
           data-testid="message-downvote"
           disabled={vote && !vote.isUpvoted}
           onClick={handleDownvote}
           tooltip="Mauvaise réponse"
         >
-          <ThumbDownIcon />
+          <ThumbsDownIcon className="size-4" />
         </Action>
       </Actions>
       {/* Le bloc vit HORS de <Actions> : celle-ci s'efface au survol, une
@@ -533,6 +562,15 @@ export const MessageActions = memo(
       return false;
     }
     if (prevProps.chatId !== nextProps.chatId) {
+      return false;
+    }
+    if (prevProps.allMessages?.length !== nextProps.allMessages?.length) {
+      return false;
+    }
+    if (prevProps.onRegenerateTruncated !== nextProps.onRegenerateTruncated) {
+      return false;
+    }
+    if (prevProps.onSetMessages !== nextProps.onSetMessages) {
       return false;
     }
 

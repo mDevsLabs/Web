@@ -1,0 +1,53 @@
+{
+  "author": "mAI",
+  "category": "web",
+  "description": "Boîte à outils Web et développeur 100 % locale : analyser une URL, tester une regex, décoder un JWT, convertir en Base64/URL/SHA-256 et parser un CSV sans rien envoyer sur le réseau.",
+  "icon": { "name": "Globe", "type": "lucide" },
+  "id": "web-toolbox",
+  "name": "Boîte à outils Web",
+  "permissions": {
+    "network": "none",
+    "readsUserData": false,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["url", "regex", "jwt", "base64", "hash", "csv", "local", "web"],
+  "tools": [
+    {
+      "description": "Analyse et normalise une URL (protocole, hôte, chemin, paramètres de requête, ancre) ou modifie ses paramètres.",
+      "effect": "read",
+      "id": "webParseUrl",
+      "label": "Analyser une URL",
+      "systemHint": "Précisez clairement chaque paramètre de requête extrait plutôt que de renvoyer l'URL brute."
+    },
+    {
+      "description": "Teste une expression régulière JavaScript sur un texte borné et retourne les correspondances et groupes.",
+      "effect": "read",
+      "id": "webTestRegex",
+      "label": "Tester une regex",
+      "systemHint": "Signalez si l'expression ne correspond pas ou si des groupes nommés sont capturés."
+    },
+    {
+      "description": "Décode localement l'en-tête et le payload d'un jeton JWT (sans vérification de signature).",
+      "effect": "read",
+      "id": "webInspectJwt",
+      "label": "Inspecter un JWT",
+      "systemHint": "Rappelez que l'inspection est locale et ne vérifie pas la signature cryptographique."
+    },
+    {
+      "description": "Encode/décode Base64, Base64URL, URL-encoding et calcule une empreinte SHA-256/SHA-512.",
+      "effect": "read",
+      "id": "webCodec",
+      "label": "Encodage & Hash",
+      "systemHint": "Choisissez l'opération exacte demandée (base64_encode, sha256, etc.)."
+    },
+    {
+      "description": "Parse un texte CSV/TSV en tableau structuré avec détection des colonnes et comptage de lignes.",
+      "effect": "read",
+      "id": "webParseCsv",
+      "label": "Parser un CSV",
+      "systemHint": "Utilisez ce parseur avant d'analyser ou résumer un extrait CSV fourni par l'utilisateur."
+    }
+  ],
+  "version": "1.0.0"
+}

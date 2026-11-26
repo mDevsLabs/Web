@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { enforceApiRateLimit } from "@/lib/api/rate-limit";
 import { getMaiUser } from "@/lib/auth/session";
-import { getUserMcpPrefs } from "@/lib/db/queries";
+import { getMcpServerById, getUserMcpPrefs } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import {
   checkGlobalKillSwitch,
@@ -10,6 +10,10 @@ import {
 } from "@/lib/mcp/client";
 import { toMcpRuntimePreferences } from "@/lib/mcp/policy";
 import { redactMcpError } from "@/lib/mcp/redaction";
+import {
+  loadMcpSecretDescriptors,
+  mergeMcpSecrets,
+} from "@/lib/mcp/secrets-config";
 import type { McpServerConfig } from "@/lib/mcp/types";
 
 const testMcpSchema = z.object({
@@ -31,6 +35,7 @@ const testMcpSchema = z.object({
   env: z.record(z.string(), z.string()).optional(),
   headers: z.record(z.string(), z.string()).optional(),
   name: z.string().min(1),
+  serverId: z.string().min(1).optional(),
   transport: z.enum(["sse", "http", "stdio", "websocket"]).default("sse"),
   // Bornes identiques à celles de `/api/mcp/route.ts` : cette route déclenchait
   // une requête sortante vers une URL et un jeu d'en-têtes fournis par
@@ -58,14 +63,78 @@ export async function POST(request: Request) {
   try {
     const json = await request.json();
     const parsed = testMcpSchema.parse(json);
+    const userId = user.id || user.email;
+
+    let effectiveAuthConfig = parsed.authConfig;
+    let effectiveEnv = parsed.env;
+    let effectiveHeaders = parsed.headers;
+
+    // En édition/test d'un serveur existant, fusionner les secrets chiffrés
+    // déjà persistés avec les éventuels champs non vides saisis à l'écran.
+    if (parsed.serverId) {
+      const existingServer = await getMcpServerById({
+        id: parsed.serverId,
+        userId,
+      });
+      if (!existingServer) {
+        return Response.json(
+          {
+            message: "Serveur MCP introuvable.",
+            success: false,
+            tools: [],
+            toolsCount: 0,
+          },
+          { status: 404 }
+        );
+      }
+      const descriptors = await loadMcpSecretDescriptors({
+        serverId: parsed.serverId,
+        userId,
+      });
+      const nonEmptyAuth = Object.fromEntries(
+        Object.entries(parsed.authConfig ?? {}).filter(
+          ([, v]) => typeof v === "string" && v.trim().length > 0
+        )
+      );
+      const nonEmptyEnv = Object.fromEntries(
+        Object.entries(parsed.env ?? {}).filter(
+          ([, v]) => typeof v === "string" && v.trim().length > 0
+        )
+      );
+      const nonEmptyHeaders = Object.fromEntries(
+        Object.entries(parsed.headers ?? {}).filter(
+          ([, v]) => typeof v === "string" && v.trim().length > 0
+        )
+      );
+      const baseSecrets = mergeMcpSecrets({
+        authConfig: existingServer.authConfig,
+        authType: parsed.authType,
+        env: existingServer.env,
+        headers: existingServer.headers,
+        secrets: descriptors,
+      });
+      effectiveAuthConfig = { ...baseSecrets.authConfig, ...nonEmptyAuth };
+      effectiveEnv = { ...baseSecrets.env, ...nonEmptyEnv };
+      effectiveHeaders = { ...baseSecrets.headers, ...nonEmptyHeaders };
+    }
+
+    const candidateConfig = {
+      args: parsed.args,
+      authConfig: effectiveAuthConfig,
+      authType: parsed.authType,
+      command: parsed.command,
+      env: effectiveEnv,
+      headers: effectiveHeaders,
+      name: parsed.name,
+      transport: parsed.transport,
+      url: parsed.url,
+    };
 
     // Même validation que le chemin de création : schéma de transport,
     // HTTPS obligatoire, contrôles d'hôte. Sans elle, la route de test
     // acceptait des configurations que la route d'enregistrement refusait.
-    validateMcpConfig(parsed as McpServerConfig);
-    const prefs = toMcpRuntimePreferences(
-      await getUserMcpPrefs(user.id || user.email)
-    );
+    validateMcpConfig(candidateConfig as McpServerConfig);
+    const prefs = toMcpRuntimePreferences(await getUserMcpPrefs(userId));
     checkGlobalKillSwitch(prefs);
     if (parsed.transport === "stdio") {
       return Response.json(
@@ -80,20 +149,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const result = await testMcpConnection(
-      {
-        args: parsed.args,
-        authConfig: parsed.authConfig,
-        authType: parsed.authType,
-        command: parsed.command,
-        env: parsed.env,
-        headers: parsed.headers,
-        name: parsed.name,
-        transport: parsed.transport,
-        url: parsed.url,
-      },
-      prefs
-    );
+    const result = await testMcpConnection(candidateConfig, prefs);
 
     return Response.json(result, { status: result.success ? 200 : 400 });
   } catch (err: any) {

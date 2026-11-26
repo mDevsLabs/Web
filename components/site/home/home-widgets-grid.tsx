@@ -264,9 +264,9 @@ export function HomeWidgetsGrid() {
             </span>
             <Link
               className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 hover:text-purple-700 transition-colors"
-              href="/docs"
+              href="/projects"
             >
-              <span>Lire la documentation technique</span>
+              <span>Découvrir les projets et agents</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -304,7 +304,7 @@ export function HomeWidgetsGrid() {
                 {
                   active: true,
                   latency: "18ms",
-                  name: "API REST & Passerelle BFF",
+                  name: "Passerelle Plateforme & Cloud",
                   status: "100%",
                 },
                 {
@@ -408,7 +408,7 @@ export function HomeWidgetsGrid() {
               {[
                 "Planifie l'architecture d'un service d'IA souverain",
                 "Analyse et optimise les requêtes d'une base PostgreSQL",
-                "Rédige un serveur MCP personnalisé pour un connecteur API",
+                "Rédige un serveur MCP personnalisé pour un connecteur d'outils",
               ].map((p, idx) => (
                 <button
                   className={`text-xs px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
@@ -657,9 +657,9 @@ export function HomeWidgetsGrid() {
             </span>
             <Link
               className="font-bold text-indigo-600 hover:text-indigo-700"
-              href="/docs"
+              href="/support"
             >
-              Guide d&apos;écosystème →
+              Centre d&apos;assistance →
             </Link>
           </div>
         </motion.div>
@@ -694,7 +694,7 @@ export function HomeWidgetsGrid() {
                   Version Active
                 </span>
                 <span className="font-bold text-slate-900 font-mono">
-                  v0.9.4 Stable
+                  v0.9.5 Stable
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-between">
@@ -710,7 +710,7 @@ export function HomeWidgetsGrid() {
                   Design System
                 </span>
                 <span className="font-bold text-purple-600 font-mono">
-                  @mdevs/ui 0.9.4
+                  @mdevs/ui 0.9.5
                 </span>
               </div>
             </div>

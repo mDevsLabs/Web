@@ -25,6 +25,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import useSWR from "swr";
 import { api } from "@/components/wakies/api";
 import { Mascot } from "@/components/wakies/Mascot";
+import { WAKIES_POLL_MS } from "@/components/wakies/polling";
 import {
   type FichePublique,
   type InscritAnnuaire,
@@ -88,7 +89,7 @@ export function FriendsScreen({
   } = useSWR<{ amis: Ami[] }>(
     ["wakies-friends", instance],
     () => api("/friends"),
-    { refreshInterval: 5000, revalidateOnFocus: true }
+    { refreshInterval: WAKIES_POLL_MS, revalidateOnFocus: true }
   );
   const {
     data: annuaire,

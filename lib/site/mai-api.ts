@@ -41,6 +41,7 @@ export type MaiCloudStorageUsage = {
   tier: string;
 };
 
+import { SITE_API_ROUTES } from "./api-routes";
 import { CLOUD_STORAGE_LIMITS } from "./tiers";
 
 // Ré-export depuis la source unique lib/tiers.ts (évite divergence frontend/backend)
@@ -48,15 +49,11 @@ export {
   CLOUD_STORAGE_LIMITS,
   formatStorageBytes,
   getTierDailyImageLimit,
-  getTierImageRequestCost,
-  getTierQuotaLimit,
   getTierSpeechLimit,
   getTierStorageLimit,
   STORAGE_LIMITS_BYTES,
   TIER_DAILY_IMAGE_LIMITS,
-  TIER_IMAGE_REQUEST_COST,
   TIER_LIMITS,
-  TIER_REQUEST_LIMITS,
   TIER_SPEECH_LIMITS,
   TIER_TOKEN_LIMITS,
 } from "./tiers";
@@ -87,17 +84,23 @@ async function parseJsonSafe(res: Response): Promise<Record<string, unknown>> {
 
 function errorMessage(data: Record<string, unknown>, fallback: string): string {
   if (typeof data.error === "string" && data.error.trim()) return data.error;
+  if (typeof data.message === "string" && data.message.trim()) {
+    return data.message;
+  }
   return fallback;
 }
 
-async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
+async function requestUrl<T>(
+  url: string,
+  options: RequestInit = {}
+): Promise<T> {
   const { headers: extraHeaders, ...rest } = options;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...(extraHeaders as Record<string, string> | undefined),
   };
 
-  const res = await fetch(`${SITE_BACKEND_BASE}${path}`, {
+  const res = await fetch(url, {
     ...rest,
     credentials: "same-origin",
     headers,
@@ -113,6 +116,10 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   }
 
   return data as T;
+}
+
+async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
+  return requestUrl<T>(`${SITE_BACKEND_BASE}${path}`, options);
 }
 
 export async function register(params: {
@@ -204,8 +211,15 @@ export async function getCloudStorage(): Promise<MaiCloudStorageUsage> {
 }
 
 export async function verifyCode(code: string): Promise<MaiVerifyCodeResponse> {
-  return request<MaiVerifyCodeResponse>("/verify-code", {
-    body: JSON.stringify({ code }),
+  return requestUrl<MaiVerifyCodeResponse>(SITE_API_ROUTES.accountPlan, {
+    body: JSON.stringify({ action: "redeem_code", code }),
+    method: "POST",
+  });
+}
+
+export async function downgradeToFree(): Promise<MaiVerifyCodeResponse> {
+  return requestUrl<MaiVerifyCodeResponse>(SITE_API_ROUTES.accountPlan, {
+    body: JSON.stringify({ action: "downgrade_free" }),
     method: "POST",
   });
 }

@@ -12,7 +12,7 @@ type AudioGenerateProps = {
 export const audioGenerate = ({ dataStream, session }: AudioGenerateProps) =>
   tool({
     description:
-      "Generate speech or audio via mAI Audio Studio immediately with default voice 'flux-alexis-en' without asking the user for voice selection. Use whenever the user asks to speak, synthesize, vocalize audio, voice, speech, tts or create sound. Returns audio_url to be played directly.",
+      "Generate speech or audio via mAI Audio Studio immediately with the user's default voice without asking the user for voice selection. Use whenever the user asks to speak, synthesize, vocalize audio, voice, speech, tts or create sound. Returns audio_url to be played directly.",
     execute: async ({ text, voice, speed }) => {
       const userId = session.user?.id || session.user?.email || "";
       const token =
@@ -50,7 +50,7 @@ export const audioGenerate = ({ dataStream, session }: AudioGenerateProps) =>
         .max(100)
         .optional()
         .describe(
-          "Nom de la voix (par défaut 'flux-alexis-en'). Ne JAMAIS demander à l'utilisateur de choisir la voix : utiliser directement la voix par défaut sauf s'il a explicitement précisé un nom de voix."
+          "Nom de la voix (optionnel : utilise la voix par défaut configurée si omis). Ne JAMAIS demander à l'utilisateur de choisir la voix : utiliser directement la voix par défaut sauf s'il a explicitement précisé un nom de voix."
         ),
     }),
   });

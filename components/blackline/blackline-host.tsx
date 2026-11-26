@@ -44,9 +44,10 @@
  * `.blackline-root` — voir `apps/blackline/src/root.ts`.
  */
 
-import { SearchIcon } from "@mdevs/icons";
+import { CameraIcon, Loader2Icon, XIcon } from "@mdevs/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import { useSWRConfig } from "swr";
 import { BlacklineAgeGate } from "@/components/blackline/age-gate";
 import { Button } from "@/components/ui/button";
 import {
@@ -55,6 +56,7 @@ import {
   readDevicePowerProfile,
   type SessionDerogation,
 } from "@/lib/blackline/power";
+import { versIndicatif } from "@/lib/quizzly/name";
 import { useEconomy } from "@/lib/resources/economy";
 
 /** Chunk d'entrée du jeu. Son nom est stable : voir scripts/build-blackline.mjs. */
@@ -87,12 +89,24 @@ declare global {
   }
 }
 
+type BlacklineProfileInfo = {
+  avatarUrl: string | null;
+  displayName: string;
+  username: string;
+};
+
 type BlacklineHostProps = {
+  /** Profil initial (pseudo et avatar partagés avec Vibe, Quizzly et le compte mAI). */
+  initialProfile?: BlacklineProfileInfo | null;
   /** Réglages enregistrés pour ce compte (base de données). */
   settings?: Record<string, unknown> | null;
 };
 
-export function BlacklineHost({ settings }: BlacklineHostProps) {
+export function BlacklineHost({
+  initialProfile = null,
+  settings,
+}: BlacklineHostProps) {
+  const { mutate } = useSWRConfig();
   // La confirmation d'âge vit ici, et NULLE PART : ni base, ni localStorage,
   // ni cookie. Un rechargement repose la question.
   const [age, setAge] = useState<"pending" | "accepted" | "refused">("pending");
@@ -109,6 +123,24 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
   const [derogation, setDerogation] = useState<SessionDerogation | null>(null);
   const [derogationLue, setDerogationLue] = useState(false);
 
+  // État de la modale d'édition du profil (pseudo + avatar synchronisés sur toute la suite)
+  const [editionProfilOuverte, setEditionProfilOuverte] = useState(false);
+  const [pseudoActuel, setPseudoActuel] = useState(
+    () =>
+      initialProfile?.displayName ||
+      (typeof settings?.callsign === "string" ? settings.callsign : "") ||
+      ""
+  );
+  const [pseudoSaisi, setPseudoSaisi] = useState(pseudoActuel);
+  const [avatarActuel, setAvatarActuel] = useState<string | null>(
+    () =>
+      initialProfile?.avatarUrl ??
+      (typeof settings?.avatarUrl === "string" ? settings.avatarUrl : null)
+  );
+  const [enregistrementProfil, setEnregistrementProfil] = useState(false);
+  const [televersementAvatar, setTeleversementAvatar] = useState(false);
+  const fichierAvatarRef = useRef<HTMLInputElement>(null);
+
   // Les réglages sont lus UNE FOIS : le jeu les applique à son montage, et
   // changer la référence ne doit pas remonter le jeu.
   const reglagesRef = useRef(settings);
@@ -117,6 +149,136 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
   // applique ses réglages une seule fois.
   const derogationRef = useRef(derogation);
   derogationRef.current = derogation;
+
+  useEffect(() => {
+    const ouvrirEditionProfil = (event: Event) => {
+      const detail = (
+        event as CustomEvent<{ avatarUrl?: string | null; callsign?: string }>
+      ).detail;
+      setPseudoSaisi(
+        pseudoActuel ||
+          (typeof detail?.callsign === "string" ? detail.callsign : "")
+      );
+      if (detail?.avatarUrl && !avatarActuel) {
+        setAvatarActuel(detail.avatarUrl);
+      }
+      setEditionProfilOuverte(true);
+    };
+    window.addEventListener("blackline:edit-profile", ouvrirEditionProfil);
+    return () => {
+      window.removeEventListener("blackline:edit-profile", ouvrirEditionProfil);
+    };
+  }, [avatarActuel, pseudoActuel]);
+
+  const televerserAvatar = async (
+    evenement: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const fichier = evenement.target.files?.[0];
+    if (!fichier) {
+      return;
+    }
+    setTeleversementAvatar(true);
+    const formData = new FormData();
+    formData.append("avatar", fichier);
+    try {
+      const reponse = await fetch("/api/settings", {
+        body: formData,
+        method: "POST",
+      });
+      const recu = (await reponse.json().catch(() => null)) as {
+        avatarUrl?: string;
+        error?: { message?: string } | string;
+        message?: string;
+        success?: boolean;
+      } | null;
+      if (!reponse.ok || !recu?.success || !recu.avatarUrl) {
+        const msg =
+          typeof recu?.error === "string"
+            ? recu.error
+            : recu?.error?.message ||
+              recu?.message ||
+              "Impossible de téléverser l'avatar.";
+        toast.error(msg);
+        return;
+      }
+      setAvatarActuel(recu.avatarUrl);
+      window.dispatchEvent(
+        new CustomEvent("blackline:profile-updated", {
+          detail: {
+            avatarUrl: recu.avatarUrl,
+            callsign: versIndicatif(pseudoActuel || pseudoSaisi),
+          },
+        })
+      );
+      void mutate("/api/settings");
+      void mutate("/api/quizzly/resume");
+      void mutate("/api/quizzly/profil");
+      void mutate("/api/blackline/settings");
+      toast.success("Avatar mis à jour sur tout votre compte !");
+    } catch {
+      toast.error("Erreur lors de la mise à jour de l'avatar.");
+    } finally {
+      setTeleversementAvatar(false);
+      if (fichierAvatarRef.current) {
+        fichierAvatarRef.current.value = "";
+      }
+    }
+  };
+
+  const enregistrerProfil = async (evenement: React.FormEvent) => {
+    evenement.preventDefault();
+    const nomNettoye = pseudoSaisi.trim();
+    if (nomNettoye.length < 2 || nomNettoye.length > 40) {
+      toast.error("Le pseudo doit comporter entre 2 et 40 caractères.");
+      return;
+    }
+    setEnregistrementProfil(true);
+    try {
+      const reponse = await fetch("/api/quizzly/profil", {
+        body: JSON.stringify({ displayName: nomNettoye }),
+        headers: { "Content-Type": "application/json" },
+        method: "PUT",
+      });
+      const recu = (await reponse.json().catch(() => null)) as {
+        displayName?: string;
+        error?: { message?: string } | string;
+        message?: string;
+      } | null;
+      if (!reponse.ok) {
+        const msg =
+          typeof recu?.error === "string"
+            ? recu.error
+            : recu?.error?.message ||
+              recu?.message ||
+              "Impossible d'enregistrer le pseudo.";
+        toast.error(msg);
+        return;
+      }
+      const nouveauNom = recu?.displayName?.trim() || nomNettoye;
+      setPseudoActuel(nouveauNom);
+      setPseudoSaisi(nouveauNom);
+      window.dispatchEvent(
+        new CustomEvent("blackline:profile-updated", {
+          detail: {
+            avatarUrl: avatarActuel,
+            callsign: versIndicatif(nouveauNom),
+          },
+        })
+      );
+      void mutate("/api/settings");
+      void mutate("/api/quizzly/resume");
+      void mutate("/api/quizzly/profil");
+      void mutate("/api/blackline/settings");
+      toast.success(
+        "Profil mis à jour sur Blackline, Vibe, Quizzly et votre compte mAI !"
+      );
+      setEditionProfilOuverte(false);
+    } catch {
+      toast.error("Erreur lors de l'enregistrement du profil.");
+    } finally {
+      setEnregistrementProfil(false);
+    }
+  };
 
   /**
    * Le jeu est une activité LOURDE : pendant qu'il tourne, l'hôte passe en
@@ -278,21 +440,136 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
         */}
       </div>
 
-      {age === "accepted" && (
-        <button
-          className="absolute top-3 right-3 z-20 flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 text-xs font-medium text-white/90 backdrop-blur-md transition-all hover:bg-black/80 hover:text-white cursor-pointer"
-          onClick={() =>
-            window.dispatchEvent(new CustomEvent("open-suite-command-bar"))
-          }
-          title="Ouvrir la barre de commande (⌘K)"
-          type="button"
+      {editionProfilOuverte && (
+        <div
+          aria-labelledby="blackline-edit-profile-title"
+          aria-modal="true"
+          className="absolute inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
+          role="dialog"
         >
-          <SearchIcon className="size-3 text-white/70" />
-          <span className="hidden sm:inline">Suite mAI</span>
-          <kbd className="rounded bg-white/20 px-1 py-0.5 text-[10px] text-white/80">
-            ⌘K
-          </kbd>
-        </button>
+          <form
+            className="flex w-full max-w-md flex-col gap-5 rounded-2xl border border-white/15 bg-[#121c18] p-6 text-[#eef4e4] shadow-2xl"
+            onSubmit={enregistrerProfil}
+          >
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#c6dd94]/70">
+                  Profil unifié · Suite mAI
+                </p>
+                <h2
+                  className="mt-0.5 text-lg font-bold text-[#eef4e4]"
+                  id="blackline-edit-profile-title"
+                >
+                  Modifier votre profil
+                </h2>
+              </div>
+              <button
+                aria-label="Fermer"
+                className="rounded-lg p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white cursor-pointer"
+                onClick={() => setEditionProfilOuverte(false)}
+                type="button"
+              >
+                <XIcon className="size-4" />
+              </button>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="relative size-16 shrink-0 overflow-hidden rounded-full border border-[#c6dd94]/50 bg-[#192720] flex items-center justify-center">
+                {avatarActuel ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    alt={pseudoSaisi || "Avatar"}
+                    className="size-full object-cover"
+                    src={avatarActuel}
+                  />
+                ) : (
+                  <span className="text-xl font-bold text-[#c6dd94]">
+                    {(pseudoSaisi || pseudoActuel || "O")
+                      .trim()
+                      .charAt(0)
+                      .toUpperCase() || "O"}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <button
+                  className="inline-flex w-fit items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/15 cursor-pointer disabled:opacity-50"
+                  disabled={televersementAvatar}
+                  onClick={() => fichierAvatarRef.current?.click()}
+                  type="button"
+                >
+                  {televersementAvatar ? (
+                    <Loader2Icon className="size-3.5 animate-spin" />
+                  ) : (
+                    <CameraIcon className="size-3.5 text-[#c6dd94]" />
+                  )}
+                  {televersementAvatar
+                    ? "Téléversement…"
+                    : "Changer la photo d'avatar"}
+                </button>
+                <span className="text-[11px] text-[#c6dd94]/70">
+                  S&apos;applique à Blackline, Vibe, Quizzly et votre compte
+                  mAI.
+                </span>
+                <input
+                  accept="image/*"
+                  className="hidden"
+                  onChange={televerserAvatar}
+                  ref={fichierAvatarRef}
+                  type="file"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label
+                className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#c6dd94]"
+                htmlFor="blackline-profile-pseudo"
+              >
+                Pseudo
+              </label>
+              <input
+                className="h-10 w-full rounded-xl border border-white/15 bg-black/30 px-3 text-sm text-white placeholder:text-white/40 focus:border-[#c6dd94] focus:outline-none"
+                id="blackline-profile-pseudo"
+                maxLength={40}
+                minLength={2}
+                onChange={(e) => setPseudoSaisi(e.target.value)}
+                placeholder="Votre pseudo"
+                required
+                type="text"
+                value={pseudoSaisi}
+              />
+              <span className="text-[11px] text-[#c6dd94]/70">
+                Synchronisé avec Vibe, Quizzly et le compte mAI en général.
+              </span>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-1">
+              <button
+                className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-white/25 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6dd94]"
+                onClick={() => setEditionProfilOuverte(false)}
+                type="button"
+              >
+                Annuler
+              </button>
+              <button
+                className="inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-[#c6dd94] px-4 py-2 text-sm font-medium text-[#0f1714] transition-colors hover:bg-[#d6e9ac] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6dd94]"
+                disabled={enregistrementProfil}
+                type="submit"
+              >
+                {enregistrementProfil ? (
+                  <>
+                    <Loader2Icon className="size-4 animate-spin" />
+                    Enregistrement…
+                  </>
+                ) : (
+                  "Enregistrer"
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       )}
 
       {/*

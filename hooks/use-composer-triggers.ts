@@ -28,7 +28,7 @@ import {
 import type { ProjectLite } from "@/hooks/use-projects";
 import { asArray } from "@/lib/api/client-fetch";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
-import type { PluginManifest } from "@/lib/plugins/types";
+import type { PluginManifest } from "@/lib/plugins/core/types";
 
 // Triggers de composition partagés par le Chat et l'Agent : détection des
 // commandes « / » et des mentions « @ », navigation clavier dans les menus,
@@ -786,7 +786,7 @@ function mentionItemToPayload(item: {
       return { server: item.server as McpServer, type: "mcp" };
     case "plugin":
       return {
-        plugin: item.plugin as import("@/lib/plugins/types").PluginManifest,
+        plugin: item.plugin as PluginManifest,
         type: "plugin",
       };
     case "project":

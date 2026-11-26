@@ -1,63 +1,66 @@
-# Architecture globale de mAI Web
+# Architecture globale de mAI Web — Refonte & Migration
 
-mAI Web est conçu autour d'une architecture découplée combinant un **BFF (Backend-For-Frontend) Next.js 16** et un **Backend haute performance Hono** hébergé sur Val Town.
+mAI Web est conçu autour d'une architecture full-stack Next.js unifiée, directement connectée à PostgreSQL Neon, aux fournisseurs IA externes et orchestrée via GitHub Actions.
 
 ```mermaid
 flowchart TD
     Client["Client Navigateur (React 19)"]
 
-    subgraph "Application Next.js 16 (BFF)"
+    subgraph "Application Next.js 16 (Full-Stack sur Vercel)"
         Proxy["proxy.ts (Interception & Auth Liveness)"]
         AppRouter["App Router (app/(chat)/*, app/(wakies)/*)"]
-        BFFRoutes["78 Routes d'API (/api/**)"]
+        ServerActions["Server Actions & Server-Only Modules"]
+        UsageEngine["Moteur d'Usage en % (lib/plans/usage-engine.ts)"]
         Drizzle["Drizzle ORM"]
+        DirectAI["Fournisseurs IA (OpenRouter, Comet, Deepgram...)"]
     end
 
-    subgraph "Stockage & Cache"
-        NeonDB[("PostgreSQL Neon (Multi-tenant)")]
+    subgraph "Stockage & Base de données"
+        NeonDB[("PostgreSQL Neon (Multi-tenant & Auth OTP)")]
         RedisCache[("Upstash / Redis (Rate-limits & Streams)")]
+        Z1Storage[("Z1 Storage / S3 (Médias & Fichiers)")]
     end
 
-    subgraph "Backend Hono (Val Town - mai.val.run)"
-        HonoApp["main.ts / api-middleware.ts"]
-        ValTownDB[("SQLite + Neon")]
-        AIProviders["OpenRouter, Comet, Gemini..."]
+    subgraph "Planification & Automatisation"
+        GHA["GitHub Actions (cron-master.yml, models-sync.yml)"]
     end
 
     Client --> Proxy
     Proxy --> AppRouter
-    AppRouter --> BFFRoutes
-    BFFRoutes --> Drizzle
+    AppRouter --> ServerActions
+    ServerActions --> UsageEngine
+    ServerActions --> Drizzle
     Drizzle --> NeonDB
-    BFFRoutes --> RedisCache
-    BFFRoutes -->|MAI_API_URL / Bearer JWT| HonoApp
-    HonoApp --> ValTownDB
-    HonoApp --> AIProviders
+    ServerActions --> RedisCache
+    ServerActions --> Z1Storage
+    ServerActions --> DirectAI
+    GHA -->|CRON_SECRET / APP_URL| AppRouter
 ```
 
 ---
 
-## 1. Rôle du BFF Next.js 16
+## 1. Rôle de l'Application Next.js 16 (Full-Stack)
 
-L'application Next.js gère:
-- **Le rendu de l'interface utilisateur** (React 19.2, streaming React Server Components).
-- **L'authentification de session**: Lecture du cookie HTTP-only `mai_session_token`, validation de session avec `getMaiUser()`, et passerelle pour les composants clients.
-- **La persistance des données utilisateur**: Conversations, messages, artefacts, configurations d'agents, espaces et pages Wakies, préférences via PostgreSQL Neon et Drizzle ORM.
-- **La normalisation des requêtes amont**: Les routes sous `app/(chat)/api/**/route.ts` vérifient les autorisations locales et les quotas avant de contacter le backend distant avec `lib/api/error-response.ts`.
+L'application Next.js gère :
+- **Le rendu de l'interface utilisateur** (React 19, streaming React Server Components).
+- **L'authentification et sessions sécurisées sur Neon** : Codes OTP de vérification par email (`verification_codes`), révocation de jetons (`token_blacklist`), session utilisateur vérifiée directement en base de données.
+- **La persistance des données utilisateur** : Conversations, messages, artefacts, configurations d'agents, espaces et pages Wakies, préférences via PostgreSQL Neon et Drizzle ORM.
+- **Le moteur d'usage en pourcentage** (`lib/plans/usage-engine.ts`) : Calcul normalisé par forfait (Free: 100, Plus: 200, Pro: 400, Max: 1 000 unités), réinitialisé le lundi à 00:00 UTC, remplaçant l'affichage brut des tokens par message.
+- **L'intégration directe des modèles IA** : Les requêtes s'adressent directement aux fournisseurs IA (OpenRouter pour LLM et GPT-6, Comet API pour les images). Les alias souverains mAI (mAI-2.5 Opal, Apex, Omni) sont résolus vers leurs backends respectifs (`openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`) avec injection du prompt d'identité souverain.
 
 ---
 
-## 2. Rôle du Backend Hono (Val Town)
+## 2. Décommissionnement de Val Town & Planification GitHub Actions
 
-Le backend hébergé sur Val Town (`main.ts` et ses modules) assure:
-- **L'orchestration des modèles IA**: Abstraction des fournisseurs de LLMs (OpenRouter, OpenAI, Anthropic, Gemini, Groq...).
-- **Les quotas temps réel**: Comptabilisation des jetons et rate limiting via Redis.
-- **Le backend social de Vibe**: Endpoints REST `/v1/*` gérant les flux, publications, réactions, commentaires arborescents et notifications.
-- **La synthèse vocale (TTS) et génération d'images**.
+- **Extinction programmée de Val Town** : Aucune dépendance critique ne repose désormais sur le runtime SQLite ou les vals de Val Town.
+- **GitHub Actions comme ordonnanceur unique** :
+  - `cron-master.yml` : Orchestrateur groupé haute performance déclenchant les ticks en parallèle (`scripts/cron/run-tick.mjs all`) toutes les 10 minutes avec protection contre l'épuisement du quota de minutes GitHub.
+  - Workflows individuels (`cron-agent.yml`, `cron-planning.yml`, `cron-wakies.yml`, `cron-vibe.yml`, `cron-notifications.yml`, `cron-quizzly.yml`) déclenchables manuellement via `workflow_dispatch`.
+  - `models-sync.yml` : Synchronisation biquotidienne (toutes les 12h) du catalogue de modèles IA.
 
 ---
 
 ## 3. Communication sécurisée et isolation
 
-- **Validation des URLs amont (`safe-fetch.ts`)**: Toute requête sortante vers un domaine externe valide l'adresse IP de destination pour bloquer les attaques SSRF (Server-Side Request Forgery) sur les adresses privées (`127.0.0.1`, `169.254.169.254`, `10.0.0.0/8`...).
-- **Secrets MCP isolés**: Les clés et configurations des serveurs MCP sont chiffrées à l'aide d'un algorithme AES-256-GCM avec rotation d'identifiants (`MCP_ENCRYPTION_KEY`).
+- **Validation des URLs amont (`safe-fetch.ts`)** : Toute requête sortante vers un domaine externe valide l'adresse IP de destination pour bloquer les attaques SSRF (Server-Side Request Forgery) sur les adresses privées (`127.0.0.1`, `169.254.169.254`, `10.0.0.0/8`...).
+- **Secrets MCP et intégrations isolés** : Les clés et configurations des serveurs MCP sont chiffrées à l'aide d'AES-256-GCM (`MCP_ENCRYPTION_KEY`).

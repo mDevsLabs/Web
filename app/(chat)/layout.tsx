@@ -99,7 +99,7 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
         >
           <AgentModeProvider initialMode={initialAgentMode}>
             <AppSidebar hasDeadSession={hasDeadSession} user={user} />
-            <SidebarInset className="flex flex-col has-[.site-root]:bg-white has-[.site-root]:[transform:none]">
+            <SidebarInset className="flex flex-col has-[.site-root]:bg-white has-[.site-root]:[transform:none] has-[.vibe-root]:[transform:none]">
               {/*
                 Le noyau de chat n'est chargé que sur les routes de
                 conversation. Les autres applications du groupe — Site, Vibe,

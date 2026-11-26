@@ -1,15 +1,20 @@
 "use client";
 
 import {
+  BanIcon,
   CpuIcon,
+  ExternalLinkIcon,
+  EyeOffIcon,
   Loader2Icon,
   LockIcon,
   MessageSquareIcon,
   SearchIcon,
   ShieldIcon,
   SparklesIcon,
+  UserCheckIcon,
   Volume2Icon,
 } from "@mdevs/icons";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
@@ -20,6 +25,9 @@ import type { UserSettings } from "@/lib/vibe/types/vibe";
 
 const VIBE_SETTINGS_KEY = "vibe_settings_cache";
 const VIBE_CIRCLE_KEY = "vibe_circle_cache";
+const VIBE_ME_KEY = "vibe_me_cache";
+const VIBE_BLOCKED_KEY = "vibe_blocked_cache";
+const VIBE_MUTED_KEY = "vibe_muted_cache";
 
 type VibeSettingsSectionProps = {
   unifiedModel: string;
@@ -134,6 +142,37 @@ export function VibeSettingsSection({
     () => ApiService.getCircle(),
     { dedupingInterval: 15_000 }
   );
+
+  const { data: vibeMeData, mutate: mutateVibeMe } = useSWR(
+    VIBE_ME_KEY,
+    () => ApiService.getCurrentUser(),
+    { dedupingInterval: 15_000 }
+  );
+
+  const { data: vibeBlockedData, mutate: mutateVibeBlocked } = useSWR(
+    VIBE_BLOCKED_KEY,
+    () => ApiService.getBlockedUsers(),
+    { dedupingInterval: 15_000 }
+  );
+
+  const { data: vibeMutedData, mutate: mutateVibeMuted } = useSWR(
+    VIBE_MUTED_KEY,
+    () => ApiService.getMutedUsers(),
+    { dedupingInterval: 15_000 }
+  );
+
+  const [vibeUsernameDraft, setVibeUsernameDraft] = useState("");
+  const [vibeDisplayNameDraft, setVibeDisplayNameDraft] = useState("");
+  const [isSavingVibeProfile, setIsSavingVibeProfile] = useState(false);
+
+  useEffect(() => {
+    if (vibeMeData?.user || vibeMeData?.profile) {
+      setVibeUsernameDraft(
+        vibeMeData.profile?.username || vibeMeData.user?.username || ""
+      );
+      setVibeDisplayNameDraft(vibeMeData.profile?.displayName || "");
+    }
+  }, [vibeMeData]);
 
   useEffect(() => {
     if (vibeSettingsLoading) return;
@@ -370,6 +409,66 @@ export function VibeSettingsSection({
     }
   };
 
+  const handleSaveVibeIdentity = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanUser = vibeUsernameDraft.trim().toLowerCase().replace(/^@/, "");
+    if (!/^[a-z0-9_]{2,30}$/.test(cleanUser)) {
+      toast.error(
+        "Le pseudonyme Vibe doit comporter entre 2 et 30 caractères (lettres minuscules, chiffres, _)."
+      );
+      return;
+    }
+    setIsSavingVibeProfile(true);
+    try {
+      await ApiService.updateProfile({
+        displayName: vibeDisplayNameDraft.trim(),
+        username: cleanUser,
+      });
+      await mutateVibeMe();
+      toast.success("Identité Vibe mise à jour !");
+    } catch (err: unknown) {
+      toast.error(
+        err instanceof Error
+          ? err.message
+          : "Impossible de mettre à jour le profil Vibe."
+      );
+    } finally {
+      setIsSavingVibeProfile(false);
+    }
+  };
+
+  const handleUnblockVibeUser = async (userId: string, username?: string) => {
+    try {
+      await ApiService.unblockUser(userId);
+      await mutateVibeBlocked();
+      toast.success(
+        username ? `@${username} débloqué.` : "Utilisateur débloqué."
+      );
+    } catch (err: unknown) {
+      toast.error(
+        err instanceof Error ? err.message : "Erreur lors du déblocage."
+      );
+    }
+  };
+
+  const handleUnmuteVibeUser = async (username?: string) => {
+    if (!username) return;
+    try {
+      await ApiService.muteUser(username, false);
+      await mutateVibeMuted();
+      toast.success(`@${username} réactivé.`);
+    } catch (err: unknown) {
+      toast.error(
+        err instanceof Error ? err.message : "Erreur lors de la réactivation."
+      );
+    }
+  };
+
+  const vibeAccountUsername =
+    vibeMeData?.profile?.username || vibeMeData?.user?.username || "";
+  const blockedAccounts = vibeBlockedData?.blocked ?? [];
+  const mutedAccounts = vibeMutedData?.muted ?? [];
+
   return (
     <section className="flex flex-col gap-6 scroll-mt-24" id="vibe">
       <div className="flex items-center justify-between border-b border-border/50 pb-3">
@@ -398,6 +497,90 @@ export function VibeSettingsSection({
         </div>
       ) : (
         <div className="flex flex-col gap-6">
+          <form
+            className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+            id="vibe-account"
+            onSubmit={handleSaveVibeIdentity}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-foreground">
+                <UserCheckIcon className="size-4 text-primary" />
+                <span>Compte &amp; Profil Vibe</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                {vibeAccountUsername ? (
+                  <Link
+                    className="inline-flex items-center gap-1 rounded-lg border border-border/60 bg-muted/30 px-2.5 py-1 text-[11px] font-medium text-foreground hover:bg-muted/60 transition-colors"
+                    href={`/vibe/@${vibeAccountUsername}?edit=1`}
+                  >
+                    <span>Éditer bio, avatar &amp; bannière</span>
+                    <ExternalLinkIcon className="size-3" />
+                  </Link>
+                ) : null}
+                <Link
+                  className="inline-flex items-center gap-1 rounded-lg border border-border/60 bg-muted/30 px-2.5 py-1 text-[11px] font-medium text-foreground hover:bg-muted/60 transition-colors"
+                  href="/vibe/settings"
+                >
+                  <span>Ouvrir Paramètres Vibe</span>
+                  <ExternalLinkIcon className="size-3" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+                  Pseudonyme Vibe (@pseudo)
+                </label>
+                <input
+                  className="field-input text-xs w-full py-1.5 px-2.5 rounded-lg border border-border/70 bg-card text-foreground font-mono"
+                  maxLength={30}
+                  onChange={(e) =>
+                    setVibeUsernameDraft(
+                      e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, "")
+                    )
+                  }
+                  placeholder="mon_pseudo"
+                  type="text"
+                  value={vibeUsernameDraft}
+                />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+                  Nom d'affichage
+                </label>
+                <input
+                  className="field-input text-xs w-full py-1.5 px-2.5 rounded-lg border border-border/70 bg-card text-foreground"
+                  maxLength={80}
+                  onChange={(e) => setVibeDisplayNameDraft(e.target.value)}
+                  placeholder="Nom affiché sur Vibe"
+                  type="text"
+                  value={vibeDisplayNameDraft}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+              <span className="text-[11px] text-muted-foreground">
+                Votre session Vibe est liée à votre compte mAI (forfait{" "}
+                <strong className="text-foreground">
+                  {vibeMeData?.user?.tier || "Free"}
+                </strong>
+                ).
+              </span>
+              <button
+                className="rounded-lg bg-foreground text-background px-3.5 py-1.5 text-xs font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer"
+                disabled={isSavingVibeProfile || !vibeUsernameDraft.trim()}
+                type="submit"
+              >
+                {isSavingVibeProfile
+                  ? "Enregistrement…"
+                  : "Mettre à jour l'identité Vibe"}
+              </button>
+            </div>
+          </form>
+
           <div
             className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
             id="vibe-ai"
@@ -740,7 +923,7 @@ export function VibeSettingsSection({
                 Ajouter un utilisateur au Cercle Privé
               </label>
               <div className="relative">
-                <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+                <SearchIcon className="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 size-3.5 text-muted-foreground" />
                 <input
                   className="field-input text-xs w-full pl-8 pr-3 py-1.5 rounded-lg border border-border/70 bg-card text-foreground placeholder:text-muted-foreground"
                   onChange={(e) => setCircleSearchQuery(e.target.value)}
@@ -819,6 +1002,106 @@ export function VibeSettingsSection({
                       </button>
                     </span>
                   ))
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+            id="vibe-blocked"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-xs font-bold text-foreground">
+                <BanIcon className="size-4 text-primary" />
+                <span>Comptes bloqués &amp; masqués sur Vibe</span>
+              </div>
+              <span className="chip text-[11px]">
+                {blockedAccounts.length} bloqué
+                {blockedAccounts.length > 1 ? "s" : ""} · {mutedAccounts.length}{" "}
+                masqué{mutedAccounts.length > 1 ? "s" : ""}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div className="flex flex-col gap-2">
+                <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
+                  <BanIcon className="size-3" />
+                  Bloqués ({blockedAccounts.length})
+                </span>
+                {blockedAccounts.length === 0 ? (
+                  <p className="text-xs text-muted-foreground italic">
+                    Aucun compte bloqué.
+                  </p>
+                ) : (
+                  <div className="divide-y divide-border/50 rounded-xl border border-border/60 max-h-40 overflow-y-auto">
+                    {blockedAccounts.map((b) => (
+                      <div
+                        className="flex items-center justify-between gap-2 p-2.5"
+                        key={b.id}
+                      >
+                        <div className="min-w-0">
+                          <p className="font-semibold text-foreground truncate">
+                            {b.blocked_display_name || b.blocked_username}
+                          </p>
+                          <p className="text-[11px] text-muted-foreground font-mono truncate">
+                            @{b.blocked_username}
+                          </p>
+                        </div>
+                        <button
+                          className="rounded-lg border border-border/60 px-2.5 py-1 text-[11px] font-medium hover:bg-muted/50 cursor-pointer shrink-0"
+                          onClick={() =>
+                            void handleUnblockVibeUser(
+                              b.blocked_user_id,
+                              b.blocked_username
+                            )
+                          }
+                          type="button"
+                        >
+                          Débloquer
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
+                  <EyeOffIcon className="size-3" />
+                  Masqués ({mutedAccounts.length})
+                </span>
+                {mutedAccounts.length === 0 ? (
+                  <p className="text-xs text-muted-foreground italic">
+                    Aucun compte masqué.
+                  </p>
+                ) : (
+                  <div className="divide-y divide-border/50 rounded-xl border border-border/60 max-h-40 overflow-y-auto">
+                    {mutedAccounts.map((m) => (
+                      <div
+                        className="flex items-center justify-between gap-2 p-2.5"
+                        key={m.id}
+                      >
+                        <div className="min-w-0">
+                          <p className="font-semibold text-foreground truncate">
+                            {m.muted_display_name || m.muted_username}
+                          </p>
+                          <p className="text-[11px] text-muted-foreground font-mono truncate">
+                            @{m.muted_username}
+                          </p>
+                        </div>
+                        <button
+                          className="rounded-lg border border-border/60 px-2.5 py-1 text-[11px] font-medium hover:bg-muted/50 cursor-pointer shrink-0"
+                          onClick={() =>
+                            void handleUnmuteVibeUser(m.muted_username)
+                          }
+                          type="button"
+                        >
+                          Réactiver
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             </div>

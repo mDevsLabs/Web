@@ -315,7 +315,7 @@ export function ParcoursQuizzly() {
                       <span>›</span>
                       <span>Chapitre {chapIndex + 1}</span>
                     </div>
-                    <h1 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl dark:text-white">
+                    <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
                       {chapitre.title}
                     </h1>
                   </div>
@@ -354,14 +354,13 @@ export function ParcoursQuizzly() {
 
                               return (
                                 <li
-                                  className="group relative flex flex-col items-center text-center"
+                                  className="group relative flex w-24 flex-col items-center text-center sm:w-[100px]"
                                   key={quiz.id}
-                                  style={{ width: "100px" }}
                                 >
                                   {quiz.unlocked ? (
                                     <Link
                                       className={cn(
-                                        "relative flex size-16 items-center justify-center rounded-full text-base font-black transition-all shadow-md",
+                                        "relative flex size-16 items-center justify-center rounded-full text-base font-extrabold transition-all shadow-md",
                                         quiz.passed
                                           ? "border-2 border-emerald-500 bg-emerald-500 text-white shadow-emerald-500/20 hover:scale-105"
                                           : estCourant

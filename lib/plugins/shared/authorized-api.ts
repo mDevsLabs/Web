@@ -5,27 +5,20 @@ import {
   getIntegrationProvider,
   type IntegrationDescriptor,
   type IntegrationProviderId,
-  splitGrantedScopes,
 } from "@/lib/integrations/providers";
-import type { PluginToolDeps } from "../types";
+import type { PluginToolDeps } from "../core/types";
 import { type BoundedFetchOptions, boundedFetchJson } from "./bounded-fetch";
 import { describeFailure } from "./public-api";
 
 /**
- * Appels authentifiés aux API des connecteurs (GitHub, Maps, YouTube).
+ * Appels authentifiés aux API des connecteurs par jeton personnel.
  *
  * Même discipline que `fetchPublicJson` pour les garde-fous — HTTPS forcé, liste
  * blanche de hosts, redirections refusées, taille et durée bornées — avec deux
- * différences assumées : un porteur Bearer, et aucune reprise pour une écriture
- * (rejouer un POST après un 503 enverrait deux e-mails).
- *
- * Un hôte absent de la liste blanche du descripteur est refusé avant tout appel :
- * le modèle ne choisit jamais l'adresse à atteindre, seulement des morceaux de
- * chemin, et ceux-ci passent par `encodeSegment`.
+ * différences assumées : un porteur d'accès, et aucune reprise pour une écriture.
  */
 
 export const AUTHORIZED_API_TIMEOUT_MS = 12_000;
-/** Une page de résultats Drive ou Gmail pèse plus qu'un avis météo. */
 export const AUTHORIZED_API_MAX_BYTES = 3_000_000;
 
 export type AuthorizedResult<T> =
@@ -41,18 +34,13 @@ export type AuthorizedCallParams<T> = {
   authorization?: string | null;
   /** Corps JSON d'une écriture. Sa présence interdit toute reprise. */
   body?: string;
-  /** Base du service, ex. `https://www.googleapis.com/drive/v3`. */
+  /** Base du service, ex. `https://api.github.com`. */
   base: string;
   descriptor: IntegrationDescriptor;
   headers?: Record<string, string>;
   method?: "GET" | "PATCH" | "POST";
   /** Chemin sous la base, en littéral de code — jamais une URL du modèle. */
   path: string;
-  /**
-   * Paramètres de requête. Une valeur en tableau est répétée dans l'URL —
-   * Gmail attend `metadataHeaders=From&metadataHeaders=Subject`, que la forme
-   * jointe ne remplace pas.
-   */
   query?: Record<
     string,
     readonly (string | number)[] | string | number | undefined
@@ -66,6 +54,19 @@ export type AuthorizedCallParams<T> = {
 /** Un segment de chemin fourni par le modèle : encodé, jamais interpolé nu. */
 export function encodeSegment(value: string): string {
   return encodeURIComponent(value.trim().replace(/^\/+|\/+$/g, ""));
+}
+
+/** Borne uniformément un paramètre de pagination fourni par le modèle. */
+export function clampLimit(
+  value: number | undefined,
+  fallback: number,
+  max: number,
+  min = 1
+): number {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return fallback;
+  }
+  return Math.min(Math.max(Math.trunc(value), min), max);
 }
 
 function endpointFor(
@@ -103,9 +104,6 @@ function endpointFor(
     if (value === undefined || value === "") {
       continue;
     }
-    // Une valeur multiple se répète dans la query : Gmail l'exige
-    // (`metadataHeaders=From&metadataHeaders=To`), et une jointure par virgules
-    // n'est pas la même requête pour les API de Google.
     if (Array.isArray(value)) {
       for (const item of value) {
         url.searchParams.append(key, String(item));
@@ -115,6 +113,20 @@ function endpointFor(
     url.searchParams.set(key, String(value));
   }
   return { data: url, ok: true };
+}
+
+function formatAuthorizedFailure(
+  label: string,
+  failure: Parameters<typeof describeFailure>[0],
+  timeoutMs: number
+): string {
+  if (failure.kind === "http" && failure.status === 401) {
+    return `Jeton ${label} invalide, expiré ou révoqué (HTTP 401) : mettez à jour votre jeton depuis l'onglet Plugins.`;
+  }
+  if (failure.kind === "http" && failure.status === 403) {
+    return `Permissions insuffisantes sur le jeton ${label} pour cette action (HTTP 403).`;
+  }
+  return describeFailure(failure, timeoutMs);
 }
 
 export async function callAuthorized<T>(
@@ -139,11 +151,16 @@ export async function callAuthorized<T>(
     signal: params.signal,
     timeoutMs,
   };
-  // `body` et `method` sont portés par BoundedFetchOptions : une écriture n'y a
-  // droit à aucune reprise, voir `boundedFetch`.
   const result = await boundedFetchJson<unknown>(endpoint.data, options);
   if (!result.ok) {
-    return { error: describeFailure(result, timeoutMs), ok: false };
+    return {
+      error: formatAuthorizedFailure(
+        params.descriptor.label,
+        result,
+        timeoutMs
+      ),
+      ok: false,
+    };
   }
   if (params.transform) {
     return params.transform(result.data);
@@ -153,15 +170,6 @@ export async function callAuthorized<T>(
 
 /**
  * Porteur d'accès du compte, résolu À L'EXÉCUTION de l'outil.
- *
- * Résoudre le jeton à la création des outils le figerait pour toute la durée du
- * run : un Agent de quarante minutes partirait avec un jeton d'une heure et
- * tomberait en 401 en plein milieu. `secretResolver` rafraîchit à chaque appel.
- *
- * Le message d'absence de connexion est un échec PERMANENT assumé : il ne
- * contient aucun des mots (« service indisponible », « délai », « réseau »,
- * « 429 ») que l'adaptateur Agent interprète comme transitoire, donc aucun
- * rejeu automatique ne viendra user le quota du compte pour rien.
  */
 export async function bearerFor(
   deps: PluginToolDeps,
@@ -182,28 +190,4 @@ export async function bearerFor(
     };
   }
   return { data: token, ok: true };
-}
-
-/** Refus d'écrire quand le consentement n'a pas accordé la portée nécessaire. */
-export async function requireWriteScope(
-  deps: PluginToolDeps,
-  providerId: IntegrationProviderId,
-  scope: string
-): Promise<AuthorizedResult<true>> {
-  const descriptor = getIntegrationProvider(providerId);
-  if (!descriptor) {
-    return { error: `Connecteur inconnu : « ${providerId} ».`, ok: false };
-  }
-  const granted =
-    (await deps.secretResolver?.({
-      key: `${providerId}.scopes`,
-      kind: "auth",
-    })) ?? "";
-  if (splitGrantedScopes(granted).has(scope)) {
-    return { data: true, ok: true };
-  }
-  return {
-    error: `Le consentement ${descriptor.label} de ce compte n'inclut pas la portée « ${scope} » : reconnectez le compte en l'accordant.`,
-    ok: false,
-  };
 }

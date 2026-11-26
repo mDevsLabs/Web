@@ -6,7 +6,12 @@ import { type ModelInfo, modelsData } from "./models-data";
 export type { ModelInfo };
 export { modelsData };
 
-const docsDirectory = path.join(process.cwd(), "docs");
+// À la racine Next.js, les fiches modèles vivent dans `apps/site/docs/`.
+// Le repli relatif au module évite au traceur Next d'embarquer `./docs/` racine.
+const rootSiteDocsDirectory = path.join(process.cwd(), "apps", "site", "docs");
+const docsDirectory = fs.existsSync(rootSiteDocsDirectory)
+  ? rootSiteDocsDirectory
+  : path.resolve(import.meta.dirname, "../../apps/site/docs");
 
 function readReadme(modelId: string): string {
   const readmePath = path.join(docsDirectory, modelId, "README.md");

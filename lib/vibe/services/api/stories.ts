@@ -10,6 +10,7 @@ import type {
   StoryAuthor,
   StoryQuota,
   StorySticker,
+  StoryStyle,
   StoryViewer,
 } from "@/lib/vibe/types/vibe";
 import { ApiServiceCore } from "./base";
@@ -65,6 +66,7 @@ export class ApiStoriesService extends ApiBooksService {
     }>;
     poll?: { options: string[]; question: string } | null;
     stickers?: StorySticker[];
+    style?: StoryStyle | null;
     visibility?: "followers" | "public" | "private";
   }): Promise<{ id: string; quota: StoryQuota; success: boolean }> {
     ApiServiceCore.invalidateCache("/v1/stories");

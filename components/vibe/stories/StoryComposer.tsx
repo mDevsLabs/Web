@@ -1,214 +1,60 @@
 import type React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import {
+  BACKGROUND_PRESETS,
+  type BackgroundPreset,
+  isBadgeSticker,
+  MEDIA_FILTERS,
+  type MediaFilter,
+  resolveStoryBackground,
+  resolveStoryFilter,
+  resolveStoryTextConfig,
+  STICKER_CATEGORIES,
+  saveLocalStoryStyle,
+  TEXT_COLORS,
+  TEXT_FONTS,
+  TEXT_STYLES,
+  type TextFont,
+  type TextStyleOption,
+} from "@/components/vibe/stories/story-styles";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import {
   formatMediaLimit,
   STORY_MEDIA_MAX_BYTES,
 } from "@/lib/vibe/services/tierLimits";
-import type { StorySticker } from "@/lib/vibe/types/vibe";
+import type { StorySticker, StoryStyle } from "@/lib/vibe/types/vibe";
+
+export {
+  BACKGROUND_PRESETS,
+  type BackgroundPreset,
+  MEDIA_FILTERS,
+  type MediaFilter,
+  STICKER_CATEGORIES,
+  TEXT_COLORS,
+  TEXT_FONTS,
+  TEXT_STYLES,
+  type TextFont,
+  type TextStyleOption,
+};
 
 /**
  * COMPOSITEUR DE STORY (StoryComposer.tsx)
  *
  * Conçu dans une fenêtre contextuelle élégante (modale) ne recouvrant pas toute la page.
- * Prend en charge:
+ * Prend en charge :
  * - Médias (photos / vidéos ≤ 50 Mo) avec retouches (filtres photo CSS, cadrage, miroir)
- * - Nouveaux arrière-plans & palettes de couleurs (dégradés vibrants, teintes unies)
+ * - Arrière-plans & palettes de couleurs (dégradés vibrants, teintes unies)
  * - Typographie et mise en page du texte avancées (polices, couleurs, styles de fond, alignement, position)
- * - Nouveaux stickers organisés en catégories (Émotions, Vibes, Badges graphiques, Heure/Date dynamiques)
+ * - Stickers organisés en catégories (Émotions, Vibes, Badges graphiques, Heure/Date dynamiques)
  * - Sondages interactifs (2 à 4 options)
- * - Choix de visibilité (Abonnés, Tout le monde, Privé)
+ * - Choix de visibilité (Abonnés, Public, Moi seul)
  */
 
 export const STORY_MAX_ITEMS = 10;
 export const STORY_MAX_STICKERS = 6;
 export const SONDAGE_MAX_OPTIONS = 4;
-
-// ── Arrière-plans prédéfinis ─────────────────────────────────────────────────
-export interface BackgroundPreset {
-  className: string;
-  id: string;
-  name: string;
-  preview: string;
-}
-
-export const BACKGROUND_PRESETS: BackgroundPreset[] = [
-  {
-    className: "bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-800",
-    id: "dark-vibe",
-    name: "Sombre",
-    preview: "linear-gradient(135deg, #09090b, #18181b, #27272a)",
-  },
-  {
-    className: "bg-gradient-to-br from-amber-500 via-rose-500 to-purple-700",
-    id: "sunset",
-    name: "Coucher de soleil",
-    preview: "linear-gradient(135deg, #f59e0b, #f43f5e, #7e22ce)",
-  },
-  {
-    className: "bg-gradient-to-br from-fuchsia-600 via-violet-600 to-cyan-500",
-    id: "neon-cyber",
-    name: "Cyber Néon",
-    preview: "linear-gradient(135deg, #c026d3, #7c3aed, #06b6d4)",
-  },
-  {
-    className: "bg-gradient-to-br from-emerald-500 via-teal-600 to-indigo-900",
-    id: "aurora",
-    name: "Aurore",
-    preview: "linear-gradient(135deg, #10b981, #0d9488, #312e81)",
-  },
-  {
-    className: "bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-950",
-    id: "ocean-deep",
-    name: "Océan",
-    preview: "linear-gradient(135deg, #2563eb, #4338ca, #0f172a)",
-  },
-  {
-    className: "bg-gradient-to-br from-pink-500 via-rose-600 to-rose-950",
-    id: "cherry",
-    name: "Cerise",
-    preview: "linear-gradient(135deg, #ec4899, #e11d48, #4c0519)",
-  },
-  {
-    className: "bg-gradient-to-br from-yellow-400 via-orange-500 to-red-700",
-    id: "golden-hour",
-    name: "Golden Hour",
-    preview: "linear-gradient(135deg, #facc15, #f97316, #b91c1c)",
-  },
-  {
-    className: "bg-gradient-to-br from-emerald-600 via-teal-800 to-zinc-950",
-    id: "emerald-luxe",
-    name: "Émeraude",
-    preview: "linear-gradient(135deg, #059669, #0f766e, #09090b)",
-  },
-  {
-    className: "bg-zinc-950",
-    id: "solid-black",
-    name: "Noir mat",
-    preview: "#09090b",
-  },
-  {
-    className: "bg-purple-600",
-    id: "solid-purple",
-    name: "Violet Vibe",
-    preview: "#8b5cf6",
-  },
-  {
-    className: "bg-sky-600",
-    id: "solid-blue",
-    name: "Bleu roi",
-    preview: "#0284c7",
-  },
-  {
-    className: "bg-pink-600",
-    id: "solid-rose",
-    name: "Rose Pop",
-    preview: "#db2777",
-  },
-];
-
-// ── Filtres de retouche média ────────────────────────────────────────────────
-export interface MediaFilter {
-  filter: string;
-  id: string;
-  name: string;
-}
-
-export const MEDIA_FILTERS: MediaFilter[] = [
-  { filter: "none", id: "none", name: "Normal" },
-  { filter: "contrast(1.15) saturate(1.4)", id: "vibrant", name: "Vibrant" },
-  { filter: "grayscale(1) contrast(1.2)", id: "bw", name: "N&B" },
-  {
-    filter: "sepia(0.35) contrast(0.95) saturate(1.2)",
-    id: "vintage",
-    name: "Vintage",
-  },
-  {
-    filter: "contrast(1.3) brightness(0.95)",
-    id: "dramatic",
-    name: "Dramatique",
-  },
-  {
-    filter: "sepia(0.2) saturate(1.25) brightness(1.05)",
-    id: "warm",
-    name: "Chaud",
-  },
-  { filter: "hue-rotate(170deg) saturate(0.9)", id: "cold", name: "Froid" },
-  {
-    filter: "hue-rotate(280deg) saturate(1.5) contrast(1.1)",
-    id: "cyber",
-    name: "Cyber",
-  },
-];
-
-// ── Polices et styles de texte ───────────────────────────────────────────────
-export interface TextFont {
-  className: string;
-  id: string;
-  name: string;
-}
-
-export const TEXT_FONTS: TextFont[] = [
-  { className: "font-sans font-bold", id: "sans", name: "Moderne" },
-  { className: "font-serif italic font-bold", id: "serif", name: "Élégant" },
-  {
-    className: "font-mono font-medium tracking-tight",
-    id: "mono",
-    name: "Machine",
-  },
-  {
-    className: "font-black uppercase tracking-wider",
-    id: "impact",
-    name: "Impact",
-  },
-  { className: "italic font-semibold", id: "cursive", name: "Fantaisie" },
-];
-
-export interface TextStyleOption {
-  id: "clean" | "translucent" | "solid" | "neon";
-  name: string;
-}
-
-export const TEXT_STYLES: TextStyleOption[] = [
-  { id: "clean", name: "Épuré" },
-  { id: "translucent", name: "Bandeau" },
-  { id: "solid", name: "Encadré" },
-  { id: "neon", name: "Néon" },
-];
-
-export const TEXT_COLORS = [
-  { name: "Blanc", value: "#ffffff" },
-  { name: "Noir", value: "#09090b" },
-  { name: "Jaune", value: "#fde047" },
-  { name: "Rose", value: "#f472b6" },
-  { name: "Cyan", value: "#38bdf8" },
-  { name: "Vert", value: "#4ade80" },
-  { name: "Orange", value: "#fb923c" },
-  { name: "Violet", value: "#c084fc" },
-];
-
-// ── Catégories de stickers ───────────────────────────────────────────────────
-export const STICKER_CATEGORIES = {
-  badges: {
-    label: "Badges Vibe",
-    // Badges graphiques courts (≤ 8 car. pour respect strict du schéma backend)
-    stickers: ["VIBE", "NEW", "LIVE", "TOP", "MOOD", "LOVE", "CHILL", "HOT"],
-  },
-  emotions: {
-    label: "Émotions",
-    stickers: ["", "", "", "", "", "", "", "", "", "", "", ""],
-  },
-  infos: {
-    label: "Infos & Heure",
-    stickers: [" ICI", " 10/10", "HEURE_LOCALE", "DATE_JOUR"],
-  },
-  vibes: {
-    label: "Vibes & Fêtes",
-    stickers: ["", "", "", "", "", "", "", "", "", "", "", ""],
-  },
-} as const;
 
 export type TabId =
   | "media"
@@ -373,8 +219,6 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   }, []);
 
   // ── Stickers ──────────────────────────────────────────────────────────────
-  const isBadge = useCallback((emoji: string) => /[a-zA-Z0-9]/.test(emoji), []);
-
   const ajouterSticker = useCallback((valeur: string) => {
     setStickers((liste) => {
       if (liste.length >= STORY_MAX_STICKERS) return liste;
@@ -490,7 +334,33 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
     !publication &&
     (choix.length > 0 ||
       legende.trim() !== "" ||
+      stickers.length > 0 ||
       (sondage.actif && sondagePret));
+
+  const currentStoryStyle = useMemo<StoryStyle>(
+    () => ({
+      backgroundId,
+      filterId: activeFilterId,
+      mediaContain,
+      mediaMirror,
+      textAlign,
+      textColor,
+      textFont,
+      textPosition,
+      textStyle,
+    }),
+    [
+      activeFilterId,
+      backgroundId,
+      mediaContain,
+      mediaMirror,
+      textAlign,
+      textColor,
+      textFont,
+      textPosition,
+      textStyle,
+    ]
+  );
 
   const publier = useCallback(async () => {
     if (!peutPublier) return;
@@ -512,16 +382,23 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
           url: res.url,
         });
       }
-      await ApiService.createStory({
-        caption: legende.trim(),
+      const texteStory =
+        legende.trim() ||
+        (items.length === 0 && !(sondage.actif && sondagePret) ? " " : "");
+      const created = await ApiService.createStory({
+        caption: texteStory,
         items,
         poll:
           sondage.actif && sondagePret
             ? { options: optionsSondage, question: sondage.question.trim() }
             : null,
         stickers,
+        style: currentStoryStyle,
         visibility: visibilite,
       });
+      if (created?.id) {
+        saveLocalStoryStyle(created.id, currentStoryStyle);
+      }
       haptics.success();
       onPublished();
     } catch (err: any) {
@@ -532,11 +409,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
     }
   }, [
     choix,
+    currentStoryStyle,
     legende,
     onPublished,
     optionsSondage,
     peutPublier,
-    publication,
     sondage.actif,
     sondage.question,
     sondagePret,
@@ -547,61 +424,16 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   if (!open) return null;
 
   // Calcul des styles d'affichage
-  const presetFondActif =
-    BACKGROUND_PRESETS.find((p) => p.id === backgroundId) ||
-    BACKGROUND_PRESETS[0];
-  const filtreActif =
-    MEDIA_FILTERS.find((f) => f.id === activeFilterId) || MEDIA_FILTERS[0];
-  const policeTexte =
-    TEXT_FONTS.find((f) => f.id === textFont) || TEXT_FONTS[0];
-
+  const presetFondActif = resolveStoryBackground(backgroundId);
+  const filtreActif = resolveStoryFilter(activeFilterId);
   const mediaSelectionne = choix[indexMediaActif] || choix[0];
+  const textConfig = resolveStoryTextConfig(currentStoryStyle);
 
-  // Calcul du style de boîte de texte
-  const getTextStyleClasses = () => {
-    let alignClass = "text-center";
-    if (textAlign === "left") alignClass = "text-left";
-    else if (textAlign === "right") alignClass = "text-right";
-
-    let posClass = "bottom-4";
-    if (textPosition === "top") posClass = "top-4";
-    else if (textPosition === "center") posClass = "top-1/2 -translate-y-1/2";
-
-    let bgBoxClass = "";
-    let textColorStyle: React.CSSProperties = { color: textColor };
-
-    if (textStyle === "translucent") {
-      bgBoxClass =
-        "bg-black/70 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-lg";
-    } else if (textStyle === "solid") {
-      bgBoxClass = "bg-white px-4 py-2.5 rounded-2xl shadow-xl";
-      if (textColor === "#ffffff") {
-        textColorStyle = { color: "#09090b" };
-      }
-    } else if (textStyle === "neon") {
-      bgBoxClass =
-        "border border-white/30 backdrop-blur-sm px-3.5 py-2 rounded-2xl";
-      textColorStyle = {
-        color: textColor,
-        textShadow: `0 0 10px ${textColor}, 0 0 20px ${textColor}`,
-      };
-    } else {
-      textColorStyle = {
-        color: textColor,
-        textShadow: "0 2px 8px rgba(0,0,0,0.85)",
-      };
-    }
-
-    return {
-      alignClass,
-      bgBoxClass,
-      fontClass: policeTexte.className,
-      posClass,
-      textColorStyle,
-    };
-  };
-
-  const textConfig = getTextStyleClasses();
+  // Le canevas utilise toujours le dégradé/couleur CSS réel (`preview`) quand
+  // aucun média n'est sélectionné ou en mode ajusté (`mediaContain`), afin de ne
+  // jamais subir l'inversion clair/sombre de `--color-zinc-*` dans `.vibe-root`.
+  const canvasBackground =
+    choix.length === 0 || mediaContain ? presetFondActif.preview : "#000000";
 
   return createPortal(
     <div
@@ -617,7 +449,12 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
         {/* ── En-tête contextuel ─────────────────────────────────────────── */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-white/10 bg-zinc-950/90 backdrop-blur-sm shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="size-8 rounded-full bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-500 flex items-center justify-center text-white text-xs font-bold shadow-md shadow-rose-500/20" />
+            <div
+              className="size-8 rounded-full bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-500 flex items-center justify-center text-xs font-bold shadow-md shadow-rose-500/20"
+              style={{ color: "#ffffff" }}
+            >
+              ✦
+            </div>
             <div>
               <h2 className="text-sm font-bold text-white tracking-wide">
                 Nouvelle Story
@@ -645,10 +482,12 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
           {/* ── Colonne Gauche: Canevas interactif (5 col / 12) ─────────── */}
           <div className="md:col-span-5 bg-zinc-900/60 p-4 sm:p-5 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-white/10 overflow-hidden relative">
             <div
-              className={`relative aspect-[9/16] w-full max-w-[240px] sm:max-w-[270px] rounded-2xl overflow-hidden shadow-2xl border border-white/15 touch-none select-none transition-colors duration-300 ${
-                choix.length === 0 ? presetFondActif.className : "bg-black"
-              }`}
+              className="relative aspect-[9/16] w-full max-w-[240px] sm:max-w-[270px] rounded-2xl overflow-hidden shadow-2xl border border-white/15 touch-none select-none transition-all duration-300"
               ref={canevasRef}
+              style={{
+                background: canvasBackground,
+                color: "#ffffff",
+              }}
             >
               {/* Rendu média */}
               {mediaSelectionne ? (
@@ -681,6 +520,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 >
                   <div
                     className={`${textConfig.bgBoxClass} ${textConfig.alignClass}`}
+                    style={textConfig.bgBoxStyle}
                   >
                     <p
                       className={`${textConfig.fontClass} text-balance text-sm sm:text-base leading-snug line-clamp-6`}
@@ -690,15 +530,21 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     </p>
                   </div>
                 </div>
-              ) : choix.length === 0 ? (
-                <p className="absolute inset-x-6 top-1/2 -translate-y-1/2 text-center text-xs text-white/40 pointer-events-none">
+              ) : choix.length === 0 && stickers.length === 0 ? (
+                <p
+                  className="absolute inset-x-6 top-1/2 -translate-y-1/2 text-center text-xs pointer-events-none"
+                  style={{
+                    color: "rgba(255, 255, 255, 0.72)",
+                    textShadow: "0 1px 4px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
                   Votre texte ou média apparaîtra ici
                 </p>
               ) : null}
 
               {/* Stickers glissables */}
               {stickers.map((sticker, index) => {
-                const estBadge = isBadge(sticker.emoji);
+                const estBadge = isBadgeSticker(sticker.emoji);
                 return (
                   <div
                     className="absolute z-20 -translate-x-1/2 -translate-y-1/2 cursor-grab touch-none select-none active:cursor-grabbing group"
@@ -723,12 +569,16 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     )}
                     <button
                       aria-label="Supprimer sticker"
-                      className="absolute -right-2 -top-2 size-5 rounded-full bg-white text-zinc-950 text-[10px] font-bold flex items-center justify-center shadow-md opacity-90 hover:opacity-100 hover:scale-110 transition"
+                      className="absolute -right-2 -top-2 size-5 rounded-full text-[10px] font-bold flex items-center justify-center shadow-md opacity-90 hover:opacity-100 hover:scale-110 transition"
                       onClick={(e) => {
                         e.stopPropagation();
                         retirerSticker(index);
                       }}
                       onPointerDown={(e) => e.stopPropagation()}
+                      style={{
+                        backgroundColor: "#ffffff",
+                        color: "#09090b",
+                      }}
                       type="button"
                     >
                       ✕
@@ -739,15 +589,27 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
               {/* Aperçu du sondage sur le canevas */}
               {sondage.actif && sondage.question.trim() ? (
-                <div className="absolute inset-x-3 bottom-14 rounded-xl bg-zinc-950/85 p-2.5 backdrop-blur-md border border-white/10 pointer-events-none">
-                  <p className="text-[11px] font-semibold text-white truncate">
+                <div
+                  className="absolute inset-x-3 bottom-14 rounded-xl p-2.5 backdrop-blur-md border pointer-events-none"
+                  style={{
+                    backgroundColor: "rgba(9, 9, 11, 0.85)",
+                    borderColor: "rgba(255, 255, 255, 0.15)",
+                    color: "#ffffff",
+                  }}
+                >
+                  <p className="text-[11px] font-semibold truncate">
                     {sondage.question}
                   </p>
                   <div className="mt-1.5 space-y-1">
                     {sondage.options.map((opt, i) => (
                       <div
-                        className="rounded-lg border border-white/20 bg-white/5 px-2 py-1 text-[10px] text-white/80 truncate"
+                        className="rounded-lg border px-2 py-1 text-[10px] truncate"
                         key={i}
+                        style={{
+                          backgroundColor: "rgba(255, 255, 255, 0.08)",
+                          borderColor: "rgba(255, 255, 255, 0.2)",
+                          color: "rgba(255, 255, 255, 0.85)",
+                        }}
                       >
                         {opt || `Option ${i + 1}`}
                       </div>
@@ -763,7 +625,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 <button
                   className={`px-2.5 py-1 rounded-full text-[11px] border transition ${
                     mediaContain
-                      ? "border-white bg-white text-black font-medium"
+                      ? "border-rose-500 bg-rose-500/20 text-white font-medium"
                       : "border-white/20 text-white/70 hover:border-white/40"
                   }`}
                   onClick={() => setMediaContain((v) => !v)}
@@ -775,7 +637,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 <button
                   className={`px-2.5 py-1 rounded-full text-[11px] border transition ${
                     mediaMirror
-                      ? "border-white bg-white text-black font-medium"
+                      ? "border-rose-500 bg-rose-500/20 text-white font-medium"
                       : "border-white/20 text-white/70 hover:border-white/40"
                   }`}
                   onClick={() => setMediaMirror((v) => !v)}
@@ -795,7 +657,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 )}
               </div>
             ) : (
-              <p className="mt-2 text-[11px] text-white/40 text-center">
+              <p className="mt-2 text-[11px] text-white/50 text-center">
                 Glissez les stickers sur l'aperçu pour les placer
               </p>
             )}
@@ -807,12 +669,12 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
             <div className="flex border-b border-white/10 overflow-x-auto no-scrollbar shrink-0 bg-zinc-900/30">
               {(
                 [
-                  ["media", " Média"],
-                  ["colors", " Couleurs"],
-                  ["text", " Texte"],
-                  ["stickers", " Stickers"],
-                  ["filters", " Filtres"],
-                  ["poll", " Sondage"],
+                  ["media", "Média"],
+                  ["colors", "Couleurs"],
+                  ["text", "Texte"],
+                  ["stickers", "Stickers"],
+                  ["filters", "Filtres"],
+                  ["poll", "Sondage"],
                 ] as const
               ).map(([tabKey, label]) => (
                 <button
@@ -890,10 +752,14 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           )}
                           <button
                             aria-label="Supprimer ce média"
-                            className="absolute right-1 top-1 size-5 rounded-full bg-black/70 hover:bg-black text-white text-[10px] flex items-center justify-center transition"
+                            className="absolute right-1 top-1 size-5 rounded-full text-[10px] flex items-center justify-center transition"
                             onClick={(e) => {
                               e.stopPropagation();
                               retirer(c.objetUrl);
+                            }}
+                            style={{
+                              backgroundColor: "rgba(9, 9, 11, 0.78)",
+                              color: "#ffffff",
                             }}
                             type="button"
                           >
@@ -919,11 +785,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                       onClick={() => inputRef.current?.click()}
                       type="button"
                     >
-                      <span className="text-3xl leading-none" />
+                      <span className="text-2xl leading-none">📷</span>
                       <span className="text-xs font-semibold text-white">
                         Choisir une photo ou une vidéo
                       </span>
-                      <span className="text-[11px] text-white/40">
+                      <span className="text-[11px] text-white/50">
                         ≤ 50 Mo · Ou composez une story de texte
                       </span>
                     </button>
@@ -951,21 +817,33 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           className={`relative h-14 rounded-xl p-2 flex flex-col justify-end text-left border transition overflow-hidden group ${
                             isSelected
                               ? "border-rose-500 ring-2 ring-rose-500/30 scale-[1.02]"
-                              : "border-white/10 hover:border-white/30"
+                              : "border-white/15 hover:border-white/35"
                           }`}
                           key={preset.id}
                           onClick={() => {
                             setBackgroundId(preset.id);
                             haptics.light();
                           }}
-                          style={{ background: preset.preview }}
+                          style={{
+                            background: preset.preview,
+                            color: "#ffffff",
+                          }}
                           type="button"
                         >
-                          <span className="text-[10px] font-bold text-white drop-shadow-md truncate">
+                          <span
+                            className="text-[10px] font-bold truncate"
+                            style={{
+                              color: "#ffffff",
+                              textShadow: "0 1px 4px rgba(0, 0, 0, 0.75)",
+                            }}
+                          >
                             {preset.name}
                           </span>
                           {isSelected ? (
-                            <span className="absolute top-1 right-1 size-4 rounded-full bg-rose-500 text-white text-[9px] flex items-center justify-center font-bold">
+                            <span
+                              className="absolute top-1 right-1 size-4 rounded-full bg-rose-500 text-[9px] flex items-center justify-center font-bold shadow"
+                              style={{ color: "#ffffff" }}
+                            >
                               ✓
                             </span>
                           ) : null}
@@ -1055,8 +933,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           aria-label={c.name}
                           className={`size-6 rounded-full border-2 transition ${
                             textColor === c.value
-                              ? "border-white scale-110 shadow-md"
-                              : "border-transparent hover:scale-105"
+                              ? "border-rose-500 ring-2 ring-rose-500/30 scale-110 shadow-md"
+                              : "border-white/25 hover:scale-105"
                           }`}
                           key={c.value}
                           onClick={() => setTextColor(c.value)}
@@ -1156,11 +1034,16 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                       <button
                         className={`flex-1 py-1 rounded-lg text-[11px] font-medium transition ${
                           stickerCategory === cat
-                            ? "bg-rose-500 text-white shadow"
+                            ? "bg-rose-500 shadow"
                             : "text-white/60 hover:text-white"
                         }`}
                         key={cat}
                         onClick={() => setStickerCategory(cat)}
+                        style={
+                          stickerCategory === cat
+                            ? { color: "#ffffff" }
+                            : undefined
+                        }
                         type="button"
                       >
                         {STICKER_CATEGORIES[cat].label}
@@ -1171,12 +1054,12 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                   {/* Palette de stickers de la catégorie */}
                   <div className="flex flex-wrap gap-2 p-1">
                     {STICKER_CATEGORIES[stickerCategory].stickers.map((st) => {
-                      const estBadge = isBadge(st);
+                      const estBadge = isBadgeSticker(st);
                       const label =
                         st === "HEURE_LOCALE"
-                          ? " Heure"
+                          ? "🕒 Heure"
                           : st === "DATE_JOUR"
-                            ? " Date"
+                            ? "📅 Date"
                             : st;
                       return (
                         <button
@@ -1253,10 +1136,36 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           type="button"
                         >
                           <div
-                            className="size-12 rounded-lg bg-zinc-800 flex items-center justify-center overflow-hidden border border-white/10"
-                            style={{ filter: f.filter }}
+                            className="size-12 rounded-lg flex items-center justify-center overflow-hidden border border-white/15"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #f59e0b 0%, #f43f5e 50%, #3b82f6 100%)",
+                              filter: f.filter,
+                            }}
                           >
-                            <span className="text-xl" />
+                            {mediaSelectionne ? (
+                              mediaSelectionne.type === "video" ? (
+                                <video
+                                  className="h-full w-full object-cover"
+                                  muted
+                                  playsInline
+                                  src={mediaSelectionne.objetUrl}
+                                />
+                              ) : (
+                                <img
+                                  alt=""
+                                  className="h-full w-full object-cover"
+                                  src={mediaSelectionne.objetUrl}
+                                />
+                              )
+                            ) : (
+                              <span
+                                className="text-base font-bold"
+                                style={{ color: "#ffffff" }}
+                              >
+                                ✦
+                              </span>
+                            )}
                           </div>
                           <span
                             className={`text-[11px] ${
@@ -1387,9 +1296,10 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 </div>
 
                 <button
-                  className="rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-rose-500/25 hover:brightness-110 active:scale-95 disabled:opacity-40 transition shrink-0"
+                  className="rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-5 py-2 text-xs font-bold shadow-lg shadow-rose-500/25 hover:brightness-110 active:scale-95 disabled:opacity-40 transition shrink-0"
                   disabled={!peutPublier}
                   onClick={publier}
+                  style={{ color: "#ffffff" }}
                   type="button"
                 >
                   {publication ? "Publication…" : "Publier la Story"}

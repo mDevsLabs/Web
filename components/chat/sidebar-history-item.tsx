@@ -379,7 +379,12 @@ const PureChatItem = ({
 
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem onSelect={handleDelete} variant="destructive">
+          <DropdownMenuItem
+            onSelect={() => {
+              handleDelete();
+            }}
+            variant="destructive"
+          >
             <TrashIcon />
             <span>Supprimer</span>
           </DropdownMenuItem>
@@ -403,6 +408,12 @@ export const ChatItem = memo(PureChatItem, (prevProps, nextProps) => {
     return false;
   }
   if ((prevProps.chat as any).pinned !== (nextProps.chat as any).pinned) {
+    return false;
+  }
+  if (
+    String((prevProps.chat as any).lastMessageAt ?? "") !==
+    String((nextProps.chat as any).lastMessageAt ?? "")
+  ) {
     return false;
   }
   if ((prevProps.chat as any).agentId !== (nextProps.chat as any).agentId) {

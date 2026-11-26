@@ -10,7 +10,7 @@ import {
   createMessageConnection,
   StreamMessageReader,
   StreamMessageWriter,
-} from "vscode-jsonrpc/node.js";
+} from "vscode-jsonrpc/node";
 import type { LspDiagnostic } from "./lspTypes.js";
 
 export type GenericLspSessionOptions = {

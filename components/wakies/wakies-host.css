@@ -3304,4 +3304,29 @@ html.dark .wakies-root .wakies-reasoning-content {
   color: #d1d5db;
 }
 
+/* Barre de messages Wakies : un seul contour externe (jamais de double cadre
+   avec un .composer imbriqué ou un outline sur le textarea interne). */
+.wakies-root .muse-app .chat-composer .composer,
+.wakies-root .muse-app .chat-composer .chat-composer-box {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 0;
+  min-height: 0;
+}
+
+.wakies-root .muse-app .chat-composer .chat-compose-row textarea,
+.wakies-root .muse-app .chat-composer .chat-compose-row textarea:focus-visible {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.wakies-root .muse-app .chat-composer:focus-within {
+  border-color: var(--md-focus, #333641);
+}
+
+
 

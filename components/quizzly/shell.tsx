@@ -16,7 +16,7 @@ import {
   UserIcon,
   XIcon,
 } from "@mdevs/icons";
-import { motion } from "framer-motion";
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { ComponentType, ReactNode } from "react";
@@ -80,7 +80,11 @@ export function useResumeQuizzly() {
   });
 }
 
-function coeursAffiches(resume: ResumeClient, maintenant: number): number {
+/** Cœurs régénérés côté affichage : le serveur reste l'autorité. */
+export function coeursAffiches(
+  resume: Pick<ResumeClient, "hearts" | "heartsUpdatedAt">,
+  maintenant: number
+): number {
   if (resume.hearts >= HEARTS_MAX) {
     return HEARTS_MAX;
   }
@@ -259,180 +263,217 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
   }, [data]);
 
   const coeurs = data ? coeursAffiches(data, maintenant) : 0;
+
+  // Petit « battement » du cœur quand un cœur est perdu.
+  const coeursVus = useRef<number | null>(null);
+  const [coeurPerdu, setCoeurPerdu] = useState(0);
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+    const precedent = coeursVus.current;
+    coeursVus.current = coeurs;
+    if (precedent !== null && coeurs < precedent) {
+      setCoeurPerdu((valeur) => valeur + 1);
+    }
+  }, [coeurs, data]);
+
+  // Accueil et Coach affichent les GIF fond blanc de public/quizzly : on force
+  // un fond blanc pur même en mode sombre afin d'éviter tout cadre visible.
+  const fondBlancForce =
+    pathname === "/quizzly" || pathname.startsWith("/quizzly/coach");
   const aQuizzyVisible =
-    pathname === "/quizzly" ||
+    fondBlancForce ||
     pathname.startsWith("/quizzly/quiz") ||
-    pathname.startsWith("/quizzly/coach") ||
     pathname.startsWith("/quizzly/parcours");
 
   return (
-    <div
-      className={cn(
-        "quizzly-root flex h-dvh overflow-hidden text-foreground",
-        aQuizzyVisible && "bg-white dark:bg-[#0b1120] [background-image:none]"
-      )}
-    >
-      <aside className="hidden w-60 shrink-0 flex-col gap-4 border-r border-q-level/20 bg-q-level/8 px-3 py-4 md:flex">
-        <AppSwitcherMenu currentAppOverride="quizzly">
-          <button
-            className="flex items-center gap-2 rounded-full px-2 py-1 text-sm font-semibold"
-            type="button"
+    <MotionConfig reducedMotion="user">
+      <div
+        className={cn(
+          "quizzly-root flex h-dvh overflow-hidden text-foreground",
+          fondBlancForce
+            ? "bg-white text-slate-900 [background-image:none]"
+            : aQuizzyVisible &&
+                "bg-white dark:bg-[#0b1120] [background-image:none]"
+        )}
+      >
+        <aside className="hidden w-60 shrink-0 flex-col gap-4 border-r border-q-level/20 bg-q-level/8 px-3 py-4 md:flex">
+          <AppSwitcherMenu currentAppOverride="quizzly">
+            <button
+              className="flex items-center gap-2 rounded-full px-2 py-1 text-sm font-semibold"
+              type="button"
+            >
+              <GraduationCapIcon className="size-4 text-q-level" />
+              Quizzly
+            </button>
+          </AppSwitcherMenu>
+          <MenuSections etiquettes />
+        </aside>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <header className="flex flex-wrap items-center gap-2 border-b border-q-level/20 px-3 py-2.5 sm:gap-3 sm:px-4">
+            <button
+              aria-label="Ouvrir le menu Quizzly"
+              className="flex size-11 shrink-0 items-center justify-center rounded-xl text-q-level transition-colors hover:bg-q-level/10 active:scale-95 md:hidden"
+              onClick={() => setMenuOuvert(true)}
+              type="button"
+            >
+              <MenuIcon className="size-5" />
+            </button>
+            <div className="min-w-0 flex-1">
+              {data ? (
+                <BarreNiveau
+                  compact
+                  niveau={data.niveau}
+                  xpDansPalier={data.xpDansPalier}
+                  xpPalier={data.xpPalier}
+                />
+              ) : (
+                <span className="text-xs text-muted-foreground">Niveau</span>
+              )}
+            </div>
+            <AnimatePresence>
+              {niveauMonte && data ? (
+                <motion.p
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  className="flex items-center gap-1 rounded-full bg-q-level px-3 py-1 text-xs font-semibold text-q-on shadow-md"
+                  exit={{ opacity: 0, scale: 0.9, y: -6 }}
+                  initial={{ opacity: 0, scale: 0.6, y: 8 }}
+                  key="niveau-monte"
+                  transition={{ damping: 14, stiffness: 320, type: "spring" }}
+                >
+                  <SparklesIcon className="size-3.5" />
+                  Niveau {data.niveau} !
+                </motion.p>
+              ) : null}
+            </AnimatePresence>
+            <div className="ml-auto flex items-center gap-2 text-xs font-semibold sm:gap-3">
+              <button
+                className="flex items-center gap-1.5 rounded-full border border-q-level/30 bg-q-level/10 px-2.5 py-1 text-xs font-medium text-foreground transition-all hover:bg-q-level/20 cursor-pointer"
+                onClick={() =>
+                  window.dispatchEvent(
+                    new CustomEvent("open-suite-command-bar")
+                  )
+                }
+                title="Barre de commande & Recherche (⌘K)"
+                type="button"
+              >
+                <SearchIcon className="size-3.5 text-q-level" />
+                <span className="hidden sm:inline">Rechercher</span>
+                <kbd className="hidden rounded bg-q-level/20 px-1 py-0.5 text-[10px] text-muted-foreground sm:inline-block">
+                  ⌘K
+                </kbd>
+              </button>
+              <span className="inline-flex items-center gap-1">
+                <FlameIcon
+                  className={cn(
+                    "size-4",
+                    data && data.streakCount > 0
+                      ? "q-float text-q-streak"
+                      : "text-muted-foreground"
+                  )}
+                />
+                {data?.streakCount ?? "–"}
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <GemIcon className="size-4 text-q-gem" />
+                {data?.gems ?? "–"}
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <HeartIcon
+                  className={cn(
+                    "size-4",
+                    coeurs > 0 ? "text-q-heart" : "text-muted-foreground",
+                    coeurPerdu > 0 ? "q-heart-lost" : coeurs === 1 && "q-float"
+                  )}
+                  key={`coeur-${coeurPerdu}`}
+                />
+                {data ? coeurs : "–"}
+                <span className="text-muted-foreground">/ {HEARTS_MAX}</span>
+              </span>
+            </div>
+          </header>
+          <main
+            className={cn(
+              "min-h-0 flex-1 overflow-auto pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0",
+              fondBlancForce
+                ? "bg-white text-slate-900"
+                : aQuizzyVisible && "bg-white dark:bg-[#0b1120]"
+            )}
           >
-            <GraduationCapIcon className="size-4 text-q-level" />
-            Quizzly
-          </button>
-        </AppSwitcherMenu>
-        <MenuSections etiquettes />
-      </aside>
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex flex-wrap items-center gap-2 border-b border-q-level/20 px-3 py-2.5 sm:gap-3 sm:px-4">
+            {children}
+          </main>
+        </div>
+        <nav
+          aria-label="Navigation mobile Quizzly"
+          className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-q-level/20 bg-background/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:hidden"
+        >
+          {[LIENS[0], LIENS[1], LIENS[3], LIENS[7]].map((lien) => {
+            const Icone = lien.icone;
+            const actif = lienActif(lien.href, pathname);
+            return (
+              <Link
+                aria-current={actif ? "page" : undefined}
+                className={cn(
+                  "flex min-h-12 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-semibold touch-manipulation active:scale-95",
+                  actif ? "text-q-level" : "text-muted-foreground"
+                )}
+                href={lien.href}
+                key={lien.href}
+                title={lien.label}
+              >
+                <Icone className="size-5" />
+                <span>{lien.label}</span>
+              </Link>
+            );
+          })}
           <button
-            aria-label="Ouvrir le menu Quizzly"
-            className="flex size-11 shrink-0 items-center justify-center rounded-xl text-q-level transition-colors hover:bg-q-level/10 active:scale-95 md:hidden"
+            aria-expanded={menuOuvert}
+            aria-label="Autres sections Quizzly"
+            className="flex min-h-12 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-semibold text-muted-foreground touch-manipulation active:scale-95"
             onClick={() => setMenuOuvert(true)}
             type="button"
           >
             <MenuIcon className="size-5" />
+            <span>Plus</span>
           </button>
-          <div className="min-w-0 flex-1">
-            {data ? (
-              <BarreNiveau
-                compact
-                niveau={data.niveau}
-                xpDansPalier={data.xpDansPalier}
-                xpPalier={data.xpPalier}
-              />
-            ) : (
-              <span className="text-xs text-muted-foreground">Niveau</span>
-            )}
-          </div>
-          {niveauMonte && data ? (
-            <motion.p
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-full bg-q-level px-3 py-1 text-xs font-semibold text-q-on"
-              initial={{ opacity: 0, y: 6 }}
-            >
-              Niveau {data.niveau}
-            </motion.p>
-          ) : null}
-          <div className="ml-auto flex items-center gap-3 text-xs font-semibold">
+        </nav>
+        {menuOuvert ? (
+          <div className="fixed inset-0 z-40 md:hidden">
             <button
-              className="flex items-center gap-1.5 rounded-full border border-q-level/30 bg-q-level/10 px-2.5 py-1 text-xs font-medium text-foreground transition-all hover:bg-q-level/20 cursor-pointer"
-              onClick={() =>
-                window.dispatchEvent(new CustomEvent("open-suite-command-bar"))
-              }
-              title="Barre de commande & Recherche (⌘K)"
+              aria-label="Fermer le menu"
+              className="absolute inset-0 bg-foreground/25"
+              onClick={() => setMenuOuvert(false)}
               type="button"
-            >
-              <SearchIcon className="size-3.5 text-q-level" />
-              <span className="hidden sm:inline">Rechercher</span>
-              <kbd className="rounded bg-q-level/20 px-1 py-0.5 text-[10px] text-muted-foreground">
-                ⌘K
-              </kbd>
-            </button>
-            <span className="inline-flex items-center gap-1">
-              <FlameIcon
-                className={cn(
-                  "size-4",
-                  data && data.streakCount > 0
-                    ? "q-float text-q-streak"
-                    : "text-muted-foreground"
-                )}
-              />
-              {data?.streakCount ?? "–"}
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <GemIcon className="size-4 text-q-gem" />
-              {data?.gems ?? "–"}
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <HeartIcon
-                className={cn(
-                  "size-4",
-                  coeurs > 0 ? "text-q-heart" : "text-muted-foreground",
-                  coeurs === 1 && "q-float"
-                )}
-              />
-              {data ? coeurs : "–"}
-              <span className="text-muted-foreground">/ {HEARTS_MAX}</span>
-            </span>
-          </div>
-        </header>
-        <main
-          className={cn(
-            "min-h-0 flex-1 overflow-auto pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0",
-            aQuizzyVisible && "bg-white dark:bg-[#0b1120]"
-          )}
-        >
-          {children}
-        </main>
-      </div>
-      <nav
-        aria-label="Navigation mobile Quizzly"
-        className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-q-level/20 bg-background/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:hidden"
-      >
-        {[LIENS[0], LIENS[1], LIENS[3], LIENS[7]].map((lien) => {
-          const Icone = lien.icone;
-          const actif = lienActif(lien.href, pathname);
-          return (
-            <Link
-              aria-current={actif ? "page" : undefined}
-              className={cn(
-                "flex min-h-12 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-semibold touch-manipulation active:scale-95",
-                actif ? "text-q-level" : "text-muted-foreground"
-              )}
-              href={lien.href}
-              key={lien.href}
-              title={lien.label}
-            >
-              <Icone className="size-5" />
-              <span>{lien.label}</span>
-            </Link>
-          );
-        })}
-        <button
-          aria-expanded={menuOuvert}
-          aria-label="Autres sections Quizzly"
-          className="flex min-h-12 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-semibold text-muted-foreground touch-manipulation active:scale-95"
-          onClick={() => setMenuOuvert(true)}
-          type="button"
-        >
-          <MenuIcon className="size-5" />
-          <span>Plus</span>
-        </button>
-      </nav>
-      {menuOuvert ? (
-        <div className="fixed inset-0 z-40 md:hidden">
-          <button
-            aria-label="Fermer le menu"
-            className="absolute inset-0 bg-foreground/25"
-            onClick={() => setMenuOuvert(false)}
-            type="button"
-          />
-          <aside className="relative z-10 flex h-full w-[min(20rem,85vw)] flex-col gap-4 overflow-y-auto border-r border-q-level/20 bg-background px-3 pt-[calc(env(safe-area-inset-top)+1rem)] pb-[calc(env(safe-area-inset-bottom)+1rem)] shadow-xl">
-            <div className="flex items-center justify-between">
-              <AppSwitcherMenu currentAppOverride="quizzly">
+            />
+            <aside className="relative z-10 flex h-full w-[min(20rem,85vw)] flex-col gap-4 overflow-y-auto border-r border-q-level/20 bg-background px-3 pt-[calc(env(safe-area-inset-top)+1rem)] pb-[calc(env(safe-area-inset-bottom)+1rem)] shadow-xl">
+              <div className="flex items-center justify-between">
+                <AppSwitcherMenu currentAppOverride="quizzly">
+                  <button
+                    className="flex items-center gap-2 rounded-full px-2 py-1 text-sm font-semibold"
+                    type="button"
+                  >
+                    <GraduationCapIcon className="size-4 text-q-level" />
+                    Quizzly
+                  </button>
+                </AppSwitcherMenu>
                 <button
-                  className="flex items-center gap-2 rounded-full px-2 py-1 text-sm font-semibold"
+                  aria-label="Fermer le menu"
+                  className="rounded-xl p-2"
+                  onClick={() => setMenuOuvert(false)}
                   type="button"
                 >
-                  <GraduationCapIcon className="size-4 text-q-level" />
-                  Quizzly
+                  <XIcon className="size-4" />
                 </button>
-              </AppSwitcherMenu>
-              <button
-                aria-label="Fermer le menu"
-                className="rounded-xl p-2"
-                onClick={() => setMenuOuvert(false)}
-                type="button"
-              >
-                <XIcon className="size-4" />
-              </button>
-            </div>
-            <MenuSections etiquettes onNaviguer={() => setMenuOuvert(false)} />
-          </aside>
-        </div>
-      ) : null}
-    </div>
+              </div>
+              <MenuSections
+                etiquettes
+                onNaviguer={() => setMenuOuvert(false)}
+              />
+            </aside>
+          </div>
+        ) : null}
+      </div>
+    </MotionConfig>
   );
 }

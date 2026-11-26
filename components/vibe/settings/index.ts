@@ -4,6 +4,7 @@
  * ============================================================================
  */
 
+export * from "./AccountSection";
 export * from "./AppearanceSettingsSection";
 export * from "./BlockedAccountsSection";
 export * from "./ChatAppearanceSection";

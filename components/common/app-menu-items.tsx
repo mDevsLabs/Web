@@ -21,7 +21,6 @@ import {
   GraduationCapIcon,
   LockIcon,
   MessageCircleIcon,
-  TerminalIcon,
 } from "@mdevs/icons";
 import Image from "next/image";
 import type React from "react";
@@ -49,7 +48,6 @@ export const APP_MENU_ICONS: Record<
   React.ComponentType<{ className?: string }>
 > = {
   blackline: CrosshairIcon,
-  cli: TerminalIcon,
   code: Code2Icon,
   mai: MessageCircleIcon,
   quizzly: GraduationCapIcon,
@@ -73,8 +71,6 @@ export type AppMenuItemsProps = {
    * si l'accès est possible.
    */
   isAuthenticated?: boolean;
-  /** Ouvre le terminal local. */
-  onOpenCli: () => void;
   /** Bascule vers une application. */
   onSelectApp: (key: AppKey, path: string) => void;
 };
@@ -83,58 +79,19 @@ export function AppMenuItems({
   currentApp,
   isDesktop,
   isAuthenticated,
-  onOpenCli,
   onSelectApp,
 }: AppMenuItemsProps) {
   return (
     <>
       {APP_MENU_ORDER.filter((item) => {
-        // Hors de l'application de bureau, le CLI et Coder n'existent pas :
-        // ils ouvrent un terminal / une fenêtre Electron. Les masquer plutôt
-        // que de les griser évite de proposer un accès impossible.
-        if (!isDesktop && item.kind === "cli") {
-          return false;
-        }
-        if (!isDesktop && item.kind === "app" && item.entry.key === "code") {
+        // Hors de l'application de bureau, Coder n'existe pas : il ouvre une
+        // fenêtre Electron. Le masquer plutôt que de le griser évite de
+        // proposer un accès impossible.
+        if (!isDesktop && item.entry.key === "code") {
           return false;
         }
         return true;
       }).map((item) => {
-        // Le CLI est une entrée de menu, pas une application web : il ouvre
-        // le terminal local de l'application de bureau.
-        if (item.kind === "cli") {
-          return (
-            <DropdownMenuItem
-              asChild
-              className={cn(
-                "cursor-pointer rounded-lg",
-                isAuthenticated === false && "opacity-60"
-              )}
-              key="cli"
-              onSelect={() => {
-                onOpenCli();
-              }}
-            >
-              <div className="flex items-start gap-2.5 px-2 py-2">
-                <TerminalIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
-                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[13px] font-semibold text-sidebar-foreground/90">
-                      CLI
-                    </span>
-                    {isAuthenticated === false && (
-                      <LockIcon className="ml-auto size-3 text-warning" />
-                    )}
-                  </div>
-                  <span className="text-[11px] leading-snug text-muted-foreground">
-                    mAI dans un terminal local
-                  </span>
-                </div>
-              </div>
-            </DropdownMenuItem>
-          );
-        }
-
         const entry = item.entry;
         const isCurrent = currentApp === entry.key;
         const AppGlyph = APP_MENU_ICONS[entry.key];
@@ -171,11 +128,6 @@ export function AppMenuItems({
                   >
                     {entry.label}
                   </span>
-                  {entry.key === "quizzly" && (
-                    <span className="rounded bg-primary/10 px-1 py-0.2 text-[9px] font-semibold text-primary">
-                      Bêta
-                    </span>
-                  )}
                   {isLocked && (
                     <LockIcon className="ml-auto size-3 text-warning" />
                   )}

@@ -117,7 +117,16 @@ export function useChatAttachments({
 
         if (response.ok) {
           const data = await response.json();
-          const { url, pathname, contentType } = data;
+          const { url, pathname, contentType, library } = data;
+
+          if (
+            library?.saved === false &&
+            library?.reason === "quota_exceeded"
+          ) {
+            toast.info(
+              "Image importée, mais votre quota Bibliothèque est plein (non enregistrée dans la Bibliothèque)."
+            );
+          }
 
           return {
             contentType,

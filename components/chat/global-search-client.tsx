@@ -29,11 +29,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import { PageBackButton } from "@/components/chat/page-back-button";
-import { formatCompactFr } from "@/lib/account/format";
 import { apiEndpoints, pagePath } from "@/lib/client/api-endpoints";
 import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import {
-  isSearchSourceKey,
   PAID_ONLY_SOURCES,
   SEARCH_SOURCE_LABELS,
   type SearchHit,
@@ -270,9 +268,55 @@ function ResultGroup({ group }: { group: Group }) {
   );
 }
 
+type QuickFilterId = "all" | "discussions" | "files" | "applications";
+
+const QUICK_FILTERS: Array<{
+  icon: React.ComponentType<{ className?: string }>;
+  id: Exclude<QuickFilterId, "all">;
+  label: string;
+  sources: SearchSourceKey[];
+}> = [
+  {
+    icon: MessageSquareIcon,
+    id: "discussions",
+    label: "Discussions",
+    sources: ["chat", "message"],
+  },
+  {
+    icon: FileIcon,
+    id: "files",
+    label: "Fichiers",
+    sources: ["file", "doc", "project", "image", "audio"],
+  },
+  {
+    icon: SparklesIcon,
+    id: "applications",
+    label: "Applications",
+    sources: [
+      "quizzly",
+      "blackline",
+      "wakies",
+      "coder",
+      "vibe",
+      "site",
+      "skill",
+      "bot",
+      "mcp",
+      "plugin",
+      "planning",
+      "memory",
+      "command",
+      "cli",
+      "model",
+      "stats",
+      "run",
+    ],
+  },
+];
+
 export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
   const [rawQuery, setRawQuery] = useState("");
-  const [scope, setScope] = useState<SearchSourceKey | "all">("all");
+  const [scope, setScope] = useState<QuickFilterId>("all");
   const inputRef = useRef<HTMLInputElement>(null);
 
   // La frappe est différée : chaque frappe déclencherait sinon seize requêtes.
@@ -307,9 +351,18 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const visibleSources = SOURCES.filter(
-    (entry) => isPaid || !PAID_ONLY_SOURCES.includes(entry.key)
-  );
+  const selectedSources = useMemo<SearchSourceKey[]>(() => {
+    if (scope === "all") {
+      return [];
+    }
+    const found = QUICK_FILTERS.find((item) => item.id === scope);
+    if (!found) {
+      return [];
+    }
+    return found.sources.filter(
+      (key) => isPaid || !PAID_ONLY_SOURCES.includes(key)
+    );
+  }, [isPaid, scope]);
 
   const getKey = (pageIndex: number, previous: SearchIndexResponse | null) => {
     if (!searchable) {
@@ -324,7 +377,7 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
       limit: MAX_RESULTS_PER_GROUP,
       offset: pageIndex * MAX_RESULTS_PER_GROUP,
       query,
-      sources: scope === "all" ? [] : [scope],
+      sources: selectedSources,
     });
   };
 
@@ -342,13 +395,7 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
   const counts = first?.counts ?? {};
   const total = first?.total ?? 0;
 
-  // Changer de requête ou de filtre repart de la première page. Sans cela, la
-  // taille mémorisée de la précédente serait appliquée à la nouvelle : on
-  // demanderait les pages 2..N d'une recherche qui n'a pas encore eu lieu.
-  //
-  // La comparaison se fait sur une chaîne des deux valeurs, et l'effet ne
-  // dépend QUE de cette chaîne : `setSize` est stable, et dépendre de `query`
-  // et `scope` séparément ferait comparer des valeurs déjà comparées.
+  // Changer de requête ou de filtre repart de la première page.
   const pageKey = `${scope}::${query}`;
   const [lastPageKey, setLastPageKey] = useState(pageKey);
   useEffect(() => {
@@ -358,23 +405,17 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
     }
   }, [lastPageKey, pageKey, setSize]);
 
-  /**
-   * Les compteurs des pastilles ne concernent que les sources INTERROGÉES.
-   *
-   * Avec le filtre « Tout », la réponse contient les dix-sept compteurs, donc
-   * une pastille sans compte vaut zéro. Mais quand une source est filtrée, la
-   * réponse n'en porte qu'un : sans cette règle, les seize autres pastilles
-   * s'afficheraient « 0 » alors qu'elles n'ont pas été consultées — un zéro
-   * affirmatif pour une ignorance.
-   */
   const countFor = useCallback(
     (key: SearchSourceKey): number | undefined => {
-      if (!searchable || scope === "all") {
+      if (!searchable) {
+        return undefined;
+      }
+      if (scope === "all" || selectedSources.includes(key)) {
         return counts[key];
       }
-      return key === scope ? counts[key] : undefined;
+      return undefined;
     },
-    [counts, scope, searchable]
+    [counts, scope, searchable, selectedSources]
   );
 
   const groups = useMemo<Group[]>(() => {
@@ -399,8 +440,6 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
           icon: ICONS.get(key) ?? SearchIcon,
           key,
           label: SEARCH_SOURCE_LABELS[key],
-          // Le compteur de l'index, et non la taille du groupe : celui-ci est
-          // borné par la page, celui-là compte tout ce que la source a trouvé.
           total: countFor(key) ?? bucket.length,
         },
       ];
@@ -413,29 +452,17 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
     <div className="flex h-full flex-1 flex-col overflow-y-auto bg-background">
       <div className="mx-auto w-full max-w-6xl p-4 pb-16 sm:p-6 md:p-10">
         <div className="border-b border-border/50 pb-6">
-          <div className="flex items-start gap-3">
+          <div className="flex items-center gap-3">
             <PageBackButton />
-            <div className="min-w-0">
-              <div className="mb-1 flex items-center gap-2 text-xs font-semibold tracking-wider text-primary uppercase">
-                <SearchIcon className="size-4" />
-                Recherche interne
-              </div>
-              <h1 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-                Rechercher dans tout le compte
-              </h1>
-              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
-                {SOURCES.length} sources : discussions, messages, projets,
-                fichiers, Skills, commandes, serveurs MCP, bots, mémoire,
-                planification, étapes d'agent, images, audio, modèles et
-                statistiques.
-              </p>
-            </div>
+            <h1 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+              Rechercher
+            </h1>
           </div>
 
           <div className="relative mt-5">
-            <SearchIcon className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+            <SearchIcon className="pointer-events-none absolute top-1/2 left-3 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
             <input
-              aria-label="Rechercher dans mon compte"
+              aria-label="Rechercher"
               className="field-input h-11 pl-9"
               onChange={(event) => setRawQuery(event.target.value)}
               placeholder="Un mot-clé, un modèle, une skill, un souvenir…"
@@ -448,35 +475,25 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
             ) : null}
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            <button
-              aria-pressed={scope === "all"}
-              className="chip"
-              data-active={scope === "all"}
-              onClick={() => setScope("all")}
-              type="button"
-            >
-              Tout
-              {searchable && total > 0 ? ` (${total})` : ""}
-            </button>
-            {visibleSources.map((entry) => {
-              const count = countFor(entry.key);
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            {QUICK_FILTERS.map((item) => {
+              const Icon = item.icon;
+              const active = scope === item.id;
               return (
                 <button
-                  aria-pressed={scope === entry.key}
+                  aria-pressed={active}
                   className="chip"
-                  data-active={scope === entry.key}
-                  key={entry.key}
-                  onClick={() => setScope(entry.key)}
+                  data-active={active}
+                  key={item.id}
+                  onClick={() =>
+                    setScope((current) =>
+                      current === item.id ? "all" : item.id
+                    )
+                  }
                   type="button"
                 >
-                  <entry.icon className="size-3" />
-                  {SEARCH_SOURCE_LABELS[entry.key]}
-                  {count === undefined ? null : count > 0 ? (
-                    <span className="text-muted-foreground">
-                      {formatCompactFr(count)}
-                    </span>
-                  ) : null}
+                  <Icon className="size-3.5" />
+                  {item.label}
                 </button>
               );
             })}
@@ -506,9 +523,7 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
                   Recherche indisponible
                 </p>
                 <p className="max-w-sm text-xs text-muted-foreground">
-                  {isSearchSourceKey(scope)
-                    ? "Cette source n'a pas répondu. Réessayez dans un instant."
-                    : "Réessayez dans un instant."}
+                  Réessayez dans un instant.
                 </p>
               </div>
             ) : groups.length === 0 ? (
@@ -518,8 +533,8 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
                   Aucun résultat interne pour « {query} »
                 </p>
                 <p className="max-w-sm text-xs text-muted-foreground">
-                  Élargissez la recherche à « Tout », essayez un terme plus
-                  court, ou cherchez sur le Web avec mAI Search.
+                  Essayez un terme plus court, ou cherchez sur le Web avec mAI
+                  Search.
                 </p>
                 <Link
                   className="chip mt-1 inline-flex items-center gap-2 border-primary/30 bg-primary/10 text-primary hover:bg-primary/20"
@@ -532,8 +547,6 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
             ) : (
               <>
                 {groups.map((group) => (
-                  // La clé porte la requête ET le filtre : changer l'un des deux
-                  // doit repartir d'une vue compacte, pas hériter du dépliage.
                   <ResultGroup
                     group={group}
                     key={`${query}-${scope}-${group.key}`}
@@ -556,31 +569,13 @@ export function GlobalSearchClient({ isPaid }: { isPaid: boolean }) {
                 )}
               </>
             )
-          ) : (
-            <div className="flex flex-col gap-3">
-              <p className="text-xs text-muted-foreground">
-                {rawQuery.length > 0
-                  ? `Encore ${MIN_QUERY_LENGTH - rawQuery.length} caractère${MIN_QUERY_LENGTH - rawQuery.length > 1 ? "s" : ""} avant de lancer la recherche.`
-                  : "Saisissez au moins deux caractères, ou ouvrez un domaine ci-dessous."}
-              </p>
-              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                {visibleSources.map((entry) => (
-                  <Link
-                    className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/40 px-3 py-3 transition-colors hover:bg-muted/50"
-                    href={entry.href}
-                    key={entry.key}
-                  >
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-                      <entry.icon className="size-4" />
-                    </span>
-                    <span className="text-sm font-medium text-foreground">
-                      {SEARCH_SOURCE_LABELS[entry.key]}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
+          ) : rawQuery.length > 0 ? (
+            <p className="text-xs text-muted-foreground">
+              Encore {MIN_QUERY_LENGTH - rawQuery.length} caractère
+              {MIN_QUERY_LENGTH - rawQuery.length > 1 ? "s" : ""} avant de
+              lancer la recherche.
+            </p>
+          ) : null}
         </div>
       </div>
     </div>
