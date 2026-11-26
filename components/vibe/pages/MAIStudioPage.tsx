@@ -285,12 +285,12 @@ export const MAIStudioPage: React.FC = () => {
   /**
    * Rafraîchissement automatique de la liste de repli.
    *
-   * Le `ModelDropdown` recharge déjà `/api/models` toutes les 10 minutes;
+   * Le `ModelDropdown` recharge déjà `/api/models` à la demande ;
    * cette liste-ci n'est que le repli affiché avant que le catalogue du
-   * sélecteur ne réponde. Elle suit la même cadence, pour que les deux
-   * listes ne proposent pas des modèles différents.
+   * sélecteur ne réponde. Désactivé si `MODEL_CATALOG_REFRESH_INTERVAL <= 0`.
    */
   useEffect(() => {
+    if (MODEL_CATALOG_REFRESH_INTERVAL <= 0) return;
     const timer = setInterval(() => {
       void ApiService.getModels()
         .then((res) => {

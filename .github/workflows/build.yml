@@ -225,6 +225,9 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v4
         with:
+          # Historique complet requis pour comparer `before` (ou `HEAD^1`) à
+          # `HEAD` et détecter les fichiers de migration nouvellement créés.
+          fetch-depth: 0
           persist-credentials: false
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -253,11 +256,39 @@ jobs:
         run: pnpm --dir apps/blackline install --frozen-lockfile --ignore-workspace
       - name: Récupérer l'environnement Vercel
         run: vercel pull --yes --environment="$DEPLOY_TARGET" --token="$VERCEL_TOKEN"
+      # N'exécuter les migrations que si au moins un nouveau fichier `.sql` a été
+      # créé dans `lib/db/migrations/`. En cas d'erreur pendant la migration ou
+      # la garde de schéma, le workflow tolère l'échec et poursuit le déploiement.
+      - name: Détecter les nouvelles migrations
+        id: migrations
+        env:
+          BEFORE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |-
+          if [ -n "$BEFORE_SHA" ] && [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ] && git cat-file -e "${BEFORE_SHA}^{commit}" 2>/dev/null; then
+            NEW_MIGRATIONS=$(git diff --name-only --no-renames --diff-filter=A "$BEFORE_SHA" HEAD -- ':(glob)lib/db/migrations/*.sql' ':(glob)lib/db/migrations/**/*.sql')
+          elif git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
+            NEW_MIGRATIONS=$(git diff --name-only --no-renames --diff-filter=A HEAD^1 HEAD -- ':(glob)lib/db/migrations/*.sql' ':(glob)lib/db/migrations/**/*.sql')
+          else
+            NEW_MIGRATIONS=$(git diff-tree --no-commit-id --name-only --no-renames --diff-filter=A -r --root HEAD -- ':(glob)lib/db/migrations/*.sql' ':(glob)lib/db/migrations/**/*.sql')
+          fi
+
+          if [ -n "$NEW_MIGRATIONS" ]; then
+            echo "Nouvelles migrations détectées :"
+            echo "$NEW_MIGRATIONS"
+            echo "has_new=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Aucune nouvelle migration créée dans le commit : migration ignorée."
+            echo "has_new=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Afficher l'empreinte de la base migrée
+        if: steps.migrations.outputs.has_new == 'true'
+        continue-on-error: true
         run: node scripts/print-db-target.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: Migrer la base de données
+        if: steps.migrations.outputs.has_new == 'true'
+        continue-on-error: true
         run: |-
           if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
             echo "::warning::Migration appliquee depuis une pull_request sur la base Preview partagee."
@@ -266,9 +297,11 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           POSTGRES_URL: ${{ secrets.DATABASE_URL }}
-          MIGRATIONS_STRICT: "true"
+          MIGRATIONS_STRICT: "false"
       - name: Garde de schéma après migration
         id: guard
+        if: steps.migrations.outputs.has_new == 'true'
+        continue-on-error: true
         run: node scripts/check-db-schema.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}

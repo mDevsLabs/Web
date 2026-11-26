@@ -20,8 +20,12 @@
  * un silence.
  */
 
-/** Intervalle de revalidation du catalogue de modèles (10 minutes). */
-export const MODEL_CATALOG_REFRESH_INTERVAL = 600_000;
+/**
+ * Intervalle de revalidation du catalogue de modèles : 0 (désactivé).
+ * Le catalogue est rafraîchi au montage initial et à la sélection d'un modèle,
+ * sans réveiller périodiquement Vercel/Neon sur les onglets inactifs.
+ */
+export const MODEL_CATALOG_REFRESH_INTERVAL = 0;
 
 /** Sources de catalogue exposées par l'hôte mAI (routes Next). */
 export const MODEL_CATALOG_ENDPOINTS = {

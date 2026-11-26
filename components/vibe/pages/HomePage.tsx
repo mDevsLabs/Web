@@ -167,7 +167,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         const count = fresh.findIndex((p) => String(p.id) === topId);
         setNewCount(count === -1 ? Math.min(20, fresh.length) : count);
       } catch {}
-    }, 45_000);
+    }, 300_000);
     return () => clearInterval(interval);
   }, [feedType, selectedTag, isLoading]);
 

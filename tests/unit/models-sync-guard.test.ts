@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { SqlClient } from "../../scripts/openrouter-models";
@@ -112,12 +112,9 @@ describe("Garde-fous de synchronisation des modèles (updateModels)", () => {
     ).rejects.toThrow(/upserted = 0/i);
   });
 
-  it("transmet COMET_API_KEY et installe les dépendances dans .github/workflows/models-sync.yml", () => {
-    const workflow = readFileSync(
-      join(process.cwd(), ".github", "workflows", "models-sync.yml"),
-      "utf8"
-    );
-    expect(workflow).toContain("secrets.COMET_API_KEY");
-    expect(workflow).toContain("pnpm install --frozen-lockfile");
+  it("supprime la synchronisation automatique GitHub Actions au profit de scripts/admin.ts", () => {
+    expect(
+      existsSync(join(process.cwd(), ".github", "workflows", "models-sync.yml"))
+    ).toBe(false);
   });
 });

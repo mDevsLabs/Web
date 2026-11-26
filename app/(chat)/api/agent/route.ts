@@ -205,7 +205,7 @@ export async function POST(request: Request) {
     // modèle réel de l'utilisateur serait sinon classé « sans outils » et
     // refusé (model_access_denied) alors qu'il est sélectionnable dans l'UI.
     const [models, settings, userPrefs] = await Promise.all([
-      fetchUserModels(),
+      fetchUserModels({ tier }),
       loadAgentSettings({ userId: auth.userId }),
       getUserPreferences(auth.userId).catch(() => null),
     ]);

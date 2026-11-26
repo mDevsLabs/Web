@@ -452,12 +452,8 @@ function PureModelSelectorCompact({
     (url: string) => fetch(url).then((r) => r.json()),
     {
       dedupingInterval: 60_000,
-      // Le catalogue bouge en arrière-plan (modèles ajoutés ou retirés,
-      // accès par forfait). On le relit périodiquement même sans
-      // interaction : un onglet laissé ouvert ne doit pas proposer un
-      // modèle retiré.
       refreshInterval: MODEL_CATALOG_REFRESH_INTERVAL,
-      revalidateOnFocus: true,
+      revalidateOnFocus: false,
     }
   );
 

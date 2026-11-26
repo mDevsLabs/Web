@@ -1,8 +1,7 @@
-import { after, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
-import { maybeRunLazyCronTicks } from "@/lib/cron/lazy";
 import {
   broadcastNewsNotification,
   createNotification,
@@ -12,16 +11,55 @@ import {
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import {
+  replicateVibeNotifications,
+  replicateWakiesNotifications,
+} from "@/lib/notifications/replication";
+import {
   isNotificationOrigin,
   NOTIFICATION_TYPES,
   type NotificationType,
 } from "@/lib/notifications/types";
 
-// `after()` peut exécuter les ticks CRON paresseux (lib/cron/lazy.ts) dans le
-// budget de cette invocation : le plus long (Agent/Wakies) peut durer ~290 s.
-// Ces ticks sont désactivés par défaut (`CRON_LAZY_TICKS=on` pour les
-// rétablir), mais le budget reste dimensionné pour ce cas.
-export const maxDuration = 300;
+export const maxDuration = 15;
+
+// Réplication à la demande (sans CRON en arrière-plan) : bornée par utilisateur
+// à un passage toutes les 5 minutes pour éviter d'éveiller les sources à chaque
+// ouverture ou revalidation de la cloche.
+const REPLICATION_THROTTLE_MS = 5 * 60_000;
+const REPLICATION_CACHE_MAX_ENTRIES = 1000;
+const lastReplicationByUser = new Map<string, number>();
+
+async function maybeReplicateForUser(
+  userId: string,
+  email?: string | null
+): Promise<void> {
+  const now = Date.now();
+  const lastAt = lastReplicationByUser.get(userId);
+  if (lastAt !== undefined && now - lastAt < REPLICATION_THROTTLE_MS) {
+    return;
+  }
+  if (lastReplicationByUser.size >= REPLICATION_CACHE_MAX_ENTRIES) {
+    const oldest = lastReplicationByUser.keys().next().value as
+      | string
+      | undefined;
+    if (oldest) {
+      lastReplicationByUser.delete(oldest);
+    }
+  }
+  lastReplicationByUser.set(userId, now);
+
+  try {
+    await Promise.allSettled([
+      replicateWakiesNotifications(userId),
+      email ? replicateVibeNotifications(email) : Promise.resolve(0),
+    ]);
+  } catch (err) {
+    console.warn(
+      "[notifications] Réplication à la demande partielle :",
+      err instanceof Error ? err.message : err
+    );
+  }
+}
 
 const notificationSchema = z.object({
   body: z.string().max(500).nullish(),
@@ -67,6 +105,9 @@ export async function GET(request: Request) {
         .map((valeur) => valeur.trim())
         .filter(isNotificationOrigin)
     : undefined;
+  if (!unreadOnly && offset === 0) {
+    await maybeReplicateForUser(userId, session.user.email);
+  }
   const notifications = await getNotificationsByUserId({
     limit,
     offset,
@@ -75,10 +116,6 @@ export async function GET(request: Request) {
     userId,
   });
   const unreadCount = await getUnreadNotificationCount(userId, origins);
-  // Ordonnancement paresseux, APRÈS la réponse : l'utilisateur n'attend rien.
-  // Throttlé en mémoire et protégé par un bail Neon (rien n'est fait si aucun
-  // tick n'est dû).
-  after(() => maybeRunLazyCronTicks());
   return NextResponse.json({ notifications, unreadCount });
 }
 

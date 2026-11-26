@@ -9,7 +9,7 @@ const settingsCache = new Map<
   { data: UsageBundle; expiresAt: number }
 >();
 
-const SETTINGS_CACHE_TTL_MS = 180_000; // 3 minutes de cache
+const SETTINGS_CACHE_TTL_MS = 300_000; // 5 minutes de cache
 const SETTINGS_CACHE_MAX_ENTRIES = 500;
 
 export function getCachedSettings(token: string): UsageBundle | null {

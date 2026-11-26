@@ -84,7 +84,7 @@ export default function McpClient({
     "/api/mcp/logs",
     fetcher,
     {
-      refreshInterval: activeTab === "logs" ? 30_000 : 0,
+      refreshInterval: activeTab === "logs" ? 120_000 : 0,
       revalidateOnFocus: false,
     }
   );

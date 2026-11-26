@@ -51,7 +51,7 @@ export async function setMaiSessionToken(token: string) {
 type SessionCacheEntry = { user: MaiUser | null; expiresAt: number };
 
 const userCache = new Map<string, SessionCacheEntry>();
-const CACHE_TTL_MS = 120_000; // 2 minutes de cache en mémoire
+const CACHE_TTL_MS = 300_000; // 5 minutes de cache en mémoire
 const CACHE_DENIED_TTL_MS = 30_000; // refus : fenêtre courte, le temps qu'une
 //                                    reconnexion (cookie neuf) prenne effet
 const CACHE_LOCAL_FALLBACK_TTL_MS = 15_000; // panne réseau : on réessaie vite

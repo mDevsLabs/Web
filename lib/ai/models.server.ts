@@ -187,11 +187,15 @@ export async function buildCatalogModelsFromStored(
   );
 }
 
-export async function fetchUserModels(): Promise<ChatModel[]> {
+export async function fetchUserModels(
+  userOverride?: { tier?: string | null } | null
+): Promise<ChatModel[]> {
   try {
     const [neonCatalog, user] = await Promise.all([
       readNeonChatCatalog(),
-      getMaiUser().catch(() => null),
+      userOverride === undefined
+        ? getMaiUser().catch(() => null)
+        : Promise.resolve(userOverride),
     ]);
 
     if (neonCatalog) {

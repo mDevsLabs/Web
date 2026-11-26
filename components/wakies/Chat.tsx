@@ -988,10 +988,8 @@ function WakieChat({
         .catch(() => {});
     };
     document.addEventListener("visibilitychange", refreshHistory);
-    const timer = setInterval(refreshHistory, 120_000);
     return () => {
       controller.abort();
-      clearInterval(timer);
       document.removeEventListener("visibilitychange", refreshHistory);
     };
   }, [enCours, setMessages, status, thread.id]);

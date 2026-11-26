@@ -60,7 +60,7 @@ describe("Cron — registre des ticks hôte", () => {
     }
   );
 
-  it("fournit la route quotidienne Vercel, authentifiée et planifiée", () => {
+  it("conserve la route /api/cron/daily pour usage manuel sans planification automatique Vercel", () => {
     const route = lire("app/api/cron/daily/route.ts");
     expect(route).toMatch(/export\s+async\s+function\s+GET\s*\(/);
     expect(route).toContain("verifyCronAuth");
@@ -68,10 +68,7 @@ describe("Cron — registre des ticks hôte", () => {
     const config = JSON.parse(lire("vercel.json")) as {
       crons?: Array<{ path: string; schedule: string }>;
     };
-    const cron = config.crons?.find((c) => c.path === "/api/cron/daily");
-    expect(cron, "cron Vercel /api/cron/daily absent").toBeDefined();
-    // Plan Hobby : au plus un passage par jour (5 champs, pas de pas fréquent).
-    expect(cron?.schedule).toMatch(/^\d+ \d+ \* \* \*$/);
+    expect(config.crons ?? []).toHaveLength(0);
   });
 });
 

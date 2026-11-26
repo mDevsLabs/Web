@@ -468,13 +468,13 @@ export const MessagesPage: React.FC<{
 
   useEffect(() => {
     fetchConversations();
-    // Filet de sécurité : rafraîchissement léger toutes les 60 s.
+    // Filet de sécurité : rafraîchissement léger toutes les 5 min.
     // L'instantanéité est assurée par le flux SSE (RealtimeService).
     const timer = setInterval(() => {
       if (document.hidden) return;
       if (activePartnerId) fetchMessages(activePartnerId);
       fetchConversations();
-    }, 60_000);
+    }, 300_000);
     return () => clearInterval(timer);
   }, [activePartnerId, fetchConversations, fetchMessages]);
 

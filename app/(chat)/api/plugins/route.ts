@@ -39,7 +39,7 @@ export async function GET() {
       { plugins },
       {
         headers: {
-          "Cache-Control": "private, max-age=30, stale-while-revalidate=60",
+          "Cache-Control": "private, max-age=120, stale-while-revalidate=300",
         },
       }
     );

@@ -18,7 +18,7 @@ let cachedMaintenance: {
  * d'urgence invisible plus longtemps qu'une minute sur les instances qui ne
  * l'ont pas créée (celle qui la crée vide son cache immédiatement).
  */
-const CACHE_TTL_MS = 60_000;
+const CACHE_TTL_MS = 300_000;
 
 let cachedClient: NeonQueryFunction<false, false> | null = null;
 
@@ -73,6 +73,12 @@ export function resolveMaintenancePhase(
 export async function getActiveMaintenance(
   forceRefresh = false
 ): Promise<MaintenanceRecord | null> {
+  if (
+    process.env.MAINTENANCE_ENABLED === "false" ||
+    process.env.MAINTENANCE_ENABLED === "0"
+  ) {
+    return null;
+  }
   const nowMs = Date.now();
   if (
     !forceRefresh &&

@@ -23,6 +23,29 @@ export async function proxy(request: NextRequest) {
     return new Response("pong", { status: 200 });
   }
 
+  // BotID (Vercel) : le script de vérification du SDK client est servi sous ce
+  // préfixe fixe via les rewrites `beforeFiles` de withBotId. Le middleware
+  // s'exécutant AVANT les rewrites, toute interception ici (redirect /login)
+  // casse le chargement du script et fait rejeter les Server Actions protégées
+  // (POST /login, /register) avant même l'appel à l'API.
+  // Vérifié AVANT la lecture de maintenance pour ne pas réveiller Neon.
+  const BOTID_PREFIX = "/149e9513-01fa-4fb0-aad4-566afd725d1b/";
+  if (
+    pathname.startsWith(BOTID_PREFIX) ||
+    pathname.startsWith(`${base}${BOTID_PREFIX}`)
+  ) {
+    return NextResponse.next();
+  }
+
+  // Fichiers statiques visuels déjà exemptés de maintenance : inutile de lire Neon.
+  if (
+    !pathname.startsWith("/api/") &&
+    !pathname.startsWith(`${base}/api/`) &&
+    /\.(?:png|jpg|jpeg|gif|webp|svg|ico|woff2?|ttf|eot)$/i.test(pathname)
+  ) {
+    return NextResponse.next();
+  }
+
   // ─────────────────────────────────────────────
   // 🔒 VÉRIFICATION DE LA PÉRIODE DE MAINTENANCE
   // ─────────────────────────────────────────────
@@ -79,21 +102,6 @@ export async function proxy(request: NextRequest) {
     // Si aucune maintenance n'est en cours et que l'utilisateur tente d'aller sur /maintenance,
     // on le redirige vers l'accueil.
     return NextResponse.redirect(new URL(`${base}/`, request.url));
-  }
-
-  // BotID (Vercel) : le script de vérification du SDK client est servi sous ce
-  // préfixe fixe via les rewrites `beforeFiles` de withBotId. Le middleware
-  // s'exécutant AVANT les rewrites, toute interception ici (redirect /login)
-  // casse le chargement du script et fait rejeter les Server Actions protégées
-  // (POST /login, /register) avant même l'appel à l'API.
-  const BOTID_PREFIX = "/149e9513-01fa-4fb0-aad4-566afd725d1b/";
-  if (
-    pathname.startsWith(BOTID_PREFIX) ||
-    pathname.startsWith(
-      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${BOTID_PREFIX}`
-    )
-  ) {
-    return NextResponse.next();
   }
 
   if (pathname === "/changelog") {

@@ -66,9 +66,9 @@ export function useMessagingNotifications(activeConversationId?: string) {
       return releve;
     },
     {
-      // Onglet masqué : relève conservée (alertes du navigateur) mais lente.
+      // Onglet masqué : relève suspendue pour ne pas réveiller serveur/base.
       refreshInterval: wakiesAlertPollInterval,
-      refreshWhenHidden: true,
+      refreshWhenHidden: false,
       revalidateOnFocus: true,
     }
   );

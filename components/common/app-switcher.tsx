@@ -57,7 +57,7 @@ export function AppSwitcherMenu({
       ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/me`
       : null,
     readAuthentication,
-    { dedupingInterval: 15_000, revalidateOnFocus: true }
+    { dedupingInterval: 60_000, revalidateOnFocus: false }
   );
   const isAuthed =
     isAuthenticated ??

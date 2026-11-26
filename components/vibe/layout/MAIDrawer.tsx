@@ -333,7 +333,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
    * listes ne proposes pas des modèles différents.
    */
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || MODEL_CATALOG_REFRESH_INTERVAL <= 0) return;
     const timer = setInterval(() => {
       void ApiService.getModels()
         .then((res) => {

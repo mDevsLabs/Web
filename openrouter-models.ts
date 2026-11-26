@@ -517,7 +517,7 @@ export interface ModelCatalog {
 
 // Cache bref et requête partagée : pas d'appel OpenRouter sur le chemin des requêtes.
 // Pas de catalogue périmé en cas de panne : une activation ne doit pas être contournée.
-const CACHE_TTL_MS = 10_000;
+const CACHE_TTL_MS = 600_000;
 const cache = new WeakMap<
   SqlClient,
   {

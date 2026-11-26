@@ -185,7 +185,7 @@ export async function POST(request: Request) {
             [] as Awaited<ReturnType<typeof getPluginInstallationsByUserId>>
           )
         : getPluginInstallationsByUserId({ userId: ctx.userId }),
-      fetchUserModels(),
+      fetchUserModels(ctx.maiUser),
     ]);
     const modelCapabilities = getModelCapabilitiesFor(ctx.chatModel, models);
     const toolsSupported = modelCapabilities.tools;
