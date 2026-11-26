@@ -98,7 +98,7 @@ export function ComposerSendButton({
     return (
       <button
         aria-label={stopLabel}
-        className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-foreground text-background transition-all duration-200 hover:opacity-85 active:scale-95 sm:h-8 sm:w-8"
+        className="flex h-11 w-11 cursor-pointer touch-manipulation items-center justify-center rounded-full bg-foreground text-background transition-all duration-200 hover:opacity-85 active:scale-95 sm:h-8 sm:w-8"
         data-testid={stopTestId}
         onClick={onStop}
         title={stopTitle}
@@ -115,7 +115,7 @@ export function ComposerSendButton({
     <button
       aria-label={sendLabel}
       className={cn(
-        "flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 sm:h-8 sm:w-8",
+        "flex h-11 w-11 touch-manipulation items-center justify-center rounded-full transition-all duration-200 sm:h-8 sm:w-8",
         isDisabled
           ? quotaExhausted
             ? "cursor-not-allowed bg-destructive/20 text-destructive opacity-70"

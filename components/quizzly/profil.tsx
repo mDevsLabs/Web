@@ -131,7 +131,7 @@ export function ProfilQuizzly() {
       </ul>
 
       <button
-        className="chip w-fit"
+        className="chip min-h-11 w-fit touch-manipulation sm:min-h-0"
         data-active="true"
         onClick={() => {
           partagerProfil({
@@ -177,7 +177,7 @@ export function ProfilQuizzly() {
           les paramètres d'applications.
         </p>
         <button
-          className="chip w-fit"
+          className="chip min-h-11 w-fit touch-manipulation sm:min-h-0"
           data-active="true"
           disabled={enCours}
           type="submit"
@@ -190,7 +190,7 @@ export function ProfilQuizzly() {
         <h2 className="text-sm font-semibold">Cadre</h2>
         <div className="flex flex-wrap gap-2">
           <button
-            className="chip"
+            className="chip min-h-11 touch-manipulation sm:min-h-0"
             data-active={data.equippedFrame === null ? "true" : "false"}
             disabled={enCours}
             onClick={() => enregistrer({ equippedFrame: null })}
@@ -200,7 +200,7 @@ export function ProfilQuizzly() {
           </button>
           {data.ownedFrames.map((cadre) => (
             <button
-              className="chip"
+              className="chip min-h-11 touch-manipulation sm:min-h-0"
               data-active={data.equippedFrame === cadre ? "true" : "false"}
               disabled={enCours}
               key={cadre}

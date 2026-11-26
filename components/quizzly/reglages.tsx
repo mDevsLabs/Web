@@ -90,7 +90,7 @@ export function ReglagesQuizzly() {
         <div className="flex flex-wrap gap-2">
           {SCHOOL_YEARS.map((year) => (
             <button
-              className="chip inline-flex items-center gap-2"
+              className="chip inline-flex min-h-11 touch-manipulation items-center gap-2 sm:min-h-0"
               data-active={year === annee ? "true" : "false"}
               disabled={enCours}
               key={year}
@@ -118,7 +118,7 @@ export function ReglagesQuizzly() {
             const active = suivies.size === 0 || suivies.has(matiere.id);
             return (
               <button
-                className="chip inline-flex items-center gap-2"
+                className="chip inline-flex min-h-11 touch-manipulation items-center gap-2 sm:min-h-0"
                 data-active={active ? "true" : "false"}
                 disabled={enCours}
                 key={matiere.id}

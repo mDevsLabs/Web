@@ -591,7 +591,7 @@ function PureModelSelectorCompact({
       <ModelSelectorTrigger asChild>
         {variant === "compact" ? (
           <Button
-            className="h-8 max-w-[min(220px,calc(100vw-9rem))] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer sm:h-7 sm:max-w-[220px]"
+            className="h-11 max-w-[min(220px,calc(100vw-9rem))] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer touch-manipulation sm:h-7 sm:max-w-[220px]"
             data-testid="model-selector"
             disabled={disabled}
             suppressHydrationWarning

@@ -286,7 +286,8 @@ function PureMessages({
                   chatId={chatId}
                   isCurrentMatch={isCurrentMatchMsg}
                   isLoading={
-                    status === "streaming" && messages.length - 1 === index
+                    (status === "streaming" || status === "submitted") &&
+                    messages.length - 1 === index
                   }
                   isReadonly={isReadonly}
                   message={message}

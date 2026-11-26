@@ -44,8 +44,10 @@ vi.mock("@/lib/api/rate-limit", () => ({
 }));
 
 vi.mock("@/lib/ai/catalog/media-models", () => ({
+  // Modèle synchrone `/v1/images/generations` aligné sur le mock fetch ci-dessous
+  // (le flux asynchrone FLUX `/flux/v1/` est couvert dans `comet-image-client.test.ts`).
   resolveCometImageModelForRequest: async () => ({
-    model: { id: "black-forest-labs/flux-1.1-pro" },
+    model: { id: "gpt-image-1-mini" },
     ok: true as const,
   }),
   resolveSpeechModelForRequest: async (params: {

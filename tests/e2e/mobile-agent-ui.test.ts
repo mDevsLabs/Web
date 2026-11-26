@@ -71,6 +71,34 @@ test.describe("Agent et plugins sur mobile", () => {
     await expect(page.locator('[data-slot="sidebar"]').first()).toBeVisible();
   });
 
+  test("les commandes du composer Agent ont une cible tactile de 44px", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await skipWhenAuthenticationIsRequired(page);
+    await page.getByRole("tab", { name: "Agent" }).click();
+
+    const send = page.getByTestId("agent-send-button");
+    if (await send.isVisible().catch(() => false)) {
+      const box = await send.boundingBox();
+      expect(box).not.toBeNull();
+      // Sous 640px (mobile), le bouton d'envoi garde une cible de 44px.
+      expect(box!.width).toBeGreaterThanOrEqual(44);
+      expect(box!.height).toBeGreaterThanOrEqual(44);
+    }
+
+    // Le bouton « + » (contexte/capacités) suit la même règle tactile.
+    const plus = page.getByTestId("agent-plus-menu");
+    if (await plus.isVisible().catch(() => false)) {
+      const box = await plus.boundingBox();
+      expect(box).not.toBeNull();
+      expect(box!.width).toBeGreaterThanOrEqual(44);
+      expect(box!.height).toBeGreaterThanOrEqual(44);
+    }
+
+    await expectNoHorizontalOverflow(page);
+  });
+
   test("la fiche plugin expose la sécurité et des actions tactiles", async ({
     page,
   }) => {

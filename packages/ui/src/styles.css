@@ -28,6 +28,14 @@
     --md-danger: #dc2626;
     --md-warning: #b45309;
     --md-motion: 150ms;
+    /* Échelle d'espacement 4 px (STYLE.md §4) — source unique pour les
+       compositions ; les règles existantes en gardent l'équivalent en rem. */
+    --md-space-1: 4px;
+    --md-space-2: 8px;
+    --md-space-3: 12px;
+    --md-space-4: 16px;
+    --md-space-5: 20px;
+    --md-space-6: 24px;
     color-scheme: light;
   }
   .md-root[data-md-theme="dark"] {
@@ -66,24 +74,6 @@
       --md-danger: #f87171;
       --md-warning: #facc15;
       color-scheme: dark;
-    }
-    .md-root[data-md-theme="light"] {
-      --md-icon-color: currentColor;
-      --md-bg: #ffffff;
-      --md-text: #09090b;
-      --md-muted: #71717a;
-      --md-accent: #09090b;
-      --md-accent-ink: #ffffff;
-      --md-surface: rgba(255, 255, 255, .88);
-      --md-solid: #ffffff;
-      --md-border: rgba(0, 0, 0, .08);
-      --md-highlight: rgba(255, 255, 255, .95);
-      --md-shadow: 0 1px 2px 0 rgba(0, 0, 0, .04), 0 6px 20px -4px rgba(0, 0, 0, .05);
-      --md-focus: #09090b;
-      --md-success: #15803d;
-      --md-danger: #dc2626;
-      --md-warning: #b45309;
-      color-scheme: light;
     }
   }
   .md-root[data-md-variant="chatgpt"] {

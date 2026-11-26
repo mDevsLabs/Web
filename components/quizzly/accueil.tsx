@@ -25,6 +25,10 @@ import { useResumeQuizzly } from "@/components/quizzly/shell";
 import { IconeMatiere } from "@/components/quizzly/subject-icon";
 import { libelleAnnee, type SchoolYear } from "@/lib/quizzly/program";
 import { estJourSerieValide, jourParis } from "@/lib/quizzly/rules";
+import {
+  texteXpSemaineAccueil,
+  texteXpSemaineLigue,
+} from "@/lib/quizzly/stats-display";
 import { cn, fetcher } from "@/lib/utils";
 
 type QuizNode = {
@@ -134,6 +138,7 @@ export function AccueilQuizzly() {
   const joursSemaine = ["L", "M", "M", "J", "V", "S", "D"];
   const aujourdhuiIndex = (new Date().getDay() + 6) % 7; // 0 = Lundi, 6 = Dimanche
   const streakCount = data?.streakCount ?? 0;
+  const xpSemaine = texteXpSemaineAccueil(data?.weeklyXp ?? 0);
 
   async function recupererCadeau() {
     if (data?.dailyGiftClaimed || recuperationEnCours) return;
@@ -237,9 +242,15 @@ export function AccueilQuizzly() {
               </div>
 
               {/* Ligne des nœuds */}
-              <div className="flex items-center justify-between gap-2 overflow-x-auto py-2">
+              <div className="no-scrollbar flex snap-x snap-mandatory items-center overflow-x-auto px-2 py-4">
                 {progressionNodes.map((node, idx) => (
-                  <div className="flex flex-1 items-center" key={node.id}>
+                  <div
+                    className={cn(
+                      "flex items-center",
+                      idx < progressionNodes.length - 1 ? "flex-1" : "shrink-0"
+                    )}
+                    key={node.id}
+                  >
                     <div className="flex flex-col items-center">
                       <div
                         className={cn(
@@ -265,7 +276,7 @@ export function AccueilQuizzly() {
                     {idx < progressionNodes.length - 1 && (
                       <div
                         className={cn(
-                          "h-1 flex-1 rounded-full",
+                          "mx-1.5 h-1 min-w-2 flex-1 rounded-full",
                           node.status === "completed"
                             ? "bg-blue-600"
                             : "bg-slate-200"
@@ -285,13 +296,18 @@ export function AccueilQuizzly() {
               <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500">
                 <ZapIcon className="size-6 fill-amber-500/20" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold text-slate-500">Total XP</p>
-                <p className="truncate text-2xl font-black text-slate-900">
+                <p className="truncate text-2xl font-extrabold tabular-nums text-slate-900">
                   {data?.xp ?? 0}
                 </p>
-                <p className="text-[11px] font-medium text-amber-600">
-                  +{data?.weeklyXp ?? 0} cette semaine
+                <p
+                  className={cn(
+                    "truncate text-[11px] font-medium",
+                    xpSemaine.actif ? "text-amber-600" : "text-slate-500"
+                  )}
+                >
+                  {xpSemaine.libelle}
                 </p>
               </div>
             </div>
@@ -308,7 +324,7 @@ export function AccueilQuizzly() {
                     Niv. {data?.niveau ?? 1}
                   </span>
                 </div>
-                <p className="truncate text-2xl font-black text-slate-900">
+                <p className="truncate text-2xl font-extrabold tabular-nums text-slate-900">
                   {data?.xpDansPalier ?? 0}{" "}
                   <span className="text-xs font-semibold text-slate-400">
                     / {data?.xpPalier ?? 100}
@@ -330,17 +346,17 @@ export function AccueilQuizzly() {
               <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-500">
                 <FlameIcon className="size-6 fill-orange-500/20" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold text-slate-500">
                   Série active
                 </p>
-                <p className="truncate text-2xl font-black text-slate-900">
+                <p className="truncate text-2xl font-extrabold tabular-nums text-slate-900">
                   {data?.streakCount ?? 0}{" "}
                   <span className="text-xs font-semibold text-slate-500">
                     {(data?.streakCount ?? 0) > 1 ? "jours" : "jour"}
                   </span>
                 </p>
-                <p className="text-[11px] font-medium text-slate-500">
+                <p className="truncate text-[11px] font-medium text-slate-500">
                   Record : {data?.streakBest ?? 0}{" "}
                   {(data?.streakBest ?? 0) > 1 ? "jours" : "jour"}
                 </p>
@@ -378,7 +394,7 @@ export function AccueilQuizzly() {
               </div>
 
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-black text-orange-500">
+                <span className="text-4xl font-extrabold tabular-nums text-orange-500">
                   {streakCount}
                 </span>
                 <span className="text-sm font-medium text-slate-600">
@@ -522,7 +538,7 @@ export function AccueilQuizzly() {
                   Ligue {data?.league ? nomLigue(data.league as any) : "Bronze"}
                 </p>
                 <p className="text-xs font-semibold text-blue-600">
-                  {data?.weeklyXp ?? 0} XP cette semaine
+                  {texteXpSemaineLigue(data?.weeklyXp ?? 0)}
                 </p>
               </div>
             </div>

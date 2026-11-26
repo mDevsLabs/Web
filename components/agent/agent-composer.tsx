@@ -841,7 +841,7 @@ export function AgentComposer({
                 {meta.label}
                 <button
                   aria-label={`Retirer ${meta.label}`}
-                  className="ml-0.5 cursor-pointer rounded-full p-0.5 hover:bg-primary/20"
+                  className="ml-0.5 flex size-11 shrink-0 cursor-pointer touch-manipulation items-center justify-center rounded-full hover:bg-primary/20 sm:size-5"
                   onClick={() =>
                     onOptionsChange({
                       [key]: false,
@@ -869,7 +869,7 @@ export function AgentComposer({
         {flags["agent.files"] ? (
           supportsFiles ? (
             <button
-              className="flex cursor-pointer items-center gap-1.5 rounded-full border border-border/40 bg-card/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="flex min-h-11 cursor-pointer touch-manipulation items-center gap-1.5 rounded-full border border-border/40 bg-card/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground sm:min-h-0"
               onClick={() => setIsCloudPickerOpen(true)}
               type="button"
             >

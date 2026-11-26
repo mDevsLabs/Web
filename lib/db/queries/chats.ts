@@ -28,6 +28,7 @@ import {
   stream,
   vote,
 } from "../schema";
+import { chatHistoryCursorCondition, chatHistoryOrder } from "./chat-cursor";
 import { _rawClient, dbReady, getRawClient } from "./connection";
 
 export async function saveChat({
@@ -174,6 +175,118 @@ export async function deleteAllChatsByUserId({
   }
 }
 
+interface ChatHistoryFilters {
+  includeArchived?: boolean;
+  isArchived?: boolean | null;
+  pinned?: boolean | null;
+  search?: string | null;
+  tag?: string | null;
+}
+
+interface ChatHistoryPageParams {
+  endingBefore: string | null;
+  limit: number;
+  startingAfter: string | null;
+}
+
+const chatHistorySelection = {
+  agentColor: agent.color,
+  agentIcon: agent.icon,
+  agentId: chat.agentId,
+  agentName: agent.name,
+  archivedAt: chat.archivedAt,
+  createdAt: chat.createdAt,
+  customInstructions: chat.customInstructions,
+  id: chat.id,
+  isArchived: chat.isArchived,
+  isSecure: sql<boolean>`EXISTS (
+    SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
+  )`,
+  lastMessageAt: chat.lastMessageAt,
+  mode: chat.mode,
+  pinned: chat.pinned,
+  projectId: chat.projectId,
+  skillId: chat.skillId,
+  tags: chat.tags,
+  temperatureOverride: chat.temperatureOverride,
+  title: chat.title,
+  userId: chat.userId,
+  visibility: chat.visibility,
+};
+
+function chatHistoryFilterConditions({
+  includeArchived = false,
+  isArchived,
+  pinned,
+  search,
+  tag,
+}: ChatHistoryFilters): SQL<unknown>[] {
+  const conditions: SQL<unknown>[] = [];
+  if (isArchived !== undefined && isArchived !== null) {
+    conditions.push(eq(chat.isArchived, isArchived));
+  } else if (!includeArchived) {
+    conditions.push(eq(chat.isArchived, false));
+  }
+  if (pinned !== undefined && pinned !== null) {
+    conditions.push(eq(chat.pinned, pinned));
+  }
+  if (tag) {
+    conditions.push(sql`${tag} = ANY(${chat.tags})`);
+  }
+  if (search) {
+    const escaped = `%${search.replace(/[%_]/g, "\\$&")}%`;
+    conditions.push(sql`${chat.title} ILIKE ${escaped}`);
+  }
+  return conditions;
+}
+
+/**
+ * Page d'historique commune (personnel ou projet). `scope` borne à la fois
+ * les résultats et le repère du curseur : un curseur hors périmètre est
+ * ignoré comme un curseur supprimé (repli gracieux sur la première page).
+ */
+async function listChatHistoryPage({
+  conditions,
+  endingBefore,
+  limit,
+  scope,
+  startingAfter,
+}: ChatHistoryPageParams & {
+  conditions: SQL<unknown>[];
+  scope: SQL<unknown>;
+}) {
+  const db = await dbReady();
+  const where: (SQL<unknown> | undefined)[] = [scope, ...conditions];
+  const cursorId = endingBefore ?? startingAfter;
+
+  if (cursorId) {
+    const [repere] = await db
+      .select({ id: chat.id })
+      .from(chat)
+      .where(and(eq(chat.id, cursorId), scope))
+      .limit(1);
+    if (repere) {
+      where.push(
+        chatHistoryCursorCondition({
+          direction: endingBefore ? "before" : "after",
+          id: cursorId,
+        })
+      );
+    }
+  }
+
+  const rows = await db
+    .select(chatHistorySelection)
+    .from(chat)
+    .leftJoin(agent, eq(chat.agentId, agent.id))
+    .where(and(...where))
+    .orderBy(...chatHistoryOrder)
+    .limit(limit + 1);
+
+  const hasMore = rows.length > limit;
+  return { chats: hasMore ? rows.slice(0, limit) : rows, hasMore };
+}
+
 export async function getChatsByUserId({
   id,
   userEmail,
@@ -181,146 +294,61 @@ export async function getChatsByUserId({
   startingAfter,
   endingBefore,
   projectId,
-  isArchived,
-  pinned,
-  search,
-  tag,
-  includeArchived = false,
-}: {
-  id: string;
-  userEmail?: string;
-  limit: number;
-  startingAfter: string | null;
-  endingBefore: string | null;
-  projectId?: string | null;
-  isArchived?: boolean | null;
-  pinned?: boolean | null;
-  search?: string | null;
-  tag?: string | null;
-  includeArchived?: boolean;
-}) {
+  ...filters
+}: ChatHistoryFilters &
+  ChatHistoryPageParams & {
+    id: string;
+    userEmail?: string;
+    projectId?: string | null;
+  }) {
   try {
-    const db = await dbReady();
-    const extendedLimit = limit + 1;
-
-    const extraConditions: SQL<unknown>[] = [];
+    const conditions = chatHistoryFilterConditions(filters);
 
     // Project filter: "null" means no project, undefined means no filter
     if (projectId !== undefined) {
       if (projectId === null || projectId === "null" || projectId === "") {
-        extraConditions.push(sql`${chat.projectId} IS NULL`);
+        conditions.push(sql`${chat.projectId} IS NULL`);
       } else {
-        extraConditions.push(sql`${chat.projectId} = ${projectId}::uuid`);
+        conditions.push(sql`${chat.projectId} = ${projectId}::uuid`);
       }
     }
 
-    if (isArchived !== undefined && isArchived !== null) {
-      extraConditions.push(eq(chat.isArchived, isArchived));
-    } else if (!includeArchived) {
-      extraConditions.push(eq(chat.isArchived, false));
-    }
-
-    if (pinned !== undefined && pinned !== null) {
-      extraConditions.push(eq(chat.pinned, pinned));
-    }
-
-    if (tag) {
-      extraConditions.push(sql`${tag} = ANY(${chat.tags})`);
-    }
-
-    if (search) {
-      const escaped = `%${search.replace(/[%_]/g, "\\$&")}%`;
-      extraConditions.push(sql`${chat.title} ILIKE ${escaped}`);
-    }
-
-    const userCondition =
+    const scope =
       userEmail && userEmail !== id
         ? sql`(${chat.userId}::text = ${id}::text OR ${chat.userId}::text = ${userEmail}::text)`
         : sql`${chat.userId}::text = ${id}::text`;
 
-    const baseWhere = and(userCondition, ...extraConditions);
+    return await listChatHistoryPage({
+      conditions,
+      endingBefore,
+      limit,
+      scope,
+      startingAfter,
+    });
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
 
-    const query = (whereCondition?: SQL<unknown>) => {
-      const where = whereCondition ? and(whereCondition, baseWhere) : baseWhere;
-      // Pinned first, then lastMessageAt desc
-      return db
-        .select({
-          agentColor: agent.color,
-          agentIcon: agent.icon,
-          agentId: chat.agentId,
-          agentName: agent.name,
-          archivedAt: chat.archivedAt,
-          createdAt: chat.createdAt,
-          customInstructions: chat.customInstructions,
-          id: chat.id,
-          isArchived: chat.isArchived,
-          isSecure: sql<boolean>`EXISTS (
-            SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
-          )`,
-          lastMessageAt: chat.lastMessageAt,
-          mode: chat.mode,
-          pinned: chat.pinned,
-          projectId: chat.projectId,
-          skillId: chat.skillId,
-          tags: chat.tags,
-          temperatureOverride: chat.temperatureOverride,
-          title: chat.title,
-          userId: chat.userId,
-          visibility: chat.visibility,
-        })
-        .from(chat)
-        .leftJoin(agent, eq(chat.agentId, agent.id))
-        .where(where)
-        .orderBy(
-          desc(chat.pinned),
-          desc(chat.lastMessageAt),
-          desc(chat.createdAt)
-        )
-        .limit(extendedLimit);
-    };
-
-    let filteredChats: any[] = [];
-
-    if (startingAfter) {
-      const [selectedChat] = await db
-        .select()
-        .from(chat)
-        .where(eq(chat.id, startingAfter))
-        .limit(1);
-
-      if (selectedChat) {
-        filteredChats = await query(
-          sql`(${chat.pinned}, ${chat.lastMessageAt}) > (${selectedChat.pinned}, ${selectedChat.lastMessageAt})`
-        );
-      } else {
-        // Le chat repère a pu être supprimé : repli gracieux sur le début sans casser SWR.
-        filteredChats = await query();
-      }
-    } else if (endingBefore) {
-      const [selectedChat] = await db
-        .select()
-        .from(chat)
-        .where(eq(chat.id, endingBefore))
-        .limit(1);
-
-      if (selectedChat) {
-        filteredChats = await query(
-          sql`(${chat.pinned}, ${chat.lastMessageAt}) < (${selectedChat.pinned}, ${selectedChat.lastMessageAt})`
-        );
-      } else {
-        // Le chat repère a pu être supprimé : repli gracieux sur le début sans casser SWR.
-        filteredChats = await query();
-      }
-    } else {
-      filteredChats = await query();
-    }
-
-    const hasMore = filteredChats.length > limit;
-
-    return {
-      chats: hasMore ? filteredChats.slice(0, limit) : filteredChats,
-      hasMore,
-    };
+/**
+ * Historique paginé d'un projet partagé (tous auteurs). L'appelant doit avoir
+ * vérifié l'accès au projet (`getProjectAccess`) avant l'appel.
+ */
+export async function getProjectChatHistory({
+  projectId,
+  limit,
+  startingAfter,
+  endingBefore,
+  ...filters
+}: ChatHistoryFilters & ChatHistoryPageParams & { projectId: string }) {
+  try {
+    return await listChatHistoryPage({
+      conditions: chatHistoryFilterConditions(filters),
+      endingBefore,
+      limit,
+      scope: eq(chat.projectId, projectId),
+      startingAfter,
+    });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }

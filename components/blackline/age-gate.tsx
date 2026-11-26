@@ -106,7 +106,7 @@ export function BlacklineAgeGate({
     <div
       aria-labelledby="blackline-age-titre"
       aria-modal="true"
-      className="absolute inset-0 z-50 overflow-y-auto bg-[#0f1714]/95 p-0"
+      className="absolute inset-0 z-50 overflow-y-auto bg-[#0f1714]/95 p-0 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
       onKeyDown={(event) => {
         // `Échap` ne ferme pas : la question doit recevoir une réponse.
         if (event.key === "Escape") {
@@ -115,7 +115,7 @@ export function BlacklineAgeGate({
       }}
       role="dialog"
     >
-      <div className="mx-auto flex min-h-full w-full max-w-4xl flex-col gap-6 p-4 sm:p-8">
+      <div className="mx-auto flex min-h-full w-full max-w-4xl flex-col gap-4 p-4 sm:gap-6 sm:p-8">
         {/* En-tête : le mot-symbole et la classification. */}
         <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
           <div>
@@ -134,7 +134,7 @@ export function BlacklineAgeGate({
 
         {/* Héros : la promesse du jeu en une phrase. */}
         <section className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-          <div className="surface-card flex flex-col gap-3 border-white/10 bg-white/[0.03] p-5">
+          <div className="surface-card flex flex-col gap-3 border-white/10 bg-white/[0.03] p-4 sm:p-5">
             <p className="text-2xl font-black leading-tight text-[#eef4e4] sm:text-3xl">
               CHAQUE ANGLE <span className="text-[#c6dd94]">COMPTE.</span>
             </p>
@@ -161,7 +161,7 @@ export function BlacklineAgeGate({
           </div>
 
           {/* Énergie : ce que le jeu va demander à la machine. */}
-          <div className="surface-card flex flex-col gap-2 border-white/10 bg-white/[0.03] p-5">
+          <div className="surface-card flex flex-col gap-2 border-white/10 bg-white/[0.03] p-4 sm:p-5">
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#c6dd94]">
               <ZapIcon className="size-3.5" />
               Énergie & ressources
@@ -204,7 +204,7 @@ export function BlacklineAgeGate({
         </section>
 
         {/* Confirmation d'âge — la dernière question avant le moteur. */}
-        <section className="surface-card flex flex-col gap-3 border-white/10 bg-white/[0.03] p-5">
+        <section className="surface-card flex flex-col gap-3 border-white/10 bg-white/[0.03] p-4 sm:p-5">
           <h2
             className="flex items-center gap-2 text-base font-bold text-[#eef4e4]"
             id="blackline-age-titre"

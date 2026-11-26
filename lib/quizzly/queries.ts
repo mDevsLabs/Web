@@ -147,6 +147,32 @@ export type QueteVue = {
   target: number;
 };
 
+type QuizzlyTx = Parameters<
+  Parameters<ReturnType<typeof getDb>["transaction"]>[0]
+>[0];
+
+async function ajouterXpSemaineDansTx(
+  tx: QuizzlyTx,
+  userId: string,
+  weekKey: string,
+  xp: number
+): Promise<void> {
+  if (xp <= 0) {
+    return;
+  }
+  await tx
+    .update(quizzlyLeagueSeat)
+    .set({
+      weeklyXp: sql`${quizzlyLeagueSeat.weeklyXp} + ${xp}`,
+    })
+    .where(
+      and(
+        eq(quizzlyLeagueSeat.userId, userId),
+        eq(quizzlyLeagueSeat.weekKey, weekKey)
+      )
+    );
+}
+
 async function assurerProfil(userId: string): Promise<QuizzlyProfile> {
   await dbReady();
   const db = getDb();
@@ -493,19 +519,7 @@ export async function soumettreQuiz(
         xp: profil.xp + gain.xp,
       })
       .where(eq(quizzlyProfile.userId, userId));
-    if (gain.xp > 0) {
-      await tx
-        .update(quizzlyLeagueSeat)
-        .set({
-          weeklyXp: sql`${quizzlyLeagueSeat.weeklyXp} + ${gain.xp}`,
-        })
-        .where(
-          and(
-            eq(quizzlyLeagueSeat.userId, userId),
-            eq(quizzlyLeagueSeat.weekKey, semaineIso(aujourdhui))
-          )
-        );
-    }
+    await ajouterXpSemaineDansTx(tx, userId, semaineIso(aujourdhui), gain.xp);
     const retenu = scoreRetenu(
       existant
         ? { correctCount: existant.correctCount, passed: existant.passed }
@@ -885,8 +899,10 @@ export async function reclamerQuete(
   if (!analyse) {
     return { message: "Quête inconnue.", ok: false };
   }
-  const jour = jourParis(new Date());
-  const periode = analyse.portee === "daily" ? jour : semaineIso(jour);
+  const maintenant = new Date();
+  const jour = jourParis(maintenant);
+  const semaine = semaineIso(jour);
+  const periode = analyse.portee === "daily" ? jour : semaine;
   if (analyse.periode !== periode) {
     return { message: "Cette quête n'est plus d'actualité.", ok: false };
   }
@@ -895,7 +911,14 @@ export async function reclamerQuete(
   if (!definition || !tirage.some((quete) => quete.id === analyse.id)) {
     return { message: "Cette quête n'est pas au programme.", ok: false };
   }
+  const gainXp = definition.monnaie === "xp" ? definition.recompense : 0;
+  if (gainXp > 0) {
+    await cloreLiguesEchues(maintenant);
+  }
   await assurerProfil(userId);
+  if (gainXp > 0) {
+    await assurerSiege(userId, maintenant);
+  }
   const db = getDb();
   return db.transaction(async (tx) => {
     const [profil] = await tx
@@ -934,14 +957,15 @@ export async function reclamerQuete(
         : profil.xp;
     await tx
       .update(quizzlyQuest)
-      .set({ claimedAt: new Date() })
+      .set({ claimedAt: maintenant })
       .where(
         and(eq(quizzlyQuest.userId, userId), eq(quizzlyQuest.questKey, cle))
       );
     await tx
       .update(quizzlyProfile)
-      .set({ gems, updatedAt: new Date(), xp })
+      .set({ gems, updatedAt: maintenant, xp })
       .where(eq(quizzlyProfile.userId, userId));
+    await ajouterXpSemaineDansTx(tx, userId, semaine, gainXp);
     return {
       gems,
       monnaie: definition.monnaie,

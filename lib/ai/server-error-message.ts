@@ -18,6 +18,53 @@ import { ChatbotError } from "@/lib/errors";
 export const MAI_SERVER_DIFFICULTIES_MESSAGE =
   "Nos serveurs rencontrent des difficultés";
 
+export const MODEL_SATURATED_MESSAGE =
+  "Ce modèle gratuit est saturé, réessayez ou changez de modèle.";
+export const MODEL_UNAVAILABLE_MESSAGE = "Ce modèle n'est plus disponible.";
+
+const MODEL_SPECIFIC_MESSAGES = new Set([
+  MODEL_SATURATED_MESSAGE,
+  MODEL_UNAVAILABLE_MESSAGE,
+]);
+
+/**
+ * Statut HTTP amont d'une erreur du SDK IA. `RetryError` enveloppe la dernière
+ * erreur (`lastError`) après les nouvelles tentatives : on descend jusqu'à elle.
+ */
+function readUpstreamStatus(error: unknown, depth = 0): number | null {
+  if (!error || typeof error !== "object" || depth > 3) {
+    return null;
+  }
+  const candidate = error as {
+    errors?: unknown[];
+    lastError?: unknown;
+    statusCode?: unknown;
+  };
+  if (typeof candidate.statusCode === "number") {
+    return candidate.statusCode;
+  }
+  return (
+    readUpstreamStatus(candidate.lastError, depth + 1) ??
+    readUpstreamStatus(candidate.errors?.at(-1), depth + 1)
+  );
+}
+
+/**
+ * Cas du modèle lui-même : 429 (saturé) et 404 (retiré). Ce sont les seuls
+ * échecs amont dont l'utilisateur peut agir (changer de modèle) ; tout le reste
+ * garde le message unifié.
+ */
+export function classifyModelProviderError(error: unknown): string | null {
+  const status = readUpstreamStatus(error);
+  if (status === 429) {
+    return MODEL_SATURATED_MESSAGE;
+  }
+  if (status === 404) {
+    return MODEL_UNAVAILABLE_MESSAGE;
+  }
+  return null;
+}
+
 const SERVER_DIFFICULTY_CODES = new Set([
   "database_error",
   "internal_error",
@@ -134,8 +181,8 @@ export function isTechnicalOrServerFailureMessage(message: string): boolean {
 /**
  * Formate une erreur issue directement d'un flux LLM / OpenRouter côté serveur.
  */
-export function formatStreamProviderError(_error?: unknown): string {
-  return MAI_SERVER_DIFFICULTIES_MESSAGE;
+export function formatStreamProviderError(error?: unknown): string {
+  return classifyModelProviderError(error) ?? MAI_SERVER_DIFFICULTIES_MESSAGE;
 }
 
 /**
@@ -149,6 +196,10 @@ export function formatUserFacingAiError(error: unknown): string {
   const rawMessage = extractRawMessage(error);
   if (!rawMessage || rawMessage === MAI_SERVER_DIFFICULTIES_MESSAGE) {
     return MAI_SERVER_DIFFICULTIES_MESSAGE;
+  }
+
+  if (MODEL_SPECIFIC_MESSAGES.has(rawMessage)) {
+    return rawMessage;
   }
 
   const code = extractCode(error);

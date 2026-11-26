@@ -8,6 +8,8 @@ import {
 import {
   formatUserFacingAiError,
   MAI_SERVER_DIFFICULTIES_MESSAGE,
+  MODEL_SATURATED_MESSAGE,
+  MODEL_UNAVAILABLE_MESSAGE,
 } from "@/lib/ai/server-error-message";
 import { ChatbotError } from "@/lib/errors";
 
@@ -187,11 +189,25 @@ describe("Diagnostic d'erreur et protection contre les bulles vides (lib/chat/st
   });
 
   it("unifie toutes les pannes OpenRouter et serveur sur « Nos serveurs rencontrent des difficultés » tout en préservant les erreurs métier", () => {
-    for (const statusCode of [400, 401, 402, 404, 429, 500, 502, 503]) {
+    for (const statusCode of [400, 401, 402, 500, 502, 503]) {
       expect(formatChatStreamError({ statusCode })).toBe(
         MAI_SERVER_DIFFICULTIES_MESSAGE
       );
     }
+
+    // Modèle saturé ou retiré : message actionnable, y compris derrière un RetryError.
+    expect(formatChatStreamError({ statusCode: 429 })).toBe(
+      MODEL_SATURATED_MESSAGE
+    );
+    expect(formatChatStreamError({ lastError: { statusCode: 404 } })).toBe(
+      MODEL_UNAVAILABLE_MESSAGE
+    );
+    expect(formatUserFacingAiError(new Error(MODEL_SATURATED_MESSAGE))).toBe(
+      MODEL_SATURATED_MESSAGE
+    );
+    expect(formatUserFacingAiError(new Error(MODEL_UNAVAILABLE_MESSAGE))).toBe(
+      MODEL_UNAVAILABLE_MESSAGE
+    );
 
     expect(
       formatUserFacingAiError(new Error("AI_TypeValidationError: delta.role"))

@@ -12,9 +12,13 @@ import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { createReasoningChunkWriter } from "@/lib/ai/reasoning-stream";
 import {
   normalizeReasoningLevel,
+  type ReasoningLevel,
   resolveReasoningProviderOptions,
 } from "@/lib/ai/registry/reasoning";
-import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
+import {
+  classifyModelProviderError,
+  MAI_SERVER_DIFFICULTIES_MESSAGE,
+} from "@/lib/ai/server-error-message";
 import type { ChatRequestContext } from "@/lib/chat/context";
 import {
   CHAT_FALLBACK_FINAL_RESPONSE,
@@ -70,6 +74,8 @@ export type ChatStreamParams = {
   effectiveMaxTokens?: number;
   /** Capacité de réflexion déclarée pour ce modèle. */
   reasoningSupported?: boolean;
+  /** Effort de réflexion déjà recadré sur `supported_efforts` du modèle. */
+  reasoningEffort?: ReasoningLevel | null;
   /** Collecteur branché sur le flux du provider (voir `lib/ai/providers.ts`). */
   reasoningSink?: ReasoningDetailsSink;
 };
@@ -78,8 +84,8 @@ export type ChatStreamParams = {
  * Traduit une erreur de flux fournisseur (OpenRouter / AI SDK) en message
  * lisible côté client, sans exposer de secrets.
  */
-export function formatChatStreamError(_error: unknown): string {
-  return MAI_SERVER_DIFFICULTIES_MESSAGE;
+export function formatChatStreamError(error: unknown): string {
+  return classifyModelProviderError(error) ?? MAI_SERVER_DIFFICULTIES_MESSAGE;
 }
 
 function hasSubstantiveMessageParts(message: ChatMessage): boolean {
@@ -110,6 +116,7 @@ export function createChatStream(params: ChatStreamParams) {
     effectiveTemperature,
     effectiveTopP,
     effectiveMaxTokens,
+    reasoningEffort,
     reasoningSupported,
     reasoningSink,
   } = params;
@@ -217,15 +224,22 @@ export function createChatStream(params: ChatStreamParams) {
         ...(effectiveMaxTokens !== undefined && effectiveMaxTokens !== null
           ? { maxOutputTokens: effectiveMaxTokens }
           : {}),
-        ...(ctx.reasoningLevel &&
-        reasoningSupported !== false &&
-        normalizeReasoningLevel(ctx.reasoningLevel) !== "none"
-          ? {
-              providerOptions: resolveReasoningProviderOptions(
-                normalizeReasoningLevel(ctx.reasoningLevel)
-              ),
-            }
-          : {}),
+        ...(reasoningEffort === undefined
+          ? ctx.reasoningLevel &&
+            reasoningSupported !== false &&
+            normalizeReasoningLevel(ctx.reasoningLevel) !== "none"
+            ? {
+                providerOptions: resolveReasoningProviderOptions(
+                  normalizeReasoningLevel(ctx.reasoningLevel)
+                ),
+              }
+            : {}
+          : reasoningEffort && reasoningEffort !== "none"
+            ? {
+                providerOptions:
+                  resolveReasoningProviderOptions(reasoningEffort),
+              }
+            : {}),
         onAbort() {
           reasoningWriter?.finish();
         },

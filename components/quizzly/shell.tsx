@@ -347,7 +347,7 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
                 </motion.p>
               ) : null}
             </AnimatePresence>
-            <div className="ml-auto flex items-center gap-3 text-xs font-semibold">
+            <div className="ml-auto flex items-center gap-2 text-xs font-semibold sm:gap-3">
               <button
                 className="flex items-center gap-1.5 rounded-full border border-q-level/30 bg-q-level/10 px-2.5 py-1 text-xs font-medium text-foreground transition-all hover:bg-q-level/20 cursor-pointer"
                 onClick={() =>
@@ -360,7 +360,7 @@ export function QuizzlyShell({ children }: { children: ReactNode }) {
               >
                 <SearchIcon className="size-3.5 text-q-level" />
                 <span className="hidden sm:inline">Rechercher</span>
-                <kbd className="rounded bg-q-level/20 px-1 py-0.5 text-[10px] text-muted-foreground">
+                <kbd className="hidden rounded bg-q-level/20 px-1 py-0.5 text-[10px] text-muted-foreground sm:inline-block">
                   ⌘K
                 </kbd>
               </button>

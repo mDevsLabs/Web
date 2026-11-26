@@ -51,7 +51,7 @@ export function BarreNiveau({
     <div
       className={cn(
         "flex min-w-0 flex-col gap-1",
-        compact ? "w-36" : "w-full max-w-xs"
+        compact ? "w-full max-w-36" : "w-full max-w-xs"
       )}
     >
       <div className="flex items-baseline justify-between gap-3 text-xs font-semibold">

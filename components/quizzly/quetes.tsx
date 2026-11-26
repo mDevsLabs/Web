@@ -139,7 +139,7 @@ function CarteQuete({
           <button
             aria-disabled={!terminee && !quete.claimed}
             className={cn(
-              "chip w-fit transition-colors",
+              "chip min-h-11 w-fit touch-manipulation transition-colors sm:min-h-0",
               quete.claimed && "cursor-default opacity-60",
               !terminee &&
                 !quete.claimed &&

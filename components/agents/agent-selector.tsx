@@ -58,7 +58,7 @@ export function AgentSelectorCompact({
       <PopoverTrigger asChild>
         <Button
           className={cn(
-            "h-8 rounded-full border border-border/40 px-2.5 gap-1.5 text-xs font-medium hover:bg-muted",
+            "h-11 rounded-full border border-border/40 px-2.5 gap-1.5 text-xs font-medium hover:bg-muted sm:h-8",
             activeAgent && "bg-info/10 border-info/30 text-info"
           )}
           data-testid={testId}
@@ -86,7 +86,8 @@ export function AgentSelectorCompact({
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-[320px] p-2 rounded-2xl border border-border/50 bg-popover/95 backdrop-blur-xl shadow-2xl flex flex-col gap-1"
+        className="w-[320px] max-w-[calc(100vw-1rem)] p-2 rounded-2xl border border-border/50 bg-popover/95 backdrop-blur-xl shadow-2xl flex flex-col gap-1"
+        collisionPadding={12}
       >
         <div className="px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
           <span className="flex items-center gap-1.5">

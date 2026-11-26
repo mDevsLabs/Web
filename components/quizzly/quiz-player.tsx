@@ -360,7 +360,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
 
             {/* Gros score circulaire */}
             <div className="flex flex-col items-center justify-center py-2 text-center">
-              <div className="text-5xl font-black text-slate-900 dark:text-white">
+              <div className="text-5xl font-extrabold tabular-nums text-slate-900 dark:text-white">
                 <CompteurAnime valeur={bilan.correctCount} />
                 <span className="text-2xl font-bold text-slate-400">
                   /{bilan.totalCount}
@@ -654,7 +654,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
       {/* Barre supérieure avec retour, titre, jauge et toggle son */}
       <div className="flex items-center justify-between gap-3">
         <Link
-          className="flex size-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
+          className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition-all hover:bg-slate-100 sm:size-9 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
           href="/quizzly/apprentissage"
           title="Retourner au parcours"
         >
@@ -686,7 +686,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         {/* Bouton muet / son */}
         <button
           className={cn(
-            "flex size-9 cursor-pointer items-center justify-center rounded-full border transition-all",
+            "flex size-11 cursor-pointer touch-manipulation items-center justify-center rounded-full border transition-all sm:size-9",
             sonActif
               ? "border-blue-200 bg-blue-50 text-blue-600 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-300"
               : "border-slate-200 bg-white text-slate-400 dark:border-slate-800 dark:bg-slate-900"
@@ -777,11 +777,12 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
                             "border border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300",
                           !revelation &&
                             actif &&
-                            "bg-white text-blue-600 font-black",
-                          attendue && "bg-emerald-600 text-white font-black",
+                            "bg-white text-blue-600 font-extrabold",
+                          attendue &&
+                            "bg-emerald-600 text-white font-extrabold",
                           donnee &&
                             !attendue &&
-                            "bg-rose-600 text-white font-black"
+                            "bg-rose-600 text-white font-extrabold"
                         )}
                       >
                         {attendue ? (

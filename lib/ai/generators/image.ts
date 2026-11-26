@@ -1,5 +1,9 @@
 import "server-only";
 
+import {
+  CometImageError,
+  generateCometImage,
+} from "@/lib/ai/catalog/comet-image-client";
 import { resolveCometImageModelForRequest } from "@/lib/ai/catalog/media-models";
 import { logError } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
@@ -131,52 +135,29 @@ export async function generateImageViaMai(params: {
       }
     };
 
-    let res: Response;
+    let generated: { b64_json?: string; url?: string };
     try {
-      res = await fetch("https://api.cometapi.com/v1/images/generations", {
-        body: JSON.stringify({
-          height: targetHeight,
-          model: targetModel,
-          n: 1,
-          negative_prompt: negativePrompt || undefined,
-          prompt,
-          response_format: "url",
-          size: `${targetWidth}x${targetHeight}`,
-          width: targetWidth,
-        }),
-        headers: {
-          Authorization: `Bearer ${cometApiKey}`,
-          "Content-Type": "application/json",
-        },
-        method: "POST",
+      generated = await generateCometImage({
+        apiKey: cometApiKey,
+        height: targetHeight,
+        modelId: targetModel,
+        prompt,
         signal: AbortSignal.timeout(IMAGE_UPSTREAM_TIMEOUT_MS),
+        width: targetWidth,
       });
-    } catch (fetchError) {
+    } catch (genError) {
       await releaseReservation();
-      throw fetchError;
-    }
-
-    // Le détail de l'erreur amont reste dans les journaux : il n'est jamais
-    // relayé tel quel au modèle ni à l'utilisateur.
-    if (!res.ok) {
-      await releaseReservation();
-      const errorPreview = await res
-        .text()
-        .then((txt) => txt.slice(0, 400))
-        .catch(() => "");
+      // Le détail de l'erreur amont reste dans les journaux : il n'est jamais
+      // relayé tel quel au modèle ni à l'utilisateur.
       logError("Erreur amont génération d'image (CometAPI)", {
-        body: errorPreview,
+        body: genError instanceof Error ? genError.message : String(genError),
         model: targetModel,
-        status: res.status,
+        status:
+          genError instanceof CometImageError ? genError.status : undefined,
       });
       return { error: IMAGE_GENERIC_ERROR };
     }
-    const data = (await res.json().catch(() => ({}))) as {
-      data?: Array<{ b64_json?: string; url?: string }>;
-      image_url?: string;
-    };
-    const rawUrl =
-      data?.data?.[0]?.url || data?.data?.[0]?.b64_json || data?.image_url;
+    const rawUrl = generated.url || generated.b64_json;
     if (!rawUrl) {
       await releaseReservation();
       return { error: "Aucune image retournée" };

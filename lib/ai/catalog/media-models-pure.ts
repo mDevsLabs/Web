@@ -176,9 +176,66 @@ function formatImageModelDescription(
   return trimmed;
 }
 
+const NON_CALLABLE_COMET_IMAGE_PATTERNS: readonly RegExp[] = [
+  /(?:^|\/)mj_(?:fast|turbo)_/i,
+  /(?:^|\/)kling_/i,
+  /(?:^|\/)dola-/i,
+  /finetune/i,
+];
+
+const CALLABLE_COMET_IMAGE_ENDPOINTS = new Set([
+  "image-generation",
+  "image_generation",
+  "openai-image",
+]);
+
+/**
+ * Détermine si une entrée CometAPI en base est appelable par notre client
+ * d'images (`/flux/v1/*` ou `/v1/images/generations`).
+ *
+ * Exclut les tâches Midjourney (`mj_fast_*`, `mj_turbo_*`), les pipelines
+ * Kling/Dola et les endpoints de fine-tuning qui n'acceptent pas une requête
+ * texte→image standard.
+ */
+export function isCallableCometImageModel(model: StoredModel): boolean {
+  const id = String(model.id ?? "").trim();
+  if (!id) {
+    return false;
+  }
+  if (NON_CALLABLE_COMET_IMAGE_PATTERNS.some((pattern) => pattern.test(id))) {
+    return false;
+  }
+
+  const rawEndpoints = model.upstream?.supported_endpoint_types;
+  if (Array.isArray(rawEndpoints) && rawEndpoints.length > 0) {
+    const normalized = rawEndpoints
+      .filter((entry): entry is string => typeof entry === "string")
+      .map((entry) => entry.trim().toLowerCase());
+    if (normalized.length > 0) {
+      const hasImageEndpoint = normalized.some((ep) =>
+        CALLABLE_COMET_IMAGE_ENDPOINTS.has(ep)
+      );
+      if (hasImageEndpoint) {
+        return true;
+      }
+      const shortId = (
+        id.includes("/") ? id.split("/").slice(1).join("/") : id
+      ).toLowerCase();
+      return (
+        shortId.startsWith("gpt-image") ||
+        shortId.startsWith("dall-e") ||
+        shortId.startsWith("flux")
+      );
+    }
+  }
+
+  return true;
+}
+
 /**
  * Construit le catalogue d'images à partir de `openrouter_models` :
  * - uniquement le fournisseur `cometapi`
+ * - uniquement les modèles appelables par notre client (`/flux/v1/*` ou `/v1/images/generations`)
  * - tous les modèles actifs (`isActive && is_available`) quel que soit le plan
  * - triés par ordre alphabétique
  */
@@ -189,7 +246,8 @@ export function buildCometImageCatalog(
     .filter(
       (model) =>
         isPublicImageModel(model) &&
-        effectiveFournisseur(model).toLowerCase() === "cometapi"
+        effectiveFournisseur(model).toLowerCase() === "cometapi" &&
+        isCallableCometImageModel(model)
     )
     .map((model): CatalogImageModel => {
       const eff = effectiveModel(model);

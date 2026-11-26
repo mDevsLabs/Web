@@ -25,14 +25,24 @@ jobs:
     steps:
       - name: "Récupération du code"
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: "Installation de pnpm"
+        uses: pnpm/action-setup@v4
 
       - name: "Configuration de Node.js"
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: "Installation des dépendances"
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: "Exécution de la synchronisation des modèles"
-        run: npx --yes tsx scripts/updateModels.ts
+        run: node --import tsx scripts/updateModels.ts
         env:
+          COMET_API_KEY: ${{ secrets.COMET_API_KEY }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}

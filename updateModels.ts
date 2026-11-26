@@ -405,9 +405,11 @@ export async function fetchCometImageModels(
   fetcher: typeof fetch = fetch,
   signal?: AbortSignal
 ): Promise<JsonObject[]> {
-  const cometKey = apiKey || env("COMET_API_KEY");
+  const cometKey = (apiKey ?? env("COMET_API_KEY"))?.trim();
   if (!cometKey) {
-    return FALLBACK_COMET_IMAGE_MODELS;
+    throw new Error(
+      "COMET_API_KEY est requis pour synchroniser les modèles d'images CometAPI (refus d'écraser le catalogue avec des modèles de repli)."
+    );
   }
 
   try {
@@ -599,6 +601,12 @@ export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
   const result = modelsToPersist.length
     ? await persistModels(db, modelsToPersist, startedAt)
     : { retired: 0, skipped: true, upserted: 0 };
+
+  if (!result.skipped && result.upserted === 0) {
+    throw new Error(
+      "La synchronisation des modèles n'a mis à jour aucune entrée (upserted = 0)."
+    );
+  }
 
   if (!result.skipped) {
     await applyModelConflictWrites(db, resolutions);

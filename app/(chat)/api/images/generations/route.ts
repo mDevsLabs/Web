@@ -1,5 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import {
+  CometImageError,
+  generateCometImage,
+} from "@/lib/ai/catalog/comet-image-client";
 import { resolveCometImageModelForRequest } from "@/lib/ai/catalog/media-models";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { enforceApiRateLimit } from "@/lib/api/rate-limit";
@@ -38,11 +42,7 @@ const imageRequestSchema = z.object({
   width: dimensionSchema,
 });
 
-type CometImageResponse = {
-  data?: Array<{ b64_json?: string; url?: string }>;
-  id?: string;
-  image_url?: string;
-};
+export const maxDuration = 120;
 
 export async function POST(req: NextRequest) {
   try {
@@ -130,53 +130,29 @@ export async function POST(req: NextRequest) {
       }
     };
 
-    let res: Response;
+    let first: { b64_json?: string; url?: string };
     try {
-      res = await fetch("https://api.cometapi.com/v1/images/generations", {
-        body: JSON.stringify({
-          height,
-          model,
-          n: 1,
-          negative_prompt: negativePrompt,
-          prompt,
-          response_format: "url",
-          size: `${width}x${height}`,
-          width,
-        }),
-        headers: {
-          Authorization: `Bearer ${cometKey}`,
-          "Content-Type": "application/json",
-        },
-        method: "POST",
+      first = await generateCometImage({
+        apiKey: cometKey,
+        height,
+        modelId: model,
+        prompt,
         signal: AbortSignal.timeout(IMAGE_UPSTREAM_TIMEOUT_MS),
+        width,
       });
-    } catch (fetchErr) {
+    } catch (genErr) {
       await releaseReservation();
-      throw fetchErr;
-    }
-
-    // Le détail de l'erreur amont reste dans les journaux, jamais côté client.
-    if (!res.ok) {
-      await releaseReservation();
-      const errorPreview = await res
-        .text()
-        .then((txt) => txt.slice(0, 400))
-        .catch(() => "");
+      // Le détail de l'erreur amont reste dans les journaux, jamais côté client.
       logError("Erreur amont génération d'image (CometAPI)", {
-        body: errorPreview,
+        body: genErr instanceof Error ? genErr.message : String(genErr),
         model,
-        status: res.status,
+        status: genErr instanceof CometImageError ? genErr.status : undefined,
       });
       return errorResponse("upstream_error", {
         message: "Le fournisseur d'images a renvoyé une erreur. Réessayez.",
       });
     }
-
-    const data = (await res
-      .json()
-      .catch(() => null)) as CometImageResponse | null;
-    const first = data?.data?.[0];
-    const rawImage = first?.url || first?.b64_json || data?.image_url || "";
+    const rawImage = first.url || first.b64_json || "";
     if (!rawImage) {
       await releaseReservation();
       return errorResponse("upstream_error", {
@@ -198,9 +174,7 @@ export async function POST(req: NextRequest) {
 
     // Projection minimale : seuls les champs lus par l'interface sont renvoyés.
     return NextResponse.json({
-      data: [{ b64_json: first?.b64_json, url: first?.url }],
-      id: data?.id,
-      image_url: data?.image_url,
+      data: [{ b64_json: first.b64_json, url: first.url }],
     });
   } catch (err) {
     logError("Erreur génération d'image", err);

@@ -60,7 +60,7 @@ function PickerTrigger({
   return (
     <button
       className={cn(
-        "flex cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors",
+        "flex min-h-11 cursor-pointer touch-manipulation items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors sm:min-h-0",
         active
           ? "border-primary/40 bg-primary/10 text-foreground"
           : "border-border/40 bg-card/60 text-muted-foreground hover:border-border hover:text-foreground"
@@ -139,7 +139,12 @@ export function AgentProjectPicker({
           />
         </span>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-72 p-1.5" side="top">
+      <PopoverContent
+        align="start"
+        className="w-72 max-w-[calc(100vw-1rem)] p-1.5"
+        collisionPadding={12}
+        side="top"
+      >
         <p className="px-2.5 py-1.5 text-xs font-semibold text-muted-foreground">
           Relier la tâche à un projet
         </p>
@@ -264,7 +269,12 @@ export function AgentToolsPicker({
           />
         </span>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-80 p-1.5" side="top">
+      <PopoverContent
+        align="start"
+        className="w-80 max-w-[calc(100vw-1rem)] p-1.5"
+        collisionPadding={12}
+        side="top"
+      >
         <p className="px-2.5 py-1.5 text-xs font-semibold text-muted-foreground">
           Outils autorisés pour cette tâche
         </p>

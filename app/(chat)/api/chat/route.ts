@@ -3,7 +3,10 @@ import { resolveModelMaxOutput } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
-import { getModelCapabilitiesFor } from "@/lib/ai/registry";
+import {
+  getModelCapabilitiesFor,
+  resolveReasoningEffort,
+} from "@/lib/ai/registry";
 import { MAI_SERVER_DIFFICULTIES_MESSAGE } from "@/lib/ai/server-error-message";
 import { mergeToolHints } from "@/lib/ai/tools/hints";
 import { errorResponse } from "@/lib/api/error-response";
@@ -187,6 +190,10 @@ export async function POST(request: Request) {
     const modelCapabilities = getModelCapabilitiesFor(ctx.chatModel, models);
     const toolsSupported = modelCapabilities.tools;
     const reasoningSupported = modelCapabilities.reasoning;
+    const resolvedReasoning = resolveReasoningEffort({
+      capabilities: modelCapabilities,
+      preferred: ctx.reasoningLevel,
+    });
 
     // 4. Plugins installés et activés pour l'utilisateur : seuls leurs outils
     // peuvent être instanciés, même si le client les mentionne.
@@ -369,6 +376,7 @@ export async function POST(request: Request) {
           toolsSupported: true,
         };
       },
+      reasoningEffort: resolvedReasoning.effort,
       reasoningSink,
       reasoningSupported,
     });
